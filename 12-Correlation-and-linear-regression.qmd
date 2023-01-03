@@ -1,4 +1,4 @@
-# Correlation and linear regression {#sec-Correlation-and-linear-regression}
+# 相闗與線性迴歸 {#sec-Correlation-and-linear-regression}
 
 ```{r}
 #| include: FALSE
@@ -7,11 +7,11 @@ source("header.R")
 
 The goal in this chapter is to introduce **correlation** and **linear regression**. These are the standard tools that statisticians rely on when analysing the relationship between continuous predictors and continuous outcomes.
 
-## Correlations
+## 相關
 
 In this section we'll talk about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the **correlation** between variables. But first, we need some data (@tbl-tab12-1).
 
-### The data
+### 示範資料
 
 ```{r}
 #| label: tbl-tab12-1
@@ -35,7 +35,7 @@ Next, I'll take a look at some basic descriptive statistics and, to give a graph
 knitr::include_graphics("images/fig12-1.png")
 ```
 
-### The strength and direction of a relationship
+### 相關的強度與方向
 
 We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig12-1), left) with that between baby.sleep and dani.grump (@fig-fig12-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept.
 
@@ -57,9 +57,9 @@ In contrast, let's consider the two scatterplots shown in @fig-fig12-3. If we co
 knitr::include_graphics("images/fig12-3.png")
 ```
 
-### The correlation coefficient
+### 相關係數
 
-We can make these ideas a bit more explicit by introducing the idea of a **correlation coefficient** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig12-4, you can see several plots showing what different correlations look like.
+We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig12-4, you can see several plots showing what different correlations look like.
 
 [Additional technical detail [^correlation-and-linear-regression-3]]
 
@@ -76,7 +76,7 @@ knitr::include_graphics("images/fig12-4.png")
 
 By standardising the covariance, not only do we keep all of the nice properties of the covariance discussed earlier, but the actual values of r are on a meaningful scale: r = 1 implies a perfect positive relationship and $r = -1$ implies a perfect negative relationship. I'll expand a little more on this point later, in the section on [Interpreting a correlation]. But before I do, let's look at how to calculate correlations in jamovi.
 
-### Calculating correlations in jamovi
+### 相關係數計算實務
 
 Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig12-5.
 
@@ -88,7 +88,7 @@ Calculating correlations in jamovi can be done by clicking on the 'Regression' -
 knitr::include_graphics("images/fig12-5.png")
 ```
 
-### Interpreting a correlation
+### 解讀相關係數
 
 Naturally, in real life you don't see many correlations of $1$. So how should you interpret a correlation of, say, r = $.4$? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than $.95$ is completely useless (I think he was exaggerating, even for engineering). On the other hand, there are real cases, even in psychology, where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can't achieve a correlation of at least $.9$ really isn't deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above $.3$ you're doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in @tbl-tab12-2 is pretty typical.
 
@@ -110,7 +110,7 @@ You'd think that these four data sets would look pretty similar to one another. 
 knitr::include_graphics("images/fig12-6.png")
 ```
 
-### Spearman's rank correlations
+### 斯皮爾曼等級相關
 
 The Pearson correlation coefficient is useful for a lot of things, but it does have shortcomings. One issue in particular stands out: what it actually measures is the strength of the linear relationship between two variables. In other words, what it gives you is a measure of the extent to which the data all tend to fall on a single, perfectly straight line. Often, this is a pretty good approximation to what we mean when we say "relationship", and so the Pearson correlation is a good thing to calculate. Sometimes though, it isn't.
 
@@ -138,9 +138,9 @@ huxtabs[[12]][[3]]
 
 Hmm. These are identical. The student who put in the most effort got the best grade, the student with the least effort got the worst grade, etc. As the table above shows, these two rankings are identical, so if we now correlate them we get a perfect relationship, with a correlation of 1.0.
 
-What we've just re-invented is **Spearman's rank order correlation**, usually denoted $\rho$ to distinguish it from the Pearson correlation r. We can calculate Spearman's $\rho$ using jamovi simply by clicking the 'Spearman' check box in the 'Correlation Matrix' screen.
+What we've just re-invented is **斯皮爾曼等級相關(Spearman's rank order correlation)**, usually denoted $\rho$ to distinguish it from the Pearson correlation r. We can calculate Spearman's $\rho$ using jamovi simply by clicking the 'Spearman' check box in the 'Correlation Matrix' screen.
 
-## Scatterplots
+## 散佈圖
 
 **Scatterplots** are a simple but effective tool for visualising the relationship between two variables, like we saw with the figures in the section on [Correlations]. It's this latter application that we usually have in mind when we use the term "scatterplot". In this kind of plot each observation corresponds to one dot. The horizontal location of the dot plots the value of the observation on one variable, and the vertical location displays its value on the other variable. In many situations you don't really have a clear opinions about what the causal relationship is (e.g., does A cause B, or does B cause A, or does some other variable C control both A and B). If that's the case, it doesn't really matter which variable you plot on the x-axis and which one you plot on the y-axis. However, in many situations you do have a pretty strong idea which variable you think is most likely to be causal, or at least you have some suspicions in that direction. If so, then it's conventional to plot the cause variable on the x-axis, and the effect variable on the y-axis. With that in mind, let's look at how to draw scatterplots in jamovi, using the same parenthood data set (i.e. parenthood.csv) that I used when introducing correlations.
 
@@ -164,7 +164,7 @@ The second way do to it is to use one of the jamovi add-on modules. This module 
 knitr::include_graphics("images/fig12-9.png")  
 ```
 
-### More elaborate options
+### 更多探討散佈圖的方案
 
 Often you will want to look at the relationships between several variables at once, using a **scatterplot matrix** (in jamovi via the 'Correlation Matrix' - 'Plot' command). Just add another variable, for example baby.sleep to the list of variables to be correlated, and jamovi will create a scatterplot matrix for you, just like the one in @fig-fig12-10.
 
@@ -176,7 +176,7 @@ Often you will want to look at the relationships between several variables at on
 knitr::include_graphics("images/fig12-10.png")
 ```
 
-## What is a linear regression model?
+## 認識線性迴歸模型
 
 Stripped to its bare essentials, linear regression models are basically a slightly fancier version of the Pearson correlation (see [Correlations]), though as we'll see regression models are much more powerful tools.
 
@@ -212,7 +212,7 @@ which in turn means that we can write down the complete linear regression model 
 
 $$Y_i=b_0+b_1X_i+\epsilon_i$$
 
-## Estimating a linear regression model
+## 線性迴歸模型參數估計
 
 Okay, now let's redraw our pictures but this time I'll add some lines to show the size of the residual for all observations. When the regression line is good, our residuals (the lengths of the solid black lines) all look pretty small, as shown in @fig-fig12-12 (a), but when the regression line is a bad one the residuals are a lot larger, as you can see from looking at @fig-fig12-12 (b). Hmm. Maybe what we "want" in a regression model is *small* residuals. Yes, that does seem to make sense. In fact, I think I'll go so far as to say that the "best fitting" regression line is the one that has the smallest residuals. Or, better yet, since statisticians seem to like to take squares of everything why not say that:
 
@@ -232,7 +232,7 @@ At this point, we now have a concrete definition for what counts as our "best" c
 
 [^correlation-and-linear-regression-6]: Or at least, I'm assuming that it doesn't help most people. But on the off chance that someone reading this is a proper kung fu master of linear algebra (and to be fair, I always have a few of these people in my intro stats class), it will help you to know that the solution to the estimation problem turns out to be $\hat{b} = (X^{'}X)^{-1}X^{'}y$, where $\hat{b}$ is a vector containing the estimated regression coefficients, $X$ is the "design matrix" that contains the predictor variables (plus an additional column containing all ones; strictly $X$ is a matrix of the regressors, but I haven't discussed the distinction yet), and y is a vector containing the outcome variable. For everyone else, this isn't exactly helpful and can be downright scary. However, since quite a few things in linear regression can be written in linear algebra terms, you'll see a bunch of footnotes like this one in this chapter. If you can follow the maths in them, great. If not, ignore it.
 
-### Linear regression in jamovi
+### 實作線性迴歸模型
 
 To run my linear regression, open up the 'Regression' - 'Linear Regression' analysis in jamovi, using the parenthood.csv data file. Then specify dani.grump as the 'Dependent Variable' and dani.sleep as the variable entered in the 'Covariates' box. This gives the results shown in @fig-fig12-13, showing an intercept $\hat{b}_0 = 125.96$ and the slope $\hat{b}_1 = -8.94$. In other words, the best fitting regression line that I plotted in @fig-fig12-11 has this formula:
 
@@ -246,11 +246,11 @@ $$\hat{Y}_i=125.96+(-8.94 X_i)$$
 knitr::include_graphics("images/fig12-13.png")  
 ```
 
-### Interpreting the estimated model
+### 解讀線性迴歸模型參數估計
 
 The most important thing to be able to understand is how to interpret these coefficients. Let's start with $\hat{b}_1$, the slope. If we remember the definition of the slope, a regression coefficient of $\hat{b}_1 = -8.94$ means that if I increase Xi by 1, then I'm decreasing Yi by 8.94. That is, each additional hour of sleep that I gain will improve my mood, reducing my grumpiness by 8.94 grumpiness points. What about the intercept? Well, since $\hat{b}_0$ corresponds to "the expected value of $Y_i$ when $X_i$ equals 0", it's pretty straightforward. It implies that if I get zero hours of sleep ($X_i = 0$) then my grumpiness will go off the scale, to an insane value of ($Y_i = 125.96$). Best to be avoided, I think.
 
-## Multiple linear regression
+## 多元線性迴歸
 
 The simple linear regression model that we've discussed up to this point assumes that there's a single predictor variable that you're interested in, in this case dani.sleep. In fact, up to this point every statistical tool that we've talked about has assumed that your analysis uses one predictor variable and one outcome variable. However, in many (perhaps most) research projects you actually have multiple predictors that you want to examine. If so, it would be nice to be able to extend the linear regression framework to be able to include multiple predictors. Perhaps some kind of **multiple regression** model would be in order?
 
@@ -284,7 +284,7 @@ knitr::include_graphics("images/fig12-14.png")
 
 [^correlation-and-linear-regression-7]: The formula for the general case: The equation that I gave in the main text shows you what a multiple regression model looks like when you include two predictors. Not surprisingly then, if you want more than two predictors all you have to do is add more X terms and more b coefficients. In other words, if you have K predictor variables in the model then the regression equation look like this $$Y_i=b_0+(\sum_{k=1}^{K}b_k X_{ik})+\epsilon_i$$
 
-## Quantifying the fit of the regression model
+## 量化迴歸模型的適配性
 
 So we now know how to estimate the coefficients of a linear regression model. The problem is, we don't yet know if this regression model is any good. For example, the regression.1 model claims that every hour of sleep will improve my mood by quite a lot, but it might just be rubbish. Remember, the regression model only produces a prediction $\hat{Y}_i$ about what my mood is like, but my actual mood is $Y_i$ . If these two are very close, then the regression model has done a good job. If they are very different, then it has done a bad job.
 
@@ -330,7 +330,7 @@ This adjustment is an attempt to take the degrees of freedom into account. The b
 
 An obvious question then is whether you should report $R^2$ or adjusted $R^2$ . This is probably a matter of personal preference. If you care more about interpretability, then $R^2$ is better. If you care more about correcting for bias, then adjusted $R^2$ is probably better. Speaking just for myself, I prefer $R^2$. My feeling is that it's more important to be able to interpret your measure of model performance. Besides, as we'll see in [Hypothesis tests for regression models], if you're worried that the improvement in $R^2$ that you get by adding a predictor is just due to chance and not because it's a better model, well we've got hypothesis tests for that.
 
-## Hypothesis tests for regression models
+## 迴歸模型的假設檢定
 
 So far we've talked about what a regression model is, how the coefficients of a regression model are estimated, and how we quantify the performance of the model (the last of these, incidentally, is basically our measure of effect size). The next thing we need to talk about is hypothesis tests. There are two different (but related) kinds of hypothesis tests that we need to talk about: those in which we test whether the regression model as a whole is performing significantly better than a null model, and those in which we test whether a particular regression coefficient is significantly different from zero.
 
@@ -380,11 +380,11 @@ The 'Model Coefficients' at the bottom of the jamovi analysis results shown in @
 
 The only thing that the coefficients table itself doesn't list is the degrees of freedom used in the t-test, which is always $N - K - 1$ and is listed in the table at the top of the output, labelled 'Model Fit Measures'. We can see from this table that the model performs significantly better than you'd expect by chance ($F(2,97) = 215.24, p< .001$), which isn't all that surprising: the $R^2 = .81$ value indicate that the regression model accounts for $81\%$ of the variability in the outcome measure (and $82\%$ for the adjusted $R^2$ ). However, when we look back up at the t-tests for each of the individual coefficients, we have pretty strong evidence that the baby.sleep variable has no significant effect. All the work in this model is being done by the dani.sleep variable. Taken together, these results suggest that this regression model is actually the wrong model for the data. You'd probably be better off dropping the baby.sleep predictor entirely. In other words, the simple regression model that we started with is the better model.
 
-## Regarding regression coefficients
+## 更多迴歸模型透露的資訊
 
 Before moving on to discuss the assumptions underlying linear regression and what you can do to check if they're being met, there's two more topics I want to briefly discuss, both of which relate to the regression coefficients. The first thing to talk about is calculating confidence intervals for the coefficients. After that, I'll discuss the somewhat murky question of how to determine which predictor is most important.
 
-### Confidence intervals for the coefficients
+### 迴歸係數的信賴區間
 
 Like any population parameter, the regression coefficients b cannot be estimated with complete precision from a sample of data; that's part of why we need hypothesis tests. Given this, it's quite useful to be able to report confidence intervals that capture our uncertainty about the true value of $b$. This is especially useful when the research question focuses heavily on an attempt to find out how strongly variable $X$ is related to variable $Y$ , since in those situations the interest is primarily in the regression weight $b$.
 
@@ -394,7 +394,7 @@ Like any population parameter, the regression coefficients b cannot be estimated
 
 In jamovi we had already specified the '95% Confidence interval' as shown in @fig-fig12-15, although we could easily have chosen another value, say a '99% Confidence interval' if that is what we decided on.
 
-### Calculating standardised regression coefficients
+### 標準化迴歸係數的計算方法
 
 One more thing that you might want to do is to calculate "standardised" regression coefficients, often denoted $\beta$. The rationale behind standardised coefficients goes like this. In a lot of situations, your variables are on fundamentally different scales. Suppose, for example, my regression model aims to predict people's $IQ$ scores using their educational attainment (number of years of education) and their income as predictors. Obviously, educational attainment and income are not on the same scales. The number of years of schooling might only vary by 10s of years, whereas income can vary by $10,000s$ of dollars (or more). The units of measurement have a big influence on the regression coefficients. The b coefficients only make sense when interpreted in light of the units, both of the predictor variables and the outcome variable. This makes it very difficult to compare the coefficients of different predictors. Yet there are situations where you really do want to make comparisons between different coefficients. Specifically, you might want some kind of standard measure of which predictors have the strongest relationship to the outcome. This is what **standardised coefficients** aim to do.
 
@@ -418,7 +418,7 @@ knitr::include_graphics("images/fig12-16.png")
 
 These results clearly show that the dani.sleep variable has a much stronger effect than the baby.sleep variable. However, this is a perfect example of a situation where it would probably make sense to use the original coefficients b rather than the standardised coefficients $\beta$. After all, my sleep and the baby's sleep are already on the same scale: number of hours slept. Why complicate matters by converting these to z-scores?
 
-## Assumptions of regression
+## 迴歸模型的適用條件
 
 The linear regression model that I've been discussing relies on several assumptions. In [Model checking] we'll talk a lot more about how to check that these assumptions are being met, but first let's have a look at each of them.
 
@@ -432,13 +432,13 @@ So, we have four main assumptions for linear regression (that neatly form the ac
 -   Uncorrelated predictors. The idea here is that, in a multiple regression model, you don't want your predictors to be too strongly correlated with each other. This isn't "technically" an assumption of the regression model, but in practice it's required. Predictors that are too strongly correlated with each other (referred to as "collinearity") can cause problems when evaluating the model. See the [Checking for collinearity] section.
 -   No "bad" outliers. Again, not actually a technical assumption of the model (or rather, it's sort of implied by all the others), but there is an implicit assumption that your regression model isn't being too strongly influenced by one or two anomalous data points because this raises questions about the adequacy of the model and the trustworthiness of the data in some cases. See the section on [Three kinds of anomalous data].
 
-## Model checking {#sec-Model-checking}
+## 診斷適用條件 {#sec-Model-checking}
 
 The main focus of this section is **regression diagnostics**, a term that refers to the art of checking that the assumptions of your regression model have been met, figuring out how to fix the model if the assumptions are violated, and generally to check that nothing "funny" is going on. I refer to this as the "art" of model checking with good reason. It's not easy, and while there are a lot of fairly standardised tools that you can use to diagnose and maybe even cure the problems that ail your model (if there are any, that is!), you really do need to exercise a certain amount of judgement when doing this. It's easy to get lost in all the details of checking this thing or that thing, and it's quite exhausting to try to remember what all the different things are. This has the very nasty side effect that a lot of people get frustrated when trying to learn all the tools, so instead they decide not to do any model checking. This is a bit of a worry!
 
 In this section I describe several different things you can do to check that your regression model is doing what it's supposed to. It doesn't cover the full space of things you could do, but it's still much more detailed than what I see a lot of people doing in practice, and even I don't usually cover all of this in my intro stats class either. However, I do think it's important that you get a sense of what tools are at your disposal, so I'll try to introduce a bunch of them here. Finally, I should note that this section draws quite heavily from @Fox2011, the book associated with the 'car' package that is used to conduct regression analysis in R. The 'car' package is notable for providing some excellent tools for regression diagnostics, and the book itself talks about them in an admirably clear fashion. I don't want to sound too gushy about it, but I do think that @Fox2011 is well worth reading, even if some of the advanced diagnostic techniques are only available in R and not jamovi.
 
-### Three kinds of residuals
+### 三種殘差
 
 The majority of regression diagnostics revolve around looking at the residuals, and by now you've probably formed a sufficiently pessimistic theory of statistics to be able to guess that, precisely because of the fact that we care a lot about the residuals, there are several different kinds of residual that we might consider. In particular, the following three kinds of residuals are referred to in this section: "ordinary residuals", "standardised residuals", and "Studentised residuals". There is a fourth kind that you'll see referred to in some of the Figures, and that's the "Pearson residual". However, for the models that we're talking about in this chapter the Pearson residual is identical to the ordinary residual.
 
@@ -458,7 +458,7 @@ The third kind of residuals are **Studentised residuals** (also called "jackknif
 
 Before moving on, I should point out that you don't often need to obtain these residuals yourself, even though they are at the heart of almost all regression diagnostics. Most of the time the various options that provide the diagnostics, or assumption checks, will take care of these calculations for you. Even so, it's always nice to know how to actually get hold of these things yourself in case you ever need to do something non-standard.
 
-### Three kinds of anomalous data
+### 三種反常資料
 
 One danger that you can run into with linear regression models is that your analysis might be disproportionately sensitive to a smallish number of "unusual" or "anomalous" observations. I discussed this idea previously in @sec-Using-box-plots-to-detect-outliers in the context of discussing the outliers that get automatically identified by the boxplot option under 'Exploration' - 'Descriptives', but this time we need to be much more precise. In the context of linear regression, there are three conceptually distinct ways in which an observation might be called "anomalous". All three are interesting, but they have rather different implications for your analysis.
 
@@ -472,7 +472,7 @@ The first kind of unusual observation is an **outlier**. The definition of an ou
 knitr::include_graphics("images/fig12-17.png")  
 ```
 
-The second way in which an observation can be unusual is if it has high **leverage**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig12-18. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^correlation-and-linear-regression-18] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
+The second way in which an observation can be unusual is if it has high **槓桿作用(leverage)**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig12-18. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^correlation-and-linear-regression-18] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
 
 [^correlation-and-linear-regression-18]: Again, for the linear algebra fanatics: the "hat matrix" is defined to be that matrix $H$ that converts the vector of observed values $y$ into a vector of fitted values $\hat{y}$, such that $\hat{y} = Hy$. The name comes from the fact that this is the matrix that "puts a hat on y". The hat value of the i-th observation is the i-th diagonal element of this matrix (so technically I should be writing it as $h_{ii}$ rather than $h_i$). Oh, and in case you care, here's how it's calculated: $H = X(X^{'}X)^{1}X^{'}$. Pretty, isn't it?
 
@@ -486,7 +486,7 @@ knitr::include_graphics("images/fig12-18.png")
 
 In general, if an observation lies far away from the other ones in terms of the predictor variables, it will have a large hat value (as a rough guide, high leverage is when the hat value is more than 2-3 times the average; and note that the sum of the hat values is constrained to be equal to $K + 1$). High leverage points are also worth looking at in more detail, but they're much less likely to be a cause for concern unless they are also outliers.
 
-This brings us to our third measure of unusualness, the **influence** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig12-19. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^correlation-and-linear-regression-19]
+This brings us to our third measure of unusualness, the **影響力(influence)** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig12-19. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^correlation-and-linear-regression-19]
 
 [^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ Notice that this is a multiplication of something that measures the outlier-ness of the observation (the bit on the left), and something that measures the leverage of the observation (the bit on the right).
 
@@ -516,7 +516,7 @@ An obvious question to ask next is, if you do have large values of Cook's distan
 
 [^correlation-and-linear-regression-20]: although currently there isn't a very easy way to do this in jamovi, so a more powerful regression program such as the 'car' package in R would be better for this more advanced analysis
 
-### Checking the normality of the residuals
+### 檢測殘差常態性
 
 Like many of the statistical tools we've discussed in this book, regression models rely on a normality assumption. In this case, we assume that the residuals are normally distributed. The first thing we can do is draw a QQ-plot via the 'Assumption Checks' - 'Assumption Checks' - 'Q-Q plot of residuals' option. The output is shown in @fig-fig12-21, showing the standardised residuals plotted as a function of their theoretical quantiles according to the regression model.
 
@@ -544,7 +544,7 @@ If we were worried, then in a lot of cases the solution to this problem (and man
 
 You can calculate it using the BOXCOX function in the 'Compute' variables screen in jamovi.
 
-### Checking for collinearity
+### 檢測共線性
 
 The last kind of regression diagnostic that I'm going to discuss in this chapter is the use of **variance inflation factors** (VIFs), which are useful for determining whether or not the predictors in your regression model are too highly correlated with each other. There is a variance inflation factor associated with each predictor $X_k$ in the model. [^correlation-and-linear-regression-22]
 
@@ -570,7 +570,7 @@ We have some fairly large correlations between some of our predictor variables! 
 knitr::include_graphics("images/fig12-23.png")  
 ```
 
-## Model selection
+## 決定線性模型的變項組合
 
 One fairly major problem that remains is the problem of "model selection". That is, if we have a data set that contains several variables, which ones should we include as predictors, and which ones should we not include? In other words, we have a problem of **variable selection**. In general, model selection is a complex business but it's made somewhat simpler if we restrict ourselves to the problem of choosing a subset of the variables that ought to be included in the model. Nevertheless, I'm not going to try covering even this reduced topic in a lot of detail. Instead, I'll talk about two broad principles that you need to think about, and then discuss one concrete tool that jamovi provides to help you select a subset of variables to include in your model. First, the two principles:
 
@@ -588,17 +588,17 @@ The smaller the AIC value, the better the model performance. If we ignore the lo
 
 AIC can be added to the 'Model Fit Measures' output Table when the 'AIC' checkbox is clicked, and a rather clunky way of assessing different models is seeing if the 'AIC' value is lower if you remove one or more of the predictors in the regression model. This is the only way currently implemented in jamovi, but there are alternatives in other more powerful programmes, such as R. These alternative methods can automate the process of selectively removing (or adding) predictor variables to find the best AIC. Although these methods are not implemented in jamovi, I will mention them briefly below just so you know about them.
 
-### Backward elimination
+### 逐步排除法
 
 In backward elimination you start with the complete regression model, including all possible predictors. Then, at each "step" we try all possible ways of removing one of the variables, and whichever of these is best (in terms of lowest AIC value) is accepted. This becomes our new regression model, and we then try all possible deletions from the new model, again choosing the option with lowest AIC. This process continues until we end up with a model that has a lower AIC value than any of the other possible models that you could produce by deleting one of its predictors.
 
-### Forward selection
+### 逐步納入法
 
 As an alternative, you can also try **forward selection**. This time around we start with the smallest possible model as our start point, and only consider the possible additions to the model. However, there's one complication. You also need to specify what the largest possible model you're willing to entertain is.
 
 Although backward and forward selection can lead to the same conclusion, they don't always.
 
-### A caveat
+### 使用警告
 
 Automated variable selection methods are seductive things, especially when they're bundled up in (fairly) simple functions in powerful statistical programmes. They provide an element of objectivity to your model selection, and that's kind of nice. Unfortunately, they're sometimes used as an excuse for thoughtlessness. No longer do you have to think carefully about which predictors to add to the model and what the theoretical basis for their inclusion might be. Everything is solved by the magic of AIC. And if we start throwing around phrases like Ockham's razor, well it sounds like everything is wrapped up in a nice neat little package that no-one can argue with.
 
@@ -606,7 +606,7 @@ Or, perhaps not. Firstly, there's very little agreement on what counts as an app
 
 What does this mean in practice? Well, you could go and spend several years teaching yourself the theory of model selection, learning all the ins and outs of it so that you could finally decide on what you personally think the right thing to do is. Speaking as someone who actually did that, I wouldn't recommend it. You'll probably come out the other side even more confused than when you started. A better strategy is to show a bit of common sense. If you're staring at the results of an automated backwards or forwards selection procedure, and the model that makes sense is close to having the smallest AIC but is narrowly defeated by a model that doesn't make any sense, then trust your instincts. Statistical model selection is an inexact tool, and as I said at the beginning, interpretability matters.
 
-### Comparing two regression models
+### 比較迴歸模型
 
 An alternative to using automated model selection procedures is for the researcher to explicitly select two or more regression models to compare to each other. You can do this in a few different ways, depending on what research question you're trying to answer. Suppose we want to know whether or not the amount of sleep that my son got has any relationship to my grumpiness, over and above what we might expect from the amount of sleep that I got. We also want to make sure that the day on which we took the measurement has no influence on the relationship. That is, we're interested in the relationship between baby.sleep and dani.grump, and from that perspective dani.sleep and day are nuisance variable or **covariates** that we want to control for. In this situation, what we would like to know is whether dani.grump \~ dani.sleep + day + baby .sleep (which I'll call Model 2, or M2) is a better regression model for these data than dani.grump \~ dani.sleep + day (which I'll call Model 1, or M1). There are two different ways we can compare these two models, one based on a model selection criterion like AIC, and the other based on an explicit hypothesis test. I'll show you the AIC based approach first because it's simpler, and follows naturally from discussion in the last section. The first thing I need to do is actually run the two regressions, note the AIC for each one, and then select the model with the smaller AIC value as it is judged to be the better model for these data. Actually, don't do this just yet. Read on because there is an easy way in jamovi to get the AIC values for different models included in one table.[^correlation-and-linear-regression-24]
 
@@ -628,7 +628,7 @@ We can also use this 'Model Comparison' option to display a table that shows the
 knitr::include_graphics("images/fig12-24.png")  
 ```
 
-## Summary
+## 本章小結
 
 -   Want to know how strong the relationship is between two variables? Calculate [Correlations]
 -   Drawing [Scatterplots]

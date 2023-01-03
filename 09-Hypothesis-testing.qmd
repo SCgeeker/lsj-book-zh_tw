@@ -1,4 +1,4 @@
-# Hypothesis testing {#sec-Hypothesis-testing}
+# 假設檢定 {#sec-Hypothesis-testing}
 
 ```{r}
 #| include: FALSE
@@ -14,7 +14,7 @@ In the last chapter I discussed the ideas behind estimation, which is one of the
 
 [^09-hypothesis-testing-2]: A technical note. The description below differs subtly from the standard description given in a lot of introductory texts. The orthodox theory of null hypothesis testing emerged from the work of Sir Ronald Fisher and Jerzy Neyman in the early 20th century; but Fisher and Neyman actually had very different views about how it should work. The standard treatment of hypothesis testing that most texts use is a hybrid of the two approaches. The treatment here is a little more Neyman-style than the orthodox view, especially as regards the meaning of the p-value.
 
-## A menagerie of hypotheses
+## 假設大觀園
 
 Eventually we all succumb to madness. For me, that day will arrive once I'm finally promoted to full professor. Safely ensconced in my ivory tower, happily protected by tenure, I will finally be able to take leave of my senses (so to speak) and indulge in that most thoroughly unproductive line of psychological research, the search for extrasensory perception (ESP).[^09-hypothesis-testing-3]
 
@@ -22,7 +22,7 @@ Eventually we all succumb to madness. For me, that day will arrive once I'm fina
 
 Let's suppose that this glorious day has come. My first study is a simple one in which I seek to test whether clairvoyance exists. Each participant sits down at a table and is shown a card by an experimenter. The card is black on one side and white on the other. The experimenter takes the card away and places it on a table in an adjacent room. The card is placed black side up or white side up completely at random, with the randomisation occurring only after the experimenter has left the room with the participant. A second experimenter comes in and asks the participant which side of the card is now facing upwards. It's purely a one-shot experiment. Each person sees only one card and gives only one answer, and at no stage is the participant actually in contact with someone who knows the right answer. My data set, therefore, is very simple. I have asked the question of N people and some number $X$ of these people have given the correct response. To make things concrete, let's suppose that I have tested $N = 100$ people and $X = 62$ of these got the answer right. A surprisingly large number, sure, but is it large enough for me to feel safe in claiming I've found evidence for ESP? This is the situation where hypothesis testing comes in useful. However, before we talk about how to test hypotheses, we need to be clear about what we mean by hypotheses.
 
-### Research hypotheses versus statistical hypotheses
+### 研究假設還是統計假設
 
 The first distinction that you need to keep clear in your mind is between research hypotheses and statistical hypotheses. In my ESP study my overall scientific goal is to demonstrate that clairvoyance exists. In this situation I have a clear research goal: I am hoping to discover evidence for ESP. In other situations I might actually be a lot more neutral than that, so I might say that my research goal is to determine whether or not clairvoyance exists. Regardless of how I want to portray myself, the basic point that I'm trying to convey here is that a research hypothesis involves making a substantive, testable scientific claim. If you are a psychologist then your research hypotheses are fundamentally about psychological constructs. Any of the following would count as **research hypotheses**:
 
@@ -55,7 +55,7 @@ huxtabs[[9]][[1]]
 
 And a key thing to recognise is this. A statistical hypothesis test is a test of the statistical hypothesis, not the research hypothesis. If your study is badly designed then the link between your research hypothesis and your statistical hypothesis is broken. To give a silly example, suppose that my ESP study was conducted in a situation where the participant can actually see the card reflected in a window. If that happens I would be able to find very strong evidence that $\theta \neq 0.5$, but this would tell us nothing about whether "ESP exists".
 
-### Null hypotheses and alternative hypotheses
+### 虛無假設與對立假設
 
 So far, so good. I have a research hypothesis that corresponds to what I want to believe about the world, and I can map it onto a statistical hypothesis that corresponds to what I want to believe about how the data were generated. It's at this point that things get somewhat counter-intuitive for a lot of people. Because what I'm about to do is invent a new statistical hypothesis (the "null" hypothesis, $H_0$ ) that corresponds to the exact opposite of what I want to believe, and then focus exclusively on that almost to the neglect of the thing I'm actually interested in (which is now called the "alternative" hypothesis, H1). In our ESP example, the null hypothesis is that $\theta = 0.5$, since that's what we'd expect if ESP didn't exist. My hope, of course, is that ESP is totally real and so the alternative to this null hypothesis is $\theta \neq 0.5$. In essence, what we're doing here is dividing up the possible values of $\theta$ into two groups: those values that I really hope aren't true (the null), and those values that I'd be happy with if they turn out to be right (the alternative). Having done so, the important thing to recognise is that the goal of a hypothesis test is not to show that the alternative hypothesis is (probably) true. The goal is to show that the null hypothesis is (probably) false. Most people find this pretty weird.
 
@@ -63,7 +63,7 @@ The best way to think about it, in my experience, is to imagine that a hypothesi
 
 [^09-hypothesis-testing-4]: This analogy only works if you're from an adversarial legal system like UK/US/Australia. As I understand these things, the French inquisitorial system is quite different.
 
-## Two types of errors
+## 兩種決策失誤型態
 
 Before going into details about how a statistical test is constructed it's useful to understand the philosophy behind it. I hinted at it when pointing out the similarity between a null hypothesis test and a criminal trial, but I should now be explicit. Ideally, we would like to construct our test so that we never make any errors. Unfortunately, since the world is messy, this is never possible. Sometimes you're just really unlucky. For instance, suppose you flip a coin 10 times in a row and it comes up heads all 10 times. That feels like very strong evidence for a conclusion that the coin is biased, but of course there's a 1 in 1024 chance that this would happen even if the coin was totally fair. In other words, in real life we always have to accept that there's a chance that we made a mistake. As a consequence the goal behind statistical hypothesis testing is not to eliminate errors, but to minimise them.
 
@@ -91,7 +91,7 @@ huxtabs[[9]][[3]]
 
 A "powerful" hypothesis test is one that has a small value of $\beta$, while still keeping $\alpha$ fixed at some (small) desired level. By convention, scientists make use of three different $\alpha$ levels: $.05$, $.01$ and $.001$. Notice the asymmetry here; the tests are designed to ensure that the $\alpha$ level is kept small but there's no corresponding guarantee regarding $\beta$. We'd certainly like the type II error rate to be small and we try to design tests that keep it small, but this is typically secondary to the overwhelming need to control the type I error rate. As Blackstone might have said if he were a statistician, it is "better to retain 10 false null hypotheses than to reject a single true one". To be honest, I don't know that I agree with this philosophy. There are situations where I think it makes sense, and situations where I think it doesn't, but that's neither here nor there. It's how the tests are built.
 
-## Test statistics and sampling distributions
+## 運用樣本分佈檢測統計值
 
 At this point we need to start talking specifics about how a hypothesis test is constructed. To that end, let's return to the ESP example. Let's ignore the actual data that we obtained, for the moment, and think about the structure of the experiment. Regardless of what the actual numbers are, the form of the data is that $X$ out of $N$ people correctly identified the colour of the hidden card. Moreover, let's suppose for the moment that the null hypothesis really is true, that ESP doesn't exist and the true probability that anyone picks the correct colour is exactly $\theta = 0.5$. What would we expect the data to look like? Well, obviously we'd expect the proportion of people who make the correct response to be pretty close to $50\%$. Or, to phrase this in more mathematical terms, we'd say that $\frac{X}{N}$ is approximately $0.5$. Of course, we wouldn't expect this fraction to be exactly $0.5$. If, for example, we tested $N = 100$ people and $X = 53$ of them got the question right, we'd probably be forced to concede that the data are quite consistent with the null hypothesis. On the other hand, if $X = 99$ of our participants got the question right then we'd feel pretty confident that the null hypothesis is wrong. Similarly, if only $X = 3$ people got the answer right we'd be similarly confident that the null was wrong. Let's be a little more technical about this. We have a quantity $X$ that we can calculate by looking at our data. After looking at the value of $X$ we make a decision about whether to believe that the null hypothesis is correct, or to reject the null hypothesis in favour of the alternative. The name for this thing that we calculate to guide our choices is a **test statistic**.
 
@@ -111,11 +111,11 @@ Since the null hypothesis states that $\theta = 0.5$ and our experiment has $N =
 knitr::include_graphics("images/fig9-1.png")
 ```
 
-## Making decisions
+## 統計推論的決策要素
 
 Okay, we're very close to being finished. We've constructed a test statistic $(X)$ and we chose this test statistic in such a way that we're pretty confident that if $X$ is close to $\frac{N}{2}$ then we should retain the null, and if not we should reject it. The question that remains is this. Exactly which values of the test statistic should we associate with the null hypothesis, and exactly which values go with the alternative hypothesis? In my ESP study, for example, I've observed a value of $X = 62$. What decision should I make? Should I choose to believe the null hypothesis or the alternative hypothesis?
 
-### Critical regions and critical values
+### 臨界區間與臨界值
 
 To answer this question we need to introduce the concept of a **critical region** for the test statistic X. The critical region of the test corresponds to those values of X that would lead us to reject null hypothesis (which is why the critical region is also sometimes called the rejection region). How do we find this critical region? Well, let's consider what we know:
 
@@ -146,7 +146,7 @@ At this point, our hypothesis test is essentially complete:
 
 All that we have to do now is calculate the value of the test statistic for the real data (e.g., X = 62) and then compare it to the critical values to make our decision. Since 62 is greater than the critical value of 60 we would reject the null hypothesis. Or, to phrase it slightly differently, we say that the test has produced a statistically **significant** result.
 
-### A note on statistical "significance"
+### 小心使用統計“顯著”
 
 > *Like other occult techniques of divination, the statistical method has a private jargon deliberately contrived to obscure its methods from non-practitioners.*\
 > -- Attributed to G. O. Ashley [^09-hypothesis-testing-7]
@@ -155,7 +155,7 @@ All that we have to do now is calculate the value of the test statistic for the 
 
 A very brief digression is in order at this point, regarding the word "significant". The concept of statistical significance is actually a very simple one, but has a very unfortunate name. If the data allow us to reject the null hypothesis, we say that "the result is statistically significant", which is often shortened to "the result is significant". This terminology is rather old and dates back to a time when "significant" just meant something like "indicated", rather than its modern meaning which is much closer to "important". As a result, a lot of modern readers get very confused when they start learning statistics because they think that a "significant result" must be an important one. It doesn't mean that at all. All that "statistically significant" means is that the data allowed us to reject a null hypothesis. Whether or not the result is actually important in the real world is a very different question, and depends on all sorts of other things.
 
-### The difference between one sided and two sided tests {#sec-The-difference-between-one-sided-and-two-sided-tests}
+### 單側與雙側檢定的不同 {#sec-The-difference-between-one-sided-and-two-sided-tests}
 
 There's one more thing I want to point out about the hypothesis test that I've just constructed. If we take a moment to think about the statistical hypotheses I've been using, $$H_0: \theta=0.5$$ $$H_1:\theta \neq 0.5$$ we notice that the alternative hypothesis covers both the possibility that $\theta < .5$ and the possibility that $\theta \> .5.$ This makes sense if I really think that ESP could produce either better-than chance performance or worse-than-chance performance (and there are some people who think that). In statistical language this is an example of a **two-sided test**. It's called this because the alternative hypothesis covers the area on both "sides" of the null hypothesis, and as a consequence the critical region of the test covers both tails of the sampling distribution (2.5% on either side if α = .05), as illustrated earlier in @fig-fig9-2. However, that's not the only possibility. I might only be willing to believe in ESP if it produces better than chance performance. If so, then my alternative hypothesis would only covers the possibility that $\theta > .5$, and as a consequence the null hypothesis now becomes 
 $$H_0: \theta \leq 0.5$$ 
@@ -170,11 +170,11 @@ When this happens, we have what's called a **one-sided test** and the critical r
 knitr::include_graphics("images/fig9-3.png")
 ```
 
-## The p value of a test {#sec-The-p-value-of-a-test}
+## 統計檢定的p值{#sec-The-p-value-of-a-test}
 
 In one sense, our hypothesis test is complete. We've constructed a test statistic, figured out its sampling distribution if the null hypothesis is true, and then constructed the critical region for the test. Nevertheless, I've actually omitted the most important number of all, **the p value**. It is to this topic that we now turn. There are two somewhat different ways of interpreting a p value, one proposed by Sir Ronald Fisher and the other by Jerzy Neyman. Both versions are legitimate, though they reflect very different ways of thinking about hypothesis tests. Most introductory textbooks tend to give Fisher's version only, but I think that's a bit of a shame. To my mind, Neyman's version is cleaner and actually better reflects the logic of the null hypothesis test. You might disagree though, so I've included both. I'll start with Neyman's version.
 
-### A softer view of decision making
+### 運用p值做決策的簡單理由
 
 One problem with the hypothesis testing procedure that I've described is that it makes no distinction at all between a result that is "barely significant" and those that are "highly significant". For instance, in my ESP study the data I obtained only just fell inside the critical region, so I did get a significant effect but it was a pretty near thing. In contrast, suppose that I'd run a study in which $X = 97$ out of my $N = 100$ participants got the answer right. This would obviously be significant too but my a much larger margin, such that there's really no ambiguity about this at all. The procedure that I have already described makes no distinction between the two. If I adopt the standard convention of allowing $\alpha = .05$ as my acceptable Type I error rate, then both of these are significant results.
 
@@ -194,21 +194,21 @@ In effect, $p$ is a summary of all the possible hypothesis tests that you could 
 
 [^09-hypothesis-testing-8]: That's $p = .000000000000000000000000136$ for folks that don't like scientific notation!
 
-### The probability of extreme data
+### 獲得極端資料的機率
 
 The second definition of the p-value comes from Sir Ronald Fisher, and it's actually this one that you tend to see in most introductory statistics textbooks. Notice how, when I constructed the critical region, it corresponded to the tails (i.e., extreme values) of the sampling distribution? That's not a coincidence, almost all "good" tests have this characteristic (good in the sense of minimising our type II error rate, $\beta$). The reason for that is that a good critical region almost always corresponds to those values of the test statistic that are least likely to be observed if the null hypothesis is true. If this rule is true, then we can define the p-value as the probability that we would have observed a test statistic that is at least as extreme as the one we actually did get. In other words, if the data are extremely implausible according to the null hypothesis, then the null hypothesis is probably wrong.
 
-### A common mistake
+### 常見疑問
 
 Okay, so you can see that there are two rather different but legitimate ways to interpret the $p$ value, one based on Neyman's approach to hypothesis testing and the other based on Fisher's. Unfortunately, there is a third explanation that people sometimes give, especially when they're first learning statistics, and it is *absolutely and completely wrong*. This mistaken approach is to refer to the $p$ value as "the probability that the null hypothesis is true". It's an intuitively appealing way to think, but it's wrong in two key respects. First, null hypothesis testing is a frequentist tool and the frequentist approach to probability does not allow you to assign probabilities to the null hypothesis. According to this view of probability, the null hypothesis is either true or it is not, it cannot have a "$5\%$ chance" of being true. Second, even within the Bayesian approach, which does let you assign probabilities to hypotheses, the p value would not correspond to the probability that the null is true. This interpretation is entirely inconsistent with the mathematics of how the p value is calculated. Put bluntly, despite the intuitive appeal of thinking this way, there is <u>no</u> justification for interpreting a $p$ value this way. Never do it.
 
-## Reporting the results of a hypothesis test
+## 假設檢定的報告格式
 
 When writing up the results of a hypothesis test there's usually several pieces of information that you need to report, but it varies a fair bit from test to test. Throughout the rest of the book I'll spend a little time talking about how to report the results of different tests (see @sec-How-to-report-the-results-of-a-test for a particularly detailed example, so that you can get a feel for how it's usually done. However, regardless of what test you're doing, the one thing that you always have to do is say something about the $p$ value and whether or not the outcome was significant.
 
 The fact that you have to do this is unsurprising, it's the whole point of doing the test. What might be surprising is the fact that there is some contention over exactly how you're supposed to do it. Leaving aside those people who completely disagree with the entire framework underpinning null hypothesis testing, there's a certain amount of tension that exists regarding whether or not to report the exact $p$ value that you obtained, or if you should state only that $p < \alpha$ for a significance level that you chose in advance (e.g., $p < .05$).
 
-### The issue
+### 一些課題
 
 To see why this is an issue, the key thing to recognise is that p values are terribly convenient. In practice, the fact that we can compute a p value means that we don't actually have to specify any $\alpha$ level at all in order to run the test. Instead, what you can do is calculate your p value and interpret it directly. If you get $p = .062$, then it means that you'd have to be willing to tolerate a Type I error rate of $6.2\%$ to justify rejecting the null. If you personally find $6.2\%$ intolerable then you retain the null. Therefore, the argument goes, why don't we just report the actual $p$ value and let the reader make up their own minds about what an acceptable Type I error rate is? This approach has the big advantage of "softening" the decision making process. In fact, if you accept the Neyman definition of the p value, that's the whole point of the p value. We no longer have a fixed significance level of $\alpha = .05$ as a bright line separating "accept" from "reject" decisions, and this removes the rather pathological problem of being forced to treat $p = .051$ in a fundamentally different way to $p = .049$.
 
@@ -222,7 +222,7 @@ In other words, the worry here is that I might have the best of intentions, and 
 huxtabs[[9]][[5]]
 ```
 
-### Two proposed solutions
+### 兩種建議
 
 In practice, it's pretty rare for a researcher to specify a single α level ahead of time. Instead, the convention is that scientists rely on three standard significance levels: $.05$, $.01$ and $.001$. When reporting your results, you indicate which (if any) of these significance levels allow you to reject the null hypothesis. This is summarised in @tbl-tab9-5. This allows us to soften the decision rule a little bit, since $p < .01$ implies that the data meet a stronger evidential standard than $p < .05$ would. Nevertheless, since these levels are fixed in advance by convention, it does prevent people choosing their α level after looking at the data
 
@@ -230,7 +230,7 @@ Nevertheless, quite a lot of people still prefer to report exact p values. To ma
 
 In light of all this, you might be wondering exactly what you should do. There's a fair bit of contradictory advice on the topic, with some people arguing that you should report the exact p value, and other people arguing that you should use the tiered approach illustrated in @tbl-tab9-1. As a result, the best advice I can give is to suggest that you look at papers/reports written in your field and see what the convention seems to be. If there doesn't seem to be any consistent pattern, then use whichever method you prefer.
 
-## Running the hypothesis test in practice
+## 假設檢定實作須知
 
 At this point some of you might be wondering if this is a "real" hypothesis test, or just a toy example that I made up. It's real. In the previous discussion I built the test from first principles, thinking that it was the simplest possible problem that you might ever encounter in real life. However, this test already exists. It's called the *binomial test*, and it's implemented by jamovi as one of the statistical analyses available when you hit the 'Frequencies' button. To test the null hypothesis that the response probability is one-half $p = .5$,[^09-hypothesis-testing-9] and using data in which $x =62$ of $n = 100$ people made the correct response, available in the binomialtest.omv data file, we get the results shown in @fig-fig9-4.
 
@@ -246,11 +246,11 @@ knitr::include_graphics("images/fig9-4.png")
 
 Right now, this output looks pretty unfamiliar to you, but you can see that it's telling you more or less the right things. Specifically, the p-value of $0.02$ is less than the usual choice of $\alpha = .05$, so you can reject the null. We'll talk a lot more about how to read this sort of output as we go along, and after a while you'll hopefully find it quite easy to read and understand.
 
-## Effect size, sample size and power {#sec-Effect-size-sample-size-and-power}
+## 效果量、樣本量、考驗力 {#sec-Effect-size-sample-size-and-power}
 
 In previous sections I've emphasised the fact that the major design principle behind statistical hypothesis testing is that we try to control our Type I error rate. When we fix $\alpha = .05$ we are attempting to ensure that only $5\%$ of true null hypotheses are incorrectly rejected. However, this doesn't mean that we don't care about Type II errors. In fact, from the researcher's perspective, the error of failing to reject the null when it is actually false is an extremely annoying one. With that in mind, a secondary goal of hypothesis testing is to try to minimise $\beta$, the Type II error rate, although we don't usually talk in terms of minimising Type II errors. Instead, we talk about maximising the power of the test. Since power is defined as $1 - \beta$, this is the same thing.
 
-### The power function
+### 圖解考驗力
 
 ```{r}
 #| label: fig-fig9-5
@@ -280,7 +280,7 @@ What all this means is that the power of a test (i.e., $1 - \beta$) depends on t
 knitr::include_graphics("images/fig9-7.png")
 ```
 
-### The power function
+### 估計考驗力的功用
 
 > *Since all models are wrong the scientist must be alert to what is importantly wrong. It is inappropriate to be concerned with mice when there are tigers abroad*\
 > - George Box <a
@@ -299,7 +299,7 @@ Why calculate effect size? Let's assume that you've run your experiment, collect
 
 [^09-hypothesis-testing-10]: Note that the p here has nothing to do with a $p$ value. The $p$ argument in the jamovi binomial test corresponds to the probability of making a correct response, according to the null hypothesis. In other words, it's the $\theta$ value.
 
-### Increasing the power of your study
+### 增加研究的考驗力
 
 Not surprisingly, scientists are fairly obsessed with maximising the power of their experiments. We want our experiments to work and so we want to maximise the chance of rejecting the null hypothesis if it is false (and of course we usually want to believe that it is false!). As we've seen, one factor that influences power is the effect size. So the first thing you can do to increase your power is to increase the effect size. In practice, what this means is that you want to design your study in such a way that the effect size gets magnified. For instance, in my ESP study I might believe that psychic powers work best in a quiet, darkened room with fewer distractions to cloud the mind. Therefore I would try to conduct my experiments in just such an environment. If I can strengthen people's ESP abilities somehow then the true value of $\theta$ will go up [^09-hypothesis-testing-11] and therefore my effect size will be larger. In short, clever experimental design is one way to boost power, because it can alter the effect size.
 
@@ -319,11 +319,11 @@ Because power is important, whenever you're contemplating running an experiment 
 
 [^09-hypothesis-testing-12]: One possible exception to this is when researchers study the effectiveness of a new medical treatment and they specify in advance what an important effect size would be to detect, for example over and above any existing treatment. In this way some information about the potential value of a new treatment can be obtained.
 
-## Some issues to consider
+## 值得多了解的觀點
 
 What I've described to you in this chapter is the orthodox framework for null hypothesis significance testing (NHST). Understanding how NHST works is an absolute necessity because it has been the dominant approach to inferential statistics ever since it came to prominence in the early 20th century. It's what the vast majority of working scientists rely on for their data analysis, so even if you hate it you need to know it. However, the approach is not without problems. There are a number of quirks in the framework, historical oddities in how it came to be, theoretical disputes over whether or not the framework is right, and a lot of practical traps for the unwary. I'm not going to go into a lot of detail on this topic, but I think it's worth briefly discussing a few of these issues.
 
-### Neyman versus Fisher
+### 尼曼與費雪
 
 The first thing you should be aware of is that orthodox NHST is actually a mash-up of two rather different approaches to hypothesis testing, one proposed by Sir Ronald Fisher and the other proposed by Jerzy Neyman (see @Lehmann2011 for a historical summary). The history is messy because Fisher and Neyman were real people whose opinions changed over time, and at no point did either of them offer "the definitive statement" of how we should interpret their work many decades later. That said, here's a quick summary of what I take these two approaches to be.
 
@@ -335,13 +335,13 @@ As you can see, what we have today is an odd mishmash of the two. We talk about 
 
 [^09-hypothesis-testing-13]: Although this book describes both Neyman's and Fisher's definition of the $p$ value, most don't. Most introductory textbooks will only give you the Fisher version.
 
-### Bayesians versus frequentists
+### 貝氏統計與次數統計
 
 Earlier on in this chapter I was quite emphatic about the fact that you *cannot* interpret the p value as the probability that the null hypothesis is true. NHST is fundamentally a frequentist tool (see @sec-Introduction-to-probability) and as such it does not allow you to assign probabilities to hypotheses. The null hypothesis is either true or it is not. The Bayesian approach to statistics interprets probability as a degree of belief, so it's totally okay to say that there is a $10\%$ chance that the null hypothesis is true. That's just a reflection of the degree of confidence that you have in this hypothesis. You aren't allowed to do this within the frequentist approach. Remember, if you're a frequentist, a probability can only be defined in terms of what happens after a large number of independent replications (i.e., a long run frequency). If this is your interpretation of probability, talking about the "probability" that the null hypothesis is true is complete gibberish: a null hypothesis is either true or it is false. There's no way you can talk about a long run frequency for this statement. To talk about "the probability of the null hypothesis" is as meaningless as "the colour of freedom". It doesn't have one!
 
 Most importantly, this isn't a purely ideological matter. If you decide that you are a Bayesian and that you're okay with making probability statements about hypotheses, you have to follow the Bayesian rules for calculating those probabilities. I'll talk more about this in @sec-Bayesian-statistics, but for now what I want to point out to you is the p value is a terrible approximation to the probability that $H_0$ is true. If what you want to know is the probability of the null, then the p value is not what you're looking for!
 
-### Traps
+### 決策陷阱
 
 As you can see, the theory behind hypothesis testing is a mess, and even now there are arguments in statistics about how it "should" work. However, disagreements among statisticians are not our real concern here. Our real concern is practical data analysis. And while the "orthodox" approach to null hypothesis significance testing has many drawbacks, even an unrepentant Bayesian like myself would agree that they can be useful if used responsibly. Most of the time they give sensible answers and you can use them to learn interesting things. Setting aside the various ideologies and historical confusions that we've discussed, the fact remains that the biggest danger in all of statistics is *thoughtlessness*. I don't mean stupidity, I literally mean thoughtlessness. The rush to interpret a result without spending time thinking through what each test actually says about the data, and checking whether that's consistent with how you've interpreted it. That's where the biggest trap lies.
 
@@ -351,7 +351,7 @@ To give an example of this, consider the following example (see @Gelman2006). Su
 
 The example above is just that, an example. I've singled it out because it's such a common one, but the bigger picture is that data analysis can be tricky to get right. Think about what it is you want to test, <u>why</u> you want to test it, and whether or not the answers that your test gives could possibly make any sense in the real world.
 
-## Summary
+## 本章小結
 
 Null hypothesis testing is one of the most ubiquitous elements to statistical theory. The vast majority of scientific papers report the results of some hypothesis test or another. As a consequence it is almost impossible to get by in science without having at least a cursory understanding of what a p-value means, making this one of the most important chapters in the book. As usual, I'll end the chapter with a quick recap of the key ideas that we've talked about:
 

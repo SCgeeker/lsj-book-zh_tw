@@ -1,4 +1,4 @@
-# Pragmatic matters {#sec-Pragmatic-matters}
+# 實務課題 {#sec-Pragmatic-matters}
 
 ```{r}
 #| include: FALSE
@@ -20,11 +20,11 @@ This is a somewhat strange chapter, even by my standards. My goal in this chapte
 
 As you can see, the list of topics that the chapter covers is pretty broad, and there's a lot of content there. Even though this is one of the longest and hardest chapters in the book, I'm really only scratching the surface of several fairly different and important topics. My advice, as usual, is to read through the chapter once and try to follow as much of it as you can. Don't worry too much if you can't grasp it all at once, especially the later sections. The rest of the book is only lightly reliant on this chapter so you can get away with just understanding the basics. However, what you'll probably find is that later on you'll need to flick back to this chapter in order to understand some of the concepts that I refer to here.
 
-## Tabulating and cross-tabulating data {#sec-Tabulating-and-cross-tabulating-data}
+## 資料表格製作要領 {#sec-Tabulating-and-cross-tabulating-data}
 
 A very common task when analysing data is the construction of frequency tables, or crosstabulation of one variable against another. These tasks can be achieved in jamovi and I'll show you how in this section.
 
-### Creating tables for single variables
+### 依資料變項製表
 
 Let's start with a simple example. As the father of a small child I naturally spend a lot of time watching TV shows like In the *Night Garden*. In the nightgarden.csv file, I've transcribed a short section of the dialogue. The file contains two variables of interest, speaker and utterance. Open up this data set in jamovi and take a look at the data in the 'spreadsheet' view. You will see that the data looks something like this:
 
@@ -52,7 +52,7 @@ knitr::include_graphics("images/fig6-1.png")
 
 Don't worry about the "$\chi^2$ Tests" table that is produced. We are going to cover this later on in @sec-Categorical-data-analysis. When interpreting the contingency table remember that these are counts, so the fact that the first row and second column of numbers corresponds to a value of 2 indicates that Makka-Pakka (row 1) says "onk" (column 2) twice in this data set.
 
-### Adding percentages to a contingency table
+### 列聯表裡的百分比
 
 The contingency table shown in @fig-fig6-1 shows a table of raw frequencies. That is, a count of the total number of cases for different combinations of levels of the specified variables. However, often you want your data to be organised in terms of percentages as well as counts. You can find the check boxes for different percentages under the 'Cells' option in the 'Contingency Tables' window. First, click on the 'Row' check box and the Contingency Table in the output window will change to the one in @fig-fig6-2.
 
@@ -74,11 +74,11 @@ What we're looking at here is the percentage of utterances made by each characte
 knitr::include_graphics("images/fig6-3.png")
 ```
 
-## Logical expressions in jamovi
+## 邏輯表達功能
 
 A key concept that a lot of data transformations in jamovi rely on is the idea of a **logical value**. A logical value is an assertion about whether something is true or false. This is implemented in jamovi in a pretty straightforward way. There are two logical values, namely TRUE and FALSE. Despite the simplicity, logical values are very useful things. Let's see how they work.
 
-### Assessing mathematical truths
+### 判斷算式真假值
 
 In George Orwell's classic book 1984 one of the slogans used by the totalitarian Party was "two plus two equals five". The idea being that the political domination of human freedom becomes complete when it is possible to subvert even the most basic of truths. It's a terrifying thought, especially when the protagonist Winston Smith finally breaks down under torture and agrees to the proposition. "Man is infinitely malleable", the book says. I'm pretty sure that this isn't true of humans[^pragmatic-matters-2] and it's definitely not true of jamovi. jamovi is not infinitely malleable, it has rather firm opinions on the topic of what is and isn't true, at least as regards basic mathematics. If I ask it to calculate $2 + 2$[^pragmatic-matters-3], it always gives the same answer, and it's not bloody 5!
 
@@ -98,7 +98,7 @@ And what do you get? It should be a whole set of 'false' values in the spreadshe
 
 Anyway, it was worth having a look at what happens if I try to force jamovi to believe that two plus two is five by making a statement like $2 + 2 = 5$. I know that if I do this in another program, say R, then it throws up an error message. But wait, if you do this in jamovi you get a whole set of 'false' values. So what is going on? Well, it seems that jamovi is being pretty smart and realises that you are testing whether it is TRUE or FALSE that $2 + 2 = 5$, regardless of whether you use the correct **equality operator**, $==$, or the equals sign "$=$".
 
-### Logical operations
+### 邏輯運算子
 
 So now we've seen logical operations at work. But so far we've only seen the simplest possible example. You probably won't be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this: $3 \times 3 + 4 \times 4 == 5 \times 5$ or this $SQRT(25) == 5$
 
@@ -142,7 +142,7 @@ Of course, in our $2 + 2 = 5$ example, we didn't really need to use the "not" op
 
 $$2+2 \text{ != } 5$$
 
-### Applying logical operation to text
+### 在報告中表達邏輯運算子
 
 I also want to briefly point out that you can apply these logical operators to text as well as to logical data. It's just that we need to be a bit more careful in understanding how jamovi interprets the different operations. In this section I'll talk about how the equal to operator $==$ applies to text, since this is the most important one. Obviously, the not equal to operator != gives the exact opposite answers to $==$ so I'm implicitly talking about that one too, but I won't give specific commands showing the use of $!=$.
 
@@ -170,11 +170,11 @@ This evaluates to 'false', and this may seem slightly counter-intuitive. With th
 huxtabs[[6]][[4]] 
 ```
 
-## Transforming and recoding a variable {#sec-Transforming-and-recoding-a-variable}
+## 資料變項的轉換與編碼功能 {#sec-Transforming-and-recoding-a-variable}
 
 It's not uncommon in real world data analysis to find that one of your variables isn't quite equivalent to the variable that you really want. For instance, it's often convenient to take a continuous-valued variable (e.g., age) and break it up into a smallish number of categories (e.g., younger, middle, older). At other times, you may need to convert a numeric variable into a different numeric variable (e.g., you may want to analyse at the absolute value of the original variable). In this section I'll describe a few key ways you can do these things in jamovi.
 
-### Creating a transformed variable
+### 轉換資料數值
 
 The first trick to discuss is the idea of **transforming** a variable. Taken literally, anything you do to a variable is a transformation, but in practice what it usually means is that you apply a relatively simple mathematical function to the original variable in order to create a new variable that either (a) provides a better way of describing the thing you're actually interested in, or (b) is more closely in agreement with the assumptions of the statistical tests you want to do. Since, at this stage, I haven't talked about statistical tests or their assumptions, I'll show you an example based on the first case.
 
@@ -215,7 +215,7 @@ Let's break down what this 'IF' command is doing. In jamovi there are three part
 
 And we're done. We now have three shiny new variables, all of which are useful transformations of the original likert.raw data.
 
-### Collapsing a variable into a smaller number of discrete levels or categories
+### 轉換連續變項為間斷變項
 
 One pragmatic task that comes up quite often is the problem of collapsing a variable into a smaller number of discrete levels or categories. For instance, suppose I'm interested in looking at the age distribution of people at a social gathering:
 
@@ -239,7 +239,7 @@ It's important to take the time to figure out whether or not the resulting categ
 
 [^pragmatic-matters-8]: If you've read further into the book, and are re-reading this section, then a good example of this would be someone choosing to do an ANOVA using AgeCats as the grouping variable, instead of running a regression using Age as a predictor. There are sometimes good reasons for doing this. For instance, if the relationship between Age and your outcome variable is highly non-linear and you aren't comfortable with trying to run non-linear regression! However, unless you really do have a good rationale for doing this, it's best not to. It tends to introduce all sorts of other problems (e.g., the data will probably violate the normality assumption) and you can lose a lot of statistical power.
 
-### Creating a transformation that can be applied to multiple variables
+### 設計用途多重的轉換功能
 
 Sometimes you want to apply the same transformation to more than one variable, for example when you have multiple questionnaire items that all need to be recalculated or recoded in the same way. And one of the neat features in jamovi is that you can create a transformation, using the 'Data' - 'Transform' button, that can then be saved and applied to multiple variables. Let's go back to the first example above, using the data file likert.omv that contains a single variable with raw Likert-scale responses for 10 people. To create a transformation that you can save and then apply across multiple variables (assuming you had more variables like this in your data file), first in the spreadsheet editor select (i.e., click) the variable you want to use to initially create the transformation. In our example this is likert.raw. Next click the 'Transform' button in the jamovi 'Data' ribbon, and you'll see something like @fig-fig6-7.
 
@@ -278,13 +278,13 @@ huxtabs[[6]][[5]] |>
   set_contents(1, 1, "")
 ```
 
-## A few more mathematical functions and operations
+## 其他常用數學函式及運算子
 
 In the section on [Transforming and recoding a variable] I discussed the ideas behind variable transformations and showed that a lot of the transformations that you might want to apply to your data are based on fairly simple mathematical functions and operations. In this section I want to return to that discussion and mention several other mathematical functions and arithmetic operations that are actually quite useful for a lot of real world data analysis. @tbl-tab6-5 gives a brief overview of the various mathematical functions I want to talk about here, or later.[^pragmatic-matters-9] Obviously this doesn't even come close to cataloguing the range of possibilities available, but it does cover a range of functions that are used regularly in data analysis and that are available in jamovi.
 
 [^pragmatic-matters-9]: We'll leave the box-cox function until later on
 
-### Logarithms and exponentials
+### 對數與指數
 
 As I've mentioned earlier, jamovi has an useful range of mathematical functions built into it and there really wouldn't be much point in trying to describe or even list all of them. For the most part, I've focused only on those functions that are strictly necessary for this book. However I do want to make an exception for logarithms and exponentials. Although they aren't needed anywhere else in this book, they are *everywhere* in statistics more broadly. And not only that, there are a *lot of* situations in which it is convenient to analyse the logarithm of a variable (i.e., to take a "log-transform" of the variable). I suspect that many (maybe most) readers of this book will have encountered logarithms and exponentials before, but from past experience I know that there's a substantial proportion of students who take a social science statistics class who haven't touched logarithms since high school, and would appreciate a bit of a refresher.
 
@@ -304,7 +304,7 @@ There are quite a few situation in statistics that require us to calculate power
 
 And with that, I think we've had quite enough exponentials and logarithms for this book!
 
-## Extracting a subset of the data
+## 篩選部分資料
 
 One very important kind of data handling is being able to extract a particular subset of the data. For instance, you might be interested only in analysing the data from one experimental condition, or you may want to look closely at the data from people over 50 years in age. To do this, the first step is getting jamovi to filter the subset of the data corresponding to the observations that you're interested in.
 
@@ -326,7 +326,7 @@ Following on from this simple example, you can also build up more complex filter
 
 utterance == 'pip' or utterance == 'oo'
 
-## Summary
+## 本章小結
 
 Obviously, there's no real coherence to this chapter. It's just a grab bag of topics and tricks that can be handy to know about, so the best wrap up I can give here is just to repeat this list:
 

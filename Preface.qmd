@@ -1,6 +1,6 @@
-# Preface {.unnumbered}
+# 前言 {.unnumbered}
 
-## History and License {.unnumbered}
+## 沿革與版權說明 {.unnumbered}
 
 This book is an adaptation of DJ Navarro (2018). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6). [https://learningstatisticswithr.com/](https://learningstatisticswithr.com/).
 

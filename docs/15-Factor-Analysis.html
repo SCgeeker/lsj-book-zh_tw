@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>learning statistics with jamovi - 15&nbsp; Factor Analysis</title>
+<title>用jamovi上手統計學 - 15&nbsp; 因素分析</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,9 +95,9 @@ div.csl-indent {
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="learning statistics with jamovi - 15&nbsp; Factor Analysis">
+<meta property="og:title" content="用jamovi上手統計學 - 15&nbsp; 因素分析">
 <meta property="og:description" content="Previous chapters have covered statistical tests for differences between two or more groups. However, sometimes when conducting research, we may wish to examine how multiple variables co-vary.">
-<meta property="og:site-name" content="learning statistics with jamovi">
+<meta property="og:site-name" content="用jamovi上手統計學">
 </head>
 
 <body class="nav-sidebar floating">
@@ -106,7 +106,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Factor Analysis</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -119,26 +119,11 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">learning statistics with jamovi</a> 
+      <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/davidfoxcroft/lsj-book/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./learning-statistics-with-jamovi.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./learning-statistics-with-jamovi.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
-    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
         <li>
           <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
             <i class="bi bi-bi-twitter pe-1"></i>
@@ -181,12 +166,12 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Preface.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./Preface.html" class="sidebar-item-text sidebar-link">前言</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Beginnings</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">新手須知</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -194,19 +179,19 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why do we learn statistics</span></a>
+  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A brief introduction to research design</span></a>
+  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">簡易入門研究設計</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">An introduction to jamovi</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">jamovi初體驗</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -214,14 +199,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started with jamovi</span></a>
+  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Working with data</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">資料處理</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -229,24 +214,24 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></a>
+  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Drawing graphs</span></a>
+  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pragmatic matters</span></a>
+  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Statistical theory</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">統計理論</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -254,29 +239,29 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">Prelude</a>
+  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">中場報告</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to probability</span></a>
+  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimating unknown quantities from a sample</span></a>
+  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">從樣本估計未知量數</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Statistical tools</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">統計方法</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -284,39 +269,39 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Categorical data analysis</span></a>
+  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Comparing two means</span></a>
+  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較兩組平均值</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Comparing several means (one-way ANOVA)</span></a>
+  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Factor Analysis</span></a>
+  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Endings, alternatives and prospects</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">貝氏統計</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -324,19 +309,19 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayesian statistics</span></a>
+  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">Epilogue</a>
+  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">後記</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./References.html" class="sidebar-item-text sidebar-link">參考資料</a>
   </div>
 </li>
     </ul>
@@ -348,28 +333,28 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exploratory-factor-analysis" id="toc-exploratory-factor-analysis" class="nav-link active" data-scroll-target="#exploratory-factor-analysis"><span class="toc-section-number">15.1</span>  Exploratory Factor Analysis</a>
+  <li><a href="#探索性因素分析" id="toc-探索性因素分析" class="nav-link active" data-scroll-target="#探索性因素分析"><span class="toc-section-number">15.1</span>  探索性因素分析</a>
   <ul class="collapse">
-  <li><a href="#checking-assumptions" id="toc-checking-assumptions" class="nav-link" data-scroll-target="#checking-assumptions"><span class="toc-section-number">15.1.1</span>  Checking assumptions</a></li>
-  <li><a href="#what-is-efa-good-for" id="toc-what-is-efa-good-for" class="nav-link" data-scroll-target="#what-is-efa-good-for"><span class="toc-section-number">15.1.2</span>  What is EFA good for?</a></li>
-  <li><a href="#efa-in-jamovi" id="toc-efa-in-jamovi" class="nav-link" data-scroll-target="#efa-in-jamovi"><span class="toc-section-number">15.1.3</span>  EFA in jamovi</a></li>
-  <li><a href="#writing-up-an-efa" id="toc-writing-up-an-efa" class="nav-link" data-scroll-target="#writing-up-an-efa"><span class="toc-section-number">15.1.4</span>  Writing up an EFA</a></li>
+  <li><a href="#探索性因素分析的執行條件" id="toc-探索性因素分析的執行條件" class="nav-link" data-scroll-target="#探索性因素分析的執行條件"><span class="toc-section-number">15.1.1</span>  探索性因素分析的執行條件</a></li>
+  <li><a href="#探索性因素分析的用途" id="toc-探索性因素分析的用途" class="nav-link" data-scroll-target="#探索性因素分析的用途"><span class="toc-section-number">15.1.2</span>  探索性因素分析的用途</a></li>
+  <li><a href="#使用jamovi完成探索性因素分析" id="toc-使用jamovi完成探索性因素分析" class="nav-link" data-scroll-target="#使用jamovi完成探索性因素分析"><span class="toc-section-number">15.1.3</span>  使用jamovi完成探索性因素分析</a></li>
+  <li><a href="#探索性因素分析的報告須知" id="toc-探索性因素分析的報告須知" class="nav-link" data-scroll-target="#探索性因素分析的報告須知"><span class="toc-section-number">15.1.4</span>  探索性因素分析的報告須知</a></li>
   </ul></li>
-  <li><a href="#principal-component-analysis" id="toc-principal-component-analysis" class="nav-link" data-scroll-target="#principal-component-analysis"><span class="toc-section-number">15.2</span>  Principal Component Analysis</a></li>
-  <li><a href="#confirmatory-factor-analysis" id="toc-confirmatory-factor-analysis" class="nav-link" data-scroll-target="#confirmatory-factor-analysis"><span class="toc-section-number">15.3</span>  Confirmatory Factor Analysis</a>
+  <li><a href="#主成分分析" id="toc-主成分分析" class="nav-link" data-scroll-target="#主成分分析"><span class="toc-section-number">15.2</span>  主成分分析</a></li>
+  <li><a href="#驗證性因素分析" id="toc-驗證性因素分析" class="nav-link" data-scroll-target="#驗證性因素分析"><span class="toc-section-number">15.3</span>  驗證性因素分析</a>
   <ul class="collapse">
-  <li><a href="#cfa-in-jamovi" id="toc-cfa-in-jamovi" class="nav-link" data-scroll-target="#cfa-in-jamovi"><span class="toc-section-number">15.3.1</span>  CFA in jamovi</a></li>
-  <li><a href="#reporting-a-cfa" id="toc-reporting-a-cfa" class="nav-link" data-scroll-target="#reporting-a-cfa"><span class="toc-section-number">15.3.2</span>  Reporting a CFA</a></li>
+  <li><a href="#使用jamovi完成驗證性因素分析" id="toc-使用jamovi完成驗證性因素分析" class="nav-link" data-scroll-target="#使用jamovi完成驗證性因素分析"><span class="toc-section-number">15.3.1</span>  使用jamovi完成驗證性因素分析</a></li>
+  <li><a href="#驗證性因素分析的報告須知" id="toc-驗證性因素分析的報告須知" class="nav-link" data-scroll-target="#驗證性因素分析的報告須知"><span class="toc-section-number">15.3.2</span>  驗證性因素分析的報告須知</a></li>
   </ul></li>
-  <li><a href="#multi-trait-multi-method-cfa" id="toc-multi-trait-multi-method-cfa" class="nav-link" data-scroll-target="#multi-trait-multi-method-cfa"><span class="toc-section-number">15.4</span>  Multi-Trait Multi-Method CFA</a>
+  <li><a href="#多種特質多項相關驗證性因素分析" id="toc-多種特質多項相關驗證性因素分析" class="nav-link" data-scroll-target="#多種特質多項相關驗證性因素分析"><span class="toc-section-number">15.4</span>  多種特質多項相關驗證性因素分析</a>
   <ul class="collapse">
-  <li><a href="#mtmm-cfa-in-jamovi" id="toc-mtmm-cfa-in-jamovi" class="nav-link" data-scroll-target="#mtmm-cfa-in-jamovi"><span class="toc-section-number">15.4.1</span>  MTMM CFA in jamovi</a></li>
+  <li><a href="#使用jamovi完成多種特質多項相關驗證性因素分析" id="toc-使用jamovi完成多種特質多項相關驗證性因素分析" class="nav-link" data-scroll-target="#使用jamovi完成多種特質多項相關驗證性因素分析"><span class="toc-section-number">15.4.1</span>  使用jamovi完成多種特質多項相關驗證性因素分析</a></li>
   </ul></li>
-  <li><a href="#sec-Internal-consistency-reliability-analysis" id="toc-sec-Internal-consistency-reliability-analysis" class="nav-link" data-scroll-target="#sec-Internal-consistency-reliability-analysis"><span class="toc-section-number">15.5</span>  Internal consistency reliability analysis</a>
+  <li><a href="#sec-Internal-consistency-reliability-analysis" id="toc-sec-Internal-consistency-reliability-analysis" class="nav-link" data-scroll-target="#sec-Internal-consistency-reliability-analysis"><span class="toc-section-number">15.5</span>  內部一致性信度分析</a>
   <ul class="collapse">
-  <li><a href="#reliability-analysis-in-jamovi" id="toc-reliability-analysis-in-jamovi" class="nav-link" data-scroll-target="#reliability-analysis-in-jamovi"><span class="toc-section-number">15.5.1</span>  Reliability analysis in jamovi</a></li>
+  <li><a href="#使用jamovi完成內部一致性信度分析" id="toc-使用jamovi完成內部一致性信度分析" class="nav-link" data-scroll-target="#使用jamovi完成內部一致性信度分析"><span class="toc-section-number">15.5.1</span>  使用jamovi完成內部一致性信度分析</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">15.6</span>  Summary</a></li>
+  <li><a href="#本章小結" id="toc-本章小結" class="nav-link" data-scroll-target="#本章小結"><span class="toc-section-number">15.6</span>  本章小結</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/davidfoxcroft/lsj-book/edit/main/15-Factor-Analysis.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/davidfoxcroft/lsj-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -377,21 +362,21 @@ div.csl-indent {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Factor Analysis</span></h1>
+<h1 class="title display-7"><span id="sec-Factor-Aanalysis" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></span></h1>
 
 </header>
 
 <p>Previous chapters have covered statistical tests for differences between two or more groups. However, sometimes when conducting research, we may wish to examine how multiple variables <em>co-vary</em>. That is, how they are related to each other and whether the patterns of relatedness suggest anything interesting and meaningful. For example, we are often interested in exploring whether there are any underlying unobserved latent factors that are represented by the observed, directly measured, variables in our dataset. In statistics, latent factors are initially hidden variables that are not directly observed but are rather inferred (through statistical analysis) from other variables that are observed (directly measured).</p>
-<p>In this chapter we will consider a number of different Factor Analysis and related techniques, starting with <a href="#exploratory-factor-analysis">Exploratory Factor Analysis</a> (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Then we will cover <a href="#principal-component-analysis">Principal Component Analysis</a> (PCA) which is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables. Following this, the section on <a href="#confirmatory-factor-analysis">Confirmatory Factor Analysis</a> (CFA) shows that, unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is. A more sophisticated version of CFA is the so-called <a href="#multi-trait-multi-method-cfa">Multi-Trait Multi-Method CFA</a> approach in which both latent factor and method variance are included in the model. This is useful when there are different methodological approaches used for measurement and therefore method variance is an important consideration. Finally, we will cover a related analysis: <a href="#sec-Internal-consistency-reliability-analysis">Internal consistency reliability analysis</a> tests how consistently a scale measures a psychological construct.</p>
-<section id="exploratory-factor-analysis" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="exploratory-factor-analysis"><span class="header-section-number">15.1</span> Exploratory Factor Analysis</h2>
+<p>In this chapter we will consider a number of different Factor Analysis and related techniques, starting with [Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Then we will cover [Principal Component Analysis] (PCA) which is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables. Following this, the section on [Confirmatory Factor Analysis] (CFA) shows that, unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is. A more sophisticated version of CFA is the so-called [Multi-Trait Multi-Method CFA] approach in which both latent factor and method variance are included in the model. This is useful when there are different methodological approaches used for measurement and therefore method variance is an important consideration. Finally, we will cover a related analysis: [Internal consistency reliability analysis] tests how consistently a scale measures a psychological construct.</p>
+<section id="探索性因素分析" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="探索性因素分析"><span class="header-section-number">15.1</span> 探索性因素分析</h2>
 <p><strong>Exploratory Factor Analysis (EFA)</strong> is a statistical technique for revealing any hidden latent factors that can be inferred from our observed data. This technique calculates to what extent a set of measured variables, for example <span class="math inline">\(V1, V2, V3, V4\)</span>, and <span class="math inline">\(V5\)</span>, can be represented as measures of an underlying latent factor. This latent factor cannot be measured through just one observed variable but instead is manifested in the relationships it causes in a set of observed variables.</p>
 <p>In <a href="#fig-fig15-1">Figure&nbsp;<span>15.1</span></a> each observed variable <span class="math inline">\(V\)</span> is ‘caused’ to some extent by the underlying latent factor (<span class="math inline">\(F\)</span>), depicted by the coefficients <span class="math inline">\(b_1\)</span> to <span class="math inline">\(b_5\)</span> (also called factor loadings). Each observed variable also has an associated error term, e1 to e5. Each error term is the variance in the associated observed variable, <span class="math inline">\(V_i\)</span> , that is unexplained by the underlying latent factor.</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig15-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.1: Latent factor underlying the relationship between several observed variables</figcaption><p></p>
 </figure>
 </div>
@@ -400,13 +385,13 @@ div.csl-indent {
 <p>In Psychology, latent factors represent psychological phenomena or constructs that are difficult to directly observe or measure. For example, personality, or intelligence, or thinking style. In the example in <a href="#fig-fig15-1">Figure&nbsp;<span>15.1</span></a> we may have asked people five specific questions about their behaviour or attitudes, and from that we are able to get a picture about a personality construct called, for example, extraversion. A different set of specific questions may give us a picture about an individual’s introversion, or their conscientiousness.</p>
 <p>Here’s another example: we may not be able to directly measure statistics anxiety, but we can measure whether statistics anxiety is high or low with a set of questions in a questionnaire. For example, “<span class="math inline">\(Q1\)</span>: Doing the assignment for a statistics course”, “<span class="math inline">\(Q2\)</span>: Trying to understand the statistics described in a journal article”, and “<span class="math inline">\(Q3\)</span>: Asking the lecturer for help in understanding something from the course”, etc., each rated from low anxiety to high anxiety. People with high statistics anxiety will tend to give similarly high responses on these observed variables because of their high statistics anxiety. Likewise, people with low statistics anxiety will give similar low responses to these variables because of their low statistics anxiety.</p>
 <p>In exploratory factor analysis (EFA), we are essentially exploring the correlations between observed variables to uncover any interesting, important underlying (latent) factors that are identified when observed variables co-vary. We can use statistical software to estimate any latent factors and to identify which of our variables have a high loading<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (e.g.&nbsp;loading &gt; 0.5) on each factor, suggesting they are a useful measure, or indicator, of the latent factor. Part of this process includes a step called rotation, which to be honest is a pretty weird idea but luckily we don’t have to worry about understanding it; we just need to know that it is helpful because it makes the pattern of loadings on different factors much clearer. As such, rotation helps with seeing more clearly which variables are linked substantively to each factor. We also need to decide how many factors are reasonable given our data, and helpful in this regard is something called Eigen values. We’ll come back to this in a moment, after we have covered some of the main assumptions of EFA.</p>
-<section id="checking-assumptions" class="level3" data-number="15.1.1">
-<h3 data-number="15.1.1" class="anchored" data-anchor-id="checking-assumptions"><span class="header-section-number">15.1.1</span> Checking assumptions</h3>
+<section id="探索性因素分析的執行條件" class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="探索性因素分析的執行條件"><span class="header-section-number">15.1.1</span> 探索性因素分析的執行條件</h3>
 <p>There are a couple of assumptions that need to be checked as part of the analysis. The first assumption is <strong>sphericity</strong>, which essentially checks that the variables in your dataset are correlated with each other to the extent that they can potentially be summarised with a smaller set of factors. Bartlett’s test for sphericity checks whether the observed correlation matrix diverges significantly from a zero (or null) correlation matrix. So, if Bartlett’s test is significant (<span class="math inline">\(p &lt; .05\)</span>), this indicates that the observed correlation matrix is significantly divergent from the null, and is therefore suitable for EFA.</p>
 <p>The second assumption is <strong>sampling adequacy</strong> and is checked using the Kaiser-MeyerOlkin (KMO) Measure of Sampling Adequacy (MSA). The KMO index is a measure of the proportion of variance among observed variables that might be common variance. Using partial correlations, it checks for factors that load just two items. We seldom, if ever, want EFA producing a lot of factors loading just two items each. KMO is about sampling adequacy because partial correlations are typically seen with inadequate samples. If the KMO index is high (<span class="math inline">\(\approx 1\)</span>), the EFA is efficient whereas if KMO is low (<span class="math inline">\(\approx 0\)</span>), the EFA is not relevant. KMO values smaller than <span class="math inline">\(0.5\)</span> indicates that EFA is not suitable and a KMO value of <span class="math inline">\(0.6\)</span> should be present before EFA is considered suitable. Values between <span class="math inline">\(0.5\)</span> and <span class="math inline">\(0.7\)</span> are considered adequate, values between <span class="math inline">\(0.7\)</span> and <span class="math inline">\(0.9\)</span> are good and values between <span class="math inline">\(0.9\)</span> and <span class="math inline">\(1.0\)</span> are excellent.</p>
 </section>
-<section id="what-is-efa-good-for" class="level3" data-number="15.1.2">
-<h3 data-number="15.1.2" class="anchored" data-anchor-id="what-is-efa-good-for"><span class="header-section-number">15.1.2</span> What is EFA good for?</h3>
+<section id="探索性因素分析的用途" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="探索性因素分析的用途"><span class="header-section-number">15.1.2</span> 探索性因素分析的用途</h3>
 <p>If the EFA has provided a good solution (i.e.&nbsp;factor model), then we need to decide what to do with our shiny new factors. Researchers often use EFA during psychometric scale development. They will develop a pool of questionnaire items that they think relate to one or more psychological constructs, use EFA to see which items “go together” as latent factors, and then they will assess whether some items should be removed because they don’t usefully or distinctly measure one of the latent factors.</p>
 <p>In line with this approach, another consequence of EFA is to combine the variables that load onto distinct factors into a factor score, sometimes known as a scale score. There are two options for combining variables into a scale score:</p>
 <ul>
@@ -416,8 +401,8 @@ div.csl-indent {
 <p>In the first option each item’s contribution to the combined score depends on how strongly it relates to the factor. In the second option we typically just average across all the items that contribute substantively to a factor to create the combined scale score variable. Which to choose is a matter of preference, though a disadvantage with the first option is that loadings can vary quite a bit from sample to sample, and in behavioural and health sciences we are often interested in developing and using composite questionnaire scale scores across different studies and different samples. In which case it is reasonable to use a composite measure that is based on the substantive items contributing equally rather than weighting by sample specific loadings from a different sample. In any case, understanding a combined variable measure as an average of items is simpler and more intuitive than using a sample specific optimally-weighted combination.</p>
 <p>A more advanced statistical technique, one which is beyond the scope of this book, undertakes regression modelling where latent factors are used in prediction models of other latent factors. This is called “structural equation modelling” and there are specific software programmes and R packages dedicated to this approach. But let’s not get ahead of ourselves; what we should really focus on now is how to do an EFA in jamovi.</p>
 </section>
-<section id="efa-in-jamovi" class="level3" data-number="15.1.3">
-<h3 data-number="15.1.3" class="anchored" data-anchor-id="efa-in-jamovi"><span class="header-section-number">15.1.3</span> EFA in jamovi</h3>
+<section id="使用jamovi完成探索性因素分析" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="使用jamovi完成探索性因素分析"><span class="header-section-number">15.1.3</span> 使用jamovi完成探索性因素分析</h3>
 <p>First, we need some data. Twenty-five personality self-report items (see <a href="#fig-fig15-2">Figure&nbsp;<span>15.2</span></a>) taken from the <a href="http://ipip.ori.org" target="_blank">International Personality Item Pool</a> were included as part of the Synthetic Aperture Personality Assessment (SAPA) web-based personality assessment (SAPA: <a href="http://sapa-project.org" target="_blank">http://sapa-project.org</a>) project. The 25 items are organized by five putative factors: Agreeableness, Conscientiousness, Extraversion, Neuroticism, and Openness.</p>
 <p>The item data were collected using a 6-point response scale:</p>
 <ol type="1">
@@ -433,7 +418,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-2" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-2.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.2: Twenty-five observed variable items organised by five putative personality factors in the dataset bfi_sample.csv</figcaption><p></p>
 </figure>
 </div>
@@ -448,7 +433,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-3" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-3.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.3: The jamovi EFA analysis window</figcaption><p></p>
 </figure>
 </div>
@@ -458,7 +443,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.4: jamovi EFA assumption checks for the personality questionnaire data</figcaption><p></p>
 </figure>
 </div>
@@ -475,7 +460,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-5.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.5: Scree plot of the personality data in jamovi EFA, showing a noticeable inflection and levelling off after point 5 (the ‘elbow’)</figcaption><p></p>
 </figure>
 </div>
@@ -487,7 +472,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-6.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.6: Factor summary statistics and correlations for a five factor solution in jamovi EFA</figcaption><p></p>
 </figure>
 </div>
@@ -503,7 +488,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-7" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-7.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-7.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.7: Factor loadings for a five factor solution in jamovi EFA</figcaption><p></p>
 </figure>
 </div>
@@ -520,7 +505,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-8.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.8: Recode variable using the jamovi Transform command</figcaption><p></p>
 </figure>
 </div>
@@ -530,7 +515,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-9" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-9.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.9: Compute new scale score variable using the jamovi Computed variable command</figcaption><p></p>
 </figure>
 </div>
@@ -541,7 +526,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-10" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-10.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.10: jamovi option for factor scores for the five factor solution, using the ‘Bartlett’ optimal weighting method</figcaption><p></p>
 </figure>
 </div>
@@ -551,7 +536,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-11" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-11.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.11: Data sheet view showing the five newly created factor score variables</figcaption><p></p>
 </figure>
 </div>
@@ -562,15 +547,15 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-12" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-12.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.12: Comparing differences in Agreeableness factor-based scores between males and females</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="writing-up-an-efa" class="level3" data-number="15.1.4">
-<h3 data-number="15.1.4" class="anchored" data-anchor-id="writing-up-an-efa"><span class="header-section-number">15.1.4</span> Writing up an EFA</h3>
+<section id="探索性因素分析的報告須知" class="level3" data-number="15.1.4">
+<h3 data-number="15.1.4" class="anchored" data-anchor-id="探索性因素分析的報告須知"><span class="header-section-number">15.1.4</span> 探索性因素分析的報告須知</h3>
 <p>Hopefully, so far we have given you some sense of EFA and how to undertake EFA in jamovi. So, once you have completed your EFA, how do you write it up? There is not a formal standard way to write up an EFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:</p>
 <ol type="1">
 <li><p>What are the theoretical underpinnings for the area you are studying, and specifically for the constructs that you are interested in uncovering through EFA.</p></li>
@@ -585,16 +570,16 @@ div.csl-indent {
 </ol>
 </section>
 </section>
-<section id="principal-component-analysis" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="principal-component-analysis"><span class="header-section-number">15.2</span> Principal Component Analysis</h2>
+<section id="主成分分析" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="主成分分析"><span class="header-section-number">15.2</span> 主成分分析</h2>
 <p>In the previous section we saw that EFA works to identify underlying latent factors. And, as we saw, in one scenario the smaller number of latent factors can be used in further statistical analysis using some sort of combined factor scores.</p>
 <p>In this way EFA is being used as a “data reduction” technique. Another type of data reduction technique, sometimes seen as part of the EFA family, is <strong>principal component analysis (PCA)</strong> . However, PCA does not identify underlying latent factors. Instead it creates a linear composite score from a larger set of measured variables.</p>
 <p>PCA simply produces a mathematical transformation to the original data with no assumptions about how the variables co-vary. The aim of PCA is to calculate a few linear combinations (components) of the original variables that can be used to summarize the observed data set without losing much information. However, if identification of underlying structure is a goal of the analysis, then EFA is to be preferred. And, as we saw, EFA produces factor scores that can be used for data reduction purposes just like principal component scores <span class="citation" data-cites="Fabrigar1999">(<a href="References.html#ref-Fabrigar1999" role="doc-biblioref">Fabrigar et al., 1999</a>)</span>.</p>
 <p>PCA has been popular in Psychology for a number of reasons, and therefore it’s worth mentioning, although nowadays EFA is just as easy to do given the power of desktop computers and can be less susceptible to bias than PCA, especially with a small number of factors and variables. Much of the procedure is similar to EFA, so although there are some conceptual differences, practically the steps are the same, and with large samples and a sufficient number of factors and variables, the results from PCA and EFA should be fairly similar.</p>
-<p>To undertake PCA in jamovi, all you need to do is select ‘Factor’ - ‘Principal Component Analysis’ from the main jamovi button bar to open the PCA analysis window. Then you can follow the same steps from <a href="#efa-in-jamovi">EFA in jamovi</a> above.</p>
+<p>To undertake PCA in jamovi, all you need to do is select ‘Factor’ - ‘Principal Component Analysis’ from the main jamovi button bar to open the PCA analysis window. Then you can follow the same steps from [EFA in jamovi] above.</p>
 </section>
-<section id="confirmatory-factor-analysis" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="confirmatory-factor-analysis"><span class="header-section-number">15.3</span> Confirmatory Factor Analysis</h2>
+<section id="驗證性因素分析" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="驗證性因素分析"><span class="header-section-number">15.3</span> 驗證性因素分析</h2>
 <p>So, our attempt to identify underlying latent factors using EFA with carefully selected questions from the personality item pool seemed to be pretty successful. The next step in our quest to develop a useful measure of personality is to check the latent factors we identified in the original EFA with a different sample. We want to see if the factors hold up, if we can confirm their existence with different data. This is a more rigorous check, as we will see. And it’s called <strong>Confirmatory Factor Analysis (CFA)</strong> as we will, unsurprisingly, be seeking to confirm a pre-specified latent factor structure.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <p>In CFA, instead of doing an analysis where we see how the data goes together in an exploratory sense, we instead impose a structure, like in <a href="#fig-fig15-13">Figure&nbsp;<span>15.13</span></a>, on the data and see how well the data fits our pre-specified structure. In this sense, we are undertaking a confirmatory analysis, to see how well a pre-specified <strong>model</strong> is confirmed by the observed data.</p>
 <p>A straightforward confirmatory factor analysis (CFA) of the personality items would therefore specify five latent factors as shown in <a href="#fig-fig15-13">Figure&nbsp;<span>15.13</span></a>, each measured by five observed variables. Each variable is a measure of an underlying latent factor. For example, A1 is predicted by the underlying latent factor Agreeableness. And because A1 is not a perfect measure of the Agreeableness factor, there is an error term, <span class="math inline">\(e\)</span>, associated with it. In other words, <span class="math inline">\(e\)</span> represents the variance in A1 that is not accounted for by the Agreeableness factor. This is sometimes called <strong>measurement error</strong>.</p>
@@ -602,7 +587,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-13" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-13.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-13.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.13: Initial pre-specification of latent factor structure for the five factor personality scales, for use in CFA</figcaption><p></p>
 </figure>
 </div>
@@ -612,8 +597,8 @@ div.csl-indent {
 <p>At the same time, we should consider whether there is any good, systematic, reason for some of the error terms to be correlated with each other. One reason for this might be that there is a shared methodological feature for particular sub-sets of the observed variables such that the observed variables might be correlated for methodological rather than substantive latent factor reasons. We’ll return to this possibility in a later section but, for now, there are no clear reasons that we can see that would justify correlating some of the error terms with each other</p>
 <p>Without any correlated error terms, the model we are testing to see how well it fits with our observed data is just as specified in <a href="#fig-fig15-13">Figure&nbsp;<span>15.13</span></a>. Only parameters that are included in the model are expected to be found in the data, so in CFA all other possible parameters (coefficients) are set to zero. So, if these other parameters are not zero (for example there may be a substantial loading from A1 onto the latent factor Extraversion in the observed data, but not in our model) then we may find a poor fit between our model and the observed data.</p>
 <p>Right, let’s take a look at how we set this CFA analysis up in jamovi.</p>
-<section id="cfa-in-jamovi" class="level3" data-number="15.3.1">
-<h3 data-number="15.3.1" class="anchored" data-anchor-id="cfa-in-jamovi"><span class="header-section-number">15.3.1</span> CFA in jamovi</h3>
+<section id="使用jamovi完成驗證性因素分析" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="使用jamovi完成驗證性因素分析"><span class="header-section-number">15.3.1</span> 使用jamovi完成驗證性因素分析</h3>
 <p>Open up the bfi_sample2.csv file, check that the 25 variables are coded as ordinal (or continuous; it won’t make any difference for this analysis). To perform CFA in jamovi:</p>
 <ul>
 <li><p>Select Factor - Confirmatory Factor Analysis from the main jamovi button bar to open the CFA analysis window (<a href="#fig-fig15-14">Figure&nbsp;<span>15.14</span></a>).</p></li>
@@ -628,7 +613,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-14" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-14.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-14.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.14: The jamovi CFA analysis window</figcaption><p></p>
 </figure>
 </div>
@@ -639,7 +624,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-15" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-15.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-15.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.15: The jamovi CFA Model Fit results for our CFA model</figcaption><p></p>
 </figure>
 </div>
@@ -648,13 +633,13 @@ div.csl-indent {
 <p>There are several ways of assessing model fit. The first is a chi-square statistic that, if small, indicates that the model is a good fit to the data. However, the chi-squared statistic used for assessing model fit is pretty sensitive to sample size, meaning that with a large sample a good enough fit between the model and the data almost always produces a large and significant (p &lt; .05) chi-square value.</p>
 <p>So, we need some other ways of assessing model fit. In jamovi several are provided by default. These are the Comparative Fit Index (CFI), the Tucker Lewis Index (TLI) and the Root Mean Square Error of Approximation (RMSEA) together with the 90% confidence interval for the RMSEA. Some useful rules of thumb are that a satisfactory fit is indicated by CFI &gt; 0.9, TLI &gt; 0.9, and RMSEA of about 0.05 to 0.08. A good fit is CFI &gt; 0.95, TLI &gt; 0.95, and RMSEA and upper CI for RMSEA &lt; 0.05.</p>
 <p>So, looking at <a href="#fig-fig15-15">Figure&nbsp;<span>15.15</span></a> we can see that the chi-square value is large and highly significant. Our sample size is not too large, so this possibly indicates a poor fit. The CFI is <span class="math inline">\(0.762\)</span> and the TLI is 0.731, indicating poor fit between the model and the data. The RMSEA is <span class="math inline">\(0.085\)</span> with a <span class="math inline">\(90\%\)</span> confidence interval from <span class="math inline">\(0.077\)</span> to <span class="math inline">\(0.092\)</span>, again this does not indicate a good fit.</p>
-<p>Pretty disappointing, huh? But perhaps not too surprising given that in the earlier EFA, when we ran with a similar data set (see <a href="#exploratory-factor-analysis">Exploratory Factor Analysis</a> section), only around half of the variance in the data was accounted for by the five factor model.</p>
+<p>Pretty disappointing, huh? But perhaps not too surprising given that in the earlier EFA, when we ran with a similar data set (see [Exploratory Factor Analysis] section), only around half of the variance in the data was accounted for by the five factor model.</p>
 <p>Let’s go on to look at the factor loadings and the factor covariance estimates, shown in <a href="#fig-fig15-16">Figure&nbsp;<span>15.16</span></a> and <a href="#fig-fig15-17">Figure&nbsp;<span>15.17</span></a>. The Z-statistic and p-value for each of these parameters indicates they make a reasonable contribution to the model (i.e.&nbsp;they are not zero) so there doesn’t appear to be any reason to remove any of the specified variable-factor paths, or factor-factor correlations from the model. Often the standardized estimates are easier to interpret, and these can be specified under the ‘Estimates’ option. These tables can usefully be incorporated into a written report or scientific article.</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig15-16" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-16.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-16.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.16: The jamovi CFA Factor Loadings table for our CFA model</figcaption><p></p>
 </figure>
 </div>
@@ -664,7 +649,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-17" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-17.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-17.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.17: The jamovi CFA Factor Covariances table for our CFA model</figcaption><p></p>
 </figure>
 </div>
@@ -675,7 +660,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-18" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-18.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-18.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.18: The jamovi CFA Factor Loadings Modification Indices</figcaption><p></p>
 </figure>
 </div>
@@ -689,7 +674,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-19" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-19.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-19.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.19: Residual Covariance Modification Indices produced by jamovi</figcaption><p></p>
 </figure>
 </div>
@@ -697,10 +682,10 @@ div.csl-indent {
 </div>
 <p>You can keep going this way for as long as you like, adding parameters to the model based on the largest MI, and eventually you will achieve a satisfactory fit. But there will also be a strong possibility that in doing this you will have created a monster! A model that is ugly and deformed and doesn’t have any theoretical sense or purity. In other words, be very careful!</p>
 <p>So far, we have checked out the factor structure obtained in the EFA using a second sample and CFA. Unfortunately, we didn’t find that the factor structure from the EFA was confirmed in the CFA, so it’s back to the drawing board as far as the development of this personality scale goes.</p>
-<p>Although we could have tweaked the CFA using modification indexes, there really were not any good reasons (that I could think of) for these suggested additional factor loadings or residual covariances to be included. However, sometimes there is a good reason for residuals to be allowed to co-vary (or correlate), and a good example of this is shown in the next section on <a href="#multi-trait-multi-method-cfa">Multi-Trait Multi-Method CFA</a>. Before we do that, let’s cover how to report the results of a CFA.</p>
+<p>Although we could have tweaked the CFA using modification indexes, there really were not any good reasons (that I could think of) for these suggested additional factor loadings or residual covariances to be included. However, sometimes there is a good reason for residuals to be allowed to co-vary (or correlate), and a good example of this is shown in the next section on [Multi-Trait Multi-Method CFA]. Before we do that, let’s cover how to report the results of a CFA.</p>
 </section>
-<section id="reporting-a-cfa" class="level3" data-number="15.3.2">
-<h3 data-number="15.3.2" class="anchored" data-anchor-id="reporting-a-cfa"><span class="header-section-number">15.3.2</span> Reporting a CFA</h3>
+<section id="驗證性因素分析的報告須知" class="level3" data-number="15.3.2">
+<h3 data-number="15.3.2" class="anchored" data-anchor-id="驗證性因素分析的報告須知"><span class="header-section-number">15.3.2</span> 驗證性因素分析的報告須知</h3>
 <p>There is not a formal standard way to write up a CFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:</p>
 <ol type="1">
 <li><p>A theoretical and empirical justification for the hypothesized model.</p></li>
@@ -716,8 +701,8 @@ div.csl-indent {
 </ol>
 </section>
 </section>
-<section id="multi-trait-multi-method-cfa" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="multi-trait-multi-method-cfa"><span class="header-section-number">15.4</span> Multi-Trait Multi-Method CFA</h2>
+<section id="多種特質多項相關驗證性因素分析" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="多種特質多項相關驗證性因素分析"><span class="header-section-number">15.4</span> 多種特質多項相關驗證性因素分析</h2>
 <p>In this section we’re going to consider how different measurement techniques or questions can be an important source of data variability, known as <strong>method variance</strong>. To do this, we’ll use another psychological data set, one that contains data on “attributional style”.</p>
 <p>The Attributional Style Questionnaire (ASQ) was used <span class="citation" data-cites="Hewitt2004">(<a href="References.html#ref-Hewitt2004" role="doc-biblioref">Hewitt et al., 2004</a>)</span> to collect psychological wellbeing data from young people in the United Kingdom and New Zealand. They measured attributional style for negative events, which is how people habitually explain the cause of bad things that happen to them <span class="citation" data-cites="Peterson1984">(<a href="References.html#ref-Peterson1984" role="doc-biblioref">Peterson &amp; Seligman, 1984</a>)</span>. The attributional style questionnaire (ASQ) measures three aspects of attributional style:</p>
 <ul>
@@ -730,7 +715,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-20" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-20.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-20.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.20: The Attributional Style Questionnaire (ASQ) for negative events</figcaption><p></p>
 </figure>
 </div>
@@ -745,7 +730,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-21" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-21.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-21.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.21: Six questions on the ASQ for each of the Internality, Stability and Globality dimensions</figcaption><p></p>
 </figure>
 </div>
@@ -756,7 +741,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-22" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-22.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-22.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.22: Initial pre-specification of latent factor structure for the ASQ</figcaption><p></p>
 </figure>
 </div>
@@ -767,7 +752,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-23" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-23.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-23.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.23: Final pre-specification of latent factor structure for the ASQ, including latent factor correlations, and shared method error term correlations for the observed variable INT1, STAB1 and GLOB1, in a CFA MTMM model. For clarity, other pre-specified error term correlations are not shown</figcaption><p></p>
 </figure>
 </div>
@@ -776,8 +761,8 @@ div.csl-indent {
 <p>At the same time, we should consider whether there is any good, systematic, reason for some of the error terms to be correlated with each other. Thinking back to the ASQ questions, there were three different sub-questions (a, b and c) for each main question (1-6). Q1 was about unsuccessful job hunting and it is plausible that this question has some distinctive artefactual or methodological aspects over and above the other questions (2-5), something to do with job hunting perhaps. Similarly, Q2 was about not helping a friend with a problem, and there may be some distinctive artefactual or methodological aspects to do with not helping a friend that is not present in the other questions (1, and 3-5).</p>
 <p>So, as well as multiple factors, we also have multiple methodological features in the ASQ, where each of Questions 1-6 has a slightly different “method”, but each “method” is shared across the sub-questions a, b and c.&nbsp;In order to incorporate these different methodological features into the model we can specify that certain error terms are correlated with each other. For example, the errors associated with INT1, STAB1 and GLOB1 should be correlated with each other to reflect the distinct and shared methodological variance of Q1a, Q1b and Q1c. Looking at <a href="#fig-fig15-21">Figure&nbsp;<span>15.21</span></a>, this means that as well as the latent factors represented by the columns, we will have correlated measurement errors for the variables in each row of the Table.</p>
 <p>Whilst a basic CFA model like the one shown in <a href="#fig-fig15-22">Figure&nbsp;<span>15.22</span></a> could be tested against our observed data, we have in fact come up with a more sophisticated model, as shown in the diagram in <a href="#fig-fig15-23">Figure&nbsp;<span>15.23</span></a>. This more sophisticated CFA model is known as a <strong>Multi-Trait Multi-Method (MTMM)</strong> model, and it is the one we will test in jamovi.</p>
-<section id="mtmm-cfa-in-jamovi" class="level3" data-number="15.4.1">
-<h3 data-number="15.4.1" class="anchored" data-anchor-id="mtmm-cfa-in-jamovi"><span class="header-section-number">15.4.1</span> MTMM CFA in jamovi</h3>
+<section id="使用jamovi完成多種特質多項相關驗證性因素分析" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="使用jamovi完成多種特質多項相關驗證性因素分析"><span class="header-section-number">15.4.1</span> 使用jamovi完成多種特質多項相關驗證性因素分析</h3>
 <p>Open up the ASQ.csv file and check that the 18 variables (six “Internality”, six “Stability” and six “Globality” variables) are specified as continuous variables.</p>
 <p>To perform MTMM CFA in jamovi:</p>
 <ul>
@@ -792,7 +777,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-24" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-24.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-24.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.24: The jamovi CFA analysis window</figcaption><p></p>
 </figure>
 </div>
@@ -803,7 +788,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-25" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-25.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-25.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.25: The jamovi CFA Model Fit results for our CFA MTMM model</figcaption><p></p>
 </figure>
 </div>
@@ -816,7 +801,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-26" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-26.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-26.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.26: The jamovi CFA Factor Loadings and Covariances tables for our CFA MTMM model</figcaption><p></p>
 </figure>
 </div>
@@ -827,7 +812,7 @@ div.csl-indent {
 </section>
 </section>
 <section id="sec-Internal-consistency-reliability-analysis" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="sec-Internal-consistency-reliability-analysis"><span class="header-section-number">15.5</span> Internal consistency reliability analysis</h2>
+<h2 data-number="15.5" class="anchored" data-anchor-id="sec-Internal-consistency-reliability-analysis"><span class="header-section-number">15.5</span> 內部一致性信度分析</h2>
 <p>After you have been through the process of initial scale development using EFA and CFA, you should have reached a stage where the scale holds up pretty well using CFA with different samples. One thing that you might also be interested in at this stage is to see how well the factors are measured using a scale that combines the observed variables.</p>
 <p>In psychometrics we use reliability analysis to provide information about how consistently a scale measures a psychological construct (See earlier section on <a href="02-A-brief-introduction-to-research-design.html#sec-Assessing-the-reliability-of-a-measurement"><span>Section&nbsp;2.3</span></a>). <strong>Internal consistency</strong> is what we are concerned with here, and that refers to the consistency across all the individual items that make up a measurement scale. So, if we have <span class="math inline">\(V1, V2, V3, V4\)</span> and <span class="math inline">\(V5\)</span> as observed item variables, then we can calculate a statistic that tells us how internally consistent these items are in measuring the underlying construct.</p>
 <p>A popular statistic used to check the internal consistency of a scale is <strong>Cronbach’s alpha</strong> <span class="citation" data-cites="Cronbach1951">(<a href="References.html#ref-Cronbach1951" role="doc-biblioref">Chronbach, 1951</a>)</span>. Cronbach’s alpha is a measure of equivalence (whether different sets of scale items would give the same measurement outcomes). Equivalence is tested by dividing the scale items into two groups (a “split-half”) and seeing whether analysis of the two parts gives comparable results. Of course, there are many ways a set of items could be split, but if all possible splits are made then it is possible to produce a statistic that reflects the overall pattern of split-half coefficients. Cronbach’s alpha (<span class="math inline">\(\alpha\)</span>) is such a statistic: a function of all the split-half coefficients for a scale. If a set of items that measure a construct (e.g.&nbsp;an Extraversion scale) has an <span class="math inline">\(\alpha\)</span> of <span class="math inline">\(0.80\)</span>, then the proportion of error variance in the scale is <span class="math inline">\(0.20\)</span>. In other words, a scale with an <span class="math inline">\(\alpha\)</span> of <span class="math inline">\(0.80\)</span> includes approximately 20% error.</p>
@@ -836,8 +821,8 @@ div.csl-indent {
 <p>An alternative is <strong>McDonald’s omega</strong> (<span class="math inline">\(\omega\)</span>), and jamovi also provides this statistic. Whereas <span class="math inline">\(\alpha\)</span> makes the following assumptions: (a) no residual correlations, (b) items have identical loadings, and (c) the scale is unidimensional, <span class="math inline">\(\omega\)</span> does not and is therefore a more robust reliability statistic. If these assumptions are not violated then <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\omega\)</span> will be similar, but if they are then <span class="math inline">\(\omega\)</span> is to be preferred.</p>
 <p>Sometimes a threshold for <span class="math inline">\(\alpha\)</span> or <span class="math inline">\(\omega\)</span> is provided, suggesting a “good enough” value. This might be something like <span class="math inline">\(\alpha\)</span>s of <span class="math inline">\(0.70\)</span> or <span class="math inline">\(0.80\)</span> representing “acceptable” and “good” reliability, respectively. However, this does depend on what exactly the scale is supposed to be measuring, so thresholds like this should be used cautiously. It could be better to simply state that an <span class="math inline">\(\alpha\)</span> or <span class="math inline">\(\omega\)</span> of <span class="math inline">\(0.70\)</span> is associated with 30% error variance in a scale, and an <span class="math inline">\(\alpha\)</span> or <span class="math inline">\(\omega\)</span> of <span class="math inline">\(0.80\)</span> is associated with 20%.</p>
 <p>Can <span class="math inline">\(\alpha\)</span> be too high? Probably: if you are getting an <span class="math inline">\(\alpha\)</span> coefficient above <span class="math inline">\(0.95\)</span> then this indicates high inter-correlations between the items and that there might be too much overly redundant specificity in the measurement, with a risk that the construct being measured is perhaps overly narrow.</p>
-<section id="reliability-analysis-in-jamovi" class="level3" data-number="15.5.1">
-<h3 data-number="15.5.1" class="anchored" data-anchor-id="reliability-analysis-in-jamovi"><span class="header-section-number">15.5.1</span> Reliability analysis in jamovi</h3>
+<section id="使用jamovi完成內部一致性信度分析" class="level3" data-number="15.5.1">
+<h3 data-number="15.5.1" class="anchored" data-anchor-id="使用jamovi完成內部一致性信度分析"><span class="header-section-number">15.5.1</span> 使用jamovi完成內部一致性信度分析</h3>
 <p>We have a third sample of personality data to use to undertake reliability analysis: in the bfi_sample3.csv file. Once again, check that the 25 personality item variables are coded as continuous. To perform reliability analysis in jamovi:</p>
 <ul>
 <li><p>Select Factor - Reliability Analysis from the main jamovi button bar to open the reliability analysis window (<a href="#fig-fig15-27">Figure&nbsp;<span>15.27</span></a>).</p></li>
@@ -849,7 +834,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-27" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-27.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-27.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.27: The jamovi Reliability Analysis window</figcaption><p></p>
 </figure>
 </div>
@@ -860,7 +845,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig15-28" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig15-28.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="images/fig15-28.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;15.28: The jamovi Reliability Analysis results for the Agreeableness factor</figcaption><p></p>
 </figure>
 </div>
@@ -870,15 +855,15 @@ div.csl-indent {
 <p>The process of calculating and checking scale statistics (<span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\omega\)</span>) is the same for all the other scales, and they all had similar reliability estimates apart from Openness. For Openness, the amount of error variance in the Scale score is around 40%, which is high and indicates that Openness is substantially less consistent as a reliable measure of a personality attribute than the other personality scales.</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="15.6">
-<h2 data-number="15.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">15.6</span> Summary</h2>
+<section id="本章小結" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="本章小結"><span class="header-section-number">15.6</span> 本章小結</h2>
 <p>In this chapter on factor analysis and related techniques we have introduced and demonstrated statistical analyses that assess the pattern of relationships in a data set. Specifically, we have covered:</p>
 <ul>
-<li><p><a href="#exploratory-factor-analysis">Exploratory Factor Analysis</a> (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Each observed variable is conceptualised as representing the latent factor to some extent, indicated by a factor loading. Researchers also use EFA as a way of data reduction, i.e.&nbsp;identifying observed variables than can be combined into new factor variables for subsequent analysis.</p></li>
-<li><p><a href="#principal-component-analysis">Principal Component Analysis</a> (PCA) is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables.</p></li>
-<li><p><a href="#confirmatory-factor-analysis">Confirmatory Factor Analysis</a> (CFA). Unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is to the data.</p></li>
-<li><p>In <a href="#multi-trait-multi-method-cfa">Multi-Trait Multi-Method CFA</a> (MTMM CFA), both latent factor and method variance are included in the model in an approach that is useful when there are different methodological approaches used and therefore method variance is an important consideration.</p></li>
-<li><p><a href="#sec-Internal-consistency-reliability-analysis">Internal consistency reliability analysis</a>. This form of reliability analysis tests how consistently a scale measures a measurement (psychological) construct.</p></li>
+<li><p>[Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Each observed variable is conceptualised as representing the latent factor to some extent, indicated by a factor loading. Researchers also use EFA as a way of data reduction, i.e.&nbsp;identifying observed variables than can be combined into new factor variables for subsequent analysis.</p></li>
+<li><p>[Principal Component Analysis] (PCA) is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables.</p></li>
+<li><p>[Confirmatory Factor Analysis] (CFA). Unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is to the data.</p></li>
+<li><p>In [Multi-Trait Multi-Method CFA] (MTMM CFA), both latent factor and method variance are included in the model in an approach that is useful when there are different methodological approaches used and therefore method variance is an important consideration.</p></li>
+<li><p>[Internal consistency reliability analysis]. This form of reliability analysis tests how consistently a scale measures a measurement (psychological) construct.</p></li>
 </ul>
 
 
@@ -1041,7 +1026,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1063,7 +1050,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1099,24 +1103,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp(/https:\/\/davidfoxcroft\.github\.io\/lsj-book\//);
@@ -1124,7 +1146,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1137,20 +1159,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./14-Factorial-ANOVA.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./16-Bayesian-statistics.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayesian statistics</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a href="https://learnstatswithjamovi.com">learning statistics with jamovi</a></div>   
-    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-left"><a href="https://learnstatswithjamovi.com">用jamovi上手統計學</a></div>   
+    <div class="nav-footer-right">電子書使用 <a href="https://quarto.org/">Quarto</a> 創建</div>
   </div>
 </footer>
 

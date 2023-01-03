@@ -1,4 +1,4 @@
-# Factor Analysis
+# 因素分析 {#sec-Factor-Aanalysis}
 
 ```{r}
 #| include: FALSE
@@ -9,7 +9,7 @@ Previous chapters have covered statistical tests for differences between two or 
 
 In this chapter we will consider a number of different Factor Analysis and related techniques, starting with [Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Then we will cover [Principal Component Analysis] (PCA) which is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables. Following this, the section on [Confirmatory Factor Analysis] (CFA) shows that, unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is. A more sophisticated version of CFA is the so-called [Multi-Trait Multi-Method CFA] approach in which both latent factor and method variance are included in the model. This is useful when there are different methodological approaches used for measurement and therefore method variance is an important consideration. Finally, we will cover a related analysis: [Internal consistency reliability analysis] tests how consistently a scale measures a psychological construct.
 
-## Exploratory Factor Analysis
+## 探索性因素分析 
 
 **Exploratory Factor Analysis (EFA)** is a statistical technique for revealing any hidden latent factors that can be inferred from our observed data. This technique calculates to what extent a set of measured variables, for example $V1, V2, V3, V4$, and $V5$, can be represented as measures of an underlying latent factor. This latent factor cannot be measured through just one observed variable but instead is manifested in the relationships it causes in a set of observed variables.
 
@@ -31,13 +31,13 @@ In exploratory factor analysis (EFA), we are essentially exploring the correlati
 
 [^factor-analysis-1]: Quite helpfully, factor loadings can be interpreted like standardized regression coefficients
 
-### Checking assumptions
+### 探索性因素分析的執行條件
 
 There are a couple of assumptions that need to be checked as part of the analysis. The first assumption is **sphericity**, which essentially checks that the variables in your dataset are correlated with each other to the extent that they can potentially be summarised with a smaller set of factors. Bartlett's test for sphericity checks whether the observed correlation matrix diverges significantly from a zero (or null) correlation matrix. So, if Bartlett's test is significant ($p < .05$), this indicates that the observed correlation matrix is significantly divergent from the null, and is therefore suitable for EFA.
 
 The second assumption is **sampling adequacy** and is checked using the Kaiser-MeyerOlkin (KMO) Measure of Sampling Adequacy (MSA). The KMO index is a measure of the proportion of variance among observed variables that might be common variance. Using partial correlations, it checks for factors that load just two items. We seldom, if ever, want EFA producing a lot of factors loading just two items each. KMO is about sampling adequacy because partial correlations are typically seen with inadequate samples. If the KMO index is high ($\approx 1$), the EFA is efficient whereas if KMO is low ($\approx 0$), the EFA is not relevant. KMO values smaller than $0.5$ indicates that EFA is not suitable and a KMO value of $0.6$ should be present before EFA is considered suitable. Values between $0.5$ and $0.7$ are considered adequate, values between $0.7$ and $0.9$ are good and values between $0.9$ and $1.0$ are excellent.
 
-### What is EFA good for?
+### 探索性因素分析的用途
 
 If the EFA has provided a good solution (i.e. factor model), then we need to decide what to do with our shiny new factors. Researchers often use EFA during psychometric scale development. They will develop a pool of questionnaire items that they think relate to one or more psychological constructs, use EFA to see which items "go together" as latent factors, and then they will assess whether some items should be removed because they don't usefully or distinctly measure one of the latent factors.
 
@@ -50,7 +50,7 @@ In the first option each item's contribution to the combined score depends on ho
 
 A more advanced statistical technique, one which is beyond the scope of this book, undertakes regression modelling where latent factors are used in prediction models of other latent factors. This is called "structural equation modelling" and there are specific software programmes and R packages dedicated to this approach. But let's not get ahead of ourselves; what we should really focus on now is how to do an EFA in jamovi.
 
-### EFA in jamovi
+### 使用jamovi完成探索性因素分析
 
 First, we need some data. Twenty-five personality self-report items (see @fig-fig15-2) taken from the <a href="http://ipip.ori.org" target="_blank">International Personality Item Pool</a> were included as part of the Synthetic Aperture Personality Assessment (SAPA) web-based personality assessment (SAPA: <a href="http://sapa-project.org"
 target="_blank">http://sapa-project.org</a>) project. The 25 items are organized by five putative factors: Agreeableness, Conscientiousness, Extraversion, Neuroticism, and Openness.
@@ -206,7 +206,7 @@ Now you can go ahead and undertake further analyses, using either the mean score
 knitr::include_graphics("images/fig15-12.png")
 ```
 
-### Writing up an EFA
+### 探索性因素分析的報告須知
 
 Hopefully, so far we have given you some sense of EFA and how to undertake EFA in jamovi. So, once you have completed your EFA, how do you write it up? There is not a formal standard way to write up an EFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:
 
@@ -228,7 +228,7 @@ Hopefully, so far we have given you some sense of EFA and how to undertake EFA i
 
 9.  Meaningful names for the extracted factors should be provided. You may like to use previously selected factor names, but on examining the actual items and factors you may think a different name is more appropriate
 
-## Principal Component Analysis
+## 主成分分析
 
 In the previous section we saw that EFA works to identify underlying latent factors. And, as we saw, in one scenario the smaller number of latent factors can be used in further statistical analysis using some sort of combined factor scores.
 
@@ -240,7 +240,7 @@ PCA has been popular in Psychology for a number of reasons, and therefore it's w
 
 To undertake PCA in jamovi, all you need to do is select 'Factor' - 'Principal Component Analysis' from the main jamovi button bar to open the PCA analysis window. Then you can follow the same steps from [EFA in jamovi] above. 
 
-## Confirmatory Factor Analysis
+## 驗證性因素分析
 
 So, our attempt to identify underlying latent factors using EFA with carefully selected questions from the personality item pool seemed to be pretty successful. The next step in our quest to develop a useful measure of personality is to check the latent factors we identified in the original EFA with a different sample. We want to see if the factors hold up, if we can confirm their existence with different data. This is a more rigorous check, as we will see. And it's called **Confirmatory Factor Analysis (CFA)** as we will, unsurprisingly, be seeking to confirm a pre-specified latent factor structure.[^factor-analysis-8]
 
@@ -266,7 +266,7 @@ Without any correlated error terms, the model we are testing to see how well it 
 
 Right, let's take a look at how we set this CFA analysis up in jamovi.
 
-### CFA in jamovi
+### 使用jamovi完成驗證性因素分析
 
 Open up the bfi_sample2.csv file, check that the 25 variables are coded as ordinal (or continuous; it won't make any difference for this analysis). To perform CFA in jamovi:
 
@@ -360,7 +360,7 @@ So far, we have checked out the factor structure obtained in the EFA using a sec
 
 Although we could have tweaked the CFA using modification indexes, there really were not any good reasons (that I could think of) for these suggested additional factor loadings or residual covariances to be included. However, sometimes there is a good reason for residuals to be allowed to co-vary (or correlate), and a good example of this is shown in the next section on [Multi-Trait Multi-Method CFA]. Before we do that, let's cover how to report the results of a CFA.
 
-### Reporting a CFA
+### 驗證性因素分析的報告須知
 
 There is not a formal standard way to write up a CFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:
 
@@ -384,7 +384,7 @@ There is not a formal standard way to write up a CFA, and examples tend to vary 
 
 10. All parameter estimates (i.e., loadings, error variances, latent (co)variances) and their standard errors, probably in a table.
 
-## Multi-Trait Multi-Method CFA
+## 多種特質多項相關驗證性因素分析
 
 In this section we're going to consider how different measurement techniques or questions can be an important source of data variability, known as **method variance**. To do this, we'll use another psychological data set, one that contains data on "attributional style".
 
@@ -452,7 +452,7 @@ Whilst a basic CFA model like the one shown in @fig-fig15-22 could be tested aga
 
 
 
-### MTMM CFA in jamovi
+### 使用jamovi完成多種特質多項相關驗證性因素分析
 
 Open up the ASQ.csv file and check that the 18 variables (six "Internality", six "Stability" and six "Globality" variables) are specified as continuous variables.
 
@@ -506,7 +506,7 @@ You can see from @fig-fig15-26 that all of our pre-specified factor loadings and
 
 We've been pretty lucky with this analysis, getting a very good fit on our first attempt! 
 
-## Internal consistency reliability analysis {#sec-Internal-consistency-reliability-analysis}
+## 內部一致性信度分析 {#sec-Internal-consistency-reliability-analysis}
 
 After you have been through the process of initial scale development using EFA and CFA, you should have reached a stage where the scale holds up pretty well using CFA with different samples. One thing that you might also be interested in at this stage is to see how well the factors are measured using a scale that combines the observed variables.
 
@@ -524,7 +524,7 @@ Sometimes a threshold for $\alpha$ or $\omega$ is provided, suggesting a "good e
 
 Can $\alpha$ be too high? Probably: if you are getting an $\alpha$ coefficient above $0.95$ then this indicates high inter-correlations between the items and that there might be too much overly redundant specificity in the measurement, with a risk that the construct being measured is perhaps overly narrow.
 
-### Reliability analysis in jamovi
+### 使用jamovi完成內部一致性信度分析
 
 We have a third sample of personality data to use to undertake reliability analysis: in the bfi_sample3.csv file. Once again, check that the 25 personality item variables are coded as continuous. To perform reliability analysis in jamovi:
 
@@ -558,7 +558,7 @@ We can also check how $\alpha$ or $\omega$ can be improved if a specific item is
 
 The process of calculating and checking scale statistics ($\alpha$ and $\omega$) is the same for all the other scales, and they all had similar reliability estimates apart from Openness. For Openness, the amount of error variance in the Scale score is around 40%, which is high and indicates that Openness is substantially less consistent as a reliable measure of a personality attribute than the other personality scales.
 
-## Summary
+## 本章小結
 
 In this chapter on factor analysis and related techniques we have introduced and demonstrated statistical analyses that assess the pattern of relationships in a data set. Specifically, we have covered:
 

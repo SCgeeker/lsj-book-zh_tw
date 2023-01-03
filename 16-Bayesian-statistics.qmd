@@ -1,4 +1,4 @@
-# Bayesian statistics {#sec-Bayesian-statistics}
+# 貝氏統計 {#sec-Bayesian-statistics}
 
 ```{r}
 #| include: FALSE
@@ -15,7 +15,7 @@ The ideas I've presented to you in this book describe inferential statistics fro
 
 This chapter comes in two parts. In the first three sections I talk about what Bayesian statistics are all about, covering the basic mathematical rules for how it works as well as an explanation for why I think the Bayesian approach is so useful. Afterwards, I provide a brief overview of how you can do [Bayesian t-tests].
 
-## Probabilistic reasoning by rational agents
+## 理性人類的機率推論
 
 From a Bayesian perspective statistical inference is all about *belief revision*. I start out with a set of candidate hypotheses h about the world. I don't know which of these hypotheses is true, but do I have some beliefs about which hypotheses are plausible and which are not. When I observe the data, d, I have to revise those beliefs. If the data are consistent with a hypothesis, my belief in that hypothesis is strengthened. If the data are inconsistent with the hypothesis, my belief in that hypothesis is weakened. That's it! At the end of this section I'll give a precise description of how Bayesian reasoning works, but first I want to work through a simple example in order to introduce the key ideas. Consider the following reasoning problem.
 
@@ -23,7 +23,7 @@ From a Bayesian perspective statistical inference is all about *belief revision*
 
 In this problem I have presented you with a single piece of data (d = I'm carrying the umbrella), and I'm asking you to tell me your belief or hypothesis about whether it's raining. You have two alternatives, h: either it will rain today or it will not. How should you solve this problem?
 
-### Priors: what you believed before
+### 事前機率：你一開始的信念
 
 The first thing you need to do is ignore what I told you about the umbrella, and write down your pre-existing beliefs about rain. This is important. If you want to be honest about how your beliefs have been revised in the light of new evidence (data) then you must say something about what you believed before those data appeared! So, what might you believe about whether it will rain today? You probably know that I live in Australia and that much of Australia is hot and dry. The city of Adelaide where I live has a Mediterranean climate, very similar to southern California, southern Europe or northern Africa. I'm writing this in January and so you can assume it's the middle of summer. In fact, you might have decided to take a quick look on Wikipedia[^bayesian-statistics-2] and discovered that Adelaide gets an average of 4.4 days of rain across the 31 days of January. Without knowing anything else, you might conclude that the probability of January rain in Adelaide is about 15%, and the probability of a dry day is 85% (see @tbl-tab16-1). If this is really what you believe about Adelaide rainfall (and now that I've told it to you I'm betting that this really is what you believe) then what I have written here is your **prior distribution**, written $P(h)$.
 
@@ -36,7 +36,7 @@ The first thing you need to do is ignore what I told you about the umbrella, and
 huxtabs[[16]][[1]]  
 ```
 
-### Likelihoods: theories about the data
+### 似然值: 對手上資料的理論
 
 To solve the reasoning problem you need a theory about my behaviour. When does Dan carry an umbrella? You might guess that I'm not a complete idiot,[^bayesian-statistics-3] and I try to carry umbrellas only on rainy days. On the other hand, you also know that I have young kids, and you wouldn't be all that surprised to know that I'm pretty forgetful about this sort of thing. Let's suppose that on rainy days I remember my umbrella about 30% of the time (I really am awful at this). But let's say that on dry days I'm only about 5% likely to be carrying an umbrella. So you might write this out as in @tbl-tab16-2.
 
@@ -52,7 +52,7 @@ It's important to remember that each cell in this table describes your beliefs a
 
 [^bayesian-statistics-4]: Um. I hate to bring this up, but some statisticians would object to me using the word "likelihood" here. The problem is that the word "likelihood" has a very specific meaning in frequentist statistics, and it's not quite the same as what it means in Bayesian statistics. As far as I can tell Bayesians didn't originally have any agreed upon name for the likelihood, and so it became common practice for people to use the frequentist terminology. This wouldn't have been a problem except for the fact that the way that Bayesians use the word turns out to be quite different to the way frequentists do. This isn't the place for yet another lengthy history lesson but, to put it crudely, when a Bayesian says "a likelihood function" they're usually referring one of the rows of the table. When a frequentist says the same thing, they're referring to the same table, but to them "a likelihood function" almost always refers to one of the columns. This distinction matters in some contexts, but it's not important for our purposes.
 
-### The joint probability of data and hypothesis
+### 資料與理論的聯合機率
 
 At this point all the elements are in place. Having written down the priors and the likelihood, you have all the information you need to do Bayesian reasoning. The question now becomes how do we use this information? As it turns out, there's a very simple equation that we can use here, but it's important that you understand why we use it so I'm going to try to build it up from more basic ideas.
 
@@ -106,7 +106,7 @@ Finally, let's use "proper" statistical notation. In the rainy day problem, the 
 huxtabs[[16]][[6]] 
 ```
 
-### Updating beliefs using Bayes' rule
+### 透過貝氏法則更新信念
 
 The table we laid out in the last section is a very powerful tool for solving the rainy day problem, because it considers all four logical possibilities and states exactly how confident you are in each of them before being given any data. It's now time to consider what happens to our beliefs when we are actually given the data. In the rainy day problem, you are told that I really am carrying an umbrella. This is something of a surprising event. According to our table, the probability of me carrying an umbrella is only 8.75%. But that makes sense, right? A woman carrying an umbrella on a summer day in a hot dry city is pretty unusual, and so you really weren't expecting that. Nevertheless, the data tells you that it is true. No matter how unlikely you thought it was, you must now adjust your beliefs to accommodate the fact that you now *know* that I have an umbrella.[^bayesian-statistics-6] To reflect this new knowledge, our *revised* table must have the following numbers. (see @tbl-tab16-7).
 
@@ -142,7 +142,7 @@ $$P(h|d)=\frac{P(d|h)P(h)}{P(d)}$$
 
 And this formula, folks, is known as **Bayes' rule**. It describes how a learner starts out with prior beliefs about the plausibility of different hypotheses, and tells you how those beliefs should be revised in the face of data. In the Bayesian paradigm, all statistical inference flows from this one simple rule.
 
-## Bayesian hypothesis tests
+## 貝氏假設檢定
 
 In @sec-Hypothesis-testing I described the orthodox approach to hypothesis testing. It took an entire chapter to describe, because null hypothesis testing is a very elaborate contraption that people find very hard to make sense of. In contrast, the Bayesian approach to hypothesis testing is incredibly simple. Let's pick a setting that is closely analogous to the orthodox scenario. There are two hypotheses that we want to compare, a null hypothesis $h_0$ and an alternative hypothesis $h_1$. Prior to running the experiment we have some beliefs $P(h)$ about which hypotheses are true. We run an experiment and obtain data d. Unlike frequentist statistics, Bayesian statistics does allow us to talk about the probability that the null hypothesis is true. Better yet, it allows us to calculate the **posterior probability of the null hypothesis**, using Bayes' rule:
 
@@ -156,7 +156,7 @@ It's all so simple that I feel like an idiot even bothering to write these equat
 
 [^bayesian-statistics-8]: Obviously, this is a highly simplified story. All the complexity of real life Bayesian hypothesis testing comes down to how you calculate the likelihood $P(d\|h)$ when the hypothesis h is a complex and vague thing. I'm not going to talk about those complexities in this book, but I do want to highlight that although this simple story is true as far as it goes, real life is messier than I'm able to cover in an introductory stats textbook.
 
-### The Bayes factor
+### 貝氏因子
 
 In practice, most Bayesian data analysts tend not to talk in terms of the raw posterior probabilities $P(h_0|d)$ and $P(h_1|d)$. Instead, we tend to talk in terms of the **posterior odds** ratio. Think of it like betting. Suppose, for instance, the posterior probability of the null hypothesis is 25%, and the posterior probability of the alternative is 75%. The alternative hypothesis is three times as probable as the null, so we say that the odds are 3:1 in favour of the alternative. Mathematically, all we have to do to calculate the posterior odds is divide one posterior probability by the other
 
@@ -176,7 +176,7 @@ huxtabs[[16]][[9]]
 
 The Bayes factor (sometimes abbreviated as BF) has a special place in Bayesian hypothesis testing, because it serves a similar role to the p-value in orthodox hypothesis testing. The Bayes factor quantifies the strength of evidence provided by the data, and as such it is the Bayes factor that people tend to report when running a Bayesian hypothesis test. The reason for reporting Bayes factors rather than posterior odds is that different researchers will have different priors. Some people might have a strong bias to believe the null hypothesis is true, others might have a strong bias to believe it is false. Because of this, the polite thing for an applied researcher to do is report the Bayes factor. That way, anyone reading the paper can multiply the Bayes factor by their own personal prior odds, and they can work out for themselves what the posterior odds would be. In any case, by convention we like to pretend that we give equal consideration to both the null hypothesis and the alternative, in which case the prior odds equals 1, and the posterior odds becomes the same as the Bayes factor
 
-### Interpreting Bayes factors
+### 解讀貝氏因子
 
 One of the really nice things about the Bayes factor is the numbers are inherently meaningful. If you run an experiment and you compute a Bayes factor of 4, it means that the evidence provided by your data corresponds to betting odds of 4:1 in favour of the alternative. However, there have been some attempts to quantify the standards of evidence that would be considered meaningful in a scientific context. The two most widely used are from @Jeffreys1961 and @Kass1995. Of the two, I tend to prefer the @Kass1995 table because it's a bit more conservative. So here it is (@tbl-tab16-10).
 
@@ -198,11 +198,11 @@ $$BF^{'}=\frac{P(d|h_0)}{P(d|h_1)}=\frac{0.2}{0.1}=2$$
 
 And what we would report is a Bayes factor of 2:1 in favour of the null. Much easier to understand, and you can interpret this using the table above.
 
-## Why be a Bayesian?
+## 為何需要貝氏統計
 
 Up to this point I've focused exclusively on the logic underpinning Bayesian statistics. We've talked about the idea of "probability as a degree of belief", and what it implies about how a rational agent should reason about the world. The question that you have to answer for yourself is this: how do you want to do your statistics? Do you want to be an orthodox statistician, relying on sampling distributions and p-values to guide your decisions? Or do you want to be a Bayesian, relying on things like prior beliefs, Bayes factors and the rules for rational belief revision? And to be perfectly honest, I can't answer this question for you. Ultimately it depends on what you think is right. It's your call and your call alone. That being said, I can talk a little about why I prefer the Bayesian approach.
 
-### Statistics that mean what you think they mean
+### 以統計學呈現你所相信的世界面貌
 
 > *You keep using that word. I do not think it means what you think it means*\
 > -- Inigo Montoya, The Princess Bride [^bayesian-statistics-9]
@@ -224,7 +224,7 @@ On the other hand, let's suppose you are a Bayesian. Although the bolded passage
 
 Speaking for myself, I found this to be the most liberating thing about switching to the Bayesian view. Once you've made the jump, you no longer have to wrap your head around counter-intuitive definitions of p-values. You don't have to bother remembering why you can't say that you're 95% confident that the true mean lies within some interval. All you have to do is be honest about what you believed before you ran the study and then report what you learned from doing it. Sounds nice, doesn't it? To me, this is the big promise of the Bayesian approach. You do the analysis you really want to do, and express what you really believe the data are telling you.
 
-### Evidentiary standards you can believe
+### 你能相信的證據標準
 
 > *If* $p$ is below .02 it is strongly indicated that the $null$ hypothesis fails to account for the whole of the facts. We shall not often be astray if we draw a conventional line at .05 and consider that smaller values of $p$ indicate a real discrepancy.\
 > -- Sir Ronald Fisher [@Fisher1925]
@@ -233,7 +233,7 @@ Consider the quote above by Sir Ronald Fisher, one of the founders of what has b
 
 Well, how true is that? One way to approach this question is to try to convert p-values to Bayes factors, and see how the two compare. It's not an easy thing to do because a p-value is a fundamentally different kind of calculation to a Bayes factor, and they don't measure the same thing. However, there have been some attempts to work out the relationship between the two, and it's somewhat surprising. For example, @Johnson2013 presents a pretty compelling case that (for t-tests at least) the p < .05 threshold corresponds roughly to a Bayes factor of somewhere between 3:1 and 5:1 in favour of the alternative. If that's right, then Fisher's claim is a bit of a stretch. Let's suppose that the null hypothesis is true about half the time (i.e., the prior probability of $H_0$ is 0.5), and we use those numbers to work out the posterior probability of the null hypothesis given that it has been rejected at p < .05. Using the data from @Johnson2013, we see that if you reject the null at p ă .05, you'll be correct about 80% of the time. I don't know about you but, in my opinion, an evidential standard that ensures you'll be wrong on 20% of your decisions isn't good enough. The fact remains that, quite contrary to Fisher's claim, if you reject at p < .05 you shall quite often go astray. It's not a very stringent evidential threshold at all.
 
-### The p-value is a lie.
+### p值是幻象
 
 > *The cake is a lie.*\
 > *The cake is a lie.*\
@@ -306,7 +306,7 @@ knitr::include_graphics("images/fig16-1.png")
 
 In some ways, this is remarkable. The entire *point* of orthodox null hypothesis testing is to control the Type I error rate. Bayesian methods aren't actually designed to do this at all. Yet, as it turns out, when faced with a "trigger happy" researcher who keeps running hypothesis tests as the data come in, the Bayesian approach is much more effective. Even the 3:1 standard, which most Bayesians would consider unacceptably lax, is much safer than the p < .05 rule.
 
-### Is it really this bad?
+### 真的那麼糟糕嗎？
 
 The example I gave in the previous section is a pretty extreme situation. In real life, people don't run hypothesis tests every time a new observation arrives. So it's not fair to say that the p < .05 threshold "really" corresponds to a 49% Type I error rate (i.e., $p = .49$). But the fact remains that if you want your p-values to be honest then you either have to switch to a completely different way of doing hypothesis tests or enforce a strict rule of no peeking. You are not allowed to use the data to decide when to terminate the experiment. You are not allowed to look at a "borderline" p-value and decide to collect more data. You aren't even allowed to change your data analyis strategy after looking at data. You are strictly required to follow these rules, otherwise the p-values you calculate will be nonsense.
 
@@ -326,11 +326,11 @@ Good rules for statistical testing have to acknowledge human frailty. None of us
 
 [^bayesian-statistics-16]: Okay, I just know that some knowledgeable frequentists will read this and start complaining about this section. Look, I'm not dumb. I absolutely know that if you adopt a sequential analysis perspective you can avoid these errors within the orthodox framework. I also know that you can explictly design studies with interim analyses in mind. So yes, in one sense I'm attacking a "straw man" version of orthodox methods. However, the straw man that I'm attacking is the one that *is used by almost every single practitioner*. If it ever reaches the point where sequential methods become the norm among experimental psychologists and I'm no longer forced to read 20 extremely dubious ANOVAs a day, I promise I'll rewrite this section and dial down the vitriol. But until that day arrives, I stand by my claim that default Bayes factor methods are much more robust in the face of data analysis practices as they exist in the real world. *Default* orthodox methods suck, and we all know it.
 
-## Bayesian t-tests
+## 貝氏t檢定
 
 An important type of statistical inference problem discussed in this book is comparing two means, discussed in some detail in @sec-Comparing-two-means on t-tests. If you can remember back that far, you'll recall that there are several versions of the t-test. I'll talk a little about Bayesian versions of the independent samples t-tests and the paired samples t-test in this section.
 
-### Independent samples t-test
+### 獨立樣本t檢定
 
 The most common type of t-test is the independent samples t-test, and it arises when you have data as in the harpo.csv data set that we used in @sec-Comparing-two-means on t-tests. In this data set, we have two groups of students, those who received lessons from Anastasia and those who took their classes with Bernadette. The question we want to answer is whether there's any difference in the grades received by these two groups of students. Back in @sec-Comparing-two-means I suggested you could analyse this kind of data using the Independent Samples t-test in jamovi, which gave us the results in @fig-fig16-2. As we obtain a p-value less than 0.05, we reject the null hypothesis.
 
@@ -354,7 +354,7 @@ Before moving on, it's worth highlighting the difference between the orthodox te
 knitr::include_graphics("images/fig16-3.png")
 ```
 
-### Paired samples t-test
+### 相依樣本t檢定
 
 Back in Section 11.5 I discussed the chico.csv data set in which student grades were measured on two tests, and we were interested in finding out whether grades went up from test 1 to test 2. Because every student did both tests, the tool we used to analyse the data was a paired samples t-test. @fig-fig16-4 shows the jamovi results table for the conventional paired t-test alongside the Bayes factor analysis. At this point, I hope you can read this output without any difficulty. The data provide evidence of about 6000:1 in favour of the alternative. We could probably reject the null with some confidence!
 
@@ -366,8 +366,8 @@ Back in Section 11.5 I discussed the chico.csv data set in which student grades 
 knitr::include_graphics("images/fig16-4.png")
 ```
 
-## Summary
+## 本章小結
 
-The first half of this chapter was focused primarily on the theoretical underpinnings of Bayesian statistics. I introduced the mathematics for how Bayesian inference works in the section on [Probabilistic reasoning by rational agents], and gave a very basic overview of Bayesian hypothesis tests]. Finally, I devoted some space to talking about why I think [Bayesian methods are worth using](Why be a Bayesian?).
+The first half of this chapter was focused primarily on the theoretical underpinnings of Bayesian statistics. I introduced the mathematics for how Bayesian inference works in the section on [Probabilistic reasoning by rational agents], and gave a very basic overview of Bayesian hypothesis tests]. Finally, I devoted some space to talking about why I think [Bayesian methods are worth using](Why be a Bayesian).
 
 Then I gave a practical example, with [Bayesian t-tests]. If you're interested in learning more about the Bayesian approach, there are many good books you could look into. John Kruschke's book *Doing Bayesian Data Analysis* is a pretty good place to start [@Kruschke2011] and is a nice mix of theory and practice. His approach is a little different to the "Bayes factor" approach that I've discussed here, so you won't be covering the same ground. If you're a cognitive psychologist, you might want to check out @Lee2014. I picked these two because I think they're especially useful for people in my discipline, but there's a lot of good books out there, so look around!

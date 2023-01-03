@@ -4,6 +4,7 @@
 
 
 ```{r tab1-1, results='asis'}
+library(dplyr)
 library(knitr)
 library(huxtable)
 testhux <- read_html("html_tables/test_tables.html") %>% 
