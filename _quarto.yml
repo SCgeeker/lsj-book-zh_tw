@@ -21,8 +21,8 @@ book:
       <a href="https://learnstatswithjamovi.com">用jamovi上手統計學</a>
     right: |
       電子書使用 <a href="https://quarto.org/">Quarto套件</a>創建
-  site-url: "https://davidfoxcroft.github.io/lsj-book/"
-  repo-url: "https://github.com/davidfoxcroft/lsj-book/"
+  site-url: "https://scgeeker.github.io/lsj-book-zh_tw/"
+  repo-url: "https://github.com/SCgeeker/lsj-book-zh_tw/"
   repo-actions: [edit,issue]
   sharing: [twitter, facebook]
   open-graph: true
