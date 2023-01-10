@@ -6,7 +6,7 @@
 
 ## 譯者序
 
-原書作者Navarro與Foxcroft是在澳洲阿得雷德大學心理學系教授統計學的講師，本書內容是根據Navarro自行開發的講義[Learning Statistics with R](https://learningstatisticswithr.com/)改編。書中有許多例子是採用澳洲政府或民間機構收集的資料，許多段落的用詞接近日常對話，因此除了討論重要觀念的部分，中文翻譯儘可能使用日常用語。本書使用[OpenAI](https://openai.com/)開發的自然語言聊天機器人[ChatGPD](https://chat.openai.com/)進行初步翻譯，再由譯者編修。有關中文版的任何指教，歡迎讀者到本書源始檔案儲存庫的[討論區](https://github.com/SCgeeker/lsj-book-zh_tw/issues)提出及交流。
+原書作者Danielle Navarro與David Foxcroft是在澳洲阿得雷德大學心理學系教授統計學的講師，本書內容是根據Danielle Navarro自行開發的講義[Learning Statistics with R](https://learningstatisticswithr.com/)改編。書中有許多例子是採用澳洲政府或民間機構收集的資料，許多段落的用詞接近日常對話，因此除了討論重要觀念的部分，中文翻譯儘可能使用日常用語。本書使用[OpenAI](https://openai.com/)開發的自然語言聊天機器人[ChatGPD](https://chat.openai.com/)進行初步翻譯，再由譯者編修。有關中文版的任何指教，歡迎讀者到本書源始檔案儲存庫的[討論區](https://github.com/SCgeeker/lsj-book-zh_tw/issues)提出及交流。
 
 <!---This textbook covers the contents of an introductory statistics class, as typically taught to undergraduate psychology, health or social science students. The book covers how to get started in jamovi as well as giving an introduction to data manipulation. From a statistical perspective, the book discusses descriptive statistics and graphing first, followed by chapters on probability theory, sampling and estimation, and null hypothesis testing. After introducing the theory, the book covers the analysis of contingency tables, correlation, *t*-tests, regression, ANOVA and factor analysis. Bayesian statistics are touched on at the end of the book.--->
 
