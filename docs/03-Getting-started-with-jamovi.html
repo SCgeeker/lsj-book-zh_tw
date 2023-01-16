@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="用jamovi上手統計學 - 3&nbsp; 與jamovi的第一次接觸">
-<meta property="og:description" content="In this chapter I’ll discuss how to get started in jamovi.">
+<meta property="og:description" content="這一章開始正式談如何使用jamovi。其中一部分簡單說明如何下載及安裝jamovi，較多篇幅介紹jamovi的介面以及引導讀者上手使用。本章先將統計概念擺一邊，主要目標是幫助讀者了解jamovi的運作方式以及輕鬆上手。讀者將先花點時間了解內建資料集還有變項欄位，藉此感受並理解jamovi的運作方式。">
 <meta property="og:site-name" content="用jamovi上手統計學">
 </head>
 
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/davidfoxcroft/lsj-book/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
@@ -115,12 +115,6 @@ ul.task-list li input[type="checkbox"] {
           <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
             <i class="bi bi-bi-facebook pe-1"></i>
           Facebook
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-            <i class="bi bi-bi-linkedin pe-1"></i>
-          LinkedIn
           </a>
         </li>
     </ul>
@@ -165,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">簡易入門研究設計</span></a>
+  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></a>
   </div>
 </li>
       </ul>
@@ -195,17 +189,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></a>
+  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Drawing graphs</span></a>
+  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pragmatic matters</span></a>
+  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></a>
   </div>
 </li>
       </ul>
@@ -220,17 +214,22 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to probability</span></a>
+  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">中場報告</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimating unknown quantities from a sample</span></a>
+  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">從樣本估計未知量數</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></a>
   </div>
 </li>
       </ul>
@@ -245,32 +244,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Categorical data analysis</span></a>
+  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Comparing two means</span></a>
+  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較兩組平均值</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Correlation and linear regression</span></a>
+  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Comparing several means (one-way ANOVA)</span></a>
+  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Factor Analysis</span></a>
+  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></a>
   </div>
 </li>
       </ul>
@@ -285,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayesian statistics</span></a>
+  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></a>
   </div>
 </li>
       </ul>
@@ -325,18 +324,18 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#匯入csv格式資料檔" id="toc-匯入csv格式資料檔" class="nav-link" data-scroll-target="#匯入csv格式資料檔"><span class="toc-section-number">3.4.1</span>  匯入csv格式資料檔</a></li>
   </ul></li>
-  <li><a href="#匯入不常見格式的資料檔" id="toc-匯入不常見格式的資料檔" class="nav-link" data-scroll-target="#匯入不常見格式的資料檔"><span class="toc-section-number">3.5</span>  匯入不常見格式的資料檔</a>
+  <li><a href="#匯入非示範格式的資料檔" id="toc-匯入非示範格式的資料檔" class="nav-link" data-scroll-target="#匯入非示範格式的資料檔"><span class="toc-section-number">3.5</span>  匯入非示範格式的資料檔</a>
   <ul class="collapse">
-  <li><a href="#資料檔是純文字格式" id="toc-資料檔是純文字格式" class="nav-link" data-scroll-target="#資料檔是純文字格式"><span class="toc-section-number">3.5.1</span>  資料檔是純文字格式</a></li>
+  <li><a href="#格式純出錯的文字資料檔" id="toc-格式純出錯的文字資料檔" class="nav-link" data-scroll-target="#格式純出錯的文字資料檔"><span class="toc-section-number">3.5.1</span>  格式純出錯的文字資料檔</a></li>
   <li><a href="#套裝軟體專用格式如spss" id="toc-套裝軟體專用格式如spss" class="nav-link" data-scroll-target="#套裝軟體專用格式如spss"><span class="toc-section-number">3.5.2</span>  套裝軟體專用格式(如SPSS)</a></li>
   <li><a href="#微軟excel資料格式" id="toc-微軟excel資料格式" class="nav-link" data-scroll-target="#微軟excel資料格式"><span class="toc-section-number">3.5.3</span>  微軟Excel資料格式</a></li>
   </ul></li>
   <li><a href="#sec-Changing-data-from-one-level-to-another" id="toc-sec-Changing-data-from-one-level-to-another" class="nav-link" data-scroll-target="#sec-Changing-data-from-one-level-to-another"><span class="toc-section-number">3.6</span>  更動資料變項性質</a></li>
   <li><a href="#安裝jamovi擴充模組" id="toc-安裝jamovi擴充模組" class="nav-link" data-scroll-target="#安裝jamovi擴充模組"><span class="toc-section-number">3.7</span>  安裝jamovi擴充模組</a></li>
   <li><a href="#關閉jamovi" id="toc-關閉jamovi" class="nav-link" data-scroll-target="#關閉jamovi"><span class="toc-section-number">3.8</span>  關閉jamovi</a></li>
-  <li><a href="#本章小節" id="toc-本章小節" class="nav-link" data-scroll-target="#本章小節"><span class="toc-section-number">3.9</span>  本章小節</a></li>
+  <li><a href="#本章小結" id="toc-本章小結" class="nav-link" data-scroll-target="#本章小結"><span class="toc-section-number">3.9</span>  本章小結</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/davidfoxcroft/lsj-book/edit/main/03-Getting-started-with-jamovi.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/davidfoxcroft/lsj-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/03-Getting-started-with-jamovi.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -348,182 +347,266 @@ ul.task-list li input[type="checkbox"] {
 
 <blockquote class="blockquote">
 <p><em>Robots are nice to work with.</em><br>
-– 羅傑·澤拉茲尼<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<!-- > -- 羅傑·澤拉茲尼[^getting-started-with-jamovi-1] --></p>
 </blockquote>
-<p>In this chapter I’ll discuss how to get started in jamovi. I’ll briefly talk about how to download and install jamovi, but most of the chapter will be focused on getting you started with finding your way around the jamovi GUI. Our goal in this chapter is not to learn any statistical concepts: we’re just trying to learn the basics of how jamovi works and get comfortable interacting with the system. To do this we’ll spend a bit of time looking at datasets and variables. In doing so, you’ll get a bit of a feel for what it’s like to work in jamovi.</p>
-<p>However, before going into any of the specifics, it’s worth talking a little about why you might want to use jamovi at all. Given that you’re reading this you’ve probably got your own reasons. However, if those reasons are “because that’s what my stats class uses”, it might be worth explaining a little why your lecturer has chosen to use jamovi for the class. Of course, I don’t really know why <em>other</em> people choose jamovi so I’m really talking about why I use it.</p>
+<p>這一章開始正式談如何使用jamovi。其中一部分簡單說明如何下載及安裝jamovi，較多篇幅介紹jamovi的介面以及引導讀者上手使用。本章先將統計概念擺一邊，主要目標是幫助讀者了解jamovi的運作方式以及輕鬆上手。讀者將先花點時間了解內建資料集還有變項欄位，藉此感受並理解jamovi的運作方式。</p>
+
+<!---In this chapter I'll discuss how to get started in jamovi. I'll briefly talk about how to download and install jamovi, but most of the chapter will be focused on getting you started with finding your way around the jamovi GUI. Our goal in this chapter is not to learn any statistical concepts: we're just trying to learn the basics of how jamovi works and get comfortable interacting with the system. To do this we'll spend a bit of time looking at datasets and variables. In doing so, you'll get a bit of a feel for what it's like to work in jamovi. --->
+<p>不過在繼續介紹之前，我(原著作者)想和讀者們稍微聊聊使用jamovi的理由。每位讀者需要閱讀這本書應該有各種不同的理由。如果你的主要理由是“因為這是我的統計課指定學習的統計軟體”，那麼你的授課教師應該好好解釋為什麼要同學們學習jamovi。因為我(原著作者)不是你的主課老師，無法推測他選擇jamovi的理由，所以讓我講一下我使用jamovi的想法。</p>
+<!---However, before going into any of the specifics, it's worth talking a little about why you might want to use jamovi at all. Given that you're reading this you've probably got your own reasons. However, if those reasons are "because that's what my stats class uses", it might be worth explaining a little why your lecturer has chosen to use jamovi for the class. Of course, I don't really know why *other* people choose jamovi so I'm really talking about why I use it. --->
 <ul>
-<li>It’s sort of obvious but worth saying anyway: doing your statistics on a computer is faster, easier and more powerful than doing statistics by hand. Computers excel at mindless repetitive tasks, and a lot of statistical calculations are both mindless and repetitive. For most people the only reason to ever do statistical calculations with pencil and paper is for learning purposes. In my class I do occasionally suggest doing some calculations that way, but the only real value to it is pedagogical. It does help you to get a “feel” for statistics to do some calculations yourself, so it’s worth doing it once. But only once!</li>
-<li>Doing statistics in a conventional spreadsheet (e.g., Microsoft Excel) is generally a bad idea in the long run. Although many people likely feel more familiar with them, spreadsheets are very limited in terms of what analyses they allow you do. If you get into the habit of trying to do your real life data analysis using spreadsheets then you’ve dug yourself into a very deep hole.</li>
-<li>“student versions” (crippled versions of the real thing) very cheaply, and then they they sell full powered “educational versions” at a price that makes me wince. They will also sell commercial licences with a staggeringly high price tag. The business model here is to suck you in during your student days and then leave you dependent on their tools when you go out into the real world. It’s hard to blame them for trying, but personally I’m not in favour of shelling out thousands of dollars if I can avoid it. And you can avoid it. If you make use of packages like jamovi that are open source and free you never get trapped having to pay exorbitant licensing fees.</li>
-<li>Something that you might not appreciate now, but will love later on if you do anything involving data analysis, is the fact that jamovi is basically a sophisticated front end for the free R statistical programming language. When you download and install R you get all the basic “packages” and those are very powerful on their own. However, because R is so open and so widely used, it’s become something of a standard tool in statistics and so lots of people write their own packages that extend the system. And these are freely available too. One of the consequences of this, I’ve noticed, is that if you look at recent advanced data analysis textbooks then a lot of them use R.</li>
+<li>最顯而易見的理由：用電腦做統計作業，是比用紙筆做作業更快速、簡單、且更有效的方式。電腦擅長處理任何無需思索的重覆性作業，而大多數統計計算是不需思索且重覆的。對大多數學生來說，用紙筆進行統計計算都是基於學習需要。我(原作作者)的課堂有時候也會要求學生做些紙筆計算，不過是基於我的教學目的。在某些狀況紙筆計算能幫助同學掌握“統計感”，值得認真做一次，不過只要一次就好！</li>
 </ul>
-<p>Those are the main reasons I use jamovi. It’s not without its flaws, though. It’s relatively new<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> so there is not a huge set of textbooks and other resources to support it, and it has a few annoying quirks that we’re all pretty much stuck with, but on the whole I think the strengths outweigh the weakness; more so than any other option I’ve encountered so far.</p>
+<!---   It's sort of obvious but worth saying anyway: doing your statistics on a computer is faster, easier and more powerful than doing statistics by hand. Computers excel at mindless repetitive tasks, and a lot of statistical calculations are both mindless and repetitive. For most people the only reason to ever do statistical calculations with pencil and paper is for learning purposes. In my class I do occasionally suggest doing some calculations that way, but the only real value to it is pedagogical. It does help you to get a "feel" for statistics to do some calculations yourself, so it's worth doing it once. But only once! --->
+<ul>
+<li>在通用試算表軟體(例如微軟Excel)進行統計分析其實並非長久之計。雖然試算表軟體對許多人來說是比較熟悉的，但是這些軟體能執行的統計分析相當有限。如果你有使用試算表軟體分析現實生活數據的習慣，會把自已困在一個不易擺脫的操作慣性。</li>
+</ul>
+<!---   Doing statistics in a conventional spreadsheet (e.g., Microsoft Excel) is generally a bad idea in the long run. Although many people likely feel more familiar with them, spreadsheets are very limited in terms of what analyses they allow you do. If you get into the habit of trying to do your real life data analysis using spreadsheets then you've dug yourself into a very deep hole. --->
+<ul>
+<li>許多商用套裝統計軟體(讀者會經常聽到的那些)的學生版非常便宜，不過功能完整的”教育版“價格通常讓像我一樣的老師們卻步。軟體公司也會販售價格高昂的企業版。軟體公司的策略是養成學生讀者在求學階段對產品的依賴，畢業進入社會後會持續使用他們的產品。儘管大公司的經營策略有待商榷，可以不用的話沒有人想花幾千塊美金購買。不過用這本書學統計的讀者有機會不去用這些商用套裝統計軟體。只要學會使用像jamovi這種開源且免費的軟體，同學們可以終身遠離軟體公司的付費陷阱。</li>
+</ul>
+<!---   "student versions" (crippled versions of the real thing) very cheaply, and then they they sell full powered "educational versions" at a price that makes me wince. They will also sell commercial licences with a staggeringly high price tag. The business model here is to suck you in during your student days and then leave you dependent on their tools when you go out into the real world. It's hard to blame them for trying, but personally I'm not in favour of shelling out thousands of dollars if I can avoid it. And you can avoid it. If you make use of packages like jamovi that are open source and free you never get trapped having to pay exorbitant licensing fees. --->
+<p>jamovi 基本上是免費的 R 統計語言的高級前端，這是你現在可能不會意識到但將來做資料分析時會喜歡的事實。下載安R語言後，你會得到所有基本且功能強大的“套件”。由於 R語言 是開放系統而且使用場景廣泛，它已經成為統計學的一種標準工具，很多人還會編寫和套件擴充系統功能，而且這些套件也是免費的。最近我(原著作者 )發現的一個越勢，越來越多進階資料分析教科書，內容範例都是使用 R語言。</p>
+<!---   Something that you might not appreciate now, but will love later on if you do anything involving data analysis, is the fact that jamovi is basically a sophisticated front end for the free R statistical programming language. When you download and install R you get all the basic "packages" and those are very powerful on their own. However, because R is so open and so widely used, it's become something of a standard tool in statistics and so lots of people write their own packages that extend the system. And these are freely available too. One of the consequences of this, I've noticed, is that if you look at recent advanced data analysis textbooks then a lot of them use R.--->
+<p>以上是我決定使用jamovi的主要理由。雖然jamovi並不是沒有缺陷。jamovi是相對較新的軟體<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，沒有什麼教科書與其他資源支援學習，而且jamovi有一些令人討厭但不得不忍受的小缺陷。不過總體來說，我認為jamovi的優點大於缺點；比我用過 其他同類型軟體功能更雨更好使用。</p>
+<!---Those are the main reasons I use jamovi. It's not without its flaws, though. It's relatively new[^getting-started-with-jamovi-2] so there is not a huge set of textbooks and other resources to support it, and it has a few annoying quirks that we're all pretty much stuck with, but on the whole I think the strengths outweigh the weakness; more so than any other option I've encountered so far.--->
 <section id="安裝jamovi" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="安裝jamovi"><span class="header-section-number">3.1</span> 安裝jamovi</h2>
-<p>Okay, enough with the sales pitch. Let’s get started. Just as with any piece of software, jamovi needs to be installed on a “computer”, which is a magical box that does cool things and delivers free ponies. Or something along those lines; I may be confusing computers with the iPad marketing campaigns. Anyway, jamovi is freely distributed online and you can download it from the jamovi homepage, which is: <a href="https://www.jamovi.org/" class="uri">https://www.jamovi.org/</a></p>
-<p>At the top of the page, under the heading “Download”, you’ll see separate links for Windows users, Mac users, and Linux users. If you follow the relevant link you’ll see that the online instructions are pretty self-explanatory. As of this writing, the current version of jamovi is 2.3, but they usually issue updates every few months, so you’ll probably have a newer version.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>好啦，推銷結束。開始上課吧。就像任何應用軟體，jamovi需要安裝能執行各種軟體工具還有免費遊戲的”電腦”。這樣說好像”電腦“和各家平板沒什麼分別，不過如果你有使用套裝軟體的經驗，你就會懂我的意思。無論如何，jamovi可從網路免費取得，現誰你可以從jamovi官網<a href="https://www.jamovi.org/" class="uri">https://www.jamovi.org/</a>下載安裝程式<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+<!---Okay, enough with the sales pitch. Let's get started. Just as with any piece of software, jamovi needs to be installed on a "computer", which is a magical box that does cool things and delivers free ponies. Or something along those lines; I may be confusing computers with the iPad marketing campaigns. Anyway, jamovi is freely distributed online and you can download it from the jamovi homepage, which is: <https://www.jamovi.org/> --->
+<p>首先在官網首頁按下”jamovi Desktop”的大標題按鈕，讀者會看到給Wiodows, Mac, 還有Linux作業系統使用者的各種超連結。只要點選符合讀者作業系統規格的超連結，就能按照視窗指示完成下載安裝程序。翻譯這本電子書時，jamovi版本已經來到2.3.21，請留意每隔幾個月會有新版本上架，有需要的話得要安裝新版本。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<!---At the top of the page, under the heading "Download", you'll see separate links for Windows users, Mac users, and Linux users. If you follow the relevant link you'll see that the online instructions are pretty self-explanatory. As of this writing, the current version of jamovi is 2.3, but they usually issue updates every few months, so you'll probably have a newer version.[^getting-started-with-jamovi-3]--->
+<!---Although jamovi is updated frequently it doesn't usually make much of a difference for the sort of work we'll do in this book. In fact, during the writing of the book I upgraded several times and it didn't make much difference at all to what is in this book. --->
 <section id="啟動jamovi" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="啟動jamovi"><span class="header-section-number">3.1.1</span> 啟動jamovi</h3>
-<p>One way or another, regardless of what operating system you’re using, it’s time to open jamovi and get started. When first starting jamovi you will be presented with a user interface which looks something like <a href="#fig-fig3-1">Figure&nbsp;<span>3.1</span></a>.</p>
+<p>不論讀者的作業系統是什麼，安裝成功就可以啟動jamovi開始第一次接觸。首次啟動的jamovi視窗介面應該像 <a href="#fig-fig3-1">Figure&nbsp;<span>3.1</span></a>。</p>
+<!---One way or another, regardless of what operating system you're using, it's time to open jamovi and get started. When first starting jamovi you will be presented with a user interface which looks something like @fig-fig3-1.--->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig3-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/fig3-1.png" class="img-fluid figure-img" width="1440"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: jamovi starts up!</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: jamovi啟動!</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>To the left is the spreadsheet view, and to the right is where the results of statistical tests appear. Down the middle is a bar separating these two regions and this can be dragged to the left or the right to change their sizes.</p>
-<p>It is possible to simply begin typing values into the jamovi spreadsheet as you would in any other spreadsheet software. Alternatively, existing data sets in the CSV (.csv) file format can be opened in jamovi. Additionally, you can easily import SPSS, SAS, Stata and JASP files directly into jamovi. To open a file select the File tab (three horizontal lines signify this tab) at the top left hand corner, select ‘Open’ and then choose from the files listed on ‘Browse’ depending on whether you want to open an example or a file stored on your computer.</p>
+<p>視窗左半區塊如同試算表(以下稱”資料區”），右半區塊是顯示統計測試結果的地方（以下稱”報表區”）。中間邊界線區隔區塊範圍，使用者可以水平拖曳改變左右區塊的面積。</p>
+<!---To the left is the spreadsheet view, and to the right is where the results of statistical tests appear. Down the middle is a bar separating these two regions and this can be dragged to the left or the right to change their sizes.--->
+<p>使用者可以在試算表區域的任意格子內輸入任何值，就像使用試算表軟體一樣。還有，已存在電腦裡的資料檔案是CSV (.csv)的話，可以直接載入jamovi。另外，jamovi可以直接載入SPSS, SAS, Stata, 還有JASP等軟體的資料格式檔案。要開啟檔案請先選擇管理面板的File(按左上角三條橫線開啟)，再選擇’Open’，然後從’Browse’視窗選擇你要載入的檔案，這種操作可以開啟範例檔案或已存在的資料檔案。</p>
+<!---It is possible to simply begin typing values into the jamovi spreadsheet as you would in any other spreadsheet software. Alternatively, existing data sets in the CSV (.csv) file format can be opened in jamovi. Additionally, you can easily import SPSS, SAS, Stata and JASP files directly into jamovi. To open a file select the File tab (three horizontal lines signify this tab) at the top left hand corner, select 'Open' and then choose from the files listed on 'Browse' depending on whether you want to open an example or a file stored on your computer.--->
 </section>
 </section>
 <section id="分析模組" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="分析模組"><span class="header-section-number">3.2</span> 分析模組</h2>
-<p>Analyses can be selected from the analysis ribbon or menu along the top. Selecting an analysis will present an ‘options panel’ for that particular analysis, allowing you to assign different variables to different parts of the analysis, and select different options. At the same time, the results for the analysis will appear in the right ‘Results panel’ and will update in real-time as you make changes to the options.</p>
-<p>When you have the analysis set up correctly you can dismiss the analysis options by clicking the arrow to the top right of the optional panel. If you wish to return to these options, you can click on the results that were produced. In this way, you can return to any analysis that you (or say, a colleague) created earlier.</p>
-<p>If you decide you no longer need a particular analysis, you can remove it with the results context menu. Right-clicking on the analysis results will bring up a menu and by selecting ‘Analysis’ and then ‘Remove’ the analysis can be removed. But more on this later. First, let’s take a more detailed look at the spreadsheet view.</p>
+<p>如 <a href="#fig-fig3-1">Figure&nbsp;<span>3.1</span></a> 界面上方的一排圖示是可以選擇使用的分析方法模組。選好要使用的分析方法，就會出現該模組的“選項視窗”。“選項視窗”可以指定要分析的變項，選擇分析方法的設定。任何在“選項視窗”的有效動作，會在報表區顯示分析結果，每次增加或修改設定都會即時更新報表區內容。</p>
+<!---Analyses can be selected from the analysis ribbon or menu along the top. Selecting an analysis will present an 'options panel' for that particular analysis, allowing you to assign different variables to different parts of the analysis, and select different options. At the same time, the results for the analysis will appear in the right 'Results panel' and will update in real-time as you make changes to the options. --->
+<p>只要你認為報表區顯示的結果已經足夠，按下“選項視窗”右上角巨大的右箭頭，就能關閉“選項視窗”。若是想再重新調整選項，只要在報表區任何一處點一下，就可以重新開啟“選項視窗”。這樣的操作讓你或你的同伴回顧報表結果如何生成。</p>
+<!---When you have the analysis set up correctly you can dismiss the analysis options by clicking the arrow to the top right of the optional panel. If you wish to return to these options, you can click on the results that were produced. In this way, you can return to any analysis that you (or say, a colleague) created earlier. --->
+<p>若是報表區內的某項分析結果不再需要了，你也可以透過副選單移除這項分析結果。以滑鼠右鍵點擊要移除的結果，就會跳出副選單。選擇副選單的<code>Analysis</code>，再選擇<code>Remove</code>就能移除結果。這些就是jamovi的基本操作，接著我們會看到更多。首先來了解資料區有什麼功能可以操作。</p>
+<!---If you decide you no longer need a particular analysis, you can remove it with the results context menu. Right-clicking on the analysis results will bring up a menu and by selecting 'Analysis' and then 'Remove' the analysis can be removed. But more on this later. First, let's take a more detailed look at the spreadsheet view. --->
 </section>
 <section id="資料試算表" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="資料試算表"><span class="header-section-number">3.3</span> 資料試算表</h2>
-<p>In jamovi data is represented in a spreadsheet with each column representing a ‘variable’ and each row representing a ‘case’ or ‘participant’.</p>
+<p>載入jamovi的資料是以試算表的模樣呈現在資料區，每一欄代表“變項”，每一列代表一筆“個案”或“受測者”。</p>
+<!---In jamovi data is represented in a spreadsheet with each column representing a 'variable' and each row representing a 'case' or 'participant'. --->
 <section id="變項" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="變項"><span class="header-section-number">3.3.1</span> 變項</h3>
-<p>The most commonly used variables in jamovi are ‘Data Variables’, these variables simply contain data either loaded from a data file, or ‘typed in’ by the user. Data variables can be one of several measurement levels (<a href="#fig-fig3-2">Figure&nbsp;<span>3.2</span></a>).</p>
+<p>jamovi資料區最常見的變項是<code>資料變項</code>(Data Variables)，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見 <a href="#fig-fig3-2">Figure&nbsp;<span>3.2</span></a> )</p>
+<!---The most commonly used variables in jamovi are 'Data Variables', these variables simply contain data either loaded from a data file, or 'typed in' by the user. Data variables can be one of several measurement levels (@fig-fig3-2).--->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig3-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/fig3-2.png" class="img-fluid figure-img" width="251"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: measurement levels</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: 測量級別設定面板</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>These levels are designated by the symbol in the header of the variable’s column. The ID variable type is unique to jamovi. It’s intended for variables that contain identifiers that you would almost never want to analyse. For example, a persons name, or a participant ID. Specifying an ID variable type can improve performance when interacting with very large data sets.</p>
-<p><em>Nominal</em> variables are for categorical variables which are text labels, for example a column called Gender with the values Male and Female would be nominal. So would a person’s name. Nominal variable values can also have a numeric value. These variables are used most often when importing data which codes values with numbers rather than text. For example, a column in a dataset may contain the values 1 for males, and 2 for females. It is possible to add nice ‘human-readable’ labels to these values with the variable editor (more on this later).</p>
-<p><em>Ordinal</em> variables are like Nominal variables, except the values have a specific order. An example is a Likert scale with 3 being ‘strongly agree’ and -3 being ‘strongly disagree’.</p>
-<p><em>Continuous</em> variables are variables which exist on a continuous scale. Examples might be height or weight. This is also referred to as ‘Interval’ or ‘Ratio scale’.</p>
-<p>In addition, you can also specify different data types: variables have a data type of either ‘Text’, ‘Integer’ or ‘Decimal’.</p>
-<p>When starting with a blank spreadsheet and typing values in the variable type will change automatically depending on the data you enter. This is a good way to get a feel for which variable types go with which sorts of data. Similarly, when opening a data file jamovi will try and guess the variable type from the data in each column. In both cases this automatic approach may not be correct, and it may be necessary to manually specify the variable type with the variable editor.</p>
-<p>The variable editor can be opened by selecting ‘Setup’ from the data tab or by double-clicking on the variable column header. The variable editor allows you to change the name of the variable and, for data variables, the variable type, the order of the levels, and the label displayed for each level. Changes can be applied by clicking the ‘tick’ to the top right. The variable editor can be dismissed by clicking the ‘Hide’ arrow.</p>
-<p>New variables can be inserted or appended to the data set using the ‘add’ button from the data ribbon. The ‘add’ button also allows the addition of computed variables.</p>
+<p>變項標題旁的圖示提示使用者每個變項的測量級別。<code>ID</code>是jamovi特有的變項型態。這個型態用來表示不會放進分析模組的變項。像是參與者姓名或者編號。在處理規模巨大的資料集時，指定某些變項為<code>ID</code>能提供運算效率。</p>
+<!---These levels are designated by the symbol in the header of the variable's column. The ID variable type is unique to jamovi. It's intended for variables that contain identifiers that you would almost never want to analyse. For example, a persons name, or a participant ID. Specifying an ID variable type can improve performance when interacting with very large data sets.--->
+<p><em>名義變項(Nominal)</em>是表示數值是文字標籤的類別變項，像是性別的標籤是”男”,“女”,“跨性別”等名義數值。人名也是一樣。名義變項數值也可以用數字表現。某些資料集的名義變項會用數字而不是文字做為標籤，像是男生表示為1，女生表示為2。稍後介紹的“變項編輯器”，可以將數字轉換為“人類可讀的”標籤。</p>
+<!---*Nominal* variables are for categorical variables which are text labels, for example a column called Gender with the values Male and Female would be nominal. So would a person's name. Nominal variable values can also have a numeric value. These variables are used most often when importing data which codes values with numbers rather than text. For example, a column in a dataset may contain the values 1 for males, and 2 for females. It is possible to add nice 'human-readable' labels to these values with the variable editor (more on this later). --->
+<p><em>次序變項(Ordinal)</em>很像名義變項，除了數值之間有順序性。例如李克特七點量表的數值3代表”非常同意”，數值-3代表”非常不同意”。</p>
+<!---*Ordinal* variables are like Nominal variables, except the values have a specific order. An example is a Likert scale with 3 being 'strongly agree' and -3 being 'strongly disagree'. --->
+<p><em>連續變項(Continuous)</em>表示來自連續量表的數值，像是身高或體重。又稱”等距尺度“(Interval scale)或”等比尺度“(Ratio scale)。</p>
+<!---*Continuous* variables are variables which exist on a continuous scale. Examples might be height or weight. This is also referred to as 'Interval' or 'Ratio scale'.--->
+<p>除此之外，使用者還可以設定資料型態：包括”文字”(Text)，“整數”(Integer)，“十進制小數”(Decimal)。</p>
+<!---In addition, you can also specify different data types: variables have a data type of either 'Text', 'Integer' or 'Decimal'.--->
+<p>在空白試算表內任意輸入任何數值，jamovi會根據你輸入的資料自動判斷變項的資料型態。你可以借助這套功能掌握什麼樣的資料適用何種變項尺度。開啟一份資料檔時，jamovi也會自動判斷每一欄的資料型態。不過自動判斷的資料型態不一定是正確的，有必要的話你需要使用變項編輯器手動設定正確的資料型態。</p>
+<!---When starting with a blank spreadsheet and typing values in the variable type will change automatically depending on the data you enter. This is a good way to get a feel for which variable types go with which sorts of data. Similarly, when opening a data file jamovi will try and guess the variable type from the data in each column. In both cases this automatic approach may not be correct, and it may be necessary to manually specify the variable type with the variable editor.--->
+<p>在資料面板(Data)點選<code>Setup</code>圖示或雙擊變項標題都能開啟變項編輯器。在變項編輯器的介面，你可以更改變項名稱、更動變項型態、標籤順序、還有標籤文字。任何變動馬上會在資料區看到改變的效果。要關閉變項編輯器，只要點選右上角的向上箭頭。</p>
+<!---The variable editor can be opened by selecting 'Setup' from the data tab or by double-clicking on the variable column header. The variable editor allows you to change the name of the variable and, for data variables, the variable type, the order of the levels, and the label displayed for each level. Changes can be applied by clicking the 'tick' to the top right. The variable editor can be dismissed by clicking the 'Hide' arrow.--->
+<p>要增加或插入新變項，只要點選資料面板上方的<code>Add</code>圖示。不只是增加資料變項，也能增加<em>計算變項(computed variables)</em></p>
+<!---New variables can be inserted or appended to the data set using the 'add' button from the data ribbon. The 'add' button also allows the addition of computed variables.--->
 </section>
 <section id="自訂計算變項" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="自訂計算變項"><span class="header-section-number">3.3.2</span> 自訂計算變項</h3>
-<p>自訂計算變項(Computed Variables) are those which take their value by performing a computation on other variables. Computed Variables can be used for a range of purposes, including log transforms, z-scores, sum-scores, negative scoring and means.</p>
-<p>Computed variables can be added to the data set with the ‘add’ button available on the data tab. This will produce a formula box where you can specify the formula. The usual arithmetic operators are available. Some examples of formulas are:</p>
+<p>計算變項存儲其他變項的計算結果。可存儲的數值相當多樣，像是log轉換，z分數，變項數值總和，正負轉換與跨變項平均值。</p>
+<!---自訂計算變項(Computed Variables) are those which take their value by performing a computation on other variables. Computed Variables can be used for a range of purposes, including log transforms, z-scores, sum-scores, negative scoring and means.--->
+<p>在資料面板上方按下<code>Add</code>圖示，就能在已匯入的資料變項之間插入計算變項。接著會出現方程式編輯區讓你設定計算公式。常用的四則運算符號都能輸入，以下是一些可輸入的公式：</p>
+<!---Computed variables can be added to the data set with the 'add' button available on the data tab. This will produce a formula box where you can specify the formula. The usual arithmetic operators are available. Some examples of formulas are: --->
 <p>A + B<br>
 LOG10(len)<br>
 MEAN(A, B)<br>
 (len - VMEAN(len)) / VSTDEV(len)</p>
-<p>In order, these are the sum of A and B, a log (base 10) transform of len, the mean of A and B, and the z-score of the variable len<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. <a href="#fig-fig3-3">Figure&nbsp;<span>3.3</span></a> shows the jamovi screen for the new variable computed as the z-score of len (from the ‘Tooth Growth’ example data set).</p>
+<p>以上公式依序是變項A與變項B的總和，變項len的log轉換(底數為10)，變項A與變項B的平均值，以及變項len的z分數<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。 <a href="#fig-fig3-3">Figure&nbsp;<span>3.3</span></a> 示範建立新變項存儲變項len的z分數(這份資料來自<code>Tooth Growh</code>練習資料集)。</p>
+<!---In order, these are the sum of A and B, a log (base 10) transform of len, the mean of A and B, and the z-score of the variable len[^getting-started-with-jamovi-0]. @fig-fig3-3 shows the jamovi screen for the new variable computed as the z-score of len (from the 'Tooth Growth' example data set). --->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig3-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/fig3-3.png" class="img-fluid figure-img" width="1440"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.3: A newly computed variable, the z-score of ‘dose’</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.3: 設定計算變項<code>zscore-len</code>存放變項len的z分數。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="水平計算函式" class="level4" data-number="3.3.2.1">
-<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="水平計算函式"><span class="header-section-number">3.3.2.1</span> 水平計算函式</h4>
-<p>Several functions are already available in jamovi and available from the drop down box labelled fx. A number of functions appear in pairs, one prefixed with a V and the other not. 水平計算函式(V functions) perform their calculation on a variable as a whole, where as non-V functions perform their calculation row by row. For example, MEAN(A, B) will produce the mean of A and B for each row. Where as VMEAN(A) gives the mean of all the values in A.</p>
+<section id="垂直計算函式" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="垂直計算函式"><span class="header-section-number">3.3.2.1</span> 垂直計算函式</h4>
+<p><a href="#fig-fig3-3">Figure&nbsp;<span>3.3</span></a> 的面板裡有個可開啟捲動清單的 <span class="math inline">\(f_x\)</span> 圖示，能選擇已內建的函式。其中有些以V開頭的函式是<em>垂直計算函式</em>。相對於沒有V開頭的同名函式，垂直計算函式用於計算資料變項的總計數值。例如函式<code>MEAN(A, B)</code>是計算變項A與變項B同一列的平均值，而函式<code>VMEAN(A)</code>製造的計算變項內容都是變項A的平均值。</p>
+<!---Several functions are already available in jamovi and available from the drop down box labelled fx. A number of functions appear in pairs, one prefixed with a V and the other not. 水平計算函式(V functions) perform their calculation on a variable as a whole, where as non-V functions perform their calculation row by row. For example, MEAN(A, B) will produce the mean of A and B for each row. Where as VMEAN(A) gives the mean of all the values in A.--->
 </section>
 </section>
 <section id="複製貼上" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="複製貼上"><span class="header-section-number">3.3.3</span> 複製貼上</h3>
-<p>jamovi produces nice American Psychological Association (APA) formatted tables and attractive plots. It is often useful to be able to copy and paste these, perhaps into a Word document, or into an email to a colleague. To copy results right click on the object of interest and from the menu select exactly what you want to copy. The menu allows you to choose to copy only the image or the entire analysis. Selecting “copy” copies the content to the clipboard and this can be pasted into other programs in the usual way. You can practice this later on when we do some analyses.</p>
+<p>jamovi產生的報表內表格及統計圖符合美國心理學會(APA)建議的學術發表格式。使用者可以使用內建的複製貼上功能，將圖表加到WORD文件、或者email裡給同事。直要對想複製的圖表以滑鼠右鍵點選，開啟副選單即可選擇複製功能。透過副選單能指定要複製報表裡的某張圖或整個分析表格。jamovi複製的操作與其他應用程式的操作完全相同。在稍後的分析示範裡你可以練習看看。</p>
+
+<!---jamovi produces nice American Psychological Association (APA) formatted tables and attractive plots. It is often useful to be able to copy and paste these, perhaps into a Word document, or into an email to a colleague. To copy results right click on the object of interest and from the menu select exactly what you want to copy. The menu allows you to choose to copy only the image or the entire analysis. Selecting "copy" copies the content to the clipboard and this can be pasted into other programs in the usual way. You can practice this later on when we do some analyses.--->
 </section>
 <section id="程式碼模式" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="程式碼模式"><span class="header-section-number">3.3.4</span> 程式碼模式</h3>
-<p>jamovi also provides an “R程式碼模式”(R Syntax Mode)。 In this mode jamovi produces equivalent R code for each analysis. To change to syntax mode, select the Application menu to the top right of jamovi (a button with three vertical dots) and click the “Syntax mode” checkbox there. You can turn off syntax mode by clicking this a second time.</p>
-<p>In syntax mode analyses continue to operate as before but now they produce R syntax, and ‘ascii output’ like an R session. Like all results objects in jamovi, you can right click on these items (including the R syntax) and copy and paste them, for example into an R session. At present, the provided R syntax does not include the data import step and so this must be performed manually in R. There are many resources explaining how to import data into R and if you are interested we recommend you take a look at these; just search on the interweb.</p>
+<p>jamovi提供”R程式碼模式”(R Syntax Mode)。開啟此模式能檢視分析模組後台的R程式碼。從jamovi主畫面右上方開啟系統設定面板(圖示是三個垂直小點)，勾選”Syntax Mode)旁邊的核取方塊就能開啟或關閉。</p>
+<p>“R程式碼模式”開啟時運作方式沒有不同，除了每份報表會增加R程式碼，還有表格會以ASCII碼的模式輸出，如同R語言的終端介面。如果你有支援編譯R語言的軟體，可以直接將R程式碼複製到編譯介面測試看看。至此還沒有正式載入任何資料，所以你看到的R程式碼複製到編譯介面，並不會產生任何結果。如果你有興趣測試的話，網路上有許多學習資源，等著你去發掘。</p>
+<!---jamovi also provides an "R程式碼模式"(R Syntax Mode)。 In this mode jamovi produces equivalent R code for each analysis. To change to syntax mode, select the Application menu to the top right of jamovi (a button with three vertical dots) and click the "Syntax mode" checkbox there. You can turn off syntax mode by clicking this a second time.
+
+In syntax mode analyses continue to operate as before but now they produce R syntax, and 'ascii output' like an R session. Like all results objects in jamovi, you can right click on these items (including the R syntax) and copy and paste them, for example into an R session. At present, the provided R syntax does not include the data import step and so this must be performed manually in R. There are many resources explaining how to import data into R and if you are interested we recommend you take a look at these; just search on the interweb.--->
 </section>
 </section>
 <section id="載入資料檔案" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="載入資料檔案"><span class="header-section-number">3.4</span> 載入資料檔案</h2>
-<p>There are several different types of files that are likely to be relevant to us when doing data analysis. There are two in particular that are especially important from the perspective of this book:</p>
+<p>在實際的資料分析場景裡，我們通常要處理好幾份不同格式的檔案。本書示範的資料分析所處理的檔案主要有兩種格式：</p>
 <ul>
-<li><p><em>jamovi files</em> are those with a .omv file extension. This is the standard kind of file that jamovi uses to store data, and variables and analyses.</p></li>
-<li><p><em>Comma separated value (csv) files</em> are those with a .csv file extension. These are just regular old text files and they can be opened with many different software programs. It’s quite typical for people to store data in csv files, precisely because they’re so simple.</p></li>
+<li><p><em>jamovi專案檔(.omv)</em> 這是jamovi儲存資料，變項及分析結果的標準檔案格式。</p></li>
+<li><p><em>逼號分隔值文字檔(.csv)</em> 歷史最久的標準文字檔案格式，可以處理文字檔案的軟體幾乎都可以開啟。由於格式簡單，專業統計分析人員首選以csv格式儲存資料。</p></li>
 </ul>
-<p>There are also several other kinds of data file that you might want to import into jamovi. For instance, you might want to open Microsoft Excel spreadsheets (.xls files), or data files that have been saved in the native file formats for other statistics software, such as SPSS or SAS. Whichever file formats you are using, it’s a good idea to create a folder or folders especially for your jamovi data sets and analyses and to make sure you keep these backed up regularly.</p>
+<p>jamovi也能載入其他格式的資料檔案。最新版本支援開啟微軟Excel試算表檔案(.xls)，還有市場佔有率高的商用套裝統計軟體，如SPSS、SAS的資料格式檔案。無論你要處理的資料是用那種格式儲存，強烈建議先新增一個或一群資料夾，分別儲存資料檔案或jamovi檔，以便定期備份。</p>
+<!---There are several different types of files that are likely to be relevant to us when doing data analysis. There are two in particular that are especially important from the perspective of this book:
+
+-   *jamovi files* are those with a .omv file extension. This is the standard kind of file that jamovi uses to store data, and variables and analyses.
+
+-   *Comma separated value (csv) files* are those with a .csv file extension. These are just regular old text files and they can be opened with many different software programs. It's quite typical for people to store data in csv files, precisely because they're so simple.
+
+There are also several other kinds of data file that you might want to import into jamovi. For instance, you might want to open Microsoft Excel spreadsheets (.xls files), or data files that have been saved in the native file formats for other statistics software, such as SPSS or SAS. Whichever file formats you are using, it's a good idea to create a folder or folders especially for your jamovi data sets and analyses and to make sure you keep these backed up regularly.--->
 <section id="匯入csv格式資料檔" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="匯入csv格式資料檔"><span class="header-section-number">3.4.1</span> 匯入csv格式資料檔</h3>
-<p>One quite commonly used data format is the humble “comma separated value” file, also called a csv file, and usually bearing the file extension .csv. csv files are just plain old-fashioned text files and what they store is basically just a table of data. This is illustrated in <a href="#fig-fig3-4">Figure&nbsp;<span>3.4</span></a>, which shows a file called booksales.csv that I’ve created. As you can see, each row represents the book sales data for one month. The first row doesn’t contain actual data though, it has the names of the variables.</p>
+<p>在現代資料分析軟體發展史裡，到處都能見到csv檔的身影。csv檔可儲存任何表格化的資料，如同 <a href="#fig-fig3-4">Figure&nbsp;<span>3.4</span></a> 展示的本章示範資料檔 booksales.csv 。每一列記錄每個月書籍銷售資料，不過第一列不是資料，而是變項名稱。</p>
+
+<!---One quite commonly used data format is the humble "comma separated value" file, also called a csv file, and usually bearing the file extension .csv. csv files are just plain old-fashioned text files and what they store is basically just a table of data. This is illustrated in @fig-fig3-4, which shows a file called booksales.csv that I've created. As you can see, each row represents the book sales data for one month. The first row doesn't contain actual data though, it has the names of the variables.
+
+The booksales.csv data file. On the left I have opened the file using a spreadsheet program (OpenOffice), which shows that the file is basically a table. On the right the same file is open in a standard text editor (the TextEdit program on a Mac), which shows how the file is formatted. The entries in the table are wrapped in quote marks and separated by commas--->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig3-4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/fig3-4.png" class="img-fluid figure-img" width="364"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.4: The booksales.csv data file. On the left I have opened the file using a spreadsheet program (OpenOffice), which shows that the file is basically a table. On the right the same file is open in a standard text editor (the TextEdit program on a Mac), which shows how the file is formatted. The entries in the table are wrapped in quote marks and separated by commas</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.4: booksales.csv的資料內容。畫面左方是以試算表軟體OpenOffice開啟的視窗，可見到清楚的表格標記。畫面右方是以純文字編輯器開啟的視窗，可見到逗號標記。試算表裡的每一格在csv檔是以逗號間隔。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>It’s easy to open csv files in jamovi. From the top left menu (the button with three parallel lines) choose ‘Open’ and browse to where you have stored the csv file on your computer. If you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in <a href="#fig-fig3-5">Figure&nbsp;<span>3.5</span></a>. I’m assuming that you’re familiar with your own computer, so you should have no problem finding the csv file that you want to import! Find the one you want, then click on the “Open” button.</p>
+<p>jamovi能輕鬆開啟csv檔。按下主畫面左上角三條平行線的圖示鈕開啟面板，點選<code>Open</code>，再點選<code>This Device</code>，就能從個人電腦資料夾裡選擇要開啟的csv檔<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。 <a href="#fig-fig3-5">Figure&nbsp;<span>3.5</span></a> 是以Mac作業系統展示瀏覽和選取檔案的畫面。我相信讀者應該熟悉自己使用的設備，應該能找到自己想匯入的csv檔。請放手試試看吧。</p>
+<!---It's easy to open csv files in jamovi. From the top left menu (the button with three parallel lines) choose 'Open' and browse to where you have stored the csv file on your computer. If you're on a Mac, it'll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in @fig-fig3-5. I'm assuming that you're familiar with your own computer, so you should have no problem finding the csv file that you want to import! Find the one you want, then click on the "Open" button. 
+
+A dialog box on a Mac asking you to select the csv file jamovi should try to import. Mac users will recognise this immediately, it's the usual way in which a Mac asks you to find a file. Windows users won't see this, instead they'll see the usual explorer window that Windows always gives you when it wants you to select a file--->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig3-5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/fig3-5.png" class="img-fluid figure-img" width="364"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.5: A dialog box on a Mac asking you to select the csv file jamovi should try to import. Mac users will recognise this immediately, it’s the usual way in which a Mac asks you to find a file. Windows users won’t see this, instead they’ll see the usual explorer window that Windows always gives you when it wants you to select a file</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.5: Mac作業系統的檔案瀏覽及對話視窗，相信Mac使用者都很熟悉。Windows系統有類似的檔案總管，選取檔案的操作大同小異。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>There are a few things that you can check to make sure that the data gets imported correctly:</p>
+<p>這裡有些標記提示，能幫助你開啟的csv資料檔案能順利進行分析：</p>
 <ul>
-<li>Heading. Does the first row of the file contain the names for each variable - a ‘header’ row? The booksales.csv file has a header, so that’s a yes.</li>
-<li>Decimal. What character is used to specify the decimal point? In English speaking countries this is almost always a period (i.e., .). That’s not universally true though, many European countries use a comma.</li>
-<li>Quote. What character is used to denote a block of text? That’s usually going to be a double quote mark (“). It is for the booksales.csv file.</li>
+<li>變項名稱。確認csv檔第一列是各變項的名稱。如同 booksales.csv 的示範。</li>
+<li>小數點。確認數字資料的小數點是以英文句號(.)表示。在英語系國家是慣例，但是部分如東歐國家是以英文逼號(,)表示小數點。</li>
+<li>引號。變項名稱與文字資料都會放在兩個引號(“)之間，jamovi會以引號自動判斷變項資料的型態。請參考 booksales.csv 的示範。</li>
 </ul>
+<!---
+There are a few things that you can check to make sure that the data gets imported correctly:
+
+-   Heading. Does the first row of the file contain the names for each variable - a 'header' row? The booksales.csv file has a header, so that's a yes.
+-   Decimal. What character is used to specify the decimal point? In English speaking countries this is almost always a period (i.e., .). That's not universally true though, many European countries use a comma.
+-   Quote. What character is used to denote a block of text? That's usually going to be a double quote mark ("). It is for the booksales.csv file.--->
 </section>
 </section>
-<section id="匯入不常見格式的資料檔" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="匯入不常見格式的資料檔"><span class="header-section-number">3.5</span> 匯入不常見格式的資料檔</h2>
-<p>Throughout this book I’ve assumed that your data are stored as a jamovi .omv file or as a “properly” formatted csv file. However, in real life that’s not a terribly plausible assumption to make so I’d better talk about some of the other possibilities that you might run into.</p>
-<section id="資料檔是純文字格式" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="資料檔是純文字格式"><span class="header-section-number">3.5.1</span> 資料檔是純文字格式</h3>
-<p>The first thing I should point out is that if your data are saved as a text file but aren’t quite in the proper csv format then there’s still a pretty good chance that jamovi will be able to open it. You just need to try it and see if it works. Sometimes though you will need to change some of the formatting. The ones that I’ve often found myself needing to change are:</p>
+<section id="匯入非示範格式的資料檔" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="匯入非示範格式的資料檔"><span class="header-section-number">3.5</span> 匯入非示範格式的資料檔</h2>
+<p>本書的示範資料都是以jamovi專案檔(.omv)或csv文字檔提供讀者操作<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>。不過在你的實際統計實務場景，非常有可能遇到各式各樣的資料檔。這個小節我分享一些很多人常遇到的其他格式的資料，以及不合乎格式的資料檔處理技巧。</p>
+<!---Throughout this book I've assumed that your data are stored as a jamovi .omv file or as a "properly" formatted csv file. However, in real life that's not a terribly plausible assumption to make so I'd better talk about some of the other possibilities that you might run into.--->
+<section id="格式純出錯的文字資料檔" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="格式純出錯的文字資料檔"><span class="header-section-number">3.5.1</span> 格式純出錯的文字資料檔</h3>
+<p>首先來談談遇到純文字資料檔案不符合csv格式，要如何修正才能讓jamovi開啟。出錯的地方大致來自以下幾個細節，有時需要邊修邊試，才能讓純文字資料檔案符合csv格式：</p>
 <ul>
-<li>header. A lot of the time when you’re storing data as a csv file the first row actually contains the column names and not data. If that’s not true then it’s a good idea to open up the csv file in a spreadsheet programme such as Open Office and add the header row manually.</li>
-<li>sep. As the name “comma separated value” indicates, the values in a row of a csv file are usually separated by commas. This isn’t universal, however. In Europe the decimal point is typically written as , instead of . and as a consequence it would be somewhat awkward to use , as the separator. Therefore it is not unusual to use ; instead of , as the separator. At other times, I’ve seen a TAB character used.</li>
-<li>quote. It’s conventional in csv files to include a quoting character for textual data. As you can see by looking at the booksales.csv file, this is usually a double quote character, “. But sometimes there is no quoting character at all, or you might see a single quote mark ’ used instead.</li>
-<li>skip. It’s actually very common to receive CSV files in which the first few rows have nothing to do with the actual data. Instead, they provide a human readable summary of where the data came from, or maybe they include some technical info that doesn’t relate to the data.</li>
-<li>missing values. Often you’ll get given data with missing values. For one reason or another, some entries in the table are missing. The data file needs to include a “special” value to indicate that the entry is missing. By default jamovi assumes that this value is 99<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, for both numeric and text data, so you should make sure that, where necessary, all missing values in the csv file are replaced with 99 (or -9999; whichever you choose) before opening / importing the file into jamovi. Once you have opened / imported the file into jamovi all the missing values are converted to blank or greyed out cells in the jamovi spreadsheet view. You can also change the missing value for each variable as an option in the Data - Setup view.</li>
+<li>變項名稱。通常第一列應該是變項名稱而非資料，如果不是的話jamovi可以開啟，但是無法做正確的資料分析。這種狀況可以用試算表軟體重新開啟，手動編輯應該有的變項名稱。</li>
+<li>欄位間隔。合格的csv檔以半形逗號(,)區隔變項欄位，不過有些歐洲國家習慣用半形逗號代表小數點，因此csv檔的欄位間隔是以半形分號(;)代表。台灣各單位資料的csv檔會混合使用半形逗號與製表鍵(Tab鍵)代表欄位間隔。如果遇到請先置換並存檔後再用jamovi開啟。</li>
+<li>引號。如同 booksales.csv 的示範，csv資料檔案內的文字資料都是包 在兩個半形雙引號(“)之間。有的csv資料檔案會用半形單引號(’)。</li>
+<li>跳列資訊。有的csv檔案內會在開頭幾行插入非資料的說明資訊，因為不符合檔案格式，無法被正確讀取。</li>
+<li>遺漏值。統計實務最常要處理的狀況就是遺漏值。遺漏值的來源千奇百怪，用心的資料收集者會用特別的記號代表遺漏值。不論是數字還是文字資料，jamovi預設以NA代表遺漏值<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>。請注意用jamovi開啟資料檔之前，確保資料內的遺漏值都已轉換為預設記號。開啟資料庫之後，資料區可看到的遺漏值會以空白或灰階顯示。如果某個變項裡有不符合預設記號的遺漏值，可以開啟Data面板的Setup對話視窗，自行加入遺漏值記號。</li>
 </ul>
+
+<!---
+The first thing I should point out is that if your data are saved as a text file but aren't quite in the proper csv format then there's still a pretty good chance that jamovi will be able to open it. You just need to try it and see if it works. Sometimes though you will need to change some of the formatting. The ones that I've often found myself needing to change are:
+
+-   header. A lot of the time when you're storing data as a csv file the first row actually contains the column names and not data. If that's not true then it's a good idea to open up the csv file in a spreadsheet programme such as Open Office and add the header row manually.
+-   sep. As the name "comma separated value" indicates, the values in a row of a csv file are usually separated by commas. This isn't universal, however. In Europe the decimal point is typically written as , instead of . and as a consequence it would be somewhat awkward to use , as the separator. Therefore it is not unusual to use ; instead of , as the separator. At other times, I've seen a TAB character used.
+-   quote. It's conventional in csv files to include a quoting character for textual data. As you can see by looking at the booksales.csv file, this is usually a double quote character, ". But sometimes there is no quoting character at all, or you might see a single quote mark ' used instead.
+-   skip. It's actually very common to receive CSV files in which the first few rows have nothing to do with the actual data. Instead, they provide a human readable summary of where the data came from, or maybe they include some technical info that doesn't relate to the data.
+-   missing values. Often you'll get given data with missing values. For one reason or another, some entries in the table are missing. The data file needs to include a "special" value to indicate that the entry is missing. By default jamovi assumes that this value is 99[^getting-started-with-jamovi-4], for both numeric and text data, so you should make sure that, where necessary, all missing values in the csv file are replaced with 99 (or -9999; whichever you choose) before opening / importing the file into jamovi. Once you have opened / imported the file into jamovi all the missing values are converted to blank or greyed out cells in the jamovi spreadsheet view. You can also change the missing value for each variable as an option in the Data - Setup view.
+
+[^getting-started-with-jamovi-4]: You can change the default value for missing values in jamovi from the top right menu (three vertical dots), but this only works at the time of importing data files into jamovi. The default missing value in the dataset should not be a valid number associated with any of the variables, e.g. you could use -9999 as this is unlikely to be a valid value.--->
 </section>
 <section id="套裝軟體專用格式如spss" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="套裝軟體專用格式如spss"><span class="header-section-number">3.5.2</span> 套裝軟體專用格式(如SPSS)</h3>
-<p>The commands listed above are the main ones we’ll need for data files in this book. But in real life we have many more possibilities. For example, you might want to read data files in from other statistics programs. Since SPSS is probably the most widely used statistics package in psychology, it’s worth mentioning that jamovi can also import SPSS data files (file extension .sav). Just follow the instructions above for how to open a csv file, but this time navigate to the .sav file you want to import. For SPSS files, jamovi will regard all values as missing if they are regarded as “system missing” files in SPSS. The ‘Default missings’ value does not seem to work as expected when importing SPSS files, so be aware of this - you might need another step: import the SPSS file into jamovi, then export as a csv file before re-opening in jamovi.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<p>And that’s pretty much it, at least as far as SPSS goes. As far as other statistical software goes, jamovi can also directly open / import SAS and STATA files.</p>
+<p>如果你習慣了使用jamovi進行統計分析，在非本書示範的真實場景，你有可能要處理的資料檔是套裝軟體專用格式。最常見的是SPSS資料檔(.sav)，最新版本的jamovi都可以匯入，操作如同開啟csv資料檔。但是要注意資料中的遺漏值除非標記是”system missing”或jamovi的預設記號，其他遺漏值記號都會被當成是有效數值。建議第一次匯入SPSS資料庫，馬上匯出為csv資料檔，在試算表軟體裡處理好遺漏值再用jamovi重新開啟<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。</p>
+<p>如果遺漏值問題能解決，jamovi能做和SPSS一樣的分析。其他套裝統計軟體的資料檔，像是SAS與STATA，也可以用同樣的操作處理。</p>
+<!---The commands listed above are the main ones we'll need for data files in this book. But in real life we have many more possibilities. For example, you might want to read data files in from other statistics programs. Since SPSS is probably the most widely used statistics package in psychology, it's worth mentioning that jamovi can also import SPSS data files (file extension .sav). Just follow the instructions above for how to open a csv file, but this time navigate to the .sav file you want to import. For SPSS files, jamovi will regard all values as missing if they are regarded as "system missing" files in SPSS. The 'Default missings' value does not seem to work as expected when importing SPSS files, so be aware of this - you might need another step: import the SPSS file into jamovi, then export as a csv file before re-opening in jamovi.[^getting-started-with-jamovi-5]
+
+[^getting-started-with-jamovi-5]: I know this is a bit of a fudge, but it does work and hopefully this will be fixed in a later version of jamovi.
+
+And that's pretty much it, at least as far as SPSS goes. As far as other statistical software goes, jamovi can also directly open / import SAS and STATA files.--->
 </section>
 <section id="微軟excel資料格式" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="微軟excel資料格式"><span class="header-section-number">3.5.3</span> 微軟Excel資料格式</h3>
-<p>A different problem is posed by Excel files. Despite years of yelling at people for sending data to me encoded in a proprietary data format, I get sent a lot of Excel files. The way to handle Excel files is to open them up first in Excel or another spreadsheet programme that can handle Excel files, and then export the data as a csv file before opening / importing the csv file into jamovi.</p>
+<p>本書原作者很不喜歡資料以Excel格式存檔，因為用jamovi開啟Excel檔案問題更多。如果你處理的作業遇到的話，最好先用試算表軟體開啟，另存為csv文字檔，再用jamovi開啟。</p>
+<!---A different problem is posed by Excel files. Despite years of yelling at people for sending data to me encoded in a proprietary data format, I get sent a lot of Excel files. The way to handle Excel files is to open them up first in Excel or another spreadsheet programme that can handle Excel files, and then export the data as a csv file before opening / importing the csv file into jamovi.--->
 </section>
 </section>
 <section id="sec-Changing-data-from-one-level-to-another" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="sec-Changing-data-from-one-level-to-another"><span class="header-section-number">3.6</span> 更動資料變項性質</h2>
-<p>Sometimes you want to change the variable level. This can happen for all sorts of reasons. Sometimes when you import data from files, it can come to you in the wrong format. Numbers sometimes get imported as nominal, text values. Dates may get imported as text. ParticipantID values can sometimes be read as continuous: nominal values can sometimes be read as ordinal or even continuous. There’s a good chance that sometimes you’ll want to convert a variable from one measurement level into another one. Or, to use the correct term, you want to <strong>coerce</strong> the variable from one class into another.</p>
-<p>Earlier we saw how to specify different variable levels, and if you want to change a variable’s measurement level then you can do this in the jamovi data view for that variable. Just click the check box for the measurement level you want - continuous, ordinal, or nominal.</p>
+<p>為了方便排序數值，或是匯入的資料型態不正確，你會想要手動改變變項級別。像是匯入後的數字被判定為名義變項；日期被當成一般文字；受測者編號被當成連續變項。這些時候你會想把變項型態<strong>壓製</strong>成真正的樣子。</p>
+<p>這時請擅用”測量級別設定面板” (參考 <a href="#fig-fig3-2">Figure&nbsp;<span>3.2</span></a> )，改變“Measurement Type”的選項，調整變項為你要的尺度。</p>
+<!---Sometimes you want to change the variable level. This can happen for all sorts of reasons. Sometimes when you import data from files, it can come to you in the wrong format. Numbers sometimes get imported as nominal, text values. Dates may get imported as text. ParticipantID values can sometimes be read as continuous: nominal values can sometimes be read as ordinal or even continuous. There's a good chance that sometimes you'll want to convert a variable from one measurement level into another one. Or, to use the correct term, you want to **coerce** the variable from one class into another.
+
+Earlier we saw how to specify different variable levels, and if you want to change a variable's measurement level then you can do this in the jamovi data view for that variable. Just click the check box for the measurement level you want - continuous, ordinal, or nominal. --->
 </section>
 <section id="安裝jamovi擴充模組" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="安裝jamovi擴充模組"><span class="header-section-number">3.7</span> 安裝jamovi擴充模組</h2>
-<p>A really great feature of jamovi is the ability to install add-on modules from the jamovi library. These add-on modules have been developed by the jamovi community, i.e., jamovi users and developers who have created special software add-ons that do other, usually more advanced, analyses that go beyond the capabilities of the base jamovi program.</p>
-<p>To install add-on modules, just click on the large <span class="math inline">\(+\)</span> in the top right of the jamovi window, select “jamovi-library” and then browse through the various add-on modules that are available. Choose the one(s) you want, and then install them, as in <a href="#fig-fig3-6">Figure&nbsp;<span>3.6</span></a>. It’s that easy. The newly installed modules can then be accessed from the “Analyses” button bar. Try it…useful add-on modules to install include “scatr” (added under “Descriptives”) and <span class="math inline">\(R_j\)</span>.</p>
+<p>jamovi的最大賣點是使用者能依實際需要，自行從擴充模組庫安排需要的模組。模組都是由jamovi社區成員熱情開發貢獻。當你有需要進行較複雜的統計分析，可以找找模組庫裡有沒有符合目的的模組。</p>
+<p>安裝模組的操作很簡單，只要按一下主畫面右上方的<strong>大十字</strong>，就能開啟如 <a href="#fig-fig3-6">Figure&nbsp;<span>3.6</span></a> 的清單視窗。接著如同逛購物網站一樣，找到想用的模組，按下”Install”按鈕，等幾秒後，主畫面”Analysis”面板上方顯示模組圖示，就能開始使用。推薦安裝的模組有”scatr”(安裝後加強”Descriptives”模組功能)，“lsj-data”(本書示範檔案集合，安裝後開啟檔案”Open”選單增加”Data Library”，以及<span class="math inline">\(R_j\)</span>(R程式碼編譯介面)。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<!---A really great feature of jamovi is the ability to install add-on modules from the jamovi library. These add-on modules have been developed by the jamovi community, i.e., jamovi users and developers who have created special software add-ons that do other, usually more advanced, analyses that go beyond the capabilities of the base jamovi program.
+
+To install add-on modules, just click on the large $+$ in the top right of the jamovi window, select "jamovi-library" and then browse through the various add-on modules that are available. Choose the one(s) you want, and then install them, as in @fig-fig3-6. It's that easy. The newly installed modules can then be accessed from the "Analyses" button bar. Try it...useful add-on modules to install include "scatr" (added under "Descriptives") and $R_j$. --->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig3-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/fig3-6.png" class="img-fluid figure-img" width="1440"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.6: Installing add-on modules in jamovi</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.6: jamovi擴充模組庫管理面板</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -531,24 +614,43 @@ MEAN(A, B)<br>
 </section>
 <section id="關閉jamovi" class="level2" data-number="3.8">
 <h2 data-number="3.8" class="anchored" data-anchor-id="關閉jamovi"><span class="header-section-number">3.8</span> 關閉jamovi</h2>
-<p>There’s one last thing I should cover in this chapter: how to quit jamovi. It’s not hard, just close the program the same way you would any other program. However, what you might want to do before you quit is save your work! There are two parts to this: saving any changes to the data set, and saving the analyses that you ran.</p>
-<p>It is good practice to save any changes to the data set as a <em>new</em> data set. That way you can always go back to the original data. To save any changes in jamovi, select ‘Export’…‘Data’ from the main jamovi menu (button with three horizontal bars in the top left) and create a new file name for the changed data set.</p>
-<p>Alternatively, you can save <em>both</em> the changed data and any analyses you have undertaken by saving as a jamovi file. To do this, from the main jamovi menu select ‘Save as’ and type in a file name for this ‘jamovi file (.omv)’. Remember to save the file in a location where you can find it again later. I usually create a new folder for specific data sets and analyses.</p>
+<p>本章結束前來談談如何正確關閉jamovi。操作不難，就像關閉任何應用程式一樣。<strong>但是</strong>，關閉前一定要記得存檔！統計軟體的存檔其實分成兩種：儲存更新過的資料檔；儲存資料分析結果。</p>
+<p>更新的資料檔最好<strong>另存新檔</strong>，保留原始檔案能避免悲劇發生。步驟是從檔案管理面板(主畫面左上角三條橫線)開啟，選擇Export，再選擇檔案格式(建議csv)，取好新檔案名稱後，按Enter鍵或點按右上方的”Export”都能完成另存新檔。</p>
+<p>另外，儲存為jamovi專案檔(.omv)就會包括資料及分析結果兩部分。步驟是從檔案管理面板(主畫面左上角三條橫線)開啟，選擇Save as，取好檔案名稱後，按Enter鍵或點按右上方的”Save”都能完成存檔。請記得要為存檔的資料夾找個容易找到的地方，特定的檔案用特定資料夾區分。</p>
+<!---There's one last thing I should cover in this chapter: how to quit jamovi. It's not hard, just close the program the same way you would any other program. However, what you might want to do before you quit is save your work! There are two parts to this: saving any changes to the data set, and saving the analyses that you ran.
+
+It is good practice to save any changes to the data set as a *new* data set. That way you can always go back to the original data. To save any changes in jamovi, select 'Export'...'Data' from the main jamovi menu (button with three horizontal bars in the top left) and create a new file name for the changed data set.
+
+Alternatively, you can save *both* the changed data and any analyses you have undertaken by saving as a jamovi file. To do this, from the main jamovi menu select 'Save as' and type in a file name for this 'jamovi file (.omv)'. Remember to save the file in a location where you can find it again later. I usually create a new folder for specific data sets and analyses. --->
 </section>
-<section id="本章小節" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="本章小節"><span class="header-section-number">3.9</span> 本章小節</h2>
-<p>Every book that tries to teach a new statistical software program to novices has to cover roughly the same topics, and in roughly the same order. Ours is no exception, and so in the grand tradition of doing it just the same way everyone else did it, this chapter covered the following topics:</p>
+<section id="本章小結" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="本章小結"><span class="header-section-number">3.9</span> 本章小結</h2>
+<p>每本統計軟體教科書都會有這些大同小異的起始課程。本書也不例外，幫助讀者通過最少障礙上手jamovi。這一章的各節主題重點如下：</p>
 <ul>
-<li>[Installing jamovi]. We downloaded and installed jamovi, and started it up.</li>
-<li>[Analyses]. We very briefly oriented to the part of jamovi where analyses are done and results appear, but then deferred this until later in the book.</li>
-<li>[The spreadsheet]. We spent more time looking at the spreadsheet part of jamovi, and considered different variable types, and how to compute new variables.</li>
-<li>[Loading data in jamovi]. We also saw how to load data files in jamovi.</li>
-<li>[Importing unusual data files]. Then we figured out how to open other data files, from different file types.</li>
-<li>[Changing data from one level to another]. And saw that sometimes we need to coerce data from one type to another.</li>
-<li>[Installing add-on modules into jamovi]. Installing add-on modules from the jamovi community really extends jamovi capabilities.</li>
-<li>[Quitting jamovi]. Finally, we looked at good practice in terms of saving your data set and analyses when you have finished and are about to quit jamovi.</li>
+<li><a href="03-Getting-started-with-jamovi.html#安裝jamovi">安裝jamovi</a> 下載、安裝、啟動jamovi</li>
+<li><a href="03-Getting-started-with-jamovi.html#分析模組">分析模組</a> 簡介主要介面各部分功能，像是如何開始分析，結果輸出位置。</li>
+<li><a href="03-Getting-started-with-jamovi.html#資料試算表">資料試算表</a> 了解資料試算表的特色，各種變項設定，建立計算變項。</li>
+<li><a href="03-Getting-started-with-jamovi.html#載入資料檔案">載入資料檔案</a> 示範開啟要分析的資料。</li>
+<li><a href="03-Getting-started-with-jamovi.html#匯入非示範格式的資料檔">匯入非示範格式的資料檔</a> 開啟各種格式資料庫的注意事項。</li>
+<li><a href="03-Getting-started-with-jamovi.html#sec-Changing-data-from-one-level-to-another">更動資料變項性質</a> 如何改變變項尺度。</li>
+<li><a href="03-Getting-started-with-jamovi.html#安裝jamovi擴充模組">安裝jamovi擴充模組</a> 找到及安裝社區使用者開發的模組。</li>
+<li><a href="03-Getting-started-with-jamovi.html#關閉jamovi">關閉jamovi</a> 關閉之前如何存檔的建議。</li>
 </ul>
-<p>We still haven’t arrived at anything that resembles data analysis. Maybe the next Chapter will get us a bit closer!</p>
+<p>到這裡還沒有真的開始處理資料，下一章才是真正的開始。</p>
+<!---
+
+Every book that tries to teach a new statistical software program to novices has to cover roughly the same topics, and in roughly the same order. Ours is no exception, and so in the grand tradition of doing it just the same way everyone else did it, this chapter covered the following topics:
+
+-   [安裝jamovi]. We downloaded and installed jamovi, and started it up.
+-   [分析模組]. We very briefly oriented to the part of jamovi where analyses are done and results appear, but then deferred this until later in the book.
+-   [資料試算表](03-Getting-started-with-jamovi.html#%E8%B3%87%E6%96%99%E8%A9%A6%E7%AE%97%E8%A1%A8) We spent more time looking at the spreadsheet part of jamovi, and considered different variable types, and how to compute new variables.
+-   [Loading data in jamovi]. We also saw how to load data files in jamovi.
+-   [Importing unusual data files]. Then we figured out how to open other data files, from different file types.
+-   [Changing data from one level to another]. And saw that sometimes we need to coerce data from one type to another.
+-   [Installing add-on modules into jamovi]. Installing add-on modules from the jamovi community really extends jamovi capabilities.
+-   [Quitting jamovi]. Finally, we looked at good practice in terms of saving your data set and analyses when you have finished and are about to quit jamovi.
+
+We still haven't arrived at anything that resembles data analysis. Maybe the next Chapter will get us a bit closer! --->
 <hr>
 
 
@@ -556,12 +658,15 @@ MEAN(A, B)<br>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Source: Dismal Light (1968).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>As of the first writing this in August 2018. Later versions of this book will use later versions of jamovi.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Although jamovi is updated frequently it doesn’t usually make much of a difference for the sort of work we’ll do in this book. In fact, during the writing of the book I upgraded several times and it didn’t make much difference at all to what is in this book.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>In later versions of jamovi there is a pre-defined function ‘Z’ to compute z-scores, which is much easier!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>You can change the default value for missing values in jamovi from the top right menu (three vertical dots), but this only works at the time of importing data files into jamovi. The default missing value in the dataset should not be a valid number associated with any of the variables, e.g.&nbsp;you could use -9999 as this is unlikely to be a valid value.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>I know this is a bit of a fudge, but it does work and hopefully this will be fixed in a later version of jamovi.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>jamovi的最早版本於2018年八月問世。這本電子書將隨新版本的更新配合修改。<!---As of the first writing this in August 2018. Later versions of this book will use later versions of jamovi.---><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>譯註 ~ jamovi開發團隊於2021年推出不必安裝，直接在網路瀏覽器使用的<a href="https://www.jamovi.org/cloud.html">雲端測試版</a>。雲端版與本機版的操作特點在本書後續介紹。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>雖然jamovi經常更新，但是這本書的示範內容不會有太大變化。原著作者編寫時已經多次修改，之後的電子書內容更新不會差異太大。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>新版jamovi有內建函式<code>Z</code>可計算數值資料變項的z分數，使用者不必再自訂計算變項公式。 <!---In later versions of jamovi there is a pre-defined function 'Z' to compute z-scores, which is much easier!---><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>譯註~雲端版操作方法相同。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>譯註~原作者以jamovi擴充模組<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>你可以從設定面板(主畫面右上角三個小點圖示按鈕)更改遺漏值的代表記號，也就是更改”Default missings”欄內的記號。設定原則是不可讓遺漏值的記號等於資料內的有效數值，例如-9999。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>這些步驟聽起來很麻煩，不過未來的更新版還沒有完美的解決之前，這是比較有保障的做法。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>譯註~雲端版分為免費的GUEST PLAN與付費訂閱的PRIORITY PLAN。只有PRIORITY PLAN能安裝擴充模組，但是不包括<span class="math inline">\(R_j\)</span>。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -813,7 +918,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/davidfoxcroft\.github\.io\/lsj-book\//);
+      var filterRegex = new RegExp(/https:\/\/scgeeker\.github\.io\/lsj-book-zh_tw\//);
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
@@ -831,12 +936,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./02-A-brief-introduction-to-research-design.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">簡易入門研究設計</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./04-Descriptive-statistics.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -844,7 +949,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://learnstatswithjamovi.com">用jamovi上手統計學</a></div>   
-    <div class="nav-footer-right">電子書使用 <a href="https://quarto.org/">Quarto</a> 創建</div>
+    <div class="nav-footer-right">電子書使用 <a href="https://quarto.org/">Quarto套件</a>創建</div>
   </div>
 </footer>
 
