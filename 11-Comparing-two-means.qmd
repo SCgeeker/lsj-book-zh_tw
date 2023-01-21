@@ -703,10 +703,19 @@ knitr::include_graphics("images/fig11-27.png")
 
 ## 本章小結
 
+- [單一樣本z檢定](11-Comparing-two-means.html#%E5%96%AE%E4%B8%80%E6%A8%A3%E6%9C%ACz%E6%AA%A2%E5%AE%9A) 用來比對樣本平均值是否不同於母群平均值。
+- 獨立樣本t檢定用於比較兩組平均值的差異，虛無假設設定兩組平均值相等。實務上會使用適用條件 是兩組變異相同的[獨立樣本t檢定](11-Comparing-two-means.html#sec-The-one-sample-t-test)，或是兩組變異不同的[獨立樣本t檢定(Welch t檢定)](11-Comparing-two-means.html#sec-the-independent-samples-t-test-welch-test)。
+- [相依樣本t檢定](11-Comparing-two-means.html#%E7%9B%B8%E4%BE%9D%E6%A8%A3%E6%9C%ACt%E6%AA%A2%E5%AE%9A)用於比較的資料來自同一個樣本的測量，虛無假設設定兩次測量的平均值相等。分析方法與適用條件與單一樣本t檢定相同。
+- 只有事前規劃差異比較方向，[單尾檢定](11-Comparing-two-means.html#%E5%96%AE%E5%B0%BE%E6%AA%A2%E5%AE%9A) 才有真正的意義。
+- t檢定的[效果量](11-Comparing-two-means.html#t%E6%AA%A2%E5%AE%9A%E7%9A%84%E6%95%88%E6%9E%9C%E9%87%8F)以Cohen' d的公式計算。
+- 我們能使用QQ圖及Shapiro-Wilk檢定[檢測樣本常態性](11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample)
+- 如果資料真的違反常態性，你可以使用[非常態資料的檢定](11-Comparing-two-means.html#%E9%9D%9E%E5%B8%B8%E6%85%8B%E8%B3%87%E6%96%99%E7%9A%84%E6%AA%A2%E5%AE%9A)像是曼－惠特尼U檢定，以及Wilcoxon檢定。
+
+<!---
 - [The one-sample t-test] is used to compare a single sample mean against a hypothesised value for the population mean.
 - An independent samples t-test is used to compare the means of two groups, and tests the null hypothesis that they have the same mean. It comes in two forms: [The independent samples t-test (Student test)](#sec-the-independent-samples-t-test-student-test) assumes that the groups have the same standard deviation, [The independent samples t-test (Welch test)](#sec-the-independent-samples-t-test-welch-test) does not.
 - [The paired-samples t-test] is used when you have two scores from each person, and you want to test the null hypothesis that the two scores have the same mean. It is equivalent to taking the difference between the two scores for each person, and then running a one sample t-test on the difference scores.
 - [One-sided tests] are perfectly legitimate as long as they are pre-planned (like all tests!).
 - [Effect size] calculations for the difference between means can be calculated via the Cohen's d statistic.
 - [Checking the normality of a sample] using QQ plots and the Shapiro-Wilk test.
-- If your data are non-normal, you can use Mann-Whitney or Wilcoxon tests instead of t-tests for [Testing non-normal data].
+- If your data are non-normal, you can use Mann-Whitney or Wilcoxon tests instead of t-tests for [Testing non-normal data]. --->

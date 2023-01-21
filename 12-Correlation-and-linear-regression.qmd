@@ -212,7 +212,7 @@ which in turn means that we can write down the complete linear regression model 
 
 $$Y_i=b_0+b_1X_i+\epsilon_i$$
 
-## 線性迴歸模型參數估計
+## 線性迴歸模型的參數估計
 
 Okay, now let's redraw our pictures but this time I'll add some lines to show the size of the residual for all observations. When the regression line is good, our residuals (the lengths of the solid black lines) all look pretty small, as shown in @fig-fig12-12 (a), but when the regression line is a bad one the residuals are a lot larger, as you can see from looking at @fig-fig12-12 (b). Hmm. Maybe what we "want" in a regression model is *small* residuals. Yes, that does seem to make sense. In fact, I think I'll go so far as to say that the "best fitting" regression line is the one that has the smallest residuals. Or, better yet, since statisticians seem to like to take squares of everything why not say that:
 
@@ -380,7 +380,7 @@ The 'Model Coefficients' at the bottom of the jamovi analysis results shown in @
 
 The only thing that the coefficients table itself doesn't list is the degrees of freedom used in the t-test, which is always $N - K - 1$ and is listed in the table at the top of the output, labelled 'Model Fit Measures'. We can see from this table that the model performs significantly better than you'd expect by chance ($F(2,97) = 215.24, p< .001$), which isn't all that surprising: the $R^2 = .81$ value indicate that the regression model accounts for $81\%$ of the variability in the outcome measure (and $82\%$ for the adjusted $R^2$ ). However, when we look back up at the t-tests for each of the individual coefficients, we have pretty strong evidence that the baby.sleep variable has no significant effect. All the work in this model is being done by the dani.sleep variable. Taken together, these results suggest that this regression model is actually the wrong model for the data. You'd probably be better off dropping the baby.sleep predictor entirely. In other words, the simple regression model that we started with is the better model.
 
-## 更多迴歸模型透露的資訊
+## 迴歸係數的更多資訊
 
 Before moving on to discuss the assumptions underlying linear regression and what you can do to check if they're being met, there's two more topics I want to briefly discuss, both of which relate to the regression coefficients. The first thing to talk about is calculating confidence intervals for the coefficients. After that, I'll discuss the somewhat murky question of how to determine which predictor is most important.
 
@@ -630,6 +630,17 @@ knitr::include_graphics("images/fig12-24.png")
 
 ## 本章小結
 
+- 想了解兩個變項之間的關聯性有多強？就計算[相關係數](12-Correlation-and-linear-regression.html#%E7%9B%B8%E9%97%9C)
+- [散佈圖](12-Correlation-and-linear-regression.html#%E6%95%A3%E4%BD%88%E5%9C%96)繪製方法
+- 前進下一章前必學的課題：[什麼是線性迴歸模型](12-Correlation-and-linear-regression.html#%E8%AA%8D%E8%AD%98%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8%E6%A8%A1%E5%9E%8B) 以及[ 使用線性迴歸模型估計參數](12-Correlation-and-linear-regression.html#%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%83%E6%95%B8%E4%BC%B0%E8%A8%88)
+- [多元線性迴歸](http://localhost:7933/12-Correlation-and-linear-regression.html#%E5%A4%9A%E5%85%83%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8)
+- [量化迴歸模型的適配性](http://localhost:7933/12-Correlation-and-linear-regression.html#%E9%87%8F%E5%8C%96%E8%BF%B4%E6%AD%B8%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%81%A9%E9%85%8D%E6%80%A7) 要了解 $R^2$ 。
+- [迴歸模型的假設檢定](12-Correlation-and-linear-regression.html#%E8%BF%B4%E6%AD%B8%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%81%87%E8%A8%AD%E6%AA%A2%E5%AE%9A)
+- 在[迴歸係數的更多資訊](12-Correlation-and-linear-regression.html#%E8%BF%B4%E6%AD%B8%E4%BF%82%E6%95%B8%E7%9A%84%E6%9B%B4%E5%A4%9A%E8%B3%87%E8%A8%8A) 這一節，我們學習如何計算[迴歸係數的信賴區間](12-Correlation-and-linear-regression.html#%E8%BF%B4%E6%AD%B8%E4%BF%82%E6%95%B8%E7%9A%84%E4%BF%A1%E8%B3%B4%E5%8D%80%E9%96%93)以及[標準化迴歸係數的計算方法](12-Correlation-and-linear-regression.html#%E6%A8%99%E6%BA%96%E5%8C%96%E8%BF%B4%E6%AD%B8%E4%BF%82%E6%95%B8%E7%9A%84%E8%A8%88%E7%AE%97%E6%96%B9%E6%B3%95)
+- [迴歸模型的適用條件](12-Correlation-and-linear-regression.html#%E8%BF%B4%E6%AD%B8%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%81%A9%E7%94%A8%E6%A2%9D%E4%BB%B6) 以及[診斷適用條件](http://localhost:7933/12-Correlation-and-linear-regression.html#sec-Model-checking)
+- [決定線性模型的變項組合](12-Correlation-and-linear-regression.html#%E6%B1%BA%E5%AE%9A%E7%B7%9A%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%8A%E9%A0%85%E7%B5%84%E5%90%88)
+
+<!---
 -   Want to know how strong the relationship is between two variables? Calculate [Correlations]
 -   Drawing [Scatterplots]
 -   Basic ideas about [What is a linear regression model?] and [Estimating a linear regression model]
@@ -639,3 +650,4 @@ knitr::include_graphics("images/fig12-24.png")
 -   In [Regarding regression coefficients] we talked about calculating [Confidence intervals for the coefficients] and [Calculating standardised regression coefficients]
 -   The [Assumptions of regression] and [Model checking]
 -   Regression [Model selection]
+--->

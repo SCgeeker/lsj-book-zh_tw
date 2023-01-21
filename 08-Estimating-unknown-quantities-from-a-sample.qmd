@@ -7,7 +7,7 @@ source("header.R")
 
 At the start of the last chapter I highlighted the critical distinction between descriptive statistics and *inferential statistics*. As discussed in @sec-Descriptive-statistics, the role of descriptive statistics is to concisely summarise what we *do* know. In contrast, the purpose of inferential statistics is to "learn what we do not know from what we do". Now that we have a foundation in probability theory we are in a good position to think about the problem of statistical inference. What kinds of things would we like to learn about? And how do we learn them? These are the questions that lie at the heart of inferential statistics, and they are traditionally divided into two "big ideas": estimation and hypothesis testing. The goal in this chapter is to introduce the first of these big ideas, estimation theory, but I'm going to witter on about sampling theory first because estimation theory doesn't make sense until you understand sampling. As a consequence, this chapter divides naturally into two parts, the first three sections are focused on sampling theory, and the last two sections make use of sampling theory to discuss how statisticians think about estimation.
 
-## 樣本、母群、取樣
+## 樣本、母群、抽樣
 
 In the Prelude to part IV I discussed the riddle of induction and highlighted the fact that all learning requires you to make assumptions. Accepting that this is true, our first task to come up with some fairly general assumptions about data that make sense. This is where **sampling theory** comes in. If probability theory is the foundations upon which all statistical theory builds, sampling theory is the frame around which you can build the rest of the house. Sampling theory plays a huge role in specifying the assumptions upon which your statistical inferences rely. And in order to talk about "making inferences" the way statisticians think about it we need to be a bit more explicit about what it is that we're drawing inferences *from* (the sample) and what it is that we're drawing inferences about (the population).
 
@@ -353,6 +353,16 @@ When it comes to plotting confidence intervals in jamovi, you can specify that t
 
 ## 本章小結
 
+這一章涵蓋兩大主題。前半部是談抽樣理論，後半部談運用抽樣理論估計母群參數。兩大主題分為幾個小主題：
+
+- 有關[樣本、母群、抽樣](08-Estimating-unknown-quantities-from-a-sample.html#%E6%A8%A3%E6%9C%AC%E6%AF%8D%E7%BE%A4%E5%8F%96%E6%A8%A3)的基本概念
+- 抽樣的機率理論：[大數法則](08-Estimating-unknown-quantities-from-a-sample.html#%E5%A4%A7%E6%95%B8%E6%B3%95%E5%89%87)、[樣本分佈與中央極限定理](08-Estimating-unknown-quantities-from-a-sample.html#%E6%A8%A3%E6%9C%AC%E5%88%86%E4%BD%88%E8%88%87%E4%B8%AD%E5%A4%AE%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86)
+- [母群參數的點估計](08-Estimating-unknown-quantities-from-a-sample.html#%E6%AF%8D%E7%BE%A4%E5%8F%83%E6%95%B8%E7%9A%84%E9%BB%9E%E4%BC%B0%E8%A8%88)討論平均值及標準差的機率意義。
+- [母群參數的區間估計](08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-a-confidence-interval)
+
+還有許多抽樣與估計的主題並未談到，本章對於心理學及統計的初學者應該是能夠理解且能吸收的。而且應用取向的心理學者不大需要深入了解統計理論。唯一你可能需要了解但本章未探討的問題，是分析的資料不是來自隨機樣本的狀況。其實已經有許多處理非隨機樣本的統計理論，不過已經超出本書範圍了。
+
+<!---
 In this chapter I've covered two main topics. The first half of the chapter talks about sampling theory, and the second half talks about how we can use sampling theory to construct estimates of the population parameters. The section breakdown looks like this:
 
 - Basic ideas about [Samples, populations and sampling]
@@ -361,3 +371,4 @@ In this chapter I've covered two main topics. The first half of the chapter talk
 - [Estimating a confidence interval]
 
 As always, there's a lot of topics related to sampling and estimation that aren't covered in this chapter, but for an introductory psychology class this is fairly comprehensive I think. For most applied researchers you won't need much more theory than this. One big question that I haven't touched on in this chapter is what you do when you don't have a simple random sample. There is a lot of statistical theory you can draw on to handle this situation, but it's well beyond the scope of this book.
+--->

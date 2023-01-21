@@ -15,7 +15,7 @@ The ideas I've presented to you in this book describe inferential statistics fro
 
 This chapter comes in two parts. In the first three sections I talk about what Bayesian statistics are all about, covering the basic mathematical rules for how it works as well as an explanation for why I think the Bayesian approach is so useful. Afterwards, I provide a brief overview of how you can do [Bayesian t-tests].
 
-## 理性人類的機率推論
+## 理性者的機率推論
 
 From a Bayesian perspective statistical inference is all about *belief revision*. I start out with a set of candidate hypotheses h about the world. I don't know which of these hypotheses is true, but do I have some beliefs about which hypotheses are plausible and which are not. When I observe the data, d, I have to revise those beliefs. If the data are consistent with a hypothesis, my belief in that hypothesis is strengthened. If the data are inconsistent with the hypothesis, my belief in that hypothesis is weakened. That's it! At the end of this section I'll give a precise description of how Bayesian reasoning works, but first I want to work through a simple example in order to introduce the key ideas. Consider the following reasoning problem.
 
@@ -368,6 +368,13 @@ knitr::include_graphics("images/fig16-4.png")
 
 ## 本章小結
 
-The first half of this chapter was focused primarily on the theoretical underpinnings of Bayesian statistics. I introduced the mathematics for how Bayesian inference works in the section on [Probabilistic reasoning by rational agents], and gave a very basic overview of Bayesian hypothesis tests]. Finally, I devoted some space to talking about why I think [Bayesian methods are worth using](Why be a Bayesian).
+本章前半部主要討論貝氏統計學的理論基礎。[理性者的機率推論](16-Bayesian-statistics.html#%E7%90%86%E6%80%A7%E8%80%85%E7%9A%84%E6%A9%9F%E7%8E%87%E6%8E%A8%E8%AB%96)這一節介紹貝氏推論的數學推導，接著概述[貝氏假設檢定](16-Bayesian-statistics.html#%E8%B2%9D%E6%B0%8F%E5%81%87%E8%A8%AD%E6%AA%A2%E5%AE%9A)。然後我在[為何需要貝氏統計](16-Bayesian-statistics.html#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81%E8%B2%9D%E6%B0%8F%E7%B5%B1%E8%A8%88)說明希望同學學習貝氏統計的理由。
 
-Then I gave a practical example, with [Bayesian t-tests]. If you're interested in learning more about the Bayesian approach, there are many good books you could look into. John Kruschke's book *Doing Bayesian Data Analysis* is a pretty good place to start [@Kruschke2011] and is a nice mix of theory and practice. His approach is a little different to the "Bayes factor" approach that I've discussed here, so you won't be covering the same ground. If you're a cognitive psychologist, you might want to check out @Lee2014. I picked these two because I think they're especially useful for people in my discipline, but there's a lot of good books out there, so look around!
+後半部是實例說明及演練[貝氏t檢定](16-Bayesian-statistics.html#%E8%B2%9D%E6%B0%8Ft%E6%AA%A2%E5%AE%9A)。如果同學想知道更多貝氏統計，市面上已經有許多好書問世，等著你去研讀學習。 @Kruschke2011 撰寫的教科書*實作貝氏資料分析(Doing Bayesian Data Analysis)*結合理與實作範例，是不錯的第一選擇[^translation-1]。這本書並非以本章介紹的"貝氏因子"介紹具氏統計，所以你不必充分了解本章內容也能閱讀學習。如果是對認知心理學有興趣的同學，應該要找 @Lee2014 的教科書做為進階學習。原作者推薦以上兩本是因為作者的專長領域相近，還有許多不同領域學者所撰寫的貝氏統計教科書或教程，有心學習的同學請好好留意。
+
+
+[^translation-1]: 台灣同學可以找旗標出版社出版的〈AI必須! 從做中學貝氏統計〉做為自學材料。這本書援引John Kruschke的說明方式，介紹各種貝氏統計方法理論細節及運算方法。
+
+<!---The first half of this chapter was focused primarily on the theoretical underpinnings of Bayesian statistics. I introduced the mathematics for how Bayesian inference works in the section on [Probabilistic reasoning by rational agents], and gave a very basic overview of Bayesian hypothesis tests]. Finally, I devoted some space to talking about why I think [Bayesian methods are worth using](Why be a Bayesian).
+
+Then I gave a practical example, with [Bayesian t-tests]. If you're interested in learning more about the Bayesian approach, there are many good books you could look into. John Kruschke's book *Doing Bayesian Data Analysis* is a pretty good place to start [@Kruschke2011] and is a nice mix of theory and practice. His approach is a little different to the "Bayes factor" approach that I've discussed here, so you won't be covering the same ground. If you're a cognitive psychologist, you might want to check out @Lee2014. I picked these two because I think they're especially useful for people in my discipline, but there's a lot of good books out there, so look around!--->

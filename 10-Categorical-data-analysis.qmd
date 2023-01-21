@@ -477,6 +477,16 @@ knitr::include_graphics("images/fig10-9.png")
 
 ## 本章小結
 
+本章的學習重點有：
+
+- [卡方適合度檢定](10-Categorical-data-analysis.html#%E5%8D%A1%E6%96%B9%E9%81%A9%E5%90%88%E5%BA%A6%E6%AA%A2%E5%AE%9A)用於你的表列資料是來自不同類別的觀察次數，虛無假設是可相互比較的已知機率。
+- [卡方獨立性或關聯性檢定](10-Categorical-data-analysis.html#%E5%8D%A1%E6%96%B9%E7%8D%A8%E7%AB%8B%E6%80%A7%E6%AA%A2%E5%AE%9A)用於你的資料是能化為列聯表的觀察次數。虛無假設是兩種變項之間沒有關聯性。
+- 列聯表的[效果量](10-Categorical-data-analysis.html#%E5%8D%A1%E6%96%B9%E6%AA%A2%E5%AE%9A%E7%9A%84%E6%95%88%E6%9E%9C%E9%87%8F)有多種測量方法。在此介紹最常見的Cramér’s V。
+- 上述的卡方檢定法有兩種[適用條件](10-Categorical-data-analysis.html#%E5%8D%A1%E6%96%B9%E6%AA%A2%E5%AE%9A%E7%9A%84%E9%81%A9%E7%94%A8%E6%A2%9D%E4%BB%B6)：期望值次數夠大，觀察值彼此獨立。如果期望值次數不夠大，可以使用[費雪精確檢定](10-Categorical-data-analysis.html#sec-The-Fisher-test)；如果觀察值並非彼此獨立，可以使用[麥內瑪檢定](10-Categorical-data-analysis.html#sec-The-McNemar-test)。
+
+如果想學習更多類別資料分析方法，推薦閱讀 @Agresti1996 的專書"類別資料分析導論"。如果導論書無法滿足你的需要，或者未提供解決手上問題的方法，可以參考 @Agresti2002 的進階書藉。因為是進階書，建議先充分理解導論再來學習進階教科書。
+
+<!---
 The key ideas discussed in this chapter are:
 
 - [The $\chi^2$ (chi-square) goodness-of-fit test] is used when you have a table of observed frequencies of different categories, and the null hypothesis gives you a set of "known" probabilities to compare them to.
@@ -484,4 +494,4 @@ The key ideas discussed in this chapter are:
 - [Effect size] for a contingency table can be measured in several ways. In particular we noted the Cramér's $V$ statistic.
 - Both versions of the Pearson test rely on two assumptions: that the expected frequencies are sufficiently large, and that the observations are independent ([Assumptions of the test(s)]. [The Fisher exact test] can be used when the expected frequencies are small. [The McNemar test] can be used for some kinds of violations of independence.
 
-If you're interested in learning more about categorical data analysis a good first choice would be @Agresti1996 which, as the title suggests, provides an Introduction to Categorical Data Analysis. If the introductory book isn't enough for you (or can't solve the problem you're working on) you could consider @Agresti2002, Categorical Data Analysis. The latter is a more advanced text, so it's probably not wise to jump straight from this book to that one.
+If you're interested in learning more about categorical data analysis a good first choice would be @Agresti1996 which, as the title suggests, provides an Introduction to Categorical Data Analysis. If the introductory book isn't enough for you (or can't solve the problem you're working on) you could consider @Agresti2002, Categorical Data Analysis. The latter is a more advanced text, so it's probably not wise to jump straight from this book to that one. --->

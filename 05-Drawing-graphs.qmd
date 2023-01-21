@@ -130,7 +130,7 @@ Usually you find that someone has just typed in the wrong number. Whilst this mi
 
 For less extreme values, even if they are flagged in a a boxplot as outliers, the decision about whether to include outliers or exclude them in any analysis depends heavily on why you think the data look they way they do and what you want to use the data for. You really need to exercise good judgement here. If the outlier looks legitimate to you, then keep it. In any case, I'll return to the topic again in @sec-Model-checking in @sec-Correlation-and-linear-regression.
 
-## 長條圖 {#sec-Bar-graphs}
+## 柱狀圖 {#sec-Bar-graphs}
 
 Another form of graph that you often want to plot is the **柱狀圖(bar graph)**. Let's use the afl.finalists data set with the afl.finalists variable that I introduced in @sec-Mode. What I want to do is draw a bar graph that displays the number of finals that each team has played in over the time spanned by the afl.finalists data set. There are lots of teams, but I am particularly interested in just four: Brisbane, Carlton, Fremantle and Richmond. So the first step is to set up a filter so just those four teams are included in the bar graph. This is straightforward in jamovi and you can do it by using the 'Filters' function that we used previously. Open up the 'Filters' screen and type in the following:
 
@@ -154,12 +154,19 @@ Hold on, you might be thinking. What's the good of being able to draw pretty pic
 
 ## 本章小結
 
-Perhaps I'm a simple minded person, but I love pictures. Every time I write a new scientific paper one of the first things I do is sit down and think about what the pictures will be. In my head an article is really just a sequence of pictures linked together by a story. All the rest of it is just window dressing. What I'm really trying to say here is that the human visual system is a very powerful data analysis tool. Give it the right kind of information and it will supply a human reader with a massive amount of knowledge very quickly. Not for nothing do we have the saying "a picture is worth a thousand words". With that in mind, I think that this is one of the most important chapters in the book. The topics covered were:
+本書原作者自敘個人寫作學術報告的習慣，都是從思考要放什麼圖開始。因為每個人都對搭配有敘事順序的圖畫故事有興趣，想清楚要放什麼圖，報告的其他部分都是點綴。因為人類天生會用眼睛探索世界的傾向，統計圖也是一種分析資料的工具。佈局精密的統計圖能幫助讀者從海量資訊裡立刻看到關鍵，也就是許多人都聽過的「一圖抵萬言」。希望讀過並操作過本章範例的同學，能將這個想法記在心裡。本章涵蓋的主題有：
+
+-   *常用統計圖*. 本章重點介紹與示範最基本的統計圖，包括[直方圖](05-Drawing-graphs.html#sec-Histograms), [箱型圖](05-Drawing-graphs.html#%E7%AE%B1%E5%9E%8B%E5%9C%96) 以及 [柱狀圖](05-Drawing-graphs.html#sec-Bar-graphs)
+-   [匯出統計圖](05-Drawing-graphs.html#%E5%8C%AF%E5%87%BA%E7%B5%B1%E8%A8%88%E5%9C%96) 完成統計圖後，別忘了匯出到你的正式報告裡。
+
+最後提醒一點。jamovi(還有大多數套裝軟體)輸出的統計圖都是最基本的樣式，不一定符合報告呈現的需要。如果有心製作報告需要的統計圖，建議學習使用R語言及製作統計圖的套件。最多R語言使用者喜歡用[ggplot2](https://ggplot2.tidyverse.org/)，有許多參考資源可以拿來自我學習及參照[例如 @Wilkinson2006]。不過如果你還是統計初學者，你需要先花些時間掌握R語法。本書不會談到R語言，當你認為有必要使用時，可以運用本書的範例，做為學習R的入門資源(**請記得jamovi有R程式碼模式**)。
+
+<!---Perhaps I'm a simple minded person, but I love pictures. Every time I write a new scientific paper one of the first things I do is sit down and think about what the pictures will be. In my head an article is really just a sequence of pictures linked together by a story. All the rest of it is just window dressing. What I'm really trying to say here is that the human visual system is a very powerful data analysis tool. Give it the right kind of information and it will supply a human reader with a massive amount of knowledge very quickly. Not for nothing do we have the saying "a picture is worth a thousand words". With that in mind, I think that this is one of the most important chapters in the book. The topics covered were:
 
 -   *Common plots*. Much of the chapter was focused on standard graphs that statisticians like to produce: [Histograms], [Boxplots] and [Bar graphs]
 -   [Saving image files using jamovi]. Importantly, we also covered how to export your pictures.
 
 One final thing to point out. Whilst jamovi produces some really neat default graphics, editing the plots is currently not possible. For more advanced graphics and plotting capability the packages available in R are much more powerful. One of the most popular graphics systems is provided by the ggplot2 package (see <a href="https://ggplot2.tidyverse.org/"
-target="_blank">https://ggplot2.tidyverse.org/</a>), which is loosely based on "The grammar of graphics" [@Wilkinson2006]. It's not for novices. You need to have a pretty good grasp of R before you can start using it, and even then it takes a while to really get the hang of it. But when you're ready it's worth taking the time to teach yourself, because it's a much more powerful and cleaner system.
+target="_blank">https://ggplot2.tidyverse.org/</a>), which is loosely based on "The grammar of graphics" [@Wilkinson2006]. It's not for novices. You need to have a pretty good grasp of R before you can start using it, and even then it takes a while to really get the hang of it. But when you're ready it's worth taking the time to teach yourself, because it's a much more powerful and cleaner system.--->
 
 ------------------------------------------------------------------------

@@ -560,6 +560,20 @@ The process of calculating and checking scale statistics ($\alpha$ and $\omega$)
 
 ## 本章小結
 
+這一章我們學習因素分析的相關技術，特別是評估資料內各種相關性的方法。本章的學習重點包括：
+
+- [探索性因素分析](15-Factor-Analysis.html#%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90) (EFA)用於辨識資料內的潛在因素。根據因素負荷量，每個觀察變項都有可能代表某個潛在因素。研究者也會使用EFA簡化資料項目，像是使用序列分析整合數個觀察變項為一個因素。 
+
+- [主成分分析](15-Factor-Analysis.html#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90) (PCA)是一種簡化資料項目的技術，但是並非用於辨識潛在變項。PCA只是生成觀察變項的線性組合。
+
+
+- [驗證性因素分析](15-Factor-Analysis.html#%E9%A9%97%E8%AD%89%E6%80%A7%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90) (CFA)不同於EFA，執行前已經有一個理想的模型～也就是觀察變項之間的關聯模型。CFA的用途是檢測理想模性與資料模型的擬合度。
+
+- [多種特質多項相關驗證性因素分析](15-Factor-Analysis.html#%E5%A4%9A%E7%A8%AE%E7%89%B9%E8%B3%AA%E5%A4%9A%E9%A0%85%E7%9B%B8%E9%97%9C%E9%A9%97%E8%AD%89%E6%80%A7%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90) (MTMM CFA) 用於分析潛在因素模型的方法不只一種，需要評估各種分析方法所所估計的變異合理程度。
+
+- [內部一致性信度分析](15-Factor-Analysis.html#sec-Internal-consistency-reliability-analysis)用於評估量表所測對象，與假設的心理建構之間的一致性程度。
+
+<!---
 In this chapter on factor analysis and related techniques we have introduced and demonstrated statistical analyses that assess the pattern of relationships in a data set. Specifically, we have covered:
 
 -   [Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Each observed variable is conceptualised as representing the latent factor to some extent, indicated by a factor loading. Researchers also use EFA as a way of data reduction, i.e. identifying observed variables than can be combined into new factor variables for subsequent analysis.
@@ -570,4 +584,4 @@ In this chapter on factor analysis and related techniques we have introduced and
 
 -   In [Multi-Trait Multi-Method CFA] (MTMM CFA), both latent factor and method variance are included in the model in an approach that is useful when there are different methodological approaches used and therefore method variance is an important consideration.
 
--   [Internal consistency reliability analysis]. This form of reliability analysis tests how consistently a scale measures a measurement (psychological) construct.
+-   [Internal consistency reliability analysis]. This form of reliability analysis tests how consistently a scale measures a measurement (psychological) construct. --->

@@ -63,7 +63,7 @@ The best way to think about it, in my experience, is to imagine that a hypothesi
 
 [^09-hypothesis-testing-4]: This analogy only works if you're from an adversarial legal system like UK/US/Australia. As I understand these things, the French inquisitorial system is quite different.
 
-## 兩種決策失誤型態
+## 兩種決策失誤
 
 Before going into details about how a statistical test is constructed it's useful to understand the philosophy behind it. I hinted at it when pointing out the similarity between a null hypothesis test and a criminal trial, but I should now be explicit. Ideally, we would like to construct our test so that we never make any errors. Unfortunately, since the world is messy, this is never possible. Sometimes you're just really unlucky. For instance, suppose you flip a coin 10 times in a row and it comes up heads all 10 times. That feels like very strong evidence for a conclusion that the coin is biased, but of course there's a 1 in 1024 chance that this would happen even if the coin was totally fair. In other words, in real life we always have to accept that there's a chance that we made a mistake. As a consequence the goal behind statistical hypothesis testing is not to eliminate errors, but to minimise them.
 
@@ -319,7 +319,7 @@ Because power is important, whenever you're contemplating running an experiment 
 
 [^09-hypothesis-testing-12]: One possible exception to this is when researchers study the effectiveness of a new medical treatment and they specify in advance what an important effect size would be to detect, for example over and above any existing treatment. In this way some information about the potential value of a new treatment can be obtained.
 
-## 值得多了解的觀點
+## 值得繼續學習的主題
 
 What I've described to you in this chapter is the orthodox framework for null hypothesis significance testing (NHST). Understanding how NHST works is an absolute necessity because it has been the dominant approach to inferential statistics ever since it came to prominence in the early 20th century. It's what the vast majority of working scientists rely on for their data analysis, so even if you hate it you need to know it. However, the approach is not without problems. There are a number of quirks in the framework, historical oddities in how it came to be, theoretical disputes over whether or not the framework is right, and a lot of practical traps for the unwary. I'm not going to go into a lot of detail on this topic, but I think it's worth briefly discussing a few of these issues.
 
@@ -353,7 +353,21 @@ The example above is just that, an example. I've singled it out because it's suc
 
 ## 本章小結
 
-Null hypothesis testing is one of the most ubiquitous elements to statistical theory. The vast majority of scientific papers report the results of some hypothesis test or another. As a consequence it is almost impossible to get by in science without having at least a cursory understanding of what a p-value means, making this one of the most important chapters in the book. As usual, I'll end the chapter with a quick recap of the key ideas that we've talked about:
+虛無假設檢定是統計理論最普遍的一種應用。大部份科學研究報告都會在結果呈現某種假設的檢定。現代科學研究者幾乎都要多少了解p值的意義，否則不能被認為是合格的科學研究者 ，所以這一章是本書最重要的部分。以下幫助讀者及學生快速回顧本章重點：
+
+- [假設大觀園](09-Hypothesis-testing.html#%E5%81%87%E8%A8%AD%E5%A4%A7%E8%A7%80%E5%9C%92) 研究假設與統計假設。虛無假設與對立假設。
+- [兩種決策失誤](09-Hypothesis-testing.html#%E5%85%A9%E7%A8%AE%E6%B1%BA%E7%AD%96%E5%A4%B1%E8%AA%A4) 型一與型二錯誤
+- [運用樣本分佈檢測統計值](09-Hypothesis-testing.html#%E9%81%8B%E7%94%A8%E6%A8%A3%E6%9C%AC%E5%88%86%E4%BD%88%E6%AA%A2%E6%B8%AC%E7%B5%B1%E8%A8%88%E5%80%BC).
+- 統計推論的[決策要素](09-Hypothesis-testing.html#%E7%B5%B1%E8%A8%88%E6%8E%A8%E8%AB%96%E7%9A%84%E6%B1%BA%E7%AD%96%E8%A6%81%E7%B4%A0)
+- [統計檢定的p值](http://localhost:7933/09-Hypothesis-testing.html#sec-The-p-value-of-a-test) 為何用p值做決策是"模擬兩可"。
+- [假設檢定的報告格式](09-Hypothesis-testing.html#%E5%81%87%E8%A8%AD%E6%AA%A2%E5%AE%9A%E7%9A%84%E5%A0%B1%E5%91%8A%E6%A0%BC%E5%BC%8F)
+- [假設檢定實作須知](09-Hypothesis-testing.html#%E5%81%87%E8%A8%AD%E6%AA%A2%E5%AE%9A%E5%AF%A6%E4%BD%9C%E9%A0%88%E7%9F%A5) 
+- [效果量、樣本量、考驗力](09-Hypothesis-testing.html#sec-Effect-size-sample-size-and-power)
+- 一些[值得繼續學習的主題](09-Hypothesis-testing.html#%E5%80%BC%E5%BE%97%E7%B9%BC%E7%BA%8C%E5%AD%B8%E7%BF%92%E7%9A%84%E4%B8%BB%E9%A1%8C)
+
+到了本書最後一章@sec-Bayesian-statistics ，我會從貝氏統計觀點回顧統計理論與虛無假設檢定，還有介紹幾套非典型取向的統計工具。不過到此為止，我們暫別抽象的統計理論，接下來將幾章將學習實用的統計分析方法。
+
+<!---Null hypothesis testing is one of the most ubiquitous elements to statistical theory. The vast majority of scientific papers report the results of some hypothesis test or another. As a consequence it is almost impossible to get by in science without having at least a cursory understanding of what a p-value means, making this one of the most important chapters in the book. As usual, I'll end the chapter with a quick recap of the key ideas that we've talked about:
 
 - [A menagerie of hypotheses]. Research hypotheses and statistical hypotheses. Null and alternative hypotheses.
 - [Two types of errors]. Type I and Type II.
@@ -363,6 +377,6 @@ Null hypothesis testing is one of the most ubiquitous elements to statistical th
 - [Reporting the results of a hypothesis test]
 - [Running the hypothesis test in practice] 
 - [Effect size, sample size and power]
-- [Some issues to consider] regarding hypothesis testing 
+- [Some issues to consider] regarding hypothesis testing  
 
-Later in the book, in @sec-Bayesian-statistics, I'll revisit the theory of null hypothesis tests from a Bayesian perspective and introduce a number of new tools that you can use if you aren't particularly fond of the orthodox approach. But for now, though, we're done with the abstract statistical theory, and we can start discussing specific data analysis tools.
+Later in the book, in @sec-Bayesian-statistics, I'll revisit the theory of null hypothesis tests from a Bayesian perspective and introduce a number of new tools that you can use if you aren't particularly fond of the orthodox approach. But for now, though, we're done with the abstract statistical theory, and we can start discussing specific data analysis tools.--->

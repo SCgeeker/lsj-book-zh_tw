@@ -12,11 +12,19 @@ source("header.R")
 
 This is a somewhat strange chapter, even by my standards. My goal in this chapter is to talk a bit more honestly about the realities of working with data than you'll see anywhere else in the book. The problem with real world data sets is that they are *messy*. Very often the data file that you start out with doesn't have the variables stored in the right format for the analysis you want to do. Sometimes there might be a lot of missing values in your data set. Sometimes you only want to analyse a subset of the data. Et cetera. In other words, there's a lot of **data manipulation** that you need to do just to get the variables in your data set into the format that you need it. The purpose of this chapter is to provide a basic introduction to these pragmatic topics. Although the chapter is motivated by the kinds of practical issues that arise when manipulating real data, I'll stick with the practice that I've adopted through most of the book and rely on very small, toy data sets that illustrate the underlying issue. Because this chapter is essentially a collection of techniques and doesn't tell a single coherent story, it may be useful to start with a list of topics:
 
+
+- [資料表格製作要領](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
+- [邏輯運算](06-Pragmatic-matters.html#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97)
+- [資料變項的轉換與編碼](06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable)
+- [數學函式及運算子](06-Pragmatic-matters.html#%E6%95%B8%E5%AD%B8%E5%87%BD%E5%BC%8F%E5%8F%8A%E9%81%8B%E7%AE%97%E5%AD%90)
+- [篩選部分資料](06-Pragmatic-matters.html#%E7%AF%A9%E9%81%B8%E9%83%A8%E5%88%86%E8%B3%87%E6%96%99)
+
+<!---
 - [Tabulating and cross-tabulating data]
 - [Logical expressions in jamovi]
 - [Transforming and recoding a variable]
 - [A few more mathematical functions and operations]
-- [Extracting a subset of the data]
+- [Extracting a subset of the data]--->
 
 As you can see, the list of topics that the chapter covers is pretty broad, and there's a lot of content there. Even though this is one of the longest and hardest chapters in the book, I'm really only scratching the surface of several fairly different and important topics. My advice, as usual, is to read through the chapter once and try to follow as much of it as you can. Don't worry too much if you can't grasp it all at once, especially the later sections. The rest of the book is only lightly reliant on this chapter so you can get away with just understanding the basics. However, what you'll probably find is that later on you'll need to flick back to this chapter in order to understand some of the concepts that I refer to here.
 
@@ -74,7 +82,7 @@ What we're looking at here is the percentage of utterances made by each characte
 knitr::include_graphics("images/fig6-3.png")
 ```
 
-## 邏輯表達功能
+## 邏輯運算
 
 A key concept that a lot of data transformations in jamovi rely on is the idea of a **logical value**. A logical value is an assertion about whether something is true or false. This is implemented in jamovi in a pretty straightforward way. There are two logical values, namely TRUE and FALSE. Despite the simplicity, logical values are very useful things. Let's see how they work.
 
@@ -170,7 +178,7 @@ This evaluates to 'false', and this may seem slightly counter-intuitive. With th
 huxtabs[[6]][[4]] 
 ```
 
-## 資料變項的轉換與編碼功能 {#sec-Transforming-and-recoding-a-variable}
+## 資料變項的轉換與編碼 {#sec-Transforming-and-recoding-a-variable}
 
 It's not uncommon in real world data analysis to find that one of your variables isn't quite equivalent to the variable that you really want. For instance, it's often convenient to take a continuous-valued variable (e.g., age) and break it up into a smallish number of categories (e.g., younger, middle, older). At other times, you may need to convert a numeric variable into a different numeric variable (e.g., you may want to analyse at the absolute value of the original variable). In this section I'll describe a few key ways you can do these things in jamovi.
 
@@ -278,7 +286,7 @@ huxtabs[[6]][[5]] |>
   set_contents(1, 1, "")
 ```
 
-## 其他常用數學函式及運算子
+## 數學函式及運算子
 
 In the section on [Transforming and recoding a variable] I discussed the ideas behind variable transformations and showed that a lot of the transformations that you might want to apply to your data are based on fairly simple mathematical functions and operations. In this section I want to return to that discussion and mention several other mathematical functions and arithmetic operations that are actually quite useful for a lot of real world data analysis. @tbl-tab6-5 gives a brief overview of the various mathematical functions I want to talk about here, or later.[^pragmatic-matters-9] Obviously this doesn't even come close to cataloguing the range of possibilities available, but it does cover a range of functions that are used regularly in data analysis and that are available in jamovi.
 
@@ -328,6 +336,15 @@ utterance == 'pip' or utterance == 'oo'
 
 ## 本章小結
 
+這一章是原作者分享實務經驗會用到的各種不起眼，但是會影響描述統計品質的小技巧或注意項目。最後再次回顧本章的課題
+
+- [資料表格製作要領](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
+- [邏輯運算](06-Pragmatic-matters.html#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97)
+- [資料變項的轉換與編碼](06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable)
+- [數學函式及運算子](06-Pragmatic-matters.html#%E6%95%B8%E5%AD%B8%E5%87%BD%E5%BC%8F%E5%8F%8A%E9%81%8B%E7%AE%97%E5%AD%90)
+- [篩選部分資料](06-Pragmatic-matters.html#%E7%AF%A9%E9%81%B8%E9%83%A8%E5%88%86%E8%B3%87%E6%96%99)
+
+<!---
 Obviously, there's no real coherence to this chapter. It's just a grab bag of topics and tricks that can be handy to know about, so the best wrap up I can give here is just to repeat this list:
 
 - [Tabulating and cross-tabulating data]
@@ -335,3 +352,4 @@ Obviously, there's no real coherence to this chapter. It's just a grab bag of to
 - [Transforming and recoding a variable]
 - [A few more mathematical functions and operations]
 - [Extracting a subset of the data]
+--->
