@@ -150,7 +150,9 @@ knitr::include_graphics("images/fig5-11.png")
 
 ## 匯出統計圖
 
-Hold on, you might be thinking. What's the good of being able to draw pretty pictures in jamovi if I can't save them and send them to friends to brag about how awesome my data is? How do I save the picture? Simples. Just right click on the plot image and export it to a file, either as 'png', 'eps', 'svg' or 'pdf'. These formats all produce nice images that you can then send to your friends, or include in your assignments or papers.
+快要下課了，不過認真的同學應該會想問：如果我很滿意用jamovi畫出來的統計圖，想要存起來分享給朋友看的話，難道他們也要有jamovi才看得到嗎？可以只將統計圖單獨存檔嗎？很簡單，在你想存檔的統計圖上按一下滑鼠右鍵，就會出現匯出存檔選單，你可以選擇要存檔的格式，目前有'png'，'eps'，'svg'，'pdf'等可以選擇。只要存成你覺得合適的圖檔格式，就可以用電子郵件或社交軟體分享給朋友，或者將圖檔放到你的作業報告裡。
+
+<!---Hold on, you might be thinking. What's the good of being able to draw pretty pictures in jamovi if I can't save them and send them to friends to brag about how awesome my data is? How do I save the picture? Simples. Just right click on the plot image and export it to a file, either as 'png', 'eps', 'svg' or 'pdf'. These formats all produce nice images that you can then send to your friends, or include in your assignments or papers.--->
 
 ## 本章小結
 
