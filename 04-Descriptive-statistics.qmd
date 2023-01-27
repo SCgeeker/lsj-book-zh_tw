@@ -60,30 +60,33 @@ $$
 
 <!---Of course, this definition of the mean isn't news to anyone. Averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, I'll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation, and talk about how the calculations would be done in jamovi. --->
 
-首先來認識數學記號$N$(大寫N)，用於表示要計算平均值的觀察值個數(以上的例子 $N = 5$)。接著是表示一組觀察值的記號，慣例用大寫X表示，再加上底標數字記號就代表個別觀察值。也就是說，$X_1$是第一筆觀察值，$X_2$是第二筆觀察值，以此類推$X_N$是最後一筆觀察值。觀察值記號用比較抽象簡化的方式使用，$X_i$是資料裡的第i筆觀察值。為了幫同學了解符號的用法，我們將afl.margins的前五場比賽紀錄，連同數學記號整理在 @tbl-tab4-1 。
+首先來認識數學記號$N$(大寫N)，用於表示要計算平均值的觀察值個數(以上的例子 $N = 5$)。接著是表示一組觀察值的記號，慣例用大寫X表示，再加上底標數字記號就代表個別觀察值。也就是說，$X_1$是第一筆觀察值，$X_2$是第二筆觀察值，以此類推$X_N$是最後一筆觀察值。觀察值記號用比較抽象簡化的方式使用，$X_i$是資料裡的第i筆觀察值。為了幫同學了解符號的用法，我們將afl.margins的前五場比賽紀錄，連同數學記號整理在**表4-1**。
 
 <!---The first piece of notation to introduce is $N$, which we'll use to refer to the number of observations that we're averaging (in this case $N = 5$). Next, we need to attach a label to the observations themselves. It's traditional to use X for this, and to use subscripts to indicate which observation we're actually talking about. That is, we'll use $X_1$ to refer to the first observation, $X_2$ to refer to the second observation, and so on all the way up to $X_N$ for the last one. Or, to say the same thing in a slightly more abstract way, we use $X_i$ to refer to the i-th observation. Just to make sure we're clear on the notation, @tbl-tab4-1 lists the 5 observations in the afl.margins variable, along with the mathematical symbol used to refer to it and the actual value that the observation corresponds to. --->
 
 
 ```{r}
 #| label: tbl-tab4-1
-#| tbl-cap: Observations in the afl.margins variable
-huxtabs[[4]][[1]]
+#| tbl-cap: afl.margins的觀察資料資訊。
+#huxtabs[[4]][[1]]
 ```
 
-```{=html}
+<center>表4-1: afl.margins的觀察資料資訊。</center>
 
-afl.margins的觀察值資訊。
-
-|觀察值資訊|數學計號|觀察值數值|
-|---|---|---|
+|觀察值資訊|數學記號|觀察值數值|
+|:---:|:---:|:---:|
 |勝隊得分。第1場| $X_1$ | 56分|
-```
+|勝隊得分。第2場| $X_2$ | 31分|
+|勝隊得分。第3場| $X_3$ | 56分|
+|勝隊得分。第4場| $X_4$ | 8分|
+|勝隊得分。第5場| $X_5$ | 32分|
 
 
 [更多技術細節[^04-descriptive-statistics-2]]
 
-[^04-descriptive-statistics-2]: Okay, now let's try to write a formula for the mean. By tradition, we use $\bar{X}$ as the notation for the mean. So the calculation for the mean could be expressed using the following formula: $$\bar{X}=\frac{X_1 + X_2 ... + X_{N-1} + X_{N}}{N}$$ This formula is entirely correct but it's terribly long, so we make use of the **summation symbol** $\sum$ to shorten it.$^a$ If I want to add up the first five observations I could write out the sum the long way, $X_1 + X_2 + X_3 + X_4 + X_5$ or I could use the summation symbol to shorten it to this: $$\sum_{i=1}^{5} X_i$$ Taken literally, this could be read as "the sum, taken over all i values from 1 to 5, of the value $X_i$". But basically what it means is "add up the first five observations". In any case, we can use this notation to write out the formula for the mean, which looks like this: $$\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_i$$ In all honesty, I can't imagine that all this mathematical notation helps clarify the concept of the mean at all. In fact, it's really just a fancy way of writing out the same thing I said in words: add all the values up and then divide by the total number of items. However, that's not really the reason I went into all that detail. My goal was to try to make sure that everyone reading this book is clear on the notation that we'll be using throughout the book: $\bar{X}$ for the mean, $\sum$ for the idea of summation, $X_i$ for the ith observation, and $N$ for the total number of observations. We're going to be re-using these symbols a fair bit so it's important that you understand them well enough to be able to "read" the equations, and to be able to see that it's just saying "add up lots of things and then divide by another thing". <br />---<br />$^a$ *The choice to use* $\sum$ to denote summation isn't arbitrary. It's the Greek upper case letter sigma, which is the analogue of the letter $S$ in that alphabet. Similarly, there's an equivalent symbol used to denote the multiplication of lots of numbers, because multiplications are also called "products" we use the $\prod$ symbol for this (the Greek upper case pi, which is the analogue of the letter $P$.
+[^04-descriptive-statistics-2]: 建議初學的同學在紙上寫下幾種平均值的公式，才能加深印象。平均值的數學記號通常是 $\bar{X}$ ，公式則寫成 $$\bar{X}=\frac{X_1 + X_2 ... + X_{N-1} + X_{N}}{N}$$ 這樣寫雖然正確，但是太過冗長，所以通常會用**連加符號** $\sum$ $^a$ 縮減公式。像是這個例子要連加五筆資料，寫成公式 $X_1 + X_2 + X_3 + X_4 + X_5$ 看起來很長，使用連加符號就能簡化為 $$\sum_{i=1}^{5} X_i$$ 。字面意思是"以i代表1到5，將每個 $X_i$ 的數值加起來"。不過這和”連加前五筆數值“的意思還是不大一樣。雖然我們可以將這個公式擴展為適要任何狀況： $$\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_i$$ 但是可能無法幫助數感不夠的同學了解平均值的概念。其實只要寫平均值的概念只要用幾個字表達就夠清楚：將一筆資料所有數值加起來再除以資料的數值個數。但是這本書的教學目的不光是要解釋概念，也要使用這本書的同學了解在本書以及jamovi的介面隨處可見的各種數學記號是什麼意思。請留意平均值公式裡的每個記號，之後每一章都會不斷遇到。這些記號不論出現在那裡，意思都是一樣的：$\bar{X}$ 代表平值， $\sum$ 代表連加一筆數值， $X_i$ 代表第i個數值， $N$ 代表一筆資料的數值個數。 <br />---<br />$^a$ **選用記號的理由** $\sum$ 代表數值連加並不是沒有理由的，其實這是希臘字母 $\sigma$ 的大寫，相當於英文字母的大寫 $S$ 。也有另一個大寫希臘字母 $\prod$ 代表數值連乘，這個字母的小寫就是代表圓周率的 $\pi$ ，相當於英文字母的 $P$ 。
+
+<!---[^04-descriptive-statistics-2]: Okay, now let's try to write a formula for the mean. By tradition, we use $\bar{X}$ as the notation for the mean. So the calculation for the mean could be expressed using the following formula: $$\bar{X}=\frac{X_1 + X_2 ... + X_{N-1} + X_{N}}{N}$$ This formula is entirely correct but it's terribly long, so we make use of the **summation symbol** $\sum$ to shorten it.$^a$ If I want to add up the first five observations I could write out the sum the long way, $X_1 + X_2 + X_3 + X_4 + X_5$ or I could use the summation symbol to shorten it to this: $$\sum_{i=1}^{5} X_i$$ Taken literally, this could be read as "the sum, taken over all i values from 1 to 5, of the value $X_i$". But basically what it means is "add up the first five observations". In any case, we can use this notation to write out the formula for the mean, which looks like this: $$\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_i$$ In all honesty, I can't imagine that all this mathematical notation helps clarify the concept of the mean at all. In fact, it's really just a fancy way of writing out the same thing I said in words: add all the values up and then divide by the total number of items. However, that's not really the reason I went into all that detail. My goal was to try to make sure that everyone reading this book is clear on the notation that we'll be using throughout the book: $\bar{X}$ for the mean, $\sum$ for the idea of summation, $X_i$ for the ith observation, and $N$ for the total number of observations. We're going to be re-using these symbols a fair bit so it's important that you understand them well enough to be able to "read" the equations, and to be able to see that it's just saying "add up lots of things and then divide by another thing". <br />---<br />$^a$ *The choice to use* $\sum$ to denote summation isn't arbitrary. It's the Greek upper case letter sigma, which is the analogue of the letter $S$ in that alphabet. Similarly, there's an equivalent symbol used to denote the multiplication of lots of numbers, because multiplications are also called "products" we use the $\prod$ symbol for this (the Greek upper case pi, which is the analogue of the letter $P$. --->
 
 ### 平均值計算示範
 
@@ -270,7 +273,7 @@ knitr::include_graphics("images/fig4-8.png")
 
 全距與IQR都是利用資料內的百分位數，估計資料的變異程度。不過這不是估計變異程度的唯一方法。另一種方法是先決定一個有意義的參考點(像是平均值或中位數)，再計算整筆資料與參考點的“典型”差異值。那麼，什麼是“典型”差異值？通常是總和所有資料與參考點的差異值。實務上有兩種變異量數可用：“平均絕對差”(mean absolute deviation，平均值是參考點)與“中位絕對差”(median absolute deviation，中位數是參考點)。就原作者研讀過的書藉，“中位絕對差”是較理想的變異程度評估指標，不過心理學領域不常見到。
 
-經過前一段的提要，我們來看看如何計算平均絕對差。同樣透過手算AFL勝隊得分來學習，就用前五場得分紀錄56, 31, 56, 8, 32來示範計算步驟。之前我們已經算出平均值是36.6 (記為 $\bar{X} = 36.6$ )。每個數值減去平均，可以得到個別的差異值( 記為 $X_i - \bar{X}$ )，接著取每個差異值的絕對值( 記為 $\mid X_i - \bar{X} \mid$ )。建議同學按步驟照著 @tbl-tab4-2 依序紀錄計算結果[^04-translation-1]。
+經過前一段的提要，我們來看看如何計算平均絕對差。同樣透過手算AFL勝隊得分來學習，就用前五場得分紀錄56, 31, 56, 8, 32來示範計算步驟。之前我們已經算出平均值是36.6 (記為 $\bar{X} = 36.6$ )。每個數值減去平均，可以得到個別的差異值( 記為 $X_i - \bar{X}$ )，接著取每個差異值的絕對值( 記為 $\mid X_i - \bar{X} \mid$ )。建議同學按步驟照著**表4-2** 依序紀錄計算結果[^04-translation-1]。
 
 [^04-translation-1]: 譯註~這段計算步驟可參考譯者準備的[jamovi檔案](files/AFL Margins_MAD.omv)，下載後以jamovi開啟，觀看計算變項的說明。
 
@@ -282,8 +285,19 @@ Since the previous paragraph might sound a little abstract, let's go through the
 ```{r}
 #| label: tbl-tab4-2
 #| tbl-cap: Measures of variability
-huxtabs[[4]][[2]] 
+#huxtabs[[4]][[2]] 
 ```
+
+<center>表4-2: 使用離均差絕對值計算資料變異程度</center>
+
+|口語|符號|數值|離均差|離均差絕對值|
+|:---:|:---:|:---:|:---:|:---:|
+|符號| $i$ | $X_i$ | $X_i - \bar{X}$  | $|X_i - \bar{X}|$ |
+||1|56|19.4|19.4|
+||2|31|-5.6|5.6|
+||3|56|19.4|19.4|
+||4|8|-28.6|28.6|
+||5|32|-4.6|4.6|
 
 現在只要計算所有差異值的絕對值，就是平均絕對差。
 
@@ -297,11 +311,14 @@ $$
 
 [其他技術細節[^04-descriptive-statistics-4]]
 
+[^04-descriptive-statistics-4]: 儘管平均絕對差的手算演練告一段落，還有一些事情要交待。我建議演練過程也要將公式寫出來，這樣子計算量數的數學公式意思才能記在心中。尤其是“平均絕對差”(mean absolute deviation)與"中位數絕對差“(median absolute deviation)的英文縮寫都是MAD，讀文獻時不注意的話會混淆。原作者建議“平均絕對差”的英文縮寫應該寫成AAD(average absolute deviation)，才能避免寫作與閱讀的問題。這個範例的公式與計算結果是： $$AAD(X) =\frac{1}{N} \sum_{i=1}^{N} \mid X_i - \bar{X} \mid = 15.52$$
+
 <!---And we're done. The mean absolute deviation for these five scores is 15.52.
 
-[Additional technical detail[^04-descriptive-statistics-4]]--->
+[Additional technical detail[^04-descriptive-statistics-4]]
 
 [^04-descriptive-statistics-4]: However, whilst our calculations for this little example are at an end, we do have a couple of things left to talk about. First, we should really try to write down a proper mathematical formula. But in order do to this I need some mathematical notation to refer to the mean absolute deviation. Irritatingly, "mean absolute deviation" and "median absolute deviation" have the same acronym (MAD), which leads to a certain amount of ambiguity so I'd better come up with something different for the mean absolute deviation. Sigh. What I'll do is use AAD instead, short for average absolute deviation. Now that we have some unambiguous notation, here's the formula that describes what we just calculated:$$AAD(X) =\frac{1}{N} \sum_{i=1}^{N} \mid X_i - \bar{X} \mid = 15.52$$
+--->
 
 ### 變異數
 
@@ -312,7 +329,7 @@ $$
 [更多技術細節[^04-descriptive-statistics-6]]
 
 [^04-descriptive-statistics-6]: 變異數的完整公式如下： $$VAR(X) =\frac{1}{N} \sum_{i=1}^{N} ( X_i - \bar{X} )^2
-$$ 基本上和平均絕對差幾乎一樣，除了每筆資料差異值是以平方計算。這是為何變異數有時候又稱為“平均平方差”。
+$$ 基本上和平均絕對差幾乎一樣，除了每筆資料的離均差異值是以平方計算。這是為何變異數有時候又被稱為“平均平方差”。
 
 <!---Although the average absolute deviation measure has its uses, it's not the best measure of variability to use. From a purely mathematical perspective there are some solid reasons to prefer squared deviations rather than absolute deviations. If we do that we obtain a measure called the **變異數(variance)**, which has a lot of really nice statistical properties that I'm going to ignore,[^04-descriptive-statistics-5] and one massive psychological flaw that I'm going to make a big deal out of in a moment. The variance of a data set $X$ is sometimes written as Var( $X$ ), but it's more commonly denoted $s^2$ (the reason for this will become clearer shortly). 
 
@@ -323,17 +340,33 @@ $$ 基本上和平均絕對差幾乎一樣，除了每筆資料差異值是以�
 [^04-descriptive-statistics-6]: The formula that we use to calculate the variance of a set of observations is as follows: $$VAR(X) =\frac{1}{N} \sum_{i=1}^{N} ( X_i - \bar{X} )^2
 $$ As you can see, it's basically the same formula that we used to calculate the average absolute deviation, except that instead of using "absolute deviations" we use "squared deviations". It is for this reason that the variance is sometimes referred to as the "mean square deviation". --->
 
-有了基本概念，就用實際資料熟悉變異數的運算。同樣用AFL前五場比賽紀錄練習，請同學用前一節計算平均絕對差異步驟，完成 @tbl-tab4-3 的手算步驟。
+有了基本概念，就用實際資料熟悉變異數的運算。同樣用AFL前五場比賽紀錄練習，請同學用前一節計算平均絕對差異步驟，完成**表4-3**的手算步驟[^04-translation-2]。
+
+
+[^04-translation-2]: 譯註~這段計算步驟可參考譯者準備的[jamovi檔案](files/AFL Margins_VAR.omv)，下載後以jamovi開啟，觀看計算變項的說明。
+
 
 <!---Now that we've got the basic idea, let's have a look at a concrete example. Once again, let's use the first five AFL games as our data. If we follow the same approach that we took last time, we end up with the information shown in @tbl-tab4-3. --->
 
 ```{r}
 #| label: tbl-tab4-3
 #| tbl-cap: Measures  of variability for the first five AFL games
-huxtabs[[4]][[3]]
+#huxtabs[[4]][[3]]
 ```
 
-最後一欄是五筆資料的差異值平方，接著依公式用手或計算機計算平均，我們會得到變異數是$324.64$。好像大功告成了是不是？那這樣的變異數代表什麼意思？進一步解釋前，請用jamovi計算看看，建議重新匯入`afl.margins`資料變項，並且設定只計算前五項紀錄，然後開啟描述統計模組選單，這次要增加勾選"Variance"計算變異數(見 @fig-fig4-9 )，然後你會發現jamovi的計算結果是$405.80$，難到 @tbl-tab4-3 的計算步驟是錯誤的？
+<center>表4-3: 使用離均差平方計算資料變異程度</center>
+
+
+|口語|符號|數值|離均差|離均差平方|
+|:---:|:---:|:---:|:---:|:---:|
+|符號| $i$ | $X_i$ | $X_i - \bar{X}$  | $(X_i - \bar{X})^2$ |
+||1|56|19.4|376.36|
+||2|31|-5.6|31.36|
+||3|56|19.4|376.36|
+||4|8|-28.6|817.96|
+||5|32|-4.6|21.16|
+
+最後一欄是五筆資料的差異值平方，接著依公式用手或計算機計算平均，我們會得到變異數是$324.64$。好像大功告成了是不是？那這樣的變異數代表什麼意思？進一步解釋前，請用jamovi計算看看，建議重新匯入`afl.margins`資料變項，並且設定只計算前五項紀錄，然後開啟描述統計模組選單，這次要增加勾選"Variance"計算變異數(見 @fig-fig4-9 )，然後你會發現jamovi的計算結果是$405.80$，難到**表4-3* **的計算步驟是錯誤的？
 
 <!---That last column contains all of our squared deviations, so all we have to do is average them. If we do that by hand, i.e. using a calculator, we end up with a variance of $324.64$. Exciting, isn't it? For the moment, let's ignore the burning question that you're all probably thinking (i.e., what the heck does a variance of $324.64$ actually mean?) and instead talk a bit more about how to do the calculations in jamovi, because this will reveal something very weird. Start a new jamovi session by clicking on the main menu button (three horizontal lines in the top left corner and selecting 'New'. Now type in the first five values from the afl.margins data set in column A ($56$, $31$, $56$, $8$, $32$. Change the variable type to 'Continuous' and under 'Descriptives' click the 'Variance' check box, and you get the same values for variance as the one we calculated by hand ($324.64$). No, wait, you get a completely different answer ($405.80$) - see @fig-fig4-9. That's just weird. Is jamovi broken? Is this a typo? Am I an idiot? --->
 
@@ -352,11 +385,11 @@ knitr::include_graphics("images/fig4-9.png")
 
 [更多技術細節[^04-descriptive-statistics-8]]
 
-[^04-descriptive-statistics-8]: jamovi計算的變異數公式如下： $$\frac{1}{N-1} \sum_{i=1}^{N} ( X_i - \bar{X} )^2$$
+[^04-descriptive-statistics-8]: jamovi計算變異數公式的是： $$\frac{1}{N-1} \sum_{i=1}^{N} ( X_i - \bar{X} )^2$$
 
-那麼為什麼jamovi是用 $N - 1$而非 $N$？畢竟變異數是差異值平方的平均不是嗎？為何不是用樣本個數$N$做為分母呢？雖然這樣想沒有錯，不過在 @sec-Estimating-unknown-quantities-from-a-sample 我們會討論“描述樣本”與“根據樣本推測母群性質”的區別。平均數的計算方法在“描述樣本”與“推測母群性質”都是一樣的。但是對於變異數、標準差、還有許多表示變異程度的量數，"樣本“與”母群"的計算方法是完全不同的。正在學習的同學們從這裡開始，要自覺多數統計實務計算的變異數其實是“樣本變異數”。樣本只是揭露真實世界的一部分而己。至此學習的統計方法其實是“整理樣本的統計”，目的是要能夠估計“母群參數”。不過這樣的轉念對很多同學來說可能要求太高了。我們先接受jamovi計算的統計量數都是正確的，到了 @sec-Estimating-unknown-quantities-from-a-sample 再回來討論這些問題。
+那麼為什麼jamovi是用 $N - 1$而非 $N$？畢竟變異數是差異值平方的平均不是嗎？為何不是用資料數值個數$N$做為分母呢？這樣想雖然沒有錯，不過在 @sec-Estimating-unknown-quantities-from-a-sample 我們會討論“描述樣本”與“根據樣本推測母群性質”兩種統計操作的區別。平均數的計算方法在“描述樣本”與“推測母群性質”都是一樣的。但是對於變異數、標準差、還有許多估計變異程度的量數，"樣本“與”母群"的計算方法是不一樣的。正在學習的同學們從這裡開始，必須察覺多數統計實務計算的變異數其實是**樣本變異數**。樣本只是揭露真實世界的一部分而己。這一章學習的描述統計方法其實是“整理樣本的方法”，真實目的是要要估計“母群參數”。不過這樣的轉念對很多同學來說可能要求太高了，我們先接受jamovi計算的統計量數都是正確的，到了 @sec-Estimating-unknown-quantities-from-a-sample 我們會再回來討論這些問題。
 
-好啦，這一節讀起來有些像是燒腦的偵探小說。先請同學們先擱置具體理由，接受只要是用jamovi計算的變異數都是除以$N-1$除以平方差總和的結果。不過還有一件事需要討論：怎麼解讀變異數的意思？描述統計的功能畢竟是用數字說出資料裡的故事，而且變異數就明明白白的顯示在報表上。但是目前還不能直接用變異數解釋資料的變異程度，原因在於變異數是總計差異值的平方，而任何數值平方之後，就失去原來測量尺度上數值差異，儘管變異數背後的數學原理非常簡潔優美。就拿 @tbl-tab4-3 紀錄的第一場比賽差異值平方是$324.64$來說，這個數字無法說明這筆資料與平均值的差異究竟有多大，因為平方後的數值喪失了原來測量尺度的意義。另外，你也可以想想看，告知你全班同學的身高平方總和有什麼意義？
+好啦，這一節讀起來有些像是燒腦的偵探小說。先請同學們擱置具體理由，接受只要是用jamovi計算的變異數都是用$N-1$除以平方差總和的結果。不過還有一件事需要討論：怎麼解讀變異數的意思？描述統計的功能畢竟是用數字說明資料裡的故事，而且變異數就明明白白的顯示在報表上。但是目前還不能直接用變異數解釋資料的變異程度，原因在於變異數是總計差異值的平方，而任何數值平方之後，就失去測量尺度的數值差異。就拿**表4-3**紀錄的第一場比賽分數，差異值平方是$324.64$來說，這個數字無法說明這筆資料與平均值的差異究竟有多大，因為平方後的數值喪失了原來測量尺度的意義。另外，你也可以想想看，你知道了全班同學的身高平方總和有什麼意義？
 
 <!---
 As it happens, the answer is no.[^04-descriptive-statistics-7] It's not a typo, and jamovi is not making a mistake. In fact, it's very simple to explain what jamovi is doing here, but slightly trickier to explain why jamovi is doing it. So let's start with the "what". What jamovi is doing is evaluating a slightly different formula to the one I showed you above. Instead of averaging the squared deviations, which requires you to divide by the number of data points N, jamovi has chosen to divide by $N - 1$.   With the possible exception of the third question.
@@ -371,7 +404,7 @@ Okay, one last thing. This section so far has read a bit like a mystery novel. I
 
 ### 標準差 {#sec-Standard-deviation}
 
-若是同學學到了這裡，應該都能接受變異數的數學特性，不過要撰寫人類看得到的報告，我們還是要呈現能具體描述變異程度的量數。那要怎麼改造變異數呢？方法很簡單，就是將變異數開根號取得**標準差(standard deviation)**。統計學術語還有“差異平均值之平方根”(mean squared deviation)，或者簡稱RMSD。標準差的數值能以資料尺度解釋變異程度。以AFL資料的實務報告來說，通常會寫“標準差18.01"而不是”變異數324.68“。專業報告規範會提示樣本資料的標準差寫法，像是小寫s，sd，還有“std dev"等。
+若是同學學到了這裡，應該都能接受變異數的數學特性，不過要撰寫人類看得到的報告，我們還是要呈現能具體描述變異程度的量數。那要怎麼改造變異數呢？方法很簡單，就是將變異數開根號取得**標準差(standard deviation)**。統計學術語還有“差異平均值之平方根”(mean squared deviation)，或者簡稱RMSD。標準差的數值能以資料尺度解釋變異程度。以AFL資料的實務報告來說，通常會寫“標準差18.01"而不是”變異數324.68“。專業報告規範會提示樣本資料的標準差寫法，像是用小寫s，sd，還有“std dev"等。
 
 
 [更多技術細節[^04-descriptive-statistics-9]]
@@ -481,16 +514,23 @@ The final measure that is sometimes referred to, though very rarely in practice,
 knitr::include_graphics("images/fig4-12.png")
 ```
 
-@fig-fig4-12 的左圖是平坦的資料分佈，稱為"低闊峰"是因為資料往雙側分佈而造成，峰度指數是負值。右圖的資料分佈兩側很寬，稱為"高狹峰"是因為資料往雙側分佈而造成，峰度指數是正值。中間的資料分佈不窄也不寬，所以稱為"常峰態"，峰度指數是0。 @tbl-tab4-4 整理三種峰度的稱呼與及指數數值說明：
+@fig-fig4-12 的左圖是平坦的資料分佈，稱為"低闊峰"是因為資料往雙側分佈而造成，峰度指數是負值。右圖的資料分佈兩側很寬，稱為"高狹峰"是因為資料往雙側分佈而造成，峰度指數是正值。中間的資料分佈不窄也不寬，所以稱為"常峰態"，峰度指數是0。 **表4-4**  整理三種峰度的稱呼與及指數數值說明：
 
 <!---In this Figure, the data on the left have a pretty flat distribution, with thin tails, so the kurtosis is negative and we call the data platykurtic. The data on the right have a distribution with fat tails, so the kurtosis is positive and we say that the data is leptokurtic. But the data in the middle have neither think or fat tails, so we say that it is mesokurtic and has kurtosis zero. This is summarised in @tbl-tab4-4: --->
 
 ```{r}
 #| label: tbl-tab4-4
 #| tbl-cap: 峰度的稱呼與指數數值說明
-huxtabs[[4]][[4]]
+#huxtabs[[4]][[4]]
 ```
 
+<center>表4-4: 峰度的稱呼與指數數值說明</center>
+
+|口語|術語|峰度指數正負|
+|:---:|:---:|:---:|
+||||
+||||
+||||
 
 [更多技術細節[^04-descriptive-statistics-12]]
 
