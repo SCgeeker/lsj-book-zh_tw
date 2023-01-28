@@ -156,7 +156,31 @@ knitr::include_graphics("images/fig4-11.png")
 
 ### 真實案例 {#sec-A-real-life-example}
 
-To try to get a sense of why you need to pay attention to the differences between the mean and the median let's consider a real life example. Since I tend to mock journalists for their poor scientific and statistical knowledge, I should give credit where credit is due. This is an excellent article on the ABC news website[^04-descriptive-statistics-3] from 24 September, 2010:
+為了弄清楚為什麼你需要注意平均值和中位數的區別，讓我們看一個現實生活中的例子。雖然我喜歡看媒體記者因為缺乏科學和統計知識而鬧的笑話，有好報導還是應該給予讚揚。請看2010年9月24日澳洲廣播公司新聞網站的這篇優秀報導[^04-descriptive-statistics-3]：
+
+[^04-descriptive-statistics-3]: [www.abc.net.au/news/stories/2010/09/24/3021480.htm](https://www.abc.net.au/news/2010-09-24/housing-bubble-debate-boils-over/2273406)
+
+> 在過去的幾個星期，澳大利亞聯邦銀行的資深高層到世界各地旅行，準備了一份簡報說明與發達程度接近的國家相比，澳大利亞房價及主要價格收入比率比較有利。『實際上過去五、六年，澳大利亞的住宅負擔能力出現偏差』聯邦銀行的首席經濟學家Craig James說道。
+
+這對於任何有按時付房貸，想要申請房貸，支付租金，或對於過去幾年澳大利亞房地產市場發生的事情全然不知情的民眾來說是重大消息。讓我們繼續看下去：
+
+> 澳大利亞聯邦銀行以圖表、數字還有比較各國狀況，反擊房屋末日論。銀行官員用這份[簡報](https://www.commbank.com.au/about-us/shareholders/pdfs/2010-asx/Australian_Residential_Housing_and_Mortgages_slide_pack_9_Sept_2010.pdf)裡的數據，否定與澳大利亞一般家庭收入比較，住宅負擔相對昂貴的論點。簡報裡提到澳洲主要城市的房屋價格與家庭收入的比值為5.6，全國平均為4.3，與其他已開發國家的城市相比，美國舊金山和紐約的比值都是7，紐西蘭奧克蘭6.7，加拿大溫哥華9.3。
+
+聽起來很棒! 不過這篇報導接下來評論了簡報內容：
+
+> 許多分析家指出聯邦銀行誤用了圖表及數字，做出的結論是錯誤的。看一下簡報第四頁的表格，表格註腳提到其他國家的數值是來自一個網站——[國際住宅負擔調查報告](http://www.demographia.com/)。然而，如果聯邦銀行也引用該網站對澳大利亞房價與收入比值的分析，數字應該是9，而不是5.6或4.3。
+
+嗯，出現一個相當嚴重的歧異。一群專家說是9，另一群專家說是4或5。我們能說雙方都有理，宣稱真實數字就在兩者之間？絕對不行！房價和收入的調查結果只會有一個。正如報導接著指出，國際住宅負擔調查報告的數字是正確的，澳洲聯邦銀行提供的數字是錯誤的：
+
+> 澳洲聯邦銀行提供的國內房價與收入數字存在一個明顯的問題，他們比較的是收入平均值與房價中位數（國際住宅負擔調查報告比較的是收入中位數與房價中位數）。中位數是數據資料中間的點，能有效剔除了最高數值和最低數值，這意味著當涉及到收入和資產價格時，平均值會被拉高，因為整體收入數據包括澳大利亞最有錢的人。換句話說：聯邦銀行計算的收入數據包括執行長拉爾夫-諾里斯（Ralph Norris）的數百萬美元年薪，但是沒有把他的豪宅算在房產價格數據裡，因此低估了澳大利亞中產受薪階級的房價與收入比。
+
+這段報導還是我自己(原作者)來寫好了。"(簡單說，)國際住宅負擔調查報告的比值計算方式是正確的，但是聯邦銀行的算法是錯的。"至於為什麽經常處理複雜數據的大銀行會犯這種低級錯誤，嗯...我沒什麼話可說，因為我對這間機構沒什麼了解。不過這篇報導剛好提到一個事實，可能與銀行出這種包有關，也可能無關:
+
+> 作為澳大利亞最大的房屋貸款機構，房價上漲會讓聯邦銀行有最大獲益。全澳大利亞大多數購屋族以及小型企業都是向聯邦銀行貸款。
+
+同學們，這就是社會現實呀！
+
+<!---To try to get a sense of why you need to pay attention to the differences between the mean and the median let's consider a real life example. Since I tend to mock journalists for their poor scientific and statistical knowledge, I should give credit where credit is due. This is an excellent article on the ABC news website[^04-descriptive-statistics-3] from 24 September, 2010:
 
 [^04-descriptive-statistics-3]: [www.abc.net.au/news/stories/2010/09/24/3021480.htm](www.abc.net.au/news/stories/2010/09/24/3021480.htm)
 
@@ -178,7 +202,7 @@ Couldn't have put it better myself. The way that Demographia calculated the rati
 
 > \[As\] Australia's largest home lender, the Commonwealth Bank has one of the biggest vested interests in house prices rising. It effectively owns a massive swathe of Australian housing as security for its home loans as well as many small business loans.
 
-My, my.
+My, my. --->
 
 ### 眾數 {#sec-Mode}
 

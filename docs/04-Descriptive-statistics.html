@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.253">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -490,27 +490,51 @@ Let's expand on that last part a little. One consequence is that there are syste
 </section>
 <section id="sec-A-real-life-example" class="level3" data-number="4.1.5">
 <h3 data-number="4.1.5" class="anchored" data-anchor-id="sec-A-real-life-example"><span class="header-section-number">4.1.5</span> 真實案例</h3>
-<p>To try to get a sense of why you need to pay attention to the differences between the mean and the median let’s consider a real life example. Since I tend to mock journalists for their poor scientific and statistical knowledge, I should give credit where credit is due. This is an excellent article on the ABC news website<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> from 24 September, 2010:</p>
+<p>為了弄清楚為什麼你需要注意平均值和中位數的區別，讓我們看一個現實生活中的例子。雖然我喜歡看媒體記者因為缺乏科學和統計知識而鬧的笑話，有好報導還是應該給予讚揚。請看2010年9月24日澳洲廣播公司新聞網站的這篇優秀報導<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>：</p>
 <blockquote class="blockquote">
-<p>Senior Commonwealth Bank executives have travelled the world in the past couple of weeks with a presentation showing how Australian house prices, and the key price to income ratios, compare favourably with similar countries. “Housing affordability has actually been going sideways for the last five to six years,” said Craig James, the chief economist of the bank’s trading arm, CommSec.</p>
+<p>在過去的幾個星期，澳大利亞聯邦銀行的資深高層到世界各地旅行，準備了一份簡報說明與發達程度接近的國家相比，澳大利亞房價及主要價格收入比率比較有利。『實際上過去五、六年，澳大利亞的住宅負擔能力出現偏差』聯邦銀行的首席經濟學家Craig James說道。</p>
 </blockquote>
-<p>This probably comes as a huge surprise to anyone with a mortgage, or who wants a mortgage, or pays rent, or isn’t completely oblivious to what’s been going on in the Australian housing market over the last several years. Back to the article:</p>
+<p>這對於任何有按時付房貸，想要申請房貸，支付租金，或對於過去幾年澳大利亞房地產市場發生的事情全然不知情的民眾來說是重大消息。讓我們繼續看下去：</p>
 <blockquote class="blockquote">
-<p>CBA has waged its war against what it believes are housing doomsayers with graphs, numbers and international comparisons. In its presentation, the bank rejects arguments that Australia’s housing is relatively expensive compared to incomes. It says Australia’s house price to household income ratio of 5.6 in the major cities, and 4.3 nationwide, is comparable to many other developed nations. It says San Francisco and New York have ratios of 7, Auckland’s is 6.7, and Vancouver comes in at 9.3.</p>
+<p>澳大利亞聯邦銀行以圖表、數字還有比較各國狀況，反擊房屋末日論。銀行官員用這份<a href="https://www.commbank.com.au/about-us/shareholders/pdfs/2010-asx/Australian_Residential_Housing_and_Mortgages_slide_pack_9_Sept_2010.pdf">簡報</a>裡的數據，否定與澳大利亞一般家庭收入比較，住宅負擔相對昂貴的論點。簡報裡提到澳洲主要城市的房屋價格與家庭收入的比值為5.6，全國平均為4.3，與其他已開發國家的城市相比，美國舊金山和紐約的比值都是7，紐西蘭奧克蘭6.7，加拿大溫哥華9.3。</p>
 </blockquote>
-<p>More excellent news! Except, the article goes on to make the observation that:</p>
+<p>聽起來很棒! 不過這篇報導接下來評論了簡報內容：</p>
 <blockquote class="blockquote">
-<p>Many analysts say that has led the bank to use misleading figures and comparisons. If you go to page four of CBA’s presentation and read the source information at the bottom of the graph and table, you would notice there is an additional source on the international comparison – Demographia. However, if the Commonwealth Bank had also used Demographia’s analysis of Australia’s house price to income ratio, it would have come up with a figure closer to 9 rather than 5.6 or 4.3</p>
+<p>許多分析家指出聯邦銀行誤用了圖表及數字，做出的結論是錯誤的。看一下簡報第四頁的表格，表格註腳提到其他國家的數值是來自一個網站——<a href="http://www.demographia.com/">國際住宅負擔調查報告</a>。然而，如果聯邦銀行也引用該網站對澳大利亞房價與收入比值的分析，數字應該是9，而不是5.6或4.3。</p>
 </blockquote>
-<p>That’s, um, a rather serious discrepancy. One group of people say 9, another says 4-5. Should we just split the difference and say the truth lies somewhere in between? Absolutely not! This is a situation where there is a right answer and a wrong answer. Demographia is correct, and the Commonwealth Bank is wrong. As the article points out:</p>
+<p>嗯，出現一個相當嚴重的歧異。一群專家說是9，另一群專家說是4或5。我們能說雙方都有理，宣稱真實數字就在兩者之間？絕對不行！房價和收入的調查結果只會有一個。正如報導接著指出，國際住宅負擔調查報告的數字是正確的，澳洲聯邦銀行提供的數字是錯誤的：</p>
 <blockquote class="blockquote">
-<p>[An] obvious problem with the Commonwealth Bank’s domestic price to income figures is they compare average incomes with median house prices (unlike the Demographia figures that compare median incomes to median prices). The median is the mid-point, effectively cutting out the highs and lows, and that means the average is generally higher when it comes to incomes and asset prices, because it includes the earnings of Australia’s wealthiest people. To put it another way: the Commonwealth Bank’s figures count Ralph Norris’ multi-million dollar pay packet on the income side, but not his (no doubt) very expensive house in the property price figures, thus understating the house price to income ratio for middle-income Australians.</p>
+<p>澳洲聯邦銀行提供的國內房價與收入數字存在一個明顯的問題，他們比較的是收入平均值與房價中位數（國際住宅負擔調查報告比較的是收入中位數與房價中位數）。中位數是數據資料中間的點，能有效剔除了最高數值和最低數值，這意味著當涉及到收入和資產價格時，平均值會被拉高，因為整體收入數據包括澳大利亞最有錢的人。換句話說：聯邦銀行計算的收入數據包括執行長拉爾夫-諾里斯（Ralph Norris）的數百萬美元年薪，但是沒有把他的豪宅算在房產價格數據裡，因此低估了澳大利亞中產受薪階級的房價與收入比。</p>
 </blockquote>
-<p>Couldn’t have put it better myself. The way that Demographia calculated the ratio is the right thing to do. The way that the Bank did it is incorrect. As for why an extremely quantitatively sophisticated organisation such as a major bank made such an elementary mistake, well… I can’t say for sure since I have no special insight into their thinking. But the article itself does happen to mention the following facts, which may or may not be relevant:</p>
+<p>這段報導還是我自己(原作者)來寫好了。“(簡單說，)國際住宅負擔調查報告的比值計算方式是正確的，但是聯邦銀行的算法是錯的。”至於為什麽經常處理複雜數據的大銀行會犯這種低級錯誤，嗯…我沒什麼話可說，因為我對這間機構沒什麼了解。不過這篇報導剛好提到一個事實，可能與銀行出這種包有關，也可能無關:</p>
 <blockquote class="blockquote">
-<p>[As] Australia’s largest home lender, the Commonwealth Bank has one of the biggest vested interests in house prices rising. It effectively owns a massive swathe of Australian housing as security for its home loans as well as many small business loans.</p>
+<p>作為澳大利亞最大的房屋貸款機構，房價上漲會讓聯邦銀行有最大獲益。全澳大利亞大多數購屋族以及小型企業都是向聯邦銀行貸款。</p>
 </blockquote>
-<p>My, my.</p>
+<p>同學們，這就是社會現實呀！</p>
+
+<!---To try to get a sense of why you need to pay attention to the differences between the mean and the median let's consider a real life example. Since I tend to mock journalists for their poor scientific and statistical knowledge, I should give credit where credit is due. This is an excellent article on the ABC news website[^04-descriptive-statistics-3] from 24 September, 2010:
+
+[^04-descriptive-statistics-3]: [www.abc.net.au/news/stories/2010/09/24/3021480.htm](www.abc.net.au/news/stories/2010/09/24/3021480.htm)
+
+> Senior Commonwealth Bank executives have travelled the world in the past couple of weeks with a presentation showing how Australian house prices, and the key price to income ratios, compare favourably with similar countries. "Housing affordability has actually been going sideways for the last five to six years," said Craig James, the chief economist of the bank's trading arm, CommSec.
+
+This probably comes as a huge surprise to anyone with a mortgage, or who wants a mortgage, or pays rent, or isn't completely oblivious to what's been going on in the Australian housing market over the last several years. Back to the article:
+
+> CBA has waged its war against what it believes are housing doomsayers with graphs, numbers and international comparisons. In its presentation, the bank rejects arguments that Australia's housing is relatively expensive compared to incomes. It says Australia's house price to household income ratio of 5.6 in the major cities, and 4.3 nationwide, is comparable to many other developed nations. It says San Francisco and New York have ratios of 7, Auckland's is 6.7, and Vancouver comes in at 9.3.
+
+More excellent news! Except, the article goes on to make the observation that:
+
+> Many analysts say that has led the bank to use misleading figures and comparisons. If you go to page four of CBA's presentation and read the source information at the bottom of the graph and table, you would notice there is an additional source on the international comparison -- Demographia. However, if the Commonwealth Bank had also used Demographia's analysis of Australia's house price to income ratio, it would have come up with a figure closer to 9 rather than 5.6 or 4.3
+
+That's, um, a rather serious discrepancy. One group of people say 9, another says 4-5. Should we just split the difference and say the truth lies somewhere in between? Absolutely not! This is a situation where there is a right answer and a wrong answer. Demographia is correct, and the Commonwealth Bank is wrong. As the article points out:
+
+> \[An\] obvious problem with the Commonwealth Bank's domestic price to income figures is they compare average incomes with median house prices (unlike the Demographia figures that compare median incomes to median prices). The median is the mid-point, effectively cutting out the highs and lows, and that means the average is generally higher when it comes to incomes and asset prices, because it includes the earnings of Australia's wealthiest people. To put it another way: the Commonwealth Bank's figures count Ralph Norris' multi-million dollar pay packet on the income side, but not his (no doubt) very expensive house in the property price figures, thus understating the house price to income ratio for middle-income Australians.
+
+Couldn't have put it better myself. The way that Demographia calculated the ratio is the right thing to do. The way that the Bank did it is incorrect. As for why an extremely quantitatively sophisticated organisation such as a major bank made such an elementary mistake, well... I can't say for sure since I have no special insight into their thinking. But the article itself does happen to mention the following facts, which may or may not be relevant:
+
+> \[As\] Australia's largest home lender, the Commonwealth Bank has one of the biggest vested interests in house prices rising. It effectively owns a massive swathe of Australian housing as security for its home loans as well as many small business loans.
+
+My, my. --->
 </section>
 <section id="sec-Mode" class="level3" data-number="4.1.6">
 <h3 data-number="4.1.6" class="anchored" data-anchor-id="sec-Mode"><span class="header-section-number">4.1.6</span> 眾數</h3>
@@ -1016,7 +1040,7 @@ In the next Chapter we'll move on to a discussion of how to draw pictures! Every
 <ol>
 <li id="fn1"><p>不知道澳洲足球聯盟的同學不必擔心，即使不了解AFL規則，也不會影響使用這份資料學習描述統計。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>建議初學的同學在紙上寫下幾種平均值的公式，才能加深印象。平均值的數學記號通常是 <span class="math inline">\(\bar{X}\)</span> ，公式則寫成 <span class="math display">\[\bar{X}=\frac{X_1 + X_2 ... + X_{N-1} + X_{N}}{N}\]</span> 這樣寫雖然正確，但是太過冗長，所以通常會用<strong>連加符號</strong> <span class="math inline">\(\sum\)</span> <span class="math inline">\(^a\)</span> 縮減公式。像是這個例子要連加五筆資料，寫成公式 <span class="math inline">\(X_1 + X_2 + X_3 + X_4 + X_5\)</span> 看起來很長，使用連加符號就能簡化為 <span class="math display">\[\sum_{i=1}^{5} X_i\]</span> 。字面意思是”以i代表1到5，將每個 <span class="math inline">\(X_i\)</span> 的數值加起來”。不過這和”連加前五筆數值“的意思還是不大一樣。雖然我們可以將這個公式擴展為適要任何狀況： <span class="math display">\[\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_i\]</span> 但是可能無法幫助數感不夠的同學了解平均值的概念。其實只要寫平均值的概念只要用幾個字表達就夠清楚：將一筆資料所有數值加起來再除以資料的數值個數。但是這本書的教學目的不光是要解釋概念，也要使用這本書的同學了解在本書以及jamovi的介面隨處可見的各種數學記號是什麼意思。請留意平均值公式裡的每個記號，之後每一章都會不斷遇到。這些記號不論出現在那裡，意思都是一樣的：<span class="math inline">\(\bar{X}\)</span> 代表平值， <span class="math inline">\(\sum\)</span> 代表連加一筆數值， <span class="math inline">\(X_i\)</span> 代表第i個數值， <span class="math inline">\(N\)</span> 代表一筆資料的數值個數。 <br>—<br><span class="math inline">\(^a\)</span> <strong>選用記號的理由</strong> <span class="math inline">\(\sum\)</span> 代表數值連加並不是沒有理由的，其實這是希臘字母 <span class="math inline">\(\sigma\)</span> 的大寫，相當於英文字母的大寫 <span class="math inline">\(S\)</span> 。也有另一個大寫希臘字母 <span class="math inline">\(\prod\)</span> 代表數值連乘，這個字母的小寫就是代表圓周率的 <span class="math inline">\(\pi\)</span> ，相當於英文字母的 <span class="math inline">\(P\)</span> 。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><a href="www.abc.net.au/news/stories/2010/09/24/3021480.htm">www.abc.net.au/news/stories/2010/09/24/3021480.htm</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.abc.net.au/news/2010-09-24/housing-bubble-debate-boils-over/2273406">www.abc.net.au/news/stories/2010/09/24/3021480.htm</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>譯註~這段計算步驟可參考譯者準備的<a href="files/AFL Margins_MAD.omv">jamovi檔案</a>，下載後以jamovi開啟，觀看計算變項的說明。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>儘管平均絕對差的手算演練告一段落，還有一些事情要交待。我建議演練過程也要將公式寫出來，這樣子計算量數的數學公式意思才能記在心中。尤其是“平均絕對差”(mean absolute deviation)與”中位數絕對差“(median absolute deviation)的英文縮寫都是MAD，讀文獻時不注意的話會混淆。原作者建議“平均絕對差”的英文縮寫應該寫成AAD(average absolute deviation)，才能避免寫作與閱讀的問題。這個範例的公式與計算結果是： <span class="math display">\[AAD(X) =\frac{1}{N} \sum_{i=1}^{N} \mid X_i - \bar{X} \mid = 15.52\]</span><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>有關變異數的眾多細節，在此特別要提一點，就是變異數是<strong>可加成的</strong>。假如現在有兩個變項 <span class="math inline">\(X\)</span> 與 <span class="math inline">\(Y\)</span>，各自的變異數是 <span class="math inline">\(Var(X)\)</span> 與 <span class="math inline">\(Var(Y)\)</span>。接著我們定義一個新變項 <span class="math inline">\(Z\)</span> 是<span class="math inline">\(X\)</span> 與 <span class="math inline">\(Y\)</span>的加成，也就是 <span class="math inline">\(Z = X + Y\)</span>，變項 <span class="math inline">\(Z\)</span> 的變異數就等於 <span class="math inline">\(Var(X) + Var(Y)\)</span>。這個特性在之後推論統計方法的學習非常有幫助，而且其他變異量數沒有相同的特性。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
