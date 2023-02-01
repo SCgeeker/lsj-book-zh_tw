@@ -5,19 +5,57 @@
 source("header.R")
 ```
 
+> *"實驗完成後才諮詢統計學家，只是請他幫忙驗屍而已。統計學家只能為你開出實驗的死亡證明。"*
+> -- 羅納德·愛爾默·費雪爵士[^02-a-brief-introduction-to-research-design-1]
+
+[^02-a-brief-introduction-to-research-design-1]: 節錄自1938年，第一屆印度統計學會主席演講。來源：[http://en.wikiquote.org/wiki/Ronald Fisher](http://en.wikiquote.org/wiki/Ronald Fisher)
+
+<!---
 > *"To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of."*\
 > -- Sir Ronald Fisher[^02-a-brief-introduction-to-research-design-1]
 
-[^02-a-brief-introduction-to-research-design-1]: Presidential Address to the First Indian Statistical Congress, 1938. Source: [http://en.wikiquote.org/wiki/Ronald Fisher](http://en.wikiquote.org/wik%0Ai/Ronald%20Fisher)
+[^02-a-brief-introduction-to-research-design-1]: Presidential Address to the First Indian Statistical Congress, 1938. Source: [http://en.wikiquote.org/wiki/Ronald Fisher](http://en.wikiquote.org/wik%0Ai/RonaldFisher) --->
 
-In this chapter, we're going to start thinking about the basic ideas that go into designing a study, collecting data, checking whether your data collection works, and so on. It won't give you enough information to allow you to design studies of your own, but it will give you a lot of the basic tools that you need to assess the studies done by other people. However, since the focus of this book is much more on data analysis than on data collection, I'm only giving a very brief overview. Note that this chapter is "special" in two ways. Firstly, it's much more psychology specific than the later chapters. Secondly, it focuses much more heavily on the scientific problem of research methodology, and much less on the statistical problem of data analysis. Nevertheless, the two problems are related to one another, so it's traditional for stats textbooks to discuss the problem in a little detail. This chapter relies heavily on @Campbell1963 and @Stevens1946 for the discussion of scales of measurement.
+
+這一章是談入門研究設計要知道的基本概念，像是收集資料，如何確認收集的資料是符合目的等等。雖然同學們讀完這一章無法開始一項真正的研究，卻能掌握解讀與評估已公開發表研究設計的初級工具。由於這本書的學習重點是資料分析，而不是如何收集資料，這一章只會給你很簡單的介紹。這一章有兩個“特別之處”，首先這一章談到的心理學知識比之後的章節多，其次這一章討論研究方法的科學問題比資料分析的統計問題還多。科學問題與統計問題密不可分，傳統統計書考慮篇幅，比較少討論科學問題。這一章大部分內容來自 @Campbell1963 與 @Stevens1946 關於測量尺度的討論。
+
+<!---In this chapter, we're going to start thinking about the basic ideas that go into designing a study, collecting data, checking whether your data collection works, and so on. It won't give you enough information to allow you to design studies of your own, but it will give you a lot of the basic tools that you need to assess the studies done by other people. However, since the focus of this book is much more on data analysis than on data collection, I'm only giving a very brief overview. Note that this chapter is "special" in two ways. Firstly, it's much more psychology specific than the later chapters. Secondly, it focuses much more heavily on the scientific problem of research methodology, and much less on the statistical problem of data analysis. Nevertheless, the two problems are related to one another, so it's traditional for stats textbooks to discuss the problem in a little detail. This chapter relies heavily on @Campbell1963 and @Stevens1946 for the discussion of scales of measurement. --->
 
 ## 認識心理測量 {#sec-Introduction-to-psychological-measurement}
 
-The first thing to understand is data collection can be thought of as a kind of **measurement**. That is, what we're trying to do here is measure something about human behaviour or the human mind. What do I mean by "measurement"?
+首先請同學理解資料分析就是一種**測量**。在心理學系要學的就是如何測量人類行為及心智活動。那麼到底"測量"是什麼？
+
+<!---The first thing to understand is data collection can be thought of as a kind of **measurement**. That is, what we're trying to do here is measure something about human behaviour or the human mind. What do I mean by "measurement"?--->
 
 ### 心理測量面面觀
 
+測量並不是一個實在的概念，而是泛指賦予可觀察的屬性數值、標記、或者某種清晰定義之類的表述。以下都是心理測量的實際例子：
+
+- 我的**年齡**是*33*歲。
+- *我不喜歡* **小魚乾**。
+- 我的**染色體性別**是*男性*。
+- 我的**自我認同性別**是*女性*。
+
+以上例子裡的**粗體字**是“可被測量的事物或 屬性”，*斜體字*就是“測量值”[^02-translation-1]。我們可以再對每個例子做些深入探討，了解每種測量的細節：
+
+[^02-translation-1]: 譯註~英文版提到“測量程序”與"測量值“都是以”measurement"稱呼，中文版根據主題及脈絡以不同名稱區別。
+
+- 我的**年齡**(以年計)可以是*0,1,2,3...*。年齡的上限是多少沒人知道，不過你可以假定我能活到*150*歲，雖然還沒有人類活到這麼老。
+- 若你問我**喜歡小魚乾**嗎？我可以回答*我喜歡*，*我不喜歡*，*我沒有喜不喜歡*，*我有時候喜歡*。
+- 我的**染色體性別**在多數情況下是*男性($XY$)*或*女性($XX$)*，不過凡事總有例外。我可能有*克林那費爾特症候群($XXY$)*，使得我有男性和女性性徵。當然還有其他性染色體變異的可能。
+- 我的**自我認同性別**也許傾向男性或女性，而這和我的染色體性別無關。我也可以認為自已不是二元性別，也可以宣稱是*跨性別*。
+
+如你所見，有的例子像是能間單測量數值的項目，例如年齡，但是有些研究主題的特殊考量會讓測量變得複雜。因為年齡是大家都能理解的例子，這裡先用年齡做個說明。讀到這裡的同學可能會想，用“年度”做為測量年齡的數值不就好了嗎？若是你加入發展心理學的研究，“年度”可能不是精確的測量單位，可能還有加上“月份”，例如找到兒童參與者2歲11個月大，可縮寫為"2:11"。如果研究對象是新生兒，可能要紀錄出生到現在的“天數”，甚至要用“小時”紀錄。總而言之，確認在研究主題之下，什麼是有意義的測量數值是重要的第一課。
+
+再想得更仔細的話，我們會發覺“年齡”並不是全然精確的概念。在一般情況，我們講“年齡”有隱含“從出生到現在的時間長度”的意思。但是並不是每次提到“年齡”就是這樣的意思。設想在一個研究新生兒控制眼球運動的實驗室，受測幼兒的"出生時間”不一定是實驗人員記錄“年齡”的有意義參照點。如果今天找到兩位“出生兩小時”的新生兒，一位是比預產期提前三週出生的早產兒，另一位比預產期晚一週出生，那麼研究人員能紀錄這兩位新生兒“年齡相同”嗎？從日常社會互動的情境來說，每個人都是以出生時間做為計算年齡的參照點，因為任何人都能接受每個人出生後都是獨立生活的個體。然而在科學研究的情境要考慮的就不只如此。將人類當成一種生物的話，最能獲得充分分析的年齡紀錄，應該從個體受孕那一刻起，紀錄成長到成熟的狀況。所以“年齡”的測量定義有兩種：從受孕時間起算的年齡，以及從出生時間起算的年齡。研究對象是成人的話或許不必計較兩種定義的區別，若研究對象是新生兒也許要考量那種定義才符合研究目的。
+
+由測量定義問題再討論下去，就是**方法學**的課題了。有關人類年齡的”測量方法“，同學們能想到或找到幾種有用的調查方法呢？以下是一些你可以參考的做法： 
+
+- 直接問受測對象”你現在幾歲？“ 這種自陳式報告是快速、便宜又簡單的調查方法。不過必須確認受測對象已經成長到有能力回答調查問題，並且不會給不實回答。
+- 詢問可靠的消息來源，像是受測幼童的父母親“你們的孩子幾歲？”這種調查方法實施快速，特別是受測者的父母親就在旁邊的情境。不過如果要調查的是"受孕年齡“，大多數父母親都不清楚是什麼時候開始懷孕的。這時也許要詢問更可靠的來源，像是他們的婦產科主治醫師。
+- 尋找官方紀錄，像是個人的出生與死亡證明。這種方式耗時又勞力，不過如果研究對象是已往生的人是種可靠的來源。
+
+<!---
 Measurement itself is a subtle concept, but basically it comes down to finding some way of assigning numbers, or labels, or some other kind of well-defined descriptions, to "stuff". So, any of the following would count as a psychological measurement:
 
 -   My **age** is 33 years.
@@ -30,9 +68,10 @@ In the short list above, the **bolded part** is "the thing to be measured", and 
 -   My **age** (in years) could have been *0, 1, 2, 3* ..., etc. The upper bound on what my age could possibly be is a bit fuzzy, but in practice you'd be safe in saying that the largest possible age is *150*, since no human has ever lived that long.
 -   When asked if I **like anchovies**, I might have said that *I do, or I do not, or I have no opinion, or I sometimes do.*
 -   My **chromosomal gender** is almost certainly going to be *male (*$XY$) or *female (*$XX$), but there are a few other possibilities. I could also have *Klinfelter's syndrome* ($XXY$), which is more similar to male than to female. And I imagine there are other possibilities too.
--   My **self-identified** gender is also very likely to be male or female, but it doesn't have to agree with my chromosomal gender. I may also choose to identify with *neither*, or to explicitly call myself *transgender*.
+-   My **self-identified** gender is also very likely to be male or female, but it doesn't have to agree with my chromosomal gender. I may also choose to identify with *neither*, or to explicitly call myself *transgender*. 
 
 As you can see, for some things (like age) it seems fairly obvious what the set of possible measurements should be, whereas for other things it gets a bit tricky. But I want to point out that even in the case of someone's age it's much more subtle than this. For instance, in the example above I assumed that it was okay to measure age in years. But if you're a developmental psychologist, that's way too crude, and so you often measure age in *years and months* (if a child is 2 years and 11 months this is usually written as "2;11"). If you're interested in newborns you might want to measure age in *days since birth*, maybe even *hours since birth*. In other words, the way in which you specify the allowable measurement values is important.
+
 
 Looking at this a bit more closely, you might also realise that the concept of "age" isn't actually all that precise. In general, when we say "age" we implicitly mean "the length of time since birth". But that's not always the right way to do it. Suppose you're interested in how newborn babies control their eye movements. If you're interested in kids that young, you might also start to worry that "birth" is not the only meaningful point in time to care about. If Baby Alice is born 3 weeks premature and Baby Bianca is born 1 week late, would it really make sense to say that they are the "same age" if we encountered them "2 hours after birth"? In one sense, yes. By social convention we use birth as our reference point for talking about age in everyday life, since it defines the amount of time the person has been operating as an independent entity in the world. But from a scientific perspective that's not the only thing we care about. When we think about the biology of human beings, it's often useful to think of ourselves as organisms that have been growing and maturing since conception, and from that perspective Alice and Bianca aren't the same age at all. So you might want to define the concept of "age" in two different ways: the length of time since conception and the length of time since birth. When dealing with adults it won't make much difference, but when dealing with newborns it might.
 
@@ -40,11 +79,32 @@ Moving beyond these issues, there's the question of methodology. What specific "
 
 -   You could just ask people "how old are you?" The method of self-report is fast, cheap and easy. But it only works with people old enough to understand the question, and some people lie about their age.
 -   You could ask an authority (e.g., a parent) "how old is your child?" This method is fast, and when dealing with kids it's not all that hard since the parent is almost always around. It doesn't work as well if you want to know "age since conception", since a lot of parents can't say for sure when conception took place. For that, you might need a different authority (e.g., an obstetrician).
--   You could look up official records, for example birth or death certificates. This is a time consuming and frustrating endeavour, but it has its uses (e.g., if the person is now dead).
+-   You could look up official records, for example birth or death certificates. This is a time consuming and frustrating endeavour, but it has its uses (e.g., if the person is now dead).--->
 
 ### 操作型定義: 定義研究的測量方法
 
-All of the ideas discussed in the previous section relate to the concept of **operationalisation**. To be a bit more precise about the idea, operationalisation is the process by which we take a meaningful but somewhat vague concept and turn it into a precise measurement. The process of operationalisation can involve several different things:
+以上討論這麼多，是要引導同學理解**操作型定義**的概念。用更清楚簡潔的話來說，操作型定義是*將有意義但有些模糊的概念，轉換為精確測量程序的設定過程*。完整的操作型定義要在過程中考慮這些條件：
+
+- 清楚定義研究要測量的項目。以“年齡”為例，研究要測量的是“胎兒出生起算的時間長度”還是“母體受孕起算的時間長度”。
+- 確認用什麼方法進行測量。同樣以“年齡”為例，研穵 要用自陳式報告、詢問受測對象雙親、還是查閱官方紀錄？如果決定用自陳式報告，要如何設定問題內容？
+- 定義可做紀錄的測量數值範圍。請留意數值不一定要是數字！雖然年齡的測量數值無疑問題數字，依然要考慮什麼單位的數字是需要被紀錄的。是年份？月份？還是小時？像性別一類數值不是數字的測量方法，同樣也要考慮數值的範圍。像是請受測對象透過自陳報告回報性別，要設計什麼樣的選項讓人選擇？只有“男性”和“女性”兩個選項夠嗎？需不需要增加“其他”這一項？或者改用開放式回答，讓受測對象自已寫下個人認同的性別？如果確定使用開放式回答，要如何解讀各式各樣的答案？
+
+設定操作型定義有各種方法，沒有一種“唯一正解”。任何研究都是根據測量目的，透過設定操作型定義的過程，將“年齡”與"性別"等不具形式的概念，轉化為可用數值形式表達的測量值。每個科學領域都對研究對象的測量方式有基本共識。因此，要理解如何設定操作型定義，是因研究主題而異。畢竟有許多主題存在大量差異化的個別研究，有些主題則有一致的研究模式，無法用統一的方法設定操作型定義。
+
+進入下一節之前，讓我們整理一些之後的單元會經常遇到，與測量有關的專用名詞，這些名詞彼此之間有許多關聯：
+
+- **理論建構(A theoretical construct)** 研究者想要測量的目標，像是"年齡"、"性別"、或"選項"。理論建構不能直接觀察記錄，都是模糊抽象的概念。
+- **測量程序(measure)[^02-transltion-02]** 測量程序是進行觀察紀錄的方法或工具。像是問卷的題目、行為觀察、腦部活動掃瞄都是一種測量程序。
+- **操作型定義(operationalisation)** 測量程序與理論建構之間的邏輯關連條件，或是將理論建構轉換為測量程序的過程。
+- **變項(variable)** 執行測量程序的最終成品就是“資料”，一個變項就是"資料”的集合[^02-transltion-03]。
+
+[^02-transltion-02]: 譯注~根據名詞解說，此處中譯為”測量程序“。
+
+[^02-transltion-03]: 譯注~本書的多數單元將variable翻成"變項"，除了統計理論的單元大多會翻成“變數”。因為"變項"是資料的，“變數”是數學的。
+
+在統計實務，即使是訓練過的科學家也不大會去管這些名詞的差異，但是對於正在學習的同學們，搞清楚這些名詞的涵義會很有幫助。
+
+<!---All of the ideas discussed in the previous section relate to the concept of **operationalisation**. To be a bit more precise about the idea, operationalisation is the process by which we take a meaningful but somewhat vague concept and turn it into a precise measurement. The process of operationalisation can involve several different things:
 
 -   Being precise about what you are trying to measure. For instance, does "age" mean "time since birth" or "time since conception" in the context of your research?
 
@@ -61,37 +121,87 @@ Before moving on I want to take a moment to clear up our terminology, and in the
 -   **An operationalisation.** The term "operationalisation" refers to the logical connection between the measure and the theoretical construct, or to the process by which we try to derive a measure from a theoretical construct.
 -   **A variable.** Finally, a new term. A variable is what we end up with when we apply our measure to something in the world. That is, variables are the actual "data" that we end up with in our data sets.
 
-In practice, even scientists tend to blur the distinction between these things, but it's very helpful to try to understand the differences.
+In practice, even scientists tend to blur the distinction between these things, but it's very helpful to try to understand the differences.--->
 
 ## 測量尺度 {#sec-Scales-of-measurement}
 
-As the previous section indicates, the outcome of a psychological measurement is called a variable. But not all variables are of the same qualitative type and so it's useful to understand what types there are. A very useful concept for distinguishing between different types of variables is what's known as **scales of measurement**.
+[前一節](02-A-brief-introduction-to-research-design.html#sec-Introduction-to-psychological-measurement)最後提到心理測量程序的產物就是變項。一份資料檔通常不只有一個變項，而且各種變項有本質的區別，所以這一節要好好認識幾種變項型態。同學們將認識各種**測量尺度**以及學會判斷資料的變項型態。
+
+<!---As the previous section indicates, the outcome of a psychological measurement is called a variable. But not all variables are of the same qualitative type and so it's useful to understand what types there are. A very useful concept for distinguishing between different types of variables is what's known as **scales of measurement**. --->
 
 ### 名義尺度
 
-A **nominal scale** variable (also referred to as a **categorical** variable) is one in which there is no particular relationship between the different possibilities. For these kinds of variables it doesn't make any sense to say that one of them is "bigger' or "better" than any other one, and it absolutely doesn't make any sense to average them. The classic example for this is "eye colour". Eyes can be blue, green or brown, amongst other possibilities, but none of them is any "bigger" than any other one. As a result, it would feel really weird to talk about an "average eye colour". Similarly, gender is nominal too: male isn't better or worse than female. Neither does it make sense to try to talk about an "average gender". In short, nominal scale variables are those for which the only thing you can say about the different possibilities is that they are different. That's it.
+**名義尺度**變項又稱**類別**變項，命名理由是代表資料的每個數值之間沒有任何明確關係。名義尺度變項的資料之間，沒有那一個數值比較"大"或比較"好"，因此也無法計算這筆變項的平均值。最典型的例子是"瞳孔顏色"。人類瞳孔有藍色、綠色、棕色等各種顏色。沒有人能說瞳孔有所謂的"平均顏色"。人類性別也是典型的名義尺度變項：男性或女性沒有那一種比較好或比較不好，當然也沒有所謂的"平均性別"。總而言之，以名義尺度紀錄的資料，不同數值之間只有各自不一樣的意思而已。
 
-Let's take a slightly closer look at this. Suppose I was doing research on how people commute to and from work. One variable I would have to measure would be what kind of transportation people use to get to work. This "transport type" variable could have quite a few possible values, including: "train", "bus", "car", "bicycle". For now, let's suppose that these four are the only possibilities. Then imagine that I ask 100 people how they got to work today, with this result (@tbl-tab2-1).
+讓我們再用一個例子更深入了解名義尺度。假如今天要研究民眾如何通勤上班，我們可以設定資料變項記錄每個人是用什麼交通方式去上班。"通勤方式"這個變項可能有好幾種數值：像是“火車”，“公車”，“汽車”，“自行車”。假設調查100位民眾，得到了這四種回答，完成的紀錄就如表2-1。
+
+<!---A **nominal scale** variable (also referred to as a **categorical** variable) is one in which there is no particular relationship between the different possibilities. For these kinds of variables it doesn't make any sense to say that one of them is "bigger' or "better" than any other one, and it absolutely doesn't make any sense to average them. The classic example for this is "eye colour". Eyes can be blue, green or brown, amongst other possibilities, but none of them is any "bigger" than any other one. As a result, it would feel really weird to talk about an "average eye colour". Similarly, gender is nominal too: male isn't better or worse than female. Neither does it make sense to try to talk about an "average gender". In short, nominal scale variables are those for which the only thing you can say about the different possibilities is that they are different. That's it.
+
+Let's take a slightly closer look at this. Suppose I was doing research on how people commute to and from work. One variable I would have to measure would be what kind of transportation people use to get to work. This "transport type" variable could have quite a few possible values, including: "train", "bus", "car", "bicycle". For now, let's suppose that these four are the only possibilities. Then imagine that I ask 100 people how they got to work today, with this result (見表2-1)。(@tbl-tab2-1).--->
+
 
 ```{r}
 #| label: tbl-tab2-1
 #| tbl-cap: How did 100 people get to work today
-huxtabs[[2]][[1]] 
+#huxtabs[[2]][[1]] 
 ```
 
-So, what's the average transportation type? Obviously, the answer here is that there isn't one. It's a silly question to ask. You can say that travel by car is the most popular method, and travel by train is the least popular method, but that's about all. Similarly, notice that the order in which I list the options isn't very interesting. I could have chosen to display the data like in @tbl-tab2-2.
+<center>表2-1: 調查100位民眾本日通勤方式</center>
+
+|通勤方式|人數|
+|:---:|:---:|
+|(1)火車|12|
+|(2)公車|30|
+|(3)汽車|48|
+|(4)自行車|10|
+
+那麼這裡可以找出平均的通勤方式嗎？很明顯答案不只一個，或者說這是個蠢問題。也許你會說汽車是最多人上班的交通工具，也可以說火車最沒有民眾使用，但都不能涵括調查結果。同學們也可以看一看表2-2，無論如何變動記錄表裡的項目順序，都無法讓這筆資料透露任何意義。
+
+<!---So, what's the average transportation type? Obviously, the answer here is that there isn't one. It's a silly question to ask. You can say that travel by car is the most popular method, and travel by train is the least popular method, but that's about all. Similarly, notice that the order in which I list the options isn't very interesting. I could have chosen to display the data like in 表2-2。 @tbl-tab2-2.--->
 
 ```{r}
 #| label: tbl-tab2-2
 #| tbl-cap: How did 100 people get to work today, a different view
-huxtabs[[2]][[2]]
+#huxtabs[[2]][[2]]
 ```
 
-...and nothing really changes.
+
+<center>表2-2: 調查100位民眾本日通勤方式，依上段描述更改呈現順序</center>
+
+|通勤方式|人數|
+|:---:|:---:|
+|(3)汽車|48|
+|(1)火車|12|
+|(4)自行車|10|
+|(2)公車|30|
+
+<!---...and nothing really changes.--->
+
+...很明顯沒有什麼改變。
 
 ### 次序尺度
 
-**Ordinal scale** variables have a bit more structure than nominal scale variables, but not by a lot. An ordinal scale variable is one in which there is a natural, meaningful way to order the different possibilities, but you can't do anything else. The usual example given of an ordinal variable is "finishing position in a race". You *can* say that the person who finished first was faster than the person who finished second, but you *don't* know how much faster. As a consequence we know that 1st $>$ 2nd, and we know that 2nd $>$ 3rd, but the difference between 1st and 2nd might be much larger than the difference between 2nd and 3rd.
+**次序尺度**變項比起名義尺度變項能呈現一點有結構的資訊，不過沒有很多。次序尺度變項使用自然有意義的方式排序資料數值，但是除了排序我們就無法再做什麼了。最典型的例子是“賽跑選手抵達終點的名次”。先抵達終點的選手毫無疑問比第二名選手快，不過紀錄看不出快多少。紀錄一場比賽的選手名次後，我們會知道第一名比第二名快，第二名比第三名快，但是從資料看不出第一名和第二名的差距，與第二名和第三名的差距有什麼差異。
+
+以下是個比較有心理學意義的例子。假如我想調查民眾對於氣候變遷的態度，我設計了以下幾個項目，請受訪者選出其中一個最接近個人看法的項目。
+
+1. 氣溫確實有上升，而且是人類活動造成的
+2. 氣溫確實有上升，但是原因不明
+3. 氣溫確實有上升，但是與人類活動無關
+4. 氣溫沒有變化
+
+以上四個項目的順序是根據當前已知的科學研究資訊排列，第1項看法最符合現在的研究所知，第2與第3項是尚有研究證據支持的看法，第4項看法與所有研究證據相左。若是受測者們對於已知科學證據有充分了解，以上四個項目的排序就是符合多數人的看法。如果我將選項用以下段落的方式排序，則是不符合多數人的看法。
+
+1. 氣溫確實有上升，但是與人類活動無關
+2. 氣溫確實有上升，而且是人類活動造成的
+3. 氣溫沒有變化
+4. 氣溫確實有上升，但是原因不明
+
+...這個例子說明心理測量的“結構”是資料呈現出多數人的合理回應。
+
+假設我成功收集了100位民眾的回應，調查結果總計如表2-3。
+
+<!---**Ordinal scale** variables have a bit more structure than nominal scale variables, but not by a lot. An ordinal scale variable is one in which there is a natural, meaningful way to order the different possibilities, but you can't do anything else. The usual example given of an ordinal variable is "finishing position in a race". You *can* say that the person who finished first was faster than the person who finished second, but you *don't* know how much faster. As a consequence we know that 1st $>$ 2nd, and we know that 2nd $>$ 3rd, but the difference between 1st and 2nd might be much larger than the difference between 2nd and 3rd.
 
 Here's a more psychologically interesting example. Suppose I'm interested in people's attitudes to climate change. I then go and ask some people to pick the statement (from four listed statements) that most closely matches their beliefs:
 
@@ -109,52 +219,133 @@ Notice that these four statements actually do have a natural ordering, in terms 
 
 ...because it seems to violate the natural "structure" to the question.
 
-So, let's suppose I asked 100 people these questions, and got the answers shown in @tbl-tab2-3.
+So, let's suppose I asked 100 people these questions, and got the answers shown in 表2-3。 @tbl-tab2-3. --->
 
 ```{r}
 #| label: tbl-tab2-3
 #| tbl-cap: Attitudes to climate change
-huxtabs[[2]][[3]]
+#huxtabs[[2]][[3]]
 ```
 
-When analysing these data it seems quite reasonable to try to group (1), (2) and (3) together, and say that 81 out of 100 people were willing to at *least partially* endorse the science. And it's also quite reasonable to group (2), (3) and (4) together and say that 49 out of 100 people registered *at least some disagreement* with the dominant scientific view. However, it would be entirely bizarre to try to group (1), (2) and (4) together and say that 90 out of 100 people said... what? There's nothing sensible that allows you to group those responses together at all.
+<center>表2-3: 氣候變遷態度調查結果</center>
 
-That said, notice that while we *can* use the natural ordering of these items to construct sensible groupings, what we can't do is average them. For instance, in my simple example here, the "average" response to the question is 1.97. If you can tell me what that means I'd love to know, because it seems like gibberish to me!
+|調查項目回應|人數|
+|:---:|:---:|
+|(1)氣溫確實有上升，而且是人類活動造成的|51|
+|(2)氣溫確實有上升，但是原因不明|20|
+|(3)氣溫確實有上升，但是與人類活動無關|10|
+|(4)氣溫沒有變化|19|
+
+資料分析能獲得幾種合理解釋，其中一種是最多民眾回應代表理性意見的(1),(2),(3)，或者說100位受訪中的81人*至少有理解*最新科學研究。另一種合理解釋是至少一半受訪者*傾向不同意*氣候變遷是現實的看法，因為100位受訪者中的49人選擇不同於主流科學觀點的(2),(3), (4)。然而也可能很難合理解釋為何有九成受訪者選擇(1),(2),(4)，因為這三項的排序不符合預期的順序結構，無法說明最多人選擇的三項有什麼意義。
+
+以上的說明是向同學們示範，次序尺度變項資料要符合預期中的”順序結構“，才會有合理的分析，而且我們不能計算數值之間的平均。如果我們用回應人數計算加權平均，雖然可以得到平均值1.97，但是這個數值對於解釋調查結果沒有任何幫助。請同學想想這個數字能不能做為報告的結論。
+
+<!---When analysing these data it seems quite reasonable to try to group (1), (2) and (3) together, and say that 81 out of 100 people were willing to at *least partially* endorse the science. And it's also quite reasonable to group (2), (3) and (4) together and say that 49 out of 100 people registered *at least some disagreement* with the dominant scientific view. However, it would be entirely bizarre to try to group (1), (2) and (4) together and say that 90 out of 100 people said... what? There's nothing sensible that allows you to group those responses together at all.
+
+That said, notice that while we *can* use the natural ordering of these items to construct sensible groupings, what we can't do is average them. For instance, in my simple example here, the "average" response to the question is 1.97. If you can tell me what that means I'd love to know, because it seems like gibberish to me! --->
+
+
 
 ### 等距尺度
 
-In contrast to nominal and ordinal scale variables, **interval scale** and ratio scale variables are variables for which the numerical value is genuinely meaningful. In the case of interval scale variables the *differences* between the numbers are interpretable, but the variable doesn't have a "natural" zero value. A good example of an interval scale variable is measuring temperature in degrees celsius. For instance, if it was 15$^{\circ}$ yesterday and 18$^{\circ}$ today, then the 3$^{\circ}$ difference between the two is genuinely meaningful. Moreover, that 3$^{\circ}$ difference is *exactly the same* as the 3$^{\circ}$ difference between 7$^{\circ}$ and 10$^{\circ}$. In short, addition and subtraction are meaningful for interval scale variables.[^02-a-brief-introduction-to-research-design-2]
+不同於名義尺度與次序尺度變項，**等距尺度**和比例尺度變項以可數的數字表數值，能獲得有意義的資訊。等距尺度變項的*數值之間差異*是可以推論的，但是變項數值沒有“自然的”零點。攝氏溫度是一個說明等距尺度變項的好例子。例如是，昨天氣溫是 15$^{\circ}$，今天氣溫是 18$^{\circ}$，所以兩日的溫差是3$^{\circ}$。更重要的是，這個3$^{\circ}$與氣溫7$^{\circ}$ 與 10$^{\circ}$的差異是*完全相等*。簡言之，用等距尺度變項數值的做加法或減法是有意義的[^02-a-brief-introduction-to-research-design-2]。
+
+[^02-a-brief-introduction-to-research-design-2]:<原作者的補充>其實曾有物理學大神告訴我，溫度嚴格來說不是等距尺度變項，因為只要環境溫度至少有3$^{\circ}$ ，任何物體都可以加熱。雖然在物理學來說，這並不是一個講解等距尺度好例子，不過為了方便說明，這裡暫且無視物理事實。
+
+然而，攝氏零度並不是“量不到溫度”的意思，最早攝氏零度是根據“觀察到水開始結冰”而指定的數值。這造成溫度的數值無法相乘或相除：要說20$^{\circ}$ 比10$^{\circ}$ 熱兩倍是荒誔的，也不可能說20$^{\circ}$ 是-10$^{\circ}$ 的負兩倍。
+
+我們再來舉心理學的例子吧。假如我想要了解各位同學在大學四年間學習態度的變化，最好的方式是每學年或學期開始，就請同手們做一次態度調查。這樣的記錄就是等距尺度變項資料。如果我手上的紀錄有一位學生是2013年的，另一位學生的紀錄是2018年的，向你們報告說2018年學生接受調查的時間是2013年的"1.0025倍“，這樣說奇不奇怪呢？
+
+
+<!---In contrast to nominal and ordinal scale variables, **interval scale** and ratio scale variables are variables for which the numerical value is genuinely meaningful. In the case of interval scale variables the *differences* between the numbers are interpretable, but the variable doesn't have a "natural" zero value. A good example of an interval scale variable is measuring temperature in degrees celsius. For instance, if it was 15$^{\circ}$ yesterday and 18$^{\circ}$ today, then the 3$^{\circ}$ difference between the two is genuinely meaningful. Moreover, that 3$^{\circ}$ difference is *exactly the same* as the 3$^{\circ}$ difference between 7$^{\circ}$ and 10$^{\circ}$. In short, addition and subtraction are meaningful for interval scale variables.[^02-a-brief-introduction-to-research-design-2]
 
 [^02-a-brief-introduction-to-research-design-2]: Actually, I've been informed by readers with greater physics knowledge than I that temperature isn't strictly an interval scale, in the sense that the amount of energy required to heat something up by 3° depends on it's current temperature. So in the sense that physicists care about, temperature isn't actually an interval scale. But it still makes a cute example so I'm going to ignore this little inconvenient truth.
 
 However, notice that the 0$^{\circ}$ does not mean "no temperature at all". It actually means "the temperature at which water freezes", which is pretty arbitrary. As a consequence it becomes pointless to try to multiply and divide temperatures. It is wrong to say that 20$^{\circ}$ is twice as hot as 10$^{\circ}$, just as it is weird and meaningless to try to claim that 20$^{\circ}$ is negative two times as hot as -10$^{\circ}$.
 
-Again, lets look at a more psychological example. Suppose I'm interested in looking at how the attitudes of first-year university students have changed over time. Obviously, I'm going to want to record the year in which each student started. This is an interval scale variable. A student who started in 2003 did arrive 5 years before a student who started in 2008. However, it would be completely daft for me to divide 2008 by 2003 and say that the second student started "1.0024 times later" than the first one. That doesn't make any sense at all.
+Again, lets look at a more psychological example. Suppose I'm interested in looking at how the attitudes of first-year university students have changed over time. Obviously, I'm going to want to record the year in which each student started. This is an interval scale variable. A student who started in 2003 did arrive 5 years before a student who started in 2008. However, it would be completely daft for me to divide 2008 by 2003 and say that the second student started "1.0024 times later" than the first one. That doesn't make any sense at all. --->
 
 ### 比例尺度
 
-The fourth and final type of variable to consider is a **ratio scale** variable, in which zero really means zero, and it's okay to multiply and divide. A good psychological example of a ratio scale variable is response time (RT). In a lot of tasks it's very common to record the amount of time somebody takes to solve a problem or answer a question, because it's an indicator of how difficult the task is. Suppose that Alan takes 2.3 seconds to respond to a question, whereas Ben takes 3.1 seconds. As with an interval scale variable, addition and subtraction are both meaningful here. Ben really did take 3.1 - 2.3 = 0.8 seconds longer than Alan did. However, notice that multiplication and division also make sense here too: Ben took 3.1/2.3 = 1.35 times as long as Alan did to answer the question. And the reason why you can do this is that for a ratio scale variable such as RT "zero seconds" really does mean "no time at all".
+最後一種變項型態是有零點的**比例尺度**，也就是說變項數值是可以相乘且相除的。有個不錯的心理學研究常用的比例尺度變項是反應時間(RT)。許多心理學作業都會紀錄參與者花了多少時間解決問題或給出回答，因為時間長度是作業難度的指標。假如今天有項作業，參與者A花了2.3秒回答，另一位參與者B花了3.1秒。就像等距尺度變項，比例尺度數值的相加與相減是有意義的，也就是我們可以說受試者B比起受試者A多花了3.1 - 2.3 = 0.8秒。同學也要留意反應時間數值的乘法與除法是有意義的：我們可以說受試者B比受試者A花了 3.1/2.3 = 1.35倍的時間完成回答。能做完整四則運算的原因是，反應時間有真正的"零點”~零秒就是沒有反應記錄。
+
+<!---The fourth and final type of variable to consider is a **ratio scale** variable, in which zero really means zero, and it's okay to multiply and divide. A good psychological example of a ratio scale variable is response time (RT). In a lot of tasks it's very common to record the amount of time somebody takes to solve a problem or answer a question, because it's an indicator of how difficult the task is. Suppose that Alan takes 2.3 seconds to respond to a question, whereas Ben takes 3.1 seconds. As with an interval scale variable, addition and subtraction are both meaningful here. Ben really did take 3.1 - 2.3 = 0.8 seconds longer than Alan did. However, notice that multiplication and division also make sense here too: Ben took 3.1/2.3 = 1.35 times as long as Alan did to answer the question. And the reason why you can do this is that for a ratio scale variable such as RT "zero seconds" really does mean "no time at all". --->
 
 ### 連續與間斷變項
 
-There's a second kind of distinction that you need to be aware of, regarding what types of variables you can run into. This is the distinction between continuous variables and discrete variables (@tbl-tab2-4). The difference between these is as follows:
+還有另一套變項型態是同學們需要知道的：連續變項與間斷變項。不論你要處理的測量尺度是什麼，也會具備**切換**為連續變項與間斷變項的條件 (見**表2-4**)。我將連續與間斷變項的差異整理一下：
+
+- **連續變項(continuous variable)**的任何兩個數值之間，都能存在另一個數值，因此是連續的。
+- **間斷變項(discrete variable)**的數值當然不是連續的。任何兩個相鄰的間斷變項數值，不可能存在其他數值。
+
+<!---There's a second kind of distinction that you need to be aware of, regarding what types of variables you can run into. This is the distinction between continuous variables and discrete variables (見表2-4)。(@tbl-tab2-4). The difference between these is as follows:
 
 -   A **continuous variable** is one in which, for any two values that you can think of, it's always logically possible to have another value in between.
--   A **discrete variable** is, in effect, a variable that isn't continuous. For a discrete variable it's sometimes the case that there's nothing in the middle.
+-   A **discrete variable** is, in effect, a variable that isn't continuous. For a discrete variable it's sometimes the case that there's nothing in the middle. --->
 
 ```{r}
 #| label: tbl-tab2-4
 #| tbl-cap: The relationship between the scales of measurement and the discrete/continuity distinction. Cells with a tick mark correspond to things that are possible
-huxtabs[[2]][[4]] 
+#huxtabs[[2]][[4]] 
 ```
 
-These definitions probably seem a bit abstract, but they're pretty simple once you see some examples. For instance, response time is continuous. If Alan takes 3.1 seconds and Ben takes 2.3 seconds to respond to a question, then Cameron's response time will lie in between if he took 3.0 seconds. And of course it would also be possible for David to take 3.031 seconds to respond, meaning that his RT would lie in between Cameron's and Alan's. And while in practice it might be impossible to measure RT that precisely, it's certainly possible in principle. Because we can always find a new value for RT in between any two other ones we regard RT as a continuous measure.
+<center>表2-4: 測量尺度與間斷/連續變項的關聯性。細格內的符號是jamovi的變項標示符號。[^02-translation-2]</center>
 
-Discrete variables occur when this rule is violated. For example, nominal scale variables are always discrete. There isn't a type of transportation that falls "in between" trains and bicycles, not in the strict mathematical way that 2.3 falls in between 2 and 3. So transportation type is discrete. Similarly, ordinal scale variables are always discrete. Although "2nd place" does fall between "1st place" and "3rd place", there's nothing that can logically fall in between "1st place" and "2nd place". Interval scale and ratio scale variables can go either way. As we saw above, response time (a ratio scale variable) is continuous. Temperature in degrees celsius (an interval scale variable) is also continuous. However, the year you went to school (an interval scale variable) is discrete. There's no year in between 2002 and 2003. The number of questions you get right on a true-or-false test (a ratio scale variable) is also discrete. Since a true-or-false question doesn't allow you to be "partially correct", there's nothing in between 5/10 and 6/10. @tbl-tab2-4 summarises the relationship between the scales of measurement and the discrete/continuity distinction. Cells with a tick mark correspond to things that are possible. I'm trying to hammer this point home, because (a) some textbooks get this wrong, and (b) people very often say things like "discrete variable" when they mean "nominal scale variable". It's very unfortunate.
+||連續變項|間斷變項|
+|:---:|:---:|:---:|
+|名義尺度||![](images/variable-nominal.svg),![](images/variable-id.svg)|
+|次序尺度||![](images/variable-ordinal.svg)|
+|等距尺度|![](images/variable-continuous.svg)|![](images/variable-nominal.svg),![](images/variable-ordinal.svg)|
+|比例尺度|![](images/variable-continuous.svg)|![](images/variable-nominal.svg),![](images/variable-ordinal.svg)|
+
+[^02-translation-2]: 譯註~原著並未提供變項符號，表內符號取自[jamovi說明文件](https://docs.jamovi.org/_pages/um_4_spreadsheet.html)。
+
+雖然表2-5看起來有點抽象，透過一些例子就能理解如何切換。同樣用解釋比例尺度的反應時間為例，現在除了有參與者A用了2.3秒，與參與者B用了3.1秒的資料，還有一位參與者C用了3.0秒鐘，剛好記錄在前兩位之間。當然，若再有一位參與者D的記錄是3.031秒，就是在B與C之間有一筆資料。雖然真正的實驗不一定會測量得如此準確，這只是示範連續變項的主要特性是在已經存在的任何兩筆資料數值之間，都能增加一個新的資料數值。
+
+只要變項無法在任何兩個資料數值之間增加資料，就只能是間斷變項。像是名義尺度變項永遠都只能是間斷變項。如同火車走的鐵路與自行車道之間不可能有“切換機制”，名義數值2與3之間不可能增加一個數值2.3，所以名義尺度變項資料只能當成間斷變項資料處理。類別尺度變項也是只能切換成間斷變項，雖然"第2名"確實是在”第1名"與"第3名"之間，"第1名"與"第2名"之間沒有空間給其他數值。至於等距尺度與比例尺度變項，可以切換為間斷變項，也可以切換為連續變項。前面提到的反應時間(比例尺度)與攝氏溫度(等距尺度)都是可以切換為連續變項。不過如果是各位同學的入學年份，雖然是等距尺度變項，卻只能切換為間斷變項，像是2022年與2023年之間不能放入其他年份。還有假如今天同學們做了一份都是是非題的測驗，雖然每一題分數是等距尺度變項資料，也是只能切換為間斷變項，因為沒有5/10正確或6/10錯誤之類的回答。**表2-4**總結四種測量尺度變項在jamovi介面標記符號，以及能否切換為間斷變項或連續變項[^02-translation-3]。這一節特別解釋各種測量尺度與間斷/連續的切換關係，出於原作者的兩個理由：首先是有些統計教科書混淆了測量尺度與間斷/連續變項的定義，其次是經常聽到很多人，包括資深研究人員與統計學教師，提到「間斷變項」都會直覺認定是「名義尺度變項」，理解清楚的話就會知道這樣認定會誤讀資料[^02-translation-4]。
+
+[^02-translation-3]: 譯註~原文的**表2-4**並未說明jamovi符號，改編是為了幫助讀者了解後續章節的操作說明，建議下載[示範檔案](files/Variable_types.omv)並搭配[中文版示範影片](https://youtu.be/_8X9m-aU-tA)閱讀。
+
+[^02-translation-4]: 譯註~中文化作者認為還有第三個理由。由於有些統計教程混淆測量尺度與間斷/連續變項的切換關係，造成學習者低估機率論在學習統計的重要性。在[第7章](07-Introduction-to-probability.html)，我們會了解間斷/連續變項的數學意義。
+
+
+<!---These definitions probably seem a bit abstract, but they're pretty simple once you see some examples. For instance, response time is continuous. If Alan takes 3.1 seconds and Ben takes 2.3 seconds to respond to a question, then Cameron's response time will lie in between if he took 3.0 seconds. And of course it would also be possible for David to take 3.031 seconds to respond, meaning that his RT would lie in between Cameron's and Alan's. And while in practice it might be impossible to measure RT that precisely, it's certainly possible in principle. Because we can always find a new value for RT in between any two other ones we regard RT as a continuous measure.
+
+Discrete variables occur when this rule is violated. For example, nominal scale variables are always discrete. There isn't a type of transportation that falls "in between" trains and bicycles, not in the strict mathematical way that 2.3 falls in between 2 and 3. So transportation type is discrete. Similarly, ordinal scale variables are always discrete. Although "2nd place" does fall between "1st place" and "3rd place", there's nothing that can logically fall in between "1st place" and "2nd place". Interval scale and ratio scale variables can go either way. As we saw above, response time (a ratio scale variable) is continuous. Temperature in degrees celsius (an interval scale variable) is also continuous. However, the year you went to school (an interval scale variable) is discrete. There's no year in between 2002 and 2003. The number of questions you get right on a true-or-false test (a ratio scale variable) is also discrete. Since a true-or-false question doesn't allow you to be "partially correct", there's nothing in between 5/10 and 6/10. @tbl-tab2-4 summarises the relationship between the scales of measurement and the discrete/continuity distinction. Cells with a tick mark correspond to things that are possible. I'm trying to hammer this point home, because (a) some textbooks get this wrong, and (b) people very often say things like "discrete variable" when they mean "nominal scale variable". It's very unfortunate. --->
 
 ### 複雜的現實
 
-Okay, I know you're going to be shocked to hear this, but the real world is much messier than this little classification scheme suggests. Very few variables in real life actually fall into these nice neat categories, so you need to be kind of careful not to treat the scales of measurement as if they were hard and fast rules. It doesn't work like that. They're guidelines, intended to help you think about the situations in which you should treat different variables differently. Nothing more.
+好啦，測量尺度與資料變項之間的切換規律或許會讓一些讀者感到震驚，不過真實世界遠比這條小規律複雜許多。其實現實生活中，只有非常少的可測量指標充分符合這條規律，所以同學們必須留意，不要把切換規律硬套在任何你遇到的測量尺度。切換規律只是指引而已，提示統計使用者在實務中如何找出處置資料的最佳方式而已[^02-translation-5]。
+
+[^02-translation-5]: 譯註~到本書最新版上線的時間，還沒有一種有效的應用程式或人工智慧程序能幫助人類判斷適用分析任務的資料變項型態，請參考這份[示範檔案](files/Variable_types.omv)的[中文版示範影片](https://youtu.be/_8X9m-aU-tA)。
+
+讓我們用一個心理學家滿常用的心理測量工具～**李克特量表(Likert scale)**來說明現實世界有多複雜。許多調查問卷都會使用李克特量表收集受測者的回應，讀者與同學們也許已經填過好多份使用李克特量表的問卷，搞不好曾經在某份自行設計的問卷使用過李克特量表。以下是一條假想的問卷問題：
+
+請從以下五個選項，挑出最符合您對於*「所有韓星都很潮」*[^02-translation-6]這句描述的看法？
+
+[^02-translation-6]: 譯註~原文的題目不是這一句，中文版改成接地氣的範例。
+
+1. 完全不同意
+2. 部分不同意
+3. 即非同意也非不同意
+4. 部分同意
+5. 完全同意
+
+這是典型的五點式李克特量表，依數值大小順序排列同意程度，讓受測者選一個數字，通常每個數字旁邊都有文字說明。不過也不必所有數字旁邊都要放文字說明，所以問卷選項也能寫成這個樣子：
+
+1. 完全不同意
+2. 
+3. 
+4. 
+5. 完全同意
+
+李克特量表是非常好用，但是用途有限的工具。怎麼說？請同學想想用這個問題收集到的回應是什麼樣的資料變項？很明顯應該是間斷變項，因為沒有人能給2.5這種答案。這筆資料也顯然不是名義尺度，因為選項是有順序的；也顯然不是比例尺度，因為沒有自然零點。
+
+那麼這筆資料是次序尺度還是等距尺度？有一種說法是我們無法確定"部分同意"和"完全同意"之間的數值差異，與"部分同意"和"即非同意也非不同意"之間的數值差異是相等的。其實拿日常生活的任何事物做成調查問題，不必有數學知識，任何人都能同意李克特量表的任何一對相鄰數字之間差異是不相等的。所以說我們不應該將用李克特量表收集的資料當成次序尺度變項。另一種說法是假設受測者填答時，會以為選項數字1到5是均等平分的量尺，心理預設五個選項之間的差異如同標示在選項前的數字一樣。經常使用到今天，多數研究者都將李克特量表測得的資料當成等距尺度[^02-a-brief-introduction-to-research-design-3]。但是嚴格來說又不能算是等距尺度，所以在實務上心理學研究者常將李克特量表當成**準等距尺度**。
+
+[^02-a-brief-introduction-to-research-design-3]: 唉，心理學的問題從來沒有一種能簡單回答的方式！
+
+<!---Okay, I know you're going to be shocked to hear this, but the real world is much messier than this little classification scheme suggests. Very few variables in real life actually fall into these nice neat categories, so you need to be kind of careful not to treat the scales of measurement as if they were hard and fast rules. It doesn't work like that. They're guidelines, intended to help you think about the situations in which you should treat different variables differently. Nothing more.
 
 So let's take a classic example, maybe *the* classic example, of a psychological measurement tool: the **Likert scale**. The humble Likert scale is the bread and butter tool of all survey design. You yourself have filled out hundreds, maybe thousands, of them and odds are you've even used one yourself. Suppose we have a survey question that looks like this:
 
@@ -180,7 +371,7 @@ Likert scales are very handy, if somewhat limited, tools. The question is what k
 
 But are they ordinal scale or interval scale? One argument says that we can't really prove that the difference between "strongly agree" and "agree" is of the same size as the difference between "agree" and "neither agree nor disagree". In fact, in everyday life it's pretty obvious that they're not the same at all. So this suggests that we ought to treat Likert scales as ordinal variables. On the other hand, in practice most participants do seem to take the whole "on a scale from 1 to 5" part fairly seriously, and they tend to act as if the differences between the five response options were fairly similar to one another. As a consequence, a lot of researchers treat Likert scale data as interval scale.[^02-a-brief-introduction-to-research-design-3] It's not interval scale, but in practice it's close enough that we usually think of it as being **quasi-interval scale**.
 
-[^02-a-brief-introduction-to-research-design-3]: Ah, psychology... never an easy answer to anything!
+[^02-a-brief-introduction-to-research-design-3]: Ah, psychology... never an easy answer to anything! --->
 
 ## 測量的信度 {#sec-Assessing-the-reliability-of-a-measurement}
 
