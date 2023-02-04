@@ -10,57 +10,80 @@ source("header.R")
 
 [^drawing-graphs-1]: The origin of this quote is Tufte's lovely book *The Visual Display of Quantitative Information.*
 
-Visualising data is one of the most important tasks facing the data analyst. It's important for two distinct but closely related reasons. Firstly, there's the matter of drawing "presentation graphics", displaying your data in a clean, visually appealing fashion makes it easier for your reader to understand what you're trying to tell them. Equally important, perhaps even more important, is the fact that drawing graphs helps you to understand the data. To that end, it's important to draw "exploratory graphics" that help you learn about the data as you go about analysing it. These points might seem pretty obvious but I cannot count the number of times I've seen people forget them.
+資料視覺化是資料分析最重要的工作之一，主要有兩個原因。首先，繪製報告用圖表是資料分析要達成的具體目標。以簡潔吸睛的方式呈現資料，能讓你的讀者及觀眾輕鬆理解你想說的資料故事。另一個也許更重要的原因是繪製統計圖能幫助同學們更理解資料。也就是說，處理資料前先繪製"探索用統計圖"，能讓你了掌握合適的分析方法。這兩點簡單易懂，不過很多人經常忘了資料視覺化的重要性與好處。
+
+為了讓同學感受資料視覺化的重要性，我們來看一個統計圖立大功的真實案例： @fig-fig5-1 是重製歷史上知名的資料視覺化作品，原作是[約翰·斯諾](https://zh.wikipedia.org/zh-tw/%E7%BA%A6%E7%BF%B0%C2%B7%E6%96%AF%E8%AF%BA_(%E5%8C%BB%E5%AD%A6%E5%AE%B6))繪製的1854年倫敦蘇活區霍亂死者分佈地圖。背景的街道地圖引導觀者視線，前景有許多橙色小點，每個小點代表得到霍亂而病死的居民所在地，有標名字且比較大的點是公共水泵。這張圖清楚顯示位於寬街( Broad Street)的水泵非常有可能是這波疫情的源頭，讓斯諾得以說服當局關閉當地水泵，讓這場奪走超過500位居民的疫情得以平息。這個真實故事告訴我們，好的資料視覺化是非常有說服力的。
+
+這一章有兩個學習目標。第一是認識幾種常用於分析與呈現資料的標準統計圖；第二是使用jamovi繪製標準統計圖。繪圖展示的資訊相當單純，要看懂統計圖並不困難。會讓同學感到困難的是如何繪製統計圖，特別是製作好的統計圖。好在jamovi的繪圖操作並不難學，只要你不要太計較畫出來的圖好不好看。jamovi有許多內建的圖表模板，預設輸出成品在許多場景呈現，都是簡潔的高品質作品。不過若是同學想繪製非常規的統計圖，或是做一些特別的調整，jamovi的繪圖功能就還沒有支援進階功能或細節編輯了。
+
+<!---Visualising data is one of the most important tasks facing the data analyst. It's important for two distinct but closely related reasons. Firstly, there's the matter of drawing "presentation graphics", displaying your data in a clean, visually appealing fashion makes it easier for your reader to understand what you're trying to tell them. Equally important, perhaps even more important, is the fact that drawing graphs helps you to understand the data. To that end, it's important to draw "exploratory graphics" that help you learn about the data as you go about analysing it. These points might seem pretty obvious but I cannot count the number of times I've seen people forget them.
 
 To give a sense of the importance of this chapter, I want to start with a classic illustration of just how powerful a good graph can be. To that end, @fig-fig5-1 shows a redrawing of one of the most famous data visualisations of all time. This is John Snow's 1854 map of cholera deaths. The map is elegant in its simplicity. In the background we have a street map which helps orient the viewer. Over the top we see a large number of small dots, each one representing the location of a cholera case. The larger symbols show the location of water pumps, labelled by name. Even the most casual inspection of the graph makes it very clear that the source of the outbreak is almost certainly the Broad Street pump. Upon viewing this graph Dr Snow arranged to have the handle removed from the pump and ended the outbreak that had killed over 500 people. Such is the power of a good data visualisation.
 
-The goals in this chapter are twofold. First, to discuss several fairly standard graphs that we use a lot when analysing and presenting data, and second to show you how to create these graphs in jamovi. The graphs themselves tend to be pretty straightforward, so in one respect this chapter is pretty simple. Where people usually struggle is learning how to produce graphs, and especially learning how to produce good graphs. Fortunately, learning how to draw graphs in jamovi is reasonably simple as long as you're not too picky about what your graph looks like. What I mean when I say this is that jamovi has a lot of very good default graphs, or plots, that most of the time produce a clean, high-quality graphic. However, on those occasions when you do want to do something non-standard, or if you need to make highly specific changes to the figure, then the graphics functionality in jamovi is not yet capable of supporting advanced work or detail editing.
+The goals in this chapter are twofold. First, to discuss several fairly standard graphs that we use a lot when analysing and presenting data, and second to show you how to create these graphs in jamovi. The graphs themselves tend to be pretty straightforward, so in one respect this chapter is pretty simple. Where people usually struggle is learning how to produce graphs, and especially learning how to produce good graphs. Fortunately, learning how to draw graphs in jamovi is reasonably simple as long as you're not too picky about what your graph looks like. What I mean when I say this is that jamovi has a lot of very good default graphs, or plots, that most of the time produce a clean, high-quality graphic. However, on those occasions when you do want to do something non-standard, or if you need to make highly specific changes to the figure, then the graphics functionality in jamovi is not yet capable of supporting advanced work or detail editing.--->
 
 ```{r}
 #| label: fig-fig5-1
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: A stylised redrawing of John Snow’s original cholera map. Each small dot represents the location of a cholera case and each large circle shows the location of a well. As the plot makes clear, the cholera outbreak is centred very closely on the Broad St pump
+#| fig-cap: 約翰·斯諾繪製的霍亂死者分佈地圖上色重製版。每個小點代表一位病例的所在地，每個圓圈代表一個水泵的所在地。小點的散佈清楚顯示霍亂疫情集中在寬街水泵週圍。
+#A stylised redrawing of John Snow’s original cholera map. Each small dot represents the location of a cholera case and each large circle shows the location of a well. As the plot makes clear, the cholera outbreak is centred very closely on the Broad St pump
 knitr::include_graphics("images/fig5-1.png")
 ```
 
 ## 直方圖 {#sec-Histograms}
 
-Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the simplest and most useful ways of visualising data. They make most sense when you have an interval or ratio scale variable (e.g., the afl.margins data from @sec-Descriptive-statistics and what you want to do is get an overall impression of the variable. Most of you probably know how histograms work, since they're so widely used, but for the sake of completeness I'll describe them. All you do is divide up the possible values into **bins** and then count the number of observations that fall within each bin. This count is referred to as the frequency or density of the bin and is displayed as a vertical bar. Ihe AFL winning margins data there are 33 games in which the winning margin was less than 10 points and it is this fact that is represented by the height of the leftmost bar that we showed earlier in @sec-Descriptive-statistics, @fig-fig4-2. With these earlier graphs we used an advanced plotting package in R which, for now, is beyond the capability of jamovi. But jamovi gets us close, and drawing this histogram in jamovi is pretty straightforward. Open up the 'plots' options under 'Exploration' - 'Descriptives' and click the 'histogram' check box, as in @fig-fig5-1. jamovi defaults to labelling the y-axis as 'density' and the x-axis with the variable name. The **bins** are selected automatically, and there is no scale, or count, information on the y-axis unlike the previous @fig-fig4-2. But this does not matter too much because after all what we are really interested in is our impression of the shape of the distribution: is it normally distributed or is there a skew or kurtosis? Our first impressions of these characteristics come from drawing a **histogram**.
+**直方圖(Histograms)**是製作方式最簡單且易懂的資料視覺化工具，主要用途是概覽等距尺度或比例尺度資料變項(例如 @sec-Descriptive-statistics 示範的afl.margins資料集)的分佈趨勢。同學們可能在某些課程或網路媒體見過用直方圖解釋的研究證據，現在要學會如何製作直方圖。製作方式是先設定變項數值分成數個**間值(bins)**，接著計算每個間值之間有多少資料落入。每個間值之間的資料個數稱為*次數(frequency)*或*密度(density)*，並繪製對應高度的長條就完成了。 @sec-Descriptive-statistics 的 @fig-fig4-2 展示的直方圖最左邊的長條對應勝隊得分小於10分的場次總數，一共有33場。這份直方圖是用R語言套件製作的，超出本書的學習範圍，所以在此說明如何使用jamovi繪製接近該作品的直方圖。請開啟描述統計模組選單(`Exploration`-`Descriptives`)，將變項放到"Variable"視窗後展開最下方`plot`次選單，勾選`histogram`就會看到如 @fig-fig5-1 的畫面。jamovi預設的直方圖y軸是密度，x軸是變項名稱。**間值**是jamovi自動指定，y值並不是顯示各間值之間的資料數目。雖然如此，這份直方圖已充分展示這筆資料變項的分佈形狀，你覺得這筆資料是常態分佈還是有偏態或峰度呢？分析實務對資料的第一印象就是從繪製**直方圖(Histograms)**開始。
+
+<!---不像 @fig-fig4-2 有顯示 (使用R繪製次數直方圖才能放這句話)
+
+Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the simplest and most useful ways of visualising data. They make most sense when you have an interval or ratio scale variable (e.g., the afl.margins data from @sec-Descriptive-statistics and what you want to do is get an overall impression of the variable. Most of you probably know how histograms work, since they're so widely used, but for the sake of completeness I'll describe them. All you do is divide up the possible values into **bins** and then count the number of observations that fall within each bin. This count is referred to as the frequency or density of the bin and is displayed as a vertical bar. Ihe AFL winning margins data there are 33 games in which the winning margin was less than 10 points and it is this fact that is represented by the height of the leftmost bar that we showed earlier in @sec-Descriptive-statistics, @fig-fig4-2. With these earlier graphs we used an advanced plotting package in R which, for now, is beyond the capability of jamovi. But jamovi gets us close, and drawing this histogram in jamovi is pretty straightforward. Open up the 'plots' options under 'Exploration' - 'Descriptives' and click the 'histogram' check box, as in @fig-fig5-1. jamovi defaults to labelling the y-axis as 'density' and the x-axis with the variable name. The **bins** are selected automatically, and there is no scale, or count, information on the y-axis unlike the previous @fig-fig4-2. But this does not matter too much because after all what we are really interested in is our impression of the shape of the distribution: is it normally distributed or is there a skew or kurtosis? Our first impressions of these characteristics come from drawing a **histogram**.--->
 
 ```{r}
 #| label: fig-fig5-2
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: jamovi screen showing the histogram check box
+#| fig-cap: 使用jamovi繪製直方圖示範畫面
+#jamovi screen showing the histogram check box
 knitr::include_graphics("images/fig5-2.png")
 ```
 
-One additional feature that jamovi provides is the ability to plot a 'Density' curve. You can do this by clicking the 'Density' check box under the 'Plots' options (and unchecking 'Histogram'), and this gives us the plot shown in @fig-fig5-3. A density plot visualises the distribution of data over a continuous interval or time period. This chart is a variation of a histogram that uses **kernel smoothing** to plot values, allowing for smoother distributions by smoothing out the noise. The peaks of a density plot help display where values are concentrated over the interval. An advantage density plots have over histograms is that they are better at determining the distribution shape because they're not affected by the number of bins used (each bar used in a typical histogram). A histogram comprising of only 4 bins wouldn't produce a distinguishable enough shape of distribution as a 20-bin histogram would. However, with density plots, this isn't an issue.
+值得一提jamovi有繪製"密度"曲線的功能。只要開啟"Histogram"選項之下的”Density“方塊，並取消勾選"Histogram"，就可以得到 @fig-fig5-3 的作品。只要資料數值是連續的，密度曲線能將分佈趨勢視覺化。密度曲線是直方圖的變形，jamvoi採用**kernel smoothing**演算法繪製，原理是將資料中的雜訊平滑化，使得曲線看起來平滑。使用密度曲線判斷資料變項分佈趨勢，比直方圖更佳，因為曲線不受間值設定影響。如果這份資料只用4個間值繪製直方圖，看起來絕對和用20個間值繪製的直方圖不一樣。
+
+<!---One additional feature that jamovi provides is the ability to plot a 'Density' curve. You can do this by clicking the 'Density' check box under the 'Plots' options (and unchecking 'Histogram'), and this gives us the plot shown in @fig-fig5-3. A density plot visualises the distribution of data over a continuous interval or time period. This chart is a variation of a histogram that uses **kernel smoothing** to plot values, allowing for smoother distributions by smoothing out the noise. The peaks of a density plot help display where values are concentrated over the interval. An advantage density plots have over histograms is that they are better at determining the distribution shape because they're not affected by the number of bins used (each bar used in a typical histogram). A histogram comprising of only 4 bins wouldn't produce a distinguishable enough shape of distribution as a 20-bin histogram would. However, with density plots, this isn't an issue. --->
 
 ```{r}
 #| label: fig-fig5-3
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: A density plot of the afl.margins variable plotted in jamovi
+#| fig-cap: 用Jamovi繪製資料變項`afl.margins`的密度曲線。
+#A density plot of the afl.margins variable plotted in jamovi
 knitr::include_graphics("images/fig5-3.png")
 ```
 
-Although this image would need a lot of cleaning up in order to make a good presentation graphic (i.e., one you'd include in a report), it nevertheless does a pretty good job of describing the data. In fact, the big strength of a histogram or density plot is that (properly used) it does show the entire spread of the data, so you can get a pretty good sense about what it looks like. The downside to histograms is that they aren't very compact. Unlike some of the other plots I'll talk about it's hard to cram 20-30 histograms into a single image without overwhelming the viewer. And of course, if your data are nominal scale then histograms are useless.
+雖然這裡示範的直方圖和密度曲線還需要一些加工才能用在報告，至少已經為完善描述統計工作給出清楚方向。直方圖或密度曲線的最大用處是顯示資料的變異趨勢，讓分析者掌握資料特性。直方圖的劣勢是無法有效簡化資料訊息，本書稍後會展示將20多個直方圖塞在一張圖裡有多讓人眼花燎亂。最後請注意，**直方圖不能將名義尺度資料視覺化**。
+
+<!---Although this image would need a lot of cleaning up in order to make a good presentation graphic (i.e., one you'd include in a report), it nevertheless does a pretty good job of describing the data. In fact, the big strength of a histogram or density plot is that (properly used) it does show the entire spread of the data, so you can get a pretty good sense about what it looks like. The downside to histograms is that they aren't very compact. Unlike some of the other plots I'll talk about it's hard to cram 20-30 histograms into a single image without overwhelming the viewer. And of course, if your data are nominal scale then histograms are useless.--->
 
 ## 箱型圖
 
-Another alternative to histograms is a **箱型圖(boxplot)**, sometimes called a "box and whiskers" plot. Like histograms they're most suited to interval or ratio scale data. The idea behind a boxplot is to provide a simple visual depiction of the median, the interquartile range, and the range of the data. And because they do so in a fairly compact way boxplots have become a very popular statistical graphic, especially during the exploratory stage of data analysis when you're trying to understand the data yourself. Let's have a look at how they work, again using the afl.margins data as our example.
+**箱型圖(boxplot)**是與直方圖功能相同，適用於等距尺度或比例尺度變項的另一種資料視覺化方法，又被稱為“盒鬚圖”。箱形圖的基本概念是將變項資料的中位數、四分位數間距、以及全距用視覺標記呈現。如此簡潔的構成讓箱形圖變成最常使用的統計圖，特別是用在初步探索資料趨勢的時候。以下同樣使用`afl.margins`資料集做為示範。
+
+<!---Another alternative to histograms is a **箱型圖(boxplot)**, sometimes called a "box and whiskers" plot. Like histograms they're most suited to interval or ratio scale data. The idea behind a boxplot is to provide a simple visual depiction of the median, the interquartile range, and the range of the data. And because they do so in a fairly compact way boxplots have become a very popular statistical graphic, especially during the exploratory stage of data analysis when you're trying to understand the data yourself. Let's have a look at how they work, again using the afl.margins data as our example.--->
 
 ```{r}
 #| label: fig-fig5-4
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: A box plot of the afl.margins variable plotted in jamovi
+#| fig-cap: 使用jamovi繪製`afl.margins`變項的箱形圖。
+#A box plot of the afl.margins variable plotted in jamovi
 knitr::include_graphics("images/fig5-4.png")
 ```
 
-The easiest way to describe what a boxplot looks like is just to draw one. Click on the 'Box plot' check box and you will get the plot shown on the lower right of @fig-fig5-4. jamovi has drawn the most basic boxplot possible. When you look at this plot this is how you should interpret it: the thick line in the middle of the box is the median; the box itself spans the range from the 25th percentile to the 75th percentile; and the "whiskers" go out to the most extreme data point that doesn't exceed a certain bound. By default, this value is 1.5 times the interquartile range (IQR), calculated as 25th percentile - (1.5\*IQR) for the lower boundary, and 75th percentile + (1.5\*IQR) for the upper boundary. Any observation whose value falls outside this range is plotted as a circle or dot instead of being covered by the whiskers, and is commonly referred to as an **outlier**. For our AFL margins data there are two observations that fall outside this range, and these observations are plotted as dots (the upper boundary is 107, and looking over the data column in the spreadsheet there are two observations with values higher than this, 108 and 116, so these are the dots).
+了解如何用箱形圖解釋資料的最簡單方式，就是親手繪製一份。與繪製直方圖一樣的步驟，只是改成勾選"Box plot"，就會在jamovi報表介面得到如 @fig-fig5-4 的成品。看著圖中的特徵，你能辨識出重要訊息：箱子中大的粗線是中位數；箱子的上下邊界距離是25%到75%的四分位數間距；箱子之外的"觸鬚"長度，只要不會超過“限制邊界”，就能延伸到資料的最小值及最大值。預設的限制邊界是四分位數間距的1.5倍，也就是說觸鬚向下延伸只能到25%的四分位數
+減去1.5倍的四分位數間距，以及向上延伸最多到75%的四分位數加上1.5倍的四分位數間距。任何落在觸鬚或限制邊界之外的數值，一般稱為**極端值(outlier)**。`afl.margins`這筆變項有兩個極端值，因為上邊界值是107，試算表裡可以找出是第108行及第116行的數值。
+
+<!---The easiest way to describe what a boxplot looks like is just to draw one. Click on the 'Box plot' check box and you will get the plot shown on the lower right of @fig-fig5-4. jamovi has drawn the most basic boxplot possible. When you look at this plot this is how you should interpret it: the thick line in the middle of the box is the median; the box itself spans the range from the 25th percentile to the 75th percentile; and the "whiskers" go out to the most extreme data point that doesn't exceed a certain bound. By default, this value is 1.5 times the interquartile range (IQR), calculated as 25th percentile - (1.5\*IQR) for the lower boundary, and 75th percentile + (1.5\*IQR) for the upper boundary. Any observation whose value falls outside this range is plotted as a circle or dot instead of being covered by the whiskers, and is commonly referred to as an **outlier**. For our AFL margins data there are two observations that fall outside this range, and these observations are plotted as dots (the upper boundary is 107, and looking over the data column in the spreadsheet there are two observations with values higher than this, 108 and 116, so these are the dots). --->
 
 ### 小提琴圖
 
@@ -68,53 +91,74 @@ The easiest way to describe what a boxplot looks like is just to draw one. Click
 #| label: fig-fig5-5
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: A violin plot of the afl.margins variable plotted in jamovi, also showing a box plot and data points
+#| fig-cap: 使用jamovi繪製`afl.margins`變項的小提琴圖，同時繪製資料點與箱形圖。
+#A violin plot of the afl.margins variable plotted in jamovi, also showing a box plot and data points
 knitr::include_graphics("images/fig5-5.png")
 ```
 
-A variation to the traditional box plot is the 小提琴圖(violin plot). Violin plots are similar to box plots except that they also show the kernel probability density of the data at different values. Typically, violin plots will include a marker for the median of the data and a box indicating the interquartile range, as in standard box plots. In jamovi you can achieve this sort of functionality by checking both the 'Violin' and the 'Box plot' check boxes. See @fig-fig5-5, which also has the 'Data' check box turned on to show the actual data points on the plot. This does tend to make the graph a bit too busy though, in my opinion. Clarity is simplicity, so in practice it might be better to just use a simple box plot.
+小提琴圖(violin plot)是傳統箱形圖的變形。小提琴圖類似箱形圖，曲線代表每個數值在整筆資料的機率密度。通常小提琴圖都要同時呈現箱形圖的主要視覺標記，包括標記中位數的粗線，以及代表四分位數間距的箱子。用jamovi完成 @fig-fig5-5 作品的繪製方法是只要將"Box plot"選項之下的"Violin"與"Data"都一起勾選。因為統計圖儘可能簡潔易懂，小提琴圖有太多視覺元素，原作者喜歡使用箱形圖比小提琴圖多一些。
+
+<!---A variation to the traditional box plot is the 小提琴圖(violin plot). Violin plots are similar to box plots except that they also show the kernel probability density of the data at different values. Typically, violin plots will include a marker for the median of the data and a box indicating the interquartile range, as in standard box plots. In jamovi you can achieve this sort of functionality by checking both the 'Violin' and the 'Box plot' check boxes. See @fig-fig5-5, which also has the 'Data' check box turned on to show the actual data points on the plot. This does tend to make the graph a bit too busy though, in my opinion. Clarity is simplicity, so in practice it might be better to just use a simple box plot. --->
 
 ### 使用多重箱形圖
 
-One last thing. What if you want to draw multiple boxplots at once? Suppose, for instance, I wanted separate boxplots showing the AFL margins not just for 2010 but for every year between 1987 and 2010. To do that the first thing we'll have to do is find the data. These are stored in the **aflmarginbyyear.csv** file. So let's load it into jamovi and see what is in it. You will see that it is a pretty big data set. It contains 4296 games and the variables that we're interested in. What we want to do is have jamovi draw boxplots for the margin variable, but plotted separately for each year. The way to do this is to move the year variable across into the 'Split by' box, as in @fig-fig5-6.
+最後，如果我們需要繪製不只一個箱形圖要怎麼做呢？像是我們要將每一年AFL勝隊得分的資料都會成一份箱形圖。首先把能達到這個目的的資料匯入jamovi，請開啟示範資料庫的"AFL Margins By Year"這份檔案。這份檔案一共有4296場比賽紀錄，還有一個變項儲存年份。要用jamovi繪製每一年勝隊得分`margins`的箱形圖，請依照 @fig-fig5-6 的示範，把變項`year`放到"Split by"視窗裡。
+
+<!---One last thing. What if you want to draw multiple boxplots at once? Suppose, for instance, I wanted separate boxplots showing the AFL margins not just for 2010 but for every year between 1987 and 2010. To do that the first thing we'll have to do is find the data. These are stored in the **aflmarginbyyear.csv** file. So let's load it into jamovi and see what is in it. You will see that it is a pretty big data set. It contains 4296 games and the variables that we're interested in. What we want to do is have jamovi draw boxplots for the margin variable, but plotted separately for each year. The way to do this is to move the year variable across into the 'Split by' box, as in @fig-fig5-6. --->
 
 ```{r}
 #| label: fig-fig5-6
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: jamovi screen shot showing the ‘Split by’ window
+#| fig-cap: 使用"Split by"視窗的示範畫面。
+#jamovi screen shot showing the ‘Split by’ window
 knitr::include_graphics("images/fig5-6.png")
 ```
 
-The result is shown in @fig-fig5-7. This version of the box plot, split by year, gives a sense of why it's sometimes useful to choose box plots instead of histograms. It's possible to get a good sense of what the data look like from year to year without getting overwhelmed with too much detail. Now imagine what would have happened if I'd tried to cram 24 histograms into this space: no chance at all that the reader is going to learn anything useful.
+繪製成品如 @fig-fig5-7 。由於每一年都有一份箱形圖，比直方圖更能讓我們看到逐年趨勢，而且不會被年份的連續性干擾解讀[^05-translation-01]。如果這裡改成繪製24份直方圖，各位可以自行試試看容不容易解讀。
+
+
+[^05-translation-01]: 譯註~此處不照原文翻譯，是希望讀者回想[2.2.5 連續與間斷變項](02-A-brief-introduction-to-research-design.html#%E9%80%A3%E7%BA%8C%E8%88%87%E9%96%93%E6%96%B7%E8%AE%8A%E9%A0%85)談到的測量尺度與變項型態切換關係。
+
+<!---The result is shown in @fig-fig5-7. This version of the box plot, split by year, gives a sense of why it's sometimes useful to choose box plots instead of histograms. It's possible to get a good sense of what the data look like from year to year without getting overwhelmed with too much detail. Now imagine what would have happened if I'd tried to cram 24 histograms into this space: no chance at all that the reader is going to learn anything useful. --->
+
 
 ```{r}
 #| label: fig-fig5-7
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Multiple boxplots plotted in jamovi, for the margin by year variables
+#| fig-cap: 使用jamovi繪製多重箱形圖，每份箱形圖代表各年份的勝隊得分分佈。
+#Multiple boxplots plotted in jamovi, for the margin by year variables
 knitr::include_graphics("images/fig5-7.png")
 ```
 
 ### 使用箱形圖辨認極端值 {#sec-Using-box-plots-to-detect-outliers}
 
-Because the boxplot automatically separates out those observations that lie outside a certain range, depicting them with a dot in jamovi, people often use them as an informal method for detecting **outliers**: observations that are "suspiciously" distant from the rest of the data. Here's an example. Suppose that I'd drawn the boxplot for the AFL margins data and it came up looking like @fig-fig5-8. It's pretty clear that something funny is going on with two of the observations. Apparently, there were two games in which the margin was over 300 points! That doesn't sound right to me. Now that I've become suspicious it's time to look a bit more closely at the data. In jamovi you can quickly find out which of these observations are suspicious and then you can go back to the raw data to see if there has been a mistake in data entry. One way to do this is to tell jamovi to label the outliers, by checking the box next to the Box plot check box. This adds a row number label next to the outlier in the boxplot, so you can go look at that row and find the extreme value. Another, more flexible way, is to set up a filter so that only those observations with values over a certain threshold are included. In our example, the threshold is over 300, so that is the filter we will create. First, click on the 'Filters' button at the top of the jamovi window, and then type 'margin \> 300' into the filter field, as in @fig-fig5-9.
+jamovi繪製箱形圖會自動標記超出限制邊界的資料點，實務上通常用繪製箱形圖偵測資料裡的**極端值**：泛指離多數資料遠得"可疑"的數值。我們用 @fig-fig5-8 的AFL勝隊得分箱形圖裡的兩個資料點來說明為何應該懷疑極端值的存在：因為這兩場勝隊得分超過300分！實在太不尋常了[^05-translation-02]。接著我們試著使用jamovi的功能，仔細檢視這兩場紀錄。只要勾選"Box Plot"選項時，一併啟動之下的”Label outliers"，jamovi就會在箱形圖標示極端值資料的在第幾列，讓我們能回到試算表介面看個仔細。另一種方式是使用jmaovi的過濾器(Filter)功能：按下主介面左下角的漏斗圖示，就會開啟如 @fig-fig5-9 Filter選單，接著比照該圖示範，在視窗裡輸入或複製貼上 'margin \> 300'。
+
+[^05-translation-02]: 這兩筆資料是被刻意輸入以便說明示範，並非原始資料裡的數值。
+
+<!---Because the boxplot automatically separates out those observations that lie outside a certain range, depicting them with a dot in jamovi, people often use them as an informal method for detecting **outliers**: observations that are "suspiciously" distant from the rest of the data. Here's an example. Suppose that I'd drawn the boxplot for the AFL margins data and it came up looking like @fig-fig5-8. It's pretty clear that something funny is going on with two of the observations. Apparently, there were two games in which the margin was over 300 points! That doesn't sound right to me. Now that I've become suspicious it's time to look a bit more closely at the data. In jamovi you can quickly find out which of these observations are suspicious and then you can go back to the raw data to see if there has been a mistake in data entry. One way to do this is to tell jamovi to label the outliers, by checking the box next to the Box plot check box. This adds a row number label next to the outlier in the boxplot, so you can go look at that row and find the extreme value. Another, more flexible way, is to set up a filter so that only those observations with values over a certain threshold are included. In our example, the threshold is over 300, so that is the filter we will create. First, click on the 'Filters' button at the top of the jamovi window, and then type 'margin \> 300' into the filter field, as in @fig-fig5-9. --->
 
 ```{r}
 #| label: fig-fig5-8
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: A boxplot showing two very suspicious outliers!
+#| fig-cap: 這份箱形圖顯示兩筆非常可疑的極端值！
+#A boxplot showing two very suspicious outliers!
 knitr::include_graphics("images/fig5-8.png")
 ```
 
-This filter creates a new column in the spreadsheet view where only those observations that pass the filter are included. One neat way to quickly identify which observations these are is to tell jamovi to produce a 'Frequency table' (in the 'Exploration' - 'Descriptives' window) for the ID variable (which must be a nominal variable otherwise the Frequency table is not produced). In @fig-fig5-10 you can see that the ID values for the observations where the margin was over 300 are 14 and 134. These are suspicious cases, or observations, where you should go back to the original data source to find out what is going on.
+過濾器啟動後，試算面介面最左邊會多一個欄位，欄位下的細格會標記有那些資料通過稍早設定的條件。這種方法能快速辨識極端值資料在那裡。更進一步還可以開啟jamovi描述統計選單的"Frequency table"，如同 @fig-fig5-10 的示範。報表顯示超過300分的比賽紀錄是第14與第134場。這些資料探索能讓我們決定，是不是要回去看看資料檔案裡，這些不尋常的極端值到底是怎麼回事。
+
+<!---This filter creates a new column in the spreadsheet view where only those observations that pass the filter are included. One neat way to quickly identify which observations these are is to tell jamovi to produce a 'Frequency table' (in the 'Exploration' - 'Descriptives' window) for the ID variable (which must be a nominal variable otherwise the Frequency table is not produced). In @fig-fig5-10 you can see that the ID values for the observations where the margin was over 300 are 14 and 134. These are suspicious cases, or observations, where you should go back to the original data source to find out what is going on. --->
 
 ```{r}
 #| label: fig-fig5-9
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: The jamovi filter screen
+#| fig-cap: jamovi Filter視窗操作示範畫面
+#The jamovi filter screen
 knitr::include_graphics("images/fig5-9.png")
 ```
 
@@ -122,29 +166,47 @@ knitr::include_graphics("images/fig5-9.png")
 #| label: fig-fig5-10
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Frequency table for ID showing the ID numbers for the two suspicious outliers, 14 and 134
+#| fig-cap: 以次數表展示兩筆極端值ID ~ 176與202。
+#Frequency table for ID showing the ID numbers for the two suspicious outliers, 14 and 134
 knitr::include_graphics("images/fig5-10.png")
 ```
 
-Usually you find that someone has just typed in the wrong number. Whilst this might seem like a silly example, I should stress that this kind of thing actually happens a lot. Real world data sets are often riddled with stupid errors, especially when someone had to type something into a computer at some point. In fact, there's actually a name for this phase of data analysis and in practice it can take up a huge chunk of our time: data cleaning. It involves searching for typing mistakes ("typos"), missing data and all sorts of other obnoxious errors in raw data files.
+通常造常極端值的問題是登打紀錄的人手誤。雖然這是個不細心而犯的錯，但是這種事情在統計實務層出不窮。真實世界的各種資料充滿這類錯誤，尤其是透過人工輸入電腦的資料。其實實務上有個專有名詞叫「資料清理」：泛指在正式進行資料分析前，找出錯誤或可疑數值的一切工作。找出並清理原始資料裡一切輸入錯誤、遺漏值、或者各種希奇古怪問題的工作都是資料清理的項目。
 
-For less extreme values, even if they are flagged in a a boxplot as outliers, the decision about whether to include outliers or exclude them in any analysis depends heavily on why you think the data look they way they do and what you want to use the data for. You really need to exercise good judgement here. If the outlier looks legitimate to you, then keep it. In any case, I'll return to the topic again in @sec-Model-checking in @sec-Correlation-and-linear-regression.
+至於比較沒那麼極端，但是在箱形圖裡被標為極端值的資料，要不要納入分析或排除這些數值，全看你要如何看待這筆資料，以及利用這筆資料的想法。上統計課就是自我訓練判斷如何運用這類資料的能力。若是你認為這些極端值應該納入分析，就保留它們。到了 @sec-Model-checking 我們會繼續學習更多判斷極端值要不要保留的策略。
+
+<!---Usually you find that someone has just typed in the wrong number. Whilst this might seem like a silly example, I should stress that this kind of thing actually happens a lot. Real world data sets are often riddled with stupid errors, especially when someone had to type something into a computer at some point. In fact, there's actually a name for this phase of data analysis and in practice it can take up a huge chunk of our time: data cleaning. It involves searching for typing mistakes ("typos"), missing data and all sorts of other obnoxious errors in raw data files.
+
+For less extreme values, even if they are flagged in a a boxplot as outliers, the decision about whether to include outliers or exclude them in any analysis depends heavily on why you think the data look they way they do and what you want to use the data for. You really need to exercise good judgement here. If the outlier looks legitimate to you, then keep it. In any case, I'll return to the topic again in @sec-Model-checking in @sec-Correlation-and-linear-regression. --->
 
 ## 柱狀圖 {#sec-Bar-graphs}
 
-Another form of graph that you often want to plot is the **柱狀圖(bar graph)**. Let's use the afl.finalists data set with the afl.finalists variable that I introduced in @sec-Mode. What I want to do is draw a bar graph that displays the number of finals that each team has played in over the time spanned by the afl.finalists data set. There are lots of teams, but I am particularly interested in just four: Brisbane, Carlton, Fremantle and Richmond. So the first step is to set up a filter so just those four teams are included in the bar graph. This is straightforward in jamovi and you can do it by using the 'Filters' function that we used previously. Open up the 'Filters' screen and type in the following:
+**柱狀圖(bar graph)**也是同學們常見到的資料視覺化作品，主要用來展示名義尺度變項的分佈趨勢。我們用 @sec-Mode 這一節示範**眾數**的資料變項`afl.finalists`，來示範如何繪製。只要將出現在變項裡的隊名擺在x軸，再將每一隊打入季後賽的次數繪製成對應高度的柱子就完成了。這筆資料有很多隊伍，我們只抓四支隊伍做個示範，他們是Brisbane, Carlton, Fremantle 以及 Richmond。請同學先點選主介面左下角的漏斗圖示，開啟jamovi的`Filters`功能選單，複製下列視窗內的所有文字與符號(點一下視窗右側的圖示即可複製)，再貼到`Filters`選單對話視窗的"="之後，關閉選單即可生效[^drawing-graphs-2]。
+
+```{r echo=TRUE, eval=FALSE}
+afl.finalists == 'Brisbane' or afl.finalists == 'Carlton' or afl.finalists == 'Fremantle' or afl.finalists == 'Richmond'
+```
+
+[^drawing-graphs-2]: 連續兩個等號 "$==$" 表示符號兩邊的數值相等。在 @sec-Pragmatic-matters 有進一步說明。
+
+
+在試算表介面你會看到有的數值被反白，代表該項資料已經被過濾了。接著照舊開啟描述統計模組選單，這次勾選`Bar plot`選項(請記得變項要放到Variables視窗)，就會看到如 @fig-fig5-11 的柱狀圖成品。
+
+
+<!---Another form of graph that you often want to plot is the **柱狀圖(bar graph)**. Let's use the afl.finalists data set with the afl.finalists variable that I introduced in @sec-Mode. What I want to do is draw a bar graph that displays the number of finals that each team has played in over the time spanned by the afl.finalists data set. There are lots of teams, but I am particularly interested in just four: Brisbane, Carlton, Fremantle and Richmond. So the first step is to set up a filter so just those four teams are included in the bar graph. This is straightforward in jamovi and you can do it by using the 'Filters' function that we used previously. Open up the 'Filters' screen and type in the following:
 
 afl.finalists $==$ 'Brisbane' or afl.finalists $==$ 'Carlton' or afl.finalists $==$ 'Fremantle' or afl.finalists $==$ 'Richmond' [^drawing-graphs-2]
 
 [^drawing-graphs-2]: jamovi uses the symbol "$==$" here to mean "matches".
 
-When you have done this you will see, in the 'Data' view, that jamovi has filtered out all values apart from those we have specified. Next, open up the 'Exploration' - 'Descriptives' window and click on the 'Bar plot' check box (remember to move the 'afl.finalists' variable across into the 'Variables' box so that jamovi knows which variable to use). You should then get a bar graph, something like that shown in @fig-fig5-11.
+When you have done this you will see, in the 'Data' view, that jamovi has filtered out all values apart from those we have specified. Next, open up the 'Exploration' - 'Descriptives' window and click on the 'Bar plot' check box (remember to move the 'afl.finalists' variable across into the 'Variables' box so that jamovi knows which variable to use). You should then get a bar graph, something like that shown in @fig-fig5-11. --->
 
 ```{r}
 #| label: fig-fig5-11
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Filtering to include just four AFL teams, and drawing a bar plot in jamovi
+#| fig-cap: 只抓四支AFL球隊資料繪製的柱狀圖示範畫面。
+#Filtering to include just four AFL teams, and drawing a bar plot in jamovi
 knitr::include_graphics("images/fig5-11.png")
 ```
 
