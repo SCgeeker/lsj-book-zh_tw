@@ -396,13 +396,12 @@ knitr::include_graphics("images/fig1-1.png")
 
 <!---To some extent, but not completely. It's true that you don't need to become a fully trained statistician just to do psychology, but you do need to reach a certain level of statistical competence. In my view, there's three reasons that every psychological researcher ought to be able to do basic statistics:--->
 
--   首先是最基本的原因：統計學與研究設計深深交織。如果你想成為設計心理學研究的好手，你至少需要了解統計學的基礎。(譯註：下一章就是談研究設計)
+-   首先是最基本的原因：統計學與研究設計密不可分。如果你想成為設計心理學研究的專家，你至少需要了解統計學的基礎。(譯註：[第2章](docs/02-A-brief-introduction-to-research-design.html)就是談研究設計)
 -   其次，如果你想成為研究心理學的專家，那麼你就需要有能夠讀懂心理學文獻的能力，對吧？但是幾乎每篇心理學論文都有報告統計分析結果。如果你真的想徹底搞懂心理學，你就需要理解報告作者對資料做了什麼分析。也就是說你需要了解一定程度的統計學。
--   第三，依靠別人做統計學有一個很實際問題：統計分析是件**價格昂貴的工作**。如果你曾經無聊到去查詢澳洲政府制定的大學學費標準，會發現一件有趣的事情：統計學被指定為"國家優先"項目，因此學費比任何其他學科都低得多。這是因為社會各界都需要統計學專家的協助。從心理學研究者的立場來看，我們面對的是供給遠少於需求的賣方市場！幾乎在任何一個心理學研究室都能看到的一場殘酷實況，就是沒有足夠的經費聘請統計專家。因此，經濟現實逼迫心理學家必須自立自強。
+-   第三，依靠別人做統計學有一個很實際問題：統計分析是件**價格昂貴的工作**。如果你曾經無聊到去查詢澳洲政府制定的大學學費標準，會發現一件有趣的事情：統計學被指定為"國家優先"項目，因此學費比任何其他學科都低得多。這是因為社會各界都需要統計學專家的協助。從心理學研究者的立場來看，我們面對的是供給遠少於需求的賣方市場！幾乎任何一個心理學研究室都能看到相同的殘酷現實，就是沒有足夠經費聘請統計專家。因此，經濟現實逼迫心理學家必須自立自強。
 
 除此之外，這些原因不只適用於從事研究的人員。如果你想成為一名應用取向的心理學家，為了掌握最新的研究進展，能夠獨立閱讀充滿各種統計報告的科學文獻也有助職涯發展。
 
-```{=html}
 <!---
 -   Firstly, there's the fundamental reason: statistics is deeply intertwined with research design. If you want to be good at designing psychological studies, you need to at the very least understand the basics of stats.
 -   Secondly, if you want to be good at the psychological side of the research, then you need to be able to understand the psychological literature, right? But almost every paper in the psychological literature reports the results of statistical analyses. So if you really want to understand the psychology, you need to be able to understand what other people did with their data. And that means understanding a certain amount of statistics.
@@ -411,7 +410,7 @@ knitr::include_graphics("images/fig1-1.png")
 Note that a lot of these reasons generalise beyond researchers. If you want to be a practicing psychologist and stay on top of the field, it helps to be able to read the scientific literature, which relies pretty heavily on statistics.
 
 --->
-```
+
 **我不打算從事與心理學有關的工作、研究或臨床實務。我還需要學嗎？**
 
 <!---**I don't care about jobs, research, or clinical work. Do I need statistics?**--->
