@@ -1,19 +1,38 @@
-# 從樣本估計未知量數 {#sec-Estimating-unknown-quantities-from-a-sample} 
+# 運用樣本估計未知量數 {#sec-Estimating-unknown-quantities-from-a-sample} 
 
 ```{r}
 #| include: FALSE
 source("header.R")
 ```
 
-At the start of the last chapter I highlighted the critical distinction between descriptive statistics and *inferential statistics*. As discussed in @sec-Descriptive-statistics, the role of descriptive statistics is to concisely summarise what we *do* know. In contrast, the purpose of inferential statistics is to "learn what we do not know from what we do". Now that we have a foundation in probability theory we are in a good position to think about the problem of statistical inference. What kinds of things would we like to learn about? And how do we learn them? These are the questions that lie at the heart of inferential statistics, and they are traditionally divided into two "big ideas": estimation and hypothesis testing. The goal in this chapter is to introduce the first of these big ideas, estimation theory, but I'm going to witter on about sampling theory first because estimation theory doesn't make sense until you understand sampling. As a consequence, this chapter divides naturally into two parts, the first three sections are focused on sampling theory, and the last two sections make use of sampling theory to discuss how statisticians think about estimation.
+在前一章開頭，我們曾區辨描述統計與*推論統計*的差異。 @sec-Descriptive-statistics 曾經討論過，描述統計的功能是清晰地總結已知的資料。對照到推論統計的目標，就是"由已知資料裡獲得未知的資訊"。經過再學習機率理論基本概念，這一章就要好好理解進行統計推論會遇到的各種問題。我們能從資料獲得的什麼樣資訊？我們要如何獲得？這兩項問題是推論統計的核心，統計學家習慣用兩個”關鍵詞“稱呼：估計(estimation)與假設檢定(hypothesis testing)。這一章的學習目標是認識有關估計的理論，不過首先會討論抽樣理論，因為要認識抽樣，才能充分理解估計的理論。因此這一章的編排分成兩個部分，前半部8.1到8.3是討論抽樣理論，後半部8.4與8.5是示範如何應用抽樣理論進行點估計與區間估計。
 
-## 樣本、母群、抽樣
+<!---At the start of the last chapter I highlighted the critical distinction between descriptive statistics and *inferential statistics*. As discussed in @sec-Descriptive-statistics, the role of descriptive statistics is to concisely summarise what we *do* know. In contrast, the purpose of inferential statistics is to "learn what we do not know from what we do". Now that we have a foundation in probability theory we are in a good position to think about the problem of statistical inference. What kinds of things would we like to learn about? And how do we learn them? These are the questions that lie at the heart of inferential statistics, and they are traditionally divided into two "big ideas": estimation and hypothesis testing. The goal in this chapter is to introduce the first of these big ideas, estimation theory, but I'm going to witter on about sampling theory first because estimation theory doesn't make sense until you understand sampling. As a consequence, this chapter divides naturally into two parts, the first three sections are focused on sampling theory, and the last two sections make use of sampling theory to discuss how statisticians think about estimation. --->
 
-In the Prelude to part IV I discussed the riddle of induction and highlighted the fact that all learning requires you to make assumptions. Accepting that this is true, our first task to come up with some fairly general assumptions about data that make sense. This is where **sampling theory** comes in. If probability theory is the foundations upon which all statistical theory builds, sampling theory is the frame around which you can build the rest of the house. Sampling theory plays a huge role in specifying the assumptions upon which your statistical inferences rely. And in order to talk about "making inferences" the way statisticians think about it we need to be a bit more explicit about what it is that we're drawing inferences *from* (the sample) and what it is that we're drawing inferences about (the population).
+## 樣本、母群、抽樣{#sec-sample-population-sampling}
 
-In almost every situation of interest what we have available to us as researchers is a **sample** of data. We might have run experiment with some number of participants, a polling company might have phoned some number of people to ask questions about voting intentions, and so on. In this way the data set available to us is finite and incomplete. We can't possibly get every person in the world to do our experiment, for example a polling company doesn't have the time or the money to ring up every voter in the country. In our earlier discussion of descriptive statistics in @sec-Descriptive-statistics this sample was the only thing we were interested in. Our only goal was to find ways of describing, summarising and graphing that sample. This is about to change.
+[中場報告](Prelude-Part-IV.html)提到一則歸納之謎，讓同學從中學習如何建構能判斷故事結局的假設。如果現在你能接受這樣的思考方式，應該能同意任何統計實務都是從接受原始資料的通用假設開始，這就是我們要學習**抽樣理論**的原因。如果說統計理論都是要建立在機率理論的地基之上，抽樣理論則是組建統計理論的材料。有效統計推論所需要的條件都是來自抽樣理論，也就是要達到統計學者們認可的“推論過程”，我們必須清楚說明推論*來自*什麼樣本，推論適用於什麼樣的母群。
 
-### 定義何謂母群
+身為研究者，在任何要使用統計的狀況，最感興趣的都是資料代表的**樣本**。像是參加實驗的受試者反應，民調公司打電話詢問民眾投票意向等等。透過這類方式收集的資料，通常是有限且不完整的。因為我們不可能請全世界的人來參加實驗，民調公司也沒有時間和經費詢問所有選民。在 @sec-Descriptive-statistics 學習的描述統計，目標只有處理手上使用的資料。那一章只有學到如何描述、總結和視覺化樣本的特點。現在我們要再往前一步了。
+
+<!---In the Prelude to part IV I discussed the riddle of induction and highlighted the fact that all learning requires you to make assumptions. Accepting that this is true, our first task to come up with some fairly general assumptions about data that make sense. This is where **sampling theory** comes in. If probability theory is the foundations upon which all statistical theory builds, sampling theory is the frame around which you can build the rest of the house. Sampling theory plays a huge role in specifying the assumptions upon which your statistical inferences rely. And in order to talk about "making inferences" the way statisticians think about it we need to be a bit more explicit about what it is that we're drawing inferences *from* (the sample) and what it is that we're drawing inferences about (the population).
+
+In almost every situation of interest what we have available to us as researchers is a **sample** of data. We might have run experiment with some number of participants, a polling company might have phoned some number of people to ask questions about voting intentions, and so on. In this way the data set available to us is finite and incomplete. We can't possibly get every person in the world to do our experiment, for example a polling company doesn't have the time or the money to ring up every voter in the country. In our earlier discussion of descriptive statistics in @sec-Descriptive-statistics this sample was the only thing we were interested in. Our only goal was to find ways of describing, summarising and graphing that sample. This is about to change.  --->
+
+### 何謂母群{#sec-what-is-population}
+
+樣本是實在的，打看一份資料檔案，儲存的資料就是你能處理的樣本。然而，**母群**就抽象多了。這個詞是指所有可以用來推導結論的人類行為紀錄，可以觀測到的數值，而且比你能處理的樣本**大上許多**。最理想的狀態是研究者清楚曉得想研究的母群是什麼模樣，因為設計實驗和分析資料檢測假設的程序，都是根據研究者對於母群的基本認識。
+
+只有很少的狀況，我們能清楚了解想研究的母群是什麼模樣。例如前面提到的民調公司，要研究的母群是有資格投票的選民，能調查的樣本就是這群選民之中的1000人。多數研究要面對的母群都是模糊的。典型的心理學實驗設定的母群模樣相當複雜。假如我做了一個探討人類如何思考的認知實驗，找了一百位大學生參加實驗。那麼，這個實驗的母群是以下那一種呢？
+
+- 本校心理學系大學部所有學生?
+- 世界上所有大學心理系的大學生?
+- 所有住在台灣的台灣人?
+- 和原作者/譯者年紀相仿的國民?
+- 任何世界上活生生的人類?
+- 過去、現在、和未來的人類?
+- 任何能在行星環境生存，有足夠智能的生物個體?
+- 任何有智能的實體?
 
 A sample is a concrete thing. You can open up a data file and there's the data from your sample. A **population**, on the other hand, is a more abstract idea. It refers to the set of all possible people, or all possible observations, that you want to draw conclusions about and is generally *much bigger* than the sample. In an ideal world the researcher would begin the study with a clear idea of what the population of interest is, since the process of designing a study and testing hypotheses with the data does depend on the population about which you want to make statements.
 
@@ -355,7 +374,7 @@ When it comes to plotting confidence intervals in jamovi, you can specify that t
 
 這一章涵蓋兩大主題。前半部是談抽樣理論，後半部談運用抽樣理論估計母群參數。兩大主題分為幾個小主題：
 
-- 有關[樣本、母群、抽樣](08-Estimating-unknown-quantities-from-a-sample.html#%E6%A8%A3%E6%9C%AC%E6%AF%8D%E7%BE%A4%E5%8F%96%E6%A8%A3)的基本概念
+- 有關[樣本、母群、抽樣](08-Estimating-unknown-quantities-from-a-sample.html#sec-sample-population-sampling)的基本概念
 - 抽樣的機率理論：[大數法則](08-Estimating-unknown-quantities-from-a-sample.html#%E5%A4%A7%E6%95%B8%E6%B3%95%E5%89%87)、[樣本分佈與中央極限定理](08-Estimating-unknown-quantities-from-a-sample.html#%E6%A8%A3%E6%9C%AC%E5%88%86%E4%BD%88%E8%88%87%E4%B8%AD%E5%A4%AE%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86)
 - [母群參數的點估計](08-Estimating-unknown-quantities-from-a-sample.html#%E6%AF%8D%E7%BE%A4%E5%8F%83%E6%95%B8%E7%9A%84%E9%BB%9E%E4%BC%B0%E8%A8%88)討論平均值及標準差的機率意義。
 - [母群參數的區間估計](08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-a-confidence-interval)

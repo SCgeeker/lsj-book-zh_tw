@@ -71,7 +71,7 @@ jamovi 基本上是免費的 R 統計語言的高級前端，這是你現在可�
 knitr::include_graphics("images/fig3-1.png")
 ```
 
-視窗左半區塊如同試算表(以下稱"資料區"），右半區塊是顯示統計測試結果的地方（以下稱"報表區"）。中間邊界線區隔區塊範圍，使用者可以水平拖曳改變左右區塊的面積。
+視窗左半區塊很像Excel試算表(本書名稱"試算表介面"），右半區塊是顯示統計測試結果的地方（以下稱"報表介面"）。中間邊界線區隔區塊範圍，使用者可以水平拖曳改變左右區塊的面積。
 
 
 <!---To the left is the spreadsheet view, and to the right is where the results of statistical tests appear. Down the middle is a bar separating these two regions and this can be dragged to the left or the right to change their sizes.--->
@@ -82,27 +82,27 @@ knitr::include_graphics("images/fig3-1.png")
 
 ## 分析模組
 
-如 @fig-fig3-1 界面上方的一排圖示是可以選擇使用的分析方法模組。選好要使用的分析方法，就會出現該模組的“選項視窗”。“選項視窗”可以指定要分析的變項，選擇分析方法的設定。任何在“選項視窗”的有效動作，會在報表區顯示分析結果，每次增加或修改設定都會即時更新報表區內容。
+如 @fig-fig3-1 界面上方的一排圖示是可以選擇使用的分析方法模組。選好要使用的分析方法，就會出現該模組的“選項視窗”。“選項視窗”可以指定要分析的變項，選擇分析方法的設定。任何在“選項視窗”的有效動作，會在報表介面顯示分析結果，每次增加或修改設定都會即時更新報表介面內容。
 
 <!---Analyses can be selected from the analysis ribbon or menu along the top. Selecting an analysis will present an 'options panel' for that particular analysis, allowing you to assign different variables to different parts of the analysis, and select different options. At the same time, the results for the analysis will appear in the right 'Results panel' and will update in real-time as you make changes to the options. --->
 
-只要你認為報表區顯示的結果已經足夠，按下“選項視窗”右上角巨大的右箭頭，就能關閉“選項視窗”。若是想再重新調整選項，只要在報表區任何一處點一下，就可以重新開啟“選項視窗”。這樣的操作讓你或你的同伴回顧報表結果如何生成。
+只要你認為報表介面顯示的結果已經足夠，按下“選項視窗”右上角巨大的右箭頭，就能關閉“選項視窗”。若是想再重新調整選項，只要在報表介面任何一處點一下，就可以重新開啟“選項視窗”。這樣的操作讓你或你的同伴回顧報表結果如何生成。
 
 <!---When you have the analysis set up correctly you can dismiss the analysis options by clicking the arrow to the top right of the optional panel. If you wish to return to these options, you can click on the results that were produced. In this way, you can return to any analysis that you (or say, a colleague) created earlier. --->
 
-若是報表區內的某項分析結果不再需要了，你也可以透過副選單移除這項分析結果。以滑鼠右鍵點擊要移除的結果，就會跳出副選單。選擇副選單的`Analysis`，再選擇`Remove`就能移除結果。這些就是jamovi的基本操作，接著我們會看到更多。首先來了解資料區有什麼功能可以操作。
+若是報表介面內的某項分析結果不再需要了，你也可以透過副選單移除這項分析結果。以滑鼠右鍵點擊要移除的結果，就會跳出副選單。選擇副選單的`Analysis`，再選擇`Remove`就能移除結果。這些就是jamovi的基本操作，接著我們會看到更多。首先來了解試算表介面有什麼功能可以操作。
 
 <!---If you decide you no longer need a particular analysis, you can remove it with the results context menu. Right-clicking on the analysis results will bring up a menu and by selecting 'Analysis' and then 'Remove' the analysis can be removed. But more on this later. First, let's take a more detailed look at the spreadsheet view. --->
 
 ## 資料試算表
 
-載入jamovi的資料是以試算表的模樣呈現在資料區，每一欄代表“變項”，每一列代表一筆“個案”或“受測者”。
+載入jamovi的資料是以試算表的模樣呈現在試算表介面，每一欄代表“變項”，每一列代表一筆“個案”或“受測者”。
 
 <!---In jamovi data is represented in a spreadsheet with each column representing a 'variable' and each row representing a 'case' or 'participant'. --->
 
 ### 變項
 
-jamovi資料區最常見的變項是`資料變項`(Data Variables)，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見  @fig-fig3-2 )
+jamovi試算表介面最常見的變項是`資料變項`(Data Variables)，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見  @fig-fig3-2 )
 
 <!---The most commonly used variables in jamovi are 'Data Variables', these variables simply contain data either loaded from a data file, or 'typed in' by the user. Data variables can be one of several measurement levels (@fig-fig3-2).--->
 
@@ -137,7 +137,7 @@ knitr::include_graphics("images/fig3-2.png")
 
 <!---When starting with a blank spreadsheet and typing values in the variable type will change automatically depending on the data you enter. This is a good way to get a feel for which variable types go with which sorts of data. Similarly, when opening a data file jamovi will try and guess the variable type from the data in each column. In both cases this automatic approach may not be correct, and it may be necessary to manually specify the variable type with the variable editor.--->
 
-在資料面板(Data)點選`Setup`圖示或雙擊變項標題都能開啟變項編輯器。在變項編輯器的介面，你可以更改變項名稱、更動變項型態、標籤順序、還有標籤文字。任何變動馬上會在資料區看到改變的效果。要關閉變項編輯器，只要點選右上角的向上箭頭。
+在資料面板(Data)點選`Setup`圖示或雙擊變項標題都能開啟變項編輯器。在變項編輯器的介面，你可以更改變項名稱、更動變項型態、標籤順序、還有標籤文字。任何變動馬上會在試算表介面看到改變的效果。要關閉變項編輯器，只要點選右上角的向上箭頭。
 
 <!---The variable editor can be opened by selecting 'Setup' from the data tab or by double-clicking on the variable column header. The variable editor allows you to change the name of the variable and, for data variables, the variable type, the order of the levels, and the label displayed for each level. Changes can be applied by clicking the 'tick' to the top right. The variable editor can be dismissed by clicking the 'Hide' arrow.--->
 
@@ -274,7 +274,7 @@ There are a few things that you can check to make sure that the data gets import
 - 欄位間隔。合格的csv檔以半形逗號(,)區隔變項欄位，不過有些歐洲國家習慣用半形逗號代表小數點，因此csv檔的欄位間隔是以半形分號(;)代表。台灣各單位資料的csv檔會混合使用半形逗號與製表鍵(Tab鍵)代表欄位間隔。如果遇到請先置換並存檔後再用jamovi開啟。
 - 引號。如同 booksales.csv 的示範，csv資料檔案內的文字資料都是包 在兩個半形雙引號(")之間。有的csv資料檔案會用半形單引號(')。
 - 跳列資訊。有的csv檔案內會在開頭幾行插入非資料的說明資訊，因為不符合檔案格式，無法被正確讀取。
-- 遺漏值。統計實務最常要處理的狀況就是遺漏值。遺漏值的來源千奇百怪，用心的資料收集者會用特別的記號代表遺漏值。不論是數字還是文字資料，jamovi預設以NA代表遺漏值[^getting-started-with-jamovi-4]。請注意用jamovi開啟資料檔之前，確保資料內的遺漏值都已轉換為預設記號。開啟資料庫之後，資料區可看到的遺漏值會以空白或灰階顯示。如果某個變項裡有不符合預設記號的遺漏值，可以開啟Data面板的Setup對話視窗，自行加入遺漏值記號。
+- 遺漏值。統計實務最常要處理的狀況就是遺漏值。遺漏值的來源千奇百怪，用心的資料收集者會用特別的記號代表遺漏值。不論是數字還是文字資料，jamovi預設以NA代表遺漏值[^getting-started-with-jamovi-4]。請注意用jamovi開啟資料檔之前，確保資料內的遺漏值都已轉換為預設記號。開啟資料庫之後，試算表介面可看到的遺漏值會以空白或灰階顯示。如果某個變項裡有不符合預設記號的遺漏值，可以開啟Data面板的Setup對話視窗，自行加入遺漏值記號。
 
 
 [^getting-started-with-jamovi-4]: 你可以從設定面板(主畫面右上角三個小點圖示按鈕)更改遺漏值的代表記號，也就是更改"Default missings"欄內的記號。設定原則是不可讓遺漏值的記號等於資料內的有效數值，例如-9999。

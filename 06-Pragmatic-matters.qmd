@@ -10,101 +10,143 @@ source("header.R")
 
 [^pragmatic-matters-1]: The quote comes from Home is the Hangman, published in 1975.
 
-This is a somewhat strange chapter, even by my standards. My goal in this chapter is to talk a bit more honestly about the realities of working with data than you'll see anywhere else in the book. The problem with real world data sets is that they are *messy*. Very often the data file that you start out with doesn't have the variables stored in the right format for the analysis you want to do. Sometimes there might be a lot of missing values in your data set. Sometimes you only want to analyse a subset of the data. Et cetera. In other words, there's a lot of **data manipulation** that you need to do just to get the variables in your data set into the format that you need it. The purpose of this chapter is to provide a basic introduction to these pragmatic topics. Although the chapter is motivated by the kinds of practical issues that arise when manipulating real data, I'll stick with the practice that I've adopted through most of the book and rely on very small, toy data sets that illustrate the underlying issue. Because this chapter is essentially a collection of techniques and doesn't tell a single coherent story, it may be useful to start with a list of topics:
+這一章要學習的課題，一般基礎 統計教科書幾乎都不會涉及。這章要談的幾個課題，是後續各章介紹的方法在現實統計實務操作時會遇到的狀況。現實統計實務遇到的狀況特色是*雜亂*。最常遇到的狀況是你在預覽資料時，發現資料變項並非按照規畫的格式存檔。有時你可能會發現資料裡有一大堆數值遺漏。有時只需要處理上千萬筆資料中的幾百筆。還有許多狀況不一而足。也就是說，同學們也要學習各種**資料操作**技巧，才能應付各種統計實務的現實狀況。本章目標提供各種實務課題的概述。雖然這章的課題牽涉各種現實狀況，為了幫助同學理解，每個課題的範例都是以設計過的小型資料做示範。由於這一章純粹談技術，沒有一個通用案例貫串每個課題，這些課題包括：
+
+<!---This is a somewhat strange chapter, even by my standards. My goal in this chapter is to talk a bit more honestly about the realities of working with data than you'll see anywhere else in the book. The problem with real world data sets is that they are *messy*. Very often the data file that you start out with doesn't have the variables stored in the right format for the analysis you want to do. Sometimes there might be a lot of missing values in your data set. Sometimes you only want to analyse a subset of the data. Et cetera. In other words, there's a lot of **data manipulation** that you need to do just to get the variables in your data set into the format that you need it. The purpose of this chapter is to provide a basic introduction to these pragmatic topics. Although the chapter is motivated by the kinds of practical issues that arise when manipulating real data, I'll stick with the practice that I've adopted through most of the book and rely on very small, toy data sets that illustrate the underlying issue. Because this chapter is essentially a collection of techniques and doesn't tell a single coherent story, it may be useful to start with a list of topics: --->
 
 
-- [資料表格製作要領](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
+- [製作次數表及列聯表](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
 - [邏輯運算](06-Pragmatic-matters.html#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97)
 - [資料變項的轉換與編碼](06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable)
 - [數學函式及運算子](06-Pragmatic-matters.html#%E6%95%B8%E5%AD%B8%E5%87%BD%E5%BC%8F%E5%8F%8A%E9%81%8B%E7%AE%97%E5%AD%90)
 - [篩選部分資料](06-Pragmatic-matters.html#%E7%AF%A9%E9%81%B8%E9%83%A8%E5%88%86%E8%B3%87%E6%96%99)
+
+這一章討論的課題很廣泛，而且各有不少篇幅。雖然這一章的長度應該是本書前三名，但是討論的五個課題只是原作者認為相對重要的一部分資料操作技巧。原作者建議與各章相同，同學先讀過一遍，再試著按照範例操作。其餘各章只有少部分會提及實務課題，只要先有基本概念即可。當同學在後續各章發現有需要深入理解的實務課題，再回到這一章了解有什麼解決方法。
 
 <!---
 - [Tabulating and cross-tabulating data]
 - [Logical expressions in jamovi]
 - [Transforming and recoding a variable]
 - [A few more mathematical functions and operations]
-- [Extracting a subset of the data]--->
+- [Extracting a subset of the data]
 
-As you can see, the list of topics that the chapter covers is pretty broad, and there's a lot of content there. Even though this is one of the longest and hardest chapters in the book, I'm really only scratching the surface of several fairly different and important topics. My advice, as usual, is to read through the chapter once and try to follow as much of it as you can. Don't worry too much if you can't grasp it all at once, especially the later sections. The rest of the book is only lightly reliant on this chapter so you can get away with just understanding the basics. However, what you'll probably find is that later on you'll need to flick back to this chapter in order to understand some of the concepts that I refer to here.
+As you can see, the list of topics that the chapter covers is pretty broad, and there's a lot of content there. Even though this is one of the longest and hardest chapters in the book, I'm really only scratching the surface of several fairly different and important topics. My advice, as usual, is to read through the chapter once and try to follow as much of it as you can. Don't worry too much if you can't grasp it all at once, especially the later sections. The rest of the book is only lightly reliant on this chapter so you can get away with just understanding the basics. However, what you'll probably find is that later on you'll need to flick back to this chapter in order to understand some of the concepts that I refer to here.--->
 
-## 資料表格製作要領 {#sec-Tabulating-and-cross-tabulating-data}
+## 製作次數表及列聯表 {#sec-Tabulating-and-cross-tabulating-data}
 
-A very common task when analysing data is the construction of frequency tables, or crosstabulation of one variable against another. These tasks can be achieved in jamovi and I'll show you how in this section.
+幾乎每項統計分析實務都要建立次數表(frequency table)或資料變項列聯表(cross tabulation)。這一節示範如何運用jamovi完成。
 
-### 依資料變項製表
+<!---A very common task when analysing data is the construction of frequency tables, or crosstabulation of one variable against another. These tasks can be achieved in jamovi and I'll show you how in this section. --->
 
-Let's start with a simple example. As the father of a small child I naturally spend a lot of time watching TV shows like In the *Night Garden*. In the nightgarden.csv file, I've transcribed a short section of the dialogue. The file contains two variables of interest, speaker and utterance. Open up this data set in jamovi and take a look at the data in the 'spreadsheet' view. You will see that the data looks something like this:
+### 製表示範
 
-'speaker' variable: upsy-daisy upsy-daisy upsy-daisy upsy-daisy tombliboo tombliboo makka-pakka makka-pakka makka-pakka makka-pakka 'utterance' variable: pip pip onk onk ee oo pip pip onk onk
+此處以原作者某天晚上照顧剛出生的小孩的時候，偶然看了一集深夜節目，隨手紀錄節目中出現的角色及台詞，整理成"說話者(speaker)"與"台詞(utterance)"兩個變項。這份記錄存於jamovi示範檔案*Night Garden*，開啟後兩個變項的內容如下：
 
-Looking at this it becomes very clear what happened to my sanity! With these as my data, one task I might find myself needing to do is construct a frequency count of the number of words each character speaks during the show. The jamovi 'Descriptives' screen has a check box called 'Frequency tables' which does just this, see @tbl-tab6-1.
+<!---Let's start with a simple example. As the father of a small child I naturally spend a lot of time watching TV shows like In the *Night Garden*. In the nightgarden.csv file, I've transcribed a short section of the dialogue. The file contains two variables of interest, speaker and utterance. Open up this data set in jamovi and take a look at the data in the 'spreadsheet' view. You will see that the data looks something like this: --->
+
+資料變項'speaker': upsy-daisy upsy-daisy upsy-daisy upsy-daisy tombliboo tombliboo makka-pakka makka-pakka makka-pakka makka-pakka 資料變項'utterance': pip pip onk onk ee oo pip pip onk onk
+
+那一晚原作者的腦袋發生了什麽事？讓我們將每個角色的說話次數做成表格吧，只要用將資料變項'speaker'放到jamovi述統計模組選單的Variables視窗，再勾選啟動'Frequency tables'，報表介面就會出現像是 @tbl-tab6-1 的次數表。
+
+<!---Looking at this it becomes very clear what happened to my sanity! With these as my data, one task I might find myself needing to do is construct a frequency count of the number of words each character speaks during the show. The jamovi 'Descriptives' screen has a check box called 'Frequency tables' which does just this, see @tbl-tab6-1. --->
 
 ```{r}
 #| label: tbl-tab6-1
-#| tbl-cap: Frequency table for the speaker variable
+#| tbl-cap: 資料變項'speaker'的次數表
+#Frequency table for the speaker variable
 huxtabs[[6]][[1]] 
 ```
 
-The output here tells us on the first line that what we're looking at is a tabulation of the speaker variable. In the 'Levels' column it lists all the different speakers that exist in the data, and in the 'Counts' column it tells you how many times that speaker appears in the data. In other words, it's a frequency table.
+次數表表格第一行是speaker資料變項的各種基本統計資料的欄位名稱。像是"Levels"這欄列出紀錄在變項裡的所有角色名字，"Counts"這欄之中的數字是每位角色說了幾次台詞。
 
-In jamovi, the 'Frequency tables' check box will only produce a table for single variables. For a table of two variables, for example combining speaker and utterance so that we can see how many times each speaker said a particular utterance, we need a cross-tabulation or contingency table. In jamovi you can do this by selecting the 'Frequencies' - 'Contingency Tables' - 'Independent Samples' analysis, and moving the speaker variable into the 'Rows' box, and the utterances variable into the 'Columns' box. You then should have a contingency table like the one shown in @fig-fig6-1.
+jamovi的"Frequency tables"功能只能製作一個變項的次數表。若是要製作能展示兩個變項的列聯表，像是計算每個角色'speaker'講了各種台詞'utterance'幾次，就要使用`Frequencies`模組之中的`Contigency Tables`-`Independent Samples`功能。功能選單如同 @fig-fig6-1 ，請按照畫面範，製造兩個變項的列聯表。
+
+<!--- The output here tells us on the first line that what we're looking at is a tabulation of the speaker variable. In the 'Levels' column it lists all the different speakers that exist in the data, and in the 'Counts' column it tells you how many times that speaker appears in the data. In other words, it's a frequency table.
+
+In jamovi, the 'Frequency tables' check box will only produce a table for single variables. For a table of two variables, for example combining speaker and utterance so that we can see how many times each speaker said a particular utterance, we need a cross-tabulation or contingency table. In jamovi you can do this by selecting the 'Frequencies' - 'Contingency Tables' - 'Independent Samples' analysis, and moving the speaker variable into the 'Rows' box, and the utterances variable into the 'Columns' box. You then should have a contingency table like the one shown in @fig-fig6-1. --->
 
 ```{r}
 #| label: fig-fig6-1
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Contingency table for the speaker and utterances variables
+#| fig-cap: 資料變項speaker 與 utterances的列聯表示範畫面。
+#Contingency table for the speaker and utterances variables
 knitr::include_graphics("images/fig6-1.png")
 ```
 
-Don't worry about the "$\chi^2$ Tests" table that is produced. We are going to cover this later on in @sec-Categorical-data-analysis. When interpreting the contingency table remember that these are counts, so the fact that the first row and second column of numbers corresponds to a value of 2 indicates that Makka-Pakka (row 1) says "onk" (column 2) twice in this data set.
+各位先不必管報表最下面的"$\chi^2$ 檢定"，這是 @sec-Categorical-data-analysis 的學習項目。解讀列聯表的關鍵是表格中每個數字是計數，像是第一列第二欄的"2"是指Makka-Pakka這個角色說了"onk"這個台詞2次。
+
+<!--- Don't worry about the "$\chi^2$ Tests" table that is produced. We are going to cover this later on in @sec-Categorical-data-analysis. When interpreting the contingency table remember that these are counts, so the fact that the first row and second column of numbers corresponds to a value of 2 indicates that Makka-Pakka (row 1) says "onk" (column 2) twice in this data set. --->
 
 ### 列聯表裡的百分比
 
-The contingency table shown in @fig-fig6-1 shows a table of raw frequencies. That is, a count of the total number of cases for different combinations of levels of the specified variables. However, often you want your data to be organised in terms of percentages as well as counts. You can find the check boxes for different percentages under the 'Cells' option in the 'Contingency Tables' window. First, click on the 'Row' check box and the Contingency Table in the output window will change to the one in @fig-fig6-2.
+@fig-fig6-1 的列聯表呈現的是原始計數，也就是兩個變項內各層次資料組合的總次數。不過統計實務通常也要呈現**次數百分比**。在這個例子，只要從'Contingency Tables'功能選單下的'Cells'次選單勾選啟動**Percentages**之下的方塊。 @fig-fig6-2 示範啟動`Row`，自動計算每個原始計數在各列之內的百分比。
+
+<!---The contingency table shown in @fig-fig6-1 shows a table of raw frequencies. That is, a count of the total number of cases for different combinations of levels of the specified variables. However, often you want your data to be organised in terms of percentages as well as counts. You can find the check boxes for different percentages under the 'Cells' option in the 'Contingency Tables' window. First, click on the 'Row' check box and the Contingency Table in the output window will change to the one in @fig-fig6-2. --->
 
 ```{r}
 #| label: fig-fig6-2
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Contingency table for the speaker and utterances variables, with row percentages
+#| fig-cap: 列聯表呈現資料變項speaker 與 utterances的次數及列內百分比。
+#Contingency table for the speaker and utterances variables, with row percentages
 knitr::include_graphics("images/fig6-2.png")
 ```
 
-What we're looking at here is the percentage of utterances made by each character. In other words, 50% of Makka-Pakka's utterances are "pip", and the other 50% are "onk". Let's contrast this with the table we get when we calculate column percentages (uncheck 'Row' and check 'Column' in the Cells options window), see @fig-fig6-3. In this version, what we're seeing is the percentage of characters associated with each utterance. For instance, whenever the utterance "ee" is made (in this data set), 100% of the time it's a Tombliboo saying it.
+列內百分比讓我們知道每位角色說的台詞次數百分比，所以Makka-Pakka講的台詞有50%是"pip"，另外的50%是"onk"。若是改成計算每欄之內的百分比(取消`Row`並改成`Column`)，列聯表就會變成如 @fig-fig6-3 的樣子。這樣的列聯表告訴我們那個台詞被那些角色講了幾次。像是"ee" 100% 是Tombliboo講的。
+
+<!---What we're looking at here is the percentage of utterances made by each character. In other words, 50% of Makka-Pakka's utterances are "pip", and the other 50% are "onk". Let's contrast this with the table we get when we calculate column percentages (uncheck 'Row' and check 'Column' in the Cells options window), see @fig-fig6-3. In this version, what we're seeing is the percentage of characters associated with each utterance. For instance, whenever the utterance "ee" is made (in this data set), 100% of the time it's a Tombliboo saying it. --->
 
 ```{r}
 #| label: fig-fig6-3
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Contingency table for the speaker and utterances variables, with column percentages
+#| fig-cap: 列聯表呈現資料變項speaker 與 utterances的次數及欄內百分比。
+#Contingency table for the speaker and utterances variables, with column percentages
 knitr::include_graphics("images/fig6-3.png")
 ```
 
 ## 邏輯運算
 
-A key concept that a lot of data transformations in jamovi rely on is the idea of a **logical value**. A logical value is an assertion about whether something is true or false. This is implemented in jamovi in a pretty straightforward way. There are two logical values, namely TRUE and FALSE. Despite the simplicity, logical values are very useful things. Let's see how they work.
+在jamovi進行資料轉換，多數狀況都要使用**邏輯值**設定轉換條件。邏輯值是指根據某種條件評估，評估結果為真或為假。用jamovi執行邏輯評估相當直覺，執行結果只有TRUE或FALSE兩種數值。儘管簡單，邏輯值在許多統計實務場景相當有用。以下介紹常見的運作範例。
+
+<!---A key concept that a lot of data transformations in jamovi rely on is the idea of a **logical value**. A logical value is an assertion about whether something is true or false. This is implemented in jamovi in a pretty straightforward way. There are two logical values, namely TRUE and FALSE. Despite the simplicity, logical values are very useful things. Let's see how they work.--->
 
 ### 判斷算式真假值
 
-In George Orwell's classic book 1984 one of the slogans used by the totalitarian Party was "two plus two equals five". The idea being that the political domination of human freedom becomes complete when it is possible to subvert even the most basic of truths. It's a terrifying thought, especially when the protagonist Winston Smith finally breaks down under torture and agrees to the proposition. "Man is infinitely malleable", the book says. I'm pretty sure that this isn't true of humans[^pragmatic-matters-2] and it's definitely not true of jamovi. jamovi is not infinitely malleable, it has rather firm opinions on the topic of what is and isn't true, at least as regards basic mathematics. If I ask it to calculate $2 + 2$[^pragmatic-matters-3], it always gives the same answer, and it's not bloody 5!
+喬治．歐威爾的著名反烏托邦小說「1984」虛構的極權政府經常向不順從的人民宣傳「2 + 2 = 5」。這個設定表達了當政治極權壓過了人類的自由思想，有可能會顛覆人們對現實世界的基本認知。小說中驚悚的高潮，是當男主角史密斯．溫斯頓終於無法忍受刑求，接受了極權宣傳，同意「2 + 2 = 5」。小說有個主張「人的可塑性是無限的」，原作者相當不同意這樣的主張，同意的話就無法使用jamovi了。至少在處理基本邏輯運算的問題，jamovi不可能給出「刻意塑造」的答案。同學們可以試著在jamovi計算變項設定選單，輸入 $2 + 2$ 看看會不會得到極權政府要人民相信的5[^06-translation-01]！
+
+[^06-translation-01]: 譯註~原文這一段偏散文體，中文翻譯結合原作者的附註，整理為完整段落。
+
+到目前所學的，都是使用jamovi進行計算。還沒有做過判斷 $2 + 2 = 4$ 為真的例子。同學只要在計算變項設定選單的公式視窗裡輸入 $2 + 2 == 4$ ，就會在試算表介面看到真值(true)。
+
+這個例子用到了一種邏輯運算子：**相等運算子** $==$ [^pragmatic-matters-4]。我們現在可以用這個運算子，看看jamovi會不會服從極權統治，請在公式視窗輸入小說裡的判斷式： 
+
+[^pragmatic-matters-4]: 請初學者留意，相等運算子與一般書寫公式用的"="是不一樣的。jamovi僅使用"="做為 **輸入提示**，使用者要在"="之後輸入要運算的判斷式或函數。如果你輸入錯誤，會在試算表介面看到滿江紅的錯誤訊息。
+
+$$2 + 2 == 5$$
+
+這個例子是讓同學們牛刀小試，了解如何在jamovi裡設定邏輯判斷式。如果同學有機會使用其他程式語言測試，像是R，會得到錯誤訊息。最新版的jamovi也會偵測使用者輸入的相等運算子是否正確，如果輸入錯誤，就會得到相當醒目的錯誤訊息[^06-translation-02]。
+
+[^06-translation-02]: 譯註~原文這一段描述的是早期版本的運算輸出，最新版已不相同，因此中譯重新改寫。
+
+<!---In George Orwell's classic book 1984 one of the slogans used by the totalitarian Party was "two plus two equals five". The idea being that the political domination of human freedom becomes complete when it is possible to subvert even the most basic of truths. It's a terrifying thought, especially when the protagonist Winston Smith finally breaks down under torture and agrees to the proposition. "Man is infinitely malleable", the book says. I'm pretty sure that this isn't true of humans[^pragmatic-matters-2] and it's definitely not true of jamovi. jamovi is not infinitely malleable, it has rather firm opinions on the topic of what is and isn't true, at least as regards basic mathematics. If I ask it to calculate $2 + 2$[^pragmatic-matters-3], it always gives the same answer, and it's not bloody 5!
 
 [^pragmatic-matters-2]: I offer up my teenage attempts to be "cool" as evidence that some things just can't be done.
 
-[^pragmatic-matters-3]: You can do this in the Compute new variable screen, though just calculating 2 + 2 for every cell of a new variable is not very useful!
+[^pragmatic-matters-3]: You can do this in the Compute new variable screen, though just calculating 2 + 2 for every cell of a new variable is not very useful! 
 
-Of course, so far jamovi is just doing the calculations. I haven't asked it to explicitly assert that $2 + 2 = 4$ is a true statement. If I want jamovi to make an explicit judgement, I can use a command like this: $2 + 2 == 4$
+Of course, so far jamovi is just doing the calculations. I haven't asked it to explicitly assert that $2 + 2 = 4$ is a true statement. If I want jamovi to make an explicit judgement, I can use a command like this: $2 + 2 == 4$ 
 
 What I've done here is use the **equality operator**, $==$, to force jamovi to make a "true or false" judgement.[^pragmatic-matters-4] Okay, let's see what jamovi thinks of the Party slogan, so type this into the compute new variable 'formula' box:
 
 [^pragmatic-matters-4]: Note that this is a very different operator to the equals operator =. A common typo that people make when trying to write logical commands in jamovi (or other languages, since the "= versus ==" distinction is important in many computer and statistical programs) is to accidentally type = when you really mean ==. Be especially cautious with this, I've been programming in various languages since I was a teenager and I still screw this up a lot. Hmm. I think I see why I wasn't cool as a teenager. And why I'm still not cool.
 
-$$2 + 2 == 5$$
-
+$$2 + 2 == 5$$ 
 And what do you get? It should be a whole set of 'false' values in the spreadsheet column for your newly computed variable. Booyah! Freedom and ponies for all! Or something like that. Anyway, it was worth having a look at what happens if I try to force jamovi to believe that two plus two is five by making a statement like $2 + 2 = 5$. I know that if I do this in another program, say R, then it throws up an error message. But wait, if you do this in jamovi you get a whole set of 'false' values. So what is going on? Well, it seems that jamovi is being pretty smart and realises that you are testing whether it is TRUE or FALSE that $2 + 2 = 5$, regardless of whether you use the correct **equality operator**, $==$, or the equals sign "$=$".
 
-Anyway, it was worth having a look at what happens if I try to force jamovi to believe that two plus two is five by making a statement like $2 + 2 = 5$. I know that if I do this in another program, say R, then it throws up an error message. But wait, if you do this in jamovi you get a whole set of 'false' values. So what is going on? Well, it seems that jamovi is being pretty smart and realises that you are testing whether it is TRUE or FALSE that $2 + 2 = 5$, regardless of whether you use the correct **equality operator**, $==$, or the equals sign "$=$".
+
+Anyway, it was worth having a look at what happens if I try to force jamovi to believe that two plus two is five by making a statement like $2 + 2 = 5$. I know that if I do this in another program, say R, then it throws up an error message. But wait, if you do this in jamovi you get a whole set of 'false' values. So what is going on? Well, it seems that jamovi is being pretty smart and realises that you are testing whether it is TRUE or FALSE that $2 + 2 = 5$, regardless of whether you use the correct **equality operator**, $==$, or the equals sign "$=$".--->
 
 ### 邏輯運算子
 
@@ -338,7 +380,7 @@ utterance == 'pip' or utterance == 'oo'
 
 這一章是原作者分享實務經驗會用到的各種不起眼，但是會影響描述統計品質的小技巧或注意項目。最後再次回顧本章的課題
 
-- [資料表格製作要領](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
+- [製作次數表及列聯表](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
 - [邏輯運算](06-Pragmatic-matters.html#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97)
 - [資料變項的轉換與編碼](06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable)
 - [數學函式及運算子](06-Pragmatic-matters.html#%E6%95%B8%E5%AD%B8%E5%87%BD%E5%BC%8F%E5%8F%8A%E9%81%8B%E7%AE%97%E5%AD%90)
