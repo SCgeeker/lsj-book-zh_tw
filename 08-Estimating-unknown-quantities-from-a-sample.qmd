@@ -25,7 +25,7 @@ In almost every situation of interest what we have available to us as researcher
 
 只有很少的狀況，我們能清楚了解想研究的母群是什麼模樣。例如前面提到的民調公司，要研究的母群是有資格投票的選民，能調查的樣本就是這群選民之中的1000人。多數研究要面對的母群都是模糊的。典型的心理學實驗設定的母群模樣相當複雜。假如我做了一個探討人類如何思考的認知實驗，找了一百位大學生參加實驗。那麼，這個實驗的母群是以下那一種呢？
 
-- 本校心理學系大學部所有學生?
+- 澳洲阿得雷德大學心理系大學部所有學生?
 - 世界上所有大學心理系的大學生?
 - 所有住在台灣的台灣人?
 - 和原作者/譯者年紀相仿的國民?
@@ -34,7 +34,18 @@ In almost every situation of interest what we have available to us as researcher
 - 任何能在行星環境生存，有足夠智能的生物個體?
 - 任何有智能的實體?
 
-A sample is a concrete thing. You can open up a data file and there's the data from your sample. A **population**, on the other hand, is a more abstract idea. It refers to the set of all possible people, or all possible observations, that you want to draw conclusions about and is generally *much bigger* than the sample. In an ideal world the researcher would begin the study with a clear idea of what the population of interest is, since the process of designing a study and testing hypotheses with the data does depend on the population about which you want to make statements.
+上述每一條都是有智慧的個體所組成的群體，不過到底是那一個群體才是原作者設計的認知實驗目標母群呢？另一個很難定義清楚母群條件的狀況，就是[中場故事](/Prelude-Part-IV.html)提到的瓶子裡裝什麼球的例子[^08-translation-01]。
+例子提到抽出的12個球都是白球，並沒有彩球。我們要如何設定這個例子的母群呢？似乎以下每一條設定都有道理。
+
+- 瓶子裡的球都被抽完？
+- 負責抽球的人抽到不想抽為止？
+- 用機器人抽球，抽到機器人無法運作為止？
+- 找奇異博士去無限多的平行宇宙查看，看看每個宇宙抽出12個球的結果？
+
+
+[^08-translation-01]: 譯註~原文的例子已換成較通用的例子，置換理由請見[中場故事](/Prelude-Part-IV.html)的翻譯說明。
+
+<!---A sample is a concrete thing. You can open up a data file and there's the data from your sample. A **population**, on the other hand, is a more abstract idea. It refers to the set of all possible people, or all possible observations, that you want to draw conclusions about and is generally *much bigger* than the sample. In an ideal world the researcher would begin the study with a clear idea of what the population of interest is, since the process of designing a study and testing hypotheses with the data does depend on the population about which you want to make statements.
 
 Sometimes it's easy to state the population of interest. For instance, in the "polling company" example that opened the chapter the population consisted of all voters enrolled at the time of the study, millions of people. The sample was a set of 1000 people who all belong to that population. In most studies the situation is much less straightforward. In a typical psychological experiment determining the population of interest is a bit more complicated. Suppose I run an experiment using 100 undergraduate students as my participants. My goal, as a cognitive scientist, is to try to learn something about how the mind works. So, which of the following would count as "the population":
 
@@ -52,7 +63,7 @@ Each of these defines a real group of mind-possessing entities, all of which mig
 - All outcomes until Wellesley and Croker arrived at their destination?
 - All outcomes if Wellesley and Croker had played the game for the rest of their lives?
 - All outcomes if Wellseley and Croker lived forever and played the game until the world ran out of hills?
-- All outcomes if we created an infinite set of parallel universes and the Wellesely/Croker pair made guesses about the same 12 hills in each universe?
+- All outcomes if we created an infinite set of parallel universes and the Wellesely/Croker pair made guesses about the same 12 hills in each universe? --->
 
 ### 簡單隨機樣本
 
