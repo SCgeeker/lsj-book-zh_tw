@@ -57,7 +57,7 @@ To the surprise of many students, statistics is a fairly significant part of a p
 再看這一段結論不可信的有效邏輯論證：
 
 > 所有會上癮的東西是昂貴的 (前提 1)\
-> 有些香煙是便宜的 (前提 2)(Premise 2)\
+> 有些香煙是便宜的 (前提 2)\
 > 所以有些香煙不是會上癮的(結論)
 
 <!---People are mostly pretty smart. We're certainly smarter than the other species that we share the planet with (though many people might disagree). Our minds are quite amazing things, and we seem to be capable of the most incredible feats of thought and reason. That doesn't make us perfect though. And among the many things that psychologists have shown over the years is that we really do find it hard to be neutral, to evaluate evidence impartially and without being swayed by pre-existing biases. A good example of this is the **belief bias effect** in logical reasoning: if you ask people to decide whether a particular argument is logically valid (i.e., conclusion would be true if the premises were true), we tend to be influenced by the believability of the conclusion, even when we shouldn't.  For instance, here's a valid argument where the conclusion is believable:

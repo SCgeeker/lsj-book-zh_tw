@@ -150,7 +150,10 @@ Anyway, it was worth having a look at what happens if I try to force jamovi to b
 
 ### 邏輯運算子
 
-So now we've seen logical operations at work. But so far we've only seen the simplest possible example. You probably won't be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this: $3 \times 3 + 4 \times 4 == 5 \times 5$ or this $SQRT(25) == 5$
+
+透過上一節的簡單示範，我們了解邏輯運算子如何運作，結合其他運算子與函式會有更多用途。像是這兩個例子： $3 \times 3 + 4 \times 4 == 5 \times 5$ 還有 $SQRT(25) == 5$
+
+<!--- So now we've seen logical operations at work. But so far we've only seen the simplest possible example. You probably won't be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this: $3 \times 3 + 4 \times 4 == 5 \times 5$ or this $SQRT(25) == 5$ --->
 
 Not only that, but as @tbl-tab6-2 illustrates, there are several other logical operators that you can use corresponding to some basic mathematical concepts. Hopefully these are all pretty self-explanatory. For example, the **less than** operator \< checks to see if the number on the left is less than the number on the right. If it's less, then jamovi returns an answer of TRUE, but if the two numbers are equal, or if the one on the right is larger, then jamovi returns an answer of FALSE.
 
