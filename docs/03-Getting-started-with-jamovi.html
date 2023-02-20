@@ -352,29 +352,29 @@ ul.task-list li input[type="checkbox"] {
 <p>這一章開始正式談如何使用jamovi。其中一部分簡單說明如何下載及安裝jamovi，較多篇幅介紹jamovi的介面以及引導讀者上手使用。本章先將統計概念擺一邊，主要目標是幫助讀者了解jamovi的運作方式以及輕鬆上手。讀者將先花點時間了解內建資料集還有變項欄位，藉此感受並理解jamovi的運作方式。</p>
 
 <!---In this chapter I'll discuss how to get started in jamovi. I'll briefly talk about how to download and install jamovi, but most of the chapter will be focused on getting you started with finding your way around the jamovi GUI. Our goal in this chapter is not to learn any statistical concepts: we're just trying to learn the basics of how jamovi works and get comfortable interacting with the system. To do this we'll spend a bit of time looking at datasets and variables. In doing so, you'll get a bit of a feel for what it's like to work in jamovi. --->
-<p>不過在繼續介紹之前，我(原著作者)想和讀者們稍微聊聊使用jamovi的理由。每位讀者需要閱讀這本書應該有各種不同的理由。如果你的主要理由是“因為這是我的統計課指定學習的統計軟體”，那麼你的授課教師應該好好解釋為什麼要同學們學習jamovi。因為我(原著作者)不是你的主課老師，無法推測他選擇jamovi的理由，所以讓我講一下我使用jamovi的想法。</p>
+<p>不過在繼續介紹之前，我(原作者)想和讀者們稍微聊聊使用jamovi的理由。每位讀者需要閱讀這本書應該有各種不同的理由。如果你的主要理由是“因為這是我的統計課指定學習的統計軟體”，那麼你的授課教師應該好好解釋為什麼要同學們學習jamovi。因為我(原作者)不是你的主課老師，無法推測他選擇jamovi的理由，所以讓以下是我自己使用jamovi教學的想法。</p>
 <!---However, before going into any of the specifics, it's worth talking a little about why you might want to use jamovi at all. Given that you're reading this you've probably got your own reasons. However, if those reasons are "because that's what my stats class uses", it might be worth explaining a little why your lecturer has chosen to use jamovi for the class. Of course, I don't really know why *other* people choose jamovi so I'm really talking about why I use it. --->
 <ul>
-<li>最顯而易見的理由：用電腦做統計作業，是比用紙筆做作業更快速、簡單、且更有效的方式。電腦擅長處理任何無需思索的重覆性作業，而大多數統計計算是不需思索且重覆的。對大多數學生來說，用紙筆進行統計計算都是基於學習需要。我(原作作者)的課堂有時候也會要求學生做些紙筆計算，不過是基於我的教學目的。在某些狀況紙筆計算能幫助同學掌握“統計感”，值得認真做一次，不過只要一次就好！</li>
+<li>最顯而易見的理由：用電腦做統計作業，是比用紙筆做作業更快速、簡單、且更有效的方式。電腦擅長處理任何無需思索的重覆性作業，而大多數統計計算是不需思索且重覆的。對大多數學生來說，用紙筆進行統計計算都是基於學習需要。我(原作者)的課堂有時候也會要求學生做些紙筆計算，不過是基於我個人的教學目的。在某些狀況紙筆計算能幫助同學掌握“統計感”，值得認真做一次，不過只要一次就好！</li>
 </ul>
 <!---   It's sort of obvious but worth saying anyway: doing your statistics on a computer is faster, easier and more powerful than doing statistics by hand. Computers excel at mindless repetitive tasks, and a lot of statistical calculations are both mindless and repetitive. For most people the only reason to ever do statistical calculations with pencil and paper is for learning purposes. In my class I do occasionally suggest doing some calculations that way, but the only real value to it is pedagogical. It does help you to get a "feel" for statistics to do some calculations yourself, so it's worth doing it once. But only once! --->
 <ul>
-<li>在通用試算表軟體(例如微軟Excel)進行統計分析其實並非長久之計。雖然試算表軟體對許多人來說是比較熟悉的，但是這些軟體能執行的統計分析相當有限。如果你有使用試算表軟體分析現實生活數據的習慣，會把自已困在一個不易擺脫的操作慣性。</li>
+<li>使用試算表軟體(例如微軟Excel)進行統計分析其實並非長久之計。雖然試算表軟體對許多人來說是比較熟悉的，但是這些軟體能執行的統計分析相當有限。如果你有使用試算表軟體分析現實生活數據的習慣，會把自已困在一個不易擺脫的操作慣性。</li>
 </ul>
 <!---   Doing statistics in a conventional spreadsheet (e.g., Microsoft Excel) is generally a bad idea in the long run. Although many people likely feel more familiar with them, spreadsheets are very limited in terms of what analyses they allow you do. If you get into the habit of trying to do your real life data analysis using spreadsheets then you've dug yourself into a very deep hole. --->
 <ul>
-<li>許多商用套裝統計軟體(讀者會經常聽到的那些)的學生版非常便宜，不過功能完整的”教育版“價格通常讓像我一樣的老師們卻步。軟體公司也會販售價格高昂的企業版。軟體公司的策略是養成學生讀者在求學階段對產品的依賴，畢業進入社會後會持續使用他們的產品。儘管大公司的經營策略有待商榷，可以不用的話沒有人想花幾千塊美金購買。不過用這本書學統計的讀者有機會不去用這些商用套裝統計軟體。只要學會使用像jamovi這種開源且免費的軟體，同學們可以終身遠離軟體公司的付費陷阱。</li>
+<li>許多商用套裝統計軟體(讀者會經常聽到的那些)的學生版非常便宜，不過功能完整的”教育版“價格通常讓像我一樣的老師們卻步，因為軟體公司也會販售價格高昂的企業版。軟體公司的策略是養成學生讀者在求學階段對產品的依賴，畢業進入社會後會持續使用他們的產品。儘管大公司的經營策略有待商榷，可以不用的話沒有人想花幾千塊美金購買。不過用這本書學統計的讀者有機會不必依賴這些商用套裝統計軟體。只要學會使用像jamovi這種開源且免費的軟體，同學們可以終身遠離軟體公司的付費陷阱。</li>
 </ul>
 <!---   "student versions" (crippled versions of the real thing) very cheaply, and then they they sell full powered "educational versions" at a price that makes me wince. They will also sell commercial licences with a staggeringly high price tag. The business model here is to suck you in during your student days and then leave you dependent on their tools when you go out into the real world. It's hard to blame them for trying, but personally I'm not in favour of shelling out thousands of dollars if I can avoid it. And you can avoid it. If you make use of packages like jamovi that are open source and free you never get trapped having to pay exorbitant licensing fees. --->
-<p>jamovi 基本上是免費的 R 統計語言的高級前端，這是你現在可能不會意識到但將來做資料分析時會喜歡的事實。下載安R語言後，你會得到所有基本且功能強大的“套件”。由於 R語言 是開放系統而且使用場景廣泛，它已經成為統計學的一種標準工具，很多人還會編寫和套件擴充系統功能，而且這些套件也是免費的。最近我(原著作者 )發現的一個越勢，越來越多進階資料分析教科書，內容範例都是使用 R語言。</p>
+<p>jamovi 基本上是免費的 R 統計語言的高級前端介面，這是你現在可能不會接觸到，但將來做資料分析時會喜歡的玩意。下載安裝R語言後，你會得到所有基本且功能強大的“套件”。由於 R 語言是開放系統而且使用場景廣泛，它已經成為一種統計學的標準工具，很多人還會編寫和套件擴充系統功能，而且這些套件也是免費的。最近我(原作者 )發現的一個越勢，越來越多進階資料分析教科書，內容範例都是使用 R 語言。</p>
 <!---   Something that you might not appreciate now, but will love later on if you do anything involving data analysis, is the fact that jamovi is basically a sophisticated front end for the free R statistical programming language. When you download and install R you get all the basic "packages" and those are very powerful on their own. However, because R is so open and so widely used, it's become something of a standard tool in statistics and so lots of people write their own packages that extend the system. And these are freely available too. One of the consequences of this, I've noticed, is that if you look at recent advanced data analysis textbooks then a lot of them use R.--->
-<p>以上是我決定使用jamovi的主要理由。雖然jamovi並不是沒有缺陷。jamovi是相對較新的軟體<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，沒有什麼教科書與其他資源支援學習，而且jamovi有一些令人討厭但不得不忍受的小缺陷。不過總體來說，我認為jamovi的優點大於缺點；比我用過 其他同類型軟體功能更雨更好使用。</p>
+<p>以上是我決定使用jamovi的主要理由。雖然jamovi並不是沒有缺點。jamovi是相對較新的軟體<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，沒有什麼教科書與其他資源支援學習，而且jamovi有一些令人討厭但不得不忍受的小缺陷。不過總體來說，我認為jamovi的優點大於缺點；比我用過的其他同類型軟體功能更優秀且更好使用。</p>
 <!---Those are the main reasons I use jamovi. It's not without its flaws, though. It's relatively new[^getting-started-with-jamovi-2] so there is not a huge set of textbooks and other resources to support it, and it has a few annoying quirks that we're all pretty much stuck with, but on the whole I think the strengths outweigh the weakness; more so than any other option I've encountered so far.--->
 <section id="安裝jamovi" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="安裝jamovi"><span class="header-section-number">3.1</span> 安裝jamovi</h2>
-<p>好啦，推銷結束。開始上課吧。就像任何應用軟體，jamovi需要安裝能執行各種軟體工具還有免費遊戲的”電腦”。這樣說好像”電腦“和各家平板沒什麼分別，不過如果你有使用套裝軟體的經驗，你就會懂我的意思。無論如何，jamovi可從網路免費取得，現誰你可以從jamovi官網<a href="https://www.jamovi.org/" class="uri">https://www.jamovi.org/</a>下載安裝程式<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+<p>好啦，推銷結束。開始上課吧。就像任何應用軟體，jamovi需要安裝能執行各種軟體工具還有免費遊戲的”電腦”。這樣說好像”電腦”和各家平板沒什麼分別，不過如果你有使用套裝軟體的經驗，你就會懂我的意思。無論如何，jamovi可從網路免費取得，現誰你可以從jamovi官網<a href="https://www.jamovi.org/" class="uri">https://www.jamovi.org/</a>下載安裝程式<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
 <!---Okay, enough with the sales pitch. Let's get started. Just as with any piece of software, jamovi needs to be installed on a "computer", which is a magical box that does cool things and delivers free ponies. Or something along those lines; I may be confusing computers with the iPad marketing campaigns. Anyway, jamovi is freely distributed online and you can download it from the jamovi homepage, which is: <https://www.jamovi.org/> --->
-<p>首先在官網首頁按下”jamovi Desktop”的大標題按鈕，讀者會看到給Wiodows, Mac, 還有Linux作業系統使用者的各種超連結。只要點選符合讀者作業系統規格的超連結，就能按照視窗指示完成下載安裝程序。翻譯這本電子書時，jamovi版本已經來到2.3.21，請留意每隔幾個月會有新版本上架，有需要的話得要安裝新版本。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>首先在官網首頁按下”jamovi Desktop”的大標題按鈕，讀者會看到給Windows, Mac, 還有Linux作業系統使用者的各種安裝程式超連結。只要點選符合同學用的作業系統規格，就能按照視窗指示完成下載安裝程序。翻譯這本電子書時，jamovi版本已經來到2.3.21，請留意每隔幾個月會有新版本上架，有需要的話得要安裝新版本。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <!---At the top of the page, under the heading "Download", you'll see separate links for Windows users, Mac users, and Linux users. If you follow the relevant link you'll see that the online instructions are pretty self-explanatory. As of this writing, the current version of jamovi is 2.3, but they usually issue updates every few months, so you'll probably have a newer version.[^getting-started-with-jamovi-3]--->
 <!---Although jamovi is updated frequently it doesn't usually make much of a difference for the sort of work we'll do in this book. In fact, during the writing of the book I upgraded several times and it didn't make much difference at all to what is in this book. --->
 <section id="啟動jamovi" class="level3" data-number="3.1.1">
@@ -386,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-fig3-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/fig3-1.png" class="img-fluid figure-img" width="1440"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: jamovi啟動!</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: 啟動jamovi!</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -658,12 +658,12 @@ We still haven't arrived at anything that resembles data analysis. Maybe the nex
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>jamovi的最早版本於2018年八月問世。這本電子書將隨新版本的更新配合修改。<!---As of the first writing this in August 2018. Later versions of this book will use later versions of jamovi.---><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>jamovi的最早版本於2018年八月問世。這本電子書將隨最新版本配合更新。<!---As of the first writing this in August 2018. Later versions of this book will use later versions of jamovi.---><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>譯註 ~ jamovi開發團隊於2021年推出不必安裝，直接在網路瀏覽器使用的<a href="https://www.jamovi.org/cloud.html">雲端測試版</a>。雲端版與本機版的操作特點在本書後續介紹。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>雖然jamovi經常更新，但是這本書的示範內容不會有太大變化。原著作者編寫時已經多次修改，之後的電子書內容更新不會差異太大。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>雖然jamovi經常更新，但是這本書的示範內容不會有太大變化。原作者編寫時已經多次修改，之後的電子書內容更新不會差異太大。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>新版jamovi有內建函式<code>Z</code>可計算數值資料變項的z分數，使用者不必再自訂計算變項公式。 <!---In later versions of jamovi there is a pre-defined function 'Z' to compute z-scores, which is much easier!---><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>譯註~雲端版操作方法相同。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>譯註~原作者以jamovi擴充模組<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>譯註~原作者提供jamovi擴充模組”lsj-data”。本機版需要自行安裝，雲端版已經內建。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>你可以從設定面板(主畫面右上角三個小點圖示按鈕)更改遺漏值的代表記號，也就是更改”Default missings”欄內的記號。設定原則是不可讓遺漏值的記號等於資料內的有效數值，例如-9999。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>這些步驟聽起來很麻煩，不過未來的更新版還沒有完美的解決之前，這是比較有保障的做法。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>譯註~雲端版分為免費的GUEST PLAN與付費訂閱的PRIORITY PLAN。只有PRIORITY PLAN能安裝擴充模組，但是不包括<span class="math inline">\(R_j\)</span>。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
