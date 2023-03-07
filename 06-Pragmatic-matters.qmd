@@ -153,29 +153,41 @@ Anyway, it was worth having a look at what happens if I try to force jamovi to b
 
 透過上一節的簡單示範，我們了解邏輯運算子如何運作，結合其他運算子與函式會有更多用途。像是這兩個例子： $3 \times 3 + 4 \times 4 == 5 \times 5$ 還有 $SQRT(25) == 5$
 
-<!--- So now we've seen logical operations at work. But so far we've only seen the simplest possible example. You probably won't be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this: $3 \times 3 + 4 \times 4 == 5 \times 5$ or this $SQRT(25) == 5$ --->
+除此之外，還有其他的基本邏輯運算子，讓我們能在適合條件下運用，如同 @tbl-tab6-2 的示範。希望同學能從示範中自行認識各種運算子的功能。像是運算子 $<$ 用來計算左邊的數值是不是**小於**右邊的數值。如果運算結果為真，jamovi會傳回TRUE。如果數值相等，或者右邊的數值實際小於左邊的數值，jamovi則會傳回FALSE。
+
+另一方面，**小於或等於**運算子 $<=$ 的功能正如字面的意思，只要左邊的數值小於或等於右邊的數值就會傳回TRUE。相對地，**大於**運算子 $>$ 與**大於或等於**運算子 $>=$ 則是會傳回相反的真假值。
+
+現在要理解**不等於**運算子 $!=$ 的功能就比較簡單了。只有兩邊的數值都不一樣，運算結果才會是TRUE。如以下的例子，我們只要心算就知道 $2 + 2$ 不會等於 $5$。同學可以開啟你的jamovi試試看。
+
+<!--- So now we've seen logical operations at work. But so far we've only seen the simplest possible example. You probably won't be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this: $3 \times 3 + 4 \times 4 == 5 \times 5$ or this $SQRT(25) == 5$ 
 
 Not only that, but as @tbl-tab6-2 illustrates, there are several other logical operators that you can use corresponding to some basic mathematical concepts. Hopefully these are all pretty self-explanatory. For example, the **less than** operator \< checks to see if the number on the left is less than the number on the right. If it's less, then jamovi returns an answer of TRUE, but if the two numbers are equal, or if the one on the right is larger, then jamovi returns an answer of FALSE.
 
 In contrast, the **less than or equal to** operator $<=$ will do exactly what it says. It returns a value of TRUE if the number of the left hand side is less than or equal to the number on the right hand side. At this point I hope it's pretty obvious what the **greater than** operator $<$ and the **greater than or equal to** operator $<=$ do!
 
-Next on the list of logical operators is the **not equal to** operator != which, as with all the others, does what it says it does. It returns a value of TRUE when things on either side are not identical to each other. Therefore, since $2 + 2$ isn't equal to $5$, we would get 'true' as the value for our newly computed variable. Try it and see:
+Next on the list of logical operators is the **not equal to** operator != which, as with all the others, does what it says it does. It returns a value of TRUE when things on either side are not identical to each other. Therefore, since $2 + 2$ isn't equal to $5$, we would get 'true' as the value for our newly computed variable. Try it and see:--->
 
 $$2 + 2 \text{ != } 5$$
 
-We're not quite done yet. There are three more logical operations that are worth knowing about, listed in @tbl-tab6-3. These are the **not** operator !, the **and** operator and, and the **or** operator or. Like the other logical operators, their behaviour is more or less exactly what you'd expect given their names. For instance, if I ask you to assess the claim that "either $2 + 2 = 4$ or $2 + 2 = 5$" you'd say that it's true. Since it's an "either-or" statement, all we need is for one of the two parts to be true. That's what the or operator does:[^pragmatic-matters-5]
+還有三個列在 @tbl-tab6-3 的邏輯運算子是我們必須學會的。他們是**差集**運算子$NOT$，**交集**運算子$and$，以及**聯集**運算子$or$。每個運算子的功能也如同名字的字面意思。像是我現在問同學"$2 + 2 = 4$ 或 $2 + 2 = 5$"其中一個算式是真的嗎？同學一定會答「正確」。因為連結詞"或"代表，我們只要確定其中一個算式是真的，整句話就為真。[^pragmatic-matters-5]
 
-[^pragmatic-matters-5]: Now, here's a quirk in jamovi. When you have simple logical expressions like the ones we have already met, e.g. 2 + 2 == 5 then jamovi neatly states 'false' (or 'true') in the corresponding spreadsheet column. Underneath the hood, jamovi stores 'false' as 0 and 'true' as 1. When we have more complex logical expressions, such as (2+2 == 4) or (2+2 == 5), then jamovi just displays either 0 or 1, depending whether the logical expression is evaluated as false, or true.
+[^pragmatic-matters-5]: 這裡以最新版jamovi測試過，提醒一下留意邏輯運算子所輸出計算結果。如果輸入的算式只有一個邏輯運算子，像是2 + 2 == 5，回傳的結果是TRUE或FALSE；但是輸入的算式有交集或聯集運算子，像是(2+2 == 4) or (2+2 == 5)，回傳的結果是0或1。請同學儲存與運用計算結果時要留意。
+
+<!---We're not quite done yet. There are three more logical operations that are worth knowing about, listed in @tbl-tab6-3. These are the **not** operator !, the **and** operator and, and the **or** operator or. Like the other logical operators, their behaviour is more or less exactly what you'd expect given their names. For instance, if I ask you to assess the claim that "either $2 + 2 = 4$ or $2 + 2 = 5$" you'd say that it's true. Since it's an "either-or" statement, all we need is for one of the two parts to be true. That's what the or operator does:[^pragmatic-matters-5]
+
+[^pragmatic-matters-5]: Now, here's a quirk in jamovi. When you have simple logical expressions like the ones we have already met, e.g. 2 + 2 == 5 then jamovi neatly states 'false' (or 'true') in the corresponding spreadsheet column. Underneath the hood, jamovi stores 'false' as 0 and 'true' as 1. When we have more complex logical expressions, such as (2+2 == 4) or (2+2 == 5), then jamovi just displays either 0 or 1, depending whether the logical expression is evaluated as false, or true. --->
 
 ```{r}
 #| label: tbl-tab6-2
-#| tbl-cap: Some logical operators
+#| tbl-cap: 比較數值的邏輯運算子
+#Some logical operators
 huxtabs[[6]][[2]] 
 ```
 
 ```{r}
 #| label: tbl-tab6-3
-#| tbl-cap: Some more logical operators
+#| tbl-cap: 差集，交集以及聯集運算子
+#Some more logical operators
 huxtabs[[6]][[3]] 
 ```
 
