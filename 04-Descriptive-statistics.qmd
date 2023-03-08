@@ -512,7 +512,7 @@ knitr::include_graphics("images/fig4-11.png")
 
 [更多技術細節[^04-descriptive-statistics-11]]
 
-[^04-descriptive-statistics-11]偏態指數的常用公式是 $$skewness(X)=\frac{1}{N \hat{\sigma}^3} \sum_{i=1}^{N} ( X_i - \bar{X})^3$$ 公式裡的 N 代表資料個數, $\bar{X}$ 是樣本平均值， $\hat{\sigma}$ 是樣本標準差 (分母是"$N - 1$" 的那一種)
+[^04-descriptive-statistics-11]: 偏態指數的常用公式是 $$skewness(X)=\frac{1}{N \hat{\sigma}^3} \sum_{i=1}^{N} ( X_i - \bar{X})^3$$ 公式裡的 N 代表資料個數, $\bar{X}$ 是樣本平均值， $\hat{\sigma}$ 是樣本標準差 (分母是"$N - 1$" 的那一種)
 
 同學們也可以使用jamovi計算偏態，同樣在描述統計模組選單就有"skweness"可以勾選。資料變項`afl.margins`的偏態指數是0.780。使用偏態指數除以標準誤(Std. error)得到的數值，可以表示一筆資料的“偏態程度”。有個簡易判斷法則(特別是個數少於50的資料)：這個數值小於或等於2低表示偏態並不明顯，大於2就表示偏態程度會影響統計分析的結果。雖然這樣的判斷法則還不是學界共識，不過AFL的這筆資料偏態程度是 $\frac{0.780}{0.183} = 4.262$ 。
 
@@ -550,11 +550,11 @@ knitr::include_graphics("images/fig4-12.png")
 
 <center>表4-4: 峰度的稱呼與指數數值說明</center>
 
-|口語|術語|峰度指數正負|
+|口語|術語|峰度指數|
 |:---:|:---:|:---:|
-||||
-||||
-||||
+|分佈尾端太廋|低闊峰(platykurtic) |指數為負值|
+|分佈尾端均勻|常態峰(mesokurtic)|指數為零|
+|分佈尾端太肥|高狹峰(leptokurtic)|指數為正值|
 
 [更多技術細節[^04-descriptive-statistics-12]]
 

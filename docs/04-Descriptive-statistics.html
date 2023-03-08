@@ -874,8 +874,7 @@ In short, the IQR and the standard deviation are easily the two most common meas
 </div>
 </div>
 <p>在此我們多認識一些<strong>偏態</strong>在解讀資料的意義。偏態是解釋資料不對稱程度的最常用指標。以 <a href="#fig-fig4-11">Figure&nbsp;<span>4.11</span></a> 的展示來看，<em>負偏態</em>是多數資料的數值偏高所造成；而<em>正偏態</em>則是多數資料的數值偏低才會出現的現象。因此一筆資料大於平均值的數值佔多數，分析者會自然想到資料分佈是正偏態，偏態指數會是正值；相反的情況就會是負偏態，偏態指數會是負值。資料是對稱分佈的偏態指數則為0。</p>
-<p>[更多技術細節[^04-descriptive-statistics-11]]</p>
-<p>[^04-descriptive-statistics-11]偏態指數的常用公式是 <span class="math display">\[skewness(X)=\frac{1}{N \hat{\sigma}^3} \sum_{i=1}^{N} ( X_i - \bar{X})^3\]</span> 公式裡的 N 代表資料個數, <span class="math inline">\(\bar{X}\)</span> 是樣本平均值， <span class="math inline">\(\hat{\sigma}\)</span> 是樣本標準差 (分母是”<span class="math inline">\(N - 1\)</span>” 的那一種)</p>
+<p>[更多技術細節<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>]</p>
 <p>同學們也可以使用jamovi計算偏態，同樣在描述統計模組選單就有”skweness”可以勾選。資料變項<code>afl.margins</code>的偏態指數是0.780。使用偏態指數除以標準誤(Std. error)得到的數值，可以表示一筆資料的“偏態程度”。有個簡易判斷法則(特別是個數少於50的資料)：這個數值小於或等於2低表示偏態並不明顯，大於2就表示偏態程度會影響統計分析的結果。雖然這樣的判斷法則還不是學界共識，不過AFL的這筆資料偏態程度是 <span class="math inline">\(\frac{0.780}{0.183} = 4.262\)</span> 。</p>
 <p>峰度的報告雖然相當罕見，不過還是值得了解一下。峰度指標是描述資料分佈曲線的寬窄程度，如同 <a href="#fig-fig4-12">Figure&nbsp;<span>4.12</span></a> 的圖解，常態分佈曲線的峰度指數是0，峰度指數是正是負顯示曲線是低闊峰(左圖)或高狹峰(右圖)。</p>
 <!---
@@ -911,28 +910,28 @@ The final measure that is sometimes referred to, though very rarely in practice,
 <tr class="header">
 <th style="text-align: center;">口語</th>
 <th style="text-align: center;">術語</th>
-<th style="text-align: center;">峰度指數正負</th>
+<th style="text-align: center;">峰度指數</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">分佈尾端太廋</td>
+<td style="text-align: center;">低闊峰(platykurtic)</td>
+<td style="text-align: center;">指數為負值</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">分佈尾端均勻</td>
+<td style="text-align: center;">常態峰(mesokurtic)</td>
+<td style="text-align: center;">指數為零</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">分佈尾端太肥</td>
+<td style="text-align: center;">高狹峰(leptokurtic)</td>
+<td style="text-align: center;">指數為正值</td>
 </tr>
 </tbody>
 </table>
-<p>[更多技術細節<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>]</p>
+<p>[更多技術細節<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>]</p>
 <p>最後不免俗地提醒同學，jamovi的描述統計模組選單有計算峰度“kurtosis”的選項，只要開啟就會在報表看到AFL資料變項的峰度是0.101，除以標準誤的話是0.364，嚴格來說不算是”高狹峰”。</p>
 <!---[Additional technical detail[^04-descriptive-statistics-12]]
 
@@ -960,7 +959,7 @@ We can also go ahead and look at some other descriptive statistics, and this tim
 </div>
 </div>
 </div>
-<p>如果用不只一種分組變項會看到什麼結果呢？試試組合<code>drug</code>與<code>theropy</code>兩個變項的分組描述統計結果會是什麼。只要將<code>drug</code>放到”Split by”就知道了。分組描述統計的操作很容易，不過如果資料不多，分析結果很難說有什麼意義。有時候因為資料太少，報表會出現”NaN”或“Inf”等記號<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>。</p>
+<p>如果用不只一種分組變項會看到什麼結果呢？試試組合<code>drug</code>與<code>theropy</code>兩個變項的分組描述統計結果會是什麼。只要將<code>drug</code>放到”Split by”就知道了。分組描述統計的操作很容易，不過如果資料不多，分析結果很難說有什麼意義。有時候因為資料太少，報表會出現”NaN”或“Inf”等記號<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>。</p>
 <!---What if you have multiple grouping variables? Suppose you want to look at the average mood gain separately for all possible combinations of drug and therapy. It is possible to do this by adding another variable, drug, into the 'Split by' box. Easy peasy, though sometimes if you split too much there isn't enough data in each breakdown combination to make meaningful calculations. In this case jamovi tells you this by stating something like NaN or Inf. [^04-descriptive-statistics-13]
 
 [^04-descriptive-statistics-13]: Sometimes jamovi will also present numbers in an unusual way. If a number is very small, or very large, then jamovi switches to an exponential form for numbers. For example 6.51e-4 is the same as saying that the decimal point is moved 4 places to the left, so the actual number is 0.000651. If there is a plus sign (i.e. 6.51e+4 then the decimal point is moved to the right, i.e. 65,100.00. Usually only very small or very large numbers are expressed in this way, for example 6.51e-16, which would be quite unwieldy to write out in the normal way. --->
@@ -983,11 +982,11 @@ We can also go ahead and look at some other descriptive statistics, and this tim
 <p><span class="math display">\[
 \text{標準分數} = \frac{\text{原始分數} - 平均數}{\text{標準差}}
 \]</span></p>
-<p>[更多技術細節<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>]</p>
+<p>[更多技術細節<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>]</p>
 <p>現在我們可以將這位同學的評量得分轉換為標準化壞脾氣分數。</p>
 <p><span class="math display">\[ z =\frac{35 - 17}{5} = 3.6 \]</span> 要解釋這個分數的意義，請回憶 <a href="#sec-Standard-deviation"><span>Section&nbsp;4.2.5</span></a> 提到的簡易判斷法則：在常態分佈的資料中，比平均值大於3個標準差的數值，大約佔99.7%。所以3.6代表這位同學真的是位壞脾氣的人物。如果有興趣詳細探究，3.6代表在樣本中高於99.98%的受測者。</p>
 <p>除了能了解原始分數在龐大樣本裡的相對高低，標準分數還有另一種有用的功能：可以比較同一位受測者的不同份量表分數。想像有這位同學後來做了另一份”外向度量表“，一共有24題。外向度量表的常模樣本平均值是13，樣本標準差是4，而這位同學的原始外向度得分是2。這個分數無法直接與他的壞脾氣量表得分35分，硬要比的話就變成拿蘋果和橘子比較了。</p>
-<p>如果用標準分數就不同了。我們已經知道他的壞脾氣標準分數<span class="math inline">\((z = \frac{(35-17)}{5}=3.6)\)</span> 還有外向度標準分數 <span class="math inline">\((z = \frac{(2-13)}{4}=-2.75)\)</span>。兩項標準分數是指向原始數值在各自常模樣本的相對位置，才可以互相比較<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>。這位同學明顯比大多數人不外向(<span class="math inline">\(z = -2.75\)</span>)，脾氣也比大多數人壞 (<span class="math inline">\(z=3.6\)</span>)。而且標準分數的絕對值說明，這位同學給人壞脾氣的印象(<span class="math inline">\(3.6\)</span>)，明顯高於他不夠外向(<span class="math inline">\(2.75\)</span>)。我們能這樣斷言，是因為z分數是指出資料在變項代表的群體之間相對位置，如此才能比較不同變項的標準分數。</p>
+<p>如果用標準分數就不同了。我們已經知道他的壞脾氣標準分數<span class="math inline">\((z = \frac{(35-17)}{5}=3.6)\)</span> 還有外向度標準分數 <span class="math inline">\((z = \frac{(2-13)}{4}=-2.75)\)</span>。兩項標準分數是指向原始數值在各自常模樣本的相對位置，才可以互相比較<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>。這位同學明顯比大多數人不外向(<span class="math inline">\(z = -2.75\)</span>)，脾氣也比大多數人壞 (<span class="math inline">\(z=3.6\)</span>)。而且標準分數的絕對值說明，這位同學給人壞脾氣的印象(<span class="math inline">\(3.6\)</span>)，明顯高於他不夠外向(<span class="math inline">\(2.75\)</span>)。我們能這樣斷言，是因為z分數是指出資料在變項代表的群體之間相對位置，如此才能比較不同變項的標準分數。</p>
 <!---Suppose my friend is putting together a new questionnaire intended to measure "grumpiness". The survey has $50$ questions which you can answer in a grumpy way or not. Across a big sample (hypothetically, let's imagine a million people or so!) the data are fairly normally distributed, with the mean grumpiness score being $17$ out of $50$ questions answered in a grumpy way, and the standard deviation is $5$. In contrast, when I take the questionnaire I answer $35$ out of $50$ questions in a grumpy way. So, how grumpy am I? One way to think about it would be to say that I have grumpiness of $\frac{35}{50}$, so you might say that I'm 70% grumpy. But that's a bit weird, when you think about it. If my friend had phrased her questions a bit differently people might have answered them in a different way, so the overall distribution of answers could easily move up or down depending on the precise way in which the questions were asked. So, I'm only 70% grumpy *with respect to this set of survey questions*. Even if it's a very good questionnaire this isn't very a informative statement.
 
 A simpler way around this is to describe my grumpiness by comparing me to other people. Shockingly, out of my friend's sample of $1,000,000$ people, only $159$ people were as grumpy as me (that's not at all unrealistic, frankly) suggesting that I'm in the top 0.016% of people for grumpiness. This makes much more sense than trying to interpret the raw data. This idea, that we should describe my grumpiness in terms of the overall distribution of the grumpiness of humans, is the qualitative idea that standardisation attempts to get at. One way to do this is to do exactly what I just did and describe everything in terms of percentiles. However, the problem with doing this is that "it's lonely at the top". Suppose that my friend had only collected a sample of $1000$ people (still a pretty big sample for the purposes of testing a new questionnaire, I'd like to add), and this time gotten, let's say, a mean of $16$ out of $50$ with a standard deviation of $5$. The problem is that almost certainly not a single person in that sample would be as grumpy as me.
@@ -1051,10 +1050,11 @@ In the next Chapter we'll move on to a discussion of how to draw pictures! Every
 <li id="fn10"><p>jamovi計算變異數公式的是： <span class="math display">\[\frac{1}{N-1} \sum_{i=1}^{N} ( X_i - \bar{X} )^2\]</span><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>由於標準差是變異數的開根號，計算公式就是 <span class="math display">\[s=\sqrt{\frac{1}{N} \sum_{i=1}^{N} ( X_i - \bar{X} )^2 }\]</span> 在jamovi的描述統計選單裡，勾選’Variance’下方的’Std. deviation’，就能在報表介面看到176場得分資料的標準差 <span class="math inline">\(26.07\)</span>。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>到了 <a href="08-Estimating-unknown-quantities-from-a-sample.html"><span>Chapter&nbsp;8</span></a> 我們會再來討論這個問題。請先記得jamovi計算的樣本標準差，數學記號寫作 <span class="math inline">\(\hat{\sigma}\)</span> ，公式是 <span class="math display">\[\hat{\sigma}=\sqrt{\frac{1}{N-1} \sum_{i=1}^{N} ( X_i - \bar{X} )^2}\]</span><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>峰度的計算公式很接近變異數與偏態，除了變異數是計算平方，偏態計算立方，峰度的公式要計算四次方： <span class="math inline">\(^b\)</span> <span class="math display">\[kurtosis(X)=\frac{1}{N \hat{\sigma}^4} \sum_{i=1}^{N} ( X_i - \bar{X} )^4 - 3\]</span> 當然，大多數同學應該沒有太大興趣知道。 <br>—<br> <span class="math inline">\(^b\)</span> “-3”是校正用常數，確保常峰態的數值為0。在公式裡似乎畫蛇添足，其實背後有相當充分的數學原則。<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p>如果計算得到的數值太小或太大，jamovi會自動切換成以”指數模式”顯示。像是6.51e-4是代表簡化小數點後四位之前的0，所以這個數值的真面目是0.000651。如果是6.51e-4，代表簡化小數點前4位的0，所以這個數值的真面目是65,100.00。這種方式可以節省報表空間，想像6.51e-16的真實數值要寫多少0。<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>z分數真正的數學公式是 <span class="math display">\[z_i =\frac{X_i - \bar{X}}{\hat{\sigma}}\]</span><a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>任何統計學講師都會不厭其煩地提醒：變項A的標準差與變項B的標準差是不一樣的單位。同學可以運用常識想清楚z分數所代表的意義。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>偏態指數的常用公式是 <span class="math display">\[skewness(X)=\frac{1}{N \hat{\sigma}^3} \sum_{i=1}^{N} ( X_i - \bar{X})^3\]</span> 公式裡的 N 代表資料個數, <span class="math inline">\(\bar{X}\)</span> 是樣本平均值， <span class="math inline">\(\hat{\sigma}\)</span> 是樣本標準差 (分母是”<span class="math inline">\(N - 1\)</span>” 的那一種)<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>峰度的計算公式很接近變異數與偏態，除了變異數是計算平方，偏態計算立方，峰度的公式要計算四次方： <span class="math inline">\(^b\)</span> <span class="math display">\[kurtosis(X)=\frac{1}{N \hat{\sigma}^4} \sum_{i=1}^{N} ( X_i - \bar{X} )^4 - 3\]</span> 當然，大多數同學應該沒有太大興趣知道。 <br>—<br> <span class="math inline">\(^b\)</span> “-3”是校正用常數，確保常峰態的數值為0。在公式裡似乎畫蛇添足，其實背後有相當充分的數學原則。<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>如果計算得到的數值太小或太大，jamovi會自動切換成以”指數模式”顯示。像是6.51e-4是代表簡化小數點後四位之前的0，所以這個數值的真面目是0.000651。如果是6.51e-4，代表簡化小數點前4位的0，所以這個數值的真面目是65,100.00。這種方式可以節省報表空間，想像6.51e-16的真實數值要寫多少0。<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>z分數真正的數學公式是 <span class="math display">\[z_i =\frac{X_i - \bar{X}}{\hat{\sigma}}\]</span><a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>任何統計學講師都會不厭其煩地提醒：變項A的標準差與變項B的標準差是不一樣的單位。同學可以運用常識想清楚z分數所代表的意義。<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

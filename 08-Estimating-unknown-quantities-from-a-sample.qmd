@@ -123,11 +123,11 @@ knitr::include_graphics("images/fig8-3.png")
 
 就像前面說明的範例所展示的，我們幾乎不可能從想研究的母群取得真正的簡單隨機樣本。許多在大學實驗室執行的心理學實驗，都是直接找該校大學部同學來參加，設計實驗的教授和研究生都要**假裝**他們的參與者都是隨機樣本的一部分。取樣方法還有很多種，而且其實是超出這門課程的學習範圍，在此還是做點介紹，給好奇心強的同學一些進階學習的指引。
 
-- *分層取樣*
+- *分層取樣* 
 
-- *滾雪球取樣*
+- *滾雪球取樣* 
 
-- *方便取樣*
+- *方便取樣* 
 
 
 <!---As you can see from looking at the list of possible populations that I showed above, it is almost impossible to obtain a simple random sample from most populations of interest. When I run experiments I'd consider it a minor miracle if my participants turned out to be a random sampling of the undergraduate psychology students at Adelaide university, even though this is by far the narrowest population that I might want to generalise to. A thorough discussion of other types of sampling schemes is beyond the scope of this book, but to give you a sense of what's out there I'll list a few of the more important ones.--->
