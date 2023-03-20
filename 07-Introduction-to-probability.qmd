@@ -8,6 +8,11 @@ source("header.R")
 > *[God] has afforded us only the twilight ... of Probability.*\
 > -- John Locke
 
+<!--- teaching note: 使用最新的在地民調為例
+2023/3/3 TVBS 民調：https://cc.tvbs.com.tw/portal/file/poll_center/2023/20230306/7d5ea012c8e8d9dfe010340672208be7.pdf
+2022 台灣九合一選舉人數：https://udn.com/news/story/6656/6783987
+--->
+
 Up to this point in the book we've discussed some of the key ideas in experimental design, and we've talked a little about how you can summarise a data set. To a lot of people this is all there is to statistics: collecting all the numbers, calculating averages, drawing pictures, and putting them all in a report somewhere. Kind of like stamp collecting but with numbers. However, statistics covers much more than that. In fact, descriptive statistics is one of the smallest parts of statistics and one of the least powerful. The bigger and more useful part of statistics is that it provides information that lets you make inferences about data.
 
 Once you start thinking about statistics in these terms, that statistics is there to help us draw inferences from data, you start seeing examples of it everywhere. For instance, here's a tiny extract from a newspaper article in the Sydney Morning Herald (30 Oct 2010):
@@ -21,6 +26,12 @@ The answer to the question is pretty obvious. If I call 1000 people at random, a
 **Inferential statistics** provides the tools that we need to answer these sorts of questions, and since these kinds of questions lie at the heart of the scientific enterprise, they take up the lions share of every introductory course on statistics and research methods. However, the theory of statistical inference is built on top of **probability theory**. And it is to probability theory that we must now turn. This discussion of probability theory is basically background detail. There's not a lot of statistics per se in this chapter, and you don't need to understand this material in as much depth as the other chapters in this part of the book. Nevertheless, because probability theory does underpin so much of statistics, it's worth covering some of the basics.
 
 ## 機率和統計有什麼不一樣？
+
+<!--- teaching note:
+要用數字回答的問題，需不需要用「機率模型」解決？必須用「機率模型」解決的數字問題，一定是機率問題。 
+要用數字回答的問題，只要找到合理方法排列數字就能解決，只是（描述）統計問題。例如1854年倫敦蘇活區霍亂疫情。
+各式各樣的機率分佈，就是「機率模型」。
+--->
 
 Before we start talking about probability theory, it's helpful to spend a moment thinking about the relationship between probability and statistics. The two disciplines are closely related but they're not identical. Probability theory is "the doctrine of chances". It's a branch of mathematics that tells you how often different kinds of events will happen. For example, all of these questions are things you can answer using probability theory:
 
@@ -47,7 +58,13 @@ H H H H H H H H H H H
 
 and what I'm trying to do is work out which "model of the world" I should put my trust in. If the coin is fair then the model I should adopt is one that says that the probability of heads is 0.5, that is P(heads) = 0.5. If the coin is not fair then I should conclude that the probability of heads is not 0.5, which we would write as $P(heads)\ne{0.5}$. In other words, the statistical inference problem is to figure out which of these probability models is right. Clearly, the statistical question isn't the same as the probability question, but they're deeply connected to one another. Because of this, a good introduction to statistical theory will start with a discussion of what probability is and how it works.
 
-## 如何解讀機率？
+## 如何解讀機率？ {#sec-What-does-probability-mean}
+
+<!--- teaching note:
+探討「歸納之謎」，如何估計未知的事件發生機率，你認為W君與C君誰的想法合理？
+C君 = 次數主義觀點 ~ 只有長期觀察的結果才能掌握發生機率
+W君 = 貝氏主義觀點 ~ 掌握每次試驗結果，更新對可能機率的信心
+--->
 
 Let's start with the first of these questions. What is "probability"? It might seem surprising to you but while statisticians and mathematicians (mostly) agree on what the rules of probability are, there's much less of a consensus on what the word really means. It seems weird because we're all very comfortable using words like "chance", "likely", "possible" and "probable", and it doesn't seem like it should be a very difficult question to answer. But if you've ever had that experience in real life you might walk away from the conversation feeling like you didn't quite get it right, and that (like many everyday concepts) it turns out that you don't really know what it's all about.
 
@@ -116,11 +133,16 @@ For the most part, I'm a pragmatist so I'll use any statistical method that I tr
 
 In any case, whilst I personally prefer the Bayesian view, the majority of statistical analyses are based on the frequentist approach. My reasoning is pragmatic. The goal of this book is to cover roughly the same territory as a typical undergraduate stats class in psychology, and if you want to understand the statistical tools used by most psychologists you'll need a good grasp of frequentist methods. I promise you that this isn't wasted effort. Even if you end up wanting to switch to the Bayesian perspective, you really should read through at least one book on the "orthodox" frequentist view. Besides, I won't completely ignore the Bayesian perspective. Every now and then I'll add some commentary from a Bayesian point of view, and I'll revisit the topic in more depth in @sec-Bayesian-statistics.
 
-## 基本機率理論
+## 基本機率理論 {#sec-Basic-probability-theory}
 
 Ideological arguments between Bayesians and frequentists notwithstanding, it turns out that people mostly agree on the rules that probabilities should obey. There are lots of different ways of arriving at these rules. The most commonly used approach is based on the work of Andrey Kolmogorov, one of the great Soviet mathematicians of the 20th century. I won't go into a lot of detail, but I'll try to give you a bit of a sense of how it works. And in order to do so I'm going to have to talk about my trousers.
 
-### 機率分佈入門
+### 機率分佈入門 {#sec-introducing-probability-distributions}
+
+<!--- teaching note
+使用 seeing theory展示機率分佈
+https://seeing-theory.brown.edu/
+--->
 
 One of the disturbing truths about my life is that I only own 5 pairs of trousers. Three pairs of jeans, the bottom half of a suit, and a pair of tracksuit pants. Even sadder, I've given them names: I call them $X_1$, $X_2$, $X_3$, $X_4$ and $X_5$. I really have, that's why they call me Mister Imaginative. Now, on any given day, I pick out exactly one of pair of trousers to wear. Not even I'm so stupid as to try to wear two pairs of trousers, and thanks to years of training I never go outside without wearing trousers anymore. If I were to describe this situation using the language of probability theory, I would refer to each pair of trousers (i.e., each $X$) as an elementary event. The key characteristic of **elementary events** is that every time we make an observation (e.g., every time I put on a pair of trousers) then the outcome will be one and only one of these events. Like I said, these days I always wear exactly one pair of trousers so my trousers satisfy this constraint. Similarly, the set of all possible events is called a **sample space**. Granted, some people would call it a "wardrobe", but that's because they're refusing to think about my trousers in probabilistic terms. Sad.
 
@@ -144,6 +166,13 @@ Each of the events has a probability that lies between 0 and 1, and if we add up
 knitr::include_graphics("images/fig7-2.png")
 ```
 
+
+<!--- teaching note
+使用 seeing theory展示集合論
+https://seeing-theory.brown.edu/compound-probability/index.html#section1
+--->
+
+
 ```{r}
 #| label: tbl-tab7-3
 #| tbl-cap: Some rules that probabilities satisfy
@@ -164,7 +193,7 @@ As usual, we'll want to introduce some names and some notation. We'll let $N$ de
 
 $$P(X|\theta,N)$$
 
-and we're interested in the special case where \$X = 4, \theta = .167 \$ and $N = 20$.
+and we're interested in the special case where $X = 4$, $\theta = .167$ and $N = 20$.
 
 [Additional technical detail [^07-introduction-to-probability-3]]
 

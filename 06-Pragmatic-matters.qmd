@@ -44,17 +44,23 @@ As you can see, the list of topics that the chapter covers is pretty broad, and 
 
 <!---Let's start with a simple example. As the father of a small child I naturally spend a lot of time watching TV shows like In the *Night Garden*. In the nightgarden.csv file, I've transcribed a short section of the dialogue. The file contains two variables of interest, speaker and utterance. Open up this data set in jamovi and take a look at the data in the 'spreadsheet' view. You will see that the data looks something like this: --->
 
-資料變項'speaker': upsy-daisy upsy-daisy upsy-daisy upsy-daisy tombliboo tombliboo makka-pakka makka-pakka makka-pakka makka-pakka 資料變項'utterance': pip pip onk onk ee oo pip pip onk onk
+資料變項'說話者': upsy-daisy upsy-daisy upsy-daisy upsy-daisy tombliboo tombliboo makka-pakka makka-pakka makka-pakka makka-pakka 資料變項'台詞': pip pip onk onk ee oo pip pip onk onk
 
 那一晚原作者的腦袋發生了什麽事？讓我們將每個角色的說話次數做成表格吧，只要用將資料變項'speaker'放到jamovi述統計模組選單的Variables視窗，再勾選啟動'Frequency tables'，報表介面就會出現像是 @tbl-tab6-1 的次數表。
 
 <!---Looking at this it becomes very clear what happened to my sanity! With these as my data, one task I might find myself needing to do is construct a frequency count of the number of words each character speaks during the show. The jamovi 'Descriptives' screen has a check box called 'Frequency tables' which does just this, see @tbl-tab6-1. --->
 
-```{r}
+```{r results='asis'}
 #| label: tbl-tab6-1
 #| tbl-cap: 資料變項'speaker'的次數表
 #Frequency table for the speaker variable
-huxtabs[[6]][[1]] 
+#huxtabs[[6]][[1]] 
+kable(data.frame(
+    `角色名字` = c("makka-pakka", "tombliboo", "upsy-daisy"),
+    `發言次數` = c(4, 2, 4),
+    `發言百分比` = c(40, 20, 40),
+    `累積百分比` = c(40, 60, 100)
+),align = "c",format = "html")
 ```
 
 次數表表格第一行是speaker資料變項的各種基本統計資料的欄位名稱。像是"Levels"這欄列出紀錄在變項裡的所有角色名字，"Counts"這欄之中的數字是每位角色說了幾次台詞。
@@ -169,7 +175,25 @@ Next on the list of logical operators is the **not equal to** operator != which,
 
 $$2 + 2 \text{ != } 5$$
 
-還有三個列在 @tbl-tab6-3 的邏輯運算子是我們必須學會的。他們是**差集**運算子$NOT$，**交集**運算子$and$，以及**聯集**運算子$or$。每個運算子的功能也如同名字的字面意思。像是我現在問同學"$2 + 2 = 4$ 或 $2 + 2 = 5$"其中一個算式是真的嗎？同學一定會答「正確」。因為連結詞"或"代表，我們只要確定其中一個算式是真的，整句話就為真。[^pragmatic-matters-5]
+
+```{r results='asis'}
+#| label: tbl-tab6-2
+#| tbl-cap: 比較數值的邏輯運算子
+#Some logical operators
+#huxtabs[[6]][[2]] 
+kable(data.frame(
+    `運算功能` = c("小於", "小於或等於", "大於", "大於或等於", "等於", "不等於"),
+    `運算子` = c("<", "<=", ">", ">=", "==", "!="),
+    `輸入範例` = c("2 < 3", "2 <= 2", "2 > 3", "2 >= 2", "2 == 3", "2 != 3"),
+    `輸出` = c(TRUE, TRUE, FALSE, TRUE, FALSE, TRUE)
+),align = "c",format = "html")
+```
+
+在 @tbl-tab6-3 還有三個邏輯運算子是我們必須學會的。他們是**差集**運算子$NOT$，**交集**運算子$and$，以及**聯集**運算子$or$。每個運算子的功能也如同名字的字面意思。像是我現在問同學"$2 + 2 = 4$ 或 $2 + 2 = 5$"其中一個算式是真的嗎？同學一定要答”是“。因為用"或"連結的兩個命題，我們只要確定其中一個算式是真的，整個命題就為真。[^pragmatic-matters-5]
+
+
+$$(2+2 == 4) \text{ or } (2+2 == 5)$$
+
 
 [^pragmatic-matters-5]: 這裡以最新版jamovi測試過，提醒一下留意邏輯運算子所輸出計算結果。如果輸入的算式只有一個邏輯運算子，像是2 + 2 == 5，回傳的結果是TRUE或FALSE；但是輸入的算式有交集或聯集運算子，像是(2+2 == 4) or (2+2 == 5)，回傳的結果是0或1。請同學儲存與運用計算結果時要留意。
 
@@ -177,35 +201,43 @@ $$2 + 2 \text{ != } 5$$
 
 [^pragmatic-matters-5]: Now, here's a quirk in jamovi. When you have simple logical expressions like the ones we have already met, e.g. 2 + 2 == 5 then jamovi neatly states 'false' (or 'true') in the corresponding spreadsheet column. Underneath the hood, jamovi stores 'false' as 0 and 'true' as 1. When we have more complex logical expressions, such as (2+2 == 4) or (2+2 == 5), then jamovi just displays either 0 or 1, depending whether the logical expression is evaluated as false, or true. --->
 
-```{r}
-#| label: tbl-tab6-2
-#| tbl-cap: 比較數值的邏輯運算子
-#Some logical operators
-huxtabs[[6]][[2]] 
-```
+
+換個問法，如果現在是問你"$2 + 2 = 4$ 且 $2 + 2 = 5$"都是真的嗎？你應該要答“否”。因為這個命題是交集，兩個算式都要為真，整個命題才為真。在jamovi計算變項設定，我們可以這樣編輯：
+
+<!---On the other hand, if I ask you to assess the claim that "both $2 + 2 = 4$ and $2 + 2 = 5$" you'd say that it's false. Since this is an and statement we need both parts to be true. And that's what the and operator does: --->
+
+$$(2+2 == 4) \text{ and } (2+2 == 5)$$
+
+最後來看拗口的**差集**運算子。假如我問你“$2 + 2 = 5$這個算式非真嗎?”，你應該會答“是”。因為正確的命題應該是“$2 + 2 = 5$為假”。在jamovi計算變項設定，我們可以這樣編輯：
+
+<!---Finally, there's the not operator, which is simple but annoying to describe in English. If I ask you to assess my claim that "it is not true that $2 + 2 = 5$" then you would say that my claim is true, because actually my claim is that "$2 + 2 = 5$ is false". And I'm right. If we write this in jamovi we use this: --->
+
+$$NOT(2+2 == 5)$$
+
+也就是 $2+2 == 5$ 的輸出是FALSE，$NOT(2+2 == 5)$ 的輸出就是TRUE。這個例子讓我們曉得“非假”就是“真”。雖然現實世界許多事情真假難辨，至少在jamovi的世界一切非黑即白。資料放到jamovi不是真就是假，沒有灰色地帶。
+
+其實我們不需要用差集運算子，得到 $2+2 == 5$ 為假的答案，使用“等於"運算子$==$就是FALSE的輸出，如果要得到TRUE的輸出，使用"不等於"運算子$!=$就行了：
+
+<!---In other words, since $2+2 == 5$ is a FALSE statement, it must be the case that $NOT(2+2 == 5)$ is a TRUE one. Essentially, what we've really done is claim that "not false" is the same thing as "true". Obviously, this isn't really quite right in real life. But jamovi lives in a much more black or white world. For jamovi everything is either true or false. No shades of grey are allowed.
+
+Of course, in our $2 + 2 = 5$ example, we didn't really need to use the "not" operator $NOT$ and the "equals to" operator $==$ as two separate operators. We could have just used the "not equals to" operator $!=$ like this: --->
+
+$$2+2 \text{ != } 5$$
+
 
 ```{r}
 #| label: tbl-tab6-3
 #| tbl-cap: 差集，交集以及聯集運算子
 #Some more logical operators
-huxtabs[[6]][[3]] 
+#huxtabs[[6]][[3]] 
+kable(data.frame(
+    `運算功能` = c("差集", "聯集", "交集"),
+    `運算子` = c("NOT", "or", "and"),
+    `輸入範例` = c("NOT(1==1)", "(1==1) or (2==3)", "(1==1) and (2==3)"),
+    `輸出` = c(FALSE, TRUE, FALSE)
+),align = "c",format = "html")
 ```
 
-$$(2+2 == 4) \text{ or } (2+2 == 5)$$
-
-On the other hand, if I ask you to assess the claim that "both $2 + 2 = 4$ and $2 + 2 = 5$" you'd say that it's false. Since this is an and statement we need both parts to be true. And that's what the and operator does:
-
-$$(2+2 == 4) \text{ and } (2+2 == 5)$$
-
-Finally, there's the not operator, which is simple but annoying to describe in English. If I ask you to assess my claim that "it is not true that $2 + 2 = 5$" then you would say that my claim is true, because actually my claim is that "$2 + 2 = 5$ is false". And I'm right. If we write this in jamovi we use this:
-
-$$NOT(2+2 == 5)$$
-
-In other words, since $2+2 == 5$ is a FALSE statement, it must be the case that $NOT(2+2 == 5)$ is a TRUE one. Essentially, what we've really done is claim that "not false" is the same thing as "true". Obviously, this isn't really quite right in real life. But jamovi lives in a much more black or white world. For jamovi everything is either true or false. No shades of grey are allowed.
-
-Of course, in our $2 + 2 = 5$ example, we didn't really need to use the "not" operator $NOT$ and the "equals to" operator $==$ as two separate operators. We could have just used the "not equals to" operator $!=$ like this:
-
-$$2+2 \text{ != } 5$$
 
 ### 在報告中表達邏輯運算子
 

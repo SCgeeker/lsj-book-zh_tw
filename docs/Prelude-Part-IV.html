@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -321,7 +321,10 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Part IV of the book is by far the most theoretical, focusing as it does on the theory of statistical inference. Over the next three chapters my goal is to give you an introduction to probability theory, sampling and estimation in <a href="08-Estimating-unknown-quantities-from-a-sample.html"><span>Chapter&nbsp;8</span></a> and statistical hypothesis testing in <a href="09-Hypothesis-testing.html"><span>Chapter&nbsp;9</span></a>. Before we get started though, I want to say something about the big picture. Statistical inference is primarily about learning from data. The goal is no longer merely to describe our data but to use the data to draw conclusions about the world. To motivate the discussion I want to spend a bit of time talking about a philosophical puzzle known as the riddle of induction, because it speaks to an issue that will pop up over and over again throughout the book: statistical inference relies on assumptions. This sounds like a bad thing. In everyday life people say things like “you should never make assumptions”, and psychology classes often talk about assumptions and biases as bad things that we should try to avoid. From bitter personal experience I have learned never to say such things around philosophers!</p>
+<!--- riddle of induction 替代版：某位設計師為展覽製作一個能裝10,000顆球的巨大陶瓷瓶子，展覽告示宣稱瓶子裡有5,000顆白球和5,000顆彩色球，歡迎現場觀眾任意取球測試，看看告示是否為真。
+有兩位觀眾W君與C君彼此約定測試方法，每次取出三顆球，逐次評估告示的真實性。
+這天他們連續測試四次，每次取出的都是三顆白球。W君認為告示是錯的，C君認為還要繼續測試。你認為誰的主張是合理的？ --->
+<p>Part IV of the book is by far the most theoretical, focusing as it does on the theory of statistical inference. Over the next three chapters my goal is to give you an introduction to probability theory, sampling and estimation in <a href="#sec-Estimating-unknown-quantities-from-a-sample"><span class="quarto-unresolved-ref">sec-Estimating-unknown-quantities-from-a-sample</span></a> and statistical hypothesis testing in <a href="#sec-Hypothesis-testing"><span class="quarto-unresolved-ref">sec-Hypothesis-testing</span></a>. Before we get started though, I want to say something about the big picture. Statistical inference is primarily about learning from data. The goal is no longer merely to describe our data but to use the data to draw conclusions about the world. To motivate the discussion I want to spend a bit of time talking about a philosophical puzzle known as the riddle of induction, because it speaks to an issue that will pop up over and over again throughout the book: statistical inference relies on assumptions. This sounds like a bad thing. In everyday life people say things like “you should never make assumptions”, and psychology classes often talk about assumptions and biases as bad things that we should try to avoid. From bitter personal experience I have learned never to say such things around philosophers!</p>
 <section id="邏輯推理的侷限" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="邏輯推理的侷限">邏輯推理的侷限</h2>
 <blockquote class="blockquote">
