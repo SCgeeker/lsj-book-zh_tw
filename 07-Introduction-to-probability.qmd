@@ -15,7 +15,9 @@ source("header.R")
 
 Up to this point in the book we've discussed some of the key ideas in experimental design, and we've talked a little about how you can summarise a data set. To a lot of people this is all there is to statistics: collecting all the numbers, calculating averages, drawing pictures, and putting them all in a report somewhere. Kind of like stamp collecting but with numbers. However, statistics covers much more than that. In fact, descriptive statistics is one of the smallest parts of statistics and one of the least powerful. The bigger and more useful part of statistics is that it provides information that lets you make inferences about data.
 
-Once you start thinking about statistics in these terms, that statistics is there to help us draw inferences from data, you start seeing examples of it everywhere. For instance, here's a tiny extract from a newspaper article in the Sydney Morning Herald (30 Oct 2010):
+Once you start thinking about statistics in these terms, that statistics is there to help us draw inferences from data, you start seeing examples of it everywhere. For instance, here's a tiny extract from a newspaper article in the Sydney Morning Herald (30 Oct 2010):[^translation-1]
+
+[^translation-1]: 譯註~在此使用最新的在地政治新聞說明，請參考[TVBS 2023/3/3民調](https://cc.tvbs.com.tw/portal/file/poll_center/2023/20230306/7d5ea012c8e8d9dfe010340672208be7.pdf)以及[2022年台灣九合一選舉人數](https://udn.com/news/story/6656/6783987)。
 
 > "I have a tough job," the Premier said in response to a poll which found her government is now the most unpopular Labor administration in polling history, with a primary vote of just 23 per cent.
 
@@ -33,7 +35,9 @@ The answer to the question is pretty obvious. If I call 1000 people at random, a
 各式各樣的機率分佈，就是「機率模型」。
 --->
 
-Before we start talking about probability theory, it's helpful to spend a moment thinking about the relationship between probability and statistics. The two disciplines are closely related but they're not identical. Probability theory is "the doctrine of chances". It's a branch of mathematics that tells you how often different kinds of events will happen. For example, all of these questions are things you can answer using probability theory:
+Before we start talking about probability theory, it's helpful to spend a moment thinking about the relationship between probability and statistics. The two disciplines are closely related but they're not identical. Probability theory is "the doctrine of chances". It's a branch of mathematics that tells you how often different kinds of events will happen. For example, all of these questions are things you can answer using probability theory:[^translation-2]
+
+[^translation-2]: 譯註~要用數字回答的問題，需不需要用「機率模型」解決？必須用「機率模型」解決的數字問題，一定是機率問題。<br>要用數字回答的問題，只要找到合理方法排列數字就能解決，只是*描述*統計問題。例如1854年倫敦蘇活區霍亂疫情。<br>各式各樣的機率分佈，都是「機率模型」。
 
 - What are the chances of a fair coin coming up heads 10 times in a row?
 - If I roll a six sided dice twice, how likely is it that I'll roll two sixes?
@@ -62,11 +66,13 @@ and what I'm trying to do is work out which "model of the world" I should put my
 
 <!--- teaching note:
 探討「歸納之謎」，如何估計未知的事件發生機率，你認為W君與C君誰的想法合理？
-C君 = 次數主義觀點 ~ 只有長期觀察的結果才能掌握發生機率
-W君 = 貝氏主義觀點 ~ 掌握每次試驗結果，更新對可能機率的信心
+C君 = 次數主義觀點 ~ 只有長期觀察的結果才能掌握發生機率。標示相對發生次數的統計量是解答的元素。
+W君 = 貝氏主義觀點 ~ 掌握每次試驗結果，更新事件發生機率的信心。事件發生的機率是解答的元素。
 --->
 
-Let's start with the first of these questions. What is "probability"? It might seem surprising to you but while statisticians and mathematicians (mostly) agree on what the rules of probability are, there's much less of a consensus on what the word really means. It seems weird because we're all very comfortable using words like "chance", "likely", "possible" and "probable", and it doesn't seem like it should be a very difficult question to answer. But if you've ever had that experience in real life you might walk away from the conversation feeling like you didn't quite get it right, and that (like many everyday concepts) it turns out that you don't really know what it's all about.
+Let's start with the first of these questions. What is "probability"? It might seem surprising to you but while statisticians and mathematicians (mostly) agree on what the rules of probability are, there's much less of a consensus on what the word really means. It seems weird because we're all very comfortable using words like "chance", "likely", "possible" and "probable", and it doesn't seem like it should be a very difficult question to answer. But if you've ever had that experience in real life you might walk away from the conversation feeling like you didn't quite get it right, and that (like many everyday concepts) it turns out that you don't really know what it's all about.[^translation-3]
+
+[^translation-3]: 譯註 ~ 探討「歸納之謎」，如何估計未知的事件發生機率，你認為W君與C君誰的想法合理？ <br> C君 = 次數主義觀點 ~ 只有長期觀察的結果才能掌握發生機率。標示相對發生次數的統計量是解答的元素。<br> W君 = 貝氏主義觀點 ~ 掌握每次試驗結果，更新事件發生機率的信心。事件發生的機率是解答的元素。
 
 So I'll have a go at it. Let's suppose I want to bet on a soccer game between two teams of robots, Arduino Arsenal and C Milan. After thinking about it, I decide that there is an 80% probability of Arduino Arsenal winning. What do I mean by that? Here are three possibilities:
 
@@ -117,7 +123,9 @@ knitr::include_graphics("images/fig7-1.png")
 
 ### 貝氏觀點
 
-**貝氏觀點(The Bayesian view)** of probability is often called the subjectivist view, and although it has been a minority view among statisticians it has been steadily gaining traction for the last several decades. There are many flavours of Bayesianism, making it hard to say exactly what "the" Bayesian view is. The most common way of thinking about subjective probability is to define the probability of an event as the **degree of belief** that an intelligent and rational agent assigns to that truth of that event. From that perspective, probabilities don't exist in the world but rather in the thoughts and assumptions of people and other intelligent beings.
+**貝氏觀點(The Bayesian view)** of probability is often called the subjectivist view, and although it has been a minority view among statisticians it has been steadily gaining traction for the last several decades. There are many flavours of Bayesianism, making it hard to say exactly what "the" Bayesian view is. The most common way of thinking about subjective probability is to define the probability of an event as the **degree of belief** that an intelligent and rational agent assigns to that truth of that event. From that perspective, probabilities don't exist in the world but rather in the thoughts and assumptions of people and other intelligent beings.[^translation-4]
+
+[^translation-4]: 譯註~數學家版的貝氏定理$$Pr(A|B) = \frac{Pr(B|A)*Pr(A)}{Pr(B)}$$ 統計學家版的貝氏定理$$Pr(H_i|Data) = \frac{Pr(Data|H_i)*Pr(H_i)}{\sum_{j=1}^n Pr(Data|H_j)*Pr(H_j)}$$ 兩套公式取自旗標出版[AI 必須！從做中學貝氏統計](https://www.flag.com.tw/books/product/F2308)。
 
 However, in order for this approach to work we need some way of operationalising "degree of belief". One way that you can do this is to formalise it in terms of "rational gambling", though there are many other ways. Suppose that I believe that there's a 60% probability of rain tomorrow. If someone offers me a bet that if it rains tomorrow then I win \$5, but if it doesn't rain I lose \$5. Clearly, from my perspective, this is a pretty good bet. On the other hand, if I think that the probability of rain is only 40% then it's a bad bet to take. So we can operationalise the notion of a "subjective probability" in terms of what bets I'm willing to accept.
 

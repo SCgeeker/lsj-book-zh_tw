@@ -10,13 +10,13 @@ source("header.R")
 #}
 ```
 
-在前一章開頭，我們曾區辨描述統計與*推論統計*的差異。 @sec-Descriptive-statistics 曾經討論過，描述統計的功能是清晰地總結已知的資料。對照到推論統計的目標，就是"由已知資料裡獲得未知的資訊"。經過再學習機率理論基本概念，這一章就要好好理解進行統計推論會遇到的各種問題。我們能從資料獲得的什麼樣資訊？我們要如何獲得？這兩項問題是推論統計的核心，統計學家習慣用兩個”關鍵詞“稱呼：估計(estimation)與假設檢定(hypothesis testing)。這一章的學習目標是認識有關估計的理論，不過首先會討論抽樣理論，因為要認識抽樣，才能充分理解估計的理論。因此這一章的編排分成兩個部分，前半部8.1到8.3是討論抽樣理論，後半部8.4與8.5是示範如何應用抽樣理論進行點估計與區間估計。
+在前一章開頭，我們曾區辨描述統計與*推論統計*的差異。 @sec-Descriptive-statistics 曾經討論過，描述統計的功能是清晰地總結已知的資料。對照到推論統計的目標，就是"由已知資料裡獲得未知的資訊"。經過再學習機率理論基本概念，這一章就要好好理解進行統計推論會遇到的各種問題。我們能從資料獲得的什麼樣資訊？我們要如何獲得？這兩項問題是推論統計的核心，統計學家習慣用兩個”關鍵詞“稱呼：估計(estimation)與假設檢定(hypothesis testing)。這一章的學習目標是認識有關估計的理論，不過首先會討論取樣理論，因為要認識取樣，才能充分理解估計的理論。因此這一章的編排分成兩個部分，前半部8.1到8.3是討論取樣理論，後半部8.4與8.5是示範如何應用取樣理論進行點估計與區間估計。
 
 <!---At the start of the last chapter I highlighted the critical distinction between descriptive statistics and *inferential statistics*. As discussed in @sec-Descriptive-statistics, the role of descriptive statistics is to concisely summarise what we *do* know. In contrast, the purpose of inferential statistics is to "learn what we do not know from what we do". Now that we have a foundation in probability theory we are in a good position to think about the problem of statistical inference. What kinds of things would we like to learn about? And how do we learn them? These are the questions that lie at the heart of inferential statistics, and they are traditionally divided into two "big ideas": estimation and hypothesis testing. The goal in this chapter is to introduce the first of these big ideas, estimation theory, but I'm going to witter on about sampling theory first because estimation theory doesn't make sense until you understand sampling. As a consequence, this chapter divides naturally into two parts, the first three sections are focused on sampling theory, and the last two sections make use of sampling theory to discuss how statisticians think about estimation. --->
 
 ## 樣本、母群、取樣{#sec-sample-population-sampling}
 
-[中場報告](Prelude-Part-IV.html)提到一則歸納之謎，讓同學從中學習如何建構能判斷故事結局的假設。如果現在你能接受這樣的思考方式，應該能同意任何統計實務都是從接受原始資料的通用假設開始，這就是我們要學習**抽樣理論**的原因。如果說統計理論都是要建立在機率理論的地基之上，抽樣理論則是組建統計理論的材料。有效統計推論所需要的條件都是來自抽樣理論，也就是要達到統計學者們認可的“推論過程”，我們必須清楚說明推論*來自*什麼樣本，推論適用於什麼樣的母群。
+[中場報告](Prelude-Part-IV.html)提到一則歸納之謎，讓同學從中學習如何建構能判斷故事結局的假設。如果現在你能接受這樣的思考方式，應該能同意任何統計實務都是從接受原始資料的通用假設開始，這就是我們要學習**取樣理論**的原因。如果說統計理論都是要建立在機率理論的地基之上，取樣理論則是組建統計理論的材料。有效統計推論所需要的條件都是來自取樣理論，也就是要達到統計學者們認可的“推論過程”，我們必須清楚說明推論*來自*什麼樣本，推論適用於什麼樣的母群。
 
 身為研究者，在任何要使用統計的狀況，最感興趣的都是資料代表的**樣本**。像是參加實驗的受試者反應，民調公司打電話詢問民眾投票意向等等。透過這類方式收集的資料，通常是有限且不完整的。因為我們不可能請全世界的人來參加實驗，民調公司也沒有時間和經費詢問所有選民。在 @sec-Descriptive-statistics 學習的描述統計，目標只有處理手上使用的資料。那一章只有學到如何描述、總結和視覺化樣本的特點。現在我們要再往前一步了。
 
@@ -72,9 +72,9 @@ Each of these defines a real group of mind-possessing entities, all of which mig
 
 ### 簡單隨機樣本
 
-不論要採用那種母群的定義，重點是我們要找出代表母群一部分的樣本，還有運用從樣本學到的知識推測母群的性質。樣本和母群的關係建立在選取樣本的的程序。這樣的程序就是**抽樣方法(sampling method)**，理解抽樣方法是正確有效運用推論統計的關鍵。
+不論要採用那種母群的定義，重點是我們要找出代表母群一部分的樣本，還有運用從樣本學到的知識推測母群的性質。樣本和母群的關係建立在選取樣本的的程序。這樣的程序就是**取樣方法(sampling method)**，理解取樣方法是正確有效運用推論統計的關鍵。
 
-我們用一個裝有十顆球的的袋子舉例說明抽樣方法。每顆球各印有一個字母區別，並且被塗上黑色或白色。這十顆球構成的母群能繪製成像 @fig-fig8-1 的示意圖一覽無遺。十顆球裡有四顆黑球和六顆白球，但是請假裝還沒打開袋子之前，我們完全不知道每顆球長什麼樣子。接著我們做一次「想像實驗」：先把袋子拿起來搖幾下，矇起眼睛從袋子裡依序一次一顆，抽出其中四顆球，將他們排在眼前。第一輪我們拿出的是字母a黑球，字母c白球，字母j白球，還有字母b黑球。紀錄完畢再將四顆球放回袋子裡，我們可以重覆同樣的抽球程序數輪，每次紀錄累積就如 @fig-fig8-1 右邊的樣子。如此不斷重覆、結果卻每次不同的抽球程序是一種*隨機程序*。[^08-estimating-unknown-quantities-from-a-sample-1] 我們能認可這是隨機程序的主要理由是每次抽球之前，都要先搖一搖袋子，讓每顆球被抽出的機會是相等的。能讓母群裡的每一份子以相等機會抽出，形成的樣本就是**簡單隨機樣本**。每取出一顆球都不會放回袋子，能確保每一次抽樣得到的樣本不會有兩個同樣的球，這種取樣限制稱為**不放回抽樣**。
+我們用一個裝有十顆球的的袋子舉例說明取樣方法。每顆球各印有一個字母區別，並且被塗上黑色或白色。這十顆球構成的母群能繪製成像 @fig-fig8-1 的示意圖一覽無遺。十顆球裡有四顆黑球和六顆白球，但是請假裝還沒打開袋子之前，我們完全不知道每顆球長什麼樣子。接著我們做一次「想像實驗」：先把袋子拿起來搖幾下，矇起眼睛從袋子裡依序一次一顆，抽出其中四顆球，將他們排在眼前。第一輪我們拿出的是字母a黑球，字母c白球，字母j白球，還有字母b黑球。紀錄完畢再將四顆球放回袋子裡，我們可以重覆同樣的抽球程序數輪，每次紀錄累積就如 @fig-fig8-1 右邊的樣子。如此不斷重覆、結果卻每次不同的抽球程序是一種*隨機程序*。[^08-estimating-unknown-quantities-from-a-sample-1] 我們能認可這是隨機程序的主要理由是每次抽球之前，都要先搖一搖袋子，讓每顆球被抽出的機會是相等的。能讓母群裡的每一份子以相等機會抽出，形成的樣本就是**簡單隨機樣本**。每取出一顆球都不會放回袋子，能確保每一次取樣得到的樣本不會有兩個同樣的球，這種取樣限制稱為**不放回取樣**。
 
 
 [^08-estimating-unknown-quantities-from-a-sample-1]: 隨機的數學推導相當繁複，並且已經超出本書的學習範圍。本書不依靠數學公式解說隨機程序，讀者只要理解取樣程序可以不斷重覆，每次取樣結果都不一樣就是一種隨機程序。
@@ -87,12 +87,12 @@ To keep things simple, let's imagine that we have a bag containing 10 chips. Eac
 #| label: fig-fig8-1
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: 自有限母群不放回抽樣的可能樣本。
+#| fig-cap: 自有限母群不放回取樣的可能樣本。
 #Simple random sampling without replacement from a finite population
 knitr::include_graphics("images/fig8-1.png")
 ```
 
-為了讓同學更了解抽樣方法如何影響樣本的組合，我們來想像另一種取樣狀況。想像有個五歲小朋友跑進來，擅自打開袋子拿出全部黑球，沒放回去又跑開了。旁邊做紀錄的同學沒注意到還當成是一次實驗結果，如果發生好幾次，就會看到像 @fig-fig8-2 展示的偏誤樣本。請想想如果做實驗的同學每次依照*隨機抽樣規則*抽球，看到四顆球的樣本可能性有多高？抽樣規則確實會影響樣本組成。如果我們了解全是黑球是有偏誤的抽樣方法造成的，那麼這樣的**偏誤樣本**無法有效推測母群的性質！這是為什麼統計學者特別重視資料檔案裡的紀錄是不是來自簡單隨機樣本，隨機樣本的資料進行分析不大需要太多處理。
+為了讓同學更了解取樣方法如何影響樣本的組合，我們來想像另一種取樣狀況。想像有個五歲小朋友跑進來，擅自打開袋子拿出全部黑球，沒放回去又跑開了。旁邊做紀錄的同學沒注意到還當成是一次實驗結果，如果發生好幾次，就會看到像 @fig-fig8-2 展示的偏誤樣本。請想想如果做實驗的同學每次依照*隨機取樣規則*抽球，看到四顆球的樣本可能性有多高？取樣規則確實會影響樣本組成。如果我們了解全是黑球是有偏誤的取樣方法造成的，那麼這樣的**偏誤樣本**無法有效推測母群的性質！這是為什麼統計學者特別重視資料檔案裡的紀錄是不是來自簡單隨機樣本，隨機樣本的資料進行分析不大需要太多處理。
 
 <!--- [^08-estimating-unknown-quantities-from-a-sample-1]: The proper mathematical definition of randomness is extraordinarily technical, and way beyond the scope of this book. We'll be non-technical here and say that a process has an element of randomness to it whenever it is possible to repeat the process and get different answers each time. 
 
@@ -102,12 +102,12 @@ To help make sure you understand the importance of the sampling procedure, consi
 #| label: fig-fig8-2
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: 自有限母群偏誤抽樣的樣本。
+#| fig-cap: 自有限母群偏誤取樣的樣本。
 #Biased sampling without replacement from a finite population
 knitr::include_graphics("images/fig8-2.png")
 ```
 
-我們再來想像第三種抽樣狀況。這次每輪抽出一顆球之前，先搖一搖袋子，取出一顆球做好紀錄，再放回袋子重新搖一搖袋子，再取出一顆球紀錄，如此重覆直到完成四次紀錄。如此程序取得的樣本也是簡單隨機樣本，因為每次取球都要放回袋子，因此這樣的方法稱為**放回抽樣**。放回抽樣與不放回抽樣的主要差別在於，放回抽樣得到的樣本有可能看到同一顆球在樣本裡出現兩次，如果 @fig-fig8-3 的展示。
+我們再來想像第三種取樣狀況。這次每輪抽出一顆球之前，先搖一搖袋子，取出一顆球做好紀錄，再放回袋子重新搖一搖袋子，再取出一顆球紀錄，如此重覆直到完成四次紀錄。如此程序取得的樣本也是簡單隨機樣本，因為每次取球都要放回袋子，因此這樣的方法稱為**放回取樣**。放回取樣與不放回取樣的主要差別在於，放回取樣得到的樣本有可能看到同一顆球在樣本裡出現兩次，如果 @fig-fig8-3 的展示。
 
 <!---A third procedure is worth mentioning. This time around we close our eyes, shake the bag, and pull out a chip. This time, however, we record the observation and then put the chip back in the bag. Again we close our eyes, shake the bag, and pull out a chip. We then repeat this procedure until we have 4 chips. Data sets generated in this way are still simple random samples, but because we put the chips back in the bag immediately after drawing them it is referred to as a sample **with replacement**. The difference between this situation and the first one is that it is possible to observe the same population member multiple times, as illustrated in @fig-fig8-3. --->
 
@@ -115,12 +115,12 @@ knitr::include_graphics("images/fig8-2.png")
 #| label: fig-fig8-3
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: 自有限母群*放回抽樣*的可能樣本。
+#| fig-cap: 自有限母群*放回取樣*的可能樣本。
 #Simple random sampling *with* replacement from a finite population
 knitr::include_graphics("images/fig8-3.png")
 ```
 
-大多數心理學實驗取得的樣本是*不放回抽樣*的結果，因為同一個人不大能參加同一項實驗兩次。不過，大多數統計理論是建立在**放回抽樣**形成的簡單隨機樣本。現實與理論的差異在多數研究實務並不會有太多影響。如果研究對象的母群組成份子多到一個程度，放回抽樣和不放回抽樣的隨機樣本幾乎沒有差別。另一方面，簡單隨機樣本與偏誤樣本之間的差別，在很多實務狀況裡很難看得出來。
+大多數心理學實驗取得的樣本是*不放回取樣*的結果，因為同一個人不大能參加同一項實驗兩次。不過，大多數統計理論是建立在**放回取樣**形成的簡單隨機樣本。現實與理論的差異在多數研究實務並不會有太多影響。如果研究對象的母群組成份子多到一個程度，放回取樣和不放回取樣的隨機樣本幾乎沒有差別。另一方面，簡單隨機樣本與偏誤樣本之間的差別，在很多實務狀況裡很難看得出來。
 
 <!---In my experience, most psychology experiments tend to be sampling without replacement, because the same person is not allowed to participate in the experiment twice. However, most statistical theory is based on the assumption that the data arise from a simple random sample **with replacement**. In real life this very rarely matters. If the population of interest is large (e.g., has more than 10 entities!) the difference between sampling with- and without- replacement is too small to be concerned with. The difference between simple random samples and biased samples, on the other hand, is not such an easy thing to dismiss. --->
 
@@ -149,7 +149,7 @@ knitr::include_graphics("images/fig8-3.png")
 
 在一般情況的重要關鍵是，隨機取樣只是達成目標的手段，而不是目的本身。假設你採用的是方便取樣，因此可以假定樣本具有偏誤性。只有取樣方法未控制偏誤，才會導致錯誤的結論，這才是問題所在。從這個角度來看，我認為我們並不需要在每個條件都使用隨機化樣本，我們只需要針對感興趣的心理現象進行隨機取樣即可。假定我正在進行一項探討工作記憶容量研究。在第一個研究中，我能從全世界活生生的人群裡隨機取樣，只有一個例外：我只能取樣星期一出生的人。在第二個研究中，我能夠從所有澳洲人中隨機取樣，然後將結果類推到所有人類。哪一個研究結果比較好呢？答案顯然是第一個研究。為什麼？因為我們沒有理由認為“出生在星期一”與工作記憶容量有任何有意思的關聯。相比之下，我可以想到幾個原因，認為“澳洲人”可能是重要的偏誤因素。澳洲是一個富裕、工業化的國家，擁有非常發達的教育系統。在這個國家成長的人們會有很多與設計測試方法的人相似的生活經驗。這種共同經驗可能很容易轉化為相似的測試方法、心理實驗假設等等。這些考慮可能真的很重要。例如，澳洲參與者可能已經習慣專注“測試方法”彙整的相對抽象的測試材料，比起不是在類似環境中成長的人有更多“應付”經驗，而這可能導致我對工作記憶容量的錯誤推論。
 
-這個小節的討論隱含兩個觀點。首先是身為研究的設計者立場，重要的是要考慮你所關心的母群條件，儘可能以最適合的方式進行取樣。實務上，我們通常只能使用“方便樣本”（例如，心理學教師找修心理學的學生收集資料，因為這是收集資料最便宜的方法，而我們的經費通常很有限）。如果必須使用的話，設計者應該要好好思考這種取樣方法可能存在的偏誤。另一方面是評論他人研究的立場，如果他們不得不使用方便樣本，而不是從整個人類母群進行隨機抽樣，那麼我們要有禮貌地提供一個具體的理論，解釋他們的取樣方法可能如何扭曲結果。
+這個小節的討論隱含兩個觀點。首先是身為研究的設計者立場，重要的是要考慮你所關心的母群條件，儘可能以最適合的方式進行取樣。實務上，我們通常只能使用“方便樣本”（例如，心理學教師找修心理學的學生收集資料，因為這是收集資料最便宜的方法，而我們的經費通常很有限）。如果必須使用的話，設計者應該要好好思考這種取樣方法可能存在的偏誤。另一方面是評論他人研究的立場，如果他們不得不使用方便樣本，而不是從整個人類母群進行隨機取樣，那麼我們要有禮貌地提供一個具體的理論，解釋他們的取樣方法可能如何扭曲結果。
 
 <!---Okay, so real world data collection tends not to involve nice simple random samples. Does that matter? A little thought should make it clear to you that it can matter if your data are not a simple random sample. Just think about the difference between @fig-fig8-1 and @fig-fig8-2. However, it's not quite as bad as it sounds. Some types of biased samples are entirely unproblematic. For instance, when using a stratified sampling technique you actually know what the bias is because you created it deliberately, often to *increase* the effectiveness of your study, and there are statistical techniques that you can use to adjust for the biases you've introduced (not covered in this book!). So in those situations it's not a problem. 
 
@@ -188,7 +188,7 @@ knitr::include_graphics("images/fig8-4.png")
 
 ## 大數法則
 
-在前一節中，我們展示了一個樣本數本數是 N = 100 的虛構智力測驗實驗結果。這個結果有些令人振奮，因為真實母群的平均值是 100，而樣本平均值 98.5 是一個相當合理的近似值。在許多科學研究中，這種精確度是可以接受的，但在其他情況下，我們希望更加精確。如果我們希望樣本統計量數更接近母群參數，可以怎麼做呢？顯然需要收集更多的資料。假定我們進行了一個更大型的實驗，這次測量了 10,000 人的智商。同學們可以使用 jamovi 模擬這個實驗的結果。在示範檔案庫裡的IQsim.omv ，我們生成了 10,000 個從平均值為 100、標準差為 15 的常態分佈中隨機抽樣的數字。這是通過使用計算變項函式 = NORM(100, 15) 生成的。參見圖 @fig-fig8-5 的直方圖和密度圖，模擬結果顯示這個更大的樣本比較小的樣本更近似真實母群分佈。這也反映在樣本統計量數。更大樣本的平均智力分數是 99.68，標準差為 14.90。這些值現在非常接近真實母群。
+在前一節中，我們展示了一個樣本數本數是 N = 100 的虛構智力測驗實驗結果。這個結果有些令人振奮，因為真實母群的平均值是 100，而樣本平均值 98.5 是一個相當合理的近似值。在許多科學研究中，這種精確度是可以接受的，但在其他情況下，我們希望更加精確。如果我們希望樣本統計量數更接近母群參數，可以怎麼做呢？顯然需要收集更多的資料。假定我們進行了一個更大型的實驗，這次測量了 10,000 人的智商。同學們可以使用 jamovi 模擬這個實驗的結果。在示範檔案庫裡的IQsim.omv ，我們生成了 10,000 個從平均值為 100、標準差為 15 的常態分佈中隨機取樣的數字。這是通過使用計算變項函式 = NORM(100, 15) 生成的。參見圖 @fig-fig8-5 的直方圖和密度圖，模擬結果顯示這個更大的樣本比較小的樣本更近似真實母群分佈。這也反映在樣本統計量數。更大樣本的平均智力分數是 99.68，標準差為 14.90。這些值現在非常接近真實母群。
 
 <!---In the previous section I showed you the results of one fictitious IQ experiment with a sample size of N = 100. The results were somewhat encouraging as the true population mean is 100 and the sample mean of 98.5 is a pretty reasonable approximation to it. In many scientific studies that level of precision is perfectly acceptable, but in other situations you need to be a lot more precise. If we want our sample statistics to be much closer to the population parameters, what can we do about it? The obvious answer is to collect more data. Suppose that we ran a much larger experiment, this time measuring the IQs of 10,000 people. We can simulate the results of this experiment using jamovi. The IQsim.omv file is a jamovi data file. In this file I have generated 10,000 random numbers sampled from a normal distribution for a population with mean = 100 and sd = 15. This was done by computing a new variable using the = NORM(100,15) function. A histogram and density plot shows that this larger sample is a much better approximation to the true population distribution than the smaller one. This is reflected in the sample statistics. The mean IQ for the larger sample turns out to be 99.68 and the standard deviation is 14.90. These values are now very close to the true population. See @fig-fig8-5.--->
 
@@ -334,7 +334,7 @@ knitr::include_graphics("images/fig8-8.png")
 
 至此希望同學對取樣分佈有充分的理解，特別是有關平均值的取樣分佈。在這一節，我想談談平均值的取樣分佈如何隨著樣本數而改變。以直觀來說，你應該已經知道一部分的答案。如果你只有幾個觀察值，樣本平均值可能相當不準確。假如你持續重做一個小樣本實驗並計算平均值，你會得到一個非常不同的答案。換句話說，取樣分佈的變異範圍非常寬。如果你持續重做一個大樣本實驗並計算樣本平均值，你有可能會得到和上次實驗一樣的結果，因此取樣分佈的變異範圍會非常窄。你可以在 @fig-fig8-8 看到這個直觀敘述的效果，由左到右的圖表顯示樣本數越大，取樣分佈越窄。我們可以通過計算取樣分佈的標準差來量化這種變化，統計學名詞為**標準誤差**(standard error)。統計學報告裡的標準誤差通常寫成SE，由於最常報告的標準誤差是樣本平均值的，因此我們通常使用縮寫SEM(standard error of the sample mean)。從 @fig-fig8-8 可以看出，隨著樣本數 $N$ 的增加，SEM會減少。
 
-好的，走到這一節，我有一個到目前為止一直省略的部分。至此示範的模擬實驗都是基於"智力測驗分數"，是因為智力測驗分數大致呈現常態分佈，所以我假設母群的分佈也是常態。如果母群的分佈不是常態分佈，那麼樣本平均數的取樣分佈會變成什麼樣子？令初次學習的同學驚訝的是，無論母群分佈是什麼形狀，當樣本數 $N$ 增加時，樣本平均數的取樣分佈會越來越像是常態分佈。為了讓同學了解，我進行了一些模擬。我們首先從 @fig-fig8-9 (a)，像“斜坡”的母群分佈開始。比較看起來像三角形的直方圖和黑色的鐘形曲線，同學可以看出母群分佈看起來根本不像常態分佈。接下來，我做了大量模擬的實驗。在每次實驗，我從母群隨機選取 $N=2$ 個樣本，然後計算樣本平均值。@fig-fig8-9 (b) 繪製了這些樣本平均值的直方圖（即 $N=2$ 時的樣本平均數的抽樣分佈）。累積的直方圖近似 $\chi^2$ 分佈。雖然不是常態分佈，但是比起 @fig-fig8-9（a）的母群分佈更接近黑線。當我將樣本大小增加到 $N=4$ 時，樣本平均數的取樣分佈就非常接近常態分佈（@fig-fig8-9（c）），當樣本數達到 $N=8$ 時，它幾乎完全等於常態分佈。換句話說，只要你的樣本數不是太小，無論你的母群分佈長什麼樣子，樣本平均值的取樣分佈都會近似於常態分佈！
+好的，走到這一節，我有一個到目前為止一直省略的部分。至此示範的模擬實驗都是基於"智力測驗分數"，是因為智力測驗分數大致呈現常態分佈，所以我假設母群的分佈也是常態。如果母群的分佈不是常態分佈，那麼樣本平均數的取樣分佈會變成什麼樣子？令初次學習的同學驚訝的是，無論母群分佈是什麼形狀，當樣本數 $N$ 增加時，樣本平均數的取樣分佈會越來越像是常態分佈。為了讓同學了解，我進行了一些模擬。我們首先從 @fig-fig8-9 (a)，像“斜坡”的母群分佈開始。比較看起來像三角形的直方圖和黑色的鐘形曲線，同學可以看出母群分佈看起來根本不像常態分佈。接下來，我做了大量模擬的實驗。在每次實驗，我從母群隨機選取 $N=2$ 個樣本，然後計算樣本平均值。@fig-fig8-9 (b) 繪製了這些樣本平均值的直方圖（即 $N=2$ 時的樣本平均數的取樣分佈）。累積的直方圖近似 $\chi^2$ 分佈。雖然不是常態分佈，但是比起 @fig-fig8-9（a）的母群分佈更接近黑線。當我將樣本大小增加到 $N=4$ 時，樣本平均數的取樣分佈就非常接近常態分佈（@fig-fig8-9（c）），當樣本數達到 $N=8$ 時，它幾乎完全等於常態分佈。換句話說，只要你的樣本數不是太小，無論你的母群分佈長什麼樣子，樣本平均值的取樣分佈都會近似於常態分佈！
 
 <!---At this point I hope you have a pretty good sense of what sampling distributions are, and in particular what the sampling distribution of the mean is. In this section I want to talk about how the sampling distribution of the mean changes as a function of sample size. Intuitively, you already know part of the answer. If you only have a few observations, the sample mean is likely to be quite inaccurate. If you replicate a small experiment and recalculate the mean you'll get a very different answer. In other words, the sampling distribution is quite wide. If you replicate a large experiment and recalculate the sample mean you'll probably get the same answer you got last time, so the sampling distribution will be very narrow. You can see this visually in @fig-fig8-8, showing that the bigger the sample size, the narrower the sampling distribution gets. We can quantify this effect by calculating the standard deviation of the sampling distribution, which is referred to as the **standard error**. The standard error of a statistic is often denoted SE, and since we're usually interested in the standard error of the sample mean, we often use the acronym SEM. As you can see just by looking at the picture, as the sample size $N$ increases, the SEM decreases. 
 

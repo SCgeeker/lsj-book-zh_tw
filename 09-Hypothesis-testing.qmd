@@ -5,14 +5,23 @@
 source("header.R")
 ```
 
-> The process of induction is the process of assuming the simplest law that can be made to harmonize with our experience. This process, however, has no logical foundation but only a psychological one. It is clear that there are no grounds for believing that the simplest course of events will really happen. It is an hypothesis that the sun will rise tomorrow: and this means that we do not know whether it will rise.\
+> 歸納的過程就是假設一個能夠與我們的經驗調和的最簡單的法則。這個過程沒有邏輯基礎，只有心理基礎。很明顯，並沒有理由相信最簡單的事情就一定會發生。認為明天太陽會升起只是一個假說，這意味著我們不知道太陽是否會升起。
+> --路德維希·維根斯坦 [^09-hypothesis-testing-1]
+
+[^09-hypothesis-testing-1]: 這段話引自維根斯坦於1922年出版的專書*邏輯哲學論*。
+
+前一章我們學習了推論統計的兩個“大主題”之一——**估計**。這一章要學習另一個大主題——**假設檢定**。從最抽象的角度來看，假設檢定實際上是一個非常簡單的概念。研究人員對世界有一些理論，想要確定數據是否真正支持這些理論。然而，細節非常麻煩，多數學生會發現假設檢定的理論是統計學中最令人沮喪的部分。這一章的結構如下。首先，我將詳細描述假設檢定的運作過程，我會使用一個簡單的範例來展示如何"建立"假設檢定。在這個過程中，我會盡量避免過於教條主義，並專注於解釋檢定程序的基本邏輯。[^09-hypothesis-testing-2]之後，我會花一些時間談論各種環繞假設檢定理論的教條、規則和異端邪說。
+
+[^09-hypothesis-testing-2]: 技術性註記。這一章的敘述與許多入門教材的常見說明有些微不同。經典的虛無假設檢定理論是20世紀初期，由Ronald Fisher和Jerzy Neyman發展出來的，但是Fisher和Neyman對於理論的運作有非常不同的看法。現今大多數教材所採用的檢定理論是兩種觀點的混合。這裡所採用的解說較接近Neyman的風格，特別在解釋p值意義的部分。
+
+<!---> The process of induction is the process of assuming the simplest law that can be made to harmonize with our experience. This process, however, has no logical foundation but only a psychological one. It is clear that there are no grounds for believing that the simplest course of events will really happen. It is an hypothesis that the sun will rise tomorrow: and this means that we do not know whether it will rise.\
 > -- Ludwig Wittgenstein [^09-hypothesis-testing-1]
 
-[^09-hypothesis-testing-1]: The quote comes from Wittgenstein's (1922) text, *Tractatus Logico-Philosphicus.*
+[^09-hypothesis-testing-1]: The quote comes from Wittgenstein's (1922) text, *Tractatus Logico-Philosphicus.* 
 
 In the last chapter I discussed the ideas behind estimation, which is one of the two "big ideas" in inferential statistics. It's now time to turn our attention to the other big idea, which is *hypothesis testing*. In its most abstract form, hypothesis testing is really a very simple idea. The researcher has some theory about the world and wants to determine whether or not the data actually support that theory. However, the details are messy and most people find the theory of hypothesis testing to be the most frustrating part of statistics. The structure of the chapter is as follows. First, I'll describe how hypothesis testing works in a fair amount of detail, using a simple running example to show you how a hypothesis test is "built". I'll try to avoid being too dogmatic while doing so, and focus instead on the underlying logic of the testing procedure.[^09-hypothesis-testing-2] Afterwards, I'll spend a bit of time talking about the various dogmas, rules and heresies that surround the theory of hypothesis testing.
 
-[^09-hypothesis-testing-2]: A technical note. The description below differs subtly from the standard description given in a lot of introductory texts. The orthodox theory of null hypothesis testing emerged from the work of Sir Ronald Fisher and Jerzy Neyman in the early 20th century; but Fisher and Neyman actually had very different views about how it should work. The standard treatment of hypothesis testing that most texts use is a hybrid of the two approaches. The treatment here is a little more Neyman-style than the orthodox view, especially as regards the meaning of the p-value.
+[^09-hypothesis-testing-2]: A technical note. The description below differs subtly from the standard description given in a lot of introductory texts. The orthodox theory of null hypothesis testing emerged from the work of Sir Ronald Fisher and Jerzy Neyman in the early 20th century; but Fisher and Neyman actually had very different views about how it should work. The standard treatment of hypothesis testing that most texts use is a hybrid of the two approaches. The treatment here is a little more Neyman-style than the orthodox view, especially as regards the meaning of the p-value.--->
 
 ## 假設大觀園
 
