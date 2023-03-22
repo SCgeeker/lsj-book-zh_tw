@@ -37,7 +37,7 @@ The answer to the question is pretty obvious. If I call 1000 people at random, a
 
 Before we start talking about probability theory, it's helpful to spend a moment thinking about the relationship between probability and statistics. The two disciplines are closely related but they're not identical. Probability theory is "the doctrine of chances". It's a branch of mathematics that tells you how often different kinds of events will happen. For example, all of these questions are things you can answer using probability theory:[^translation-2]
 
-[^translation-2]: 譯註~要用數字回答的問題，需不需要用「機率模型」解決？必須用「機率模型」解決的數字問題，一定是機率問題。<br>要用數字回答的問題，只要找到合理方法排列數字就能解決，只是*描述*統計問題。例如1854年倫敦蘇活區霍亂疫情。<br>各式各樣的機率分佈，都是「機率模型」。
+[^translation-2]: 譯註~要用數字回答的問題，需不需要用「機率模型」解決？必須用「機率模型」解決的數字問題，一定是機率問題。<br>要用數字回答的問題，只要找到合理方法排列數字就能解決，只是*描述*統計問題。例如 @sec-Drawing-graphs 一開始談到的1854年倫敦蘇活區霍亂疫情調查。<br>各式各樣的機率分佈，都是「機率模型」。
 
 - What are the chances of a fair coin coming up heads 10 times in a row?
 - If I roll a six sided dice twice, how likely is it that I'll roll two sixes?
@@ -84,7 +84,7 @@ Each of these seems sensible. However, they're not identical and not every stati
 
 ### 次數主義觀點
 
-The first of the two major approaches to probability, and the more dominant one in statistics, is referred to as the **次數主義觀點(frequentist view)** and it defines probability as a **long-run frequency**. Suppose we were to try flipping a fair coin over and over again. By definition this is a coin that has $P(H) = 0.5$. What might we observe? One possibility is that the first 20 flips might look like this:
+The first of the two major approaches to probability, and the more dominant one in statistics, is referred to as the **次數主義觀點(frequentist view)** and it defines probability as a **長期累積的相對次數(long-run frequency)**. Suppose we were to try flipping a fair coin over and over again. By definition this is a coin that has $P(H) = 0.5$. What might we observe? One possibility is that the first 20 flips might look like this:
                                                                                                                                                    
 T,H,H,H,H,T,T,H,H,H,H,T,H,H,T,T,T,T,T,H
 
@@ -105,7 +105,9 @@ huxtabs[[7]][[1]] |>
   set_bold(4, 1:12) 
 ```
 
-Notice that at the start of the sequence the *proportion* of heads fluctuates wildly, starting at $.00$ and rising as high as $.80$. Later on, one gets the impression that it dampens out a bit, with more and more of the values actually being pretty close to the "right" answer of $.50$. This is the frequentist definition of probability in a nutshell. Flip a fair coin over and over again, and as N grows large (approaches infinity, denoted $N \rightarrow \infty$ ) the proportion of heads will converge to 50%. There are some subtle technicalities that the mathematicians care about, but qualitatively speaking that's how the frequentists define probability. Unfortunately, I don't have an infinite number of coins or the infinite patience required to flip a coin an infinite number of times. However, I do have a computer and computers excel at mindless repetitive tasks. So I asked my computer to simulate flipping a coin 1000 times and then drew a picture of what happens to the proportion $\frac{N_H}{N}$ as $N$ increases. Actually, I did it four times just to make sure it wasn't a fluke. The results are shown in @fig-fig7-1. As you can see, the proportion of observed heads eventually stops fluctuating and settles down. When it does, the number at which it finally settles is the true probability of heads.
+Notice that at the start of the sequence the *proportion* of heads fluctuates wildly, starting at $.00$ and rising as high as $.80$. Later on, one gets the impression that it dampens out a bit, with more and more of the values actually being pretty close to the "right" answer of $.50$. This is the frequentist definition of probability in a nutshell. Flip a fair coin over and over again, and as N grows large (approaches infinity, denoted $N \rightarrow \infty$ ) the proportion of heads will converge to 50%. There are some subtle technicalities that the mathematicians care about, but qualitatively speaking that's how the frequentists define probability. Unfortunately, I don't have an infinite number of coins or the infinite patience required to flip a coin an infinite number of times. However, I do have a computer and computers excel at mindless repetitive tasks. So I asked my computer to simulate flipping a coin 1000 times and then drew a picture of what happens to the proportion $\frac{N_H}{N}$ as $N$ increases. Actually, I did it four times just to make sure it wasn't a fluke. The results are shown in @fig-fig7-1.[^translation-5] As you can see, the proportion of observed heads eventually stops fluctuating and settles down. When it does, the number at which it finally settles is the true probability of heads.
+
+[^translation-5]: 譯註~建議搭配[seeing theory期望值互動網頁](https://seeing-theory.brown.edu/basic-probability/index.html#section2)實際操作。
 
 The frequentist definition of probability has some desirable characteristics. First, it is objective. The probability of an event is *necessarily* grounded in the world. The only way that probability statements can make sense is if they refer to (a sequence of) events that occur in the physical universe.[^07-introduction-to-probability-1] Secondly, it is unambiguous. Any two people watching the same sequence of events unfold, trying to calculate the probability of an event, must inevitably come up with the same answer.
 
@@ -123,7 +125,7 @@ knitr::include_graphics("images/fig7-1.png")
 
 ### 貝氏觀點
 
-**貝氏觀點(The Bayesian view)** of probability is often called the subjectivist view, and although it has been a minority view among statisticians it has been steadily gaining traction for the last several decades. There are many flavours of Bayesianism, making it hard to say exactly what "the" Bayesian view is. The most common way of thinking about subjective probability is to define the probability of an event as the **degree of belief** that an intelligent and rational agent assigns to that truth of that event. From that perspective, probabilities don't exist in the world but rather in the thoughts and assumptions of people and other intelligent beings.[^translation-4]
+**貝氏觀點(The Bayesian view)** of probability is often called the subjectivist view, and although it has been a minority view among statisticians it has been steadily gaining traction for the last several decades. There are many flavours of Bayesianism, making it hard to say exactly what "the" Bayesian view is. The most common way of thinking about subjective probability is to define the probability of an event as the **事件發生的信念程度(degree of belief)** that an intelligent and rational agent assigns to that truth of that event. From that perspective, probabilities don't exist in the world but rather in the thoughts and assumptions of people and other intelligent beings.[^translation-4]
 
 [^translation-4]: 譯註~數學家版的貝氏定理$$Pr(A|B) = \frac{Pr(B|A)*Pr(A)}{Pr(B)}$$ 統計學家版的貝氏定理$$Pr(H_i|Data) = \frac{Pr(Data|H_i)*Pr(H_i)}{\sum_{j=1}^n Pr(Data|H_j)*Pr(H_j)}$$ 兩套公式取自旗標出版[AI 必須！從做中學貝氏統計](https://www.flag.com.tw/books/product/F2308)。
 
@@ -145,12 +147,14 @@ In any case, whilst I personally prefer the Bayesian view, the majority of stati
 
 Ideological arguments between Bayesians and frequentists notwithstanding, it turns out that people mostly agree on the rules that probabilities should obey. There are lots of different ways of arriving at these rules. The most commonly used approach is based on the work of Andrey Kolmogorov, one of the great Soviet mathematicians of the 20th century. I won't go into a lot of detail, but I'll try to give you a bit of a sense of how it works. And in order to do so I'm going to have to talk about my trousers.
 
-### 機率分佈入門 {#sec-introducing-probability-distributions}
+### 機率分佈入門[^translation-6] {#sec-introducing-probability-distributions}
 
 <!--- teaching note
 使用 seeing theory展示機率分佈
 https://seeing-theory.brown.edu/
 --->
+
+[^translation-6]: 這一節建議搭配[seeing theory隨機變數互動網頁](https://seeing-theory.brown.edu/probability-distributions/index.html#section1)一起學習。
 
 One of the disturbing truths about my life is that I only own 5 pairs of trousers. Three pairs of jeans, the bottom half of a suit, and a pair of tracksuit pants. Even sadder, I've given them names: I call them $X_1$, $X_2$, $X_3$, $X_4$ and $X_5$. I really have, that's why they call me Mister Imaginative. Now, on any given day, I pick out exactly one of pair of trousers to wear. Not even I'm so stupid as to try to wear two pairs of trousers, and thanks to years of training I never go outside without wearing trousers anymore. If I were to describe this situation using the language of probability theory, I would refer to each pair of trousers (i.e., each $X$) as an elementary event. The key characteristic of **elementary events** is that every time we make an observation (e.g., every time I put on a pair of trousers) then the outcome will be one and only one of these events. Like I said, these days I always wear exactly one pair of trousers so my trousers satisfy this constraint. Similarly, the set of all possible events is called a **sample space**. Granted, some people would call it a "wardrobe", but that's because they're refusing to think about my trousers in probabilistic terms. Sad.
 
