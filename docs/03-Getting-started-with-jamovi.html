@@ -412,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
 <!---In jamovi data is represented in a spreadsheet with each column representing a 'variable' and each row representing a 'case' or 'participant'. --->
 <section id="變項" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="變項"><span class="header-section-number">3.3.1</span> 變項</h3>
-<p>jamovi試算表介面最常見的變項是<code>資料變項</code>(Data Variables)，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見 <a href="#fig-fig3-2">Figure&nbsp;<span>3.2</span></a> )</p>
+<p>jamovi試算表介面最常見的變項是<code>資料變項</code>(Data Variables)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見 <a href="#fig-fig3-2">Figure&nbsp;<span>3.2</span></a> )</p>
 <!---The most commonly used variables in jamovi are 'Data Variables', these variables simply contain data either loaded from a data file, or 'typed in' by the user. Data variables can be one of several measurement levels (@fig-fig3-2).--->
 <div class="cell">
 <div class="cell-output-display">
@@ -451,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
 LOG10(len)<br>
 MEAN(A, B)<br>
 (len - VMEAN(len)) / VSTDEV(len)</p>
-<p>以上公式依序是變項A與變項B的總和，變項len的log轉換(底數為10)，變項A與變項B的平均值，以及變項len的z分數<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。 <a href="#fig-fig3-3">Figure&nbsp;<span>3.3</span></a> 示範建立新變項存儲變項len的z分數(這份資料來自<code>Tooth Growh</code>練習資料集)。</p>
+<p>以上公式依序是變項A與變項B的總和，變項len的log轉換(底數為10)，變項A與變項B的平均值，以及變項len的z分數<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。 <a href="#fig-fig3-3">Figure&nbsp;<span>3.3</span></a> 示範建立新變項存儲變項len的z分數(這份資料來自<code>Tooth Growh</code>練習資料集)。</p>
 <!---In order, these are the sum of A and B, a log (base 10) transform of len, the mean of A and B, and the z-score of the variable len[^getting-started-with-jamovi-0]. @fig-fig3-3 shows the jamovi screen for the new variable computed as the z-score of len (from the 'Tooth Growth' example data set). --->
 <div class="cell">
 <div class="cell-output-display">
@@ -516,7 +516,7 @@ The booksales.csv data file. On the left I have opened the file using a spreadsh
 </div>
 </div>
 </div>
-<p>jamovi能輕鬆開啟csv檔。按下主畫面左上角三條平行線的圖示鈕開啟面板，點選<code>Open</code>，再點選<code>This Device</code>，就能從個人電腦資料夾裡選擇要開啟的csv檔<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。 <a href="#fig-fig3-5">Figure&nbsp;<span>3.5</span></a> 是以Mac作業系統展示瀏覽和選取檔案的畫面。我相信讀者應該熟悉自己使用的設備，應該能找到自己想匯入的csv檔。請放手試試看吧。</p>
+<p>jamovi能輕鬆開啟csv檔。按下主畫面左上角三條平行線的圖示鈕開啟面板，點選<code>Open</code>，再點選<code>This Device</code>，就能從個人電腦資料夾裡選擇要開啟的csv檔<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>。 <a href="#fig-fig3-5">Figure&nbsp;<span>3.5</span></a> 是以Mac作業系統展示瀏覽和選取檔案的畫面。我相信讀者應該熟悉自己使用的設備，應該能找到自己想匯入的csv檔。請放手試試看吧。</p>
 <!---It's easy to open csv files in jamovi. From the top left menu (the button with three parallel lines) choose 'Open' and browse to where you have stored the csv file on your computer. If you're on a Mac, it'll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in @fig-fig3-5. I'm assuming that you're familiar with your own computer, so you should have no problem finding the csv file that you want to import! Find the one you want, then click on the "Open" button. 
 
 A dialog box on a Mac asking you to select the csv file jamovi should try to import. Mac users will recognise this immediately, it's the usual way in which a Mac asks you to find a file. Windows users won't see this, instead they'll see the usual explorer window that Windows always gives you when it wants you to select a file--->
@@ -546,7 +546,7 @@ There are a few things that you can check to make sure that the data gets import
 </section>
 <section id="匯入非示範格式的資料檔" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="匯入非示範格式的資料檔"><span class="header-section-number">3.5</span> 匯入非示範格式的資料檔</h2>
-<p>本書的示範資料都是以jamovi專案檔(.omv)或csv文字檔提供讀者操作<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>。不過在你的實際統計實務場景，非常有可能遇到各式各樣的資料檔。這個小節我分享一些很多人常遇到的其他格式的資料，以及不合乎格式的資料檔處理技巧。</p>
+<p>本書的示範資料都是以jamovi專案檔(.omv)或csv文字檔提供讀者操作<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>。不過在你的實際統計實務場景，非常有可能遇到各式各樣的資料檔。這個小節我分享一些很多人常遇到的其他格式的資料，以及不合乎格式的資料檔處理技巧。</p>
 <!---Throughout this book I've assumed that your data are stored as a jamovi .omv file or as a "properly" formatted csv file. However, in real life that's not a terribly plausible assumption to make so I'd better talk about some of the other possibilities that you might run into.--->
 <section id="格式純出錯的文字資料檔" class="level3" data-number="3.5.1">
 <h3 data-number="3.5.1" class="anchored" data-anchor-id="格式純出錯的文字資料檔"><span class="header-section-number">3.5.1</span> 格式純出錯的文字資料檔</h3>
@@ -556,7 +556,7 @@ There are a few things that you can check to make sure that the data gets import
 <li>欄位間隔。合格的csv檔以半形逗號(,)區隔變項欄位，不過有些歐洲國家習慣用半形逗號代表小數點，因此csv檔的欄位間隔是以半形分號(;)代表。台灣各單位資料的csv檔會混合使用半形逗號與製表鍵(Tab鍵)代表欄位間隔。如果遇到請先置換並存檔後再用jamovi開啟。</li>
 <li>引號。如同 booksales.csv 的示範，csv資料檔案內的文字資料都是包 在兩個半形雙引號(“)之間。有的csv資料檔案會用半形單引號(’)。</li>
 <li>跳列資訊。有的csv檔案內會在開頭幾行插入非資料的說明資訊，因為不符合檔案格式，無法被正確讀取。</li>
-<li>遺漏值。統計實務最常要處理的狀況就是遺漏值。遺漏值的來源千奇百怪，用心的資料收集者會用特別的記號代表遺漏值。不論是數字還是文字資料，jamovi預設以NA代表遺漏值<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>。請注意用jamovi開啟資料檔之前，確保資料內的遺漏值都已轉換為預設記號。開啟資料庫之後，試算表介面可看到的遺漏值會以空白或灰階顯示。如果某個變項裡有不符合預設記號的遺漏值，可以開啟Data面板的Setup對話視窗，自行加入遺漏值記號。</li>
+<li>遺漏值。統計實務最常要處理的狀況就是遺漏值。遺漏值的來源千奇百怪，用心的資料收集者會用特別的記號代表遺漏值。不論是數字還是文字資料，jamovi預設以NA代表遺漏值<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。請注意用jamovi開啟資料檔之前，確保資料內的遺漏值都已轉換為預設記號。開啟資料庫之後，試算表介面可看到的遺漏值會以空白或灰階顯示。如果某個變項裡有不符合預設記號的遺漏值，可以開啟Data面板的Setup對話視窗，自行加入遺漏值記號。</li>
 </ul>
 
 <!---
@@ -572,7 +572,7 @@ The first thing I should point out is that if your data are saved as a text file
 </section>
 <section id="套裝軟體專用格式如spss" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="套裝軟體專用格式如spss"><span class="header-section-number">3.5.2</span> 套裝軟體專用格式(如SPSS)</h3>
-<p>如果你習慣了使用jamovi進行統計分析，在非本書示範的真實場景，你有可能要處理的資料檔是套裝軟體專用格式。最常見的是SPSS資料檔(.sav)，最新版本的jamovi都可以匯入，操作如同開啟csv資料檔。但是要注意資料中的遺漏值除非標記是”system missing”或jamovi的預設記號，其他遺漏值記號都會被當成是有效數值。建議第一次匯入SPSS資料庫，馬上匯出為csv資料檔，在試算表軟體裡處理好遺漏值再用jamovi重新開啟<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。</p>
+<p>如果你習慣了使用jamovi進行統計分析，在非本書示範的真實場景，你有可能要處理的資料檔是套裝軟體專用格式。最常見的是SPSS資料檔(.sav)，最新版本的jamovi都可以匯入，操作如同開啟csv資料檔。但是要注意資料中的遺漏值除非標記是”system missing”或jamovi的預設記號，其他遺漏值記號都會被當成是有效數值。建議第一次匯入SPSS資料庫，馬上匯出為csv資料檔，在試算表軟體裡處理好遺漏值再用jamovi重新開啟<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>。</p>
 <p>如果遺漏值問題能解決，jamovi能做和SPSS一樣的分析。其他套裝統計軟體的資料檔，像是SAS與STATA，也可以用同樣的操作處理。</p>
 <!---The commands listed above are the main ones we'll need for data files in this book. But in real life we have many more possibilities. For example, you might want to read data files in from other statistics programs. Since SPSS is probably the most widely used statistics package in psychology, it's worth mentioning that jamovi can also import SPSS data files (file extension .sav). Just follow the instructions above for how to open a csv file, but this time navigate to the .sav file you want to import. For SPSS files, jamovi will regard all values as missing if they are regarded as "system missing" files in SPSS. The 'Default missings' value does not seem to work as expected when importing SPSS files, so be aware of this - you might need another step: import the SPSS file into jamovi, then export as a csv file before re-opening in jamovi.[^getting-started-with-jamovi-5]
 
@@ -597,7 +597,7 @@ Earlier we saw how to specify different variable levels, and if you want to chan
 <section id="安裝jamovi擴充模組" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="安裝jamovi擴充模組"><span class="header-section-number">3.7</span> 安裝jamovi擴充模組</h2>
 <p>jamovi的最大賣點是使用者能依實際需要，自行從擴充模組庫安排需要的模組。模組都是由jamovi社區成員熱情開發貢獻。當你有需要進行較複雜的統計分析，可以找找模組庫裡有沒有符合目的的模組。</p>
-<p>安裝模組的操作很簡單，只要按一下主畫面右上方的<strong>大十字</strong>，就能開啟如 <a href="#fig-fig3-6">Figure&nbsp;<span>3.6</span></a> 的清單視窗。接著如同逛購物網站一樣，找到想用的模組，按下”Install”按鈕，等幾秒後，主畫面”Analysis”面板上方顯示模組圖示，就能開始使用。推薦安裝的模組有”scatr”(安裝後加強”Descriptives”模組功能)，“lsj-data”(本書示範檔案集合，安裝後開啟檔案”Open”選單增加”Data Library”，以及<span class="math inline">\(R_j\)</span>(R程式碼編譯介面)。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>安裝模組的操作很簡單，只要按一下主畫面右上方的<strong>大十字</strong>，就能開啟如 <a href="#fig-fig3-6">Figure&nbsp;<span>3.6</span></a> 的清單視窗。接著如同逛購物網站一樣，找到想用的模組，按下”Install”按鈕，等幾秒後，主畫面”Analysis”面板上方顯示模組圖示，就能開始使用。推薦安裝的模組有”scatr”(安裝後加強”Descriptives”模組功能)，“lsj-data”(本書示範檔案集合，安裝後開啟檔案”Open”選單增加”Data Library”，以及<span class="math inline">\(R_j\)</span>(R程式碼編譯介面)。<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
 <!---A really great feature of jamovi is the ability to install add-on modules from the jamovi library. These add-on modules have been developed by the jamovi community, i.e., jamovi users and developers who have created special software add-ons that do other, usually more advanced, analyses that go beyond the capabilities of the base jamovi program.
 
 To install add-on modules, just click on the large $+$ in the top right of the jamovi window, select "jamovi-library" and then browse through the various add-on modules that are available. Choose the one(s) you want, and then install them, as in @fig-fig3-6. It's that easy. The newly installed modules can then be accessed from the "Analyses" button bar. Try it...useful add-on modules to install include "scatr" (added under "Descriptives") and $R_j$. --->
@@ -661,12 +661,13 @@ We still haven't arrived at anything that resembles data analysis. Maybe the nex
 <li id="fn1"><p>jamovi的最早版本於2018年八月問世。這本電子書將隨最新版本配合更新。<!---As of the first writing this in August 2018. Later versions of this book will use later versions of jamovi.---><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>譯註 ~ jamovi開發團隊於2021年推出不必安裝，直接在網路瀏覽器使用的<a href="https://www.jamovi.org/cloud.html">雲端測試版</a>。雲端版與本機版的操作特點在本書後續介紹。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>雖然jamovi經常更新，但是這本書的示範內容不會有太大變化。原作者編寫時已經多次修改，之後的電子書內容更新不會差異太大。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>新版jamovi有內建函式<code>Z</code>可計算數值資料變項的z分數，使用者不必再自訂計算變項公式。 <!---In later versions of jamovi there is a pre-defined function 'Z' to compute z-scores, which is much easier!---><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>譯註~雲端版操作方法相同。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>譯註~原作者提供jamovi擴充模組”lsj-data”。本機版需要自行安裝，雲端版已經內建。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>你可以從設定面板(主畫面右上角三個小點圖示按鈕)更改遺漏值的代表記號，也就是更改”Default missings”欄內的記號。設定原則是不可讓遺漏值的記號等於資料內的有效數值，例如-9999。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>這些步驟聽起來很麻煩，不過未來的更新版還沒有完美的解決之前，這是比較有保障的做法。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>譯註~雲端版分為免費的GUEST PLAN與付費訂閱的PRIORITY PLAN。只有PRIORITY PLAN能安裝擴充模組，但是不包括<span class="math inline">\(R_j\)</span>。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>jamovi內建四種編輯變項內數值的功能，都可以在<strong>Data</strong>面板找到對應功能按鈕，使用者可依實務目的選擇使用 ~ <code>Setup</code>編輯已載入的資料變項；<code>Compute</code>新建自訂計算變項；<code>Transform</code>依照已存的資料變項或計算變項，設定數值轉換函式並產生新的資料變項；<code>Filters</code>設定排除資料變項內部分數值的條件並設定是否啟動。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>新版jamovi有內建函式<code>Z</code>可計算數值資料變項的z分數，使用者不必再自訂計算變項公式。 <!---In later versions of jamovi there is a pre-defined function 'Z' to compute z-scores, which is much easier!---><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>譯註~雲端版操作方法相同。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>譯註~原作者提供jamovi擴充模組”lsj-data”。本機版需要自行安裝，雲端版已經內建。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>你可以從設定面板(主畫面右上角三個小點圖示按鈕)更改遺漏值的代表記號，也就是更改”Default missings”欄內的記號。設定原則是不可讓遺漏值的記號等於資料內的有效數值，例如-9999。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>這些步驟聽起來很麻煩，不過未來的更新版還沒有完美的解決之前，這是比較有保障的做法。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>譯註~雲端版分為免費的GUEST PLAN與付費訂閱的PRIORITY PLAN。只有PRIORITY PLAN能安裝擴充模組，但是不包括<span class="math inline">\(R_j\)</span>。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

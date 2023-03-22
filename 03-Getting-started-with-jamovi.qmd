@@ -102,7 +102,9 @@ knitr::include_graphics("images/fig3-1.png")
 
 ### 變項
 
-jamovi試算表介面最常見的變項是`資料變項`(Data Variables)，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見  @fig-fig3-2 )
+jamovi試算表介面最常見的變項是`資料變項`(Data Variables)[^translation-comment-5]，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見 @fig-fig3-2 )
+
+[^translation-comment-5]: jamovi內建四種編輯變項內數值的功能，都可以在**Data**面板找到對應功能按鈕，使用者可依實務目的選擇使用 ~ `Setup`編輯已載入的資料變項；`Compute`新建自訂計算變項；`Transform`依照已存的資料變項或計算變項，設定數值轉換函式並產生新的資料變項；`Filters`設定排除資料變項內部分數值的條件並設定是否啟動。
 
 <!---The most commonly used variables in jamovi are 'Data Variables', these variables simply contain data either loaded from a data file, or 'typed in' by the user. Data variables can be one of several measurement levels (@fig-fig3-2).--->
 
