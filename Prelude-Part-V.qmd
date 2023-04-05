@@ -1,0 +1,18 @@
+# 線性模型學習進程 {.unnumbered}
+
+
+教程原文[^V-1]
+
+簡体中文翻譯[^V-2]
+
+
+各章節的線性模型版示範，集合於此。
+
+
+
+------------------------------------------------------------------------
+
+
+[^V-1]: [https://lindeloev.github.io/tests-as-linear/](https://lindeloev.github.io/tests-as-linear/)
+
+[^V-2]: [https://cosx.org/2019/09/common-tests-as-linear-models/](https://cosx.org/2019/09/common-tests-as-linear-models/)
