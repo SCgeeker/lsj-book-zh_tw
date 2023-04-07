@@ -90,7 +90,7 @@
   </url>
   <url>
     <loc>https://scgeeker.github.io/lsj-book-zh_tw/index.html</loc>
-    <lastmod>2023-04-05T02:28:40.105Z</lastmod>
+    <lastmod>2023-04-07T02:35:10.615Z</lastmod>
   </url>
   <url>
     <loc>https://scgeeker.github.io/lsj-book-zh_tw/03-Getting-started-with-jamovi.html</loc>
@@ -122,7 +122,7 @@
   </url>
   <url>
     <loc>https://scgeeker.github.io/lsj-book-zh_tw/09-Hypothesis-testing.html</loc>
-    <lastmod>2023-04-04T15:52:17.337Z</lastmod>
+    <lastmod>2023-04-07T01:13:05.353Z</lastmod>
   </url>
   <url>
     <loc>https://scgeeker.github.io/lsj-book-zh_tw/10-Categorical-data-analysis.html</loc>
@@ -162,10 +162,22 @@
   </url>
   <url>
     <loc>https://scgeeker.github.io/lsj-book-zh_tw/Prelude-Part-V.html</loc>
-    <lastmod>2023-04-05T02:31:19.886Z</lastmod>
+    <lastmod>2023-04-07T01:13:05.354Z</lastmod>
   </url>
   <url>
     <loc>https://scgeeker.github.io/lsj-book-zh_tw/10-Correlation-and-linear-regression.html</loc>
     <lastmod>2023-04-05T02:34:25.199Z</lastmod>
+  </url>
+  <url>
+    <loc>https://scgeeker.github.io/lsj-book-zh_tw/12-Comparing-several-means-one-way-ANOVA.html</loc>
+    <lastmod>2023-04-07T01:13:05.358Z</lastmod>
+  </url>
+  <url>
+    <loc>https://scgeeker.github.io/lsj-book-zh_tw/13-Factorial-ANOVA.html</loc>
+    <lastmod>2023-04-07T01:13:05.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://scgeeker.github.io/lsj-book-zh_tw/14-Categorical-data-analysis.html</loc>
+    <lastmod>2023-04-07T01:13:05.367Z</lastmod>
   </url>
 </urlset>

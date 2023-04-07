@@ -518,9 +518,11 @@ Unfortunately, it's often the case that even with the best of experimental desig
 knitr::include_graphics("images/fig9-8.png")
 ```
 
-因為考驗力很重要，規劃一個實驗的執行細節時，知道可能有多少考驗力會非常有用。當然，因為無法確定真正的效果量有多少，我們無法得知考驗力會有多高，但是有時候我們可以評估考驗力應該要有多大。能做到的話，我們就可以評估需要多大的樣本量！這種方案叫做**考驗力分析**，做得好的話，對於設計實驗會非常有用。有用的考驗力分析結果包括能成功執行實驗所需要的時間或金錢是否足夠等資訊。現在越來越多的研究者同意，考驗力分析應該成為實驗設計的必要部分，因此值得好好了解如何執行。然而，本書沒有打算介紹考驗力分析。有部分理由是講出來很無聊，還有部分是實質性的理由。無聊的理由是原作者還沒有時間去寫關於考驗力分析的介紹。實質理由是原作者對於考驗力分析的方法還有些懷疑的地方。作為一位研究者，我幾乎沒做過考驗力分析。我認為可能是因為 (a) 我的實驗經常有些非常規條件 ，不曉得如何正確地定義效果量，還有 (b) 我對研究結果的效果量實在是一無所知，不知道如何解釋分析結果。此外，我常與一位擔任統計諮詢師廣泛交流（其實就是我老婆），她實際接過的案子裡，只有要撰寫申請補助經費的計畫書的客戶才會詢問怎麼做考驗力分析。換句話說，在現實的研究場景，科學家們似乎只有被特別要求時才需要進行考驗力分析，而且考驗力分析並不是日常科研工作的一部分。簡而言之，我同意考驗力是一個重要的概念，但是考驗力分析並不像人們所說的那麼有用，除非在少數情況。像是（a）已經有方法能計算你要執行的實驗設計考驗力，（b）你對要測量的效果量可能大小有很好的想法[^09-hypothesis-testing-12]。也許其他研究者比我幸運，但我個人從未遇到過(a)和(b)都成立的情況。未來我的想法也許會改變，這本書的更新版本就會有章節介紹詳細考驗力分析，但是以目前來說，這是我編寫這個主題最心安理得的處理方式。
+因為考驗力很重要，規劃一個實驗的執行細節時，知道可能有多少考驗力會非常有用。當然，因為無法確定真正的效果量有多少，我們無法得知考驗力會有多高，但是有時候我們可以評估考驗力應該要有多大。能做到的話，我們就可以評估需要多大的樣本量！這種方案叫做**考驗力分析**，做得好的話，對於設計實驗會非常有用。有用的考驗力分析結果包括能成功執行實驗所需要的時間或金錢是否足夠等資訊。現在越來越多的研究者同意，考驗力分析應該成為實驗設計的必要部分，因此值得好好了解如何執行。然而，本書沒有打算介紹考驗力分析。有部分理由是講出來很無聊，還有部分是實質性的理由。無聊的理由是原作者還沒有時間去寫關於考驗力分析的介紹。實質理由是原作者對於考驗力分析的方法還有些懷疑的地方。作為一位研究者，我幾乎沒做過考驗力分析。我認為可能是因為 (a) 我的實驗經常有些非常規條件 ，不曉得如何正確地定義效果量，還有 (b) 我對研究結果的效果量實在是一無所知，不知道如何解釋分析結果。此外，我常與一位擔任統計諮詢師廣泛交流（其實就是我老婆），她實際接過的案子裡，只有要撰寫申請補助經費的計畫書的客戶才會詢問怎麼做考驗力分析。換句話說，在現實的研究場景，科學家們似乎只有被特別要求時才需要進行考驗力分析，而且考驗力分析並不是日常科研工作的一部分。簡而言之，我同意考驗力是一個重要的概念，但是考驗力分析並不像人們所說的那麼有用，除非在少數情況。像是（a）已經有方法能計算你要執行的實驗設計考驗力，（b）你對要測量的效果量可能大小有很好的想法[^09-hypothesis-testing-12]。也許其他研究者比我幸運，但我個人從未遇到過(a)和(b)都成立的情況。未來我的想法也許會改變，這本書的更新版本就會有章節介紹詳細考驗力分析，但是以目前來說，這是我編寫這個主題最心安理得的處理方式。[^09-translation-01]
 
 [^09-hypothesis-testing-12]: 一個可能的例外是，研究目標是測試一種新式醫療方法的有效性，研究人員能事先指定需要檢測的重要效果量，例如在任何優於現有治療方法的額外效果量。如此做考驗力分析可以獲得一些有關新療法潛在價值的信息。
+
+[^09-translation-01]: 譯註~ 譯者認為原作者應該還有另一層考量。由於本書定位是入門教科書，考驗力分析需要進一步學習各種研究方法(也就是 ＠sec-A-brief-introduction-to-research-design 的完整版)，才能充分了解其用途。如果教師想為學生介紹預先註冊(preregisteration)的觀念及做法，可考慮在統計課程介紹考驗力分析的必要性。
 
 <!--- Because power is important, whenever you're contemplating running an experiment it would be pretty useful to know how much power you're likely to have. It's never possible to know for sure since you can't possibly know what your real effect size is. However, it's often (well, sometimes) possible to guess how big it should be. If so, you can guess what sample size you need! This idea is called **power analysis**, and if it's feasible to do it then it's very helpful. It can tell you something about whether you have enough time or money to be able to run the experiment successfully. It's increasingly common to see people arguing that power analysis should be a required part of experimental design, so it's worth knowing about. I don't discuss power analysis in this book, however. This is partly for a boring reason and partly for a substantive one. The boring reason is that I haven't had time to write about power analysis yet. The substantive one is that I'm still a little suspicious of power analysis. Speaking as a researcher, I have very rarely found myself in a position to be able to do one. It's either the case that (a) my experiment is a bit non-standard and I don't know how to define effect size properly, or (b) I literally have so little idea about what the effect size will be that I wouldn't know how to interpret the answers. Not only that, after extensive conversations with someone who does stats consulting for a living (my wife, as it happens), I can't help but notice that in practice the only time anyone ever asks her for a power analysis is when she's helping someone write a grant application. In other words, the only time any scientist ever seems to want a power analysis in real life is when they're being forced to do it by bureaucratic process. It's not part of anyone's day to day work. In short, I've always been of the view that whilst power is an important concept, power analysis is not as useful as people make it sound, except in the rare cases where (a) someone has figured out how to calculate power for your actual experimental design and (b) you have a pretty good idea what the effect size is likely to be.[^09-hypothesis-testing-12] Maybe other people have had better experiences than me, but I've personally never been in a situation where both (a) and (b) were true. Maybe I'll be convinced otherwise in the future, and probably a future version of this book would include a more detailed discussion of power analysis, but for now this is about as much as I'm comfortable saying about the topic.
 
@@ -542,7 +544,7 @@ As you can see, what we have today is an odd mishmash of the two. We talk about 
 
 [^09-hypothesis-testing-13]: Although this book describes both Neyman's and Fisher's definition of the $p$ value, most don't. Most introductory textbooks will only give you the Fisher version.
 
-### 貝氏統計與次數統計
+### 貝氏統計與次數主義統計
 
 Earlier on in this chapter I was quite emphatic about the fact that you *cannot* interpret the p value as the probability that the null hypothesis is true. NHST is fundamentally a frequentist tool (see @sec-Introduction-to-probability) and as such it does not allow you to assign probabilities to hypotheses. The null hypothesis is either true or it is not. The Bayesian approach to statistics interprets probability as a degree of belief, so it's totally okay to say that there is a $10\%$ chance that the null hypothesis is true. That's just a reflection of the degree of confidence that you have in this hypothesis. You aren't allowed to do this within the frequentist approach. Remember, if you're a frequentist, a probability can only be defined in terms of what happens after a large number of independent replications (i.e., a long run frequency). If this is your interpretation of probability, talking about the "probability" that the null hypothesis is true is complete gibberish: a null hypothesis is either true or it is false. There's no way you can talk about a long run frequency for this statement. To talk about "the probability of the null hypothesis" is as meaningless as "the colour of freedom". It doesn't have one!
 
@@ -560,9 +562,9 @@ The example above is just that, an example. I've singled it out because it's suc
 
 ## 本章小結
 
-虛無假設檢定是統計理論最普遍的一種應用。大部份科學研究報告都會在結果呈現某種假設的檢定。現代科學研究者幾乎都要多少了解*p*值的意義，否則不能被認為是合格的科學研究者 ，所以這一章是本書最重要的部分。以下幫助讀者及學生快速回顧本章重點：
+虛無假設檢定是統計理論最普遍的一種應用，科學研究報告結果都會呈現某種假設的檢定。現代科學家幾乎都多少要了解*p*值的意義，否則不能被認為是合格的科學研究者，所以這一章是本書最重要的部分。以下幫助讀者及學生快速回顧本章重點：
 
-- [假設大觀園](09-Hypothesis-testing.html#%E5%81%87%E8%A8%AD%E5%A4%A7%E8%A7%80%E5%9C%92) 研究假設與統計假設。虛無假設與對立假設。
+- [假設的層次](09-Hypothesis-testing.html#%E5%81%87%E8%A8%AD%E5%A4%A7%E8%A7%80%E5%9C%92) 研究假設與統計假設。虛無假設與對立假設。
 - [兩種決策失誤](09-Hypothesis-testing.html#%E5%85%A9%E7%A8%AE%E6%B1%BA%E7%AD%96%E5%A4%B1%E8%AA%A4) 型一與型二錯誤
 - [運用取樣分佈檢測統計值](09-Hypothesis-testing.html#%E9%81%8B%E7%94%A8%E6%A8%A3%E6%9C%AC%E5%88%86%E4%BD%88%E6%AA%A2%E6%B8%AC%E7%B5%B1%E8%A8%88%E5%80%BC).
 - 統計推論的[決策要素](09-Hypothesis-testing.html#%E7%B5%B1%E8%A8%88%E6%8E%A8%E8%AB%96%E7%9A%84%E6%B1%BA%E7%AD%96%E8%A6%81%E7%B4%A0)
@@ -572,7 +574,7 @@ The example above is just that, an example. I've singled it out because it's suc
 - [效果量、樣本量、考驗力](09-Hypothesis-testing.html#sec-Effect-size-sample-size-and-power)
 - 一些[值得繼續學習的主題](09-Hypothesis-testing.html#%E5%80%BC%E5%BE%97%E7%B9%BC%E7%BA%8C%E5%AD%B8%E7%BF%92%E7%9A%84%E4%B8%BB%E9%A1%8C)
 
-到了本書最後一章@sec-Bayesian-statistics ，我會從貝氏統計觀點回顧統計理論與虛無假設檢定，還有介紹幾套非典型取向的統計工具。不過到此為止，我們暫別抽象的統計理論，接下來將幾章將學習實用的統計分析方法。
+到了本書最後一章 @sec-Bayesian-statistics ，我們會從貝氏統計觀點回顧統計理論與虛無假設檢定，還有介紹幾套非次數主義取向的統計工具。不過我們先暫別抽象的統計理論，接下來的第五部分將學習實用的統計分析方法。
 
 <!---Null hypothesis testing is one of the most ubiquitous elements to statistical theory. The vast majority of scientific papers report the results of some hypothesis test or another. As a consequence it is almost impossible to get by in science without having at least a cursory understanding of what a p-value means, making this one of the most important chapters in the book. As usual, I'll end the chapter with a quick recap of the key ideas that we've talked about:
 
