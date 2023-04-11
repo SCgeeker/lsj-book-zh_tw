@@ -244,7 +244,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
+  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">線性模型的學習取向</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -254,17 +259,17 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
+  <a href="./12-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
+  <a href="./13-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
+  <a href="./14-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -941,7 +946,7 @@ More to the point, jamovi has a check box for kurtosis just below the check box 
 </section>
 <section id="分組描述統計" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="分組描述統計"><span class="header-section-number">4.4</span> 分組描述統計</h2>
-<p>往後許多實例要根據某個分組變項，對其他變項進行分組描述統計。使用jamovi分組描述統計只是小菜一碟。例如根據臨床治療方式，對收集到的臨床試驗資料進行分組描述統計。在這一節我們用另一批資料學習。請開啟學習資料庫裡的”Clinical Trial”資料集，之後在 <a href="13-Comparing-several-means-one-way-ANOVA.html"><span>Chapter&nbsp;13</span></a> 會詳細這一批資料的來歷。開啟後的試算表介面如同 <a href="#fig-fig4-13">Figure&nbsp;<span>4.13</span></a> :</p>
+<p>往後許多實例要根據某個分組變項，對其他變項進行分組描述統計。使用jamovi分組描述統計只是小菜一碟。例如根據臨床治療方式，對收集到的臨床試驗資料進行分組描述統計。在這一節我們用另一批資料學習。請開啟學習資料庫裡的”Clinical Trial”資料集，之後在 <a href="12-Comparing-several-means-one-way-ANOVA.html"><span>Chapter&nbsp;12</span></a> 會詳細這一批資料的來歷。開啟後的試算表介面如同 <a href="#fig-fig4-13">Figure&nbsp;<span>4.13</span></a> :</p>
 <p>先看一下名義變項<code>drug</code>的數值：有安慰劑(placebo)，還有”anxifree”和“joyzepam”，三種藥各有六個受測者。另一個名義變項<code>therapy</code>代表治療方法，其中有九位受測者接受認知行為治療(CBT)，另外九位並未接受任何心理治療。比照之前的操作，在描述統計模組選單裡，單獨將連續尺度變項<code>mood.gain</code>放到Variables框裡，就會看到報表介面出現這個變項的平均值0.88。雖然我們還不知道這個變項的測量尺度是什麼意義，至少看起來能做些統計工作。</p>
 <p>接著可以試試看分組描述統計，請將<code>therapy</code>放到”Split by”，並且勾選Std. deviation, Skewness, Kurtosis等項目，看看會不會出現如同 <a href="#fig-fig4-14">Figure&nbsp;<span>4.14</span></a> 的結果。</p>
 <!---It is very commonly the case that you find yourself needing to look at descriptive statistics broken down by some grouping variable. This is pretty easy to do in jamovi. For instance, let's say I want to look at the descriptive statistics for some clinical trial data, broken down separately by therapy type. This is a new data set, one that you've never seen before. The data is stored in the clinicaltrial.csv file and we'll use it a lot later on in @sec-Comparing-several-means-one-way-ANOVA (you can find a complete description of the data at the start of that chapter). Let's load it and see what we've got (@fig-fig4-13):

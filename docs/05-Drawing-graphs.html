@@ -326,7 +326,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
+  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">線性模型的學習取向</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -336,17 +341,17 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
+  <a href="./12-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
+  <a href="./13-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
+  <a href="./14-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -560,7 +565,7 @@ Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the 
 </div>
 </div>
 <p>通常造常極端值的問題是登打紀錄的人手誤。雖然這是個不細心而犯的錯，但是這種事情在統計實務層出不窮。真實世界的各種資料充滿這類錯誤，尤其是透過人工輸入電腦的資料。其實實務上有個專有名詞叫「資料清理」：泛指在正式進行資料分析前，找出錯誤或可疑數值的一切工作。找出並清理原始資料裡一切輸入錯誤、遺漏值、或者各種希奇古怪問題的工作都是資料清理的項目。</p>
-<p>至於比較沒那麼極端，但是在箱形圖裡被標為極端值的資料，要不要納入分析或排除這些數值，全看你要如何看待這筆資料，以及利用這筆資料的想法。上統計課就是自我訓練判斷如何運用這類資料的能力。若是你認為這些極端值應該納入分析，就保留它們。到了 <a href="12-Correlation-and-linear-regression.html#sec-Model-checking"><span>Section&nbsp;12.10</span></a> 我們會繼續學習更多判斷極端值要不要保留的策略。</p>
+<p>至於比較沒那麼極端，但是在箱形圖裡被標為極端值的資料，要不要納入分析或排除這些數值，全看你要如何看待這筆資料，以及利用這筆資料的想法。上統計課就是自我訓練判斷如何運用這類資料的能力。若是你認為這些極端值應該納入分析，就保留它們。到了 <a href="10-Correlation-and-linear-regression.html#sec-Model-checking"><span>Section&nbsp;10.10</span></a> 我們會繼續學習更多判斷極端值要不要保留的策略。</p>
 <!---Usually you find that someone has just typed in the wrong number. Whilst this might seem like a silly example, I should stress that this kind of thing actually happens a lot. Real world data sets are often riddled with stupid errors, especially when someone had to type something into a computer at some point. In fact, there's actually a name for this phase of data analysis and in practice it can take up a huge chunk of our time: data cleaning. It involves searching for typing mistakes ("typos"), missing data and all sorts of other obnoxious errors in raw data files.
 
 For less extreme values, even if they are flagged in a a boxplot as outliers, the decision about whether to include outliers or exclude them in any analysis depends heavily on why you think the data look they way they do and what you want to use the data for. You really need to exercise good judgement here. If the outlier looks legitimate to you, then keep it. In any case, I'll return to the topic again in @sec-Model-checking in @sec-Correlation-and-linear-regression. --->

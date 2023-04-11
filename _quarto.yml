@@ -5,7 +5,7 @@ execute:
   echo: false
 book: 
   title: 用jamovi上手統計學 
-  author: "原著: Danielle J. Navarro, David R. Foxcroft; 台灣正體中文翻譯:陳紹慶、周傳斌"
+  author: "原著: Danielle J. Navarro, David R. Foxcroft; 台灣繁體中文翻譯:陳紹慶、周傳斌"
 #  translator: "(台灣正體中文)"
 #  date-meta: last-modified
   date-format: "YYYY MMMM D"

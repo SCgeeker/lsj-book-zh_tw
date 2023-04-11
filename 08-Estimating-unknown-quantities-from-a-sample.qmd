@@ -307,7 +307,7 @@ knitr::include_graphics("images/fig8-6.png")
 
 110 117 122 119 113 ...
 
-反覆進行這個實驗過程會給我一個非常不同的取樣分佈，也就是最大值的取樣分佈。五個智力分數的最大值的取樣分佈顯示在@fig-fig8-7。不出所料，如果你隨機選擇五個人，然後找出智力分數最高的人，他們的智力分數很有可能會高於平均水準。大多數情況下，你會得到智力分數在100到140之間的結果。
+反覆進行這個實驗過程會給我一個非常不同的取樣分佈，也就是最大值的取樣分佈。五個智力分數的最大值的取樣分佈顯示在 @fig-fig8-7 。不出所料，如果你隨機選擇五個人，然後找出智力分數最高的人，他們的智力分數很有可能會高於平均水準。大多數情況下，你會得到智力分數在100到140之間的結果。
 
 <!---Doing this over and over again would give me a very different sampling distribution, namely the sampling distribution of the maximum. The sampling distribution of the maximum of 5 IQ scores is shown in @fig-fig8-7. Not surprisingly, if you pick 5 people at random and then find the person with the highest IQ score, they're going to have an above average IQ. Most of the time you'll end up with someone whose IQ is measured in the 100 to 140 range. --->
 
@@ -487,7 +487,7 @@ $$s^2=\frac{1}{N} \sum_{i=1}^{N}(X_i-\bar{X})^2$$
 
 樣本變異數 $s^2$ 是母群變異數 $\sigma^2$ 的有偏誤估計量。不過在統計實務，我們只需要做個微小的調整，就可以將其轉換為不偏估計值。方法就是改成除以 $N-1$ 而不是除以 $N$。
 
-(08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-point-of-parameters)
+<!--- (08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-point-of-parameters) --->
 
 修改後的公式就是母群變異數 $\sigma$ 的不偏估計量。這也回答了我們在[4.2.4 變異數](04-Descriptive-statistics.html#variance)遇到的問題。為什麼 jamovi 給我們的變異數稍有不同？那是因為 jamovi 計算的是 $\hat{\sigma}^2$ 而不是 $s^2$，標準差也是一樣。如果我們除以 $N-1$ 而不是 $N$，就能得到母群標準差的不偏估計值。請記住使用 jamovi 內建的標準差函數時，計算的是 $\hat{\sigma}$ 而不是 $s$。[^08-estimating-unknown-quantities-from-a-sample-7]
 

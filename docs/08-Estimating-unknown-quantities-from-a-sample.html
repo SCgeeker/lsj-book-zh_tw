@@ -266,32 +266,37 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
+  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">線性模型的學習取向</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較兩組平均值</span></a>
+  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
+  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較兩組平均值</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
+  <a href="./12-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
+  <a href="./13-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></a>
+  <a href="./14-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">因素分析</span></a>
   </div>
 </li>
       </ul>
@@ -306,7 +311,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></a>
+  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">貝氏統計</span></a>
   </div>
 </li>
       </ul>
@@ -708,7 +713,7 @@ As in economics, so too in psychology and statistics. It is not enough to know t
 <p>針對取樣分佈的概念，需要注意的一點是，任何你可能想要計算的樣本統計量數都有其對應的取樣分佈。例如，假設每次我重複進行 “五個智力分數” 的實驗時，我都記錄其中最高的智力分數。這會產生一個資料集，一開始的數值可能如下：</p>
 <!---One thing to keep in mind when thinking about sampling distributions is that any sample statistic you might care to calculate has a sampling distribution. For example, suppose that each time I replicated the "five IQ scores" experiment I wrote down the largest IQ score in the experiment. This would give me a data set that started out like this: --->
 <p>110 117 122 119 113 …</p>
-<p>反覆進行這個實驗過程會給我一個非常不同的取樣分佈，也就是最大值的取樣分佈。五個智力分數的最大值的取樣分佈顯示在@fig-fig8-7。不出所料，如果你隨機選擇五個人，然後找出智力分數最高的人，他們的智力分數很有可能會高於平均水準。大多數情況下，你會得到智力分數在100到140之間的結果。</p>
+<p>反覆進行這個實驗過程會給我一個非常不同的取樣分佈，也就是最大值的取樣分佈。五個智力分數的最大值的取樣分佈顯示在 <a href="#fig-fig8-7">Figure&nbsp;<span>8.7</span></a> 。不出所料，如果你隨機選擇五個人，然後找出智力分數最高的人，他們的智力分數很有可能會高於平均水準。大多數情況下，你會得到智力分數在100到140之間的結果。</p>
 <!---Doing this over and over again would give me a very different sampling distribution, namely the sampling distribution of the maximum. The sampling distribution of the maximum of 5 IQ scores is shown in @fig-fig8-7. Not surprisingly, if you pick 5 people at random and then find the person with the highest IQ score, they're going to have an above average IQ. Most of the time you'll end up with someone whose IQ is measured in the 100 to 140 range. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
@@ -879,7 +884,7 @@ This intuition feels right, but it would be nice to demonstrate this somehow. Th
 <p>解決這個系統性偏誤的方法其實非常簡單，以下說明如何解決。細談標準差之前，先回顧一下變異數。回顧一下<a href="04-Descriptive-statistics.html#variance">4.2.4 變異數</a>所提到的，變異數是所有資料偏離平均值的平方和之平均值。也就是以下公式：</p>
 <p><span class="math display">\[s^2=\frac{1}{N} \sum_{i=1}^{N}(X_i-\bar{X})^2\]</span></p>
 <p>樣本變異數 <span class="math inline">\(s^2\)</span> 是母群變異數 <span class="math inline">\(\sigma^2\)</span> 的有偏誤估計量。不過在統計實務，我們只需要做個微小的調整，就可以將其轉換為不偏估計值。方法就是改成除以 <span class="math inline">\(N-1\)</span> 而不是除以 <span class="math inline">\(N\)</span>。</p>
-<p>(08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-point-of-parameters)</p>
+<!--- (08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-point-of-parameters) --->
 <p>修改後的公式就是母群變異數 <span class="math inline">\(\sigma\)</span> 的不偏估計量。這也回答了我們在<a href="04-Descriptive-statistics.html#variance">4.2.4 變異數</a>遇到的問題。為什麼 jamovi 給我們的變異數稍有不同？那是因為 jamovi 計算的是 <span class="math inline">\(\hat{\sigma}^2\)</span> 而不是 <span class="math inline">\(s^2\)</span>，標準差也是一樣。如果我們除以 <span class="math inline">\(N-1\)</span> 而不是 <span class="math inline">\(N\)</span>，就能得到母群標準差的不偏估計值。請記住使用 jamovi 內建的標準差函數時，計算的是 <span class="math inline">\(\hat{\sigma}\)</span> 而不是 <span class="math inline">\(s\)</span>。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 <p>最後一點，很多人進行統計實務都習慣稱呼 <span class="math inline">\(\hat{\sigma}\)</span>（分母是 <span class="math inline">\(N-1\)</span> 的標準差公式）為樣本標準差。嚴格來說這並不正確。樣本標準差應該是<span class="math inline">\(s\)</span>（分母是<span class="math inline">\(N\)</span> 的標準差公式）。兩者在概念和數值的意義都不相同。前者是一種母群標準差的估計值，後者是一種樣本性質。不過，幾乎所有現實世界的統計問題都是要找出母群參數的合理估計值，因此多數報告都是呈現<span class="math inline">\(\hat{\sigma}\)</span>，而非<span class="math inline">\(s\)</span>。雖然這是正確的報告方式，只是多數人在撰寫報告時，對於術語往往不夠精確，因為「樣本標準差」寫起來比「估計母體標準差」字比較少。這並不是嚴重的問題，實際上我也和其他人一樣這樣使用詞彙。儘管如此，我認為了解兩者在概念上的差異非常重要。混淆「已知樣本的已知屬性」和「透過樣本對母群的猜測」永遠都不是一件好事。當你開始認為 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(\hat{\sigma}\)</span> 是相同的東西時，你就要好好拿出這本書複習了。</p>
 <p>最後，我將這一節的重要符號與概念整理一下(<a href="#tbl-tab8-2">Table&nbsp;<span>8.2</span></a> 與 <a href="#tbl-tab8-3">Table&nbsp;<span>8.3</span></a>)。</p>
@@ -1024,7 +1029,7 @@ Of course, there's nothing special about the number 1.96. It just happens to be 
 <section id="計算信賴區間" class="level3" data-number="8.5.2">
 <h3 data-number="8.5.2" class="anchored" data-anchor-id="計算信賴區間"><span class="header-section-number">8.5.2</span> 計算信賴區間</h3>
 <p>jamovi 的<strong>描述統計</strong>模組內建計算信賴區間的簡單設定。開啟’Descriptives’面板的’Statistics’子選單，最下面有兩個勾選框，分別是’Std. Error of Mean’（平均值標準誤差）和’Confidence interval for the mean’（平均值信賴區間），同學可以使用這些功能計算每個平均值的95％信賴區間（預設值）。例如，載入 IQsim.omv 檔案並勾選’Confidence interval for the mean’，就可以得到與智力測驗模擬實驗平均分數的信賴區間：下限95％CI = 99.39 和上限95％CI = 99.97。也就是大樣本數據（N=10,000）的模擬結果顯示，平均智商得分為99.68，95％ CI 為99.39至99.97。</p>
-<p>假如要使用 jamovi 繪製信賴區間的統計圖，可以指定平均值作為箱形圖選項之一。此外，在學習特定統計方法時（例如 <a href="13-Comparing-several-means-one-way-ANOVA.html"><span>Chapter&nbsp;13</span></a> ），我們還可以將信賴區間作為分析報表的一部分。這很酷，稍後我們會學習如何做到。</p>
+<p>假如要使用 jamovi 繪製信賴區間的統計圖，可以指定平均值作為箱形圖選項之一。此外，在學習特定統計方法時（例如 <a href="12-Comparing-several-means-one-way-ANOVA.html"><span>Chapter&nbsp;12</span></a> ），我們還可以將信賴區間作為分析報表的一部分。這很酷，稍後我們會學習如何做到。</p>
 <!---jamovi include a simple way to calculate confidence intervals for the mean as part of the 'Descriptives' functionality. Under 'Descriptives'-'Statistics' there is a check box for both the 'Std. error of Mean' and 'Confidence interval for the mean', so you can use this to find out the 95% confidence interval (which is the default). So, for example, if I load the IQsim.omv file, check 'Confidence interval for the mean', I can see the confidence interval associated with the simulated mean IQ: Lower 95% CI = 99.39 and Upper 95% CI = 99.97 So, in our simulated large sample data with N=10,000, the mean IQ score is 99.68 with a 95% CI from 99.39 to 99.97. 
 
 When it comes to plotting confidence intervals in jamovi, you can specify that the mean is included as an option in a box plot. Moreover, when we get onto learning about specific statistical tests, for example in @sec-Comparing-several-means-one-way-ANOVA, we will see that we can also plot confidence intervals as part of the data analysis. That's pretty cool, so we'll show you how to do that later on. --->
