@@ -282,7 +282,7 @@ As in economics, so too in psychology and statistics. It is not enough to know t
 
 95.0 101.0 101.6 103.8 104.4 ...
 
-假如我繼續重做實驗10,000次，然後用每次實驗的樣本平均值繪製直方圖，那會怎麼樣呢？這正是你在@fig-fig8-6看到的結果。如這張圖所示，5個智力分數的平均值大部分落在90到110之間。更重要的是：如果我們一遍又一遍地重做一個實驗，我們最終得到的是一個**樣本平均值的分佈**！（見表8-1）。統計學的正式名稱叫做**樣本平均值的取樣分佈**(sampling distribution of the mean)。
+假如我繼續重做實驗10,000次，然後用每次實驗的樣本平均值繪製直方圖，那會怎麼樣呢？這正是 @fig-fig8-6 所展示的，5個智力分數的平均值大部分落在90到110之間。更重要的是：如果我們一遍又一遍地重做一個實驗，我們最終得到的是一個**樣本平均值的分佈**！（見表8-1）。統計學的正式名稱叫做**樣本平均值的取樣分佈**(sampling distribution of the mean)。
 
 <!---What if I continued like this for 10,000 replications, and then drew a histogram. Well that's exactly what I did, and you can see the results in @fig-fig8-6. As this picture illustrates, the average of 5 IQ scores is usually between 90 and 110. But more importantly, what it highlights is that if we replicate an experiment over and over again, what we end up with is a distribution of sample means! (@tbl-tab8-1)) This distribution has a special name in statistics, it's called the **sampling distribution of the mean**.--->
 
@@ -590,7 +590,7 @@ Of course, there's nothing special about the number 1.96. It just happens to be 
 
 這與貝氏觀點的關鍵差異在於，貝氏認為我們能用一個機率值，表達我們看不到的母群平均值有多麼不確定，但是次數主義學派不允許這樣解讀機率，因為沒有人能“復刻”母群！次數主義學派主張母群平均值是固定的，不能母群做任何機率式的陳述。不過，資料樣本的信賴區間是可重覆取得及計算的，所以我們可以不斷重做實驗。
 
-因此，*次數主義學派*允許使用信賴區間（一種隨機變數），表達包括真實平均值的機率，但不允許估計真實母群平均值（不可重覆觀察的事件）落在置信區間內的概率。我知道這似乎有點拘泥於細節，但這確實很重要。它之所以重要是因為解釋方式的差異導致了數學方法的差異。貝氏統計有一種替代信賴區間的方法，稱為*可信區間*(Credible intervals)。在大多數情況下，可信區間與信賴區間的數值範圍非常接近，但在其他情況下可能會截然不同。在本書@sec-Bayesian-statistics，我們將學習更多貝氏統計觀點。
+因此，*次數主義學派*允許使用信賴區間（一種隨機變數），表達包括真實平均值的機率，但不允許估計真實母群平均值（不可重覆觀察的事件）落在置信區間內的概率。我知道這似乎有點拘泥於細節，但這確實很重要。它之所以重要是因為解釋方式的差異導致了數學方法的差異。貝氏統計有一種替代信賴區間的方法，稱為*可信區間*(Credible intervals)。在大多數情況下，可信區間與信賴區間的數值範圍非常接近，但在其他情況下可能會截然不同。在本書 @sec-Bayesian-statistics ，我們將學習更多貝氏統計觀點。
 
 
 <!---The hardest thing about confidence intervals is understanding what they mean. Whenever people first encounter confidence intervals, the first instinct is almost always to say that "there is a 95% probability that the true mean lies inside the confidence interval". It's simple and it seems to capture the common sense idea of what it means to say that I am "95% confident". Unfortunately, it's not quite right. The intuitive definition relies very heavily on your own personal beliefs about the value of the population mean. I say that I am 95% confident because those are my beliefs. In everyday life that's perfectly okay, but if you remember back to the the section [What does probability mean?], you'll notice that talking about personal belief and confidence is a Bayesian idea. However, confidence intervals are not Bayesian tools. Like everything else in this chapter, confidence intervals are frequentist tools, and if you are going to use frequentist methods then it's not appropriate to attach a Bayesian interpretation to them. If you use frequentist methods, you must adopt frequentist interpretations! Okay, so if that's not the right answer, what is? Remember what we said about frequentist probability. The only way we are allowed to make "probability statements" is to talk about a sequence of events, and to count up the frequencies of different kinds of events. From that perspective, the interpretation of a 95% confidence interval must have something to do with replication. Specifically, if we replicated the experiment over and over again and computed a 95% confidence interval for each replication, then 95% of those intervals would contain the true mean. More generally, 95% of all confidence intervals constructed using this procedure should contain the true population mean. This idea is illustrated in @fig-fig8-12, which shows 50 confidence intervals constructed for a "measure 10 IQ scores" experiment (top panel) and another 50 confidence intervals for a "measure 25 IQ scores" experiment (bottom panel). A bit fortuitously, across the 100 replications that I simulated, it turned out that exactly 95 of them contained the true mean. The critical difference here is that the Bayesian claim makes a probability statement about the population mean (i.e., it refers to our uncertainty about the population mean), which is not allowed under the frequentist interpretation of probability because you can't "replicate" a population! In the frequentist claim, the population mean is fixed and no probabilistic claims can be made about it. Confidence intervals, however, are repeatable so we can replicate experiments. Therefore a *frequentist* is allowed to talk about the probability that the *confidence interval* (a random variable) contains the true mean, but is not allowed to talk about the probability that the *true population mean* (not a repeatable event) falls within the confidence interval I know that this seems a little pedantic, but it does matter. It matters because the difference in interpretation leads to a difference in the mathematics. There is a Bayesian alternative to confidence intervals, known as *credible intervals*. In most situations credible intervals are quite similar to confidence intervals, but in other cases they are drastically different. As promised, though, I'll talk more about the Bayesian perspective in @sec-Bayesian-statistics. --->
@@ -608,7 +608,7 @@ knitr::include_graphics("images/fig8-12.png")
 
 jamovi 的**描述統計**模組內建計算信賴區間的簡單設定。開啟'Descriptives'面板的'Statistics'子選單，最下面有兩個勾選框，分別是'Std. Error of Mean'（平均值標準誤差）和'Confidence interval for the mean'（平均值信賴區間），同學可以使用這些功能計算每個平均值的95％信賴區間（預設值）。例如，載入 IQsim.omv 檔案並勾選'Confidence interval for the mean'，就可以得到與智力測驗模擬實驗平均分數的信賴區間：下限95％CI = 99.39 和上限95％CI = 99.97。也就是大樣本數據（N=10,000）的模擬結果顯示，平均智商得分為99.68，95％ CI 為99.39至99.97。
 
-假如要使用 jamovi 繪製信賴區間的統計圖，可以指定平均值作為箱形圖選項之一。此外，在學習特定統計方法時（例如 @sec-Comparing-several-means-one-way-ANOVA ），我們還可以將信賴區間作為分析報表的一部分。這很酷，稍後我們會學習如何做到。
+假如要使用 jamovi 繪製信賴區間的統計圖，可以指定平均值作為箱形圖選項之一。此外，在學習特定統計方法時（例如 @sec-Comparing-several-means-one-way-ANOVA 的變異數分析），我們還可以將信賴區間作為分析報表的一部分。這很酷，稍後我們會學習如何做到。
 
 <!---jamovi include a simple way to calculate confidence intervals for the mean as part of the 'Descriptives' functionality. Under 'Descriptives'-'Statistics' there is a check box for both the 'Std. error of Mean' and 'Confidence interval for the mean', so you can use this to find out the 95% confidence interval (which is the default). So, for example, if I load the IQsim.omv file, check 'Confidence interval for the mean', I can see the confidence interval associated with the simulated mean IQ: Lower 95% CI = 99.39 and Upper 95% CI = 99.97 So, in our simulated large sample data with N=10,000, the mean IQ score is 99.68 with a 95% CI from 99.39 to 99.97. 
 
@@ -618,10 +618,19 @@ When it comes to plotting confidence intervals in jamovi, you can specify that t
 
 這一章涵蓋兩大主題。前半部談取樣理論，後半部談運用取樣理論估計母群參數的方法。兩大主題分為幾個小主題：
 
-- 有關[樣本、母群、取樣](08-Estimating-unknown-quantities-from-a-sample.html#sec-sample-population-sampling)的基本概念
-- 取樣的機率理論：[大數法則](08-Estimating-unknown-quantities-from-a-sample.html#%E5%A4%A7%E6%95%B8%E6%B3%95%E5%89%87)、[樣本分佈與中央極限定理](08-Estimating-unknown-quantities-from-a-sample.html#%E6%A8%A3%E6%9C%AC%E5%88%86%E4%BD%88%E8%88%87%E4%B8%AD%E5%A4%AE%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86)
-- [母群參數的點估計](08-Estimating-unknown-quantities-from-a-sample.html#%E6%AF%8D%E7%BE%A4%E5%8F%83%E6%95%B8%E7%9A%84%E9%BB%9E%E4%BC%B0%E8%A8%88)討論平均值及標準差的機率意義。
-- [母群參數的區間估計](08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-a-confidence-interval)
+- 有關[樣本、母群、取樣](08-Estimating-unknown-quantities-from-a-sample.html#sec-sample-population-sampling)的基本概念[^8-translation-2]
+- 取樣的機率理論：[大數法則](08-Estimating-unknown-quantities-from-a-sample.html#%E5%A4%A7%E6%95%B8%E6%B3%95%E5%89%87)、[樣本分佈與中央極限定理](08-Estimating-unknown-quantities-from-a-sample.html#%E6%A8%A3%E6%9C%AC%E5%88%86%E4%BD%88%E8%88%87%E4%B8%AD%E5%A4%AE%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86)[^8-translation-3]
+- [母群參數的點估計](08-Estimating-unknown-quantities-from-a-sample.html#%E6%AF%8D%E7%BE%A4%E5%8F%83%E6%95%B8%E7%9A%84%E9%BB%9E%E4%BC%B0%E8%A8%88)討論平均值及標準差的機率意義。[^8-translation-4]
+- [母群參數的區間估計](08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-a-confidence-interval)[^8-translation-5]
+
+[^8-translation-2]: 譯註~重點整理<br/>1. 多數行為科學研究的樣本是**理論上的簡單隨機樣本**，這是為什麼合格的行為科學研究者也要了解如何設計減低或控制取樣偏誤的實驗。<br/><br/>2. 我們常假設有興趣的母群參數逼近某種機率函數的參數，包括 $\mu$、$\sigma$。
+
+[^8-translation-3]: 譯註~重點整理<br/>1. 大數法則與中央極限定理是 隨機樣本分佈(或稱取樣分佈)的理論基礎，讓行為科學研究者相信只要是使用隨機方法取得的資料，就是某種取樣分佈的一部分。<br/><br/>2. 以取樣分佈估計母群參數的**逼近值**，是任何行為科學研究都會進行的統計實務。
+
+[^8-translation-4]: 譯註~重點整理<br/>1. 取樣分佈的平均值($\hat{\mu}$)是直接逼近母群參數($\mu$)的估計值，實務報告都以樣本平均值($\bar{X}$)代表取樣分佈的平均值。<br/><br/>2. 取樣分佈的標準差($\hat{\sigma}$)與逼近母群參數($\sigma$)的*不偏*估計值($\hat{\sigma} = \frac{\sigma}{N-1}$)，不等於直接從資料計算樣本標準差($s = \frac{\sigma}{N}$)。jamovi與其他專業統計軟體的計算結果都是$\hat{\sigma}$。<br/><br/>3. 取樣分佈的變異數($\hat{\sigma^2}$)與逼近母群參數($\sigma^2$)的不偏估計值($\hat{\sigma^2} = \frac{\sigma^2}{N-1}$)，不等於直接從資料計算樣本變異數($s = \frac{\sigma^2}{N}$)。jamovi與其他專業統計軟體的計算結果都是$\hat{\sigma}$。
+
+[^8-translation-5]: 譯註~重點整理<br/>信賴區間是次數主義學派的典型估計方法，實務報告規範要提到的百分比(例如95%)並不是指研究結果的發生機率，而是重覆實驗能得到相同結果的**相對次數**。
+
 
 還有許多取樣與估計的主題尚未談到，本章對於心理學及統計的初學者應該是能夠理解且能吸收的。而且應用取向的心理學者不大需要深入了解統計理論。唯一你可能需要了解但本章未探討的問題，是分析的資料不是來自隨機樣本的狀況。其實已經有許多處理非隨機樣本的統計理論，不過已經超出本書範圍了。
 

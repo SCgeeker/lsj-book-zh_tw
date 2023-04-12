@@ -125,6 +125,7 @@ div.csl-indent {
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="./用jamovi上手統計學.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
     <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
@@ -341,7 +342,7 @@ div.csl-indent {
   <li><a href="#相關的強度與方向" id="toc-相關的強度與方向" class="nav-link" data-scroll-target="#相關的強度與方向"><span class="toc-section-number">10.1.2</span>  相關的強度與方向</a></li>
   <li><a href="#相關係數" id="toc-相關係數" class="nav-link" data-scroll-target="#相關係數"><span class="toc-section-number">10.1.3</span>  相關係數</a></li>
   <li><a href="#相關係數計算實務" id="toc-相關係數計算實務" class="nav-link" data-scroll-target="#相關係數計算實務"><span class="toc-section-number">10.1.4</span>  相關係數計算實務</a></li>
-  <li><a href="#解讀相關係數" id="toc-解讀相關係數" class="nav-link" data-scroll-target="#解讀相關係數"><span class="toc-section-number">10.1.5</span>  解讀相關係數</a></li>
+  <li><a href="#sec-interpreting-a-correlation" id="toc-sec-interpreting-a-correlation" class="nav-link" data-scroll-target="#sec-interpreting-a-correlation"><span class="toc-section-number">10.1.5</span>  解讀相關係數</a></li>
   <li><a href="#斯皮爾曼等級相關" id="toc-斯皮爾曼等級相關" class="nav-link" data-scroll-target="#斯皮爾曼等級相關"><span class="toc-section-number">10.1.6</span>  斯皮爾曼等級相關</a></li>
   </ul></li>
   <li><a href="#散佈圖" id="toc-散佈圖" class="nav-link" data-scroll-target="#散佈圖"><span class="toc-section-number">10.2</span>  散佈圖</a>
@@ -406,13 +407,13 @@ div.csl-indent {
 <!---The goal in this chapter is to introduce **correlation** and **linear regression**. These are the standard tools that statisticians rely on when analysing the relationship between continuous predictors and continuous outcomes. --->
 <section id="相關" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="相關"><span class="header-section-number">10.1</span> 相關</h2>
-<p>這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的<strong>相關</strong>。首先，讓我們看一下列在 <a href="#tbl-tab12-1">Table&nbsp;<span>10.1</span></a> 的本章示範資料描述統計。</p>
-<!---In this section we'll talk about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the **correlation** between variables. But first, we need some data (@tbl-tab12-1). --->
+<p>這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的<strong>相關</strong>。首先，讓我們看一下列在 <a href="14-Categorical-data-analysis.html#tbl-tab10-1">Table&nbsp;<span>14.1</span></a> 的本章示範資料描述統計。</p>
+<!---In this section we'll talk about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the **correlation** between variables. But first, we need some data (@tbl-tab10-1). --->
 <section id="示範資料" class="level3" data-number="10.1.1">
 <h3 data-number="10.1.1" class="anchored" data-anchor-id="示範資料"><span class="header-section-number">10.1.1</span> 示範資料</h3>
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="tbl-tab12-1" class="anchored">
+<div id="tbl-tab10-1" class="anchored">
 
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;"><caption>Table&nbsp;10.1:  相關分析的示範資料資訊，原作者照顧新生兒百日紀錄的描述統計。 </caption>
  <thead>
@@ -460,13 +461,21 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Let’s turn to a topic close to every parent’s heart: sleep. The data set we’ll use is fictitious, but based on real events. Suppose I’m curious to find out how much my infant son’s sleeping habits affect my mood. Let’s say that I can rate my grumpiness very precisely, on a scale from 0 (not at all grumpy) to <span class="math inline">\(100\)</span> (grumpy as a very, very grumpy old man or woman). And lets also assume that I’ve been measuring my grumpiness, my sleeping patterns and my son’s sleeping patterns for quite some time now. Let’s say, for <span class="math inline">\(100\)</span> days. And, being a nerd, I’ve saved the data as a file called parenthood.csv. If we load the data we can see that the file contains four variables dani.sleep, baby.sleep, dani.grump and day. Note that when you first load this data set jamovi may not have guessed the data type for each variable correctly, in which case you should fix it: dani.sleep, baby.sleep, dani.grump and day can be specified as continuous variables, and ID is a nominal(integer) variable.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p>Next, I’ll take a look at some basic descriptive statistics and, to give a graphical depiction of what each of the three interesting variables looks like, <a href="14-Categorical-data-analysis.html#fig-fig10-1">Figure&nbsp;<span>14.1</span></a> plots histograms. One thing to note: just because jamovi can calculate dozens of different statistics doesn’t mean you should report all of them. If I were writing this up for a report, I’d probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table 12.1.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Notice that when I put it into a table, I gave everything “human readable” names. This is always good practice. Notice also that I’m not getting enough sleep. This isn’t good practice, but other parents tell me that it’s pretty standard.</p>
+<p>讓我們從一個與每個新生兒父母都息息相關的主題談起：睡眠。這裡使用的資料集是虛構的，但是來自本人(原作者)的真實經驗：我想知道我那剛出生的兒子的睡眠習慣對我個人的情緒有多大影響。假想我可以非常精確地評估我的沮喪分數，評分從0分（一點都不沮喪）到100分（像一個非常非常沮喪的老頭子），還有我每天都有測量我的沮喪分數、我的睡眠習慣和我兒子的睡眠習慣持續是100天。身為一位數位時代的書呆子，我把資料保存在一個名為parenthood.csv的檔案。匯入jamovi，我們可以看到四個變項：dani.sleep，baby.sleep，dani.grump和day。請注意，當您首次打開這份檔案，jamovi可能無法正確猜測每個變項的資料類型，同學可以自行修正：dani.sleep，baby.sleep，dani.grump和day都可以被指定為連續變項，而ID是一個名義且為整數的變項。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>接著我會看一下一些基本的描述性統計數據，並且三個我有興趣的變項視覺化，也就是 <a href="14-Categorical-data-analysis.html#fig-fig10-1">Figure&nbsp;<span>14.1</span></a> 展示的直方圖。需要注意的是，不要因為jamovi可以一次計算幾十種不同的統計數據，你就要報告所有數據。如果我要以此結果撰寫報告，我會挑出那些我自己以及我的讀者最感興趣的統計數據，然後將它們放入像 <a href="14-Categorical-data-analysis.html#tbl-tab10-1">Table&nbsp;<span>14.1</span></a> 這樣的簡潔的表格裡。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 需要注意的是，當我將數據放入表格時，我給了每個變項一個“高可讀性”的名稱。這是很好的做法。另外，請注意這一百天我都沒有睡飽，這不是好的習慣，不過其他帶過小孩的父母告訴我，這是很正常的事情。</p>
+
+<!---Let's turn to a topic close to every parent's heart: sleep. The data set we'll use is fictitious, but based on real events. Suppose I'm curious to find out how much my infant son's sleeping habits affect my mood. Let's say that I can rate my grumpiness very precisely, on a scale from 0 (not at all grumpy) to $100$ (grumpy as a very, very grumpy old man or woman). And lets also assume that I've been measuring my grumpiness, my sleeping patterns and my son's sleeping patterns for quite some time now. Let's say, for $100$ days. And, being a nerd, I've saved the data as a file called parenthood.csv. If we load the data we can see that the file contains four variables dani.sleep, baby.sleep, dani.grump and day. Note that when you first load this data set jamovi may not have guessed the data type for each variable correctly, in which case you should fix it: dani.sleep, baby.sleep, dani.grump and day can be specified as continuous variables, and ID is a nominal(integer) variable.[^correlation-and-linear-regression-1] 
+
+[^correlation-and-linear-regression-1]: I've noticed that in jamovi you can also specify an 'ID' variable type, but for our purposes it does not matter how we specify the ID variable as we won't be including it in any analyses.
+
+Next, I'll take a look at some basic descriptive statistics and, to give a graphical depiction of what each of the three interesting variables looks like, @fig-fig10-1 plots histograms. One thing to note: just because jamovi can calculate dozens of different statistics doesn't mean you should report all of them. If I were writing this up for a report, I'd probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table 12.1.[^correlation-and-linear-regression-2] Notice that when I put it into a table, I gave everything "human readable" names. This is always good practice. Notice also that I'm not getting enough sleep. This isn't good practice, but other parents tell me that it's pretty standard.
+
+[^correlation-and-linear-regression-2]: Actually, even that table is more than I'd bother with. In practice most people pick one measure of central tendency, and one measure of variability only.--->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-1.png" class="img-fluid figure-img" width="320"></p>
+<p><img src="images/fig12-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.1: 原作者照顧新生兒百日紀錄的三個變項直方圖。</figcaption><p></p>
 </figure>
 </div>
@@ -475,23 +484,25 @@ div.csl-indent {
 </section>
 <section id="相關的強度與方向" class="level3" data-number="10.1.2">
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="相關的強度與方向"><span class="header-section-number">10.1.2</span> 相關的強度與方向</h3>
-<p>We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let’s compare the relationship between dani.sleep and dani.grump (<a href="14-Categorical-data-analysis.html#fig-fig10-1">Figure&nbsp;<span>14.1</span></a>), left) with that between baby.sleep and dani.grump (<a href="14-Categorical-data-analysis.html#fig-fig10-2">Figure&nbsp;<span>14.2</span></a>), right). When looking at these two plots side by side, it’s clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it’s also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is “neater” than the one on the right. What it feels like is that if you want to predict what my mood is, it’d help you a little bit to know how many hours my son slept, but it’d be more helpful to know how many hours I slept.</p>
+<p>我們可以繪製散佈圖，讓我們能俯瞰兩個變項之間的相關性。雖 然在理想情況下，我們希望能多看到一些資訊。例如，讓我們比較dani.sleep和dani.grump之間的關係（ fig-fig10-2 ，左）與baby.sleep和dani.grump之間的關係（ fig-fig10-2 ，右）。當我們並排比較這兩份散佈圖，這兩種情況的關係很明顯是同質的：我或者我兒子的睡眠時間越長，我的情緒就越好！不過很明顯的是，dani.sleep和dani.grump之間的關係比baby.sleep和dani.grump之間的關係更強：左圖比右圖更加<em>整齊</em>。直覺來看，如果你想預測我的情緒，知道我兒子睡了多少個小時會有點幫助，但是知道我睡了多少個小時會更有幫助。</p>
+<!---We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig10-1), left) with that between baby.sleep and dani.grump (@fig-fig10-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-2" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-2.png" class="img-fluid figure-img" width="323"></p>
+<p><img src="images/fig12-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.2: 左圖是dani.sleep(老爸睡眠小時數)與dani.grump(老爸的沮喪程度)的散佈圖,右圖是baby.sleep”小嬰兒睡眠小時數”與dani.grump(老爸的沮喪程度)的散佈圖。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>In contrast, let’s consider the two scatterplots shown in <a href="14-Categorical-data-analysis.html#fig-fig10-3">Figure&nbsp;<span>14.3</span></a>. If we compare the scatterplot of “baby.sleep v dani.grump” (left) to the scatterplot of “’baby.sleep v dani.sleep” (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side).</p>
+<p>相反地， <a href="14-Categorical-data-analysis.html#fig-fig10-3">Figure&nbsp;<span>14.3</span></a> 的另外兩個散佈圖告訴我們另一個角度的故事。比較“baby.sleep 與 dani.grump”的散佈圖（左）和“baby.sleep 與 dani.sleep”的散佈圖（右），變項之間的整體關係強度相同，但是方向不同。也就是說，如果我的兒子睡得較長，我也會睡得更多（正相關，右圖），但是他如果睡得更多，我就不會那麼沮喪（負相關，左圖）。</p>
+<!---In contrast, let's consider the two scatterplots shown in @fig-fig10-3. If we compare the scatterplot of "baby.sleep v dani.grump" (left) to the scatterplot of "'baby.sleep v dani.sleep" (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-3" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-3.png" class="img-fluid figure-img" width="315"></p>
+<p><img src="images/fig12-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.3: 左圖是baby.sleep”小嬰兒睡眠小時數”與dani.grump(老爸的沮喪程度)的散佈圖,右圖是baby.sleep”小嬰兒睡眠小時數”與dani.sleep(老爸睡眠小時數)的散佈圖。</figcaption><p></p>
 </figure>
 </div>
@@ -500,40 +511,47 @@ div.csl-indent {
 </section>
 <section id="相關係數" class="level3" data-number="10.1.3">
 <h3 data-number="10.1.3" class="anchored" data-anchor-id="相關係數"><span class="header-section-number">10.1.3</span> 相關係數</h3>
-<p>We can make these ideas a bit more explicit by introducing the idea of a <strong>相關係數(correlation coefficient)</strong> (or, more specifically, Pearson’s correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> (sometimes denoted <span class="math inline">\(r_{XY}\)</span> ), which we’ll define more precisely in the next section, is a measure that varies from -1 to 1. When <span class="math inline">\(r = -1\)</span> it means that we have a perfect negative relationship, and when <span class="math inline">\(r = 1\)</span> it means we have a perfect positive relationship. When <span class="math inline">\(r = 0\)</span>, there’s no relationship at all. If you look at <a href="14-Categorical-data-analysis.html#fig-fig10-4">Figure&nbsp;<span>14.4</span></a>, you can see several plots showing what different correlations look like.</p>
-<p>[Additional technical detail <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>]</p>
+<p>現在我要正式介紹 <strong>相關係數(correlation coefficient)</strong> ，來更明確地說明上述的概念（更具體地說，是介紹皮爾森相關係數），慣例書寫符號是 <span class="math inline">\(r\)</span>。在下一節，我將更精確地定義兩個變項 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 之間的相關係數 <span class="math inline">\(r_{XY}\)</span>，值域涵蓋-1到1。當<span class="math inline">\(r = -1\)</span>時，表示我們有一個完全的負相關；當<span class="math inline">\(r = 1\)</span>時，表示我們有一個完全的正相關；當<span class="math inline">\(r = 0\)</span>時，表示完全沒有關係。 <a href="14-Categorical-data-analysis.html#fig-fig10-4">Figure&nbsp;<span>14.4</span></a> 展示幾種不同相關性的散佈圖。</p>
+<p>[其他技術細節 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>]</p>
+<!--- We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig10-4, you can see several plots showing what different correlations look like.
+
+[Additional technical detail [^correlation-and-linear-regression-3]]
+
+[^correlation-and-linear-regression-3]: The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ Because we're multiplying (i.e., taking the "product" of) a quantity that depends on X by a quantity that depends on Y and then averaging$^a$, you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in @fig-fig10-4 then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret as it depends on the units in which $X$ and $Y$ are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the dani.sleep variable (units: hours) and $Y$ refers to the dani.grump variable (units: grumps), then the units for their covariance are $hours \times grumps$. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.$^b$ In other words, the correlation between $X$ and $Y$ can be written as follows: $$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ Just like we saw with the variance and the standard deviation, in practice we divide by $N - 1$ rather than $N$. <br /> $^b$ This is an oversimplification, but it'll do for our purposes.  --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-4.png" class="img-fluid figure-img" width="281"></p>
+<p><img src="images/fig12-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.4: 圖解相關係數的強度及方向。左欄的相關係數由上而下為<span class="math inline">\(0, .33, .66, 1\)</span>。右欄的相關係數由上而下為<span class="math inline">\(0, -.33, -.66, -1\)</span>。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>By standardising the covariance, not only do we keep all of the nice properties of the covariance discussed earlier, but the actual values of r are on a meaningful scale: r = 1 implies a perfect positive relationship and <span class="math inline">\(r = -1\)</span> implies a perfect negative relationship. I’ll expand a little more on this point later, in the section on [Interpreting a correlation]. But before I do, let’s look at how to calculate correlations in jamovi.</p>
+<p>通過標準化協方差，我們不僅保留了前面討論過的協方差的所有優點，而且r的實際值是有意義的: r = 1意味著完美的正相關，<span class="math inline">\(r = -1\)</span>意味著完美的負相關。稍後我會在<a href="10-Correlation-and-linear-regression.html#sec-interpreting-a-correlation">解讀相關係數</a>一節中更詳細地談論這一點。但在此之前，讓我們看一下如何在jamovi中計算相關性。</p>
+<!---By standardising the covariance, not only do we keep all of the nice properties of the covariance discussed earlier, but the actual values of r are on a meaningful scale: r = 1 implies a perfect positive relationship and $r = -1$ implies a perfect negative relationship. I'll expand a little more on this point later, in the section on [Interpreting a correlation]( @sec-interpreting-a-correlation ). But before I do, let's look at how to calculate correlations in jamovi. --->
 </section>
 <section id="相關係數計算實務" class="level3" data-number="10.1.4">
 <h3 data-number="10.1.4" class="anchored" data-anchor-id="相關係數計算實務"><span class="header-section-number">10.1.4</span> 相關係數計算實務</h3>
-<p>Calculating correlations in jamovi can be done by clicking on the ‘Regression’ - ‘Correlation Matrix’ button. Transfer all four continuous variables across into the box on the right to get the output in <a href="14-Categorical-data-analysis.html#fig-fig10-5">Figure&nbsp;<span>14.5</span></a>.</p>
+<p>只要在jamovi’迴歸’模組選單，選點要計算的相關係數，就能計算所有納入變項對話框裡的變項之間相關係數，如同 <a href="14-Categorical-data-analysis.html#fig-fig10-5">Figure&nbsp;<span>14.5</span></a> 的示範，未出錯的話，報表會輸出’相關矩陣’。</p>
+<!---Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig10-5. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-5.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig12-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.5: 使用jamovi相關分析模組計算parenthood.csv資料變項的示範畫面。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="解讀相關係數" class="level3" data-number="10.1.5">
-<h3 data-number="10.1.5" class="anchored" data-anchor-id="解讀相關係數"><span class="header-section-number">10.1.5</span> 解讀相關係數</h3>
-<p>Naturally, in real life you don’t see many correlations of <span class="math inline">\(1\)</span>. So how should you interpret a correlation of, say, r = <span class="math inline">\(.4\)</span>? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than <span class="math inline">\(.95\)</span> is completely useless (I think he was exaggerating, even for engineering). On the other hand, there are real cases, even in psychology, where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can’t achieve a correlation of at least <span class="math inline">\(.9\)</span> really isn’t deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above <span class="math inline">\(.3\)</span> you’re doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in <a href="#tbl-tab12-2">Table&nbsp;<span>10.2</span></a> is pretty typical.</p>
-<div class="cell">
+<section id="sec-interpreting-a-correlation" class="level3" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="sec-interpreting-a-correlation"><span class="header-section-number">10.1.5</span> 解讀相關係數</h3>
+<p>Naturally, in real life you don’t see many correlations of <span class="math inline">\(1\)</span>. So how should you interpret a correlation of, say, r = <span class="math inline">\(.4\)</span>? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than <span class="math inline">\(.95\)</span> is completely useless (I think he was exaggerating, even for engineering). On the other hand, there are real cases, even in psychology, where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can’t achieve a correlation of at least <span class="math inline">\(.9\)</span> really isn’t deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above <span class="math inline">\(.3\)</span> you’re doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in <a href="14-Categorical-data-analysis.html#tbl-tab10-2">Table&nbsp;<span>14.2</span></a> is pretty typical.</p>
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="tbl-tab12-2" class="anchored">
+<div id="tbl-tab10-2" class="anchored">
 
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;"><caption>Table&nbsp;10.2:  解讀相關係數的粗略指南。強調粗略是因為沒有真正的快速解讀指引，相關係數的真正意義取決於資料分析的問題背景。 </caption>
  <thead>
@@ -607,7 +625,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-6.png" class="img-fluid figure-img" width="320"></p>
+<p><img src="images/fig12-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.6: 安斯庫姆四重奏。四份資料的相關係數都是.816，但是資料數值都不一樣。</figcaption><p></p>
 </figure>
 </div>
@@ -623,17 +641,17 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-7" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-7.png" class="img-fluid figure-img" width="236"></p>
+<p><img src="images/fig12-7.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.7: 這個圖解展示虛擬資料集的兩個變項”工作時間”和”得分”之間的關係，這個資料集只有10位學生（每個點代表一個學生）。圖中的直線顯示兩個變項之間的線性關係，兩者之間有很強的皮爾森相關係數<span class="math inline">\(r = .91\)</span>。不過有趣的是，兩個變項之間存在一個完美的單調函數關係。這條直線顯示，根據這份虛擬資料，增加工作時間總是會增加得分，這反映在斯皮爾曼等級相關係數<span class="math inline">\(\rho = 1\)</span>。然而，由於這個資料集很小，因此仍然存在一個問題：那一種係數是真正描述兩個變項的關係。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>How should we address this? Actually, it’s really easy. If we’re looking for ordinal relationships all we have to do is treat the data as if it were ordinal scale! So, instead of measuring effort in terms of “hours worked”, lets rank all <span class="math inline">\(10\)</span> of our students in order of hours worked. That is, student <span class="math inline">\(1\)</span> did the least work out of anyone (<span class="math inline">\(2\)</span> hours) so they get the lowest rank (rank = <span class="math inline">\(1\)</span>). Student <span class="math inline">\(4\)</span> was the next laziest, putting in only <span class="math inline">\(6\)</span> hours of work over the whole semester, so they get the next lowest rank (rank = <span class="math inline">\(2\)</span>). Notice that I’m using “rank =1” to mean “low rank”. Sometimes in everyday language we talk about “rank = <span class="math inline">\(1\)</span>” to mean “top rank” rather than “bottom rank”. So be careful, you can rank “from smallest value to largest value” (i.e., small equals rank <span class="math inline">\(1\)</span>) or you can rank “from largest value to smallest value” (i.e., large equals rank 1). In this case, I’m ranking from smallest to largest, but as it’s really easy to forget which way you set things up you have to put a bit of effort into remembering!</p>
-<p>Okay, so let’s have a look at our students when we rank them from worst to best in terms of effort and reward <a href="#tbl-tab12-3">Table&nbsp;<span>10.3</span></a>.</p>
-<div class="cell">
+<p>Okay, so let’s have a look at our students when we rank them from worst to best in terms of effort and reward <a href="14-Categorical-data-analysis.html#tbl-tab10-3">Table&nbsp;<span>14.3</span></a>.</p>
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="tbl-tab12-3" class="anchored">
+<div id="tbl-tab10-3" class="anchored">
 
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;"><caption>Table&nbsp;10.3:  十位學生的工作時間與得分數值次序 </caption>
  <thead>
@@ -712,7 +730,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-8.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig12-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.8: 使用jamovi相關分析模組的’Correlation Matrix’所繪製的散佈圖。</figcaption><p></p>
 </figure>
 </div>
@@ -723,7 +741,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-9" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-9.png" class="img-fluid figure-img" width="530"></p>
+<p><img src="images/fig12-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.9: 使用jamovi擴充模組’scatr’繪製的散佈圖</figcaption><p></p>
 </figure>
 </div>
@@ -736,7 +754,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-10" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-10.png" class="img-fluid figure-img" width="500"></p>
+<p><img src="images/fig12-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.10: jamovi繪製的散佈圖矩陣</figcaption><p></p>
 </figure>
 </div>
@@ -752,7 +770,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-11" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-11.png" class="img-fluid figure-img" width="326"></p>
+<p><img src="images/fig12-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.11: 圖a展示同 <a href="14-Categorical-data-analysis.html#fig-fig10-9">Figure&nbsp;<span>14.9</span></a> 的資料散佈圖，並加上穿過資料中心地帶的迴歸線。圖b的散佈圖來自同一份資料，但是迴歸線並不擬合這份資料。</figcaption><p></p>
 </figure>
 </div>
@@ -778,7 +796,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-12" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-12.png" class="img-fluid figure-img" width="321"></p>
+<p><img src="images/fig12-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.12: 圖a展示各資料點與穿越資料中心地帶的最佳迴歸線之殘差，圖b展示各資料點與最差迴歸線的殘差。前者的殘差總和明顯小於後者。</figcaption><p></p>
 </figure>
 </div>
@@ -794,7 +812,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-13" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-13.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig12-13.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.13: jamovi的線性迴歸分析示範畫面。</figcaption><p></p>
 </figure>
 </div>
@@ -815,10 +833,10 @@ div.csl-indent {
 <p>As before, <span class="math inline">\(\epsilon_i\)</span> is the residual associated with the i-th observation, <span class="math inline">\(\epsilon_i = Y_i - \hat{Y}_i\)</span>. In this model, we now have three coefficients that need to be estimated: b0 is the intercept, b1 is the coefficient associated with my sleep, and b2 is the coefficient associated with my son’s sleep. However, although the number of coefficients that need to be estimated has changed, the basic idea of how the estimation works is unchanged: our estimated coefficients <span class="math inline">\(\hat{b}_0\)</span>, <span class="math inline">\(\hat{b}_1\)</span> and <span class="math inline">\(\hat{b}_2\)</span> are those that minimise the sum squared residuals.</p>
 <section id="jamovi實務示範" class="level3" data-number="10.5.1">
 <h3 data-number="10.5.1" class="anchored" data-anchor-id="jamovi實務示範"><span class="header-section-number">10.5.1</span> jamovi實務示範</h3>
-<p>Multiple regression in jamovi is no different to simple regression. All we have to do is add additional variables to the ‘Covariates’ box in jamovi. For example, if we want to use both dani.sleep and baby.sleep as predictors in our attempt to explain why I’m so grumpy, then move baby.sleep across into the ‘Covariates’ box alongside dani.sleep. By default, jamovi assumes that the model should include an intercept. The coefficients we get this time are shown in <a href="#tbl-tab12-4">Table&nbsp;<span>10.4</span></a>.</p>
-<div class="cell">
+<p>Multiple regression in jamovi is no different to simple regression. All we have to do is add additional variables to the ‘Covariates’ box in jamovi. For example, if we want to use both dani.sleep and baby.sleep as predictors in our attempt to explain why I’m so grumpy, then move baby.sleep across into the ‘Covariates’ box alongside dani.sleep. By default, jamovi assumes that the model should include an intercept. The coefficients we get this time are shown in <a href="14-Categorical-data-analysis.html#tbl-tab10-4">Table&nbsp;<span>14.4</span></a>.</p>
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="tbl-tab12-4" class="anchored">
+<div id="tbl-tab10-4" class="anchored">
 
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;"><caption>Table&nbsp;10.4:  增加預測變項迴歸係數的示 </caption>
  <thead>
@@ -845,7 +863,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-14" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-14.png" class="img-fluid figure-img" width="260"></p>
+<p><img src="images/fig12-14.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.14: 這張圖展示多元迴歸模型的三維立體視覺化。模型中有兩個預測變項，分別是 “dani.sleep” 和 “baby.sleep”，而目標變項是 “dani.grump”，這三個變項構成圖中的三維空間。每筆資料都是這個空間中的一個點。就像簡單線性迴歸模型在二維空間形成一條線一樣，此多元迴歸模型在三維空間形成一個平面。當我們估計迴歸係數時，我們能做的就是找到一個盡可能靠近所有資料點的平面。</figcaption><p></p>
 </figure>
 </div>
@@ -899,7 +917,7 @@ div.csl-indent {
 </section>
 <section id="tests-for-individual-coefficients" class="level3" data-number="10.7.2">
 <h3 data-number="10.7.2" class="anchored" data-anchor-id="tests-for-individual-coefficients"><span class="header-section-number">10.7.2</span> Tests for individual coefficients</h3>
-<p>The F-test that we’ve just introduced is useful for checking that the model as a whole is performing better than chance. If your regression model doesn’t produce a significant result for the F-test then you probably don’t have a very good regression model (or, quite possibly, you don’t have very good data). However, while failing this test is a pretty strong indicator that the model has problems, passing the test (i.e., rejecting the null) doesn’t imply that the model is good! Why is that, you might be wondering? The answer to that can be found by looking at the coefficients for the [Multiple linear regression] model we have already looked at (<a href="#tbl-tab12-4">Table&nbsp;<span>10.4</span></a>)</p>
+<p>The F-test that we’ve just introduced is useful for checking that the model as a whole is performing better than chance. If your regression model doesn’t produce a significant result for the F-test then you probably don’t have a very good regression model (or, quite possibly, you don’t have very good data). However, while failing this test is a pretty strong indicator that the model has problems, passing the test (i.e., rejecting the null) doesn’t imply that the model is good! Why is that, you might be wondering? The answer to that can be found by looking at the coefficients for the [Multiple linear regression] model we have already looked at (<a href="14-Categorical-data-analysis.html#tbl-tab10-4">Table&nbsp;<span>14.4</span></a>)</p>
 <p>I can’t help but notice that the estimated regression coefficient for the baby.sleep variable is tiny (<span class="math inline">\(0.01\)</span>), relative to the value that we get for dani.sleep (<span class="math inline">\(-8.95\)</span>). Given that these two variables are absolutely on the same scale (they’re both measured in “hours slept”), I find this illuminating. In fact, I’m beginning to suspect that it’s really only the amount of sleep that I get that matters in order to predict my grumpiness. We can re-use a hypothesis test that we discussed earlier, the t-test. The test that we’re interested in has a null hypothesis that the true regression coefficient is zero (<span class="math inline">\(b = 0\)</span>), which is to be tested against the alternative hypothesis that it isn’t (<span class="math inline">\(b \neq 0\)</span>). That is:</p>
 <p><span class="math display">\[H_0:b=0\]</span> <span class="math display">\[H_1:b \neq 0\]</span></p>
 <p>How can we test this? Well, if the central limit theorem is kind to us we might be able to guess that the sampling distribution of <span class="math inline">\(\hat{b}\)</span>, the estimated regression coefficient, is a normal distribution with mean centred on <span class="math inline">\(b\)</span>. What that would mean is that if the null hypothesis were true, then the sampling distribution of <span class="math inline">\(\hat{b}\)</span> has mean zero and unknown standard deviation. Assuming that we can come up with a good estimate for the standard error of the regression coefficient, <span class="math inline">\(se(\hat{b})\)</span>, then we’re in luck. That’s exactly the situation for which we introduced the one-sample t-test back in <a href="11-Comparing-two-means.html"><span>Chapter&nbsp;11</span></a>. So let’s define a t-statistic like this</p>
@@ -914,7 +932,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-15" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-15.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig12-15.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.15: A jamovi screenshot showing a multiple linear regression analysis, with some useful options checked</figcaption><p></p>
 </figure>
 </div>
@@ -943,7 +961,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-16" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-16.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig12-16.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.16: Standardised coefficients, with 95% confidence intervals, for multiple linear regression</figcaption><p></p>
 </figure>
 </div>
@@ -989,7 +1007,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-17" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-17.png" class="img-fluid figure-img" width="244"></p>
+<p><img src="images/fig12-17.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.17: An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line</figcaption><p></p>
 </figure>
 </div>
@@ -1000,7 +1018,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-18" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-18.png" class="img-fluid figure-img" width="236"></p>
+<p><img src="images/fig12-18.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.18: An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations. The observation falls very close to the regression line and does not distort it</figcaption><p></p>
 </figure>
 </div>
@@ -1012,7 +1030,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-19" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-19.png" class="img-fluid figure-img" width="235"></p>
+<p><img src="images/fig12-19.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.19: An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)</figcaption><p></p>
 </figure>
 </div>
@@ -1024,7 +1042,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-20" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-20.png" class="img-fluid figure-img" width="438"></p>
+<p><img src="images/fig12-20.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.20: jamovi output showing the table for the Cook’s distance statistics</figcaption><p></p>
 </figure>
 </div>
@@ -1040,7 +1058,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-21" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-21.png" class="img-fluid figure-img" width="660"></p>
+<p><img src="images/fig12-21.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.21: Plot of the theoretical quantiles according to the model, against the quantiles of the standardised residuals, produced in jamovi</figcaption><p></p>
 </figure>
 </div>
@@ -1051,7 +1069,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-22" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-22.png" class="img-fluid figure-img" width="326"></p>
+<p><img src="images/fig12-22.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.22: Residuals plots produced in jamovi</figcaption><p></p>
 </figure>
 </div>
@@ -1065,11 +1083,11 @@ div.csl-indent {
 <p>The last kind of regression diagnostic that I’m going to discuss in this chapter is the use of <strong>variance inflation factors</strong> (VIFs), which are useful for determining whether or not the predictors in your regression model are too highly correlated with each other. There is a variance inflation factor associated with each predictor <span class="math inline">\(X_k\)</span> in the model. <a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></p>
 <p>The square root of the VIF is pretty interpretable. It tells you how much wider the confidence interval for the corresponding coefficient bk is, relative to what you would have expected if the predictors are all nice and uncorrelated with one another. If you’ve only got two predictors, the VIF values are always going to be the same, as we can see if we click on the ‘Collinearity’ checkbox in the ‘Regression’ - ‘Assumptions’ options in jamovi. For both dani.sleep and baby.sleep the VIF is <span class="math inline">\(1.65\)</span>. And since the square root of <span class="math inline">\(1.65\)</span> is <span class="math inline">\(1.28\)</span>, we see that the correlation between our two predictors isn’t causing much of a problem.</p>
 <p>To give a sense of how we could end up with a model that has bigger collinearity problems, suppose I were to run a much less interesting regression model, in which I tried to predict the day on which the data were collected, as a function of all the other variables in the data set. To see why this would be a bit of a problem, let’s have a look at the correlation matrix for all four variables (<a href="#fig-fig10-25">Figure&nbsp;<span>10.23</span></a>).</p>
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-25" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig10-25" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-25.png" class="img-fluid figure-img" width="599"></p>
+<p><img src="images/fig12-25.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.23: 四個資料變項之間的相關係數矩陣</figcaption><p></p>
 </figure>
 </div>
@@ -1080,7 +1098,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-23" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-23.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig12-23.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.24: Collinearity statistics for multiple regression, produced in jamovi</figcaption><p></p>
 </figure>
 </div>
@@ -1124,7 +1142,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-fig10-24" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-24.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig12-24.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;10.25: Model comparison in jamovi using the ‘Model Builder’ option</figcaption><p></p>
 </figure>
 </div>
@@ -1174,9 +1192,9 @@ Fox, J., &amp; Weisberg, S. (2011). <em>An <span>R</span> companion to applied r
 <hr>
 <ol>
 <li id="fn1"><p>本章在原書為第12章，繁體中文版為了整合 <strong><a href="Prelude-Part-V.html">基礎統計方法的線性模型學習取向</a></strong>，改為第10章。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>I’ve noticed that in jamovi you can also specify an ‘ID’ variable type, but for our purposes it does not matter how we specify the ID variable as we won’t be including it in any analyses.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Actually, even that table is more than I’d bother with. In practice most people pick one measure of central tendency, and one measure of variability only.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>The formula for the Pearson’s correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let’s introduce the idea of a <strong>covariance</strong>. The covariance between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn’t terribly informative to humans <span class="math display">\[Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})\]</span> Because we’re multiplying (i.e., taking the “product” of) a quantity that depends on X by a quantity that depends on Y and then averaging<span class="math inline">\(^a\)</span>, you can think of the formula for the covariance as an “average cross product” between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. The covariance has the nice property that, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in <a href="14-Categorical-data-analysis.html#fig-fig10-4">Figure&nbsp;<span>14.4</span></a> then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn’t easy to interpret as it depends on the units in which <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if <span class="math inline">\(X\)</span> refers to the dani.sleep variable (units: hours) and <span class="math inline">\(Y\)</span> refers to the dani.grump variable (units: grumps), then the units for their covariance are <span class="math inline">\(hours \times grumps\)</span>. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.<span class="math inline">\(^b\)</span> In other words, the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be written as follows: <span class="math display">\[r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}\]</span><br>—<br><span class="math inline">\(^a\)</span> Just like we saw with the variance and the standard deviation, in practice we divide by <span class="math inline">\(N - 1\)</span> rather than <span class="math inline">\(N\)</span>. <br> <span class="math inline">\(^b\)</span> This is an oversimplification, but it’ll do for our purposes.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>在2.0版之後的 jamovi 你也可以指定 “ID” 的專屬變項類型，但是對於分析資料的目的來說，指定 ID 的變項性質並不重要，因為我們不會將其包含在任何分析中。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>即使是表格中的資訊對某些人來說已經足夠了，但在實務上，大多數人只需要報告一個集中量數和一個變異量數就可以了。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Pearson相關係數的公式可以用幾種不同的方式來表示。最簡單的方式是將公式分為兩個步驟。首先，讓我們介紹<strong>共變異數（covariance）</strong>的概念。兩個變量<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>的協方差是變異數概念的一般化，是一種數學上簡單描述兩個變量之間關係的方式，但對人類來說並不太有信息量: <span class="math display">\[Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})\]</span> 由於我們要乘以一個與<span class="math inline">\(X\)</span>有關的量和一個與<span class="math inline">\(Y\)</span>有關的量，然後再取平均值，因此你可以將協方差的公式視為<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>之間的“平均交叉乘積”。協方差具有很好的性質，如果<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>之間完全沒有關係，那麼協方差就是零。如果它們之間的關係是正向的（如@fig-fig10-4所示），則協方差也是正的，如果關係是負的，則協方差也是負的。換句話說，協方差捕捉到了相關性的基本定性概念。不幸的是，協方差的原始大小並不容易解釋，因為它取決於<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>所表達的單位，而且更糟糕的是，協方差本身所表達的單位非常奇怪。例如，如果<span class="math inline">\(X\)</span>是dani.sleep變量（單位：小時）而<span class="math inline">\(Y\)</span>是dani.grump變量（單位：壞脾氣），那麼協方差的單位是<span class="math inline">\(hours \times grumps\)</span>。我甚至不知道那是什麼意思。Pearson相關係數r解決了這個解釋問題，方法與z分數標準化原始分數的方式非常相似，通過除以標準差進行標準化。但是，由於我們有兩個變量對協方差作出貢獻，所以只有當我們將標準差除以兩個變量。由於有兩個變數影響到共變異數，因此標準化只能在除以兩個變數的標準差時有效。換句話說，兩個變數<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>的相關係數可以寫成以下的公式：<span class="math display">\[r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}\]</span><br>—<br><span class="math inline">\(^a\)</span> 和變異數、標準差一樣，實際上我們在計算時除以的是 <span class="math inline">\(N-1\)</span> 而不是 <span class="math inline">\(N\)</span>。<br> <span class="math inline">\(^b\)</span> 這是一個過於簡化的說法，但對於我們的目的而言已足夠。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Also sometimes written as <span class="math inline">\(y = mx + c\)</span> where m is the slope coefficient and <span class="math inline">\(c\)</span> is the intercept (constant) coefficient.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>The <span class="math inline">\(\epsilon\)</span> symbol is the Greek letter epsilon. It’s traditional to use <span class="math inline">\(\epsilon_i\)</span> or <span class="math inline">\(e_i\)</span> to denote a residual.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>Or at least, I’m assuming that it doesn’t help most people. But on the off chance that someone reading this is a proper kung fu master of linear algebra (and to be fair, I always have a few of these people in my intro stats class), it will help you to know that the solution to the estimation problem turns out to be <span class="math inline">\(\hat{b} = (X^{'}X)^{-1}X^{'}y\)</span>, where <span class="math inline">\(\hat{b}\)</span> is a vector containing the estimated regression coefficients, <span class="math inline">\(X\)</span> is the “design matrix” that contains the predictor variables (plus an additional column containing all ones; strictly <span class="math inline">\(X\)</span> is a matrix of the regressors, but I haven’t discussed the distinction yet), and y is a vector containing the outcome variable. For everyone else, this isn’t exactly helpful and can be downright scary. However, since quite a few things in linear regression can be written in linear algebra terms, you’ll see a bunch of footnotes like this one in this chapter. If you can follow the maths in them, great. If not, ignore it.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

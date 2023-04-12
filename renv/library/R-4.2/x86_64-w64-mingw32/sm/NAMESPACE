@@ -1,0 +1,29 @@
+useDynLib(sm, .registration = TRUE)
+
+export(binning, britmap, hcv, hnorm, hsj, nise, nmise, nnbr,
+       pause, provide.data, sig.trace, sm.ancova,
+       sm.autoregression, sm.binomial, sm.binomial.bootstrap,
+       sm.density, sm.density.compare, sm.options, sm.poisson,
+       sm.poisson.bootstrap, sm.regression, sm.regression.autocor,
+       sm.rm, sm.script, sm.sphere, sm.survival, sm.ts.pdf, sm.weight,
+       sm.weight2, sm.surface3d, h.select, sm.sigma, sm.sigma2.compare,
+       sm.variogram, sm.discontinuity, sm.monotonicity, sm.pca)
+
+  importFrom("grDevices", "chull", "col2rgb", "contourLines", "rainbow",
+             "rgb", "topo.colors")
+  importFrom("graphics", "abline", "axis", "box", "contour",
+             "filled.contour", "image", "lines", "par", "persp", "plot",
+             "points", "polygon", "rect", "rug", "segments", "text",
+             "title")
+  importFrom("stats", "acf", "approxfun", "as.formula", "binomial", "df",
+             "dnorm", "fitted", "glm.fit", "model.matrix", "na.omit",
+             "nobs", "optim", "optimise", "pchisq", "poisson", "poly",
+             "qchisq", "quantile", "rbeta", "rbinom", "residuals",
+             "rgamma", "rpois", "sd", "terms", "uniroot", "var")
+  importFrom("utils", "menu")
+# import(tcltk)
+# import(tkrplot)
+# import(rpanel)
+#   importFrom("rpanel", "rp.plot3d", "rp.do", "rp.tkrplot", "rp.tkrreplot",
+#              "rp.radiogroup", "rp.slider", "rp.checkbox", "rp.control")
+#   importFrom("tkrplot", "tkrplot", "tkrreplot")

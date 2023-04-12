@@ -185,6 +185,7 @@ div.csl-indent {
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="./用jamovi上手統計學.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
     <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
@@ -421,7 +422,7 @@ div.csl-indent {
 – Edward Tufte<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <p>資料視覺化是資料分析最重要的工作之一，主要有兩個原因。首先，繪製報告用圖表是資料分析要達成的具體目標。以簡潔吸睛的方式呈現資料，能讓你的讀者及觀眾輕鬆理解你想說的資料故事。另一個也許更重要的原因是繪製統計圖能幫助同學們更理解資料。也就是說，處理資料前先繪製”探索用統計圖”，能讓你了掌握合適的分析方法。這兩點簡單易懂，不過很多人經常忘了資料視覺化的重要性與好處。</p>
-<p>為了讓同學感受資料視覺化的重要性，我們來看一個統計圖立大功的真實案例： <a href="#fig-fig5-1">Figure&nbsp;<span>5.1</span></a> 是重製歷史上知名的資料視覺化作品，原作是<a href="https://zh.wikipedia.org/zh-tw/%E7%BA%A6%E7%BF%B0%C2%B7%E6%96%AF%E8%AF%BA_(%E5%8C%BB%E5%AD%A6%E5%AE%B6)">約翰·斯諾</a>繪製的1854年倫敦蘇活區霍亂死者分佈地圖。背景的街道地圖引導觀者視線，前景有許多橙色小點，每個小點代表得到霍亂而病死的居民所在地，有標名字且比較大的點是公共水泵。這張圖清楚顯示位於寬街( Broad Street)的水泵非常有可能是這波疫情的源頭，讓斯諾得以說服當局關閉當地水泵，讓這場奪走超過500位居民的疫情得以平息。這個真實故事告訴我們，好的資料視覺化是非常有說服力的。</p>
+<p>為了讓同學感受資料視覺化的重要性，我們來看一個統計圖立大功的真實案例： <a href="#fig-fig5-1">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-1</span></a> 是重製歷史上知名的資料視覺化作品，原作是<a href="https://zh.wikipedia.org/zh-tw/%E7%BA%A6%E7%BF%B0%C2%B7%E6%96%AF%E8%AF%BA_(%E5%8C%BB%E5%AD%A6%E5%AE%B6)">約翰·斯諾</a>繪製的1854年倫敦蘇活區霍亂死者分佈地圖。背景的街道地圖引導觀者視線，前景有許多橙色小點，每個小點代表得到霍亂而病死的居民所在地，有標名字且比較大的點是公共水泵。這張圖清楚顯示位於寬街( Broad Street)的水泵非常有可能是這波疫情的源頭，讓斯諾得以說服當局關閉當地水泵，讓這場奪走超過500位居民的疫情得以平息。這個真實故事告訴我們，好的資料視覺化是非常有說服力的。</p>
 <p>這一章有兩個學習目標。第一是認識幾種常用於分析與呈現資料的標準統計圖；第二是使用jamovi繪製標準統計圖。繪圖展示的資訊相當單純，要看懂統計圖並不困難。會讓同學感到困難的是如何繪製統計圖，特別是製作好的統計圖。好在jamovi的繪圖操作並不難學，只要你不要太計較畫出來的圖好不好看。jamovi有許多內建的圖表模板，預設輸出成品在許多場景呈現，都是簡潔的高品質作品。不過若是同學想繪製非常規的統計圖，或是做一些特別的調整，jamovi的繪圖功能就還沒有支援進階功能或細節編輯了。</p>
 <!---Visualising data is one of the most important tasks facing the data analyst. It's important for two distinct but closely related reasons. Firstly, there's the matter of drawing "presentation graphics", displaying your data in a clean, visually appealing fashion makes it easier for your reader to understand what you're trying to tell them. Equally important, perhaps even more important, is the fact that drawing graphs helps you to understand the data. To that end, it's important to draw "exploratory graphics" that help you learn about the data as you go about analysing it. These points might seem pretty obvious but I cannot count the number of times I've seen people forget them.
 
@@ -432,7 +433,7 @@ The goals in this chapter are twofold. First, to discuss several fairly standard
 <div class="cell-output-display">
 <div id="fig-fig5-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-1.png" class="img-fluid figure-img" width="322"></p>
+<p><img src="images/fig5-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.1: 約翰·斯諾繪製的霍亂死者分佈地圖上色重製版。每個小點代表一位病例的所在地，每個圓圈代表一個水泵的所在地。小點的散佈清楚顯示霍亂疫情集中在寬街水泵週圍。</figcaption><p></p>
 </figure>
 </div>
@@ -440,7 +441,7 @@ The goals in this chapter are twofold. First, to discuss several fairly standard
 </div>
 <section id="sec-Histograms" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sec-Histograms"><span class="header-section-number">5.1</span> 直方圖</h2>
-<p><strong>直方圖(Histograms)</strong>是製作方式最簡單且易懂的資料視覺化工具，主要用途是概覽等距尺度或比例尺度資料變項(例如 <a href="04-Descriptive-statistics.html"><span>Chapter&nbsp;4</span></a> 示範的afl.margins資料集)的分佈趨勢。同學們可能在某些課程或網路媒體見過用直方圖解釋的研究證據，現在要學會如何製作直方圖。製作方式是先設定變項數值分成數個<strong>間值(bins)</strong>，接著計算每個間值之間有多少資料落入。每個間值之間的資料個數稱為<em>次數(frequency)</em>或<em>密度(density)</em>，並繪製對應高度的長條就完成了。 <a href="04-Descriptive-statistics.html"><span>Chapter&nbsp;4</span></a> 的 <a href="04-Descriptive-statistics.html#fig-fig4-2">Figure&nbsp;<span>4.2</span></a> 展示的直方圖最左邊的長條對應勝隊得分小於10分的場次總數，一共有33場。這份直方圖是用R語言套件製作的，超出本書的學習範圍，所以在此說明如何使用jamovi繪製接近該作品的直方圖。請開啟描述統計模組選單(<code>Exploration</code>-<code>Descriptives</code>)，將變項放到”Variable”視窗後展開最下方<code>plot</code>次選單，勾選<code>histogram</code>就會看到如 <a href="#fig-fig5-1">Figure&nbsp;<span>5.1</span></a> 的畫面。jamovi預設的直方圖y軸是密度，x軸是變項名稱。<strong>間值</strong>是jamovi自動指定，y值並不是顯示各間值之間的資料數目。雖然如此，這份直方圖已充分展示這筆資料變項的分佈形狀，你覺得這筆資料是常態分佈還是有偏態或峰度呢？分析實務對資料的第一印象就是從繪製<strong>直方圖(Histograms)</strong>開始。</p>
+<p><strong>直方圖(Histograms)</strong>是製作方式最簡單且易懂的資料視覺化工具，主要用途是概覽等距尺度或比例尺度資料變項(例如 <a href="#sec-Descriptive-statistics"><span class="quarto-unresolved-ref">sec-Descriptive-statistics</span></a> 示範的afl.margins資料集)的分佈趨勢。同學們可能在某些課程或網路媒體見過用直方圖解釋的研究證據，現在要學會如何製作直方圖。製作方式是先設定變項數值分成數個<strong>間值(bins)</strong>，接著計算每個間值之間有多少資料落入。每個間值之間的資料個數稱為<em>次數(frequency)</em>或<em>密度(density)</em>，並繪製對應高度的長條就完成了。 <a href="#sec-Descriptive-statistics"><span class="quarto-unresolved-ref">sec-Descriptive-statistics</span></a> 的 <a href="#fig-fig4-2">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig4-2</span></a> 展示的直方圖最左邊的長條對應勝隊得分小於10分的場次總數，一共有33場。這份直方圖是用R語言套件製作的，超出本書的學習範圍，所以在此說明如何使用jamovi繪製接近該作品的直方圖。請開啟描述統計模組選單(<code>Exploration</code>-<code>Descriptives</code>)，將變項放到”Variable”視窗後展開最下方<code>plot</code>次選單，勾選<code>histogram</code>就會看到如 <a href="#fig-fig5-1">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-1</span></a> 的畫面。jamovi預設的直方圖y軸是密度，x軸是變項名稱。<strong>間值</strong>是jamovi自動指定，y值並不是顯示各間值之間的資料數目。雖然如此，這份直方圖已充分展示這筆資料變項的分佈形狀，你覺得這筆資料是常態分佈還是有偏態或峰度呢？分析實務對資料的第一印象就是從繪製<strong>直方圖(Histograms)</strong>開始。</p>
 <!---不像 @fig-fig4-2 有顯示 (使用R繪製次數直方圖才能放這句話)
 
 Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the simplest and most useful ways of visualising data. They make most sense when you have an interval or ratio scale variable (e.g., the afl.margins data from @sec-Descriptive-statistics and what you want to do is get an overall impression of the variable. Most of you probably know how histograms work, since they're so widely used, but for the sake of completeness I'll describe them. All you do is divide up the possible values into **bins** and then count the number of observations that fall within each bin. This count is referred to as the frequency or density of the bin and is displayed as a vertical bar. Ihe AFL winning margins data there are 33 games in which the winning margin was less than 10 points and it is this fact that is represented by the height of the leftmost bar that we showed earlier in @sec-Descriptive-statistics, @fig-fig4-2. With these earlier graphs we used an advanced plotting package in R which, for now, is beyond the capability of jamovi. But jamovi gets us close, and drawing this histogram in jamovi is pretty straightforward. Open up the 'plots' options under 'Exploration' - 'Descriptives' and click the 'histogram' check box, as in @fig-fig5-1. jamovi defaults to labelling the y-axis as 'density' and the x-axis with the variable name. The **bins** are selected automatically, and there is no scale, or count, information on the y-axis unlike the previous @fig-fig4-2. But this does not matter too much because after all what we are really interested in is our impression of the shape of the distribution: is it normally distributed or is there a skew or kurtosis? Our first impressions of these characteristics come from drawing a **histogram**.--->
@@ -448,19 +449,19 @@ Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the 
 <div class="cell-output-display">
 <div id="fig-fig5-2" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-2.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig5-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.2: 使用jamovi繪製直方圖示範畫面</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>值得一提jamovi有繪製”密度”曲線的功能。只要開啟”Histogram”選項之下的”Density“方塊，並取消勾選”Histogram”，就可以得到 <a href="#fig-fig5-3">Figure&nbsp;<span>5.3</span></a> 的作品。只要資料數值是連續的，密度曲線能將分佈趨勢視覺化。密度曲線是直方圖的變形，jamvoi採用<strong>kernel smoothing</strong>演算法繪製，原理是將資料中的雜訊平滑化，使得曲線看起來平滑。使用密度曲線判斷資料變項分佈趨勢，比直方圖更佳，因為曲線不受間值設定影響。如果這份資料只用4個間值繪製直方圖，看起來絕對和用20個間值繪製的直方圖不一樣。</p>
+<p>值得一提jamovi有繪製”密度”曲線的功能。只要開啟”Histogram”選項之下的”Density“方塊，並取消勾選”Histogram”，就可以得到 <a href="#fig-fig5-3">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-3</span></a> 的作品。只要資料數值是連續的，密度曲線能將分佈趨勢視覺化。密度曲線是直方圖的變形，jamvoi採用<strong>kernel smoothing</strong>演算法繪製，原理是將資料中的雜訊平滑化，使得曲線看起來平滑。使用密度曲線判斷資料變項分佈趨勢，比直方圖更佳，因為曲線不受間值設定影響。如果這份資料只用4個間值繪製直方圖，看起來絕對和用20個間值繪製的直方圖不一樣。</p>
 <!---One additional feature that jamovi provides is the ability to plot a 'Density' curve. You can do this by clicking the 'Density' check box under the 'Plots' options (and unchecking 'Histogram'), and this gives us the plot shown in @fig-fig5-3. A density plot visualises the distribution of data over a continuous interval or time period. This chart is a variation of a histogram that uses **kernel smoothing** to plot values, allowing for smoother distributions by smoothing out the noise. The peaks of a density plot help display where values are concentrated over the interval. An advantage density plots have over histograms is that they are better at determining the distribution shape because they're not affected by the number of bins used (each bar used in a typical histogram). A histogram comprising of only 4 bins wouldn't produce a distinguishable enough shape of distribution as a 20-bin histogram would. However, with density plots, this isn't an issue. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig5-3" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-3.png" class="img-fluid figure-img" width="356"></p>
+<p><img src="images/fig5-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.3: 用Jamovi繪製資料變項<code>afl.margins</code>的密度曲線。</figcaption><p></p>
 </figure>
 </div>
@@ -477,13 +478,13 @@ Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the 
 <div class="cell-output-display">
 <div id="fig-fig5-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-4.png" class="img-fluid figure-img" width="350"></p>
+<p><img src="images/fig5-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.4: 使用jamovi繪製<code>afl.margins</code>變項的箱形圖。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>了解如何用箱形圖解釋資料的最簡單方式，就是親手繪製一份。與繪製直方圖一樣的步驟，只是改成勾選”Box plot”，就會在jamovi報表介面得到如 <a href="#fig-fig5-4">Figure&nbsp;<span>5.4</span></a> 的成品。看著圖中的特徵，你能辨識出重要訊息：箱子中大的粗線是中位數；箱子的上下邊界距離是25%到75%的四分位數間距；箱子之外的”觸鬚”長度，只要不會超過“限制邊界”，就能延伸到資料的最小值及最大值。預設的限制邊界是四分位數間距的1.5倍，也就是說觸鬚向下延伸只能到25%的四分位數 減去1.5倍的四分位數間距，以及向上延伸最多到75%的四分位數加上1.5倍的四分位數間距。任何落在觸鬚或限制邊界之外的數值，一般稱為<strong>極端值(outlier)</strong>。<code>afl.margins</code>這筆變項有兩個極端值，因為上邊界值是107，試算表裡可以找出是第108行及第116行的數值。</p>
+<p>了解如何用箱形圖解釋資料的最簡單方式，就是親手繪製一份。與繪製直方圖一樣的步驟，只是改成勾選”Box plot”，就會在jamovi報表介面得到如 <a href="#fig-fig5-4">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-4</span></a> 的成品。看著圖中的特徵，你能辨識出重要訊息：箱子中大的粗線是中位數；箱子的上下邊界距離是25%到75%的四分位數間距；箱子之外的”觸鬚”長度，只要不會超過“限制邊界”，就能延伸到資料的最小值及最大值。預設的限制邊界是四分位數間距的1.5倍，也就是說觸鬚向下延伸只能到25%的四分位數 減去1.5倍的四分位數間距，以及向上延伸最多到75%的四分位數加上1.5倍的四分位數間距。任何落在觸鬚或限制邊界之外的數值，一般稱為<strong>極端值(outlier)</strong>。<code>afl.margins</code>這筆變項有兩個極端值，因為上邊界值是107，試算表裡可以找出是第108行及第116行的數值。</p>
 <!---The easiest way to describe what a boxplot looks like is just to draw one. Click on the 'Box plot' check box and you will get the plot shown on the lower right of @fig-fig5-4. jamovi has drawn the most basic boxplot possible. When you look at this plot this is how you should interpret it: the thick line in the middle of the box is the median; the box itself spans the range from the 25th percentile to the 75th percentile; and the "whiskers" go out to the most extreme data point that doesn't exceed a certain bound. By default, this value is 1.5 times the interquartile range (IQR), calculated as 25th percentile - (1.5\*IQR) for the lower boundary, and 75th percentile + (1.5\*IQR) for the upper boundary. Any observation whose value falls outside this range is plotted as a circle or dot instead of being covered by the whiskers, and is commonly referred to as an **outlier**. For our AFL margins data there are two observations that fall outside this range, and these observations are plotted as dots (the upper boundary is 107, and looking over the data column in the spreadsheet there are two observations with values higher than this, 108 and 116, so these are the dots). --->
 <section id="小提琴圖" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="小提琴圖"><span class="header-section-number">5.2.1</span> 小提琴圖</h3>
@@ -491,36 +492,36 @@ Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the 
 <div class="cell-output-display">
 <div id="fig-fig5-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-5.png" class="img-fluid figure-img" width="350"></p>
+<p><img src="images/fig5-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.5: 使用jamovi繪製<code>afl.margins</code>變項的小提琴圖，同時繪製資料點與箱形圖。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>小提琴圖(violin plot)是傳統箱形圖的變形。小提琴圖類似箱形圖，曲線代表每個數值在整筆資料的機率密度。通常小提琴圖都要同時呈現箱形圖的主要視覺標記，包括標記中位數的粗線，以及代表四分位數間距的箱子。用jamovi完成 <a href="#fig-fig5-5">Figure&nbsp;<span>5.5</span></a> 作品的繪製方法是只要將”Box plot”選項之下的”Violin”與”Data”都一起勾選。因為統計圖儘可能簡潔易懂，小提琴圖有太多視覺元素，原作者喜歡使用箱形圖比小提琴圖多一些。</p>
+<p>小提琴圖(violin plot)是傳統箱形圖的變形。小提琴圖類似箱形圖，曲線代表每個數值在整筆資料的機率密度。通常小提琴圖都要同時呈現箱形圖的主要視覺標記，包括標記中位數的粗線，以及代表四分位數間距的箱子。用jamovi完成 <a href="#fig-fig5-5">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-5</span></a> 作品的繪製方法是只要將”Box plot”選項之下的”Violin”與”Data”都一起勾選。因為統計圖儘可能簡潔易懂，小提琴圖有太多視覺元素，原作者喜歡使用箱形圖比小提琴圖多一些。</p>
 <!---A variation to the traditional box plot is the 小提琴圖(violin plot). Violin plots are similar to box plots except that they also show the kernel probability density of the data at different values. Typically, violin plots will include a marker for the median of the data and a box indicating the interquartile range, as in standard box plots. In jamovi you can achieve this sort of functionality by checking both the 'Violin' and the 'Box plot' check boxes. See @fig-fig5-5, which also has the 'Data' check box turned on to show the actual data points on the plot. This does tend to make the graph a bit too busy though, in my opinion. Clarity is simplicity, so in practice it might be better to just use a simple box plot. --->
 </section>
 <section id="使用多重箱形圖" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="使用多重箱形圖"><span class="header-section-number">5.2.2</span> 使用多重箱形圖</h3>
-<p>最後，如果我們需要繪製不只一個箱形圖要怎麼做呢？像是我們要將每一年AFL勝隊得分的資料都會成一份箱形圖。首先把能達到這個目的的資料匯入jamovi，請開啟示範資料庫的”AFL Margins By Year”這份檔案。這份檔案一共有4296場比賽紀錄，還有一個變項儲存年份。要用jamovi繪製每一年勝隊得分<code>margins</code>的箱形圖，請依照 <a href="#fig-fig5-6">Figure&nbsp;<span>5.6</span></a> 的示範，把變項<code>year</code>放到”Split by”視窗裡。</p>
+<p>最後，如果我們需要繪製不只一個箱形圖要怎麼做呢？像是我們要將每一年AFL勝隊得分的資料都會成一份箱形圖。首先把能達到這個目的的資料匯入jamovi，請開啟示範資料庫的”AFL Margins By Year”這份檔案。這份檔案一共有4296場比賽紀錄，還有一個變項儲存年份。要用jamovi繪製每一年勝隊得分<code>margins</code>的箱形圖，請依照 <a href="#fig-fig5-6">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-6</span></a> 的示範，把變項<code>year</code>放到”Split by”視窗裡。</p>
 <!---One last thing. What if you want to draw multiple boxplots at once? Suppose, for instance, I wanted separate boxplots showing the AFL margins not just for 2010 but for every year between 1987 and 2010. To do that the first thing we'll have to do is find the data. These are stored in the **aflmarginbyyear.csv** file. So let's load it into jamovi and see what is in it. You will see that it is a pretty big data set. It contains 4296 games and the variables that we're interested in. What we want to do is have jamovi draw boxplots for the margin variable, but plotted separately for each year. The way to do this is to move the year variable across into the 'Split by' box, as in @fig-fig5-6. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig5-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-6.png" class="img-fluid figure-img" width="811"></p>
+<p><img src="images/fig5-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.6: 使用”Split by”視窗的示範畫面。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>繪製成品如 <a href="#fig-fig5-7">Figure&nbsp;<span>5.7</span></a> 。由於每一年都有一份箱形圖，比直方圖更能讓我們看到逐年趨勢，而且不會被年份的連續性干擾解讀<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。如果這裡改成繪製24份直方圖，各位可以自行試試看容不容易解讀。</p>
+<p>繪製成品如 <a href="#fig-fig5-7">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-7</span></a> 。由於每一年都有一份箱形圖，比直方圖更能讓我們看到逐年趨勢，而且不會被年份的連續性干擾解讀<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。如果這裡改成繪製24份直方圖，各位可以自行試試看容不容易解讀。</p>
 <!---The result is shown in @fig-fig5-7. This version of the box plot, split by year, gives a sense of why it's sometimes useful to choose box plots instead of histograms. It's possible to get a good sense of what the data look like from year to year without getting overwhelmed with too much detail. Now imagine what would have happened if I'd tried to cram 24 histograms into this space: no chance at all that the reader is going to learn anything useful. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig5-7" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-7.png" class="img-fluid figure-img" width="1840"></p>
+<p><img src="images/fig5-7.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.7: 使用jamovi繪製多重箱形圖，每份箱形圖代表各年份的勝隊得分分佈。</figcaption><p></p>
 </figure>
 </div>
@@ -529,26 +530,26 @@ Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the 
 </section>
 <section id="sec-Using-box-plots-to-detect-outliers" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="sec-Using-box-plots-to-detect-outliers"><span class="header-section-number">5.2.3</span> 使用箱形圖辨認極端值</h3>
-<p>jamovi繪製箱形圖會自動標記超出限制邊界的資料點，實務上通常用繪製箱形圖偵測資料裡的<strong>極端值</strong>：泛指離多數資料遠得”可疑”的數值。我們用 <a href="#fig-fig5-8">Figure&nbsp;<span>5.8</span></a> 的AFL勝隊得分箱形圖裡的兩個資料點來說明為何應該懷疑極端值的存在：因為這兩場勝隊得分超過300分！實在太不尋常了<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。接著我們試著使用jamovi的功能，仔細檢視這兩場紀錄。只要勾選”Box Plot”選項時，一併啟動之下的”Label outliers”，jamovi就會在箱形圖標示極端值資料的在第幾列，讓我們能回到試算表介面看個仔細。另一種方式是使用jmaovi的過濾器(Filter)功能：按下主介面左下角的漏斗圖示，就會開啟如 <a href="#fig-fig5-9">Figure&nbsp;<span>5.9</span></a> Filter選單，接著比照該圖示範，在視窗裡輸入或複製貼上 ‘margin &gt; 300’。</p>
+<p>jamovi繪製箱形圖會自動標記超出限制邊界的資料點，實務上通常用繪製箱形圖偵測資料裡的<strong>極端值</strong>：泛指離多數資料遠得”可疑”的數值。我們用 <a href="#fig-fig5-8">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-8</span></a> 的AFL勝隊得分箱形圖裡的兩個資料點來說明為何應該懷疑極端值的存在：因為這兩場勝隊得分超過300分！實在太不尋常了<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。接著我們試著使用jamovi的功能，仔細檢視這兩場紀錄。只要勾選”Box Plot”選項時，一併啟動之下的”Label outliers”，jamovi就會在箱形圖標示極端值資料的在第幾列，讓我們能回到試算表介面看個仔細。另一種方式是使用jmaovi的過濾器(Filter)功能：按下主介面左下角的漏斗圖示，就會開啟如 <a href="#fig-fig5-9">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-9</span></a> Filter選單，接著比照該圖示範，在視窗裡輸入或複製貼上 ‘margin &gt; 300’。</p>
 <!---Because the boxplot automatically separates out those observations that lie outside a certain range, depicting them with a dot in jamovi, people often use them as an informal method for detecting **outliers**: observations that are "suspiciously" distant from the rest of the data. Here's an example. Suppose that I'd drawn the boxplot for the AFL margins data and it came up looking like @fig-fig5-8. It's pretty clear that something funny is going on with two of the observations. Apparently, there were two games in which the margin was over 300 points! That doesn't sound right to me. Now that I've become suspicious it's time to look a bit more closely at the data. In jamovi you can quickly find out which of these observations are suspicious and then you can go back to the raw data to see if there has been a mistake in data entry. One way to do this is to tell jamovi to label the outliers, by checking the box next to the Box plot check box. This adds a row number label next to the outlier in the boxplot, so you can go look at that row and find the extreme value. Another, more flexible way, is to set up a filter so that only those observations with values over a certain threshold are included. In our example, the threshold is over 300, so that is the filter we will create. First, click on the 'Filters' button at the top of the jamovi window, and then type 'margin \> 300' into the filter field, as in @fig-fig5-9. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig5-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-8.png" class="img-fluid figure-img" width="350"></p>
+<p><img src="images/fig5-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.8: 這份箱形圖顯示兩筆非常可疑的極端值！</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>過濾器啟動後，試算面介面最左邊會多一個欄位，欄位下的細格會標記有那些資料通過稍早設定的條件。這種方法能快速辨識極端值資料在那裡。更進一步還可以開啟jamovi描述統計選單的”Frequency table”，如同 <a href="#fig-fig5-10">Figure&nbsp;<span>5.10</span></a> 的示範。報表顯示超過300分的比賽紀錄是第14與第134場。這些資料探索能讓我們決定，是不是要回去看看資料檔案裡，這些不尋常的極端值到底是怎麼回事。</p>
+<p>過濾器啟動後，試算面介面最左邊會多一個欄位，欄位下的細格會標記有那些資料通過稍早設定的條件。這種方法能快速辨識極端值資料在那裡。更進一步還可以開啟jamovi描述統計選單的”Frequency table”，如同 <a href="#fig-fig5-10">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-10</span></a> 的示範。報表顯示超過300分的比賽紀錄是第14與第134場。這些資料探索能讓我們決定，是不是要回去看看資料檔案裡，這些不尋常的極端值到底是怎麼回事。</p>
 
 <!---This filter creates a new column in the spreadsheet view where only those observations that pass the filter are included. One neat way to quickly identify which observations these are is to tell jamovi to produce a 'Frequency table' (in the 'Exploration' - 'Descriptives' window) for the ID variable (which must be a nominal variable otherwise the Frequency table is not produced). In @fig-fig5-10 you can see that the ID values for the observations where the margin was over 300 are 14 and 134. These are suspicious cases, or observations, where you should go back to the original data source to find out what is going on. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig5-9" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-9.png" class="img-fluid figure-img" width="852"></p>
+<p><img src="images/fig5-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.9: jamovi Filter視窗操作示範畫面</figcaption><p></p>
 </figure>
 </div>
@@ -558,14 +559,14 @@ Let's begin with the humble **histogram**. 直方圖(Histograms) are one of the 
 <div class="cell-output-display">
 <div id="fig-fig5-10" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-10.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig5-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.10: 以次數表展示兩筆極端值ID ~ 176與202。</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>通常造常極端值的問題是登打紀錄的人手誤。雖然這是個不細心而犯的錯，但是這種事情在統計實務層出不窮。真實世界的各種資料充滿這類錯誤，尤其是透過人工輸入電腦的資料。其實實務上有個專有名詞叫「資料清理」：泛指在正式進行資料分析前，找出錯誤或可疑數值的一切工作。找出並清理原始資料裡一切輸入錯誤、遺漏值、或者各種希奇古怪問題的工作都是資料清理的項目。</p>
-<p>至於比較沒那麼極端，但是在箱形圖裡被標為極端值的資料，要不要納入分析或排除這些數值，全看你要如何看待這筆資料，以及利用這筆資料的想法。上統計課就是自我訓練判斷如何運用這類資料的能力。若是你認為這些極端值應該納入分析，就保留它們。到了 <a href="10-Correlation-and-linear-regression.html#sec-Model-checking"><span>Section&nbsp;10.10</span></a> 我們會繼續學習更多判斷極端值要不要保留的策略。</p>
+<p>至於比較沒那麼極端，但是在箱形圖裡被標為極端值的資料，要不要納入分析或排除這些數值，全看你要如何看待這筆資料，以及利用這筆資料的想法。上統計課就是自我訓練判斷如何運用這類資料的能力。若是你認為這些極端值應該納入分析，就保留它們。到了 <a href="#sec-Model-checking"><span class="quarto-unresolved-ref">sec-Model-checking</span></a> 我們會繼續學習更多判斷極端值要不要保留的策略。</p>
 <!---Usually you find that someone has just typed in the wrong number. Whilst this might seem like a silly example, I should stress that this kind of thing actually happens a lot. Real world data sets are often riddled with stupid errors, especially when someone had to type something into a computer at some point. In fact, there's actually a name for this phase of data analysis and in practice it can take up a huge chunk of our time: data cleaning. It involves searching for typing mistakes ("typos"), missing data and all sorts of other obnoxious errors in raw data files.
 
 For less extreme values, even if they are flagged in a a boxplot as outliers, the decision about whether to include outliers or exclude them in any analysis depends heavily on why you think the data look they way they do and what you want to use the data for. You really need to exercise good judgement here. If the outlier looks legitimate to you, then keep it. In any case, I'll return to the topic again in @sec-Model-checking in @sec-Correlation-and-linear-regression. --->
@@ -573,11 +574,11 @@ For less extreme values, even if they are flagged in a a boxplot as outliers, th
 </section>
 <section id="sec-Bar-graphs" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="sec-Bar-graphs"><span class="header-section-number">5.3</span> 柱狀圖</h2>
-<p><strong>柱狀圖(bar graph)</strong>也是同學們常見到的資料視覺化作品，主要用來展示名義尺度變項的分佈趨勢。我們用 <a href="04-Descriptive-statistics.html#sec-Mode"><span>Section&nbsp;4.1.6</span></a> 這一節示範<strong>眾數</strong>的資料變項<code>afl.finalists</code>，來示範如何繪製。只要將出現在變項裡的隊名擺在x軸，再將每一隊打入季後賽的次數繪製成對應高度的柱子就完成了。這筆資料有很多隊伍，我們只抓四支隊伍做個示範，他們是Brisbane, Carlton, Fremantle 以及 Richmond。請同學先點選主介面左下角的漏斗圖示，開啟jamovi的<code>Filters</code>功能選單，複製下列視窗內的所有文字與符號(點一下視窗右側的圖示即可複製)，再貼到<code>Filters</code>選單對話視窗的”=“之後，關閉選單即可生效<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。</p>
-<div class="cell">
+<p><strong>柱狀圖(bar graph)</strong>也是同學們常見到的資料視覺化作品，主要用來展示名義尺度變項的分佈趨勢。我們用 <a href="#sec-Mode"><span class="quarto-unresolved-ref">sec-Mode</span></a> 這一節示範<strong>眾數</strong>的資料變項<code>afl.finalists</code>，來示範如何繪製。只要將出現在變項裡的隊名擺在x軸，再將每一隊打入季後賽的次數繪製成對應高度的柱子就完成了。這筆資料有很多隊伍，我們只抓四支隊伍做個示範，他們是Brisbane, Carlton, Fremantle 以及 Richmond。請同學先點選主介面左下角的漏斗圖示，開啟jamovi的<code>Filters</code>功能選單，複製下列視窗內的所有文字與符號(點一下視窗右側的圖示即可複製)，再貼到<code>Filters</code>選單對話視窗的”=“之後，關閉選單即可生效<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。</p>
+<div class="cell" data-layout-align="left">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>afl.finalists <span class="sc">==</span> <span class="st">'Brisbane'</span> or afl.finalists <span class="sc">==</span> <span class="st">'Carlton'</span> or afl.finalists <span class="sc">==</span> <span class="st">'Fremantle'</span> or afl.finalists <span class="sc">==</span> <span class="st">'Richmond'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>在試算表介面你會看到有的數值被反白，代表該項資料已經被過濾了。接著照舊開啟描述統計模組選單，這次勾選<code>Bar plot</code>選項(請記得變項要放到Variables視窗)，就會看到如 <a href="#fig-fig5-11">Figure&nbsp;<span>5.11</span></a> 的柱狀圖成品。</p>
+<p>在試算表介面你會看到有的數值被反白，代表該項資料已經被過濾了。接著照舊開啟描述統計模組選單，這次勾選<code>Bar plot</code>選項(請記得變項要放到Variables視窗)，就會看到如 <a href="#fig-fig5-11">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig5-11</span></a> 的柱狀圖成品。</p>
 <!---Another form of graph that you often want to plot is the **柱狀圖(bar graph)**. Let's use the afl.finalists data set with the afl.finalists variable that I introduced in @sec-Mode. What I want to do is draw a bar graph that displays the number of finals that each team has played in over the time spanned by the afl.finalists data set. There are lots of teams, but I am particularly interested in just four: Brisbane, Carlton, Fremantle and Richmond. So the first step is to set up a filter so just those four teams are included in the bar graph. This is straightforward in jamovi and you can do it by using the 'Filters' function that we used previously. Open up the 'Filters' screen and type in the following:
 
 afl.finalists $==$ 'Brisbane' or afl.finalists $==$ 'Carlton' or afl.finalists $==$ 'Fremantle' or afl.finalists $==$ 'Richmond' [^drawing-graphs-2]
@@ -589,7 +590,7 @@ When you have done this you will see, in the 'Data' view, that jamovi has filter
 <div class="cell-output-display">
 <div id="fig-fig5-11" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig5-11.png" class="img-fluid figure-img" width="1054"></p>
+<p><img src="images/fig5-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5.11: 只抓四支AFL球隊資料繪製的柱狀圖示範畫面。</figcaption><p></p>
 </figure>
 </div>
@@ -608,7 +609,7 @@ When you have done this you will see, in the 'Data' view, that jamovi has filter
 <li><em>常用統計圖</em>. 本章重點介紹與示範最基本的統計圖，包括<a href="05-Drawing-graphs.html#sec-Histograms">直方圖</a>, <a href="05-Drawing-graphs.html#箱型圖">箱型圖</a> 以及 <a href="05-Drawing-graphs.html#sec-Bar-graphs">柱狀圖</a></li>
 <li><a href="05-Drawing-graphs.html#匯出統計圖">匯出統計圖</a> 完成統計圖後，別忘了匯出到你的正式報告裡。</li>
 </ul>
-<p>最後提醒一點。jamovi(還有大多數套裝軟體)輸出的統計圖都是最基本的樣式，不一定符合報告呈現的需要。如果有心製作報告需要的統計圖，建議學習使用R語言及製作統計圖的套件。最多R語言使用者喜歡用<a href="https://ggplot2.tidyverse.org/">ggplot2</a>，有許多參考資源可以拿來自我學習及參照<span class="citation" data-cites="Wilkinson2006">(例如 <a href="References.html#ref-Wilkinson2006" role="doc-biblioref">Wilkinson et al., 2006</a>)</span>。不過如果你還是統計初學者，你需要先花些時間掌握R語法。本書不會談到R語言，當你認為有必要使用時，可以運用本書的範例，做為學習R的入門資源(<strong>請記得jamovi有R程式碼模式</strong>)。</p>
+<p>最後提醒一點。jamovi(還有大多數套裝軟體)輸出的統計圖都是最基本的樣式，不一定符合報告呈現的需要。如果有心製作報告需要的統計圖，建議學習使用R語言及製作統計圖的套件。最多R語言使用者喜歡用<a href="https://ggplot2.tidyverse.org/">ggplot2</a>，有許多參考資源可以拿來自我學習及參照<span class="citation" data-cites="Wilkinson2006">(例如 <a href="#ref-Wilkinson2006" role="doc-biblioref">Wilkinson et al., 2006</a>)</span>。不過如果你還是統計初學者，你需要先花些時間掌握R語法。本書不會談到R語言，當你認為有必要使用時，可以運用本書的範例，做為學習R的入門資源(<strong>請記得jamovi有R程式碼模式</strong>)。</p>
 <!---Perhaps I'm a simple minded person, but I love pictures. Every time I write a new scientific paper one of the first things I do is sit down and think about what the pictures will be. In my head an article is really just a sequence of pictures linked together by a story. All the rest of it is just window dressing. What I'm really trying to say here is that the human visual system is a very powerful data analysis tool. Give it the right kind of information and it will supply a human reader with a massive amount of knowledge very quickly. Not for nothing do we have the saying "a picture is worth a thousand words". With that in mind, I think that this is one of the most important chapters in the book. The topics covered were:
 
 -   *Common plots*. Much of the chapter was focused on standard graphs that statisticians like to produce: [Histograms], [Boxplots] and [Bar graphs]
@@ -619,7 +620,7 @@ target="_blank">https://ggplot2.tidyverse.org/</a>), which is loosely based on "
 <hr>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-Wilkinson2006" class="csl-entry" role="doc-biblioentry">
 Wilkinson, L., Wills, D., Rope, D., Norton, A., &amp; Dubbs, R. (2006). <em>The grammar of graphics</em>. Springer.
 </div>
@@ -631,7 +632,7 @@ Wilkinson, L., Wills, D., Rope, D., Norton, A., &amp; Dubbs, R. (2006). <em>The 
 <li id="fn1"><p>The origin of this quote is Tufte’s lovely book <em>The Visual Display of Quantitative Information.</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>譯註~此處不照原文翻譯，是希望讀者回想<a href="02-A-brief-introduction-to-research-design.html#連續與間斷變項">2.2.5 連續與間斷變項</a>談到的測量尺度與變項型態切換關係。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>這兩筆資料是被刻意輸入以便說明示範，並非原始資料裡的數值。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>連續兩個等號 “<span class="math inline">\(==\)</span>” 表示符號兩邊的數值相等。在 <a href="06-Pragmatic-matters.html"><span>Chapter&nbsp;6</span></a> 有進一步說明。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>連續兩個等號 “<span class="math inline">\(==\)</span>” 表示符號兩邊的數值相等。在 <a href="#sec-Pragmatic-matters"><span class="quarto-unresolved-ref">sec-Pragmatic-matters</span></a> 有進一步說明。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

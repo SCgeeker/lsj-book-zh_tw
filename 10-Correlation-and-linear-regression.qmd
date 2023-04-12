@@ -13,14 +13,14 @@ source("header.R")
 
 ## 相關
 
-這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的**相關**。首先，讓我們看一下列在 @tbl-tab12-1 的本章示範資料描述統計。
+這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的**相關**。首先，讓我們看一下列在 @tbl-tab10-1 的本章示範資料描述統計。
 
-<!---In this section we'll talk about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the **correlation** between variables. But first, we need some data (@tbl-tab12-1). --->
+<!---In this section we'll talk about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the **correlation** between variables. But first, we need some data (@tbl-tab10-1). --->
 
 ### 示範資料
 
 ```{r}
-#| label: tbl-tab12-1
+#| label: tbl-tab10-1
 #| tbl-cap: 相關分析的示範資料資訊，原作者照顧新生兒百日紀錄的描述統計。
 # Data for correlation analysis - descriptive statistics for the parenthood data
 #huxtabs[[12]][[1]] 
@@ -37,15 +37,21 @@ data.frame(
   kable_paper(full_width = T)
 ```
 
+讓我們從一個與每個新生兒父母都息息相關的主題談起：睡眠。這裡使用的資料集是虛構的，但是來自本人(原作者)的真實經驗：我想知道我那剛出生的兒子的睡眠習慣對我個人的情緒有多大影響。假想我可以非常精確地評估我的沮喪分數，評分從0分（一點都不沮喪）到100分（像一個非常非常沮喪的老頭子），還有我每天都有測量我的沮喪分數、我的睡眠習慣和我兒子的睡眠習慣持續是100天。身為一位數位時代的書呆子，我把資料保存在一個名為parenthood.csv的檔案。匯入jamovi，我們可以看到四個變項：dani.sleep，baby.sleep，dani.grump和day。請注意，當您首次打開這份檔案，jamovi可能無法正確猜測每個變項的資料類型，同學可以自行修正：dani.sleep，baby.sleep，dani.grump和day都可以被指定為連續變項，而ID是一個名義且為整數的變項。[^correlation-and-linear-regression-1]
 
+[^correlation-and-linear-regression-1]: 在2.0版之後的 jamovi 你也可以指定 "ID" 的專屬變項類型，但是對於分析資料的目的來說，指定 ID 的變項性質並不重要，因為我們不會將其包含在任何分析中。
 
-Let's turn to a topic close to every parent's heart: sleep. The data set we'll use is fictitious, but based on real events. Suppose I'm curious to find out how much my infant son's sleeping habits affect my mood. Let's say that I can rate my grumpiness very precisely, on a scale from 0 (not at all grumpy) to $100$ (grumpy as a very, very grumpy old man or woman). And lets also assume that I've been measuring my grumpiness, my sleeping patterns and my son's sleeping patterns for quite some time now. Let's say, for $100$ days. And, being a nerd, I've saved the data as a file called parenthood.csv. If we load the data we can see that the file contains four variables dani.sleep, baby.sleep, dani.grump and day. Note that when you first load this data set jamovi may not have guessed the data type for each variable correctly, in which case you should fix it: dani.sleep, baby.sleep, dani.grump and day can be specified as continuous variables, and ID is a nominal(integer) variable.[^correlation-and-linear-regression-1]
+接著我會看一下一些基本的描述性統計數據，並且三個我有興趣的變項視覺化，也就是 @fig-fig10-1 展示的直方圖。需要注意的是，不要因為jamovi可以一次計算幾十種不同的統計數據，你就要報告所有數據。如果我要以此結果撰寫報告，我會挑出那些我自己以及我的讀者最感興趣的統計數據，然後將它們放入像 @tbl-tab10-1 這樣的簡潔的表格裡。[^correlation-and-linear-regression-2] 需要注意的是，當我將數據放入表格時，我給了每個變項一個“高可讀性”的名稱。這是很好的做法。另外，請注意這一百天我都沒有睡飽，這不是好的習慣，不過其他帶過小孩的父母告訴我，這是很正常的事情。
+
+[^correlation-and-linear-regression-2]: 即使是表格中的資訊對某些人來說已經足夠了，但在實務上，大多數人只需要報告一個集中量數和一個變異量數就可以了。
+
+<!---Let's turn to a topic close to every parent's heart: sleep. The data set we'll use is fictitious, but based on real events. Suppose I'm curious to find out how much my infant son's sleeping habits affect my mood. Let's say that I can rate my grumpiness very precisely, on a scale from 0 (not at all grumpy) to $100$ (grumpy as a very, very grumpy old man or woman). And lets also assume that I've been measuring my grumpiness, my sleeping patterns and my son's sleeping patterns for quite some time now. Let's say, for $100$ days. And, being a nerd, I've saved the data as a file called parenthood.csv. If we load the data we can see that the file contains four variables dani.sleep, baby.sleep, dani.grump and day. Note that when you first load this data set jamovi may not have guessed the data type for each variable correctly, in which case you should fix it: dani.sleep, baby.sleep, dani.grump and day can be specified as continuous variables, and ID is a nominal(integer) variable.[^correlation-and-linear-regression-1] 
 
 [^correlation-and-linear-regression-1]: I've noticed that in jamovi you can also specify an 'ID' variable type, but for our purposes it does not matter how we specify the ID variable as we won't be including it in any analyses.
 
 Next, I'll take a look at some basic descriptive statistics and, to give a graphical depiction of what each of the three interesting variables looks like, @fig-fig10-1 plots histograms. One thing to note: just because jamovi can calculate dozens of different statistics doesn't mean you should report all of them. If I were writing this up for a report, I'd probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table 12.1.[^correlation-and-linear-regression-2] Notice that when I put it into a table, I gave everything "human readable" names. This is always good practice. Notice also that I'm not getting enough sleep. This isn't good practice, but other parents tell me that it's pretty standard.
 
-[^correlation-and-linear-regression-2]: Actually, even that table is more than I'd bother with. In practice most people pick one measure of central tendency, and one measure of variability only.
+[^correlation-and-linear-regression-2]: Actually, even that table is more than I'd bother with. In practice most people pick one measure of central tendency, and one measure of variability only.--->
 
 ```{r}
 #| label: fig-fig10-1
@@ -58,7 +64,9 @@ knitr::include_graphics("images/fig12-1.png")
 
 ### 相關的強度與方向
 
-We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig10-1), left) with that between baby.sleep and dani.grump (@fig-fig10-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept.
+我們可以繪製散佈圖，讓我們能俯瞰兩個變項之間的相關性。雖 然在理想情況下，我們希望能多看到一些資訊。例如，讓我們比較dani.sleep和dani.grump之間的關係（ fig-fig10-2 ，左）與baby.sleep和dani.grump之間的關係（ fig-fig10-2 ，右）。當我們並排比較這兩份散佈圖，這兩種情況的關係很明顯是同質的：我或者我兒子的睡眠時間越長，我的情緒就越好！不過很明顯的是，dani.sleep和dani.grump之間的關係比baby.sleep和dani.grump之間的關係更強：左圖比右圖更加*整齊*。直覺來看，如果你想預測我的情緒，知道我兒子睡了多少個小時會有點幫助，但是知道我睡了多少個小時會更有幫助。
+
+<!---We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig10-1), left) with that between baby.sleep and dani.grump (@fig-fig10-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept. --->
 
 ```{r}
 #| label: fig-fig10-2
@@ -69,7 +77,9 @@ We can draw scatterplots to give us a general sense of how closely related two v
 knitr::include_graphics("images/fig12-2.png")
 ```
 
-In contrast, let's consider the two scatterplots shown in @fig-fig10-3. If we compare the scatterplot of "baby.sleep v dani.grump" (left) to the scatterplot of "'baby.sleep v dani.sleep" (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side).
+相反地， @fig-fig10-3 的另外兩個散佈圖告訴我們另一個角度的故事。比較“baby.sleep 與 dani.grump”的散佈圖（左）和“baby.sleep 與 dani.sleep”的散佈圖（右），變項之間的整體關係強度相同，但是方向不同。也就是說，如果我的兒子睡得較長，我也會睡得更多（正相關，右圖），但是他如果睡得更多，我就不會那麼沮喪（負相關，左圖）。 
+
+<!---In contrast, let's consider the two scatterplots shown in @fig-fig10-3. If we compare the scatterplot of "baby.sleep v dani.grump" (left) to the scatterplot of "'baby.sleep v dani.sleep" (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side). --->
 
 ```{r}
 #| label: fig-fig10-3
@@ -82,11 +92,17 @@ knitr::include_graphics("images/fig12-3.png")
 
 ### 相關係數
 
-We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig10-4, you can see several plots showing what different correlations look like.
+現在我要正式介紹 **相關係數(correlation coefficient)** ，來更明確地說明上述的概念（更具體地說，是介紹皮爾森相關係數），慣例書寫符號是 $r$。在下一節，我將更精確地定義兩個變項 $X$ 和 $Y$ 之間的相關係數 $r_{XY}$，值域涵蓋-1到1。當$r = -1$時，表示我們有一個完全的負相關；當$r = 1$時，表示我們有一個完全的正相關；當$r = 0$時，表示完全沒有關係。 @fig-fig10-4 展示幾種不同相關性的散佈圖。
+
+[其他技術細節 [^correlation-and-linear-regression-3]]
+
+[^correlation-and-linear-regression-3]: Pearson相關係數的公式可以用幾種不同的方式來表示。最簡單的方式是將公式分為兩個步驟。首先，讓我們介紹**共變異數（covariance）**的概念。兩個變量$X$和$Y$的協方差是變異數概念的一般化，是一種數學上簡單描述兩個變量之間關係的方式，但對人類來說並不太有信息量: $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ 由於我們要乘以一個與$X$有關的量和一個與$Y$有關的量，然後再取平均值，因此你可以將協方差的公式視為$X$和$Y$之間的“平均交叉乘積”。協方差具有很好的性質，如果$X$和$Y$之間完全沒有關係，那麼協方差就是零。如果它們之間的關係是正向的（如@fig-fig10-4所示），則協方差也是正的，如果關係是負的，則協方差也是負的。換句話說，協方差捕捉到了相關性的基本定性概念。不幸的是，協方差的原始大小並不容易解釋，因為它取決於$X$和$Y$所表達的單位，而且更糟糕的是，協方差本身所表達的單位非常奇怪。例如，如果$X$是dani.sleep變量（單位：小時）而$Y$是dani.grump變量（單位：壞脾氣），那麼協方差的單位是$hours \times grumps$。我甚至不知道那是什麼意思。Pearson相關係數r解決了這個解釋問題，方法與z分數標準化原始分數的方式非常相似，通過除以標準差進行標準化。但是，由於我們有兩個變量對協方差作出貢獻，所以只有當我們將標準差除以兩個變量。由於有兩個變數影響到共變異數，因此標準化只能在除以兩個變數的標準差時有效。換句話說，兩個變數$X$和$Y$的相關係數可以寫成以下的公式：$$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ 和變異數、標準差一樣，實際上我們在計算時除以的是 $N-1$ 而不是 $N$。<br /> $^b$ 這是一個過於簡化的說法，但對於我們的目的而言已足夠。
+
+<!--- We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig10-4, you can see several plots showing what different correlations look like.
 
 [Additional technical detail [^correlation-and-linear-regression-3]]
 
-[^correlation-and-linear-regression-3]: The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ Because we're multiplying (i.e., taking the "product" of) a quantity that depends on X by a quantity that depends on Y and then averaging$^a$, you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in @fig-fig10-4 then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret as it depends on the units in which $X$ and $Y$ are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the dani.sleep variable (units: hours) and $Y$ refers to the dani.grump variable (units: grumps), then the units for their covariance are $hours \times grumps$. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.$^b$ In other words, the correlation between $X$ and $Y$ can be written as follows: $$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ Just like we saw with the variance and the standard deviation, in practice we divide by $N - 1$ rather than $N$. <br /> $^b$ This is an oversimplification, but it'll do for our purposes. 
+[^correlation-and-linear-regression-3]: The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ Because we're multiplying (i.e., taking the "product" of) a quantity that depends on X by a quantity that depends on Y and then averaging$^a$, you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in @fig-fig10-4 then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret as it depends on the units in which $X$ and $Y$ are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the dani.sleep variable (units: hours) and $Y$ refers to the dani.grump variable (units: grumps), then the units for their covariance are $hours \times grumps$. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.$^b$ In other words, the correlation between $X$ and $Y$ can be written as follows: $$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ Just like we saw with the variance and the standard deviation, in practice we divide by $N - 1$ rather than $N$. <br /> $^b$ This is an oversimplification, but it'll do for our purposes.  --->
   
   
 ```{r}
@@ -98,11 +114,15 @@ We can make these ideas a bit more explicit by introducing the idea of a **相�
 knitr::include_graphics("images/fig12-4.png")
 ```
 
-By standardising the covariance, not only do we keep all of the nice properties of the covariance discussed earlier, but the actual values of r are on a meaningful scale: r = 1 implies a perfect positive relationship and $r = -1$ implies a perfect negative relationship. I'll expand a little more on this point later, in the section on [Interpreting a correlation]. But before I do, let's look at how to calculate correlations in jamovi.
+通過標準化協方差，我們不僅保留了前面討論過的協方差的所有優點，而且r的實際值是有意義的: r = 1意味著完美的正相關，$r = -1$意味著完美的負相關。稍後我會在[解讀相關係數](10-Correlation-and-linear-regression.html#sec-interpreting-a-correlation)一節中更詳細地談論這一點。但在此之前，讓我們看一下如何在jamovi中計算相關性。
+
+<!---By standardising the covariance, not only do we keep all of the nice properties of the covariance discussed earlier, but the actual values of r are on a meaningful scale: r = 1 implies a perfect positive relationship and $r = -1$ implies a perfect negative relationship. I'll expand a little more on this point later, in the section on [Interpreting a correlation]( @sec-interpreting-a-correlation ). But before I do, let's look at how to calculate correlations in jamovi. --->
 
 ### 相關係數計算實務
 
-Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig10-5.
+只要在jamovi'迴歸'模組選單，選點要計算的相關係數，就能計算所有納入變項對話框裡的變項之間相關係數，如同 @fig-fig10-5 的示範，未出錯的話，報表會輸出'相關矩陣'。
+
+<!---Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig10-5. --->
 
 ```{r}
 #| label: fig-fig10-5
@@ -113,12 +133,12 @@ Calculating correlations in jamovi can be done by clicking on the 'Regression' -
 knitr::include_graphics("images/fig12-5.png")
 ```
 
-### 解讀相關係數
+### 解讀相關係數 {#sec-interpreting-a-correlation}
 
-Naturally, in real life you don't see many correlations of $1$. So how should you interpret a correlation of, say, r = $.4$? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than $.95$ is completely useless (I think he was exaggerating, even for engineering). On the other hand, there are real cases, even in psychology, where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can't achieve a correlation of at least $.9$ really isn't deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above $.3$ you're doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in @tbl-tab12-2 is pretty typical.
+Naturally, in real life you don't see many correlations of $1$. So how should you interpret a correlation of, say, r = $.4$? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than $.95$ is completely useless (I think he was exaggerating, even for engineering). On the other hand, there are real cases, even in psychology, where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can't achieve a correlation of at least $.9$ really isn't deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above $.3$ you're doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in @tbl-tab10-2 is pretty typical.
 
 ```{r}
-#| label: tbl-tab12-2
+#| label: tbl-tab10-2
 #| tbl-cap: 解讀相關係數的**粗略**指南。強調**粗略**是因為沒有真正的快速解讀指引，相關係數的真正意義取決於資料分析的問題背景。
 #A rough guide to interpreting correlations. Note that I say a rough guide. There aren't hard and fast rules for what counts as strong or weak relationships. It depends on the context.
 #huxtabs[[12]][[2]] 
@@ -165,10 +185,10 @@ knitr::include_graphics("images/fig12-7.png")
 
 How should we address this? Actually, it's really easy. If we're looking for ordinal relationships all we have to do is treat the data as if it were ordinal scale! So, instead of measuring effort in terms of "hours worked", lets rank all $10$ of our students in order of hours worked. That is, student $1$ did the least work out of anyone ($2$ hours) so they get the lowest rank (rank = $1$). Student $4$ was the next laziest, putting in only $6$ hours of work over the whole semester, so they get the next lowest rank (rank = $2$). Notice that I'm using "rank =1" to mean "low rank". Sometimes in everyday language we talk about "rank = $1$" to mean "top rank" rather than "bottom rank". So be careful, you can rank "from smallest value to largest value" (i.e., small equals rank $1$) or you can rank "from largest value to smallest value" (i.e., large equals rank 1). In this case, I'm ranking from smallest to largest, but as it's really easy to forget which way you set things up you have to put a bit of effort into remembering!
 
-Okay, so let's have a look at our students when we rank them from worst to best in terms of effort and reward @tbl-tab12-3.
+Okay, so let's have a look at our students when we rank them from worst to best in terms of effort and reward @tbl-tab10-3.
 
 ```{r}
-#| label: tbl-tab12-3
+#| label: tbl-tab10-3
 #| tbl-cap: 十位學生的工作時間與得分數值次序
 #Students ranked in terms of effort and reward
 #huxtabs[[12]][[3]] 
@@ -211,7 +231,7 @@ The second way do to it is to use one of the jamovi add-on modules. This module 
 knitr::include_graphics("images/fig12-9.png")  
 ```
 
-### 更多探討散佈圖的方案
+### 更多解讀散佈圖的方法
 
 Often you will want to look at the relationships between several variables at once, using a **scatterplot matrix** (in jamovi via the 'Correlation Matrix' - 'Plot' command). Just add another variable, for example baby.sleep to the list of variables to be correlated, and jamovi will create a scatterplot matrix for you, just like the one in @fig-fig10-10.
 
@@ -316,10 +336,10 @@ As before, $\epsilon_i$ is the residual associated with the i-th observation, $\
 
 ### jamovi實務示範
 
-Multiple regression in jamovi is no different to simple regression. All we have to do is add additional variables to the 'Covariates' box in jamovi. For example, if we want to use both dani.sleep and baby.sleep as predictors in our attempt to explain why I'm so grumpy, then move baby.sleep across into the 'Covariates' box alongside dani.sleep. By default, jamovi assumes that the model should include an intercept. The coefficients we get this time are shown in @tbl-tab12-4.
+Multiple regression in jamovi is no different to simple regression. All we have to do is add additional variables to the 'Covariates' box in jamovi. For example, if we want to use both dani.sleep and baby.sleep as predictors in our attempt to explain why I'm so grumpy, then move baby.sleep across into the 'Covariates' box alongside dani.sleep. By default, jamovi assumes that the model should include an intercept. The coefficients we get this time are shown in @tbl-tab10-4.
 
 ```{r}
-#| label: tbl-tab12-4
+#| label: tbl-tab10-4
 #| tbl-cap: 增加預測變項迴歸係數的示 
 #Adding multiple variables as predictors in a regression
 #huxtabs[[12]][[4]] 
@@ -409,7 +429,7 @@ We'll see much more of the F statistic in @sec-Comparing-several-means-one-way-A
 
 ### Tests for individual coefficients
 
-The F-test that we've just introduced is useful for checking that the model as a whole is performing better than chance. If your regression model doesn't produce a significant result for the F-test then you probably don't have a very good regression model (or, quite possibly, you don't have very good data). However, while failing this test is a pretty strong indicator that the model has problems, passing the test (i.e., rejecting the null) doesn't imply that the model is good! Why is that, you might be wondering? The answer to that can be found by looking at the coefficients for the [Multiple linear regression] model we have already looked at (@tbl-tab12-4)
+The F-test that we've just introduced is useful for checking that the model as a whole is performing better than chance. If your regression model doesn't produce a significant result for the F-test then you probably don't have a very good regression model (or, quite possibly, you don't have very good data). However, while failing this test is a pretty strong indicator that the model has problems, passing the test (i.e., rejecting the null) doesn't imply that the model is good! Why is that, you might be wondering? The answer to that can be found by looking at the coefficients for the [Multiple linear regression] model we have already looked at (@tbl-tab10-4)
 
 I can't help but notice that the estimated regression coefficient for the baby.sleep variable is tiny ($0.01$), relative to the value that we get for dani.sleep ($-8.95$). Given that these two variables are absolutely on the same scale (they're both measured in "hours slept"), I find this illuminating. In fact, I'm beginning to suspect that it's really only the amount of sleep that I get that matters in order to predict my grumpiness. We can re-use a hypothesis test that we discussed earlier, the t-test. The test that we're interested in has a null hypothesis that the true regression coefficient is zero ($b = 0$), which is to be tested against the alternative hypothesis that it isn't ($b \neq 0$). That is:
 
