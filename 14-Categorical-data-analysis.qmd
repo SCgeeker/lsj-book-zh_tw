@@ -671,7 +671,7 @@ And you're done. This seems to be a fairly popular measure, presumably because i
 
 所有統計檢驗都有一定的假設，通常檢查這些假設是否符合是一個好主意。對於本章迄今為止討論的卡方檢驗，其假設包括：
 
-- *期望頻率足夠大*。還記得我們在上一節看到的 $\chi^2$ 抽樣分佈是如何產生的嗎？因為二項分佈非常類似於正態分佈，正如我們在 @sec-Introduction-to-probability 中討論的那樣，這只有在觀察次數足夠多的情況下才成立。實際上，這意味著所有的期望頻率都需要相對較大。什麼是合理的大小？意見不一，但默認的假設似乎是你通常希望看到所有的期望頻率都大於大約5，儘管對於更大的表格，如果至少80%的期望頻率在5以上，並且沒有一個低於1，那可能還可以。然而，從我所能發現的資料（例如，@Cochran1954）來看，這些似乎是作為粗略指導原則提出的，而不是硬性規定，而且它們似乎有些保守 [@Larntz1978]。
+- *期望頻率足夠大*。還記得我們在上一節看到的 $\chi^2$ 抽樣分佈是如何產生的嗎？因為二項分佈非常類似於正態分佈，正如我們在 @sec-Introduction-to-probability 中討論的那樣，這只有在觀察次數足夠多的情況下才成立。實際上，這意味著所有的期望頻率都需要相對較大。什麼是合理的大小？意見不一，但默認的假設似乎是你通常希望看到所有的期望頻率都大於大約5，儘管對於更大的表格，如果至少80%的期望頻率在5以上，並且沒有一個低於1，那可能還可以。然而，從我所能發現的資料（例如， @Cochran1954 ）來看，這些似乎是作為粗略指導原則提出的，而不是硬性規定，而且它們似乎有些保守 [@Larntz1978]。
 - *數據彼此獨立*。卡方檢驗的一個稍微隱藏的假設是，你必須真正相信觀察結果是獨立的。我舉個例子。假設我對在某個特定醫院出生的男嬰的比例感興趣。我在產科病房走來走去，觀察到20個女孩和只有10個男孩。看起來是相當明顯的差異，對吧？但稍後，原來我實際上走進了同一個病房10次，事實上我只看到了2個女孩和1個男孩。現在不那麼令人信服了，是吧？我的原始30個觀察結果大量地不獨立，實際上只相當於3個獨立的觀察結果。顯然這是一個極端（而且非常愚蠢）的例子，但它說明了基本問題。非獨立性會“搞砸事情”。有時它會導致你錯誤地拒絕零假設，就像愚蠢的醫院例子那樣，但它也可能朝相反的方向發展。為了給出一個稍微不那麼愚蠢的例子，讓我們考慮一下如果我對卡片實驗做了一些不同的嘗試會怎麼樣。假設我不是要求200個人嘗試想像隨機抽取一張卡片，而是要求50個人選擇4張卡片。其中一種可能是*每個人*都選擇一張紅心、一張梅花、一張方塊和一張黑桃（符合“代表性啟發法則”[@Tversky1974]）。這是人們的高度非隨機行為，但在這種情況下，我對四種花色都會得到50的觀察頻率。對於這個例子，觀察結果非獨立性（因為你選擇的四張卡片之間將彼此關聯）實際上導致了相反的效果，即錯誤地保留了零假設。
 
 如果你碰巧處於獨立性受到違反的情況，你可以使用 McNemar 檢驗（我們將討論）或 Cochran 檢驗（我們不會討論）。同樣，如果你的預期單元計數太小，可以查看 Fisher 確切檢驗。我們現在將轉向這些主題。
@@ -686,7 +686,7 @@ If you happen to find yourself in a situation where independence is violated, it
 ## 費雪精確檢定 {#sec-The-Fisher-test}
 
 
-如果你的單元計數太小，但你仍然想檢驗兩個變量是否獨立的零假設，該怎麼辦？一個答案是“收集更多數據”，但這太輕浮了。有很多情況下，進行此操作要么不可行，要么不道德。如果是這樣，統計學家有一種道德責任，為科學家提供更好的檢驗方法。在這個例子中，@Fisher1922a 恰好提供了問題的正確答案。為了說明這個基本概念，假設我們正在分析一個田野實驗的數據，研究被指控為巫術的人的情感狀況，其中一些人正在被燒死。[^10-categorical-data-analysis-16] 不幸的是，對於科學家來說（但對普通大眾來說相當幸運），實際上很難找到正在被點火的人，所以在某些情況下，單元計數非常小。*salem.csv* 數據的列聯表說明了這一點（@tbl-tab10-9）。
+如果你的單元計數太小，但你仍然想檢驗兩個變量是否獨立的零假設，該怎麼辦？一個答案是“收集更多數據”，但這太輕浮了。有很多情況下，進行此操作要么不可行，要么不道德。如果是這樣，統計學家有一種道德責任，為科學家提供更好的檢驗方法。在這個例子中， @Fisher1922a 恰好提供了問題的正確答案。為了說明這個基本概念，假設我們正在分析一個田野實驗的數據，研究被指控為巫術的人的情感狀況，其中一些人正在被燒死。[^10-categorical-data-analysis-16] 不幸的是，對於科學家來說（但對普通大眾來說相當幸運），實際上很難找到正在被點火的人，所以在某些情況下，單元計數非常小。*salem.csv* 數據的列聯表說明了這一點（@tbl-tab10-9）。
 
 [^10-categorical-data-analysis-16]: 這個例子是基於在*Journal of Irreproducible Results*上發表的一篇玩笑文章。
 
@@ -721,7 +721,7 @@ huxtabs[[10]][[10]]
 
 $$P(O_{11}, O_{12}, O_{21}, O_{22} \text{ | } R_1, R_2, C_1, C_2)$$ 並且如您所料，弄清楚這個概率是什麼有點困難。但事實證明，這個概率是由一個稱為超幾何分佈的分佈描述的。要計算我們的 p 值，我們必須計算觀察到這個特定表格或者一個更“極端”的表格的概率。[^10-categorical-data-analysis-17] 在 20 世紀 20 年代，即使在最簡單的情況下，計算這個和也是令人生畏的，但如今只要表格不是太大，樣本量不是太大，這就相當容易了。概念上棘手的問題是弄清楚一個列聯表比另一個列聯表更“極端”的含義。最簡單的解決方案是說，概率最低的表格是最極端的。這將給我們 p 值。
 
-[^10-categorical-data-analysis-17]: 毫不意外，費雪精確檢定是根據費雪對 p 值的解釋，而不是奈曼的！請參見 @sec-The-p-value-of-a-test。
+[^10-categorical-data-analysis-17]: 毫不意外，費雪精確檢定是根據費雪對 p 值的解釋，而不是奈曼的！請參見 @sec-The-p-value-of-a-test 。
 
 您可以在 jamovi 中的“列聯表”分析中的“統計”選項中的復選框中指定此檢定。當您使用 *salem.csv* 文件中的數據執行此操作時，費雪精確檢定統計量將顯示在結果中。我們在這里感興趣的主要是 p 值，這個例子中 p 值足夠小（p = .036），足以證明拒絕那些正在燃燒的人和沒有燃燒的人一樣快樂的零假設。參見 @fig-fig10-7。
 
@@ -746,7 +746,7 @@ knitr::include_graphics("images/fig10-7.png")
 ## 麥內瑪檢定 {#sec-The-McNemar-test}
 
 
-假設您被聘請為*澳大利亞通用政治黨*(AGPP)[^14-translation-01]工作，您的工作的一部分是了解AGPP政治廣告的有效性。因此，您決定組織一個包含$N = 100$人的樣本，讓他們觀看AGPP的廣告。在他們看到任何內容之前，您問他們是否打算投票支持AGPP，然後在播放廣告之後再問他們一遍，看看有沒有人改變主意。顯然，如果你擅長你的工作，你還會做很多其他事情，但讓我們考慮一下這個簡單的實驗。描述數據的一種方法是通過@tbl-tab10-11中顯示的列聯表。
+假設您被聘請為*澳大利亞通用政治黨*(AGPP)工作[^14-translation-01]，您的工作的一部分是了解AGPP政治廣告的有效性。因此，您決定組織一個包含$N = 100$人的樣本，讓他們觀看AGPP的廣告。在他們看到任何內容之前，您問他們是否打算投票支持AGPP，然後在播放廣告之後再問他們一遍，看看有沒有人改變主意。顯然，如果你擅長你的工作，你還會做很多其他事情，但讓我們考慮一下這個簡單的實驗。描述數據的一種方法是通過 @tbl-tab10-11 中顯示的列聯表。
 
 [^14-translation-01]: 譯註~這是原作者虛構的政黨，現實中無此政黨或團體。詳見[維基百科條目](https://en.wikipedia.org/w/index.php?title=List_of_political_parties_in_Australia&oldid=1149812960)。
 
@@ -791,7 +791,7 @@ $$\chi^2=\frac{(|O_{12}-O_{21}|-0.5)^2}{O_{12}+O_{21}}$$ and this statistic has 
 
 ### 實作麥內瑪檢定 {#sec-doing-The-McNemar-test}
 
-現在您已經了解麥內瑪檢驗的所有內容，讓我們實際運行一個。*agpp.csv* 文件包含了我之前討論過的原始數據。*agpp* 數據集包含三個變量，一個id變量標記數據集中的每個參與者（我們將在片刻之後看到這有什麼用），一個**response_before** 變量記錄了當他們第一次被問到這個問題時的答案，以及一個response_after變量顯示他們在第二次被問到同樣問題時給出的答案。注意每個參與者在這個數據集中只出現一次。在jamovi中，轉到 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' 分析，並將**response_before** 放入 'Rows' 框，將**response_after** 放入 'Columns' 框。然後，您將在結果窗口中獲得一個列聯表，麥內瑪檢驗的統計數據就在它下面，參見@fig-fig10-8。
+現在您已經了解麥內瑪檢驗的所有內容，讓我們實際運行一個。*agpp.csv* 文件包含了我之前討論過的原始數據。*agpp* 數據集包含三個變量，一個id變量標記數據集中的每個參與者（我們將在片刻之後看到這有什麼用），一個**response_before** 變量記錄了當他們第一次被問到這個問題時的答案，以及一個response_after變量顯示他們在第二次被問到同樣問題時給出的答案。注意每個參與者在這個數據集中只出現一次。在jamovi中，轉到 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' 分析，並將**response_before** 放入 'Rows' 框，將**response_after** 放入 'Columns' 框。然後，您將在結果窗口中獲得一個列聯表，麥內瑪檢驗的統計數據就在它下面，參見 @fig-fig10-8 。
 
 <!--- Now that you know what the McNemar test is all about, lets actually run one. The *agpp.csv* file contains the raw data that I discussed previously. The *agpp* data set contains three variables, an id variable that labels each participant in the data set (we'll see why that's useful in a moment), a **response_before** variable that records the person's answer when they were asked the question the first time, and a response_after variable that shows the answer that they gave when asked the same question a second time. Notice that each participant appears only once in this data set. Go to the 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' analysis in jamovi, and move **response_before** into the 'Rows' box, and **response_after** into the 'Columns' box. You will then get a contingency table in the results window, with the statistic for the McNemar test just below it, see @fig-fig10-8. --->
 
