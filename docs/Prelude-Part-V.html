@@ -255,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較兩組平均值</span></a>
+  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -317,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#教程前言" id="toc-教程前言" class="nav-link active" data-scroll-target="#教程前言">教程前言</a></li>
   <li><a href="#基礎統計方法線型模型示範說明" id="toc-基礎統計方法線型模型示範說明" class="nav-link" data-scroll-target="#基礎統計方法線型模型示範說明">基礎統計方法線型模型示範說明</a>
   <ul class="collapse">
-  <li><a href="#相闗與線性迴歸" id="toc-相闗與線性迴歸" class="nav-link" data-scroll-target="#相闗與線性迴歸">相闗與線性迴歸</a></li>
+  <li><a href="#相關與線性迴歸" id="toc-相關與線性迴歸" class="nav-link" data-scroll-target="#相關與線性迴歸">相關與線性迴歸</a></li>
   <li><a href="#比較兩組平均值" id="toc-比較兩組平均值" class="nav-link" data-scroll-target="#比較兩組平均值">比較兩組平均值</a></li>
   <li><a href="#比較多組平均值單因子變異數分析" id="toc-比較多組平均值單因子變異數分析" class="nav-link" data-scroll-target="#比較多組平均值單因子變異數分析">比較多組平均值(單因子變異數分析)</a></li>
   <li><a href="#多因子變異數分析" id="toc-多因子變異數分析" class="nav-link" data-scroll-target="#多因子變異數分析">多因子變異數分析</a></li>
@@ -334,14 +334,18 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>在進入學習統計方法的各章節之前，我(譯者)想要向同學們介紹另一份由丹麥奧爾堡大學(Aalborg University)溝通與心理學系(Department of Communication and Psychology)的Jonas Lindeløv教授編寫的教程<strong>基礎統計方法的線性模型學習取向</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。在 決定翻譯本書之前，我一直有如何統整推論統計方法學習課表的苦惱。見到Lindeløv的教程，還有採用jamovi與JASP試編教材之後，發覺這是一套值得華文世界的學生們認識的教材。在Lindeløv的原版教程發表後不到一年來，就由世界各地有志一同的教師翻譯成各國語言的版本，簡体中文版已由著名的網路統計知識交流學習論壇<a href="https://cosx.org/">統計之都</a>的網友翻譯 完成<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。由於簡体中文與繁體中文的統計學術語有別，而且Lindeløv的教程是以R語言為例，因此藉由翻譯這本<strong>用jamovi上手統計學</strong>，我將原來的第五部分章節重新排列，改成如同Lindeløv教程一樣的順序，並在適當的段落，置入Lindeløv教程的說明。在每一章的範例，都會附上一份以線性模型示範的omv檔。從 <a href="10-Correlation-and-linear-regression.html"><span>Chapter&nbsp;10</span></a> 到 <a href="14-Categorical-data-analysis.html"><span>Chapter&nbsp;14</span></a> 標示示範檔案的部分，我都會在增加的譯註內置入取得線性模型版的示範檔案，各章示範檔案的說明，都會集中於此。同學可根據學習進度，到了相關的部分，再回到這裡取得示範檔案及閱讀說明。</p>
+<p>在進入學習統計方法的各章節之前，我(譯者)想要向同學們介紹另一份由丹麥奧爾堡大學(Aalborg University)溝通與心理學系(Department of Communication and Psychology)的Jonas Lindeløv教授編寫的教程<strong>基礎統計方法的線性模型學習取向</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。在 決定翻譯本書之前，我一直有如何統整推論統計方法學習課表的苦惱。見到Lindeløv的教程，還有採用jamovi與JASP試編教材之後，發覺這是一套值得華文世界的學生及統計學教師認識的教程。其實本書原作者Dani也在 <a href="13-Factorial-ANOVA.html#sec-ANOVA-as-a-linear-model"><span>Section&nbsp;13.6</span></a> 提到相同觀念，只是這個觀念一直走到了包括多因子變異數分析的基礎統計方法，Dani才告訴讀者。</p>
+<p>在Lindeløv的原版教程發表後不到一年來，就由世界各地有志一同的教師翻譯成各國語言的版本，簡体中文版已由著名的網路統計知識交流學習論壇<a href="https://cosx.org/">統計之都</a>的網友翻譯完成<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。由於簡体中文與繁體中文的統計學術語有別，而且Lindeløv的教程是以R語言為例，因此藉由翻譯這本<strong>用jamovi上手統計學</strong>的機會，我將原書的第五部分章節重新排列，改成如同Lindeløv教程一樣的順序，並在適當的段落，置入譯註提示讀者關於Lindeløv教程的說明及示範。在每一章屬於基礎統計方法的範例，都會附上一份包含線性模型示範的omv檔。從 <a href="10-Correlation-and-linear-regression.html"><span>Chapter&nbsp;10</span></a> 到 <a href="14-Categorical-data-analysis.html"><span>Chapter&nbsp;14</span></a> 標示示範檔案的部分，我都會在增加的譯註置入取得線性模型版示範檔案的連結。示範檔案裡有關線性模型版的說明，都會集中於此。同學可根據學習進度，參考譯註提示，回到這裡參考說明。</p>
 <section id="教程前言" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="教程前言">教程前言</h2>
 <blockquote class="blockquote">
 <p>本節改編自簡体中文版<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </blockquote>
 <p>大部分常見的統計檢定方法（t 檢定、相關性檢定、變異數分析（ANOVA）、卡方檢定等），本質都是線性模型的一種特例或者是非常逼近的模型。這種優雅的簡潔性意味著我們並不需要掌握太多的技巧就能學習。具體來說，所有模型的來源都是多數學生在高中時期就學過的一元一次線性模型：<span class="math inline">\(y = a \cdot x + b\)</span> 。然而，很多基礎統計課程是把各種檢定方法分開教，給學生和老師們增加了很多不必要的麻煩。在學習每一個檢定方法的基本假設時，如果不是從線性模型切入，而是每個檢定方法都死記硬背，這讓學習的複雜度倍增。因此，我認為先教線性模型，然後對線性模型的一些特殊形式更改名稱是一種優秀的教學策略，這有助於更深刻地理解假設檢定。線性模型在次數主義學派、貝氏學派和基於置換的U檢定的統計推論方法之間是互通的，對初學者而言，從線性模型開始比從認識什麼是<em>p</em>值、型I錯誤、貝氏因子或其它術語更為友好。</p>
-<p>在入門課程教授到<em>無母數統計方法</em>的時候，可以避開<strong>自我欺騙</strong>的手段，直接告訴學生無母數檢定其實就是參數本質是次序(rank)的檢定方法。對學生來說，接受向量的概念，比相信你可以神奇地放棄各種母數統計方法所依賴的假設要好得多。實際上，在統計軟體如 JASP 裡，無母數檢定的貝氏等價模型就是使用潛在次序（Latent Rank）處理資料，而次數主義學派的無母數檢定方法用在樣本量 N&gt;15 的資料非常準確。</p>
+<p>在入門課程教授到<em>無母數統計方法</em>的時候，可以避開<strong>自我欺騙</strong>的手段，直接告訴學生無母數檢定其實就是參數本質是<em>等級(rank)</em>的檢定方法。對學生來說，接受向量的概念，比相信你可以神奇地放棄各種母數統計方法所依賴的假設要好得多。實際上，在統計軟體如 JASP 裡，無母數檢定的貝氏等價模型就是使用潛在次序（Latent Rank）處理資料，而次數主義學派的無母數檢定方法用在樣本量 N &gt; 15 的資料非常準確。</p>
+<p>Lindeløv教程提供簡明整理表，有需要的讀者可參考<a href="https://www.fyears.org/tests-as-linear/linear_tests_cheat_sheet.html">簡体中文版</a>。</p>
+<p>創建計算變項或轉換變項，將原始資料轉換為等級資料的函式語法：</p>
+<pre><code>IF($source==0,0,IF($source&gt;1,1,-1))*RANK($source)</code></pre>
 <!---
 
 （完成chapter 10~14的翻譯後，再回來整理）
@@ -398,8 +402,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="基礎統計方法線型模型示範說明" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="基礎統計方法線型模型示範說明">基礎統計方法線型模型示範說明</h2>
-<section id="相闗與線性迴歸" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="相闗與線性迴歸">相闗與線性迴歸</h3>
+<section id="相關與線性迴歸" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="相關與線性迴歸">相關與線性迴歸</h3>
+<p>我們運用 <a href="14-Categorical-data-analysis.html#fig-fig10-7">Figure&nbsp;<span>14.7</span></a> 的虛構資料製作<a href="files/10-correlatin-rank.omv">資料檔案</a>，示範等級資料的相關與迴歸分析。根據<a href="https://www.fyears.org/tests-as-linear/linear_tests_cheat_sheet.html">教程摘要</a>，使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須至少大於10，才能得到精確逼近的估計值。因此這份虛構資料的分析結果可能是錯誤的估計。</p>
+<p>此外，jamovi迴歸模組無法處理等級資料，因此<a href="files/10-correlatin-rank.omv">資料檔案</a>以R程式碼示範。如果同學有機會處理真正的等級資料，可選擇使用R或其他統計軟體如JASP進行迴歸分析。</p>
 </section>
 <section id="比較兩組平均值" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="比較兩組平均值">比較兩組平均值</h3>
