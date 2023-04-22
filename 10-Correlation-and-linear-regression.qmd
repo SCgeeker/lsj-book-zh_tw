@@ -284,11 +284,12 @@ knitr::include_graphics("images/fig12-10.png")
 
 ## 認識線性迴歸模型 {#sec-what-is-linear-model}
 
-> **譯者註** 20230415初步以ChatGPT-4完成翻譯，以下內容待編修。
+<!---
+> **譯者註** 20230415初步以ChatGPT-4完成翻譯，以下內容待編修。 --->
 
-我們可以將線性迴歸模型理解為稍微複雜一點的皮爾森相關係數（請見[相關](10-Correlation-and-linear-regression.html#sec-what-is-correlation)這一節），稍後我們會看到的，迴歸模型是用途更多的統計方法。
+我們可以將線性迴歸模型理解為稍微複雜一點的皮爾森相關係數分析程序（請見[相關](10-Correlation-and-linear-regression.html#sec-what-is-correlation)這一節），稍後我們會看到，迴歸模型是用途更廣泛的統計方法。
 
-由於迴歸模型的基本觀念與相關係數緊密相關，我們將使用用來說明相關係數的parenthood.csv資料集來介紹。回想一下，我們想從這個資料集找出為什麼我(原作者Dani)總是非常沮喪的原因，而我的研究假設是我沒有得到足夠的睡眠。我們畫了一些散佈圖，檢查我的實際睡眠時間與隔天沮喪程度之間的關係，就像 @fig-fig10-9 展示的散佈圖，兩者之間的相關係數達到$r=-0.90$。但是，我心中想像的變項間關係更像 @fig-fig10-11 (a) 。也就是說，我想像有一條直線穿過資料點的中間。這條線的統計學術語是**迴歸線**。請注意，由於我不是統計新手，因此迴歸線一定會穿過資料散佈區域的中間地帶，絕不會認為是像 @fig-fig10-11 (b) 。
+由於迴歸模型的基本觀念與相關係數緊密相關，以下同樣使用parenthood.csv資料集進行介紹及示範。回想一下，我們分析這個資料集的目的是，找出我(原作者Dani)為什麼總是非常沮喪的原因，而我的研究假設是我沒有得到足夠的睡眠。所以畫了一些散佈圖，檢示實際睡眠時間與隔天沮喪程度之間的關係，就像 @fig-fig10-9 展示的散佈圖，兩者之間的相關係數達到$r=-0.90$。但是，我想描述的變項間關係更像 @fig-fig10-11 (a) ，也就是有一條直線穿過資料點的中間。這條直線的統計學術語是**迴歸線**。請注意，由於我不是統計新手，因此畫出的迴歸線一定會穿過資料散佈區域的中間地帶，絕不會認為是像 @fig-fig10-11 (b) 的樣子。
 
 <!---Stripped to its bare essentials, linear regression models are basically a slightly fancier version of the Pearson correlation (see [Correlations]), though as we'll see regression models are much more powerful tools.
 
@@ -303,15 +304,15 @@ Since the basic ideas in regression are closely tied to correlation, we'll retur
 knitr::include_graphics("images/fig12-11.png")
 ```
 
-這不是特別令人驚訝的。在 @fig-fig10-11（b）中我畫的那條線與資料的配適度不高，所以提議用它來總結資料沒有太大的意義，對吧？這是一個很簡單的觀察，但是當我們開始嘗試將一些數學理論應用在上面時，它會變得非常強大。為此，讓我們開始複習一些高中數學。一條直線的公式通常寫成以下形式：
+確認能解讀變項間關係的迴歸線，並不需要什麼厲害的技巧。 @fig-fig10-11 （b）的那條線與資料的適合度(fittedness)並不高，用來解讀資料沒有太大的意義，對吧？迴歸線能很直覺地呈現變項間的關係，若是再應用迴歸線的數學理論解讀資料，會變成非常強大的分析工具。我們複習一下高中數學，一條直線的公式可以寫成這樣的等式：
 
 <!--- This is not highly surprising. The line that I've drawn in @fig-fig10-11 (b) doesn't "fit" the data very well, so it doesn't make a lot of sense to propose it as a way of summarising the data, right? This is a very simple observation to make, but it turns out to be very powerful when we start trying to wrap just a little bit of maths around it. To do so, let's start with a refresher of some high school maths. The formula for a straight line is usually written like this --->
 
 $$y=a+bx$$
 
-或者至少在我幾十年前上高中時是這樣的。這兩個變量是 $x$ 和 $y$，我們有兩個係數 $a$ 和 $b$。[^correlation-and-linear-regression-4]其中 $a$ 代表了直線的 $y$ 截距，而 $b$ 代表了直線的斜率。深入挖掘我們退化的高中記憶（對不起，對於我們中的一些人，高中已經是很久以前的事情了），我們記得截距被解釋為“當 $x=0$ 時得到的 $y$ 值”。同樣，斜率 $b$ 意味著如果你將 $x$ 值增加 1 單位，那麼 $y$ 值會增加 $b$ 單位，而負斜率則意味著 $y$ 值會下降而不是上升。啊，是的，我現在全都回想起來了。現在我們已經記起來，所以發現我們使用完全相同的公式來計算回歸線應該也不會感到意外。如果 $Y$ 是結果變量（因變量），$X$ 是預測變量（自變量），那麼描述我們回歸的公式就像這樣：
+至少幾十年前澳洲的高中數學課是這樣教的。兩個資料變項用 $x$ 和 $y$代表，搭配兩個係數 $a$ 和 $b$ 形成變項之間的等價性。[^correlation-and-linear-regression-4]係數 $a$ 代表迴歸線的截距，係數 $b$ 代表迴歸線的斜率。努力回憶一下高中曾學過的內容（很抱歉，某些讀者也許已經離開高中校園很了），記得截距被解釋為“當 $x=0$ 時得到的 $y$ 值”。同樣地，斜率 $b$ 若為正值，代表增加 $x$ 的數值一個單位， $y$ 值會增加 $b$ 個單位；而斜率 $b$ 若為負值，則代表 $y$ 值會下降而不是上升。啊，是的，我們現在全都回想起來了。現在我們的記憶已經回來，所以自然會發現可以使用完全相同的公式計算迴歸線。如果 $Y$ 是預測變項（依變項），$X$ 是應變項（自變項），那麼描述示範資料的迴歸線等式就會像是這樣：
 
-[^correlation-and-linear-regression-4]: 有時也會寫成 $y = mx + c$，其中 $m$ 是斜率，$c$ 是截距（常數）。
+[^correlation-and-linear-regression-4]: 也可以寫成 $y = mx + c$，其中 $m$ 是斜率，$c$ 是截距（常數）。
 
 <!---Or, at least, that's what it was when I went to high school all those years ago. The two variables are $x$ and $y$, and we have two coefficients, $a$ and $b$.[^correlation-and-linear-regression-4] The coefficient a represents the y-intercept of the line, and coefficient b represents the slope of the line. Digging further back into our decaying memories of high school (sorry, for some of us high school was a long time ago), we remember that the intercept is interpreted as "the value of y that you get when $x = 0$". Similarly, a slope of b means that if you increase the x-value by 1 unit, then the y-value goes up by b units, and a negative slope means that the y-value would go down rather than up. Ah yes, it's all coming back to me now. Now that we've remembered that it should come as no surprise to discover that we use the exact same formula for a regression line. If $Y$ is the outcome variable (the DV) and X is the predictor variable (the $IV$), then the formula that describes our regression is written like this
 
@@ -319,11 +320,11 @@ $$y=a+bx$$
 
 $$\hat{Y}_i=b_0+b_1X_i$$
 
-嗯，看起來這跟我們熟知的公式一模一樣，但多了些花俏的東西。讓我們來了解這些花俏的東西。首先，注意到我使用了 $X_i$ 和 $Y_i$，而不是 $X$ 和 $Y$，這是因為我們要記得這是實際的資料。在這個公式中，$X_i$ 代表第 i 個觀察值的預測變數的值（例如在我做小實驗的第 i 天所得到的睡眠時間），而 $Y_i$ 則是對應的結果變數的值（即當天的煩躁程度）。而雖然我沒有在公式中明確說明，但我們假設這個公式對資料集中的所有觀察值都適用（即對所有 i 都成立）。其次，注意到我寫的是 $\hat{Y}_i$ 而不是 $Y_i$，這是因為我們要區分實際資料 $Y_i$ 與預測值 $\hat{Y}_i$（也就是回歸線所作的預測）。第三，我將用來描述係數的字母從 a 和 b 改成 $b_0$ 和 $b_1$。這是統計學家喜歡在迴歸模型中使用的方式。我不知道為什麼他們選擇了 b 這個字母，但這就是他們的選擇。無論如何，$b_0$ 總是代表截距項，$b_1$ 則是代表斜率。
+嗯，這看起來這跟曾在高中教科書看到的公式一模一樣，只是多了些花俏的下標符號，讓我們來了解這些符號的意思。首先，請注意我使用 $X_i$ 和 $Y_i$，而不是 $X$ 和 $Y$，這是因為有下標符號的代數通常代表實際的資料。在這個公式裡，$X_i$ 代表第 i 個觀察值的預測變項的值（例如我在第 i 天紀錄的睡眠時間），而 $Y_i$ 則是對應的應變項數值（例如我當天的沮喪程度）。雖然公式裡沒有明確說明，但我們假設這個公式對資料集裡的所有觀察值都通用（即 i 對應所有 觀察日數）。其次，請注意我寫的是 $\hat{Y}_i$ 而不是 $Y_i$，這是因為我們要區分實際數值 $Y_i$ 與被預測數值 $\hat{Y}_i$（也就是經由迴歸線預測的數值）。第三，我將代表係數的符號從 a 和 b 改成 $b_0$ 和 $b_1$，這是統計學家喜歡呈現迴歸模型的方式。我不知道為什麼他們選擇用 b 這個字母，但這就是統計學的慣例。無論如何，$b_0$ 總是代表截距，$b_1$ 則是代表斜率。
 
-非常好，接下來，我不禁注意到，無論是好的迴歸線還是壞的迴歸線，數據都不完美地落在線上。換句話說，數據$Y_i$與迴歸模型的預測$\hat{Y}_i$不完全相同。由於統計學家喜歡給一切事物都加上字母、名稱和數字，讓我們稱模型預測與實際數據之間的差異為殘差，表示為$\epsilon_i$。[^correlation-and-linear-regression-5] 使用數學表示，殘差被定義為：
+跟上來的話就很好。接著我們會注意到，無論是好的迴歸線還是壞的迴歸線，資料都是不完美地落在迴歸線。換句話說，實際數值$Y_i$不完全等於迴歸模型預測的數值$\hat{Y}_i$。由於統計學家喜歡給一切符號冠上字母、名稱和數字，讓我們稱呼模型預測的數值與實際數值之間的差異為殘差(Residuals)，代表符號為$\epsilon_i$。[^correlation-and-linear-regression-5] 使用數學公式表示的話，殘差可被定義為：
 
-[^correlation-and-linear-regression-5]: $\epsilon$ 符號是希臘字母 epsilon。統計報告慣例通常用 $\epsilon_i$ 或 $e_i$ 表示殘差。
+[^correlation-and-linear-regression-5]: $\epsilon$ 符號是希臘字母的 epsilon。統計報告慣例使用 $\epsilon_i$ 或 $e_i$ 表示殘差。
 
 <!--- Hmm. Looks like the same formula, but there's some extra frilly bits in this version. Let's make sure we understand them. Firstly, notice that I've written $X_i$ and $Y_i$ rather than just plain old $X$ and $Y$ . This is because we want to remember that we're dealing with actual data. In this equation, $X_i$ is the value of predictor variable for the ith observation (i.e., the number of hours of sleep that I got on day i of my little study), and $Y_i$ is the corresponding value of the outcome variable (i.e., my grumpiness on that day). And although I haven't said so explicitly in the equation, what we're assuming is that this formula works for all observations in the data set (i.e., for all i). Secondly, notice that I wrote $\hat{Y}_i$ and not $Y_i$ . This is because we want to make the distinction between the actual data $Y_i$, and the estimate $\hat{Y}_i$ (i.e., the prediction that our regression line is making). Thirdly, I changed the letters used to describe the coefficients from a and $b$ to $b_0$ and $b_1$. That's just the way that statisticians like to refer to the coefficients in a regression model. I've no idea why they chose b, but that's what they did. In any case $b_0$ always refers to the intercept term, and $b_1$ refers to the slope.
 
@@ -341,11 +342,12 @@ $$Y_i=b_0+b_1X_i+\epsilon_i$$
 
 ## 線性迴歸模型的參數估計
 
-**(本節待編修)**
+<!---
+> **譯者註** 20230415初步以ChatGPT-4完成翻譯，以下內容待編修。 --->
 
-好的，現在讓我們重新畫圖，這次我會添加一些線條以顯示所有觀察值的殘差大小。當回歸線很好時，我們的殘差（實心黑線的長度）看起來都很小，如圖@fig-fig10-12 (a)所示，但是當回歸線是一條壞線時，殘差就會大得多，這可以從觀察圖@fig-fig10-12 (b)中看出。嗯，也許在追求一條迴歸模型時，我們希望得到*小*的殘差。是的，這確實有道理。事實上，我想我可以說，「最適合」的迴歸線是具有最小殘差的線。或者，更好的是，因為統計學家似乎喜歡將所有東西都平方，為什麼不說：
+好的，現在讓我們重新繪製散佈圖，這次會添加一些線條顯示所有觀察值的殘差。當迴歸線的適合度(fittedness)最佳時，每個殘差數值（實心黑線的長度）看起來都非常小且接近，如同 @fig-fig10-12 (a) ，但是當迴歸線的適合度不夠好，每個殘差之間的差異就會非常大，可以從 @fig-fig10-12 (b)看到這樣的差別。嗯，也許在尋找一條最好的迴歸模型時，我們會希望得到*儘可能小*的殘差。是的，這確實有道理。在統計實務，我們可以說「最適合」的迴歸線是具有所有殘差最小的線。或者更好的說法是，因為統計學家似乎喜歡將所有數值都用*平方(sqaured)*處理，也就是說：
 
-> 估計的迴歸係數$\hat{b}_0$和$\hat{b}_1$是最小化殘差平方和的係數，我們可以將其寫為$\sum_i (Y_i - \hat{Y}_i)^2$或$\sum_i \epsilon_i^2$。
+> 以資料估計的迴歸係數 $\hat{b}_0$ 和 $\hat{b}_1$ 是殘差平方和最小得到時得到的估計值，我們可以兩者的公式展開寫成 $\sum_i (Y_i - \hat{Y}_i)^2$ 與 $\sum_i \epsilon_i^2$ 。
 
 <!--- Okay, now let's redraw our pictures but this time I'll add some lines to show the size of the residual for all observations. When the regression line is good, our residuals (the lengths of the solid black lines) all look pretty small, as shown in @fig-fig10-12 (a), but when the regression line is a bad one the residuals are a lot larger, as you can see from looking at @fig-fig10-12 (b). Hmm. Maybe what we "want" in a regression model is *small* residuals. Yes, that does seem to make sense. In fact, I think I'll go so far as to say that the "best fitting" regression line is the one that has the smallest residuals. Or, better yet, since statisticians seem to like to take squares of everything why not say that:
 
@@ -355,18 +357,16 @@ $$Y_i=b_0+b_1X_i+\epsilon_i$$
 #| label: fig-fig10-12
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: 圖a展示各資料點與穿越資料中心地帶的最佳迴歸線之殘差，圖b展示各資料點與最差迴歸線的殘差。前者的殘差總和明顯小於後者。
+#| fig-cap: 圖(a)展示各觀察值資料點與穿越資料點中心地帶的最佳迴歸線之殘差，圖(b)展示觀察值資料點與最差迴歸線的殘差。前者的殘差總和明顯小於後者。
 #A depiction of the residuals associated with the best fitting regression line (panel a), and the residuals associated with a poor regression line (panel b). The residuals are much smaller for the good regression line. Again, this is no surprise given that the good line is the one that goes right through the middle of the data
 knitr::include_graphics("images/fig12-12.png")  
 ```
 
-是的，沒錯，這聽起來更好。而且我把它縮排了，這可能意味著這是正確的答案。既然這是正確的答案，那麼可能值得注意的是，我們的回歸係數是估計值（我們試圖猜測描述一個母體的參數！），這就是為什麼我加了小帽子，以便我們得到$\hat{b}_0$和$\hat{b}_1$而不是 $b_0$ 和 $b_1$。最後，我還應該指出的是，由於實際上有多種方法來估計迴歸模型，更技術性的名稱是**普通最小平方法（OLS）**。
+是的沒錯，這樣說明起來更有學問一些。而且我將這段話縮排，表示這樣說可能是正確的解答。既然這是正確解答，那麼要值得注意的是，迴歸線的係數都是估計值（請復習 @sec-Estimating-unknown-quantities-from-a-sample ，使用點估計方法猜測一個母群的參數！），這也是為什麼我要加個小帽子 $\hat$ ，區別會放在報告的是$\hat{b}_0$和$\hat{b}_1$，而不是 $b_0$ 和 $b_1$。最後，我還要指出，由於實際上有許多方法來估計迴歸模型，這一節說明的估計方法正式名稱是**普通最小平方法（Ordinary Least Squares，OLS）**。
 
-以下是翻譯：
+至此，我們已經得到「最佳」迴歸係數 $\hat{b}_0$ 和 $\hat{b}_1$ 的具體定義。下一個問題自然是：如果最佳迴歸係數是那些符合最小化殘差平方和的係數，我們要如何算出這些數值呢？實際上，這個問題的答案比較複雜，並且無法幫助你理解迴歸的邏輯。[^correlation-and-linear-regression-6]這一次，我放過各位同學，直接介紹 jamovi 操作方法，瑣碎的讓jamovi來處理。
 
-此時，我們已經有了「最佳」迴歸係數 $\hat{b}_0$ 和 $\hat{b}_1$ 的具體定義。下一個自然而然的問題是：如果我們的最佳迴歸係數是那些最小化殘差平方和的係數，我們該如何找到這些奇妙的數字呢？實際上，這個問題的答案比較複雜，並且並沒有幫助你理解迴歸的邏輯。[^correlation-and-linear-regression-6]這一次，我放過你，直接介紹 jamovi 提供的快速捷徑，讓它來處理所有的瑣碎細節。
-
-[^correlation-and-linear-regression-6]: 或者至少，我假設這對大多數人來說並不有幫助。但是如果讀者恰好是線性代數的大師（公正地說，我總是在我的統計入門課程中遇到這樣的人），你會很高興知道，估計問題的解決方案是$\hat{b} = (X^{'}X)^{-1}X^{'}y$，其中$\hat{b}$是包含估計回歸係數的向量，$X$是包含預測變量（加上一個包含全部為1的附加列；嚴格來說，$X$是回歸變量的矩陣，但我尚未討論這個區別），而$y$是包含結果變量的向量。對於其他人，這並不是很有幫助，甚至可能有點可怕。然而，由於線性回歸中有許多事情可以用線性代數的術語來表示，您將在本章中看到類似於這樣的註腳。如果您能理解其中的數學內容，那就太好了。如果不能，請忽略它。
+[^correlation-and-linear-regression-6]: 原作者設想大多數讀者並不想知道普通最小平方法的細節。不過讀者若是線性代數的高手（客觀地說，很多在排名前位的大學開設統計課的教師，總是會在課堂遇到厲害的學生），會很很想知道，計算迴歸係數估計值的公式是$\hat{b} = (X^{'}X)^{-1}X^{'}y$，其中$\hat{b}$是包含估計迴歸係數的數值向量，$X$是包含預測變項（嚴格來說，$X$是迴歸變項的矩陣，是實際資料數值加上一個全部都是1的數列，但這裡不討論這個區別），而$y$是包含依變項的數值向量。對於不是高手的讀者，這些解說並沒有太大幫助，甚至可能造成障礙。然而，由於線性迴歸有許多細節可以用線性代數的術語來表示，讀者將在本章後半部看到許多像這樣的註釋。如果讀者有能力理解其中的數學涵意，那就非常好。如果不能，可以忽略這些註釋。
 
 <!---Yes, yes that sounds even better. And since I've indented it like that, it probably means that this is the right answer. And since this is the right answer, it's probably worth making a note of the fact that our regression coefficients are estimates (we're trying to guess the parameters that describe a population!), which is why I've added the little hats, so that we get $\hat{b}_0$ and $\hat{b}_1$ rather than $b_0$ and $b_1$. Finally, I should also note that, since there's actually more than one way to estimate a regression model, the more technical name for this estimation process is **ordinary least squares (OLS) regression**.
 
@@ -376,7 +376,7 @@ At this point, we now have a concrete definition for what counts as our "best" c
 
 ### 實作線性迴歸模型
 
-以下是執行線性回歸的步驟，請打開 jamovi 的 'Regression' - 'Linear Regression' 分析，使用 parenthood.csv 資料檔案。接著，將 dani.grump 指定為 'Dependent Variable'，dani.sleep 輸入到 'Covariates' 方塊中。這將給出如圖 @fig-fig10-13 所示的結果，顯示截距 $\hat{b}_0 = 125.96$ 和斜率 $\hat{b}_1 = -8.94$。換言之，在圖 @fig-fig10-11 中我繪製的最佳擬合迴歸線的公式為：
+以下是用`parenthood.csv` 資料檔案執行線性迴歸分析的步驟，請打開 jamovi 的 'Regression' - 'Linear Regression' 選單 。接著，將 dani.grump 指定為 'Dependent Variable'，dani.sleep 輸入到 'Covariates' 對話框。報表介面將出現如 @fig-fig10-13 的結果，結果顯示截距 $\hat{b}_0 = 125.96$ 和斜率 $\hat{b}_1 = -8.94$。換言之， @fig-fig10-11 的最適合迴歸線的公式為：
 
 
 <!--- To run my linear regression, open up the 'Regression' - 'Linear Regression' analysis in jamovi, using the parenthood.csv data file. Then specify dani.grump as the 'Dependent Variable' and dani.sleep as the variable entered in the 'Covariates' box. This gives the results shown in @fig-fig10-13, showing an intercept $\hat{b}_0 = 125.96$ and the slope $\hat{b}_1 = -8.94$. In other words, the best fitting regression line that I plotted in @fig-fig10-11 has this formula: --->
@@ -394,12 +394,13 @@ knitr::include_graphics("images/fig12-13.png")
 
 ### 解讀線性迴歸模型參數估計
 
-最重要的是理解如何解釋這些係數。讓我們從 $\hat{b}_1$ 開始，也就是斜率。如果我們回想斜率的定義，$\hat{b}_1=-8.94$ 意味著如果我將 $X_i$ 增加 1，那麼 $Y_i$ 就會減少 8.94。換言之，每多睡一個小時，我的心情就會改善，我的脾氣就會降低 8.94 個脾氣值。那截距呢？由於 $\hat{b}_0$ 對應著「當 $X_i$ 為 0 時 $Y_i$ 的期望值」，它很容易理解。這意味著如果我一夜都沒睡 ($X_i = 0$)，我的脾氣就會瘋狂到達不可想像的值 ($Y_i = 125.96$)。我想最好還是避免這種情況。
+最後要知道的是如何解釋這些係數。讓我們從 $\hat{b}_1$ 開始，也就是斜率。回想一下斜率的定義，$\hat{b}_1=-8.94$ 代表將 $X_i$ 增加 1， $Y_i$ 就會減少 8.94。換言之，多睡一個小時的話，我的心情就會改善，我的沮喪程度就會降低 8.94 。那麼截距呢？由於 $\hat{b}_0$ 代表「當 $X_i$ 為 0 時 $Y_i$ 的期望值」，這就是說如果我一夜都沒睡 ($X_i = 0$)，我的沮喪程度就會瘋狂升高到不敢想像的數值 ($Y_i = 125.96$)。我想我最好避免這種狀況。
 
 <!--- The most important thing to be able to understand is how to interpret these coefficients. Let's start with $\hat{b}_1$, the slope. If we remember the definition of the slope, a regression coefficient of $\hat{b}_1 = -8.94$ means that if I increase Xi by 1, then I'm decreasing Yi by 8.94. That is, each additional hour of sleep that I gain will improve my mood, reducing my grumpiness by 8.94 grumpiness points. What about the intercept? Well, since $\hat{b}_0$ corresponds to "the expected value of $Y_i$ when $X_i$ equals 0", it's pretty straightforward. It implies that if I get zero hours of sleep ($X_i = 0$) then my grumpiness will go off the scale, to an insane value of ($Y_i = 125.96$). Best to be avoided, I think. --->
 
 
 > 1. 還有關於等級資料(Rank data)的迴歸分析，請參考**線性模型的學習取向**的[相關與線性迴歸](Prelude-Part-V.html#%E7%9B%B8%E9%97%9C%E8%88%87%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8)這一節。
+
 > 2. 至此是一般教科書的基礎統計範圍，接下來本章的單元屬於高等統計。使用這本電子書學習的學生與教學的老師們，可根據自身的學習目標調整。
 
 ## 多元線性迴歸
