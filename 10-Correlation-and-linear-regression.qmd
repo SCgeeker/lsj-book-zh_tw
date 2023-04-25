@@ -1,4 +1,4 @@
-# 相闗與線性迴歸 {#sec-Correlation-and-linear-regression}
+# 相關與線性迴歸 {#sec-Correlation-and-linear-regression}
 
 ```{r}
 #| include: FALSE
@@ -202,9 +202,9 @@ knitr::include_graphics("images/fig12-7.png")
 那麼我們要如何解決這個問題呢？其實很容易。如果我們要評估變項之間的次序關係，只需要將資料轉換為次序尺度！所以，接著我們不再用“讀書時間”來衡量學生的努力，而是按照他們的讀書時間長短，將這$10$名學生排序。也就是說，學生$2$花在讀書的時間最少（$2$個小時），所以他獲得了最低的排名（排名=$1$）。接下來最懶惰的是學生$4$，整個學期只讀了$6$個小時的書，所以他獲得了次低的排名（排名=$2$）。請注意，在此用“排名=$1$”來表示“低排名”。在日常言談裡，多數人使用“排名=$1$”表示“最高排名”，而不是“最低排名”。因此，要注意你是用“從最小值到最大值”（即最小值做排名1）排名，還是用“從最大值到最小值”（即最大值做排名1）排名。在這種情況下，我是從最大到最小進行排名的，但是因為很容易忘記設置的方式，所以實務中必須做好紀錄！
 
 
-好的，讓我們從最努力且最成功的學生開始排名。 @tbl-tab10-3 顯示從最努力且最成功的學生排名的次序值。[^10-translation-3]
+好的，讓我們從最努力且最成功的學生開始排名。 @tbl-tab10-3 顯示從最努力且最成功的學生排名的次序值。<!---[^10-translation-3]
 
-[^10-translation-3]: 譯註~由於原文的排名與 @tbl-tab10-3 有出入，中文版做調整使其一致。<!---使用jamovi的話，可在Variable面板註記。--->
+[^10-translation-3]: 譯註~由於原文的排名與 @tbl-tab10-3 有出入，中文版做調整使其一致。使用jamovi的話，可在Variable面板註記。--->
 
 
 <!--- How should we address this? Actually, it's really easy. If we're looking for ordinal relationships all we have to do is treat the data as if it were ordinal scale! So, instead of measuring effort in terms of "hours worked", lets rank all $10$ of our students in order of hours worked. That is, student $1$ did the least work out of anyone ($2$ hours) so they get the lowest rank (rank = $1$). Student $4$ was the next laziest, putting in only $6$ hours of work over the whole semester, so they get the next lowest rank (rank = $2$). Notice that I'm using "rank =1" to mean "low rank". Sometimes in everyday language we talk about "rank = $1$" to mean "top rank" rather than "bottom rank". So be careful, you can rank "from smallest value to largest value" (i.e., small equals rank $1$) or you can rank "from largest value to smallest value" (i.e., large equals rank 1). In this case, I'm ranking from smallest to largest, but as it's really easy to forget which way you set things up you have to put a bit of effort into remembering!
@@ -229,15 +229,15 @@ data.frame(
 
 至此我們等於重新發現 **斯皮爾曼等級相關(Spearman's rank order correlation)**，通常用符號 $\rho$ 表示，以區分皮爾森相關係數$r$。我們可以在jamovi的“相關矩陣”選單選擇“Spearman”，計算斯皮爾曼等級相關係數。[^10-translation-4]
 
-[^10-translation-4]: 譯註~這本電子書並未提供 @tbl-tab10-3 的資料，中文版製作補充範例檔案。配合線性模型教程，請參考[相關與線性迴歸](Prelude-Part-V.html#%E7%9B%B8%E9%97%97%E8%88%87%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8)這一節的補充。
+[^10-translation-4]: 譯註~原版電子書並未提供 @tbl-tab10-3 的資料，中文版配合線性模型教程，採用另一套線上教程提供的範例檔案，請見[相關與線性迴歸](Prelude-Part-V.html#%E7%9B%B8%E9%97%9C%E8%88%87%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8)這一節的補充。
 
 <!--- Hmm. These are identical. The student who put in the most effort got the best grade, the student with the least effort got the worst grade, etc. As the table above shows, these two rankings are identical, so if we now correlate them we get a perfect relationship, with a correlation of 1.0.
 
 What we've just re-invented is **斯皮爾曼等級相關(Spearman's rank order correlation)**, usually denoted $\rho$ to distinguish it from the Pearson correlation r. We can calculate Spearman's $\rho$ using jamovi simply by clicking the 'Spearman' check box in the 'Correlation Matrix' screen. --->
 
-## 散佈圖
+## 散佈圖 {#sec-the-scatter-plot}
 
-散佈圖是一種簡單但有效的視覺化工具，用於具現兩個變項之間的關係，就像[相關](10-Correlation-and-linear-regression.html#sec-what-is-correlation)這一節所展示的圖表。通常提到“散佈圖”這個術語時，指的是具體的視覺化結果。在散佈圖中，每個觀察值都是對應一個資料點。一個點的水平位置表示一個變項的觀察值，垂直位置表示觀察值在另一個變項的數值。在許多使用情境，我們對於變項間的因果關係並沒有清晰的看法（例如，A是否引起B，還是B引起A，還是其他變項C控制A和B）。若是這樣，x軸和y軸上代表那個變項並不重要。然而在許多情境，研究者對於那個變量最有可能是原因或結果，會有一個相當明確的想法，或者對於何者為因至少有一些懷疑。若是這樣，用x軸代表原因的自變項，用y軸代表效應的應變項是一種傳統的繪圖規範。了解這樣的規範，讓我們來看一下如何合理運用jamovi繪製散佈圖，同樣使用在[相關](10-Correlation-and-linear-regression.html#sec-what-is-correlation)這一節做為示範的資料集（parenthood.csv）。
+散佈圖是一種簡單但有效的視覺化工具，用於具現兩個變項之間的關係，就像[相關](10-Correlation-and-linear-regression.html#sec-what-is-correlation)這一節所展示的圖表。通常提到“散佈圖”這個術語時，指的是具體的視覺化結果。在散佈圖中，每個觀察值都是對應一個資料點。一個點的水平位置表示一個變項的觀察值，垂直位置表示觀察值在另一個變項的數值。在許多使用情境，我們對於變項間的因果關係並沒有清晰的看法（例如，A是否引起B，還是B引起A，還是其他變項C控制A和B）。若是這樣，x軸和y軸上代表那個變項並不重要。然而在許多情境，研究者對於那個變項最有可能是原因或結果，會有一個相當明確的想法，或者對於何者為因至少有一些懷疑。若是這樣，用x軸代表原因的自變項，用y軸代表效應的應變項是一種傳統的繪圖規範。了解這樣的規範，讓我們來看一下如何合理運用jamovi繪製散佈圖，同樣使用在[相關](10-Correlation-and-linear-regression.html#sec-what-is-correlation)這一節做為示範的資料集（parenthood.csv）。
 
 假定我的目標是繪製一個顯示我睡眠時間（dani.sleep）與隔天沮喪程度（dani.grump）兩個變項關係的散佈圖，我們有兩種不同的方法使用jamovi得到我們想要的圖。第一種方法是設定'Regression' - 'Correlation Matrix'選單下方的'Plot'選項，這樣可以得到如圖 @fig-fig10-8 的結果。請注意，jamovi會繪製一條通過資料點的直線，稍後在[認識線性迴歸模型](10-Correlation-and-linear-regression.html#sec-what-is-linear-model)這一節進一步說明。以這種方法繪製散佈圖也能繪製'變項密度'，這個選項會添加一條密度曲線，顯示每個變項的資料分佈狀況。
 
@@ -340,7 +340,7 @@ $$\epsilon_i=Y_i-\hat{Y}_i$$
 
 $$Y_i=b_0+b_1X_i+\epsilon_i$$
 
-## 線性迴歸模型的參數估計
+## 線性迴歸模型的參數估計 {#sec-the-regression-coefficients-parameters}
 
 <!---
 > **譯者註** 20230415初步以ChatGPT-4完成翻譯，以下內容待編修。 --->
@@ -362,7 +362,7 @@ $$Y_i=b_0+b_1X_i+\epsilon_i$$
 knitr::include_graphics("images/fig12-12.png")  
 ```
 
-是的沒錯，這樣說明起來更有學問一些。而且我將這段話縮排，表示這樣說可能是正確的解答。既然這是正確解答，那麼要值得注意的是，迴歸線的係數都是估計值（請復習 @sec-Estimating-unknown-quantities-from-a-sample ，使用點估計方法猜測一個母群的參數！），這也是為什麼我要加個小帽子 $\hat$ ，區別會放在報告的是$\hat{b}_0$和$\hat{b}_1$，而不是 $b_0$ 和 $b_1$。最後，我還要指出，由於實際上有許多方法來估計迴歸模型，這一節說明的估計方法正式名稱是**普通最小平方法（Ordinary Least Squares，OLS）**。
+是的沒錯，這樣說明起來更有學問一些。而且我將這段話縮排，表示這樣說可能是正確的解答。既然這是正確解答，那麼要值得注意的是，迴歸線的係數都是估計值（請復習 @sec-Estimating-unknown-quantities-from-a-sample ，使用點估計方法猜測一個母群的參數！），這也是為什麼我要在代表係數的符號上頭加個小帽子 ^ ，區別會放在報告的是$\hat{b}_0$和$\hat{b}_1$，而不是 $b_0$ 和 $b_1$。最後，我還要指出，由於實際上有許多方法來估計迴歸模型，這一節說明的估計方法正式名稱是**普通最小平方法（Ordinary Least Squares，OLS）**。
 
 至此，我們已經得到「最佳」迴歸係數 $\hat{b}_0$ 和 $\hat{b}_1$ 的具體定義。下一個問題自然是：如果最佳迴歸係數是那些符合最小化殘差平方和的係數，我們要如何算出這些數值呢？實際上，這個問題的答案比較複雜，並且無法幫助你理解迴歸的邏輯。[^correlation-and-linear-regression-6]這一次，我放過各位同學，直接介紹 jamovi 操作方法，瑣碎的讓jamovi來處理。
 
@@ -401,21 +401,31 @@ knitr::include_graphics("images/fig12-13.png")
 
 > 1. 還有關於等級資料(Rank data)的迴歸分析，請參考**線性模型的學習取向**的[相關與線性迴歸](Prelude-Part-V.html#%E7%9B%B8%E9%97%9C%E8%88%87%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8)這一節。
 
-> 2. 至此是一般教科書的基礎統計範圍，接下來本章的單元屬於高等統計。使用這本電子書學習的學生與教學的老師們，可根據自身的學習目標調整。
+> 2. 以下 @sec-multiple-regression 、 @sec-regression-Model-diagnosis 以及 @sec-multiple-variables-combinaion 等三個小單元，是屬於傳統高等統計課程的範圍，其他單元在多數教科書被劃分為基礎統計的範圍。不過接下來的單元裡原作者都是混合一元迴歸與多元迴歸的示範案例，譯者將在屬於多元迴歸的小單元開頭明示譯註，提供使用這本電子書學習的學生與教學的老師，根據自身的學習目標決定如何運用該節內容。
 
-## 多元線性迴歸
+## 多元線性迴歸 {#sec-multiple-regression}
 
-The simple linear regression model that we've discussed up to this point assumes that there's a single predictor variable that you're interested in, in this case dani.sleep. In fact, up to this point every statistical tool that we've talked about has assumed that your analysis uses one predictor variable and one outcome variable. However, in many (perhaps most) research projects you actually have multiple predictors that you want to examine. If so, it would be nice to be able to extend the linear regression framework to be able to include multiple predictors. Perhaps some kind of **multiple regression** model would be in order?
+> 譯註：這個單元全部內容都是談多元迴歸，內容文字編修排在本書最後階段進行。
 
-Multiple regression is conceptually very simple. All we do is add more terms to our regression equation. Let's suppose that we've got two variables that we're interested in; perhaps we want to use both dani.sleep and baby.sleep to predict the dani.grump variable. As before, we let $Y_{i}$ refer to my grumpiness on the i-th day. But now we have two \$ X \$ variables: the first corresponding to the amount of sleep I got and the second corresponding to the amount of sleep my son got. So we'll let $X_{i1}$ refer to the hours I slept on the i-th day and $X_{i2}$ refers to the hours that the baby slept on that day. If so, then we can write our regression model like this:
+到目前為止，我們討論過的簡單線性迴歸模型假設只有一個您感興趣的預測變項，在這種情況下是dani.sleep。事實上，在這一點上，我們談到的每一個統計工具都假設您的分析使用一個預測變項和一個結果變項。然而，在許多（也許是大多數）研究項目中，實際上有多個您想要研究的預測變項。如果是這樣，將線性迴歸框架擴展到包含多個預測變項可能會很好。也許某種多元迴歸模型將會合適？
+
+多元迴歸在概念上非常簡單。我們所做的就是在我們的迴歸方程中添加更多項。假設我們對兩個變項感興趣；也許我們想要使用dani.sleep和baby.sleep來預測dani.grump變項。像以前一樣，我們用$Y_{i}$表示第i天的煩躁程度。但現在我們有兩個$ X $變項：第一個對應我得到的睡眠量，第二個對應我兒子得到的睡眠量。所以我們用$X_{i1}$表示第i天我睡的時間，$X_{i2}$表示那一天嬰兒睡的時間。如果是這樣，那麼我們可以這樣寫我們的迴歸模型：
+
+<!--- The simple linear regression model that we've discussed up to this point assumes that there's a single predictor variable that you're interested in, in this case dani.sleep. In fact, up to this point every statistical tool that we've talked about has assumed that your analysis uses one predictor variable and one outcome variable. However, in many (perhaps most) research projects you actually have multiple predictors that you want to examine. If so, it would be nice to be able to extend the linear regression framework to be able to include multiple predictors. Perhaps some kind of **multiple regression** model would be in order?
+
+Multiple regression is conceptually very simple. All we do is add more terms to our regression equation. Let's suppose that we've got two variables that we're interested in; perhaps we want to use both dani.sleep and baby.sleep to predict the dani.grump variable. As before, we let $Y_{i}$ refer to my grumpiness on the i-th day. But now we have two \$ X \$ variables: the first corresponding to the amount of sleep I got and the second corresponding to the amount of sleep my son got. So we'll let $X_{i1}$ refer to the hours I slept on the i-th day and $X_{i2}$ refers to the hours that the baby slept on that day. If so, then we can write our regression model like this: --->
 
 $$Y_i=b_0+b_1X_{i1}+b_2X_{i2}+\epsilon_i$$
 
-As before, $\epsilon_i$ is the residual associated with the i-th observation, $\epsilon_i = Y_i - \hat{Y}_i$. In this model, we now have three coefficients that need to be estimated: b0 is the intercept, b1 is the coefficient associated with my sleep, and b2 is the coefficient associated with my son's sleep. However, although the number of coefficients that need to be estimated has changed, the basic idea of how the estimation works is unchanged: our estimated coefficients $\hat{b}_0$, $\hat{b}_1$ and $\hat{b}_2$ are those that minimise the sum squared residuals.
+像以前一樣，$\epsilon_i$是與第i個觀察值相關的殘差，$\epsilon_i = Y_i - \hat{Y}_i$。在這個模型中，我們現在有三個需要估計的係數：b0是截距，b1是與我的睡眠相關的係數，b2是與我兒子的睡眠相關的係數。然而，儘管需要估計的係數數量有所改變，估計工作的基本思路沒有改變：我們的估計係數$\hat{b}_0$、$\hat{b}_1$和$\hat{b}_2$ 是那些使殘差平方和最小化的係數。
+
+<!--- As before, $\epsilon_i$ is the residual associated with the i-th observation, $\epsilon_i = Y_i - \hat{Y}_i$. In this model, we now have three coefficients that need to be estimated: b0 is the intercept, b1 is the coefficient associated with my sleep, and b2 is the coefficient associated with my son's sleep. However, although the number of coefficients that need to be estimated has changed, the basic idea of how the estimation works is unchanged: our estimated coefficients $\hat{b}_0$, $\hat{b}_1$ and $\hat{b}_2$ are those that minimise the sum squared residuals. --->
 
 ### jamovi實務示範
 
-Multiple regression in jamovi is no different to simple regression. All we have to do is add additional variables to the 'Covariates' box in jamovi. For example, if we want to use both dani.sleep and baby.sleep as predictors in our attempt to explain why I'm so grumpy, then move baby.sleep across into the 'Covariates' box alongside dani.sleep. By default, jamovi assumes that the model should include an intercept. The coefficients we get this time are shown in @tbl-tab10-4.
+在jamovi中，多元迴歸與簡單迴歸無異。我們所要做的就是在jamovi中的'協變項'框中添加更多變項。例如，如果我們想要使用dani.sleep和baby.sleep作為預測變項來解釋為什麼我如此煩躁，那麼將baby.sleep移動到與dani.sleep相鄰的'協變項'框中。默認情況下，jamovi假設該模型應該包括一個截距。這次我們得到的係數顯示在 @tbl-tab10-4 中。
+
+<!--- Multiple regression in jamovi is no different to simple regression. All we have to do is add additional variables to the 'Covariates' box in jamovi. For example, if we want to use both dani.sleep and baby.sleep as predictors in our attempt to explain why I'm so grumpy, then move baby.sleep across into the 'Covariates' box alongside dani.sleep. By default, jamovi assumes that the model should include an intercept. The coefficients we get this time are shown in @tbl-tab10-4. --->
 
 ```{r}
 #| label: tbl-tab10-4
@@ -431,7 +441,9 @@ data.frame(
   kable_paper(full_width = T)
 ```
 
-The coefficient associated with dani.sleep is quite large, suggesting that every hour of sleep I lose makes me a lot grumpier. However, the coefficient for baby.sleep is very small, suggesting that it doesn't really matter how much sleep my son gets. What matters as far as my grumpiness goes is how much sleep I get. To get a sense of what this multiple regression model looks like, @fig-fig10-14 shows a 3D plot that plots all three variables, along with the regression model itself.
+與dani.sleep相關的係數相當大，表明每失去一個小時的睡眠，我會變得更加煩躁。然而，baby.sleep的係數非常小，表明我的兒子睡多少其實無關緊要。就我的煩躁程度而言，重要的是我睡多少。為了讓您對這個多元迴歸模型有所了解，@fig-fig10-14顯示了一個三維圖，繪製了所有三個變項以及迴歸模型本身。
+
+<!--- The coefficient associated with dani.sleep is quite large, suggesting that every hour of sleep I lose makes me a lot grumpier. However, the coefficient for baby.sleep is very small, suggesting that it doesn't really matter how much sleep my son gets. What matters as far as my grumpiness goes is how much sleep I get. To get a sense of what this multiple regression model looks like, @fig-fig10-14 shows a 3D plot that plots all three variables, along with the regression model itself. --->
 
 ```{r}
 #| label: fig-fig10-14
@@ -442,31 +454,58 @@ The coefficient associated with dani.sleep is quite large, suggesting that every
 knitr::include_graphics("images/fig12-14.png")
 ```
 
-[Additional technical detail[^correlation-and-linear-regression-7]]
 
-[^correlation-and-linear-regression-7]: The formula for the general case: The equation that I gave in the main text shows you what a multiple regression model looks like when you include two predictors. Not surprisingly then, if you want more than two predictors all you have to do is add more X terms and more b coefficients. In other words, if you have K predictor variables in the model then the regression equation look like this $$Y_i=b_0+(\sum_{k=1}^{K}b_k X_{ik})+\epsilon_i$$
+[附加技術細節[^correlation-and-linear-regression-7]]
 
-## 量化迴歸模型的適配性
+[^correlation-and-linear-regression-7]: 一般情況下的公式：主文中我給出的方程式顯示了當您包括兩個預測變項時，多元迴歸模型是什麼樣子。毫不奇怪，如果您想要在模型中使用多於兩個預測變項，則只需添加更多的X項和更多的b係數。換句話說，如果您在模型中有K個預測變項，那麼迴歸方程就是這樣的 $$Y_i=b_0+(\sum_{k=1}^{K}b_k X_{ik})+\epsilon_i$$
 
-So we now know how to estimate the coefficients of a linear regression model. The problem is, we don't yet know if this regression model is any good. For example, the regression.1 model claims that every hour of sleep will improve my mood by quite a lot, but it might just be rubbish. Remember, the regression model only produces a prediction $\hat{Y}_i$ about what my mood is like, but my actual mood is $Y_i$ . If these two are very close, then the regression model has done a good job. If they are very different, then it has done a bad job.
+<!--- [Additional technical detail[^correlation-and-linear-regression-7]]
+
+[^correlation-and-linear-regression-7]: The formula for the general case: The equation that I gave in the main text shows you what a multiple regression model looks like when you include two predictors. Not surprisingly then, if you want more than two predictors all you have to do is add more X terms and more b coefficients. In other words, if you have K predictor variables in the model then the regression equation look like this $$Y_i=b_0+(\sum_{k=1}^{K}b_k X_{ik})+\epsilon_i$$ --->
+
+## 迴歸模型的適合度 {#sec-regression-model-fittedness}
+
+現在我們知道如何估計線性迴歸模型的係數。問題是，我們還不知道這個迴歸模型是否有效。例如，根據一號模型，多睡一小時我(原作者)的情緒會大大改善，但這可能只是廢話。請記住，迴歸模型只是生成個人情緒的預測值 $\hat{Y}_i$，實際的情緒量測值則是 $Y_i$。如果兩種數值非常接近，表示迴歸模型非常適合預測我的情緒變化。如果兩種數值差異很大，那麼這個模型就並不太適合用來預測我的情緒變化。
+
+<!--- So we now know how to estimate the coefficients of a linear regression model. The problem is, we don't yet know if this regression model is any good. For example, the regression.1 model claims that every hour of sleep will improve my mood by quite a lot, but it might just be rubbish. Remember, the regression model only produces a prediction $\hat{Y}_i$ about what my mood is like, but my actual mood is $Y_i$ . If these two are very close, then the regression model has done a good job. If they are very different, then it has done a bad job. --->
 
 ### $R^2$ {#sec-The-R2-value}
 
-Once again, let's wrap a little bit of mathematics around this. Firstly, we've got the sum of the squared residuals
+我們再次引用一些數學知識解釋如何評估模型的適合度。首先來認識殘差平方和
+
+<!--- Once again, let's wrap a little bit of mathematics around this. Firstly, we've got the sum of the squared residuals --->
 
 $$SS_{res}=\sum_i (Y_i-\hat{Y_i})^2$$
 
-which we would hope to be pretty small. Specifically, what we'd like is for it to be very small in comparison to the total variability in the outcome variable
+實務上會期望殘差平方和越小越好。具體地說，殘差平方和佔總變異平方和的比例越小越好
+
+<!--- which we would hope to be pretty small. Specifically, what we'd like is for it to be very small in comparison to the total variability in the outcome variable --->
 
 $$SS_{tot}=\sum_i(Y_i-\bar{Y})^2$$
 
-While we're here, let's calculate these values ourselves, not by hand though. Let's use something like Excel or another standard spreadsheet programme. I have done this by opening up the parenthood.csv file in Excel and saving it as parenthood rsquared.xls so that I can work on it. The first thing to do is calculate the $\hat{Y}$ values, and for the simple model that uses only a single predictor we would do the following:
+談到這裡，我們可以逐步計算這些數值，不過不是用手算。而是使用像是Excel或其他試算表軟體。在Excel中打開parenthood.csv這份檔案，再另存新檔為parenthood rsquared.xls就能完成計算。計算步驟第一步是計算 $\hat{Y}$ 值，按照以下步驟，我們可以得到以我的睡眠時間預測情緒的簡單迴歸模型：
+
+1. 使用公式`= 125.97 + (-8.94 * dani.sleep)`創建新欄位`Y.pred`。
+2. 創建新欄位`(Y-Y.pred)\^2`，使用公式`= (dani.grump - Y.pred)\^2`計算SS(resid)。
+3. 在`(Y-Y.pred)\^2`的最後一列使用公式`sum( ( Y-Y.pred)\^2 )`計算這些值的總和。
+4. 在`dani.grump`的最後一列，計算`dani.grump`的平均值（留意Excel的函數是'AVERAGE'而不是'mean'）。
+5. 創建新欄位` (Y - mean(Y))\^2 )`，使用公式`= (dani.grump - AVERAGE(dani.grump))^2`。
+6. 在` (Y - mean(Y))\^2 )`最後一列，使用`= sum( (Y - mean(Y))^2 )`計算總和。
+7. 在一個空白儲存格中輸入`= 1 - (SS(resid) / SS(tot) )`，計算R.squared。
+
+至此我們算出 $R^2$ 的數值 = 0.8161018。$R^2$ 在有些教科書裡被稱呼為**決定係數**[^correlation-and-linear-regression-8]，這個名稱有一個簡單的解釋：預測變項總變異解釋依變項總變異的比例。因此，在這裡得到的 $R^2 = .816$ 代表預測變項（my.sleep）解釋依變項（my.grump）總變異的81.6％。
+
+[^correlation-and-linear-regression-8]: “有些”指的是“非常少”(譯註：其實很多中文教科書都這樣稱呼)。在統計實務，多數人都用“R-squared”稱呼。
+
+想當然而，如果同學想計算迴歸模型的 $R^2$ ，實際上不需要自己用 Excel 計算。稍後在 @sec-jamovi-regression-hypothesis-testing *用 jamovi 執行假設檢定*這一節，同學會看到只要在模組選單裡勾選指定選項即可。現在，讓我們暫時擱置計算問題，我想談談 $R^2$ 的另一個性質。
+
+<!--- While we're here, let's calculate these values ourselves, not by hand though. Let's use something like Excel or another standard spreadsheet programme. I have done this by opening up the parenthood.csv file in Excel and saving it as parenthood rsquared.xls so that I can work on it. The first thing to do is calculate the $\hat{Y}$ values, and for the simple model that uses only a single predictor we would do the following:
 
 1.  create a new column called 'Y.pred' using the formula '= 125.97 + (-8.94 $\times$ dani.sleep)'
 2.  calculate the SS(resid) by creating a new column called '(Y-Y.pred)\^2' using the formula ' = (dani.grump - Y.pred)\^2 '.
 3.  Then, at the bottom of this column calculate the sum of these values, i.e. ' sum( ( Y-Y.pred)\^2 ) .
 4.  At the bottom of the dani.grump column, calculate the mean value for dani.grump (NB Excel uses the word ' AVERAGE ' rather than 'mean' in its function).
-5.  Then create a new column, called ' (Y - mean(Y))\^2 )' using the formula ' = (dani.grump - AVERAGE(dani.grump))\^2 '.
+5.  Then create a new column, called ' (Y - mean(Y))\^2 )' using the formula ' = (dani.grump - Accccccccccc(dani.grump))\^2 '.
 6.  Then, at the bottom of this column calculate the sum of these values, i.e. 'sum( (Y - mean(Y))\^2 )'.
 7.  Calculate R.squared by typing into a blank cell the following: '= 1 - (SS(resid) / SS(tot) )'.
 
@@ -474,15 +513,30 @@ This gives a value for $R^2$ of '0.8161018'. The $R^2$ value, sometimes called t
 
 [^correlation-and-linear-regression-8]: And by "sometimes" I mean "almost never". In practice everyone just calls it "R-squared".
 
-Naturally, you don't actually need to type all these commands into Excel yourself if you want to obtain the $R^2$ value for your regression model. As we'll see later on in the section on [Running the hypothesis tests in jamovi], all you need to do is specify this as an option in jamovi. However, let's put that to one side for the moment. There's another property of $R^2$ that I want to point out.
+Naturally, you don't actually need to type all these commands into Excel yourself if you want to obtain the $R^2$ value for your regression model. As we'll see later on in the section on [Running the hypothesis tests in jamovi], all you need to do is specify this as an option in jamovi. However, let's put that to one side for the moment. There's another property of $R^2$ that I want to point out. --->
 
 ### 迴歸與相關的關聯
 
-At this point we can revisit my earlier claim that regression, in this very simple form that I've discussed so far, is basically the same thing as a correlation. Previously, we used the symbol $r$ to denote a Pearson correlation. Might there be some relationship between the value of the correlation coefficient $r$ and the $R^2$ value from linear regression? Of course there is: the squared correlation $r^2$ is identical to the $R^2$ value for a linear regression with only a single predictor. In other words, running a Pearson correlation is more or less equivalent to running a linear regression model that uses only one predictor variable.
+現在可以重新回顧在這一章開始，我說到迴歸與相關基本上是同一回事<!---，在迄今為止我討論過的這種非常簡單的形式--->。在相關的小單元，我們用符號 $r$ 表示皮爾森相關。那麼皮爾森相關係數 $r$ 和線性迴歸的 $R^2$ 有存在某種關係嗎？當然有：只要將相關係數開平方， $r^2$ 與只有一個預測變項的線性迴歸 $R^2$ 數值是相同的。換句話說，計算皮爾森相關與計算僅有一個預測變項的線性迴歸模型基本上是相同的。
+
+<!--- At this point we can revisit my earlier claim that regression, in this very simple form that I've discussed so far, is basically the same thing as a correlation. Previously, we used the symbol $r$ to denote a Pearson correlation. Might there be some relationship between the value of the correlation coefficient $r$ and the $R^2$ value from linear regression? Of course there is: the squared correlation $r^2$ is identical to the $R^2$ value for a linear regression with only a single predictor. In other words, running a Pearson correlation is more or less equivalent to running a linear regression model that uses only one predictor variable. --->
 
 ### 校正後 $R^2$ 
 
-One final thing to point out before moving on. It's quite common for people to report a slightly different measure of model performance, known as "adjusted $R^2$". The motivation behind calculating the adjusted $R^2$ value is the observation that adding more predictors into the model will always cause the $R^2$ value to increase (or at least not decrease).
+> 譯註：只有分析多元迴歸的場景，才要了解校正後 $R^2$。
+
+在繼續到下個單元之前，我最後要指出的是，統計實務通常會報告一個稱為“校正後 $R^2$ ”的計量值。計算及報告校正後 $R^2$ 值的理由是，到將兩個以上預測變項添加到模型中，總是會增加（或至少不降低） $R^2$ 。
+
+[額外技術細節[^correlation-and-linear-regression-9]]
+
+[^correlation-and-linear-regression-9]: 調整後的 $R^2$ 值引入了一個輕微的變化到計算中，如下所示。對於具有 $K$ 個預測變項的迴歸模型，適用於包含 $N$ 個觀察值的數據集，調整後的 $R^2$ 為：$$\text{adj.}R^2=1-(\frac{SS_{res}}{SS_{tot}} \times \frac{N-1}{N-K-1})$$
+
+校正的目的是為了處理自由度。校正後 $R^2$ 的主用用途是，往模型添加更多預測變後，只有能提高模型預測能力的新變項，才會顯著增加校正後 $R^2$的數值。然而，校正後 $R^2$就無法像一開始的 $R^2$ 那樣的直接解釋。據我所知，調整後的 $R^2$ 沒有任何相等意義的解釋。
+
+那麼統計實務中應該要報告 $R^2$ 還是校正後 $R^2$？這可能是因人而異。如果同學比較想解釋報告裡的數值，那麼 $R^2$ 較好。如果在乎校正模型的預測偏差，那麼校正後 $R^2$ 可能比較好。就我(原作者)自己而言，我更喜歡 $R^2$，因為我覺得最重要的是能夠解釋模型預測能力的計量。此外，我們將在 @sec-regression-hypothesis-testing *迴歸模型的假設檢定*這個小單元看到，如果想知道添加預測變項後增加的 $R^2$ 是由於機遇還是因為模型預測能力真的改善了，那麼我們可以用假設檢定來做判斷。
+
+
+<!--- One final thing to point out before moving on. It's quite common for people to report a slightly different measure of model performance, known as "adjusted $R^2$". The motivation behind calculating the adjusted $R^2$ value is the observation that adding more predictors into the model will always cause the $R^2$ value to increase (or at least not decrease).
 
 [Additional technical detail[^correlation-and-linear-regression-9]]
 
@@ -490,11 +544,69 @@ One final thing to point out before moving on. It's quite common for people to r
 
 This adjustment is an attempt to take the degrees of freedom into account. The big advantage of the adjusted $R^2$ value is that when you add more predictors to the model, the adjusted $R^2$ value will only increase if the new variables improve the model performance more than you'd expect by chance. The big disadvantage is that the adjusted $R^2$ value can't be interpreted in the elegant way that $R^2$ can. $R^2$ has a simple interpretation as the proportion of variance in the outcome variable that is explained by the regression model. To my knowledge, no equivalent interpretation exists for adjusted $R^2$.
 
-An obvious question then is whether you should report $R^2$ or adjusted $R^2$ . This is probably a matter of personal preference. If you care more about interpretability, then $R^2$ is better. If you care more about correcting for bias, then adjusted $R^2$ is probably better. Speaking just for myself, I prefer $R^2$. My feeling is that it's more important to be able to interpret your measure of model performance. Besides, as we'll see in [Hypothesis tests for regression models], if you're worried that the improvement in $R^2$ that you get by adding a predictor is just due to chance and not because it's a better model, well we've got hypothesis tests for that.
+An obvious question then is whether you should report $R^2$ or adjusted $R^2$ . This is probably a matter of personal preference. If you care more about interpretability, then $R^2$ is better. If you care more about correcting for bias, then adjusted $R^2$ is probably better. Speaking just for myself, I prefer $R^2$. My feeling is that it's more important to be able to interpret your measure of model performance. Besides, as we'll see in [Hypothesis tests for regression models], if you're worried that the improvement in $R^2$ that you get by adding a predictor is just due to chance and not because it's a better model, well we've got hypothesis tests for that. --->
 
-## 迴歸模型的假設檢定
 
-So far we've talked about what a regression model is, how the coefficients of a regression model are estimated, and how we quantify the performance of the model (the last of these, incidentally, is basically our measure of effect size). The next thing we need to talk about is hypothesis tests. There are two different (but related) kinds of hypothesis tests that we need to talk about: those in which we test whether the regression model as a whole is performing significantly better than a null model, and those in which we test whether a particular regression coefficient is significantly different from zero.
+## 迴歸模型的假設檢定 {#sec-regression-hypothesis-testing}
+
+至此我們已經學到什麼是迴歸模型，如何估計迴歸模型的係數，以及量化模型預測效能的方法（順便說一下，相關係數與迴歸係數就是一種效果量的估計值）。接下來學習課題的是假設檢定。我們要學習兩種不同（但相關）的假設檢定：一種是檢驗包合所有預測變項的迴歸模型是否顯著優於只有截距的模型，另一種是我們檢驗只有單一預測變項的模型，迴歸係數是否顯著不等於零。
+
+
+### 檢定所有預測變項的模型
+
+> 譯註：只有分析多元迴歸的場景，才要進行這種檢定。內容文字編修排在本書最後階段進行。
+
+
+好吧，假設你已經估計了你的迴歸模型。你可能會嘗試的第一個假設檢定是虛無假設，即預測變項和結果之間沒有關係，而對立假設是數據的分佈完全符合迴歸模型的預測。
+
+[額外的技術細節[^correlation-and-linear-regression-10]]
+
+[^correlation-and-linear-regression-10]: 正式地，我們的「零模型」對應於相當簡單的「迴歸」模型，其中我們包括 0 預測變項並且僅包括截距項 $b_0$：$H_0:Y_0=b_0+\epsilon_i$ 如果我們的迴歸模型具有 $K$ 預測變項，那麼「對立模型」使用多元迴歸模型的標準公式描述：$$H_1:Y_i=b_0+(\sum_{k=1}^K b_k X_{ik})+\epsilon_i$$ 我們如何在這兩個假設之間進行檢驗呢？訣竅在於理解將總變異 $SStot$ 劃分為殘差變異 SSres 和迴歸模型變異 SSmod 的可能性。我將跳過技術細節，因為我們稍後在 @sec-Comparing-several-means-one-way-ANOVA 中研究 ANOVA 時會研究這個問題。但是只需注意 $SS_{mod}=SS_{tot}-SS_{res}$ 我們可以通過將平方和除以自由度將其轉換為平均平方。 $$MS_{mod}=\frac{SS_{mod}}{df_{mod}}$$ $$MS_{res}=\frac{SS_{res}}{df_{res}}$$ 那麼，我們有多少自由度呢？您可能會預料到，與模型相關的 df 與我們所包含的預測變項數量密切相關。實際上，$df_mod = K$。對於殘差，總自由度為 $df_res = N - K - 1$。現在我們已經有了平均平方值，我們可以像這樣計算 F 統計量 $$F=\frac{MS_{mod}}{MS_{res}}$$ 並且與此相關的自由度為 $K$ 和 $N - K - 1$。
+
+我們將在 @sec-Comparing-several-means-one-way-ANOVA 中看到更多 F 統計量，但目前只需知道我們可以將較大的 F 值解釋為虛無假設與對立假設相比表現不佳。過一會兒，我將向您展示如何用 jamovi 輕鬆進行檢驗，但首先讓我們看一下單個迴歸係數的檢驗。
+
+### 單一迴歸係數的檢定
+
+前一節介紹的 F 檢定對於檢查整個線性模型是否優於隨機截距模型很有用。如果您的迴歸模型並未在 F 檢定看到顯著結果，那麼這套迴歸模型可能不是有效解讀資料的好模型（或者是要分析的資料可能並不夠好）。然而，儘管這個檢定失敗是表示模型是否可用的明顯指標，但是通過檢定（也就是拒絕虛無假設）並不表示這個模型是真的好模型！也許同學會想知道為什麼？答案在前面 @sec-multiple-regression *多元線性迴歸* 已經有討論過的。
+
+注意一下 @tbl-tab10-4 的數值，與 dani.sleep 變項的迴歸係數估計數值（$-8.95$）相比，baby.sleep 變項的迴歸係數估計數值非常小（$0.01$）。考慮到這兩個變項的度量尺度都是一樣的（都是以“睡眠小時數”），我發現這很有啟發性。其實我看了  @tbl-tab10-4 就有想到，要預測我的沮喪程度，真正重要的變項應該只有我自己的睡眠時間長度。我們可以使用之前學到的假設檢定方法，確認我的懷疑<!---即 t 檢定--->[^10-translation-5]。我們想檢定的虛無假設是設定迴歸係數為零（$b = 0$），與迴歸係數不是零（$b \neq 0$）的對立假設進行檢定。也就是說：
+
+[^10-translation-5]: 配合變更章節順序，這一節不按照原書內容翻譯。課程教學可建議學生先著重了解jamovi操作及報表解讀，學過t檢定再來深入了解這個小單元的示範。
+
+$$H_0:b=0$$
+$$H_1:b \neq 0$$
+
+這個檢定要如何進行？好吧，如果還記得中心極限定理，同學可能會猜到迴歸係數的估計值$\hat{b}$是一種取樣分佈，而且是以 $b$ 為中心的常態分佈。這表示如果虛無假設是真的，那麼$\hat{b}$的取樣分佈平均值為零並且標準差是未知數。假設我們可以找到迴歸係數的標準誤差估計值，$se(\hat{b})$，那麼我們就很幸運。這正好可以用 @sec-Comparing-two-means 介紹的單一樣本 t 檢定處理。現在可以定義以下的 t 統計值
+
+$$t=\frac{\hat{b}}{SE(\hat{b})}$$
+
+這裡不詳細說明為什麼能這樣做的原因，但在這種狀況，自由度是 $df = N - K - 1$。令初學者厭煩的通常是，迴歸係數的標準誤估計值，$se(\hat{b})$，並不像 @sec-Comparing-two-means 介紹的單一樣本 t 檢定的平均值標準誤那樣容易計算。真實的公式長得有點醜陋，看起來並不那麼平易近人。[^correlation-and-linear-regression-11] 對於我們要真正完成的目標，只需要知道迴歸係數估計值的標準誤取決於預測變項和依變項，並且要留意有沒有違反變異數相等的適用條件 （稍後 @sec-regression-assumptions 就會討論）。
+
+[^correlation-and-linear-regression-11]: 給認真的高手讀者做個補充。殘差向量是$\epsilon=y - X\hat{b}$。對於K個預測變項加截距，估計的殘差平方差是$\hat{\sigma}^2 = \frac{\epsilon^{'}\epsilon}{(N - K - 1)}$。係數估計值的共變異數矩陣是$\hat{\sigma}^{2}(X^{'}X)^{-1}$，矩 陣的主對角線是$se(\hat{b})$，就是標準誤估計值。
+
+無論如何，這個t統計值可以按照 @sec-Comparing-two-means 介紹的檢定方法解釋結果。若是設定做雙尾檢定（也就是說，你不在乎是b > 0還是b < 0），那麼極端的t值（即遠小於零或遠大於零的值）表示你應該拒絕虛無假設。
+
+### 用 jamovi 執行假設檢定 {#sec-jamovi-regression-hypothesis-testing}
+
+要計算以上介紹的統計量數，只需要在jamovi迴歸模組選單勾選對應的選項。要選擇的選項如同 @fig-fig10-15 的示範，會得到一系列有用的報表輸出。
+
+```{r}
+#| label: fig-fig10-15
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: jamovi示範畫面，顯示一個多元線性迴歸分析，請留意其中勾選的選項
+knitr::include_graphics("images/fig12-15.png")  
+```
+
+在jamovi分析結果的“模型係數”表格(Model Coefficients)顯示迴歸模型的係數。此表中的每一行都是對應迴歸模型的其中一個係數。第一行是截距，後面每一行是每個預測變項的檢定結果。每一列標示各種統計訊息。第一列是$b$的實際估計值（例如，截距為$125.97$，預測變項dani.sleep 為$-8.95$）。第二列是標準誤的估計值$\hat{\sigma}_b$。第三和第四列是關於係數估計值的95%信賴區間的下限和上限（稍後對此有更多說明）。第五列是t統計值，值得注意的是，在這個表格中，$t=\frac{\hat{b}} {se({\hat{b}})}$每次分析結果都是成立的。最後一列呈現這些檢定結果的*p*值。[^correlation-and-linear-regression-12]
+
+[^correlation-and-linear-regression-12]: 注意，儘管jamovi會自動執行多次檢定，但是沒有執行Bonferroni校正或其他類似操作（參考 @sec-Comparing-several-means-one-way-ANOVA ）。這些是預設對立假設為雙側的標準單一樣本t檢定。如果想要校正多次檢定的結果，使用者需要自行操作。
+
+模型係數表唯一沒有列出的是t檢定的自由度，不過其值始終是$N - K - 1$，並且輸出到報表標題後的“模型適合度度量”(Model Fit Measures)表格中[^10-translation-06]。從這個表格中，我們可以看到模型的表現顯著優於機會水平（$F(2,97) = 215.24, p< .001$），其實這並不奇怪：$R^2 = .81$值表示迴歸模型能解釋依變項變異量的$81\%$（調整後的$R^2$為$82\%$ ）。然而，當我們回顧每個個別係數的t檢定時，我們有相當有力的證據表明baby.sleep變項沒有顯著效果。這個模型的主要預測效力都是來由dani.sleep變項。綜合這些結果，我們可以結論這個多元迴歸模型實際上並不是能有效解 資料的模型，最好的模型應該排除baby.sleep這個預測變項。換句話說，開始的簡單迴歸模型是更好的模型。
+
+[^10-translation-06]: 譯注~必須要勾選“Model Fit"選單裡的"F test"才能顯示自由度等資訊。
+
+<!--- So far we've talked about what a regression model is, how the coefficients of a regression model are estimated, and how we quantify the performance of the model (the last of these, incidentally, is basically our measure of effect size). The next thing we need to talk about is hypothesis tests. There are two different (but related) kinds of hypothesis tests that we need to talk about: those in which we test whether the regression model as a whole is performing significantly better than a null model, and those in which we test whether a particular regression coefficient is significantly different from zero. 
 
 ### Testing the model as a whole
 
@@ -529,7 +641,7 @@ In any case, this t-statistic can be interpreted in the same way as the t-statis
 To compute all of the statistics that we have talked about so far, all you need to do is make sure the relevant options are checked in jamovi and then run the regression. If we do that, as in @fig-fig10-15, we get a whole bunch of useful output.
 
 ```{r}
-#| label: fig-fig10-15
+#| label: fig-fig10-15eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: A jamovi screenshot showing a multiple linear regression analysis, with some useful options checked
@@ -540,11 +652,47 @@ The 'Model Coefficients' at the bottom of the jamovi analysis results shown in @
 
 [^correlation-and-linear-regression-12]: Note that, although jamovi has done multiple tests here, it hasn't done a Bonferroni correction or anything (see @sec-Comparing-several-means-one-way-ANOVA). These are standard one-sample t-tests with a two-sided alternative. If you want to make corrections for multiple tests, you need to do that yourself.
 
-The only thing that the coefficients table itself doesn't list is the degrees of freedom used in the t-test, which is always $N - K - 1$ and is listed in the table at the top of the output, labelled 'Model Fit Measures'. We can see from this table that the model performs significantly better than you'd expect by chance ($F(2,97) = 215.24, p< .001$), which isn't all that surprising: the $R^2 = .81$ value indicate that the regression model accounts for $81\%$ of the variability in the outcome measure (and $82\%$ for the adjusted $R^2$ ). However, when we look back up at the t-tests for each of the individual coefficients, we have pretty strong evidence that the baby.sleep variable has no significant effect. All the work in this model is being done by the dani.sleep variable. Taken together, these results suggest that this regression model is actually the wrong model for the data. You'd probably be better off dropping the baby.sleep predictor entirely. In other words, the simple regression model that we started with is the better model.
+The only thing that the coefficients table itself doesn't list is the degrees of freedom used in the t-test, which is always $N - K - 1$ and is listed in the table at the top of the output, labelled 'Model Fit Measures'. We can see from this table that the model performs significantly better than you'd expect by chance ($F(2,97) = 215.24, p< .001$), which isn't all that surprising: the $R^2 = .81$ value indicate that the regression model accounts for $81\%$ of the variability in the outcome measure (and $82\%$ for the adjusted $R^2$ ). However, when we look back up at the t-tests for each of the individual coefficients, we have pretty strong evidence that the baby.sleep variable has no significant effect. All the work in this model is being done by the dani.sleep variable. Taken together, these results suggest that this regression model is actually the wrong model for the data. You'd probably be better off dropping the baby.sleep predictor entirely. In other words, the simple regression model that we started with is the better model.--->
 
-## 迴歸係數的更多資訊
+## 迴歸係數的估計值 {#sec-regression-estimations}
 
-Before moving on to discuss the assumptions underlying linear regression and what you can do to check if they're being met, there's two more topics I want to briefly discuss, both of which relate to the regression coefficients. The first thing to talk about is calculating confidence intervals for the coefficients. After that, I'll discuss the somewhat murky question of how to determine which predictor is most important.
+在討論線性迴歸的適用條件，以及如何檢查一種模型是否滿足條件之前，這裡先簡單討論兩個與迴歸係數有關的主題。首先是如何計算迴歸係數的信賴區間。然後是如何確定哪個預測變項最重要。
+
+### 迴歸係數的信賴區間
+
+就像任何人口變項一樣，迴歸係數b無法從樣本資料精確地估算出來；這就是為什麼需要使用假設檢定的一部分原因。有鑑於此，信賴區間能夠呈現捕捉$b$真實數值的不確定性，是非常有用的工具。這在嘗試找出變項$X$與變項$Y$之間的關係強度的研究問題尤其有用，因為在這些研究裡，主要關注的是迴歸權重$b$(regression weight)。
+
+[額外技術細節[^correlation-and-linear-regression-13]]
+
+[^correlation-and-linear-regression-13]: 幸運的是，迴歸權重的信賴區間可以通用的方法計算出來$CI(b)=\hat{b} \pm (t_{crit} \times SE(\hat{b}))$，其中$se(\hat{b})$是迴歸係數的標準誤，$t_{crit}$是t分佈的對應臨界值。例如，如果我們要計算的是95％的信賴區間，則臨界值是具有$N - K -1$自由度的t分佈中$97.5$的百分位數。換句話說，這與其他統計方法使用的信賴區間的計算方法相同。
+
+在jamovi的操作界面，我們可以指定“95％信賴區間”，如 @fig-fig10-15 的示範，如果想要更嚴謹的話，我們可以輕鬆選擇另一種區間，例如“99％信賴區間”。
+
+### 標準化迴歸係數的計算方法
+
+有經驗的使用者可能還會計算“標準化”迴歸係數，通常報告中用$\beta$表示。標準化係數的基本原理是：在很多情況下，每個變項的測量尺度是不一樣的。例如，如果有個迴歸模型要探討受教育程度（受教育年數）和收入作為預測變項，來預測受測者的智力測驗得分。顯然，受教育程度和收入的計量尺度是不相同的。一般人的教育年限可能只有10多年，而收入差距可能高達10,000美元（或更多）。計量單位對迴歸係數有很大影響，只有預測變項和依變項的計量單位一致時，迴歸係數才具有意義，否則比較不同預測變項的迴歸係數將會非常困難。然而，有時我們希望能比較不同變項的係數。具體來說，研究者最想找到那些預測變項與依變項之間相關性最強力的標準衡量指標，這就是為什麼有**標準化迴歸係數**。
+
+**標準化迴歸係數**的思路很簡單；如果在執行迴歸分析之前將所有變項轉換為z分數，標準化係數就是您會得到的係數。[^correlation-and-linear-regression-14]這裡的想法是，將所有預測變項數值轉換為z分數，使得迴歸模型的生成的機率分佈具有可對應的比例，進而消除不同尺度的變項產生的問題。無論變項的原始尺度是什麼，$\beta$值為1都代表增加預測變項的1個標準差，就是導致依變項的對應數值增加1個標準差。因此，如果預測變項A的$\beta$絕對值大於預測變項B的$\beta$，研究者至少能主張預測變項A與依變項的相關性更強。值得小心的是，對於所有變項變異基本相同的這個條件 ，其實非常依賴“1個標準差變化”，並不是什麼形式的變項都可見。
+
+[^correlation-and-linear-regression-14]: 嚴格來說，研究者需要將所有*迴歸變項*標準化。也就是說，在模型中與依變 項相關的每個“事物”都具有迴歸係數。對於到目前為止談過的迴歸模型，每個預測變項都恰好有一個迴歸變項，反之亦然。但是，統計實務中這並不是一般情況，稍後在 @sec-Factorial-ANOVA ，我們會看到一些這方面的例子。但是，目前我們不需要太在意這種區別。(譯註~之後會提到的線性模性版範例，全都有線性迴歸模型。)
+
+[額外技術細節[^correlation-and-linear-regression-15]]
+
+[^correlation-and-linear-regression-15]: 撇開這個小單元的解釋，我們可以嘗試看看實際的計算步驟。同學們可以先將所有變項資料標準化，然後再執行迴歸分析。而且其實有一種更簡單的方法可以做到這一點，預測變項$X$和依變項$Y$的$\beta$係數有個非常簡單的公式：$\beta_X=b_X \times \frac{\sigma_X}{\sigma_Y}$，其中$\sigma_X$是預測變項的標準差，$\sigma_Y$是依變項Y的標準差。
+
+為了讓簡化分析程序，只要在jamovi模組選單裡，從"Model Coefficients"的選項中勾選"Standardized estimate"，就能計算$\beta$，如同 @fig-fig10-16 的示範。
+
+```{r}
+#| label: fig-fig10-16
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: 多元線性迴歸的標準化係數及其95％信賴區間
+knitr::include_graphics("images/fig12-16.png")  
+```
+
+從輸出結果可明顯看出，dani.sleep是比baby.sleep有更強預測效力的變項。然而，這可能正是一個更適合使用原始係數b而不是標準化係數$\beta$的完美例子。畢竟，我的睡眠時間和寶寶的睡眠時間已經是同一個計量尺度。為什麼要還要將它們轉換為z分數來讓事情變得更複雜呢？
+
+<!--- Before moving on to discuss the assumptions underlying linear regression and what you can do to check if they're being met, there's two more topics I want to briefly discuss, both of which relate to the regression coefficients. The first thing to talk about is calculating confidence intervals for the coefficients. After that, I'll discuss the somewhat murky question of how to determine which predictor is most important.
 
 ### 迴歸係數的信賴區間
 
@@ -571,18 +719,33 @@ The basic idea is quite simple; the standardised coefficients are the coefficien
 To make things even simpler, jamovi has an option that computes the $\beta$ coefficients for you using the 'Standardized estimate' checkbox in the 'Model Coefficients' options, see results in @fig-fig10-16.
 
 ```{r}
-#| label: fig-fig10-16
+#| label: fig-fig10-16eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: Standardised coefficients, with 95% confidence intervals, for multiple linear regression
 knitr::include_graphics("images/fig12-16.png")  
 ```
 
-These results clearly show that the dani.sleep variable has a much stronger effect than the baby.sleep variable. However, this is a perfect example of a situation where it would probably make sense to use the original coefficients b rather than the standardised coefficients $\beta$. After all, my sleep and the baby's sleep are already on the same scale: number of hours slept. Why complicate matters by converting these to z-scores?
+These results clearly show that the dani.sleep variable has a much stronger effect than the baby.sleep variable. However, this is a perfect example of a situation where it would probably make sense to use the original coefficients b rather than the standardised coefficients $\beta$. After all, my sleep and the baby's sleep are already on the same scale: number of hours slept. Why complicate matters by converting these to z-scores? --->
 
-## 迴歸模型的適用條件
+## 迴歸模型的適用條件 {#sec-regression-assumptions}
 
-The linear regression model that I've been discussing relies on several assumptions. In [Model checking] we'll talk a lot more about how to check that these assumptions are being met, but first let's have a look at each of them.
+線性迴歸模型必須符合幾個適用條件(assumptions)，才能解讀分析結果。在 @sec-regression-Model-diagnosis *診斷迴歸模型的適用條件*這個單元，我們將會學習如何檢查這些假設是否得到滿足，首先簡單說明每個假設的涵意。[^10-translation-5]
+
+[^10-translation-5]: 譯註~這些適用條件在所有基礎統計方法幾乎都是必要的，這也是本書中文版將**相關與線性迴歸**調整為第一個學習的統計方法原因之一。
+
+- **線性**。線性迴歸模型的最基本的適用條件是$X$和$Y$之間的關係必須是線性的！無論是簡單迴歸還是多元迴歸，我們都要假設變項之間的關係是線性的。
+- **獨立性**：這是說變項資料的殘差彼此獨立。實際上這是條“總括一切”的適用條件，更白話地說“在殘差中找不到任何有意思的東西了”。如果還能分析出一些意料之外的資訊（例如，所有殘差都與某些未測量的變項存在明顯相關性），可能會破壞分析後的結論。
+- **常態性**。就像驅動許多統計方法的機率模型一樣，基本的簡單或多元線性迴歸也要符合常態性。具體來說，這條是指殘差的次數分佈逼近或符合常態分佈。實際上，即使預測變項$X$和依變項$Y$的實際資料次數分佈不符合常態分佈，只要殘差$\epsilon$的次數分佈符合常態的就可以了。 @sec-regression-Model-diagnosis *診斷迴歸模型的適用條件*有進一步說明及示範。
+- **變異相等**（或稱'同質性'）。嚴格來說，符合這個條件 的迴歸模型生成的所有殘差$\epsilon_i$，都是來自一個平均值為0的常態分佈，更重要的是，每個殘差來源的機率分佈標準差$\sigma$都是相同的。在實務中，檢驗每個殘差都是來自同一個機率分佈是不大可能做到的事。相反地，我們真正關心的是殘差的標準差相對於所有預測值$\hat{Y}$是相同的，特別是多元迴歸模型的每個預測變項$X$所生成的預測值是相同的。
+
+所以，要執行有效的線性迴歸分析，首先要檢查是不是符合這四個適用條件 （剛好可以縮寫成**LINE**）。此外，還有一些需要檢查的條件 ：
+
+- 沒有“不良”極端值。其實這並非必要的適用條件，但是極端值可能造成潛在的問題。就是迴歸模型雖然不會因為一兩個異常極端值，造成不符合上述任何一條適用條件(譯註~特別是**線性**)，但是在某些情況下會引起對模型的適當性和資料可靠性的質疑。詳細說明及示範請見 @sec-three-kinds-of-anomalous-data *三種異常資料*。
+
+- 預測變項之間無相關性。執行多元迴歸模型分析時，我們不希望預測變項彼此間的存在高度相關。這並非迴歸模型的“必要”適用條件，但在統計實務是必需的。預測變項之間相關性過強（通常稱為“共線性”）可能會造成錯誤解讀分析結果。詳細說明及示範請見 @sec-check-regression-collinearity *檢查共線性*。
+
+<!--- The linear regression model that I've been discussing relies on several assumptions. In [Model checking] we'll talk a lot more about how to check that these assumptions are being met, but first let's have a look at each of them.
 
 -   **L**inearity. A pretty fundamental assumption of the linear regression model is that the relationship between $X$ and $Y$ actually is linear! Regardless of whether it's a simple regression or a multiple regression, we assume that the relationships involved are linear.
 -   **I**ndependence: residuals are independent of each other. This is really just a "catch all" assumption, to the effect that "there's nothing else funny going on in the residuals". If there is something weird (e.g., the residuals all depend heavily on some other unmeasured variable) going on, it might screw things up.
@@ -592,15 +755,120 @@ The linear regression model that I've been discussing relies on several assumpti
 So, we have four main assumptions for linear regression (that neatly form the acronym '**LINE**'). And there are also a couple of other things we should also check for:
 
 -   Uncorrelated predictors. The idea here is that, in a multiple regression model, you don't want your predictors to be too strongly correlated with each other. This isn't "technically" an assumption of the regression model, but in practice it's required. Predictors that are too strongly correlated with each other (referred to as "collinearity") can cause problems when evaluating the model. See the [Checking for collinearity] section.
--   No "bad" outliers. Again, not actually a technical assumption of the model (or rather, it's sort of implied by all the others), but there is an implicit assumption that your regression model isn't being too strongly influenced by one or two anomalous data points because this raises questions about the adequacy of the model and the trustworthiness of the data in some cases. See the section on [Three kinds of anomalous data].
+-   No "bad" outliers. Again, not actually a technical assumption of the model (or rather, it's sort of implied by all the others), but there is an implicit assumption that your regression model isn't being too strongly influenced by one or two anomalous data points because this raises questions about the adequacy of the model and the trustworthiness of the data in some cases. See the section on [Three kinds of anomalous data]. --->
 
-## 診斷適用條件 {#sec-Model-checking}
+## 診斷迴歸模型的適用條件 {#sec-regression-Model-diagnosis}
 
-The main focus of this section is **regression diagnostics**, a term that refers to the art of checking that the assumptions of your regression model have been met, figuring out how to fix the model if the assumptions are violated, and generally to check that nothing "funny" is going on. I refer to this as the "art" of model checking with good reason. It's not easy, and while there are a lot of fairly standardised tools that you can use to diagnose and maybe even cure the problems that ail your model (if there are any, that is!), you really do need to exercise a certain amount of judgement when doing this. It's easy to get lost in all the details of checking this thing or that thing, and it's quite exhausting to try to remember what all the different things are. This has the very nasty side effect that a lot of people get frustrated when trying to learn all the tools, so instead they decide not to do any model checking. This is a bit of a worry!
 
-In this section I describe several different things you can do to check that your regression model is doing what it's supposed to. It doesn't cover the full space of things you could do, but it's still much more detailed than what I see a lot of people doing in practice, and even I don't usually cover all of this in my intro stats class either. However, I do think it's important that you get a sense of what tools are at your disposal, so I'll try to introduce a bunch of them here. Finally, I should note that this section draws quite heavily from @Fox2011, the book associated with the 'car' package that is used to conduct regression analysis in R. The 'car' package is notable for providing some excellent tools for regression diagnostics, and the book itself talks about them in an admirably clear fashion. I don't want to sound too gushy about it, but I do think that @Fox2011 is well worth reading, even if some of the advanced diagnostic techniques are only available in R and not jamovi.
+> 譯註：這個單元全部內容都是談多元迴歸，內容文字編修排在本書最後階段進行。
+
+本節的主要焦點是**迴歸診斷**，這個術語是指檢查迴歸模型假設是否得到滿足、在假設被違反時如何修正模型以及一般情況下檢查是否存在不尋常情況的技術。我將這稱為模型檢查的“藝術”，理由很充分。這並不容易，儘管有許多相當標準化的工具可以用來診斷甚至可能治愈困擾模型的問題（如果存在的話！），但在這方面真的需要運用一定程度的判斷力。在檢查這件事情或那件事情的所有細節中容易迷失，試圖記住所有不同的事物是相當耗費精力的。這會產生一個非常令人討厭的副作用，很多人在試圖學習所有工具時會感到沮喪，所以他們決定不做任何模型檢查。這有點令人擔憂！
+
+在本節中，我描述了一些方法，用於檢查迴歸模型是否按照預期工作。它並沒有涵蓋所有您可能做的事情，但仍然比我在實踐中看到的大多數人所做的事情要詳細得多，即使在我的初級統計課程中，我通常也不會涵蓋所有這些內容。但是，我確實認為您應該了解可供您使用的工具，所以我將在這裡嘗試介紹一部分。最後，我應該指出，本節很大程度上借鑒了 @Fox2011 ，即與在 R 中進行迴歸分析的“car”包相關的書籍。 “car”包以提供一些出色的迴歸診斷工具而著稱，而該書本身以極為清晰的方式談論了這些工具。我不想聽起來太過於誇大，但我確實認為即使在 R 和不是 jamovi 的情況下， @Fox2011 都值得一讀。
 
 ### 三種殘差
+
+大多數迴歸診斷都圍繞著觀察殘差，到目前為止，你可能已經對統計學形成了足夠悲觀的理論，能夠猜到，正因為我們非常關心殘差，我們可能會考慮幾種不同類型的殘差。特別地，在本節中，我們將提到以下三種殘差：“普通殘差”、“標準化殘差”和“學生化殘差”。還有第四種你會在一些圖中看到的，稱為“皮爾森殘差”。然而，對於我們在本章中討論的模型，皮爾森殘差與普通殘差相同。
+
+首先，我們關心的最簡單類型的殘差是**普通殘差**。這些就是我在本章前面一直提到的實際原始殘差。普通殘差僅僅是擬合值 $\hat{Y}_i$ 和觀察值 $Y_i$ 之間的差。我一直用符號 $\epsilon_i$ 表示第 i 個普通殘差，並且我將繼續堅持使用它。考慮到這一點，我們有非常簡單的方程式
+
+$$\epsilon_i=Y_i-\hat{Y_i}$$
+
+這當然是我們之前看到的，除非我特別提到其他類型的殘差，否則我就是在談論這個。所以這裡沒有新的東西。我只是想重申一下。使用普通殘差的一個缺點是，它們總是在不同的尺度上，取決於結果變項是什麼以及迴歸模型有多好。也就是說，除非你決定在沒有截距項的情況下運行迴歸模型，否則普通殘差的均值將為 0，但每個迴歸的方差都不同。在很多情境下，特別是當你只對殘差的模式感興趣，而不是它們的實際值時，估計**標準化殘差**很方便，這些殘差經過規範化後標準差為 1。
+
+[額外技術細節[^correlation-and-linear-regression-16]]
+
+[^correlation-and-linear-regression-16]: 我們計算這些值的方法是將普通殘差除以這些殘差的（群體）標準差的估計值。由於技術原因，嘟囔囔，公式為 $$\epsilon_i^{'}=\frac{\epsilon_i}{\hat{\sigma}\sqrt{1-h_i}}$$ 其中，$\hat{\sigma}$ 在此上下文中是普通殘差的估計群體標準差，$h_i$ 是第 i 個觀察值的“帽值”。我還沒有向你解釋帽值（但不用害怕$^c$，它很快就會到來），所以這個公式現在可能看起來不太合理。目前，只需將標準化殘差理解為如果我們將普通殘差轉換為 z 分數。實際上，這幾乎就是事實，只不過我們的表達稍微高級一些。+++$^c$ 或者沒有希望，也可能是這樣。
+
+第三種殘差是**學生化殘差**（也稱為 "剃刀切割殘差"），它們比標準化殘差更高級。同樣，目的是將普通殘差除以某個量，以估計殘差的某種標準化概念。[^correlation-and-linear-regression-17]
+
+[^correlation-and-linear-regression-17]: 這次進行計算的公式略有不同 $\epsilon _i^*=\frac{\epsilon_i}{\hat{\sigma}_{(-i)}\sqrt{1-h_i}}$ 注意，我們這裡的標準差估計值寫作 $\hat{\sigma}_{(-i)}$。這對應的是，如果你從數據集中刪除第 i 個觀察值，則將獲得的殘差標準差估計。這聽起來好像是一個很難計算的東西，因為它似乎在說你必須運行 N 個新的迴歸模型（即使是現代計算機也可能對此有些怨言，特別是如果你有一個大數據集）。幸運的是，一些非常聰明的人已經證明了這個標準差估計實際上是由以下公式給出的：$\hat{\sigma}_{(-i)}= \hat{\sigma}\sqrt{\frac{N-K-1-{\epsilon_i^{'}}^2}{N-K-2}}$ 難道這不是一個妙計嗎？
+
+在繼續之前，我應該指出，即使這些殘差是幾乎所有迴歸診斷的核心，你通常也不需要自己獲得這些殘差。大多數時候，提供診斷或假設檢查的各種選項將為您處理這些計算。即使如此，知道如何實際自己獲得這些東西，以防你需要進行一些非標準操作，總是很好的。
+
+### 三種異常資料{#sec-three-kinds-of-anomalous-data}
+
+使用線性迴歸模型時，您可能會遇到一個危險，那就是您的分析可能會對一小部分"不尋常"或"異常"的觀測值過於敏感。我之前在 @sec-Using-box-plots-to-detect-outliers 的上下文中討論過這個想法，當時是在討論用 '探索' - '描述統計' 下的 boxplot 選項自動識別的異常值，但這次我們需要更精確。在線性迴歸的背景下，有三個概念上不同的方式可以將觀測值稱為"異常"。這三者都很有趣，但對你的分析有很不同的影響。
+
+第一種不尋常的觀測值是**異常值**。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。@fig-fig10-17 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，$\epsilon_i^*$，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾數據，例如，變項在數據集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。
+
+```{r}
+#| label: fig-fig10-17
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: 異常值的示例。虛線繪製了不包括異常觀測值的迴歸線，以及相應的殘差（即Studentised殘差）。實線顯示了包含異常觀測值的迴歸線。異常值在結果值（y軸位置）上具有不尋常的值，但在預測變項（x軸位置）上並不不尋常，並且距離迴歸線很遠
+knitr::include_graphics("images/fig12-17.png")  
+```
+
+觀測值不尋常的第二種方式是具有高**槓桿作用(leverage)**，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如@fig-fig10-18所示。觀測值的槓桿作用通常用帽子值表示，通常寫作$h_i$。帽子值的公式相當複雜[^correlation-and-linear-regression-18]，但它的解釋並不複雜：$h_i$是衡量第i個觀測值“控制”迴歸線走向的程度。
+
+[^correlation-and-linear-regression-18]: 再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量$y$轉換為擬合值向量$\hat{y}$的矩陣$H$，使得$\hat{y} = Hy$。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為$h_{ii}$而不是$h_i$）。哦，如果你在意，這是它的計算方法：$H = X(X^{'}X)^{1}X^{'}$。漂亮，不是嗎？
+
+```{r}
+#| label: fig-fig10-18
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: 高槓桿點的示例。在這種情況下，異常觀測值在預測變項（x軸）和結果變項（y軸）方面都不尋常，但這種不尋常性與其他觀測值之間存在的相關性模式高度一致。觀測值非常接近迴歸線並且不會使其變形
+knitr::include_graphics("images/fig12-18.png")  
+```
+
+一般來說，如果觀測值在預測變項方面遠離其他觀測值，它將具有較大的帽子值（作為粗略指南，高槓桿是指帽子值大於平均值的2-3倍；注意帽子值的總和被限制為等於$K + 1$）。高槓桿點也值得更詳細地查看，但除非它們也是異常值，否則它們不太可能引起擔憂。
+
+這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的**影響力(influence)**。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在@fig-fig10-19中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為**Cook's distance**的衡量指標來度量影響力。[^correlation-and-linear-regression-19]
+
+[^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ 請注意，這是衡量觀測值的異常程度（左邊的部分）和衡量觀測值的槓桿（右邊的部分）的乘積。
+
+```{r}
+#| label: fig-fig10-19
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: 高影響力點的示例。在這種情況下，異常觀測值在預測變項（x軸）上非常不尋常，並且距離迴歸線很遠。因此，即使在這種情況下，異常觀測值在結果變項（y軸）上完全正常，迴歸線也會受到很大影響
+knitr::include_graphics("images/fig12-19.png")  
+```
+
+要具有較大的Cook's距離，觀測值必須是相當大的異常值並具有高槓桿。作為粗略指南，大於1的Cook's距離通常被認為很大（這是我通常用作快速而簡單的規則）。
+
+在jamovi中，可以通過單擊'Assumption Checks' - 'Data Summary'選項下的'Cook's Distance'複選框來計算有關Cook's距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如@fig-fig10-20所示的結果。
+
+```{r}
+#| label: fig-fig10-20
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: jamovi輸出顯示Cook's距離統計表格
+knitr::include_graphics("images/fig12-20.png")  
+```
+
+您可以看到，在這個例子中，平均Cook's距離值為$0.01$，範圍從$0.00$到$0.11$，因此這與前面提到的指標相去甚遠，即大於1的Cook's距離被認為很大。
+
+接下來明顯要問的問題是，如果您確實擁有很大的Cook's距離值，您應該怎麼辦？一如既往，沒有固定不變的規則。可能首先要做的是嘗試運行迴歸，排除具有最大Cook's距離的異常值[^correlation-and-linear-regression-20]，看看模型性能和迴歸係數會發生什麼變化。如果它們確實有很大不同，那就該開始深入研究您的數據集和您在運行研究時無疑在抄寫的筆記。嘗試找出該點為何如此不同。如果您開始確信這個數據點嚴重扭曲了您的結果，那麼您可能會考慮將其排除在外，但除非您對於這個特定案例與其他案例有本質上的不同並因此應該單獨處理，否則這種做法是不理想的。
+
+[^correlation-and-linear-regression-20]: 雖然目前在jamovi中進行此操作的方法不太容易，因此更強大的迴歸程序（例如R中的'car'套件）將更適合進行此更高級的分析。
+
+
+
+<!--- 大多數迴歸診斷都圍繞著**殘差**的概念。在某種程度上，這很有道理：迴歸模型的目標是找到一條能夠最小化殘差的線，因此我們當然會關注殘差的性質。然而，當我們討論殘差時，其實有很多不同類型的殘差可以關注，以下是其中三個最重要的類型：
+
+1. 原始殘差：這些是最簡單的殘差，也是我們迄今為止討論的唯一一種殘差。對於每個觀察值 i，原始殘差 e_i 被定義為觀察值 y_i 與預測值 ŷ_i 之間的差異。
+
+2. 標準化殘差：這些殘差被標準化，這意味著它們的值被除以標準誤。標準化殘差的計算方式是將原始殘差除以觀察值的標準誤。因此，標準化殘差可以用來確定原始殘差值是否異常高或低。
+
+3. 學生化殘差：這些殘差與標準化殘差相似，但它們在計算標準誤時排除了所檢查的觀察值。這意味著學生化殘差是將原始殘差除以觀察值的標準誤後，再除以（1-h_i），其中 h_i 是觀察值的槓桿值。學生化殘差可以幫助我們確定觀察值是否對模型的擬合產生了極大影響。
+
+### 畫圖：殘差圖和擬合值圖
+
+要確保迴歸模型的適用性，繪製殘差圖和擬合值圖是一種常用方法。這兩種圖表可以幫助我們檢查殘差是否符合我們對其的期望。例如，我們希望殘差是隨機分布的，並且其變異數是恆定的。通過檢查殘差圖和擬合值圖，我們可以快速確定是否滿足這些條件。
+
+1. **殘差圖**：殘差圖是一個以觀察值的順序為橫軸，以殘差為縱軸的散點圖。通常，我們希望這些點沒有特定的模式，並且它們在橫軸上的分布應該是均勻的。如果我們在殘差圖中看到某種模式，那麼這可能表明迴歸模型未能捕捉到某種趨勢。
+
+2. **擬合值圖**：擬合值圖也是一個散點圖，但是它將擬合值（模型預測）作為橫軸，而將殘差作為縱軸。這種圖表的目的是確保殘差在擬合值的範圍內隨機分布，並且具有恆定的變異數。如果我們在擬合值圖中看到某種模式或變異數不恆定的現象，那麼這可能表明迴歸模型的某些假設被違反了。
+
+總之，迴歸分析提供了一個強大的方法來找出自變項與應變項之間的關係。通過分析殘差和擬合值，我們可以檢查迴歸模型的適用性和有效性。此外，繪製殘差圖和擬合值圖有助於我們確保模型符合其基本假設。當模型被證明是有效且合適時，我們就可以使用它來預測或解釋因變項的變化。 --->
+
+<!--- The main focus of this section is **regression diagnostics**, a term that refers to the art of checking that the assumptions of your regression model have been met, figuring out how to fix the model if the assumptions are violated, and generally to check that nothing "funny" is going on. I refer to this as the "art" of model checking with good reason. It's not easy, and while there are a lot of fairly standardised tools that you can use to diagnose and maybe even cure the problems that ail your model (if there are any, that is!), you really do need to exercise a certain amount of judgement when doing this. It's easy to get lost in all the details of checking this thing or that thing, and it's quite exhausting to try to remember what all the different things are. This has the very nasty side effect that a lot of people get frustrated when trying to learn all the tools, so instead they decide not to do any model checking. This is a bit of a worry!
+
+In this section I describe several different things you can do to check that your regression model is doing what it's supposed to. It doesn't cover the full space of things you could do, but it's still much more detailed than what I see a lot of people doing in practice, and even I don't usually cover all of this in my intro stats class either. However, I do think it's important that you get a sense of what tools are at your disposal, so I'll try to introduce a bunch of them here. Finally, I should note that this section draws quite heavily from @Fox2011, the book associated with the 'car' package that is used to conduct regression analysis in R. The 'car' package is notable for providing some excellent tools for regression diagnostics, and the book itself talks about them in an admirably clear fashion. I don't want to sound too gushy about it, but I do think that @Fox2011 is well worth reading, even if some of the advanced diagnostic techniques are only available in R and not jamovi. 
+
+### 三種殘差 
 
 The majority of regression diagnostics revolve around looking at the residuals, and by now you've probably formed a sufficiently pessimistic theory of statistics to be able to guess that, precisely because of the fact that we care a lot about the residuals, there are several different kinds of residual that we might consider. In particular, the following three kinds of residuals are referred to in this section: "ordinary residuals", "standardised residuals", and "Studentised residuals". There is a fourth kind that you'll see referred to in some of the Figures, and that's the "Pearson residual". However, for the models that we're talking about in this chapter the Pearson residual is identical to the ordinary residual.
 
@@ -620,14 +888,14 @@ The third kind of residuals are **Studentised residuals** (also called "jackknif
 
 Before moving on, I should point out that you don't often need to obtain these residuals yourself, even though they are at the heart of almost all regression diagnostics. Most of the time the various options that provide the diagnostics, or assumption checks, will take care of these calculations for you. Even so, it's always nice to know how to actually get hold of these things yourself in case you ever need to do something non-standard.
 
-### 三種反常資料
+### 三種異常資料{#sec-three-kinds-of-anomalous-data}
 
 One danger that you can run into with linear regression models is that your analysis might be disproportionately sensitive to a smallish number of "unusual" or "anomalous" observations. I discussed this idea previously in @sec-Using-box-plots-to-detect-outliers in the context of discussing the outliers that get automatically identified by the boxplot option under 'Exploration' - 'Descriptives', but this time we need to be much more precise. In the context of linear regression, there are three conceptually distinct ways in which an observation might be called "anomalous". All three are interesting, but they have rather different implications for your analysis.
 
 The first kind of unusual observation is an **outlier**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in @fig-fig10-17. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, $\epsilon_i^*$. Outliers are interesting: a big outlier might correspond to junk data, e.g., the variables might have been recorded incorrectly in the data set, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case and try to find out why it's so different.
 
 ```{r}
-#| label: fig-fig10-17
+#| label: fig-fig10-17eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line
@@ -639,7 +907,7 @@ The second way in which an observation can be unusual is if it has high **槓桿
 [^correlation-and-linear-regression-18]: Again, for the linear algebra fanatics: the "hat matrix" is defined to be that matrix $H$ that converts the vector of observed values $y$ into a vector of fitted values $\hat{y}$, such that $\hat{y} = Hy$. The name comes from the fact that this is the matrix that "puts a hat on y". The hat value of the i-th observation is the i-th diagonal element of this matrix (so technically I should be writing it as $h_{ii}$ rather than $h_i$). Oh, and in case you care, here's how it's calculated: $H = X(X^{'}X)^{1}X^{'}$. Pretty, isn't it?
 
 ```{r}
-#| label: fig-fig10-18
+#| label: fig-fig10-18eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations. The observation falls very close to the regression line and does not distort it
@@ -653,7 +921,7 @@ This brings us to our third measure of unusualness, the **影響力(influence)**
 [^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ Notice that this is a multiplication of something that measures the outlier-ness of the observation (the bit on the left), and something that measures the leverage of the observation (the bit on the right).
 
 ```{r}
-#| label: fig-fig10-19
+#| label: fig-fig10-19eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)
@@ -665,7 +933,7 @@ In order to have a large Cook's distance an observation must be a fairly substan
 In jamovi, information about Cook's distance can be calculated by clicking on the 'Cook's Distance' checkbox in the 'Assumption Checks' - 'Data Summary' options. When you do this, for the multiple regression model we have been using as an example in this chapter, you get the results as shown in @fig-fig10-20.
 
 ```{r}
-#| label: fig-fig10-20
+#| label: fig-fig10-20eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: jamovi output showing the table for the Cook's distance statistics
@@ -676,14 +944,71 @@ You can see that, in this example, the mean Cook's distance value is $0.01$, and
 
 An obvious question to ask next is, if you do have large values of Cook's distance what should you do? As always, there's no hard and fast rule. Probably the first thing to do is to try running the regression with the outlier with the greatest Cook's distance[^correlation-and-linear-regression-20] excluded and see what happens to the model performance and to the regression coefficients. If they really are substantially different, it's time to start digging into your data set and your notes that you no doubt were scribbling as your ran your study. Try to figure out why the point is so different. If you start to become convinced that this one data point is badly distorting your results then you might consider excluding it, but that's less than ideal unless you have a solid explanation for why this particular case is qualitatively different from the others and therefore deserves to be handled separately.
 
-[^correlation-and-linear-regression-20]: although currently there isn't a very easy way to do this in jamovi, so a more powerful regression program such as the 'car' package in R would be better for this more advanced analysis
+[^correlation-and-linear-regression-20]: although currently there isn't a very easy way to do this in jamovi, so a more powerful regression program such as the 'car' package in R would be better for this more advanced analysis --->
 
+### 檢測殘差常態性
+
+像我們在本書中討論過的許多統計工具一樣，迴歸模型依賴於常態性假設。在這種情況下，我們假設殘差呈常態分布。首先，我們可以通過 'Assumption Checks' - 'Assumption Checks' - 'Q-Q plot of residuals' 選項繪製一個 QQ 圖。輸出顯示在 @fig-fig10-21，顯示了標準化殘差作為其根據迴歸模型的理論分位數的函數的圖。
+
+```{r}
+#| label: fig-fig10-21
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: 模型理論分位數與標準化殘差的分位數之間的圖，由 jamovi 生成
+knitr::include_graphics("images/fig12-21.png")  
+```
+
+我們還應該檢查擬合值和殘差本身之間的關係。我們可以使用 'Residuals Plots' 選項讓 jamovi 做到這一點，該選項為每個預測變項、結果變項以及擬合值與殘差提供了散點圖，見 @fig-fig10-22。在這些圖中，我們要尋找的是點的分佈相對均勻，沒有明顯的聚集或圖案。觀察這些圖，沒有什麼特別令人擔憂的，因為點在整個圖中分佈得相當均勻。在圖 (b) 中可能存在一點非均勻性，但偏差不大，可能不值得擔憎。
+
+```{r}
+#| label: fig-fig10-22
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: 由 jamovi 生成的殘差圖
+knitr::include_graphics("images/fig12-22.png")  
+```
+
+如果我們擔憂的話，那麼在很多情況下解決這個問題（以及其他許多問題）的方法是對一個或多個變項進行轉換。我們在 @sec-Transforming-and-recoding-a-variable 中討論了變項轉換的基本知識，但我想特別提一下我之前沒有完全解釋的一個額外可能性：Box-Cox 轉換。Box-Cox 函數相當簡單，並且被廣泛使用。[^correlation-and-linear-regression-21]
+
+[^correlation-and-linear-regression-21]: 對於所有的 λ 值，除了 λ = 0，有 $f(x,\lambda)=\frac{x^{\lambda}-1}{\lambda}$。當 λ = 0 時，我們只取自然對數（即，ln（x））。
+
+您可以在 jamovi 的 'Compute' 變數屏幕中使用 BOXCOX 函數進行計算。
+
+### 檢測共線性 {#sec-check-regression-collinearity}
+
+在本章中，我將討論的最後一種迴歸診斷方法是使用**方差膨脹因子**（VIF），這對於確定迴歸模型中的預測變項是否彼此相關性過高很有用。模型中每個預測變項 $X_k$ 都有一個相應的方差膨脹因子。[^correlation-and-linear-regression-22]
+
+[^correlation-and-linear-regression-22]: 第 k 個 VIF 的公式為：$VIF_k=\frac{1}{1-R_{-k}^2}$，其中 $R^2_(-k)$ 指的是如果您將 $X_k$ 作為結果變項，並將所有其他 X 變項作為預測變項來運行迴歸，則可以得到的 R 平方值。這裡的想法是 $R^2_(-k)$ 是 $X_k$ 與模型中所有其他變項相關程度的非常好的衡量指標。
+
+VIF 的平方根具有很好的解釋性。它告訴您相應的係數 bk 的信賴區間相對於預測變項彼此完全不相關時所期望的值要寬多少。如果您只有兩個預測變項，VIF 值將始終相同，正如我們在 jamovi 的 'Regression' - 'Assumptions' 選項中選中 'Collinearity' 後可以看到的那樣。對於 dani.sleep 和 baby.sleep，VIF 均為 1.65。而由於 1.65 的平方根為 1.28，我們可以看到我們兩個預測變項之間的相關性並未造成太大問題。
+
+為了給出我們可能會遇到具有更大共線性問題的模型的感覺，假設我要運行一個更無趣的迴歸模型，在該模型中，我試圖預測數據收集的日期，作為數據集中所有其他變項的函數。要理解這為什麼會有問題，讓我們看一下所有四個變項的相關矩陣（@fig-fig10-24）。
+
+```{r}
+#| label: fig-fig10-24
+#| fig-cap: 四個資料變項之間的相關係數矩陣
+#Correlation matrix for all four variables
+#huxtabs[[12]][[5]]
+knitr::include_graphics("images/fig12-25.png")
+```
+
+我們的預測變項之間有一些相當大的相關性！當我們運行迴歸模型並查看 VIF 值時，我們可以看到共線性對係數的不確定性造成了很大影響。首先，運行迴歸，如 @fig-fig10-23 所示，從 VIF 值可以看出，是的，這是一些非常好的共線性。
+
+```{r}
+#| label: fig-fig10-23
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: jamovi 生成的多元迴歸共線性統計
+knitr::include_graphics("images/fig12-23.png")  
+```
+
+<!---
 ### 檢測殘差常態性
 
 Like many of the statistical tools we've discussed in this book, regression models rely on a normality assumption. In this case, we assume that the residuals are normally distributed. The first thing we can do is draw a QQ-plot via the 'Assumption Checks' - 'Assumption Checks' - 'Q-Q plot of residuals' option. The output is shown in @fig-fig10-21, showing the standardised residuals plotted as a function of their theoretical quantiles according to the regression model.
 
 ```{r}
-#| label: fig-fig10-21
+#| label: fig-fig10-21eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: Plot of the theoretical quantiles according to the model, against the quantiles of the standardised residuals, produced in jamovi
@@ -693,7 +1018,7 @@ knitr::include_graphics("images/fig12-21.png")
 Another thing we should check is the relationship between the fitted values and the residuals themselves. We can get jamovi to do this using the 'Residuals Plots' option, which provides a scatterplot for each predictor variable, the outcome variable, and the fitted values against residuals, see @fig-fig10-22. In these plots we are looking for a fairly uniform distribution of 'dots', with no clear bunching or patterning of the 'dots'. Looking at these plots, there is nothing particularly worrying as the dots are fairly evenly spread across the whole plot. There may be a little bit of non-uniformity in plot (b), but it is not a strong deviation and probably not worth worrying about.
 
 ```{r}
-#| label: fig-fig10-22
+#| label: fig-fig10-22eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: Residuals plots produced in jamovi
@@ -706,7 +1031,7 @@ If we were worried, then in a lot of cases the solution to this problem (and man
 
 You can calculate it using the BOXCOX function in the 'Compute' variables screen in jamovi.
 
-### 檢測共線性
+### 檢測共線性 {#sec-check-regression-collinearity}
 
 The last kind of regression diagnostic that I'm going to discuss in this chapter is the use of **variance inflation factors** (VIFs), which are useful for determining whether or not the predictors in your regression model are too highly correlated with each other. There is a variance inflation factor associated with each predictor $X_k$ in the model. [^correlation-and-linear-regression-22]
 
@@ -714,10 +1039,10 @@ The last kind of regression diagnostic that I'm going to discuss in this chapter
 
 The square root of the VIF is pretty interpretable. It tells you how much wider the confidence interval for the corresponding coefficient bk is, relative to what you would have expected if the predictors are all nice and uncorrelated with one another. If you've only got two predictors, the VIF values are always going to be the same, as we can see if we click on the 'Collinearity' checkbox in the 'Regression' - 'Assumptions' options in jamovi. For both dani.sleep and baby.sleep the VIF is $1.65$. And since the square root of $1.65$ is $1.28$, we see that the correlation between our two predictors isn't causing much of a problem.
 
-To give a sense of how we could end up with a model that has bigger collinearity problems, suppose I were to run a much less interesting regression model, in which I tried to predict the day on which the data were collected, as a function of all the other variables in the data set. To see why this would be a bit of a problem, let's have a look at the correlation matrix for all four variables (@fig-fig10-25).
+To give a sense of how we could end up with a model that has bigger collinearity problems, suppose I were to run a much less interesting regression model, in which I tried to predict the day on which the data were collected, as a function of all the other variables in the data set. To see why this would be a bit of a problem, let's have a look at the correlation matrix for all four variables (@fig-fig10-24).
 
 ```{r}
-#| label: fig-fig10-25
+#| label: fig-fig10-24eng
 #| fig-cap: 四個資料變項之間的相關係數矩陣
 #Correlation matrix for all four variables
 #huxtabs[[12]][[5]]
@@ -727,14 +1052,78 @@ knitr::include_graphics("images/fig12-25.png")
 We have some fairly large correlations between some of our predictor variables! When we run the regression model and look at the VIF values, we see that the collinearity is causing a lot of uncertainty about the coefficients. First, run the regression, as in @fig-fig10-23 and you can see from the VIF values that, yep, that's some mighty fine collinearity there.
 
 ```{r}
-#| label: fig-fig10-23
+#| label: fig-fig10-23eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: Collinearity statistics for multiple regression, produced in jamovi
 knitr::include_graphics("images/fig12-23.png")  
 ```
 
-## 決定線性模型的變項組合
+--->
+
+## 決定線性模型的變項組合 {#sec-multiple-variables-combinaion}
+
+> 譯註：這個單元全部內容都是談多元迴歸，內容文字編修排在本書最後階段進行。
+
+
+剩下的一個相當重要的問題是 "模型選擇" 的問題。也就是說，如果我們有一個包含幾個變項的資料集，哪些變項應該作為預測變項，哪些不應該包括在內？換句話說，我們有一個**變項選擇**的問題。通常，模型選擇是一個複雜的過程，但如果我們將問題限制在選擇應該包含在模型中的變項子集上，情況會變得簡單一些。儘管如此，我不打算試圖詳細涵蓋甚至這個範疇。相反，我將談論您需要考慮的兩個廣泛原則，然後討論一個具體的工具，jamovi 提供了這個工具，可以幫助您選擇要包含在模型中的變項子集。首先，兩個原則：
+
+-   為您的選擇提供實質性的依據是很好的。也就是說，在很多情況下，您作為研究人員有充分的理由挑選一個較小的可能的回歸模型數量，這些模型在您的領域背景下具有合理的解釋。永遠不要低估這一點的重要性。統計學為科學過程服務，而不是反過來。
+
+-   在您的選擇依賴統計推斷的程度上，簡單性和適合度之間存在權衡。當您向模型添加更多預測變項時，模型變得更複雜。每個預測因子都添加了一個新的自由參數（即，一個新的回歸係數），每個新參數都會增加模型對於隨機變異的吸收能力。因此，適合度（例如，$R^2$）隨著您添加更多預測因子而持續上升，無論如何都是如此。如果您希望模型能夠很好地概括新的觀察結果，則需要避免加入過多的變項。
+
+後者原則通常被稱為**奧卡姆剃刀**，並通常用以下簡潔的說法來概括：不要在必要之外繁殖實體。在這個情境下，這意味著不要僅僅為了提高你的 R2 而將一堆大致無關的預測因子扔進去。嗯，原來的說法更好。
+
+無論如何，我們需要一個實際的數學標準，以便在選擇回歸模型時實現奧卡姆剃刀背後的定性原則。事實證明，有幾種可能性。我將談論的一個是**赤池資訊量準則**（Akaike information criterion）[@Akaike1974]，僅僅是因為它可以作為一個選項在 jamovi 中使用。[^correlation-and-linear-regression-23]
+
+[^correlation-and-linear-regression-23]: 在線性回歸模型的上下文中（忽略與模型無關的項！），具有 K 個預測變項和截距的模型的 AIC 為 $AIC=\frac{SS_{res}}{\hat{\sigma}^2}+2K$
+
+AIC 值越小，模型性能越好。如果我們忽略低水平的細節，AIC 的作用就非常明顯了。左邊的項隨著模型預測變差而增加；右邊的項隨著模型複雜度的增加而增加。最佳模型是用盡量少的預測變項（低 K，右側）來擬合資料（低殘差，左側）。簡而言之，這是奧卡姆剃刀的簡單實現。
+
+當選中 "AIC" 複選框時，AIC 可以添加到 "Model Fit Measures" 輸出表中，評估不同模型的一種笨拙方式是查看如果從回歸模型中移除一個或多個預測因子，"AIC" 值是否更低。這是 jamovi 目前實現的唯一方法，但在其他更強大的程序中，如 R，有替代方法。這些替代方法可以自動化有選擇地移除（或添加）預測變項以找到最佳 AIC 的過程。儘管這些方法在 jamovi 中尚未實現，但我將在下面簡要介紹它們，以便您了解它們。
+
+### 逐步排除法
+
+在逐步排除法中，您從完整的迴歸模型開始，包括所有可能的預測因子。然後，在每個「步驟」中，我們嘗試所有可能的刪除一個變項的方法，並選擇其中最好的（就最低AIC值而言）。這將成為我們的新迴歸模型，然後我們再試驗從新模型中刪除所有可能的選項，同樣選擇具有最低AIC的選項。這個過程將持續進行，直到我們得到一個具有比刪除一個預測因子的其他可能模型更低AIC值的模型。
+
+### 逐步納入法
+
+作為替代方法，您還可以嘗試**逐步納入法**。這次我們從最小可能的模型作為起點，僅考慮可能添加到模型中的選項。然而，還有一個麻煩。您還需要指定您願意接受的最大可能模型。
+
+儘管向後和向前選擇可能導致相同的結論，但它們並不總是如此。
+
+### 使用警告
+
+自動變項選擇方法是具有誘惑力的東西，特別是當它們被捆綁在強大的統計程序中的（相對）簡單函數中時。它們為您的模型選擇提供了一定程度的客觀性，這很好。不幸的是，它們有時被用作掩蓋思考的藉口。您不再需要仔細考慮要添加到模型中的哪些預測因子以及它們可能包含的理論基礎。一切都通過AIC的魔力解決了。如果我們開始丟出像奧卡姆剃刀這樣的短語，那麼一切都被包裹在一個整潔的小包裹裡，沒有人可以反駁。
+
+或者，也許不是。首先，對於什麼算作合適的模型選擇標準，幾乎沒有一致的看法。當我在本科時代被教授逐步排除法時，我們使用了F檢驗來執行它，因為那是軟件所使用的默認方法。我描述了使用AIC，並且因為這是一本入門教材，所以我只描述了這種方法，但AIC絕非統計之神的話語。它是一個近似值，在某些假設下得出的，並且只有在大樣本中滿足這些假設時才能保證起作用。改變那些假設，您就會得到不同的標準，比如BIC（在jamovi中也可用）。再換一種方法，您就會得到NML標準。決定成為貝葉斯，您將基於後驗概率比進行模型選擇。然後還有一堆我沒提到的迴歸特定工具。等等。所有這些不同的方法都有優點和缺點，有些比其他方法更容易計算（AIC可能是最容易的，這可能解釋了它的受歡迎程度）。幾乎所有方法在答案是“明顯”的情況下都會產生相同的結果，但在模型選擇問題變得困難時，存在相當多的分歧。
+
+在實踐中，這意味著什麼？好吧，您可以花幾年時間教自己模型選擇理論，學習所有的技巧，最終決定您個人認為什麼是正確的。作為實際做過這件事的人，我不建議這樣做。您可能會在結束時更加困惑。更好的策略是表現出一點常識。如果您盯著自動向後或向前選擇過程的結果，有意義的模型接近具有最小AIC值，但被一個毫無意義的模型以微弱的優勢擊敗，那麼相信您的直覺。統計模型選擇是一個不精確的工具，正如我一開始說的，可解釋性很重要。
+
+### 比較迴歸模型
+
+與使用自動模型選擇程序的方法相反，研究人員可以明確地選擇兩個或多個迴歸模型以相互比較。您可以用幾種不同的方法做到這一點，具體取決於您要回答的研究問題。假設我們想知道我兒子睡眠的多少是否與我煩躁的程度有關，超出了我自己睡眠的影響。我們還希望確保測量的那一天對這種關係沒有影響。也就是說，我們對baby.sleep和dani.grump之間的關係感興趣，從這個角度看，dani.sleep和day是我們想控制的**協變項**。在這種情況下，我們想知道dani.grump ~ dani.sleep + day + baby.sleep（我將其稱為Model 2，或M2）是否比dani.grump ~ dani.sleep + day（我將其稱為Model 1，或M1）更適合這些數據。我們可以用兩種不同的方式來比較這兩個模型，一種基於像AIC這樣的模型選擇標準，另一種基於顯式假設檢定。我首先向您展示基於AIC的方法，因為它更簡單，並且自然地延續了上一節的討論。首先，我需要實際運行兩個迴歸，注意每個迴歸的AIC，然後選擇AIC值較小的模型，因為它被認為是這些數據的更好模型。實際上，不要立即這樣做。繼續閱讀，因為jamovi中有一種簡單的方法可以在一個表格中獲取不同模型的AIC值。[^correlation-and-linear-regression-24]
+
+[^correlation-and-linear-regression-24]:在此主題上，我應該指出，經驗證據表明，BIC比AIC更好。在我看到的大多數模擬研究中，BIC在選擇正確模型方面做得更好。
+
+基於假設檢定框架的某種不同方法來解決這個問題。假設您有兩個迴歸模型，其中一個（Model 1）包含另一個（Model 2）的一部分預測變項。也就是說，Model 2包含Model 1中包含的所有預測變項，再加上一個或多個其他預測變項。當這種情況發生時，我們說Model 1嵌套在Model 2中，或者可能說Model 1是Model 2的子模型。無論使用哪種術語，這意味著我們可以將Model 1視為虛無假設，將Model 2視為替代假設。事實上，我們可以用相當簡單的方式構建一個F檢驗。[^correlation-and-linear-regression-25]
+
+[^correlation-and-linear-regression-25]: 我們可以將兩個模型都應用於數據並獲得兩個模型的殘差平方和。我將它們分別表示為$SS_{res}^{(1)}$和$SS_{res}^{(2)}$。上標表示我們正在談論哪個模型。然後我們的F統計量是 $$F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }$$，其中$N$是觀察次數，$p$是完整模型中的預測變項數量（不包括截距），$k$是兩個模型之間參數的差異。這裡的自由度是$k$和$N -p-1$。值得注意的是，將這兩個SS值之間的差異表示為它自己的平方和經常更方便。也就是說 $$SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}$$。這樣有幫助的原因是我們可以將$SS_\Delta$表示為兩個模型對結果變項的預測有所不同的程度。具體來說，$$SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}$$，其中$\hat{y}_{i^{(1)}}$是根據模型$M_1$對$y_i$的預測值，$\hat{y}_{i^{(2)}}$是根據模型$M_2$對$y_i$的預測值。 <br /> --- <br /> $^d$順便提一下，這個相同的F統計量可以用來檢驗比我在這裡提到的更廣泛的範圍的假設。非常簡要地說，注意嵌套模型M1對應於當我們將某些迴歸係數限制為零時的完整模型M2。在某些情況下，通過對迴歸係數施加其他類型的約束來構建子模型是有用的。例如，也許兩個不同的係數可能必須相加為零，或類似的情況。您可以為這些類型的約束構建假設檢定，但這有點更複雜，而且F的抽樣分布可能會是所謂的非中心F分布，這已經超出了本書的範疇！我想做的只是提醒您這種可能性。
+
+那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如@fig-fig10-25所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，$F(1,96) = 0.00$，$p = 0.954$。由於我們的p > .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為**分層迴歸**。
+
+我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如@fig-fig10-25所示。
+
+```{r}
+#| label: fig-fig10-25
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: 使用jamovi的“Model Builder”選項進行模型比較
+knitr::include_graphics("images/fig12-24.png")  
+```
+
+<!--- 
+## 決定線性模型的變項組合 {#sec-multiple-variables-combinaion}
 
 One fairly major problem that remains is the problem of "model selection". That is, if we have a data set that contains several variables, which ones should we include as predictors, and which ones should we not include? In other words, we have a problem of **variable selection**. In general, model selection is a complex business but it's made somewhat simpler if we restrict ourselves to the problem of choosing a subset of the variables that ought to be included in the model. Nevertheless, I'm not going to try covering even this reduced topic in a lot of detail. Instead, I'll talk about two broad principles that you need to think about, and then discuss one concrete tool that jamovi provides to help you select a subset of variables to include in your model. First, the two principles:
 
@@ -780,17 +1169,19 @@ A somewhat different approach to the problem comes out of the hypothesis testing
 
 [^correlation-and-linear-regression-25]: We can fit both models to the data and obtain a residual sum of squares for both models. I'll denote these as $SS_{res}^{(1)}$ and $SS_{res}^{(2)}$ respectively. The superscripting here just indicates which model we're talking about. Then our F statistic is $$F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }$$ where $N$ is the number of observations, $p$ is the number of predictors in the full model (not including the intercept), and $k$ is the difference in the number of parameters between the two models. $^d$ The degrees of freedom here are $k$ and $N -p-1$. Note that it's often more convenient to think about the difference between those two SS values as a sum of squares in its own right. That is $$SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}$$ The reason why this is helpful is that we can express $SS_\Delta$ as a measure of the extent to which the two models make different predictions about the the outcome variable. Specifically, $$SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}$$ where $\hat{y}_{i^{(1)}}$ is the fitted value for $y_i$ according to model $M_1$ and $\hat{y}_{i^{(2)}}$ is the fitted value for $y_i$ according to model $M_2$. <br /> --- <br /> $^d$ It's worth noting in passing that this same F statistic can be used to test a much broader range of hypotheses than those that I'm mentioning here. Very briefly, notice that the nested model M1 corresponds to the full model M2 when we constrain some of the regression coefficients to zero. It is sometimes useful to construct sub-models by placing other kinds of constraints on the regression coefficients. For instance, maybe two different coefficients might have to sum to zero, or something like that. You can construct hypothesis tests for those kind of constraints too, but it is somewhat more complicated and the sampling distribution for F can end up being something known as the non-central F distribution, which is waaaaay beyond the scope of this book! All I want to do is alert you to this possibility.
 
-Okay, so that's the hypothesis test that we use to compare two regression models to one another. Now, how do we do it in jamovi? The answer is to use the 'Model Builder' option and specify the Model 1 predictors dani.sleep and day in 'Block 1' and then add the additional predictor from Model 2 (baby.sleep) in 'Block 2', as in @fig-fig10-24. This shows, in the 'Model Comparisons' Table, that for the comparisons between Model 1 and Model 2, $F(1,96) = 0.00$, $p = 0.954$. Since we have p > .05 we retain the null hypothesis (M1). This approach to regression, in which we add all of our covariates into a null model, then add the variables of interest into an alternative model, and then compare the two models in a hypothesis testing framework, is often referred to as **hierarchical regression**.
+Okay, so that's the hypothesis test that we use to compare two regression models to one another. Now, how do we do it in jamovi? The answer is to use the 'Model Builder' option and specify the Model 1 predictors dani.sleep and day in 'Block 1' and then add the additional predictor from Model 2 (baby.sleep) in 'Block 2', as in @fig-fig10-25. This shows, in the 'Model Comparisons' Table, that for the comparisons between Model 1 and Model 2, $F(1,96) = 0.00$, $p = 0.954$. Since we have p > .05 we retain the null hypothesis (M1). This approach to regression, in which we add all of our covariates into a null model, then add the variables of interest into an alternative model, and then compare the two models in a hypothesis testing framework, is often referred to as **hierarchical regression**.
 
-We can also use this 'Model Comparison' option to display a table that shows the AIC and BIC for each model, making it easy to compare and identify which model has the lowest value, as in @fig-fig10-24.
+We can also use this 'Model Comparison' option to display a table that shows the AIC and BIC for each model, making it easy to compare and identify which model has the lowest value, as in @fig-fig10-25.
 
 ```{r}
-#| label: fig-fig10-24
+#| label: fig-fig10-25eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: Model comparison in jamovi using the 'Model Builder' option
 knitr::include_graphics("images/fig12-24.png")  
 ```
+
+--->
 
 ## 本章小結
 

@@ -269,7 +269,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
+  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,14 +363,14 @@ div.csl-indent {
   <li><a href="#jamovi實作-1" id="toc-jamovi實作-1" class="nav-link" data-scroll-target="#jamovi實作-1"><span class="toc-section-number">11.5.1</span>  jamovi實作</a></li>
   <li><a href="#welch檢定的適用條件" id="toc-welch檢定的適用條件" class="nav-link" data-scroll-target="#welch檢定的適用條件"><span class="toc-section-number">11.5.2</span>  Welch檢定的適用條件</a></li>
   </ul></li>
-  <li><a href="#相依樣本t檢定" id="toc-相依樣本t檢定" class="nav-link" data-scroll-target="#相依樣本t檢定"><span class="toc-section-number">11.6</span>  相依樣本t檢定</a>
+  <li><a href="#sec-the-paired-t-test" id="toc-sec-the-paired-t-test" class="nav-link" data-scroll-target="#sec-the-paired-t-test"><span class="toc-section-number">11.6</span>  相依樣本t檢定</a>
   <ul class="collapse">
   <li><a href="#示範資料" id="toc-示範資料" class="nav-link" data-scroll-target="#示範資料"><span class="toc-section-number">11.6.1</span>  示範資料</a></li>
   <li><a href="#深入認識相依樣本t檢定" id="toc-深入認識相依樣本t檢定" class="nav-link" data-scroll-target="#深入認識相依樣本t檢定"><span class="toc-section-number">11.6.2</span>  深入認識相依樣本t檢定</a></li>
   <li><a href="#實作相依樣本t檢定" id="toc-實作相依樣本t檢定" class="nav-link" data-scroll-target="#實作相依樣本t檢定"><span class="toc-section-number">11.6.3</span>  實作相依樣本t檢定</a></li>
   </ul></li>
-  <li><a href="#單尾檢定" id="toc-單尾檢定" class="nav-link" data-scroll-target="#單尾檢定"><span class="toc-section-number">11.7</span>  單尾檢定</a></li>
-  <li><a href="#t檢定的效果量" id="toc-t檢定的效果量" class="nav-link" data-scroll-target="#t檢定的效果量"><span class="toc-section-number">11.8</span>  t檢定的效果量</a>
+  <li><a href="#sec-the-one-tail-t-test" id="toc-sec-the-one-tail-t-test" class="nav-link" data-scroll-target="#sec-the-one-tail-t-test"><span class="toc-section-number">11.7</span>  單尾檢定</a></li>
+  <li><a href="#sec-t-test-effect-size" id="toc-sec-t-test-effect-size" class="nav-link" data-scroll-target="#sec-t-test-effect-size"><span class="toc-section-number">11.8</span>  t檢定的效果量</a>
   <ul class="collapse">
   <li><a href="#單一樣本的cohens-d" id="toc-單一樣本的cohens-d" class="nav-link" data-scroll-target="#單一樣本的cohens-d"><span class="toc-section-number">11.8.1</span>  單一樣本的Cohen’s d</a></li>
   <li><a href="#獨立樣本的cohens-d" id="toc-獨立樣本的cohens-d" class="nav-link" data-scroll-target="#獨立樣本的cohens-d"><span class="toc-section-number">11.8.2</span>  獨立樣本的Cohen’s d</a></li>
@@ -383,7 +383,7 @@ div.csl-indent {
   <li><a href="#shapiro-wilk檢定" id="toc-shapiro-wilk檢定" class="nav-link" data-scroll-target="#shapiro-wilk檢定"><span class="toc-section-number">11.9.3</span>  Shapiro-Wilk檢定</a></li>
   <li><a href="#檢測樣本常態性的範例" id="toc-檢測樣本常態性的範例" class="nav-link" data-scroll-target="#檢測樣本常態性的範例"><span class="toc-section-number">11.9.4</span>  檢測樣本常態性的範例</a></li>
   </ul></li>
-  <li><a href="#sec-nonparameter-rank-test" id="toc-sec-nonparameter-rank-test" class="nav-link" data-scroll-target="#sec-nonparameter-rank-test"><span class="toc-section-number">11.10</span>  等級資料的平均值檢定</a>
+  <li><a href="#sec-nonparameter-rank-test" id="toc-sec-nonparameter-rank-test" class="nav-link" data-scroll-target="#sec-nonparameter-rank-test"><span class="toc-section-number">11.10</span>  平均值的無母數統計檢定</a>
   <ul class="collapse">
   <li><a href="#單一樣本的wilcoxon檢定" id="toc-單一樣本的wilcoxon檢定" class="nav-link" data-scroll-target="#單一樣本的wilcoxon檢定"><span class="toc-section-number">11.10.1</span>  單一樣本的Wilcoxon檢定</a></li>
   <li><a href="#獨立樣本的曼惠特尼u檢定" id="toc-獨立樣本的曼惠特尼u檢定" class="nav-link" data-scroll-target="#獨立樣本的曼惠特尼u檢定"><span class="toc-section-number">11.10.2</span>  獨立樣本的曼－惠特尼U檢定</a></li>
@@ -912,8 +912,8 @@ Except, except...our result isn't significant anymore. When we ran the Student t
 <!--- The assumptions of the Welch test are very similar to those made by the Student t-test (see [Assumptions of the test], except that the Welch test does not assume homogeneity of variance. This leaves only the assumption of normality and the assumption of independence. The specifics of these assumptions are the same for the Welch test as for the Student test. --->
 </section>
 </section>
-<section id="相依樣本t檢定" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="相依樣本t檢定"><span class="header-section-number">11.6</span> 相依樣本t檢定</h2>
+<section id="sec-the-paired-t-test" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="sec-the-paired-t-test"><span class="header-section-number">11.6</span> 相依樣本t檢定</h2>
 <p>不論是談論學生 t 檢驗或韋爾奇 t 檢驗，獨立樣本 t 檢驗都適用於具有兩個互相獨立樣本的情況。當參與者被隨機分配到其中一個實驗條件時，自然會出現這種情況，但這對於其他類型的研究設計提供了一個非常差的近似。特別是，在重複測量設計中，每個參與者都在兩個實驗條件下測量（對於相同的結果變量），並不適合使用獨立樣本 t 檢驗進行分析。例如，我們可能會對聆聽音樂是否降低人們的工作記憶容量感興趣。為此，我們可以在兩種情況下測量每個人的工作記憶容量：有音樂和無音樂。在這樣的實驗設計中，<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>每個參與者出現在 <em>兩個</em> 組中。這需要我們以不同的方式來解決問題，即使用<strong>配對樣本 t 檢驗</strong>。</p>
 <!--- Regardless of whether we're talking about the Student test or the Welch test, an independent samples t-test is intended to be used in a situation where you have two samples that are, well, independent of one another. This situation arises naturally when participants are assigned randomly to one of two experimental conditions, but it provides a very poor approximation to other sorts of research designs. In particular, a repeated measures design, in which each participant is measured (with respect to the same outcome variable) in both experimental conditions, is not suited for analysis using independent samples t-tests. For example, we might be interested in whether listening to music reduces people's working memory capacity. To that end, we could measure each person's working memory capacity in two conditions: with music, and without music. In an experimental design such as this one, [^11-comparing-two-means-16] each participant appears in *both* groups. This requires us to approach the problem in a different way, by using the **paired samples t-test**.
 
@@ -1036,8 +1036,8 @@ However, suppose you're lazy and you don't want to go to all the effort of creat
 <!--- The numbers are identical to those that come from the one sample test, which of course they have to be given that the paired samples t-test is just a one sample test under the hood. --->
 </section>
 </section>
-<section id="單尾檢定" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="單尾檢定"><span class="header-section-number">11.7</span> 單尾檢定</h2>
+<section id="sec-the-one-tail-t-test" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="sec-the-one-tail-t-test"><span class="header-section-number">11.7</span> 單尾檢定</h2>
 <p>當介紹零假設檢定理論時，我提到有一些情況適合指定單邊檢定（請參閱 <a href="09-Hypothesis-testing.html#sec-The-difference-between-one-sided-and-two-sided-tests"><span>Section&nbsp;9.4.3</span></a> ）。到目前為止，所有的t檢定都是雙邊檢定。例如，當我們為Zeppo博士課堂上的成績指定單一樣本t檢定時，零假設是真實均值為<span class="math inline">\(67.5\%\)</span>。對立假設是真實均值高於或低於<span class="math inline">\(67.5\%\)</span>。假設我們只想知道真實均值是否高於<span class="math inline">\(67.5\%\)</span>，並且完全沒有興趣測試真實均值是否低於<span class="math inline">\(67.5\%\)</span>。如果是這樣，我們的零假設將是真實均值為<span class="math inline">\(67.5\%\)</span>或更低，對立假設將是真實均值高於<span class="math inline">\(67.5\%\)</span>。在jamovi中，對於“單一樣本t檢定”分析，您可以在“假設”下點擊“&gt; Test Value”選項進行指定。這樣做後，您將得到@fig-fig11-17中顯示的結果。</p>
 <!--- When introducing the theory of null hypothesis tests, I mentioned that there are some situations when it's appropriate to specify a one-sided test (see @sec-The-difference-between-one-sided-and-two-sided-tests). So far all of the t-tests have been two-sided tests. For instance, when we specified a one sample t-test for the grades in Dr Zeppo's class the null hypothesis was that the true mean was $67.5\%$. The alternative hypothesis was that the true mean was greater than or less than $67.5\%$. Suppose we were only interested in finding out if the true mean is greater than $67.5\%$, and have no interest whatsoever in testing to find out if the true mean is lower than $67.5\%$. If so, our null hypothesis would be that the true mean is $67.5\%$ or less, and the alternative hypothesis would be that the true mean is greater than $67.5\%$. In jamovi, for the 'One Sample T-Test' analysis, you can specify this by clicking on the '$>$ Test Value' option, under 'Hypothesis'. When you have done this, you will get the results as shown in @fig-fig11-17.--->
 <div class="cell enlarge-image" data-layout-align="left">
@@ -1085,8 +1085,8 @@ What about the paired samples t-test? Suppose we wanted to test the hypothesis t
 
 <!--- Yet again, the output changes in a predictable way. The hypothesis has changed, the p-value has changed, and the confidence interval is now one-sided. --->
 </section>
-<section id="t檢定的效果量" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="t檢定的效果量"><span class="header-section-number">11.8</span> t檢定的效果量</h2>
+<section id="sec-t-test-effect-size" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="sec-t-test-effect-size"><span class="header-section-number">11.8</span> t檢定的效果量</h2>
 <p>以下是您將翻譯成繁體中文的部分。</p>
 <p>對於t檢驗，最常用的效應量測量方法是<strong>科恩的d</strong> <span class="citation" data-cites="Cohen1988">(<a href="References.html#ref-Cohen1988" role="doc-biblioref">Cohen, 1988</a>)</span>。從原理上看，它是一個非常簡單的方法，但當您深入研究細節時，會有相當多的變化。科恩本人主要在獨立樣本t檢驗的上下文中對其進行了定義，特別是學生檢驗。在該背景下，定義效應量的自然方法是將均值之間的差除以標準差的估計。換句話說，我們要計算的是類似於以下公式的東西：</p>
 <p><span class="math display">\[d=\frac{(\text{平均值1})-(\text{平均值2})}{\text{標準差}}\]</span></p>
@@ -1274,7 +1274,8 @@ This is the version of Cohen's $d$ that gets reported by the jamovi 'Paired Samp
 </section>
 </section>
 <section id="sec-nonparameter-rank-test" class="level2" data-number="11.10">
-<h2 data-number="11.10" class="anchored" data-anchor-id="sec-nonparameter-rank-test"><span class="header-section-number">11.10</span> 等級資料的平均值檢定<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></h2>
+<h2 data-number="11.10" class="anchored" data-anchor-id="sec-nonparameter-rank-test"><span class="header-section-number">11.10</span> 平均值的無母數統計檢定</h2>
+<!--- [^11-translation-01]: 這一節標題及小節順序，配合**線性模型的學習取向**稍做更改。--->
 <p>與此同時，當數據變得非正態時，展示一下 QQ 圖和 Shapiro-Wilk 檢定的變化可能是值得的。為此，讓我們看一下我們的澳式足球聯賽（AFL）勝利幅度數據的分佈，如果您還記得@sec-描述性統計，它看起來根本不是來自正態分佈。以下是 QQ 圖發生的情況（<a href="#fig-fig11-25">Figure&nbsp;<span>11.25</span></a>）。</p>
 <p>而當我們對 <em>AFL margins</em> 數據執行 Shapiro-Wilk 檢定時，我們得到了 Shapiro-Wilk 正態檢定統計量的值 <span class="math inline">\(W = 0.94\)</span>，p值 = <span class="math inline">\(9.481\)</span>x<span class="math inline">\(10^{-07}\)</span>。顯然是一個顯著的效應！</p>
 <!--- Okay, suppose your data turn out to be pretty substantially non-normal, but you still want to run something like a t-test? This situation occurs a lot in real life. For the AFL winning margins data, for instance, the Shapiro-Wilk test made it very clear that the normality assumption is violated. This is the situation where you want to use Wilcoxon tests.
@@ -1350,7 +1351,7 @@ As long as there are no ties (i.e., people with the exact same awesomeness score
 </div>
 </div>
 </div>
-<p>我們然後計算出勾勾的數量，這就是我們的檢定統計量 W<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>。W的抽樣分佈實際上有些複雜，我會略過細節。對於我們的目的而言，關鍵是W的解釋在質性上與t或z的解釋相同。也就是說，如果我們需要進行雙側檢定，則當W非常大或非常小時，我們會拒絕虛無假設，但如果我們有一個單向（即單側）假設，那麼我們只使用其中之一。</p>
+<p>我們然後計算出勾勾的數量，這就是我們的檢定統計量 W<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>。W的抽樣分佈實際上有些複雜，我會略過細節。對於我們的目的而言，關鍵是W的解釋在質性上與t或z的解釋相同。也就是說，如果我們需要進行雙側檢定，則當W非常大或非常小時，我們會拒絕虛無假設，但如果我們有一個單向（即單側）假設，那麼我們只使用其中之一。</p>
 <p>在jamovi中，如果我們將成績作為因變量，組別作為分組變量運行“獨立樣本T檢驗”，然後在“測試”選項中勾選“曼-惠特尼U檢定”選項，我們將獲得顯示<span class="math inline">\(U=3\)</span>（即上面顯示的檢查記號數）和p值= 0.05556的結果。參見 <a href="#fig-fig11-27">Figure&nbsp;<span>11.27</span></a> 。</p>
 <!--- We then count up the number of checkmarks. This is our test statistic, W. [^11-comparing-two-means-23] The actual sampling distribution for W is somewhat complicated, and I'll skip the details. For our purposes, it's sufficient to note that the interpretation of W is qualitatively the same as the interpretation of $t$ or $z$. That is, if we want a two-sided test then we reject the null hypothesis when W is very large or very small, but if we have a directional (i.e., one-sided) hypothesis then we only use one or the other.
 
@@ -1438,8 +1439,7 @@ Welch, B. L. (1947). The generalization of <span>“<span>S</span>tudent’s”<
 <li id="fn22"><p>這是一個極大的簡化。<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn23"><p>要么是Kolmogorov-Smirnov檢驗，這可能比Shapiro-Wilk更具傳統性。雖然我讀到的大部分東西似乎都表明Shapiro-Wilk是更好的正態性檢驗，但Kolomogorov Smirnov是一種通用的分佈等價性檢驗，可以應對其他類型的分佈檢驗。在jamovi中，Shapiro-Wilk檢驗是首選。<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn24"><p>該檢驗統計量通常表示為<span class="math inline">\(W\)</span>，其計算方法如下。首先，我們按照大小遞增的順序對觀測值進行排序，讓<span class="math inline">\(\bar{X_1}\)</span>成為樣本中最小的值，<span class="math inline">\(X_2\)</span>成為第二小的值，依此類推。然後<span class="math inline">\(W\)</span>的值由以下公式給出<span class="math display">\[W=\frac{(\sum_{i=1}^N a_iX_i)^2}{\sum_{i=1}^N(X_i-\bar{X})^2}\]</span>其中<span class="math inline">\(\bar{X}\)</span>是觀測值的平均值，<span class="math inline">\(a_i\)</span>值是…咕嚕咕嚕…比較複雜，超出了入門級教材的範疇。<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn25"><p>這一節標題及小節順序，配合<strong>線性模型的學習取向</strong>稍做更改。<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn26"><p>實際上，有兩種不同的檢定統計量版本，它們之間相差一個常數。我描述的是jamovi計算的版本。<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>實際上，有兩種不同的檢定統計量版本，它們之間相差一個常數。我描述的是jamovi計算的版本。<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1709,7 +1709,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./10-Correlation-and-linear-regression.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

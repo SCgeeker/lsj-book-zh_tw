@@ -837,7 +837,7 @@ Welch檢定的假設與學生t檢定的假設非常相似（請參閱[獨立樣�
 
 <!--- The assumptions of the Welch test are very similar to those made by the Student t-test (see [Assumptions of the test], except that the Welch test does not assume homogeneity of variance. This leaves only the assumption of normality and the assumption of independence. The specifics of these assumptions are the same for the Welch test as for the Student test. --->
 
-## 相依樣本t檢定
+## 相依樣本t檢定 {#sec-the-paired-t-test}
 
 不論是談論學生 t 檢驗或韋爾奇 t 檢驗，獨立樣本 t 檢驗都適用於具有兩個互相獨立樣本的情況。當參與者被隨機分配到其中一個實驗條件時，自然會出現這種情況，但這對於其他類型的研究設計提供了一個非常差的近似。特別是，在重複測量設計中，每個參與者都在兩個實驗條件下測量（對於相同的結果變量），並不適合使用獨立樣本 t 檢驗進行分析。例如，我們可能會對聆聽音樂是否降低人們的工作記憶容量感興趣。為此，我們可以在兩種情況下測量每個人的工作記憶容量：有音樂和無音樂。在這樣的實驗設計中，[^11-comparing-two-means-16]每個參與者出現在 *兩個* 組中。這需要我們以不同的方式來解決問題，即使用**配對樣本 t 檢驗**。
 
@@ -967,7 +967,7 @@ knitr::include_graphics("images/fig11-16.png")
 
 <!--- The numbers are identical to those that come from the one sample test, which of course they have to be given that the paired samples t-test is just a one sample test under the hood. --->
 
-## 單尾檢定
+## 單尾檢定 {#sec-the-one-tail-t-test}
 
 當介紹零假設檢定理論時，我提到有一些情況適合指定單邊檢定（請參閱 @sec-The-difference-between-one-sided-and-two-sided-tests ）。到目前為止，所有的t檢定都是雙邊檢定。例如，當我們為Zeppo博士課堂上的成績指定單一樣本t檢定時，零假設是真實均值為$67.5\%$。對立假設是真實均值高於或低於$67.5\%$。假設我們只想知道真實均值是否高於$67.5\%$，並且完全沒有興趣測試真實均值是否低於$67.5\%$。如果是這樣，我們的零假設將是真實均值為$67.5\%$或更低，對立假設將是真實均值高於$67.5\%$。在jamovi中，對於“單一樣本t檢定”分析，您可以在“假設”下點擊“> Test Value”選項進行指定。這樣做後，您將得到@fig-fig11-17中顯示的結果。
 
@@ -1017,7 +1017,7 @@ knitr::include_graphics("images/fig11-19.png")
 
 <!--- Yet again, the output changes in a predictable way. The hypothesis has changed, the p-value has changed, and the confidence interval is now one-sided. --->
 
-## t檢定的效果量
+## t檢定的效果量 {#sec-t-test-effect-size}
 
 以下是您將翻譯成繁體中文的部分。
 
@@ -1351,9 +1351,9 @@ knitr::include_graphics("images/fig11-25.png")
 
 <!--- And when we run the Shapiro-Wilk test on the *AFL margins* data, we get a value for the Shapiro-Wilk normality test statistic of $W = 0.94$, and p-value = $9.481$x$10^{-07}$. Clearly a significant effect! --->
 
-## 等級資料的平均值檢定[^11-translation-01] {#sec-nonparameter-rank-test}
+## 平均值的無母數統計檢定 {#sec-nonparameter-rank-test}
 
-[^11-translation-01]: 這一節標題及小節順序，配合**線性模型的學習取向**稍做更改。
+<!--- [^11-translation-01]: 這一節標題及小節順序，配合**線性模型的學習取向**稍做更改。--->
 
 與此同時，當數據變得非正態時，展示一下 QQ 圖和 Shapiro-Wilk 檢定的變化可能是值得的。為此，讓我們看一下我們的澳式足球聯賽（AFL）勝利幅度數據的分佈，如果您還記得@sec-描述性統計，它看起來根本不是來自正態分佈。以下是 QQ 圖發生的情況（@fig-fig11-25）。
 
