@@ -410,14 +410,47 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>相關與線性迴歸</strong>的對應單元有 <a href="10-Correlation-and-linear-regression.html#sec-what-is-correlation"><span>Section&nbsp;10.1</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-the-scatter-plot"><span>Section&nbsp;10.2</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-what-is-linear-model"><span>Section&nbsp;10.3</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-the-regression-coefficients-parameters"><span>Section&nbsp;10.4</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-regression-model-fittedness"><span>Section&nbsp;10.6</span></a>, <a href="10-Correlation-and-linear-regression.html#sec-regression-estimations"><span>Section&nbsp;10.8</span></a> , 以及 <a href="10-Correlation-and-linear-regression.html#sec-regression-assumptions"><span>Section&nbsp;10.9</span></a> 。使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須大於10，才能得到精確逼近的估計值。譯者開設的課程使用另一套教程”General Analyses for the Linear Model in Jamovi”開發的<a href="https://gamlj.github.io/mixed_example1.html">範例資料</a>進行教學，教學錄影請見(預訂2023/5/6後上線)。</p>
 <!---此外，jamovi迴歸模組無法直接處理等級資料，必須用計算變數。因此[資料檔案](omv_files_for_screenshorts/10-correlatin-rank.omv)以R程式碼示範。--->
 <p>如果同學有機會處理真正的等級資料，也可以選擇使用R或其他統計軟體如JASP進行連續變項或等級資料的迴歸分析。</p>
+<section id="泛統計方法的適用條件" class="level4">
+<h4 class="anchored" data-anchor-id="泛統計方法的適用條件">泛統計方法的適用條件</h4>
+<p>所有基礎統計方法幾乎共享相同的適用條件(assumptions)，包括每個資料數值的獨立性(independence of data points)，殘差的常態性(normality of residuals)，以及變異同質性(homoscedasticity)。線性迴歸模性可看到些條件以及檢核方法，透過迴歸模型認識其他統計方法，就能自然知道要符合那些條件，統計分析才有意義。<strong>需要讀者了解的用語問題</strong>，許多中文統計書會用<strong>假設</strong>而非<strong>適用條件</strong>，用了幾次jamovi，讀者應該發現許多模組有<em>assumption check</em>的選項，其實是提供該分析是否符合適用條件的檢測。</p>
+</section>
+<section id="以線性模型解讀自由度" class="level4">
+<h4 class="anchored" data-anchor-id="以線性模型解讀自由度">以線性模型解讀自由度</h4>
+<p>這本<strong>用jamovi上手統計學</strong>並沒有一個專門的小節，好好解釋什麼是自由度(degress of freedom)，做為補充章節，剛好在此為讀者提供一點小小的說明。由於剛好重新學習線性模型與線性代數的知識，我參考翻譯本書時在閱讀的另一本中文教科書：黃志勝先生撰寫的「<a href="https://www.tenlong.com.tw/products/9789863126744">機器學習的統計基礎 : 深度學習背後的核心技術</a>」，其中第4章講自由度的這一節，黃先生給的定義是「包含N個變數的線性模型中，不受限制的變數個數」(該書沒有這一句話，是我重新消化組織的)，我們能透過以下範例來逐漸認識。</p>
+<ol type="1">
+<li><p>簡單迴歸式 <span class="math inline">\(y = a + bx\)</span>。<span class="math inline">\(y\)</span>與<span class="math inline">\(x\)</span>都是變數，要使等號左右兩邊的數值相等，必須限制其中一個變數等於固定的數值，因此自由度<span class="math inline">\(df = n - k = 2 - 1 = 1\)</span>。</p></li>
+<li><p>多元迴歸式 <span class="math inline">\(y = a + b_1 x_1 +b_2 x_2\)</span>。這個等式有三個變數，要使等號左右兩邊的數值相等，同樣必須限制其中一個變數等於固定的數值，因此自由度<span class="math inline">\(df = n - k = 3 - 1 = 2\)</span>。</p></li>
+<li><p>我們知道樣本平均值(<span class="math inline">\(\bar{X}\)</span>)是母群平均值(<span class="math inline">\(\mu\)</span>)的最佳估計值，公式是<span class="math inline">\(\bar{X} = \frac{X_1 + X_2 + \dots + X_n}{n}\)</span>，其中有n個變數，每個變數都是隨機值且彼此獨立，沒有任何一個變數要受到限制，因此自由度<span class="math inline">\(df = n - k = n - 0 = n\)</span>。</p></li>
+<li><p>樣本變異數(<span class="math inline">\(S^2\)</span>)是母群平均值(<span class="math inline">\(\sigma^2\)</span>)的最佳估計值，公式是<span class="math inline">\(S^2 = \frac{\sum_{n=1}^{n}(X_i - \bar{X})^2}{n-1}\)</span>。這個公式也有同樣的n個隨機且彼此獨立的變數，但是公式中的平均值<span class="math inline">\(\bar{X}\)</span>來自樣本平均值公式，所以可知<span class="math inline">\(X_n = n\bar{X} - X_1 - X_2 - \dots - X_{n-1}\)</span>，也就是說<span class="math inline">\(X_n\)</span>是受限制的變數，因此樣本變異數的自由度<span class="math inline">\(df = n - k = n - 1\)</span>。</p></li>
+</ol>
+</section>
 </section>
 <section id="單一樣本及相依樣本" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="單一樣本及相依樣本">單一樣本及相依樣本</h3>
-<p><strong>單一樣本及相依樣本</strong>的對應單元有 <a href="11-Comparing-two-means.html#sec-The-one-sample-t-test"><span>Section&nbsp;11.2</span></a> , <a href="11-Comparing-two-means.html#sec-the-paired-t-test"><span>Section&nbsp;11.6</span></a> , <a href="11-Comparing-two-means.html#sec-the-one-tail-t-test"><span>Section&nbsp;11.7</span></a> , <a href="11-Comparing-two-means.html#sec-t-test-effect-size"><span>Section&nbsp;11.8</span></a> , <a href="11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample"><span>Section&nbsp;11.9</span></a> , <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a></p>
+<p><strong>單一樣本及相依樣本</strong>的對應單元有 <a href="11-Comparing-two-means.html#sec-The-one-sample-t-test"><span>Section&nbsp;11.2</span></a> , <a href="11-Comparing-two-means.html#sec-the-paired-t-test"><span>Section&nbsp;11.6</span></a> , <a href="11-Comparing-two-means.html#sec-the-one-tail-t-test"><span>Section&nbsp;11.7</span></a> , <a href="11-Comparing-two-means.html#sec-t-test-effect-size"><span>Section&nbsp;11.8</span></a> , <a href="11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample"><span>Section&nbsp;11.9</span></a> , <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a> 。使用等級資料進行無母數統計分析，最小樣本量必須多於14，如果是採用線性模型教程，建議不要使用 <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a> 的範例，將連續資料的範例轉換為等級資料即可。</p>
+<ul>
+<li>學習用jamovi檔案與錄影說明，預計於2023/5/10之後上線。</li>
+</ul>
 </section>
 <section id="比較兩組平均值" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="比較兩組平均值">比較兩組平均值</h3>
-<p><strong>比較兩組平均值</strong>的對應單元有 <a href="11-Comparing-two-means.html#sec-the-independent-samples-t-test-student-test"><span>Section&nbsp;11.3</span></a>, <a href="11-Comparing-two-means.html#sec-the-one-tail-t-test"><span>Section&nbsp;11.7</span></a> , <a href="11-Comparing-two-means.html#sec-t-test-effect-size"><span>Section&nbsp;11.8</span></a> , <a href="11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample"><span>Section&nbsp;11.9</span></a> , <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a></p>
+<p><strong>比較兩組平均值</strong>的對應單元有 <a href="11-Comparing-two-means.html#sec-the-independent-samples-t-test-student-test"><span>Section&nbsp;11.3</span></a>, <a href="11-Comparing-two-means.html#sec-the-independent-samples-t-test-welch-test"><span>Section&nbsp;11.5</span></a>, <a href="11-Comparing-two-means.html#sec-the-one-tail-t-test"><span>Section&nbsp;11.7</span></a> , <a href="11-Comparing-two-means.html#sec-t-test-effect-size"><span>Section&nbsp;11.8</span></a> , <a href="11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample"><span>Section&nbsp;11.9</span></a> , <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a>。使用等級資料進行無母數統計分析，最小樣本量必須多於10，如果是採用線性模型教程，建議不要使用 <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a> 的範例，將連續資料的範例轉換為等級資料即可。</p>
+<p>Welch’s t檢定是無法使用jamovi展示線性模型示範的統計方法，但是近年採用獨立組設計的心理學研究，被呼籲使用Welch’s t檢定的建議越來越多，因為獨立組設計的行為科學資料經常違反變異數同質性的適用條件。在此使用R套件，展示使用線性模型輸出 <a href="11-Comparing-two-means.html#sec-the-independent-samples-t-test-welch-test"><span>Section&nbsp;11.5</span></a> 的範例。</p>
+<p><strong>R程式碼</strong></p>
+<pre><code>df &lt;- read_csv("files/Harpo.csv")
+
+summary(nlme::gls(grade ~ 1 + as.factor(tutor), weights = nlme::varIdent(form=~1|tutor), method="ML", data=df))</code></pre>
+<p><strong>輸出結果</strong></p>
+<pre><code>Generalized least squares fit by maximum likelihood
+  Model: grade ~ 1 + as.factor(tutor)
+
+Coefficients:
+                              Value Std.Error  t-value p-value
+(Intercept)                74.53333  2.316009 32.18179  0.0000
+as.factor(tutor)Bernadette -5.47778  2.688237 -2.03768  0.0502</code></pre>
+<ul>
+<li>學習用jamovi檔案與錄影說明，預計於2023/5/10之後上線。</li>
+</ul>
 </section>
 <section id="單因子變異數分析" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="單因子變異數分析">單因子變異數分析</h3>
