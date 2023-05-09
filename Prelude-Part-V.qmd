@@ -109,9 +109,7 @@ IF($source==0,0,IF($source>1,1,-1))*RANK($source)
 
 ### 單一樣本及相依樣本 {-}
 
-**單一樣本及相依樣本**的對應單元有 @sec-The-one-sample-t-test , @sec-the-paired-t-test , @sec-the-one-tail-t-test , @sec-t-test-effect-size , @sec-Checking-the-normality-of-a-sample , @sec-nonparameter-rank-test 。使用等級資料進行無母數統計分析，最小樣本量必須多於14，如果是採用線性模型教程，建議不要使用 @sec-nonparameter-rank-test 的範例，將連續資料的範例轉換為等級資料即可。
-
-- 學習用jamovi檔案與錄影說明，預計於2023/5/10之後上線。
+**單一樣本及相依樣本**的對應單元有 @sec-The-one-sample-t-test , @sec-the-paired-t-test , @sec-the-one-tail-t-test , @sec-t-test-effect-size , @sec-Checking-the-normality-of-a-sample , @sec-nonparameter-rank-test 。使用等級資料進行無母數統計分析，最小樣本量必須多於14，如果是採用線性模型教程，建議不要使用 @sec-nonparameter-rank-test 的範例，將連續資料的範例轉換為等級資料即可。讀者可使用線性模型版的jamovi示範檔案：[單一樣本t檢定](omv_files_for_screenshots/11_onesample_t_lm.omv)、[相依樣本t檢定](omv_files_for_screenshots/11_pairedsample_t_lm.omv)，搭配[課程錄影]()學習(預計5/10後上線)。
 
 ### 比較兩組平均值 {-}
 
@@ -139,12 +137,23 @@ Coefficients:
 as.factor(tutor)Bernadette -5.47778  2.688237 -2.03768  0.0502
 ```
 
-- 學習用jamovi檔案與錄影說明，預計於2023/5/10之後上線。
+讀者可使用線性模型版的jamovi示範檔案：[獨立樣本t檢定](omv_files_for_screenshots/11_independent_t_lm.omv)，搭配[課程錄影]()學習(預計5/10後上線)。
 
 
 ### 單因子變異數分析 {-}
 
-對應 @sec-Comparing-several-means-one-way-ANOVA **單因子變異數分析** 
+@sec-Comparing-several-means-one-way-ANOVA **單因子變異數分析** 介紹的統計方法有單因子獨立樣本變異數分析，以及單因子重覆量數變異數分析。根據線性模型教程，譯者將這兩個兩個統計方法的示範，改編為以線性迴歸模型實作的[獨立樣本示範檔案](omv_files_for_screenshots/12-oneway-independent-ANOVA.omv)，以及[重覆量數示範檔案](omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv)。由於Lindeløv的教程並未提供單因子重覆量數變異數的等級資料分析示範，[重覆量數示範檔案](omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv)只有連續變項的版本。
+
+依線性模型教程的順序學習的讀者與學生，可以先復習 @sec-what-is-linear-model 這一節的內容。譯者的課程教學會從迴歸模型的R-squared起手，帶領學生認識兩種單因子變異數分析的程序及適用條件。
+
+
+**長表單(long table)與寬表單(wide table)**
+
+[相依樣本t檢定](omv_files_for_screenshots/11_pairedsample_t_lm.omv)處理的分析資料，也是重覆量數設計。在這份[示範檔案](omv_files_for_screenshots/11_pairedsample_t_lm.omv)裡，兩次成績列在不同的變項欄位(`grade_test1`,`grade_test2`)，這種將同一個獨變項的不同層次之依變項資料，各自列在獨立變項欄位的資料格式，稱為**寬表單(wide table)**。電子書 @sec-oneway-repeated-measure 示範單因子重覆量數變異數分析使用的資料格式，也是寬表單。
+
+jamovi的ANOVA模組與t檢定模組，都是用來處理寬表單資料。然而線性模型版的[單因子重覆量數變異數分析示範檔案](omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv)，獨變項欄位只有一個(`Task`)，依變項資料也集中於一個變項欄位(`Score`)。這種資料格式稱為**長表單(long table)**，是各種資料收集平台最原始的儲存格式。請讀者比較兩種資料格式的差異，思考最適合你的資料處理與分析操作，用那一種表單格式與分析模組有最佳效益。
+
+- 課程錄影預計於2023/5/17之後上線。
 
 ### 多因子變異數分析 {-}
 
