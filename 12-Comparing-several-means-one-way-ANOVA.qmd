@@ -7,11 +7,11 @@ source("header.R")
 
 > **譯者註** 20230416初步以ChatGPT-4完成翻譯，內容待編修。
 
-本章介紹了心理統計學中最廣泛使用的工具之一，稱為"變異數分析"，但通常簡稱為ANOVA。基本程序來自20世紀初的羅蘭．費雪爵士的貢獻，他給這套方法的命名也給學習與使用這套方法的我們一些苦惱。ANOVA這個名稱通常會給初學者兩點誤導。首先，儘管名字裡有「變異數」，實際上ANOVA是比較平均數之間的差異。其次，有幾套不同的方法都被稱為ANOVA，其中一些只與其他名稱有非常微弱的聯繫。在本書的後面部分，我們將遇到許多不同的ANOVA方法，它們適用於完全不同的情況，但就本章的目的而言，我們只會考慮最簡單的ANOVA形式，即擁有幾個不同觀察群組，我們有興趣了解這些群組在某個感興趣的結果變量方面是否有所不同。這就是單因素ANOVA所要解決的問題。
+本章介紹了心理統計學中最廣泛使用的工具之一，稱為"變異數分析"，但通常簡稱為ANOVA。基本程序來自20世紀初的羅蘭．費雪爵士的貢獻，他給這套方法的命名也給此時此刻正在學習與使用這套方法的我們一些苦惱。**變異數分析**這個名稱通常會帶給初學者兩點誤導。首先，儘管名字裡有「變異數」，實際上ANOVA是比較平均數之間的差異。其次，有好幾套統計方法都與變異數分析有密切關係，其中一些方法的名稱只與其命名有非常微弱的聯繫。在後續章節，我們會學到各式各樣的變異數分析方法，分別有各自適用的情況，但就本章的學習目的而言，我們只會學習最簡單的單因子變異數分析，即研究設計只有觀察幾個不同群組，我們的興趣是了解這些群組在某個獨變項的測量結果是否有所不同。<!---這就是單因素ANOVA所要解決的問題。--->
 
-本章的結構如下：首先，我將介紹一個虛擬的數據集，我們將在整個章節中使用它作為一個例子。在介紹數據之後，我將描述單因素ANOVA的實際運作機制[變異數分析的運作原理](12-Comparing-several-means-one-way-ANOVA.html#sec-How-ANOVA-works)，然後專注於如何使用 [jamovi的變異數分析模組](12-Comparing-several-means-one-way-ANOVA.html#running-an-anova-in-jamovi)執行ANOVA。這兩個部分是本章的核心。
+本章的學習順序如下：首先，我將介紹示範用的虛擬資料集，在這一章會使用這個資料集進行操作示範。接著我將說明單因子<!---變異數分析的實際運作機制--->[變異數分析的運作原理](12-Comparing-several-means-one-way-ANOVA.html#sec-How-ANOVA-works)，然後詳細說明如何使用 [jamovi的變異數分析模組](12-Comparing-several-means-one-way-ANOVA.html#running-an-anova-in-jamovi)執行變異數分析。這兩個部分是本章重點。
 
-本章其餘部分討論了在執行ANOVA時不可避免地涉及的一系列重要主題，即如何計算效應大小、事後檢定和多重比較的校正以及ANOVA所依賴的假設。我們還將討論如何檢查這些假設以及在假設被違反時可以做些什麼。最後，我們將介紹重覆量數變數分析。
+接下來分別討論在執行變異數分析時必須考慮的一系列重要課題，像是如何計算效果量大小、事後檢定和多重比較的校正，以及變異數分析的適用條件。我們還會討論如何檢查這些條件，以及適用條件不成立時可以做什麼樣的補救措施。最後一節，我們會學習重覆量數變數分析。
 
 <!--- This chapter introduces one of the most widely used tools in psychological statistics, known as "the analysis of variance", but usually referred to as ANOVA. The basic technique was developed by Sir Ronald Fisher in the early 20th century and it is to him that we owe the rather unfortunate terminology. The term ANOVA is a little misleading, in two respects. Firstly, although the name of the technique refers to variances, ANOVA is concerned with investigating differences in means. Secondly, there are several different things out there that are all referred to as ANOVAs, some of which have only a very tenuous connection to one another. Later on in the book we'll encounter a range of different ANOVA methods that apply in quite different situations, but for the purposes of this chapter we'll only consider the simplest form of ANOVA, in which we have several different groups of observations, and we're interested in finding out whether those groups differ in terms of some outcome variable of interest. This is the question that is addressed by a one-way ANOVA.
 
@@ -21,9 +21,9 @@ The remainder of the chapter discusses a range of important topics that inevitab
 
 ## 獨立樣本變異數分析示範資料
 
-假設您已參與一個臨床試驗，該試驗正在測試一種名為*Joyzepam*的新抗抑鬱藥。為了公平地測試藥物的有效性，該研究涉及三種獨立的藥物。其中一種是安慰劑，另一種是現有的抗抑鬱/抗焦慮藥物，名為*Anxifree*。您的初步測試招募了18名患有中度至重度抑鬱症的參與者。由於藥物有時與心理治療結合使用，因此您的研究包括9個正在進行認知行為治療（CBT）的人和9個未進行治療的人。參與者被隨機分配（當然是雙盲的）治療，使得3個接受CBT的人和3個無治療的人被分配到3種藥物中的每一種。心理學家在每個人使用每種藥物3個月後評估每個人的情緒，並在從$-5$到$+5$的範圍內評估每個人情緒的整體改善。在這種研究設計下，讓我們現在加載數據文件 *clinicaltrial.csv*。我們可以看到這個數據集包含了三個變量，分別是藥物、治療和情緒提升。
+假想你協助執行一件臨床試驗，研究一種名為*Joyzepam*的新型抗憂鬱藥物效用。為了公平地測試這種新藥的效用，你要分別測試包括新藥的三種藥物。另外兩種的其中一種是安慰劑，另一種是已經上市，名為*Anxifree*的抗憂鬱/抗焦慮藥物。你一開始招募了18名患有中度至重度抑鬱症的參與者。由於有的參與者不只有服用藥物，也同時接受心理治療，因此所有參與者包括9個正在進行認知行為治療（CBT）的個案和9個未進行任何治療的個案。參與者以雙盲的隨機方式派給藥物，因此每一種藥物分給3位接受CBT的個案和3位無接受治療的個案。每位個案各自使用被分派的藥物3個月後，再由研究者評估每個人的情緒改善狀態，從$-5$到$+5$的範圍代表每位個案的情緒改善狀況。現在我們可以載入資料檔 *clinicaltrial.csv*，看看這種研究設計的內容，檔案包含三個變項，分別是藥物、治療和情緒提升分數。
 
-在本章中，我們真正感興趣的是藥物對情緒提升的影響。首先要做的是計算一些描述性統計數據並繪製一些圖表。在 @sec-Descriptive-statistics 章節中，我們向您展示了如何做到這一點，jamovi中可以計算的一些描述性統計數據顯示在 @fig-fig12-1 中。
+以這一章的學習目標來說，我們想了解的是藥物對情緒提升的效用。首先要做的是進行描述性統計並繪製一些圖表。在 @sec-Descriptive-statistics ，同學們已經學到如何使用完成描述統計，就像 @fig-fig12-1 顯示的圖表。
 
 
 
@@ -39,7 +39,7 @@ For the purposes of this chapter, what we're really interested in is the effect 
 knitr::include_graphics("images/fig13-1.png")
 ```
 
-如圖所示，對於Joyzepam組的參與者，情緒的改善比Anxifree組或安慰劑組要大。Anxifree組的情緒提升比對照組要大，但差距不是那麼大。我們想要回答的問題是，這些差異是否“真實”，或者僅僅是因為偶然？
+如 @fig-fig12-1 所示，服用Joyzepam的參與者，情緒的改善程度大於服用Anxifree或安慰劑。Anxifree的情緒提升程度大於安慰劑，但是差距沒有像Joyzepam那麼大。在此要回答的問題是，這些藥效的差異是否“真有其事”，還是僅僅是偶然的結果？
 
 <!--- As the plot makes clear, there is a larger improvement in mood for participants in the Joyzepam group than for either the Anxifree group or the placebo group. The Anxifree group shows a larger mood gain than the control group, but the difference isn't as large. The question that we want to answer is are these difference "real", or are they just due to chance? --->
 
@@ -121,11 +121,11 @@ gridExtra::grid.arrange(p1,p2,ncol=2)
 
 ### 計算依變項變異數的兩套公式
 
-首先，讓我們引入一些符號。我們將使用 G 來表示組的總數。對於我們的數據集，有三種藥物，所以有 $G = 3$ 個組。接下來，我們將使用 $N$ 表示總樣本大小；在我們的數據集中，一共有 $N = 18$ 人。同樣地，讓我們用 $N_k$ 表示第 k 個組中的人數。在我們的虛擬臨床試驗中，所有三組的樣本大小都是 $N_k = 6$。[^13-comparing-several-means-one-way-anova-1] 最後，我們將使用 Y 表示結果變量。在我們的案例中，Y 指的是心情變化。具體來說，我們將使用 Yik 指代第 k 個組中第 i 個成員所經歷的心情變化。同樣，我們將使用 $\bar{Y}$ 作為實驗中所有 18 人的平均心情變化，並使用 $\bar{Y}_k$ 指代第 k 組中 6 人所經歷的平均心情變化。
+首先，讓我們引入一些符號。我們將使用 G 來表示組的總數。對於我們的數據集，有三種藥物，所以有 $G = 3$ 個組。接下來，我們將使用 $N$ 表示總樣本大小；在我們的數據集中，一共有 $N = 18$ 人。同樣地，讓我們用 $N_k$ 表示第 k 個組中的人數。在我們的虛擬臨床試驗中，所有三組的樣本大小都是 $N_k = 6$。[^13-comparing-several-means-one-way-anova-1] 最後，我們將使用 Y 表示結果變項。在我們的案例中，Y 指的是心情變化。具體來說，我們將使用 Yik 指代第 k 個組中第 i 個成員所經歷的心情變化。同樣，我們將使用 $\bar{Y}$ 作為實驗中所有 18 人的平均心情變化，並使用 $\bar{Y}_k$ 指代第 k 組中 6 人所經歷的平均心情變化。
 
 [^13-comparing-several-means-one-way-anova-1]: 當所有組的觀察值數目相同時，實驗設計被稱為“平衡”。對於本章介紹的單因子 ANOVA，平衡並不是很重要。當您開始進行更複雜的 ANOVA 時，它變得更重要。
 
-現在我們已經整理好符號，我們可以開始寫下公式。首先，讓我們回想一下在 @sec-Measures-of-variability 中使用的方差公式，在那個做描述性統計的較早時期。Y 的樣本方差被定義為以下公式 $$Var(Y)=\frac{1}{N}\sum_{k=1}^{G}\sum_{i=1}^{N_k}(Y_{ik}-\bar{Y})^2$$ 這個公式看起來與 @sec-Measures-of-variability 中的方差公式幾乎相同。唯一的區別是這次我有兩個求和：我對組進行求和（即 $k$ 的值）以及對組內的人進行求和（即 $i$ 的值）。這只是一個純粹的表面細節。如果我使用符號 $Y_p$ 來表示樣本中第 p 個人的結果變量值，那麼我只有一個求和。我們在這裡有兩個求和的唯一原因是我將人分類到組，然後為組內的人分配數字。
+現在我們已經整理好符號，我們可以開始寫下公式。首先，讓我們回想一下在 @sec-Measures-of-variability 中使用的方差公式，在那個做描述性統計的較早時期。Y 的樣本方差被定義為以下公式 $$Var(Y)=\frac{1}{N}\sum_{k=1}^{G}\sum_{i=1}^{N_k}(Y_{ik}-\bar{Y})^2$$ 這個公式看起來與 @sec-Measures-of-variability 中的方差公式幾乎相同。唯一的區別是這次我有兩個求和：我對組進行求和（即 $k$ 的值）以及對組內的人進行求和（即 $i$ 的值）。這只是一個純粹的表面細節。如果我使用符號 $Y_p$ 來表示樣本中第 p 個人的結果變項值，那麼我只有一個求和。我們在這裡有兩個求和的唯一原因是我將人分類到組，然後為組內的人分配數字。
 
 在這裡，具體的例子可能很有用。讓我們考慮 @tbl-tab12-1 ，在這個表格中，我們有總共 $N = 5$ 個人分成 $G = 2$ 個組。任意地說，讓我們說「酷」的人是第 1 組，「不酷」的人是第 2 組。結果發現我們有三個酷人（$N_1 = 3$）和兩個不酷的人（$N_2 = 2$）。
 
@@ -146,7 +146,7 @@ A concrete example might be useful here. Let's consider @tbl-tab12-1, in which w
 huxtabs[[13]][[1]]
 ```
 
-注意到這裡我構建了兩個不同的標記方案。我們有一個「人」變量 p，所以說到 Yp 作為樣本中的第 p 人的脾氣是完全合理的。例如，表格顯示 Tim 是第四個，所以我們會說 $p = 4$。所以，在談到這個「Tim」這個人（無論他是誰）的脾氣 $Y$ 時，我們可以通過說 $Y_p = 91$ 來指稱他的脾氣，即對於人 $p = 4$。然而，這不是我們唯一可以指稱 Tim 的方法。作為一個替代方法，我們可以注意到 Tim 屬於「不酷」的組（$k = 2$），實際上是不酷組中列出的第一個人（$i = 1$）。所以，通過說 $Y_{ik} = 91$，在 $k = 2$ 和 $i = 1$ 的情況下，同樣有效地指稱 Tim 的脾氣。
+注意到這裡我構建了兩個不同的標記方案。我們有一個「人」變項 p，所以說到 Yp 作為樣本中的第 p 人的脾氣是完全合理的。例如，表格顯示 Tim 是第四個，所以我們會說 $p = 4$。所以，在談到這個「Tim」這個人（無論他是誰）的脾氣 $Y$ 時，我們可以通過說 $Y_p = 91$ 來指稱他的脾氣，即對於人 $p = 4$。然而，這不是我們唯一可以指稱 Tim 的方法。作為一個替代方法，我們可以注意到 Tim 屬於「不酷」的組（$k = 2$），實際上是不酷組中列出的第一個人（$i = 1$）。所以，通過說 $Y_{ik} = 91$，在 $k = 2$ 和 $i = 1$ 的情況下，同樣有效地指稱 Tim 的脾氣。
 
 換句話說，每個人 p 都對應一個唯一的 ik 組合，所以我之前給出的公式實際上與我們原始的方差公式是相同的，即
 $$Var(Y)=\frac{1}{N}\sum_{p=1}^{N}(Y_p-\bar{Y})^2$$
@@ -174,7 +174,7 @@ In other words, each person p corresponds to a unique ik combination, and so the
 
 $$SS_w+SS_b=SS_{tot}$$ 好耶。
 
-好的，那麼我們發現了什麼？我們已經發現了與結果變量相關的總變異（$SS_{tot}$）可以在數學上被劃分為“由於不同組的樣本均值之間的差異所產生的變異”（$SS_b$）加上“其他所有變異”（$SS_w$）之和[^13-comparing-several-means-one-way-anova-5]。
+好的，那麼我們發現了什麼？我們已經發現了與結果變項相關的總變異（$SS_{tot}$）可以在數學上被劃分為“由於不同組的樣本均值之間的差異所產生的變異”（$SS_b$）加上“其他所有變異”（$SS_w$）之和[^13-comparing-several-means-one-way-anova-5]。
 
 那怎麼幫助我找出這些組是否有不同的母體均值呢？嗯。等等。稍等一下。現在想想，這正是我們在尋找的。如果原假設成立，那麼您會期望所有樣本均值彼此非常相似，對吧？這將意味著您會期望 $SS_b$ 非常小，或者至少您會期望它比“與其他所有事物相關的變異”（$SS_w$）小得多。嗯。我感覺到了一個假設檢驗的來臨。
 
@@ -258,7 +258,7 @@ huxtabs[[13]][[2]]
 
 [額外的技術細節 [^13-comparing-several-means-one-way-anova-6]]
 
-[^13-comparing-several-means-one-way-anova-6]:在根本上，ANOVA 是兩個不同統計模型之間的競爭，$H_0$ 和 $H_1$。當我在本節開始時描述虛無假設和替代假設時，關於這些模型實際上是什麼，我有點不精確。我現在將補救這一點，儘管您可能不會因此而喜歡我。如果您回憶一下，我們的虛無假設是所有組均值彼此相同。如果是這樣，那麼考慮結果變量 $Y_{ik}$ 的自然方法是將個體分數描述為單一母體均值 µ，再加上與該母體均值的偏差。這個偏差通常用 $\epsilon_{ik}$ 表示，傳統上稱為該觀察值的誤差或殘差。但要小心。就像我們在單詞“顯著”中看到的那樣，單詞“誤差”在統計學中具有與它的日常英語定義不完全相同的技術含義。在日常語言中，“誤差”暗示著某種錯誤，但在統計學中則不是這樣（至少不一定是這樣）。考慮到這一點，“殘差”這個詞比“誤差”這個詞更好。在統計學中，這兩個詞都表示“剩餘可變性”，也就是模型無法解釋的“東西”。在任何情況下，當我們將虛無假設寫成統計模型時，它看起來像這樣 $$Y_{ik}=\mu+\epsilon_{ik}$$，其中我們做出這樣的假設（稍後討論），殘差值 $\epsilon_{ik}$ 是正態分布的，平均值為 $0$，標準差 $\sigma$ 對於所有組都是相同的。使用我們在 [概率簡介] 中介紹的符號，我們將這樣的假設寫成 $$\epsilon_{ik} \sim Normal(0,\sigma^2)$$ 那麼替代假設 $H_1$ 呢？虛無假設和替代假設之間的唯一區別是，我們允許每個組具有不同的母體均值。因此，如果我們讓 $\mu_k$ 表示我們實驗中第 k 個組的母體均值，那麼與 $H_1$ 相對應的統計模型是 $$Y_{ik}=\mu_k+\epsilon_{ik}$$，其中，我們再次假設誤差項是正態分布的，平均值為 0，標準差為 $\sigma$。也就是說，替代假設還假定 $\epsilon \sim Normal(0,\sigma^2)$ 好的，既然我們已經更詳細地描述了 $H_0$ 和 $H_1$ 的統計模型，那麼現在很容易說清楚平均平方值是如何衡量的，以及這對於解釋 $F$ 意味著什麼。我不會用證明來煩惱你，但事實證明，組內平均平方 $MS_w$ 可以看作是誤差變異數 $\sigma^2$ 的估計器。組間平均平方 $MS_b$ 也是估計器，但它估計的是誤差變異數加上一個取決於組均值之間真正差異的數量。如果我們將這個數量稱為 $Q$，那麼我們可以看到 F 統計量基本上是 $^a$ $$F=\frac{\hat{Q}+\hat{\sigma}^2}{\hat{\sigma}^2}$$ 其中，如果虛無假設為真，那麼真實值 $Q = 0$，如果替代假設為真，則 Q < 0（例如， @Hays1994 ，ch. 10）。因此，作為基本要求，$F$ *值必須大於* 1 才有可能拒絕虛無假設。需要注意的是，這並不意味著 F 值不可能小於 1。這意味著，如果虛無假設為真，那麼 F 比值的抽樣分布的均值為 1 [^b]，因此，我們需要看到 F 值大於 1 才能安全地拒絕虛無假設。為了更精確地說明抽樣分布，請注意，如果虛無假設為真，那麼 MSb 和 MSw 都是殘差 $\epsilon_{ik}$ 的變異數的估計量。如果這些殘差是正態分布的，那麼你可能會懷疑 $\epsilon_{ik}$ 的變異數估計是卡方分布的，因為（如 @sec-Other-useful-distributions 中所討論的），這就是卡方分布的含義：當你對一堆正態分布的事物進行平方並將它們相加時，就會得到這樣的分布。而 F 分布（再次，根據定義）就是在兩個 $\chi^2$ 分布的事物之間取比值時得到的分布，我們就有了我們的抽樣分布。顯然，當我說這些時，我省略了很多東西，但在廣泛的意義上，這確實是我們的抽樣分布來源。 <br /> --- <br />  $^a$ 如果你已經提前閱讀 @sec-Factorial-ANOVA ，並查看了如何用 $\alpha_k$ 值來定義因子水平 k 上的「處理效應」（參見平衡設計，允許交互作用的因子 ANOVA 2 节），則發現 $Q$ 是處理效應平方加權平均值，$Q = \frac{(\sum_{k=1}^{G}N_k \alpha_k^2)}{(G-1)}$ <br /> $^b$ 或者，如果我們想要非常精確，是 $1+\frac{2}{df_2-2}$。
+[^13-comparing-several-means-one-way-anova-6]:在根本上，ANOVA 是兩個不同統計模型之間的競爭，$H_0$ 和 $H_1$。當我在本節開始時描述虛無假設和替代假設時，關於這些模型實際上是什麼，我有點不精確。我現在將補救這一點，儘管您可能不會因此而喜歡我。如果您回憶一下，我們的虛無假設是所有組均值彼此相同。如果是這樣，那麼考慮結果變項 $Y_{ik}$ 的自然方法是將個體分數描述為單一母體均值 µ，再加上與該母體均值的偏差。這個偏差通常用 $\epsilon_{ik}$ 表示，傳統上稱為該觀察值的誤差或殘差。但要小心。就像我們在單詞“顯著”中看到的那樣，單詞“誤差”在統計學中具有與它的日常英語定義不完全相同的技術含義。在日常語言中，“誤差”暗示著某種錯誤，但在統計學中則不是這樣（至少不一定是這樣）。考慮到這一點，“殘差”這個詞比“誤差”這個詞更好。在統計學中，這兩個詞都表示“剩餘可變性”，也就是模型無法解釋的“東西”。在任何情況下，當我們將虛無假設寫成統計模型時，它看起來像這樣 $$Y_{ik}=\mu+\epsilon_{ik}$$，其中我們做出這樣的假設（稍後討論），殘差值 $\epsilon_{ik}$ 是正態分布的，平均值為 $0$，標準差 $\sigma$ 對於所有組都是相同的。使用我們在 [概率簡介] 中介紹的符號，我們將這樣的假設寫成 $$\epsilon_{ik} \sim Normal(0,\sigma^2)$$ 那麼替代假設 $H_1$ 呢？虛無假設和替代假設之間的唯一區別是，我們允許每個組具有不同的母體均值。因此，如果我們讓 $\mu_k$ 表示我們實驗中第 k 個組的母體均值，那麼與 $H_1$ 相對應的統計模型是 $$Y_{ik}=\mu_k+\epsilon_{ik}$$，其中，我們再次假設誤差項是正態分布的，平均值為 0，標準差為 $\sigma$。也就是說，替代假設還假定 $\epsilon \sim Normal(0,\sigma^2)$ 好的，既然我們已經更詳細地描述了 $H_0$ 和 $H_1$ 的統計模型，那麼現在很容易說清楚平均平方值是如何衡量的，以及這對於解釋 $F$ 意味著什麼。我不會用證明來煩惱你，但事實證明，組內平均平方 $MS_w$ 可以看作是誤差變異數 $\sigma^2$ 的估計器。組間平均平方 $MS_b$ 也是估計器，但它估計的是誤差變異數加上一個取決於組均值之間真正差異的數量。如果我們將這個數量稱為 $Q$，那麼我們可以看到 F 統計量基本上是 $^a$ $$F=\frac{\hat{Q}+\hat{\sigma}^2}{\hat{\sigma}^2}$$ 其中，如果虛無假設為真，那麼真實值 $Q = 0$，如果替代假設為真，則 Q < 0（例如， @Hays1994 ，ch. 10）。因此，作為基本要求，$F$ *值必須大於* 1 才有可能拒絕虛無假設。需要注意的是，這並不意味著 F 值不可能小於 1。這意味著，如果虛無假設為真，那麼 F 比值的抽樣分布的均值為 1 [^b]，因此，我們需要看到 F 值大於 1 才能安全地拒絕虛無假設。為了更精確地說明抽樣分布，請注意，如果虛無假設為真，那麼 MSb 和 MSw 都是殘差 $\epsilon_{ik}$ 的變異數的估計量。如果這些殘差是正態分布的，那麼你可能會懷疑 $\epsilon_{ik}$ 的變異數估計是卡方分布的，因為（如 @sec-Other-useful-distributions 中所討論的），這就是卡方分布的含義：當你對一堆正態分布的事物進行平方並將它們相加時，就會得到這樣的分布。而 F 分布（再次，根據定義）就是在兩個 $\chi^2$ 分布的事物之間取比值時得到的分布，我們就有了我們的抽樣分布。顯然，當我說這些時，我省略了很多東西，但在廣泛的意義上，這確實是我們的抽樣分布來源。 <br /> --- <br />  $^a$ 如果你已經提前閱讀 @sec-Factorial-ANOVA ，並查看了如何用 $\alpha_k$ 值來定義因子水平 k 上的「處理效應」（參見平衡設計，允許交互作用的因子 ANOVA 2 节），則發現 $Q$ 是處理效應平方加權平均值，$Q = \frac{(\sum_{k=1}^{G}N_k \alpha_k^2)}{(G-1)}$ <br /> $^b$ 或者，如果我們想要非常精確，是 $1+\frac{2}{df_2-2}$。
 
 <!---
 A summary of all the key quantities involved in a one-way ANOVA, including the formulas showing how they are calculated, is shown in @tbl-tab12-2.
@@ -286,7 +286,7 @@ A summary of all the key quantities involved in a one-way ANOVA, including the f
 huxtabs[[13]][[3]]
 ```
 
-在這個階段，我在表格中包含的只是原始數據本身。也就是說，每個人的分組變量（即藥物）和結果變量（即心情增益）。請注意，這裡的結果變量對應於我們先前方程式中的 $\bar{Y}_{ik}$ 值。接下來的計算步驟是為研究中的每個人寫下相應的組平均值，$\bar{Y}_k$。這有點重複，但並不是特別困難，因為我們在進行描述性統計時已經計算了這些組平均值，見 @tbl-tab12-4 。
+在這個階段，我在表格中包含的只是原始數據本身。也就是說，每個人的分組變項（即藥物）和結果變項（即心情增益）。請注意，這裡的結果變項對應於我們先前方程式中的 $\bar{Y}_{ik}$ 值。接下來的計算步驟是為研究中的每個人寫下相應的組平均值，$\bar{Y}_k$。這有點重複，但並不是特別困難，因為我們在進行描述性統計時已經計算了這些組平均值，見 @tbl-tab12-4 。
 
 <!--- At this stage, the only thing I've included in the table is the raw data itself. That is, the grouping variable (i.e., drug) and outcome variable (i.e. mood.gain) for each person. Note that the outcome variable here corresponds to the $\bar{Y}_{ik}$ value in our equation previously. The next step in the calculation is to write down, for each person in the study, the corresponding group mean, $\bar{Y}_k$. This is slightly repetitive but not particularly difficult since we already calculated those group means when doing our descriptive statistics, see @tbl-tab12-4. --->
 
@@ -459,7 +459,7 @@ Sigh. So much work for one short sentence. --->
 
 ### 使用jamovi完成變異數分析
 
-為了讓您的生活更輕鬆，jamovi 可以做 ANOVA... 哈拉！ 轉到「ANOVA」-「ANOVA」分析，將 mood.gain 變量移到「依賴變量」框中，然後將 drug 變量移到「固定因子」框中。這樣應該會得到 @fig-fig12-3 中所示的結果。[^13-comparing-several-means-one-way-anova-9] 注意我還勾選了 'Effect Size'選項下的 $\eta^2$ 复选框，念作“ eta 平方”，這也顯示在結果表格上。稍後我們將回到效應大小。
+為了讓您的生活更輕鬆，jamovi 可以做 ANOVA... 哈拉！ 轉到「ANOVA」-「ANOVA」分析，將 mood.gain 變項移到「依賴變項」框中，然後將 drug 變項移到「固定因子」框中。這樣應該會得到 @fig-fig12-3 中所示的結果。[^13-comparing-several-means-one-way-anova-9] 注意我還勾選了 'Effect Size'選項下的 $\eta^2$ 复选框，念作“ eta 平方”，這也顯示在結果表格上。稍後我們將回到效應大小。
 
 
 
@@ -475,7 +475,7 @@ knitr::include_graphics("images/fig13-3.png")
 
 [^13-comparing-several-means-one-way-anova-9]: 與上文中的數字相比，jamovi 的結果更為準確，這是由於四捨五入誤差。
 
-jamovi 的結果表格顯示了平方和值、自由度以及我們現在並不真正感興趣的其他一些數量。然而，請注意，jamovi 不使用「組間」和「組內」這兩個名稱。 相反，它嘗試分配更有意義的名稱。 在我們的特定示例中，組間方差對應於藥物對結果變量的影響，組內方差對應於“剩餘”的可變性，因此它將其稱為殘差。 如果我們將這些數字與 [A worked example] 中我手工計算的數字進行比較，可以看到它們或多或少是相同的，除了四捨五入誤差。組間平方和為 $SS_b = 3.45$，組內平方和為 $SS_w = 1.39$，各自的自由度為 $2$ 和 $15$。我們還得到了 F 值和 p 值，同樣，這些數字與我們在手工計算時的數字差不多相同，只是四捨五入誤差。
+jamovi 的結果表格顯示了平方和值、自由度以及我們現在並不真正感興趣的其他一些數量。然而，請注意，jamovi 不使用「組間」和「組內」這兩個名稱。 相反，它嘗試分配更有意義的名稱。 在我們的特定示例中，組間方差對應於藥物對結果變項的影響，組內方差對應於“剩餘”的可變性，因此它將其稱為殘差。 如果我們將這些數字與 [A worked example] 中我手工計算的數字進行比較，可以看到它們或多或少是相同的，除了四捨五入誤差。組間平方和為 $SS_b = 3.45$，組內平方和為 $SS_w = 1.39$，各自的自由度為 $2$ 和 $15$。我們還得到了 F 值和 p 值，同樣，這些數字與我們在手工計算時的數字差不多相同，只是四捨五入誤差。
 
 <!--- 
 [^13-comparing-several-means-one-way-anova-9]: The jamovi results are more accurate than the ones in the text above, due to rounding errors.
@@ -492,7 +492,7 @@ $$\eta^2=\frac{SS_b}{SS_{tot}}$$
 
 $$\eta^2=\frac{3.45}{4.84}=0.71$$
 
-$\eta^2$ 的解釋同樣直接。它表示可以根據預測變量（藥物）解釋的結果變量（mood.gain）可變性的比例。$\eta^2=0$ 表示兩者之間完全沒有關係，而 $\eta^2=1$ 表示關係是完美的。更好的是，$\eta^2$ 值與 @sec-The-R2-value 中討論的 $R^2$ 關係非常密切，並具有等效的解釋。儘管許多統計教科書建議在 ANOVA 中使用 $\eta^2$ 作為默認的效應大小衡量指標，但 Daniel Lakens 的一篇有趣的<a href="https://daniellakens.blogspot.com/2015/06/why-you-should-use-omega-squared.html" target="_blank">博客文章</a>表明，eta 平方在實際數據分析中可能不是最好的效應大小衡量指標，因為它可能是一個有偏估計量。有用的是，jamovi 中還有一個選項可以指定 ω 平方（$\omega^2$），它與 η 平方相比偏差較小。
+$\eta^2$ 的解釋同樣直接。它表示可以根據預測變項（藥物）解釋的結果變項（mood.gain）可變性的比例。$\eta^2=0$ 表示兩者之間完全沒有關係，而 $\eta^2=1$ 表示關係是完美的。更好的是，$\eta^2$ 值與 @sec-The-R2-value 中討論的 $R^2$ 關係非常密切，並具有等效的解釋。儘管許多統計教科書建議在 ANOVA 中使用 $\eta^2$ 作為默認的效應大小衡量指標，但 Daniel Lakens 的一篇有趣的<a href="https://daniellakens.blogspot.com/2015/06/why-you-should-use-omega-squared.html" target="_blank">博客文章</a>表明，eta 平方在實際數據分析中可能不是最好的效應大小衡量指標，因為它可能是一個有偏估計量。有用的是，jamovi 中還有一個選項可以指定 ω 平方（$\omega^2$），它與 η 平方相比偏差較小。
 
 <!--- There's a few different ways you could measure the effect size in an ANOVA, but the most commonly used measures are $\eta^2$ (eta squared) and partial $\eta^2$. For a one way analysis of variance they're identical to each other, so for the moment I'll just explain $\eta^2$ . The definition of $\eta^2$ is actually really simple
 
@@ -542,7 +542,7 @@ huxtabs[[13]][[9]]
 
 ### 成對t檢定
 
-我們如何解決問題？考慮到我們需要比較三對不同的平均值（安慰劑對 Anxifree，安慰劑對 Joyzepam，和 Anxifree 對 Joyzepam），我們可以執行三個單獨的 t 檢驗，看看會發生什麼。在 jamovi 中這很容易做到。轉到 ANOVA 的 'Post Hoc Tests'（事後檢驗）選項，將 'drug'（藥物）變量移到右側的活動框中，然後單擊 'No correction'（無校正）複選框。這將產生一個整齊的表格，顯示藥物變量的三個水平之間的所有成對 t 檢驗比較，如 @fig-fig12-4 中所示。
+我們如何解決問題？考慮到我們需要比較三對不同的平均值（安慰劑對 Anxifree，安慰劑對 Joyzepam，和 Anxifree 對 Joyzepam），我們可以執行三個單獨的 t 檢驗，看看會發生什麼。在 jamovi 中這很容易做到。轉到 ANOVA 的 'Post Hoc Tests'（事後檢驗）選項，將 'drug'（藥物）變項移到右側的活動框中，然後單擊 'No correction'（無校正）複選框。這將產生一個整齊的表格，顯示藥物變項的三個水平之間的所有成對 t 檢驗比較，如 @fig-fig12-4 中所示。
 
 
 <!--- 
@@ -701,7 +701,7 @@ So, how do we check whether the assumption about the residuals is accurate? Well
 
 [額外的技術細節[^13-comparing-several-means-one-way-anova-13]]
 
-[^13-comparing-several-means-one-way-anova-13]：Levene檢驗非常簡單。假設我們有結果變量$Y_{ik}$。我們所要做的就是定義一個新變量，我將其稱為$Z_{ik}$，表示與組均值的絕對偏差：$$Z_{ik}=Y_{ik}-\bar{Y}_{k}$$好吧，這對我們有什麼好處呢？那麼，讓我們花一點時間來思考一下$Z_{ik}$到底是什麼以及我們要檢驗什麼。$Z_{ik}$的值是度量第$i$次觀測在第$k$個組中與其組平均值的偏差程度。我們的零假設是所有組的方差都相同，即所有組平均值的總偏差相同！因此，Levene檢驗中的零假設是所有組的$Z$的母體平均值相同。嗯。那麼我們現在需要的是一個統計檢驗來檢驗所有組均值相同的零假設。我們在哪裡見過這個檢驗？哦對了，這就是ANOVA，所以Levene檢驗所做的就是對新變量$Z_{ik}$進行ANOVA。Brown-Forsythe檢驗呢？它有做什麼特別不同的事情嗎？不，與Levene檢驗唯一的不同是它以稍微不同的方式構建轉換變量Z，使用組中位數的偏差而不是組平均值的偏差。也就是說，對於Brown-Forsythe檢驗：$$Z_{ik}=Y_{ik}-median_k(Y)$$其中，$median_k(Y)$是第k組的中位數。
+[^13-comparing-several-means-one-way-anova-13]：Levene檢驗非常簡單。假設我們有結果變項$Y_{ik}$。我們所要做的就是定義一個新變項，我將其稱為$Z_{ik}$，表示與組均值的絕對偏差：$$Z_{ik}=Y_{ik}-\bar{Y}_{k}$$好吧，這對我們有什麼好處呢？那麼，讓我們花一點時間來思考一下$Z_{ik}$到底是什麼以及我們要檢驗什麼。$Z_{ik}$的值是度量第$i$次觀測在第$k$個組中與其組平均值的偏差程度。我們的零假設是所有組的方差都相同，即所有組平均值的總偏差相同！因此，Levene檢驗中的零假設是所有組的$Z$的母體平均值相同。嗯。那麼我們現在需要的是一個統計檢驗來檢驗所有組均值相同的零假設。我們在哪裡見過這個檢驗？哦對了，這就是ANOVA，所以Levene檢驗所做的就是對新變項$Z_{ik}$進行ANOVA。Brown-Forsythe檢驗呢？它有做什麼特別不同的事情嗎？不，與Levene檢驗唯一的不同是它以稍微不同的方式構建轉換變項Z，使用組中位數的偏差而不是組平均值的偏差。也就是說，對於Brown-Forsythe檢驗：$$Z_{ik}=Y_{ik}-median_k(Y)$$其中，$median_k(Y)$是第k組的中位數。
 
 <!---
 
@@ -785,7 +785,7 @@ knitr::include_graphics("images/fig13-7.png")
 
 ###  Kruskal-Wallis檢定的邏輯
 
-Kruskal-Wallis檢驗在某些方面與ANOVA驚人地相似。在ANOVA中，我們從$Y_{ik}$開始，對於第k個組中的第i個人，這是結果變量的值。對於Kruskal-Wallis檢驗，我們要做的是對所有的$Y_{ik}$值進行排序，並對排名數據進行分析。[^13-comparing-several-means-one-way-anova-14]
+Kruskal-Wallis檢驗在某些方面與ANOVA驚人地相似。在ANOVA中，我們從$Y_{ik}$開始，對於第k個組中的第i個人，這是結果變項的值。對於Kruskal-Wallis檢驗，我們要做的是對所有的$Y_{ik}$值進行排序，並對排名數據進行分析。[^13-comparing-several-means-one-way-anova-14]
 
 [^13-comparing-several-means-one-way-anova-14]: 那麼，讓R\_{ik}表示給第k個組的第i個成員的排名。現在，讓我們計算$\bar{R}_k$，即第k個組觀察值的平均排名： $$\bar{R}_k=\frac{1}{N_k}\sum_i R_{ik}$$，讓我們也計算$\bar{R}$，即總平均排名：$$\bar{R}=\frac{1}{N}\sum_i\sum_k R_{ik}$$ 現在我們已經做了這些，我們可以計算與總平均排名$\bar{R}$的平方偏差。當我們對個別分數進行這種計算時，即如果我們計算$(R_{ik} - \bar{R})^2$，那麼我們得到的是一個“非參數”的度量，用於表示第ik個觀察值與總平均排名的偏差程度。當我們計算組均值與總均值的平方偏差時，即如果我們計算$(R_{ik} - \bar{R})^2$，那麼我們得到的是一個非參數度量，用於表示該組與總平均排名的偏差程度。考慮到這一點，我們將遵循與ANOVA相同的邏輯，並定義我們的排名平方和度量，就像我們之前所做的那樣。首先，我們有我們的“總排名平方和”$$RSS_{tot}=\sum_k\sum_i (R_{ik}-\bar{R})^2$$，我們可以像這樣定義“組間排名平方和” $$\begin{aligned} RSS_{b}& =\sum{k}\sum_{i}(\bar{R}_{k}-\bar{R})^2 \\ &= \sum_{k} N_k (\bar{R}_{k}-\bar{R})^2 \end{aligned}$$ 因此，如果虛無假設成立，且根本沒有真正的組差異，則您會期望組間排名和$RSS_b$非常小，遠小於總排名和$RSS_{tot}$。從質量上看，這與我們在構建ANOVA F-統計量時發現的非常相似，但出於技術原因，Kruskal-Wallis檢驗統計量通常表示為K，其構建方式略有不同，$$K=(N-1) \times \frac{RSS_b}{RSS_{tot}}$$ 如果虛無假設成立，那麼K的抽樣分布近似為自由度為$G-1$的卡方分布（其中$G$為組的數量）。 K的值越大，數據與虛無假設的一致性就越小，因此這是一個單邊檢驗。當K足夠大時，我們拒絕$H_0$。
 
@@ -831,7 +831,7 @@ And so jamovi uses a tie-correction factor to calculate the tie-corrected Kruska
 
 ### 使用jamovi完成Kruskal-Wallis檢定
 
-儘管我們在努力理解Kruskal Wallis檢驗實際上做了什麼方面經歷了恐懼，但事實證明，進行該檢驗相當無痛，因為jamovi在ANOVA分析集中有一個名為「非參數」-「單因子ANOVA（Kruskall-Wallis）」的分析。大多數時候，你將擁有像*clinicaltrial.csv*這樣的數據集，其中包含你的結果變量mood.gain和一個分組變量drug。如果是這樣，你可以直接在jamovi中運行分析。這給我們提供了一個Kruskal-Wallis $\chi^2 =12.076, df = 2, p = 0.00239$，如 @fig-fig12-8 所示。
+儘管我們在努力理解Kruskal Wallis檢驗實際上做了什麼方面經歷了恐懼，但事實證明，進行該檢驗相當無痛，因為jamovi在ANOVA分析集中有一個名為「非參數」-「單因子ANOVA（Kruskall-Wallis）」的分析。大多數時候，你將擁有像*clinicaltrial.csv*這樣的數據集，其中包含你的結果變項mood.gain和一個分組變項drug。如果是這樣，你可以直接在jamovi中運行分析。這給我們提供了一個Kruskal-Wallis $\chi^2 =12.076, df = 2, p = 0.00239$，如 @fig-fig12-8 所示。
 
 
 <!--- Despite the horror that we've gone through in trying to understand what the Kruskal Wallis test actually does, it turns out that running the test is pretty painless, since jamovi has an analysis as part of the ANOVA analysis set called 'Non-Parametric' - 'One Way ANOVA (Kruskall-Wallis)' Most of the time you'll have data like the *clinicaltrial.csv*  data set, in which you have your outcome variable mood.gain and a grouping variable drug. If so, you can just go ahead and run the analysis in jamovi. What this gives us is a Kruskal-Wallis $\chi^2 =12.076, df = 2, p = 0.00239$, as in @fig-fig12-8 --->
@@ -905,9 +905,9 @@ knitr::include_graphics("images/fig13-9.png")
 
 然後：
 
-- 輸入一個重複測量因子名稱。這應該是您選擇的標籤，用於描述所有參與者重複的條件。例如，要描述所有參與者完成的語音、概念和語法任務，一個合適的標籤是“任務”。請注意，這個新的因子名稱代表了分析中的自變量。
+- 輸入一個重複測量因子名稱。這應該是您選擇的標籤，用於描述所有參與者重複的條件。例如，要描述所有參與者完成的語音、概念和語法任務，一個合適的標籤是“任務”。請注意，這個新的因子名稱代表了分析中的自變項。
 - 在重複測量因子文本框中添加第三個級別，因為有三個級別代表三個任務：語音、概念和語法。相應地更改級別的標籤。
-- 然後將每個級別變量移動到重複測量單元文本框中。
+- 然後將每個級別變項移動到重複測量單元文本框中。
 - 最後，在“假設檢查”選項下，選中“球形性檢查”文本框。
 
 jamovi輸出一個單因素重覆量數變數分析，如 @fig-fig12-10 至 @fig-fig12-13 所示。我們應該首先查看的是Mauchly球形性檢驗，該檢驗測試各條件之間的差異方差是否相等（意味著研究條件之間的差異得分的分佈大致相同）。在 @fig-fig12-10 中，Mauchly檢驗的顯著性水平為$p = .720$。如果Mauchly檢驗的結果不顯著（即p > .05，正如此分析中的情況），那麼我們有理由得出差異的方差並無顯著差異（即它們大致相等，可以假定球形性。）。
@@ -986,7 +986,7 @@ knitr::include_graphics("images/fig13-13.png")
 
 ## Friedman無母數重覆量數變異數分析
 
-Friedman檢驗是一元重覆量數變數分析的非參數版本，可以在測試三個或更多組之間的差異時使用，其中每個組中的參與者相同，或者每個參與者與其他條件中的參與者密切匹配。如果因變量是序數，或者未滿足正態性假設，則可以使用Friedman檢驗。
+Friedman檢驗是一元重覆量數變數分析的非參數版本，可以在測試三個或更多組之間的差異時使用，其中每個組中的參與者相同，或者每個參與者與其他條件中的參與者密切匹配。如果因變項是序數，或者未滿足正態性假設，則可以使用Friedman檢驗。
 
 與Kruskall-Wallis檢驗一樣，基本數學知識很複雜，這裡不會介紹。對於本書的目的，僅需注意jamovi計算了Friedman檢驗的綁定修正版本，在 @fig-fig12-14 中有一個我們已經查看過的布洛卡失語症數據的示例。
 
@@ -1004,7 +1004,7 @@ As with the Kruskall-Wallis test, the underlying mathematics is complicated, and
 knitr::include_graphics("images/fig13-14.png")
 ```
 
-在jamovi中運行Friedman檢驗非常簡單。只需選擇分析 - ANOVA - 重覆量數變數分析（非參數），如 @fig-fig12-14 所示。然後將要比較的重複測量變量的名稱（語言、概念、語法）突顯並轉移到“測量：”文本框中。要為三個重複測量變量生成描述性統計（平均值和中位數），請單擊描述性按鈕。
+在jamovi中運行Friedman檢驗非常簡單。只需選擇分析 - ANOVA - 重覆量數變數分析（非參數），如 @fig-fig12-14 所示。然後將要比較的重複測量變項的名稱（語言、概念、語法）突顯並轉移到“測量：”文本框中。要為三個重複測量變項生成描述性統計（平均值和中位數），請單擊描述性按鈕。
 
 jamovi結果顯示描述性統計、卡方值、自由度和p值（ @fig-fig12-14 ）。由於p值小於通常用於確定顯著性的水平（p < .05），我們可以得出結論，布洛卡失語症患者在語言生產（中位數= 7.5）和語言理解（中位數= 6.5）任務上表現相當好。然而，他們在語法任務上的表現明顯較差（中位數= 4.5），在事後檢驗中語言和語法任務表現之間存在顯著差異。
 

@@ -416,7 +416,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="以線性模型解讀自由度" class="level4">
 <h4 class="anchored" data-anchor-id="以線性模型解讀自由度">以線性模型解讀自由度</h4>
-<p>這本<strong>用jamovi上手統計學</strong>並沒有一個專門的小節，好好解釋什麼是自由度(degress of freedom)，做為補充章節，剛好在此為讀者提供一點小小的說明。由於剛好重新學習線性模型與線性代數的知識，我參考翻譯本書時在閱讀的另一本中文教科書：黃志勝先生撰寫的「<a href="https://www.tenlong.com.tw/products/9789863126744">機器學習的統計基礎 : 深度學習背後的核心技術</a>」，其中第4章講自由度的這一節，黃先生給的定義是「包含N個變數的線性模型中，不受限制的變數個數」(該書沒有這一句話，是我重新消化組織的)，我們能透過以下範例來逐漸認識。</p>
+<p>這本<strong>用jamovi上手統計學</strong>有一個<a href="https://scgeeker.github.io/lsj-book-zh_tw/13-Factorial-ANOVA.html#%E8%87%AA%E7%94%B1%E5%BA%A6%E5%B0%B1%E6%98%AF%E8%A8%88%E7%AE%97%E6%9C%89%E5%A4%9A%E5%B0%91%E5%8F%83%E6%95%B8">專門的小節</a>，解釋什麼是自由度(degress of freedom)。不過這個小節在更動順序後，落在比較後面的 <a href="13-Factorial-ANOVA.html"><span>Chapter&nbsp;13</span></a> 。做為補充章節，剛好在此為讀者提供一點小小的說明。由於剛好重新學習線性模型與線性代數的知識，我參考翻譯本書時在閱讀的另一本中文教科書：黃志勝先生撰寫的「<a href="https://www.tenlong.com.tw/products/9789863126744">機器學習的統計基礎 : 深度學習背後的核心技術</a>」，其中第4章講自由度的這一節，黃先生給的定義是「包含N個變數的線性模型中，不受限制的變數個數」(該書沒有這一句話，是我重新消化組織的)，我們能透過以下範例來逐漸認識。</p>
 <ol type="1">
 <li><p>簡單迴歸式 <span class="math inline">\(y = a + bx\)</span>。<span class="math inline">\(y\)</span>與<span class="math inline">\(x\)</span>都是變數，要使等號左右兩邊的數值相等，必須限制其中一個變數等於固定的數值，因此自由度<span class="math inline">\(df = n - k = 2 - 1 = 1\)</span>。</p></li>
 <li><p>多元迴歸式 <span class="math inline">\(y = a + b_1 x_1 +b_2 x_2\)</span>。這個等式有三個變數，要使等號左右兩邊的數值相等，同樣必須限制其中一個變數等於固定的數值，因此自由度<span class="math inline">\(df = n - k = 3 - 1 = 2\)</span>。</p></li>
@@ -460,7 +460,10 @@ as.factor(tutor)Bernadette -5.47778  2.688237 -2.03768  0.0502</code></pre>
 </section>
 <section id="多因子變異數分析" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="多因子變異數分析">多因子變異數分析</h3>
-<p>對應 <a href="13-Factorial-ANOVA.html"><span>Chapter&nbsp;13</span></a> <strong>多因子變異數分析</strong></p>
+<p>對應 <a href="13-Factorial-ANOVA.html"><span>Chapter&nbsp;13</span></a> <strong>多因子變異數分析</strong>。讀者可以使用改編自這一章原始範例，使用線性模型執行的<a href="omv_files_for_screenshots/13-twoway-independent-ANOVA.omv">二因子獨立樣本變異數分析</a>與<a href="omv_files_for_screenshots/13-ANCOVA.omv">二因子獨立樣本共變數分析</a>的jamovi檔案，自行比對與原書使用變異數分析模組製作的範例，學習如何設定與解讀分析報表與適用條件。經過前三章透過線性模型學習，此章內容應該相當容易。</p>
+<ul>
+<li>課程錄影預計於2023/5/24之後上線。</li>
+</ul>
 </section>
 <section id="類別資料分析" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="類別資料分析">類別資料分析</h3>
