@@ -87,7 +87,7 @@ IF($source==0,0,IF($source>1,1,-1))*RANK($source)
 ### 相關與線性迴歸 {-}
 
 <!---我們運用 @fig-fig10-7 的虛構資料製作[資料檔案](files/10-correlatin-rank.omv)，示範等級資料的相關與迴歸分析。--->
-**相關與線性迴歸**的對應單元有 @sec-what-is-correlation , @sec-the-scatter-plot , @sec-what-is-linear-model , @sec-the-regression-coefficients-parameters , @sec-regression-model-fittedness, @sec-regression-estimations , 以及 @sec-regression-assumptions 。使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須大於10，才能得到精確逼近的估計值。譯者開設的課程使用另一套教程"General Analyses for the Linear Model in Jamovi"開發的[範例資料](https://gamlj.github.io/mixed_example1.html)進行教學，教學錄影請見(預訂2023/5/6後上線)。
+**相關與線性迴歸**的對應單元有 @sec-what-is-correlation , @sec-the-scatter-plot , @sec-what-is-linear-model , @sec-the-regression-coefficients-parameters , @sec-regression-model-fittedness, @sec-regression-estimations , 以及 @sec-regression-assumptions 。使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須大於10，才能得到精確逼近的估計值。譯者開設的課程使用另一套教程"General Analyses for the Linear Model in Jamovi"開發的[範例資料](https://gamlj.github.io/mixed_example1.html)進行教學，教學錄影請見譯者的Youtube頻道[^V-3]。
 
 <!---此外，jamovi迴歸模組無法直接處理等級資料，必須用計算變數。因此[資料檔案](omv_files_for_screenshorts/10-correlatin-rank.omv)以R程式碼示範。--->如果同學有機會處理真正的等級資料，也可以選擇使用R或其他統計軟體如JASP進行連續變項或等級資料的迴歸分析。
 
@@ -174,3 +174,5 @@ jamovi的ANOVA模組與t檢定模組，都是用來處理寬表單資料。然�
 [^V-1]: [https://lindeloev.github.io/tests-as-linear/](https://lindeloev.github.io/tests-as-linear/)
 
 [^V-2]: [https://cosx.org/2019/09/common-tests-as-linear-models/](https://cosx.org/2019/09/common-tests-as-linear-models/)
+
+[^V-3]: chpater 10有七部影片~ [Part 1](https://youtu.be/aQEhIdk3rUU), [Part 2](https://youtu.be/wJXacmvoSUA), [Part 3](https://youtu.be/ZTmXS5lq93w), [Part 4](https://youtu.be/Aiu-X2kkRUs), [Part 5](https://youtu.be/cnbXIYJst9c),[Part 6](https://youtu.be/btDRX-Q-mq8), [Part 7](https://youtu.be/KupYlJoKMKU)
