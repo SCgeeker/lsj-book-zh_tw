@@ -87,7 +87,7 @@ IF($source==0,0,IF($source>1,1,-1))*RANK($source)
 ### 相關與線性迴歸 {-}
 
 <!---我們運用 @fig-fig10-7 的虛構資料製作[資料檔案](files/10-correlatin-rank.omv)，示範等級資料的相關與迴歸分析。--->
-**相關與線性迴歸**的對應單元有 @sec-what-is-correlation , @sec-the-scatter-plot , @sec-what-is-linear-model , @sec-the-regression-coefficients-parameters , @sec-regression-model-fittedness, @sec-regression-estimations , 以及 @sec-regression-assumptions 。使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須大於10，才能得到精確逼近的估計值。譯者開設的課程使用另一套教程"General Analyses for the Linear Model in Jamovi"開發的[範例資料](https://gamlj.github.io/mixed_example1.html)進行教學，教學錄影請見譯者的Youtube頻道[^V-3]。
+**相關與線性迴歸**的對應單元有 @sec-what-is-correlation , @sec-the-scatter-plot , @sec-what-is-linear-model , @sec-the-regression-coefficients-parameters , @sec-regression-model-fittedness, @sec-regression-estimations , 以及 @sec-regression-assumptions 。使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須大於10，才能得到精確逼近的估計值。譯者開設的課程使用另一套教程"General Analyses for the Linear Model in Jamovi"開發的[範例資料](https://gamlj.github.io/mixed_example1.html)進行教學，教學錄影請見這七部影片：[Part 1](https://youtu.be/aQEhIdk3rUU), [Part 2](https://youtu.be/wJXacmvoSUA), [Part 3](https://youtu.be/ZTmXS5lq93w), [Part 4](https://youtu.be/Aiu-X2kkRUs), [Part 5](https://youtu.be/cnbXIYJst9c),[Part 6](https://youtu.be/btDRX-Q-mq8), [Part 7](https://youtu.be/KupYlJoKMKU)。
 
 <!---此外，jamovi迴歸模組無法直接處理等級資料，必須用計算變數。因此[資料檔案](omv_files_for_screenshorts/10-correlatin-rank.omv)以R程式碼示範。--->如果同學有機會處理真正的等級資料，也可以選擇使用R或其他統計軟體如JASP進行連續變項或等級資料的迴歸分析。
 
@@ -109,7 +109,7 @@ IF($source==0,0,IF($source>1,1,-1))*RANK($source)
 
 ### 單一樣本及相依樣本 {-}
 
-**單一樣本及相依樣本**的對應單元有 @sec-The-one-sample-t-test , @sec-the-paired-t-test , @sec-the-one-tail-t-test , @sec-t-test-effect-size , @sec-Checking-the-normality-of-a-sample , @sec-nonparameter-rank-test 。使用等級資料進行無母數統計分析，最小樣本量必須多於14，如果是採用線性模型教程，建議不要使用 @sec-nonparameter-rank-test 的範例，將連續資料的範例轉換為等級資料即可。讀者可使用線性模型版的jamovi示範檔案：[單一樣本t檢定](omv_files_for_screenshots/11_onesample_t_lm.omv)、[相依樣本t檢定](omv_files_for_screenshots/11_pairedsample_t_lm.omv)，搭配[課程錄影]()學習(預計5/10後上線)。
+**單一樣本及相依樣本**的對應單元有 @sec-The-one-sample-t-test , @sec-the-paired-t-test , @sec-the-one-tail-t-test , @sec-t-test-effect-size , @sec-Checking-the-normality-of-a-sample , @sec-nonparameter-rank-test 。使用等級資料進行無母數統計分析，最小樣本量必須多於14，如果是採用線性模型教程，建議不要使用 @sec-nonparameter-rank-test 的範例，將連續資料的範例轉換為等級資料即可。讀者可使用線性模型版的jamovi示範檔案：[單一樣本t檢定](omv_files_for_screenshots/11_onesample_t_lm.omv)、[相依樣本t檢定](omv_files_for_screenshots/11_pairedsample_t_lm.omv)，搭配課程錄影學習~ [影片1](https://youtu.be/RxRe4Fjy4Vw)、[影片2](https://youtu.be/LtXFHi3iQEs)、[影片3](https://youtu.be/Yn0aMCdwccs)、[影片4](https://youtu.be/Usn802NSv4E)、[影片5](https://youtu.be/0JH6uQHqW-4)、[影片6]()、[影片7](https://youtu.be/Hl6iuGnN6aA)、[影片8](https://youtu.be/x6Jnn4NNC_k)。
 
 ### 比較兩組平均值 {-}
 
@@ -137,7 +137,7 @@ Coefficients:
 as.factor(tutor)Bernadette -5.47778  2.688237 -2.03768  0.0502
 ```
 
-讀者可使用線性模型版的jamovi示範檔案：[獨立樣本t檢定](omv_files_for_screenshots/11_independent_t_lm.omv)，搭配[課程錄影]()學習(預計5/10後上線)。
+讀者可使用線性模型版的jamovi示範檔案：[獨立樣本t檢定](omv_files_for_screenshots/11_independent_t_lm.omv)，搭配課程錄影學習 ~ [影片1](https://youtu.be/vENnMa3emTI)、[影片2](https://youtu.be/be3t8ajxwLs)
 
 
 ### 單因子變異數分析 {-}
@@ -164,8 +164,13 @@ jamovi的ANOVA模組與t檢定模組，都是用來處理寬表單資料。然�
 
 ### 類別資料分析 {-}
 
-對應 @sec-Categorical-data-analysis **類別資料分析**
+對應 @sec-Categorical-data-analysis **類別資料分析**，這個單元介紹四種類別資料分析方法，中文版提供使用線性模型示範檔案有[卡方適合度檢定](omv_files_for_screenshots/14_goodness_of_fit.omv)、[卡方獨立性檢定](omv_files_for_screenshots/14-contigeuncy-table.omv)、[小樣本類別資料的費雪精確檢定](omv_files_for_screenshots/14_Fisher.omv)、以及[相依樣本類別資料的麥內瑪檢定](omv_files_for_screenshots/14_McNemar.omv)。讀者開啟之前，請先確定自用的jamovi已經安裝`gamlj`模組，才能檢視與編輯**[通用線性模型(Generalized Linear Model)](https://en.wikipedia.org/wiki/Generalized_linear_model)**報表及功能選單。請者可搭配課程錄影學習 ~ (預計5/31後上線)
 
+透過線性模型路徑，這四種統計方法都要先建立統計假設**通用線性模型**($H_0$與$H_1$)，運用變異數分析或逐步迴歸比較兩種統計假設的線性模型，才是與一般統計書介紹的方法相同。然而目前jamovi的內建功能或外掛模組，都沒有比較兩套線性模型的功能設定。中文版的示範檔案只有顯示對應$H_1$的線性模型，並且統計報告裡雖然有$\chi^2$的資訊，實際上是對數似然比檢定(log-likelihood ratio test)的結果，統計數與p值雖然接近卡方檢定，但並非真正的卡方檢定。由於似然值(likelihood)是貝氏統計方法常用的指標，譯者釋出這些範例檔案有引導讀者認識貝氏統計方法的用意。此外，jamovi 2.3.21版之後，內建Frequencies模組增加`log-linear Regression`功能，讓使用者能運用**通用線性模型**處理類別資料分析。
+
+jamovi的內建Regression模組有三種對數迴歸的功能`2 Outcomes`，`N outcomes`，以及`Ordinal Outcomes`。這三種對數迴歸是**[一般線性模型(General linear model)](https://en.wikipedia.org/wiki/General_linear_model)**，與 @sec-Correlation-and-linear-regression 到 @sec-Factorial-ANOVA 介紹的統計方法所採用的線性模型是一樣的。需要注意的是，**[一般線性模型](https://en.wikipedia.org/wiki/General_linear_model)**不同於**[通用線性模型](https://en.wikipedia.org/wiki/Generalized_linear_model)**，兩者主要差異在於**一般線性模型**的依變項資料殘差分佈必須符合或逼近常態分佈，不過**通用線性模型**的依變項資料殘差分佈可以符合或逼近任何分析者指定的機率分佈[^V-3]。有興趣了解細節的讀者，可以點選連結開啟維基百科頁面。使用**通用線性模型**示範的四種類別資料分析方法，請見[導讀影片](https://youtu.be/XMqlLb2qNDs)。
+
+使用通用線性模型操作[卡方適合度檢定](omv_files_for_screenshots/14_goodness_of_fit.omv)、[卡方獨立性檢定](omv_files_for_screenshots/14-contigeuncy-table.omv)、以及[相依樣本類別資料的麥內瑪檢定](omv_files_for_screenshots/14_McNemar.omv)，都要先轉換資料格式，轉換方法與過程請見[導讀影片](https://youtu.be/5SETnRPW_h4)。
 
 
 ------------------------------------------------------------------------
@@ -175,4 +180,4 @@ jamovi的ANOVA模組與t檢定模組，都是用來處理寬表單資料。然�
 
 [^V-2]: [https://cosx.org/2019/09/common-tests-as-linear-models/](https://cosx.org/2019/09/common-tests-as-linear-models/)
 
-[^V-3]: chpater 10有七部影片~ [Part 1](https://youtu.be/aQEhIdk3rUU), [Part 2](https://youtu.be/wJXacmvoSUA), [Part 3](https://youtu.be/ZTmXS5lq93w), [Part 4](https://youtu.be/Aiu-X2kkRUs), [Part 5](https://youtu.be/cnbXIYJst9c),[Part 6](https://youtu.be/btDRX-Q-mq8), [Part 7](https://youtu.be/KupYlJoKMKU)
+[^V-3]: 這是許多貝氏統計教材會先介紹通用線性模型的主要原因，因為事前機率與事後機率的機率分佈不需要是一樣的。
