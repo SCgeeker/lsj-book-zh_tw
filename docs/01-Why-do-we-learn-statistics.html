@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,14 +17,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -38,8 +39,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -70,15 +70,16 @@ div.csl-indent {
   "type": "textbox",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -92,23 +93,32 @@ div.csl-indent {
 </script>
     
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="用jamovi上手統計學 - 1&nbsp; 為什麼要學習統計">
-<meta property="og:description" content="\[    \]">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://scgeeker.github.io/lsj-book-zh_tw/images/fig1-1.png">
 <meta property="og:site-name" content="用jamovi上手統計學">
+<meta property="og:image:height" content="599">
+<meta property="og:image:width" content="636">
 </head>
 
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Why-do-we-learn-statistics.html">新手須知</a></li><li class="breadcrumb-item"><a href="./01-Why-do-we-learn-statistics.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -116,30 +126,32 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="./用jamovi上手統計學.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
-    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-            <i class="bi bi-bi-twitter pe-1"></i>
-          Twitter
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-            <i class="bi bi-bi-facebook pe-1"></i>
-          Facebook
-          </a>
-        </li>
-    </ul>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./用jamovi上手統計學.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="切换阅读器模式">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -147,208 +159,237 @@ div.csl-indent {
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜索"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">&nbsp;</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">&nbsp;</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Preface.html" class="sidebar-item-text sidebar-link">前言</a>
+  <a href="./Preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">新手須知</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">新手須知</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></a>
+  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></a>
+  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">jamovi初體驗</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">jamovi初體驗</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></a>
+  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">資料處理</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">資料處理</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></a>
+  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></a>
+  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></a>
+  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">統計理論</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">統計理論</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">中場故事</a>
+  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">中場故事</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></a>
+  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></a>
+  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></a>
+  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">統計方法</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">統計方法</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">線性模型的學習取向</a>
+  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">線性模型的學習取向</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
+  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較兩組平均值</span></a>
+  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
+  <a href="./12-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
+  <a href="./13-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
+  <a href="./14-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">類別資料分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></a>
+  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">貝氏統計</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">貝氏統計</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></a>
+  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">後記</a>
+  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">後記</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link">參考資料</a>
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">參考資料</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">目录</h2>
    
   <ul>
-  <li><a href="#首先談談統計的心理學" id="toc-首先談談統計的心理學" class="nav-link active" data-scroll-target="#首先談談統計的心理學"><span class="toc-section-number">1.1</span>  首先談談統計的心理學</a>
+  <li><a href="#首先談談統計的心理學" id="toc-首先談談統計的心理學" class="nav-link active" data-scroll-target="#首先談談統計的心理學"><span class="header-section-number">1.1</span> 首先談談統計的心理學</a>
   <ul class="collapse">
-  <li><a href="#信念偏誤的詛咒" id="toc-信念偏誤的詛咒" class="nav-link" data-scroll-target="#信念偏誤的詛咒"><span class="toc-section-number">1.1.1</span>  信念偏誤的詛咒</a></li>
+  <li><a href="#信念偏誤的詛咒" id="toc-信念偏誤的詛咒" class="nav-link" data-scroll-target="#信念偏誤的詛咒"><span class="header-section-number">1.1.1</span> 信念偏誤的詛咒</a></li>
   </ul></li>
-  <li><a href="#談一談辛普森悖論" id="toc-談一談辛普森悖論" class="nav-link" data-scroll-target="#談一談辛普森悖論"><span class="toc-section-number">1.2</span>  談一談辛普森悖論</a></li>
-  <li><a href="#心理學中的統計" id="toc-心理學中的統計" class="nav-link" data-scroll-target="#心理學中的統計"><span class="toc-section-number">1.3</span>  心理學中的統計</a></li>
-  <li><a href="#日常生活中的統計" id="toc-日常生活中的統計" class="nav-link" data-scroll-target="#日常生活中的統計"><span class="toc-section-number">1.4</span>  日常生活中的統計</a></li>
-  <li><a href="#統計以外的研究方法" id="toc-統計以外的研究方法" class="nav-link" data-scroll-target="#統計以外的研究方法"><span class="toc-section-number">1.5</span>  統計以外的研究方法</a></li>
+  <li><a href="#談一談辛普森悖論" id="toc-談一談辛普森悖論" class="nav-link" data-scroll-target="#談一談辛普森悖論"><span class="header-section-number">1.2</span> 談一談辛普森悖論</a></li>
+  <li><a href="#心理學中的統計" id="toc-心理學中的統計" class="nav-link" data-scroll-target="#心理學中的統計"><span class="header-section-number">1.3</span> 心理學中的統計</a></li>
+  <li><a href="#日常生活中的統計" id="toc-日常生活中的統計" class="nav-link" data-scroll-target="#日常生活中的統計"><span class="header-section-number">1.4</span> 日常生活中的統計</a></li>
+  <li><a href="#統計以外的研究方法" id="toc-統計以外的研究方法" class="nav-link" data-scroll-target="#統計以外的研究方法"><span class="header-section-number">1.5</span> 統計以外的研究方法</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/01-Why-do-we-learn-statistics.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/01-Why-do-we-learn-statistics.qmd" class="toc-action">编辑该页面</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">报告问题</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></h1>
+<h1 class="title display-7"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></h1>
 
 </header>
 
@@ -440,46 +481,50 @@ Now, suppose that people really are perfectly able to set aside their pre-existi
 --->
 
 
-<table width="50%" border="1">
-  <caption>表1.1 判斷人類能拋開偏見進行有效論證的假設結果</caption>
-    <tbody><tr>
-        <th> </th>
-        <th>結論應該為真</th>
-        <th>結論應該為假</th>
-    </tr>
-    <tr>
-        <th>論證有效</th>
-        <td>100\(\%\) 認為“有效”</td>
-        <td>100\(\%\) 認為“有效”</td>
-    </tr>
-    <tr>
-        <th>論證無效</th>
-        <td>0\(\%\) 認為“有效”</td>
-        <td>0\(\%\) 認為“有效”</td>
-    </tr>
-</tbody></table>
+<table data-quarto-postprocess="true" width="50%" data-border="1" class="table">
+<caption>表1.1 判斷人類能拋開偏見進行有效論證的假設結果</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td data-quarto-table-cell-role="th">結論應該為真</td>
+<td data-quarto-table-cell-role="th">結論應該為假</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">論證有效</td>
+<td>100\(\%\) 認為“有效”</td>
+<td>100\(\%\) 認為“有效”</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">論證無效</td>
+<td>0\(\%\) 認為“有效”</td>
+<td>0\(\%\) 認為“有效”</td>
+</tr>
+</tbody>
+</table>
 <p>假如心理學研究結果就像表內的數值（或者只是接近這樣的數值），我們可能覺得完全靠人類的直覺就能做出結論。只要是像這樣的研究結果，科學家完全可以根據他們的常識評估結果數據，不用花時間處理那堆讓很多人看不懂什麼意思的統計分析。然而，你們已經至少修過心理學概論，對於這套實驗的真正結果應該略知一二。</p>
-<p><span class="citation" data-cites="Evans1983">Evans et al. (<a href="#ref-Evans1983" role="doc-biblioref">1983</a>)</span> 做了一系列探討人類如何進行邏輯推論的經典實驗。他們發現只有結論敘述符合多數人的預期偏誤(也就是信念)，實驗結果才會接近人類能做有效推論的假設(表1.2)。</p>
+<p><span class="citation" data-cites="Evans1983">Evans 等 (<a href="References.html#ref-Evans1983" role="doc-biblioref">1983</a>)</span> 做了一系列探討人類如何進行邏輯推論的經典實驗。他們發現只有結論敘述符合多數人的預期偏誤(也就是信念)，實驗結果才會接近人類能做有效推論的假設(表1.2)。</p>
 
 
-<table width="50%" border="1">
-  <caption>表1.2 預期偏誤與論證有效性的實驗結果</caption>
-    <tbody><tr>
-        <th> </th>
-        <th>結論應該為真</th>
-        <th>結論應該為假</th>
-    </tr>
-    <tr>
-        <th>論證有效</th>
-        <td>92\(\%\) 認為“有效”</td>
-        <td> </td>
-    </tr>
-    <tr>
-        <th>論證無效</th>
-        <td> </td>
-        <td>8\(\%\) 認為“有效”</td>
-    </tr>
-</tbody></table>
+<table data-quarto-postprocess="true" width="50%" data-border="1" class="table">
+<caption>表1.2 預期偏誤與論證有效性的實驗結果</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td data-quarto-table-cell-role="th">結論應該為真</td>
+<td data-quarto-table-cell-role="th">結論應該為假</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">論證有效</td>
+<td>92\(\%\) 認為“有效”</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">論證無效</td>
+<td></td>
+<td>8\(\%\) 認為“有效”</td>
+</tr>
+</tbody>
+</table>
 <!---
 If the psychological data looked like this (or even a good approximation to this), we might feel safe in just trusting our gut instincts. That is, it'd be perfectly okay just to let scientists evaluate data based on their common sense, and not bother with all this murky statistics stuff. However, you guys have taken psych classes, and by now you probably know where this is going.
 
@@ -492,24 +537,26 @@ In a classic study, @Evans1983 ran an experiment looking at exactly this. What t
 <p>雖然不夠完美，但是這樣的結果也算不錯了。不過看看另外兩個與一般人的直覺完全相反實驗情況，與表1.1的完美假設完全不同(表1.3)。</p>
 
 
-<table width="50%" border="1">
-  <caption>表1.3 直覺判斷與論證有效性的實驗結果</caption>
-    <tbody><tr>
-        <th> </th>
-        <th>結論應該為真</th>
-        <th>結論應該為假</th>
-    </tr>
-    <tr>
-        <th>論證有效</th>
-        <td>92\(\%\) 認為“有效”</td>
-        <td><b>46\(\%\) 認為“有效”</b></td>
-    </tr>
-    <tr>
-        <th>論證無效</th>
-        <td><b>92\(\%\) 認為“有效”</b></td>
-        <td>8\(\%\) 認為“有效”</td>
-    </tr>
-</tbody></table>
+<table data-quarto-postprocess="true" width="50%" data-border="1" class="table">
+<caption>表1.3 直覺判斷與論證有效性的實驗結果</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td data-quarto-table-cell-role="th">結論應該為真</td>
+<td data-quarto-table-cell-role="th">結論應該為假</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">論證有效</td>
+<td>92\(\%\) 認為“有效”</td>
+<td><strong>46\(\%\) 認為“有效”</strong></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">論證無效</td>
+<td><strong>92\(\%\) 認為“有效”</strong></td>
+<td>8\(\%\) 認為“有效”</td>
+</tr>
+</tbody>
+</table>
 <!---Not perfect, but that's pretty good. But look what happens when our intuitive feelings about the truth of the conclusion run against the logical structure of the argument (@tbl-tab1-3):
 
 #| label: tbl-tab1-3
@@ -527,25 +574,26 @@ If you think about it, it's not as if these data are horribly damning. Overall, 
 <section id="談一談辛普森悖論" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="談一談辛普森悖論"><span class="header-section-number">1.2</span> 談一談辛普森悖論</h2>
 <p>接著來談一則真實故事(我想應該是真的)。1973年，美國加州大學柏克萊分校高層擔憂該年研究所的入學申請人數及錄取的狀況。更明白的說，他們覺得錄取的學生呈現性別不平等的狀況(見表1.4)。</p>
-
-<table width="50%" border="1">
-  <caption>表1.4 柏克萊男女新生報考人數及錄取比例</caption>
-    <tbody><tr>
-        <th> </th>
-        <th>申請者人數</th>
-        <th>通過比例</th>
-    </tr>
-    <tr>
-        <th>男性</th>
-        <td>8442</td>
-        <td>44\(\%\)</td>
-    </tr>
-    <tr>
-        <th>女性</th>
-        <td>4321</td>
-        <td>35\(\%\)</td>
-    </tr>
-</tbody></table>
+<table data-quarto-postprocess="true" width="50%" data-border="1" class="table">
+<caption>表1.4 柏克萊男女新生報考人數及錄取比例</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td data-quarto-table-cell-role="th">申請者人數</td>
+<td data-quarto-table-cell-role="th">通過比例</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">男性</td>
+<td>8442</td>
+<td>44\(\%\)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">女性</td>
+<td>4321</td>
+<td>35\(\%\)</td>
+</tr>
+</tbody>
+</table>
 <!--The following is a true story (I think!). In 1973, the University of California, Berkeley had some worries about the admissions of students into their postgraduate courses. Specifically, the thing that caused the problem was that the gender breakdown of their admissions (@tbl-tab1-4).
 
 #| label: tbl-tab1-4
@@ -554,67 +602,68 @@ huxtabs[[1]][[4]] |> set_contents(1, 1, "")--->
 <p>當年的柏克萊校方擔心被申請入學的學生告上法院！由於將近有13,000名申請者，男女之間的錄取率相差9％，這樣的差距實在太大了，不可能是巧合。而且人數如此龐大，可說是鐵一般的事實。但是如果我對你說，這些數據實際上反映了對女性申請者些微的偏袒，你可能會認為我搞錯了或者有性別歧視。</p>
 <!---Given this, they were worried about being sued! Given that there were nearly 13,000 applicants, a difference of 9% in admission rates between males and females is just way too big to be a coincidence. Pretty compelling data, right? And if I were to say to you that these data *actually* reflect a weak bias in favour of women (sort of!), you'd probably think that I was either crazy or sexist.--->
 <!---[^01-why-do-we-learn-statistics-6]: Earlier versions of these notes incorrectly suggested that they actually were sued. But that's not true. There's a nice commentary on this here: <https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html> A big thank you to Wilfried Van Hirtum for pointing this out to me.--->
-<p>然而，實際情況卻有點出人意料。仔細檢視錄取資料後，有人發現了另一個版本的故事<span class="citation" data-cites="Bickel1975">(<a href="#ref-Bickel1975" role="doc-biblioref">Bickel et al., 1975</a>)</span>。具體地說，當校方按照學系逐一計算錄取率時，會看到多數學系的女性錄取率實際上略高於男性。表1.5 顯示了六個最多申請者的學系錄取情形（為了保障隱私，以下省略學系名稱）：</p>
-
-<table width="50%" border="1">
-  <caption>表1.5 1973年伯克萊大學六個學系錄取學生的性別分佈</caption>
-    <tbody><tr>
-        <th> </th>
-        <th> 男性</th>
-        <th> </th>
-        <th> 女性</th>
-        <th> </th>
-    </tr>
-    <tr>
-        <th>學系</th>
-        <th>申請者人數</th>
-        <th>錄取比例</th>
-        <th>申請者人數</th>
-        <th>錄取比例</th>
-    </tr>
-    <tr>
-        <th>A</th>
-        <td>825</td>
-        <td>62\(\%\)</td>
-        <td>108</td>
-        <td>82\(\%\)</td>
-    </tr>
-    <tr>
-        <th>B</th>
-        <td>560</td>
-        <td>63\(\%\)</td>
-        <td>25</td>
-        <td>68\(\%\)</td>
-    </tr>
-    <tr>
-        <th>C</th>
-        <td>325</td>
-        <td>37\(\%\)</td>
-        <td>593</td>
-        <td>34\(\%\)</td>
-    </tr>
-    <tr>
-        <th>D</th>
-        <td>417</td>
-        <td>33\(\%\)</td>
-        <td>375</td>
-        <td>35\(\%\)</td>
-    </tr>
-    <tr>
-        <th>E</th>
-        <td>191</td>
-        <td>28\(\%\)</td>
-        <td>393</td>
-        <td>24\(\%\)</td>
-    </tr>
-    <tr>
-        <th>F</th>
-        <td>272</td>
-        <td>6\(\%\)</td>
-        <td>341</td>
-        <td>7\(\%\)</td>
-    </tr>
-</tbody></table>
+<p>然而，實際情況卻有點出人意料。仔細檢視錄取資料後，有人發現了另一個版本的故事<span class="citation" data-cites="Bickel1975">(<a href="References.html#ref-Bickel1975" role="doc-biblioref">Bickel 等, 1975</a>)</span>。具體地說，當校方按照學系逐一計算錄取率時，會看到多數學系的女性錄取率實際上略高於男性。表1.5 顯示了六個最多申請者的學系錄取情形（為了保障隱私，以下省略學系名稱）：</p>
+<table data-quarto-postprocess="true" width="50%" data-border="1" class="table">
+<caption>表1.5 1973年伯克萊大學六個學系錄取學生的性別分佈</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td data-quarto-table-cell-role="th">男性</td>
+<td data-quarto-table-cell-role="th"></td>
+<td data-quarto-table-cell-role="th">女性</td>
+<td data-quarto-table-cell-role="th"></td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">學系</td>
+<td data-quarto-table-cell-role="th">申請者人數</td>
+<td data-quarto-table-cell-role="th">錄取比例</td>
+<td data-quarto-table-cell-role="th">申請者人數</td>
+<td data-quarto-table-cell-role="th">錄取比例</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">A</td>
+<td>825</td>
+<td>62\(\%\)</td>
+<td>108</td>
+<td>82\(\%\)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">B</td>
+<td>560</td>
+<td>63\(\%\)</td>
+<td>25</td>
+<td>68\(\%\)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C</td>
+<td>325</td>
+<td>37\(\%\)</td>
+<td>593</td>
+<td>34\(\%\)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">D</td>
+<td>417</td>
+<td>33\(\%\)</td>
+<td>375</td>
+<td>35\(\%\)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">E</td>
+<td>191</td>
+<td>28\(\%\)</td>
+<td>393</td>
+<td>24\(\%\)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">F</td>
+<td>272</td>
+<td>6\(\%\)</td>
+<td>341</td>
+<td>7\(\%\)</td>
+</tr>
+</tbody>
+</table>
 <!---
 Oddly, it's actually sort of true. When people started looking more carefully at the admissions data they told a rather different story [@Bickel1975]. Specifically, when they looked at it on a department by department basis, it turned out that most of the departments actually had a slightly *higher* success rate for female applicants than for male applicants. @tbl-tab1-5 shows the admission figures for the six largest departments (with the names of the departments removed for privacy reasons):
 
@@ -638,7 +687,7 @@ huxtabs[[1]][[5]] |>
 <div id="fig-fig1-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig1-1.png" class="img-fluid figure-img" width="318"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: 1973年柏克萊大學招生數據，取自 <span class="citation" data-cites="Bickel1975">Bickel et al. (<a href="#ref-Bickel1975" role="doc-biblioref">1975</a>)</span> 的圖1。圖中85個點分別代表至少接受一位女性申請入學的學系，依不分性別錄取率與女性申請入學比例繪圖。圓圈代表申請者超過40人的學系；圓圈面積代表該系申請人數佔全校申請人數的比例。十字代表申請者未達40人的學系。</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;1.1: 1973年柏克萊大學招生數據，取自 <span class="citation" data-cites="Bickel1975">Bickel 等 (<a href="References.html#ref-Bickel1975" role="doc-biblioref">1975</a>)</span> 的圖1。圖中85個點分別代表至少接受一位女性申請入學的學系，依不分性別錄取率與女性申請入學比例繪圖。圓圈代表申請者超過40人的學系；圓圈面積代表該系申請人數佔全校申請人數的比例。十字代表申請者未達40人的學系。</figcaption>
 </figure>
 </div>
 </div>
@@ -686,7 +735,7 @@ Note that a lot of these reasons generalise beyond researchers. If you want to b
 </em>but we are starved for knowledge”<br>
 - Various authors, original probably John Naisbitt</p>
 </blockquote>
-<p>當我撰寫統計學講義時，我從 ABC 新聞網站找了 20 篇當時最新的新聞報導。我判斷其中 8 篇文字內容有提到統計資訊，不過有 6 篇報導內容有誤。若你想知道有什麼錯誤，最常見的錯誤是沒有報告基礎數據（例如，報導提到某個情況能觀察到 5％的人具有某種特徵 ，但沒有說明找了多少人總計出這個百分比！）。我想說的不是記者的統計素養很糟糕（雖然多數記者的統計知識真的很糟糕），而是基本的統計知識真的非常有幫助，可以幫助你瞭解別人表達的錯誤，還有是不是隨便拿些數據製造謠言(<strong>譯注</strong>：本書翻譯工程始於2022年末，有經歷疫情的同學應該對這段時間的各種不實疫情報導有感受。)。事實上，充實統計知識後，為個人帶來的最大一種改變，就是讓你更常對報紙和網路的資訊感到憤怒。之後在 <a href="#sec-Descriptive-statistics"><span class="quarto-unresolved-ref">sec-Descriptive-statistics</span></a> 的 <a href="#sec-A-real-life-example"><span class="quarto-unresolved-ref">sec-A-real-life-example</span></a> ，你會看到實際例子。本書的後續更新版本，會繼續收集更多類似的錯誤報導。</p>
+<p>當我撰寫統計學講義時，我從 ABC 新聞網站找了 20 篇當時最新的新聞報導。我判斷其中 8 篇文字內容有提到統計資訊，不過有 6 篇報導內容有誤。若你想知道有什麼錯誤，最常見的錯誤是沒有報告基礎數據（例如，報導提到某個情況能觀察到 5％的人具有某種特徵 ，但沒有說明找了多少人總計出這個百分比！）。我想說的不是記者的統計素養很糟糕（雖然多數記者的統計知識真的很糟糕），而是基本的統計知識真的非常有幫助，可以幫助你瞭解別人表達的錯誤，還有是不是隨便拿些數據製造謠言(<strong>譯注</strong>：本書翻譯工程始於2022年末，有經歷疫情的同學應該對這段時間的各種不實疫情報導有感受。)。事實上，充實統計知識後，為個人帶來的最大一種改變，就是讓你更常對報紙和網路的資訊感到憤怒。之後在 <a href="04-Descriptive-statistics.html"><span>章节&nbsp;4</span></a> 的 <a href="04-Descriptive-statistics.html#sec-A-real-life-example"><span>章节&nbsp;4.1.5</span></a> ，你會看到實際例子。本書的後續更新版本，會繼續收集更多類似的錯誤報導。</p>
 <!---
 When I started writing up my lecture notes I took the 20 most recent news articles posted to the ABC news website. Of those 20 articles, it turned out that 8 of them involved a discussion of something that I would call a statistical topic and 6 of those made a mistake. The most common error, if you're curious, was failing to report baseline data (e.g., the article mentions that 5% of people in situation X have some characteristic Y, but doesn't say how common the characteristic is for everyone else!). The point I'm trying to make here isn't that journalists are bad at statistics (though they almost always are), it's that a basic knowledge of statistics is very helpful for trying to figure out when someone else is either making a mistake or even lying to you. In fact, one of the biggest things that a knowledge of statistics does to you is cause you to get angry at the newspaper or the internet on a far more frequent basis. You can find a good example of this in @sec-A-real-life-example in @sec-Descriptive-statistics. In later versions of this book I'll try to include more anecdotes along those lines.--->
 </section>
@@ -701,11 +750,11 @@ But note that "urgent" is different from "important" -- they both matter. I real
 --->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-Bickel1975" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-Bickel1975" class="csl-entry" role="listitem">
 Bickel, P. J., Hammel, E. A., &amp; O’Connell, J. W. (1975). Sex bias in graduate admissions: Data from <span>B</span>erkeley. <em>Science</em>, <em>187</em>, 398–404.
 </div>
-<div id="ref-Evans1983" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Evans1983" class="csl-entry" role="listitem">
 Evans, J. St. B. T., Barston, J. L., &amp; Pollard, P. (1983). On the conflict between logic and belief in syllogistic reasoning. <em>Memory and Cognition</em>, <em>11</em>, 295–306.
 </div>
 </div>
@@ -865,9 +914,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -878,12 +941,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -932,6 +995,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -970,12 +1119,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/scgeeker\.github\.io\/lsj-book-zh_tw\//);
+      var filterRegex = new RegExp("https:\/\/scgeeker\.github\.io\/lsj-book-zh_tw\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1001,6 +1150,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://learnstatswithjamovi.com">用jamovi上手統計學</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">電子書使用 <a href="https://quarto.org/">Quarto套件</a>創建</div>
   </div>
 </footer>

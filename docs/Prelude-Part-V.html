@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10-Correlation-and-linear-regression.html" rel="next">
+<link href="./10-Categorical-data-analysis.html" rel="next">
 <link href="./09-Hypothesis-testing.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -51,15 +51,16 @@ ul.task-list li input[type="checkbox"] {
   "type": "textbox",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -73,11 +74,12 @@ ul.task-list li input[type="checkbox"] {
 </script>
     
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="用jamovi上手統計學 - 線性模型的學習取向">
-<meta property="og:description" content="在進入學習統計方法的各章節之前，我(譯者)想要向同學們介紹另一份由丹麥奧爾堡大學(Aalborg University)溝通與心理學系(Department of Communication and Psychology)Jonas Lindeløv教授編寫的教程基礎統計方法的線性模型學習取向1。…">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="用jamovi上手統計學">
 </head>
 
@@ -85,11 +87,16 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">線性模型的學習取向</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prelude-Part-V.html">統計方法</a></li><li class="breadcrumb-item"><a href="./Prelude-Part-V.html">線性模型的學習取向</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -97,30 +104,32 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="./用jamovi上手統計學.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
-    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-            <i class="bi bi-bi-twitter pe-1"></i>
-          Twitter
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-            <i class="bi bi-bi-facebook pe-1"></i>
-          Facebook
-          </a>
-        </li>
-    </ul>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./用jamovi上手統計學.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="切换阅读器模式">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -128,190 +137,219 @@ ul.task-list li input[type="checkbox"] {
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜索"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">&nbsp;</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">&nbsp;</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Preface.html" class="sidebar-item-text sidebar-link">前言</a>
+  <a href="./Preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">新手須知</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">新手須知</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></a>
+  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></a>
+  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">jamovi初體驗</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">jamovi初體驗</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></a>
+  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">資料處理</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">資料處理</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></a>
+  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></a>
+  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></a>
+  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">統計理論</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">統計理論</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">中場故事</a>
+  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">中場故事</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></a>
+  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></a>
+  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></a>
+  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">統計方法</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">統計方法</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link active">線性模型的學習取向</a>
+  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">線性模型的學習取向</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></a>
+  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></a>
+  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
+  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
+  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
+  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></a>
+  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">貝氏統計</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">貝氏統計</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></a>
+  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">後記</a>
+  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">後記</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link">參考資料</a>
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">參考資料</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">目录</h2>
    
   <ul>
   <li><a href="#教程前言" id="toc-教程前言" class="nav-link active" data-scroll-target="#教程前言">教程前言</a></li>
@@ -325,18 +363,21 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#類別資料分析" id="toc-類別資料分析" class="nav-link" data-scroll-target="#類別資料分析">類別資料分析</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/Prelude-Part-V.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/Prelude-Part-V.qmd" class="toc-action">编辑该页面</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">报告问题</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">線性模型的學習取向</h1>
+<h1 class="title display-7">線性模型的學習取向</h1>
 
 </header>
 
-<p>在進入學習統計方法的各章節之前，我(譯者)想要向同學們介紹另一份由丹麥奧爾堡大學(Aalborg University)溝通與心理學系(Department of Communication and Psychology)Jonas Lindeløv教授編寫的教程<strong>基礎統計方法的線性模型學習取向</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。 決定翻譯本書之前，我一直有如何統整推論統計方法學習課表的苦惱。見到Lindeløv的教程，還有採用jamovi與JASP試編教材之後，發覺這是一套值得華文世界的學生及統計學教師認識的教程。其實本書原作者Dani也在 <a href="13-Factorial-ANOVA.html#sec-ANOVA-as-a-linear-model"><span>Section&nbsp;13.6</span></a> 提到相同的觀念，只是這個觀念在原書的章節編排，一直走到多因子變異數分析，Dani才告訴讀者。</p>
-<p>在Lindeløv的原版教程發表後不到一年來，就由世界各地有志一同的教師翻譯成各國語言的版本，簡体中文版已由著名的網路統計知識交流學習論壇<a href="https://cosx.org/">統計之都</a>的網友協作完成<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。由於簡体中文與繁體中文的統計學術語有別，而且Lindeløv的教程是以R語言為例，因此藉由翻譯這本<strong>用jamovi上手統計學</strong>的機會，我將原書的第五部分章節重新排列，改成如同Lindeløv教程一樣的順序，並在適當的段落，置入譯註提示讀者關於Lindeløv教程的說明及示範。在每一章屬於基礎統計方法的範例，都會附上一份包含線性模型版示範檔案。從 <a href="10-Correlation-and-linear-regression.html"><span>Chapter&nbsp;10</span></a> 到 <a href="14-Categorical-data-analysis.html"><span>Chapter&nbsp;14</span></a> 標示示範檔案的部分，我都會在增加的<strong>譯註</strong>置入取得線性模型版示範檔案的連結。示範檔案裡有關線性模型版示範檔案的說明，都會集中於這個章節。讀者可根據學習進度，參考譯註提示，回到這個章節取得檔案及閱讀參考說明。</p>
+<p>在進入學習統計方法的各章節之前，我(譯者)想要向同學們介紹另一份由丹麥奧爾堡大學(Aalborg University)溝通與心理學系(Department of Communication and Psychology)Jonas Lindeløv教授編寫的教程<strong>基礎統計方法的線性模型學習取向</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。 決定翻譯本書之前，我一直有如何統整推論統計方法學習課表的苦惱。見到Lindeløv的教程，還有採用jamovi與JASP試編教材之後，發覺這是一套值得華文世界的學生及統計學教師認識的教程。其實本書原作者Dani也在 <a href="#sec-ANOVA-as-a-linear-model"><span class="quarto-unresolved-ref">sec-ANOVA-as-a-linear-model</span></a> 提到相同的觀念，只是在原書的章節編排，一路走到多因子變異數分析，Dani才告訴讀者這個觀念。</p>
+<p>在Lindeløv的原版教程發表後不到一年來，就由世界各地有志一同的教師翻譯成各國語言的版本，簡体中文版已由著名的網路統計知識交流學習論壇<a href="https://cosx.org/">統計之都</a>的網友協作完成<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。由於簡体中文與繁體中文的統計學術語有別，而且Lindeløv的教程是以R語言為例，所以特別設計這個中途單元，說明如何採用Lindeløv的教程學習單元10到單元14。</p>
+<p>最新的中文版雖然維持與英文版相同的單元順序與內容翻譯，單元10到單元14都會在開頭增加說明，如何依照線性模型學習取向學習統計方法的建議。譯者使用這本電子書授課的線上課程，有特製系列影片，示範如何按照線性模型學習取向認識各種統計方法的概念及操作。這些單元的範例，都會附上一份包含線性模型版示範檔案。從 <a href="#sec-Correlation-and-linear-regression"><span class="quarto-unresolved-ref">sec-Correlation-and-linear-regression</span></a> 到 <a href="#sec-Categorical-data-analysis"><span class="quarto-unresolved-ref">sec-Categorical-data-analysis</span></a> 標示示範檔案的部分，我都會在增加的<strong>譯註</strong>置入取得線性模型版示範檔案的連結。示範檔案裡有關線性模型版示範檔案的說明，都會集中於這個章節。讀者可根據學習進度，參考譯註提示，回到這個章節取得檔案及閱讀參考說明。</p>
+<!---
+因此藉由翻譯這本**用jamovi上手統計學**的機會，我將原書的第五部分章節重新排列，改成如同Lindeløv教程一樣的順序，並在適當的段落，置入譯註提示讀者關於Lindeløv教程的說明及示範。--->
 <section id="教程前言" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="教程前言">教程前言</h2>
 <blockquote class="blockquote">
@@ -346,7 +387,7 @@ ul.task-list li input[type="checkbox"] {
 <p>在入門課程教授到<em>無母數統計方法</em>的時候，可以避開<strong>自我欺騙</strong>的手段，直接告訴學生無母數檢定其實就是參數本質是<em>等級(rank)</em>的檢定方法。對學生來說，接受向量的概念，比相信你可以神奇地放棄各種母數統計方法所依賴的假設要好得多。實際上，在統計軟體如 JASP 裡，無母數檢定的貝氏等價模型就是使用潛在次序（Latent Rank）處理資料，而次數主義學派的無母數檢定方法用在樣本量 N &gt; 15 的資料非常準確。</p>
 <p>本書<strong>統計方法</strong>的各章節，繁體中文版保留原書的內容及單元順序，讓讀者比較傳統版與線性模型版的學習方法差別。使用本書教學的講師，可以根據個人教學經驗以及學生的回饋，採取合適的教學策略及課程規劃。有關輔助線性模型學習取向的相關資訊，教學者與學習者都可以取用Lindeløv提供的簡明整理表，英文閱讀能力不足的讀者請參考教程摘要的<a href="files/linear_tests_cheat_sheet.pdf">簡体中文版</a>。</p>
 <p>根據<a href="https://www.fyears.org/tests-as-linear/linear_tests_cheat_sheet.html">教程摘要</a>，各種適用<em>無母數統計方法</em>的資料，樣本量至少要大於10，才能得到精確逼近的估計值。因此本書涉及無母數統計方法的範例，繁體中文版提供的範例資料樣本都會是至少是<span class="math inline">\(N = 20\)</span>，符合樣本量條件的<em>無母數統計方法</em>示範說明及來源檔案，都會集中在這個章節。譯者開設的統計課程，採用Lindeløv教程的模式，平行教授連續變項及等級資料的統計方法，因此各章的學習順序不一定按照電子書的單元順序，請同學先看過以下各主題的對應單元提示，再進入各章閱讀及學習。</p>
-<p>此外，許多<em>無母數統計方法</em>的線性模型版示範檔案，會創建計算變項或轉換變項，將原始資料轉換為等級資料。除了 <a href="10-Correlation-and-linear-regression.html"><span>Chapter&nbsp;10</span></a> <strong>相關與線性迴歸</strong>的斯皮爾曼等級相關係數範例，其他統計方法示範資料的轉換函式如下：</p>
+<p>此外，許多<em>無母數統計方法</em>的線性模型版示範檔案，會創建計算變項或轉換變項，將原始資料轉換為等級資料。除了 <a href="#sec-Correlation-and-linear-regression"><span class="quarto-unresolved-ref">sec-Correlation-and-linear-regression</span></a> <strong>相關與線性迴歸</strong>的斯皮爾曼等級相關係數範例，其他統計方法示範資料的轉換函式如下：</p>
 <pre><code>IF($source==0,0,IF($source&gt;1,1,-1))*RANK($source)</code></pre>
 <!---
 
@@ -407,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="相關與線性迴歸" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="相關與線性迴歸">相關與線性迴歸</h3>
 <!---我們運用 @fig-fig10-7 的虛構資料製作[資料檔案](files/10-correlatin-rank.omv)，示範等級資料的相關與迴歸分析。--->
-<p><strong>相關與線性迴歸</strong>的對應單元有 <a href="10-Correlation-and-linear-regression.html#sec-what-is-correlation"><span>Section&nbsp;10.1</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-the-scatter-plot"><span>Section&nbsp;10.2</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-what-is-linear-model"><span>Section&nbsp;10.3</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-the-regression-coefficients-parameters"><span>Section&nbsp;10.4</span></a> , <a href="10-Correlation-and-linear-regression.html#sec-regression-model-fittedness"><span>Section&nbsp;10.6</span></a>, <a href="10-Correlation-and-linear-regression.html#sec-regression-estimations"><span>Section&nbsp;10.8</span></a> , 以及 <a href="10-Correlation-and-linear-regression.html#sec-regression-assumptions"><span>Section&nbsp;10.9</span></a> 。使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須大於10，才能得到精確逼近的估計值。譯者開設的課程使用另一套教程”General Analyses for the Linear Model in Jamovi”開發的<a href="https://gamlj.github.io/mixed_example1.html">範例資料</a>進行教學，教學錄影請見這七部影片：<a href="https://youtu.be/aQEhIdk3rUU">Part 1</a>, <a href="https://youtu.be/wJXacmvoSUA">Part 2</a>, <a href="https://youtu.be/ZTmXS5lq93w">Part 3</a>, <a href="https://youtu.be/Aiu-X2kkRUs">Part 4</a>, <a href="https://youtu.be/cnbXIYJst9c">Part 5</a>,<a href="https://youtu.be/btDRX-Q-mq8">Part 6</a>, <a href="https://youtu.be/KupYlJoKMKU">Part 7</a>。</p>
+<p><strong>相關與線性迴歸</strong>的對應單元有 <a href="#sec-what-is-correlation"><span class="quarto-unresolved-ref">sec-what-is-correlation</span></a> , <a href="#sec-the-scatter-plot"><span class="quarto-unresolved-ref">sec-the-scatter-plot</span></a> , <a href="#sec-what-is-linear-model"><span class="quarto-unresolved-ref">sec-what-is-linear-model</span></a> , <a href="#sec-the-regression-coefficients-parameters"><span class="quarto-unresolved-ref">sec-the-regression-coefficients-parameters</span></a> , <a href="#sec-regression-model-fittedness"><span class="quarto-unresolved-ref">sec-regression-model-fittedness</span></a>, <a href="#sec-regression-estimations"><span class="quarto-unresolved-ref">sec-regression-estimations</span></a> , 以及 <a href="#sec-regression-assumptions"><span class="quarto-unresolved-ref">sec-regression-assumptions</span></a> 。使用等級資料計算斯皮爾曼等級相關與迴歸分析，總樣本量N必須大於10，才能得到精確逼近的估計值。譯者開設的課程使用另一套教程”General Analyses for the Linear Model in Jamovi”開發的<a href="https://gamlj.github.io/mixed_example1.html">範例資料</a>進行教學，教學錄影請見這七部影片：<a href="https://youtu.be/aQEhIdk3rUU">Part 1</a>, <a href="https://youtu.be/wJXacmvoSUA">Part 2</a>, <a href="https://youtu.be/ZTmXS5lq93w">Part 3</a>, <a href="https://youtu.be/Aiu-X2kkRUs">Part 4</a>, <a href="https://youtu.be/cnbXIYJst9c">Part 5</a>,<a href="https://youtu.be/btDRX-Q-mq8">Part 6</a>, <a href="https://youtu.be/KupYlJoKMKU">Part 7</a>。</p>
 <!---此外，jamovi迴歸模組無法直接處理等級資料，必須用計算變數。因此[資料檔案](omv_files_for_screenshorts/10-correlatin-rank.omv)以R程式碼示範。--->
 <p>如果同學有機會處理真正的等級資料，也可以選擇使用R或其他統計軟體如JASP進行連續變項或等級資料的迴歸分析。</p>
 <section id="泛統計方法的適用條件" class="level4">
@@ -416,7 +457,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="以線性模型解讀自由度" class="level4">
 <h4 class="anchored" data-anchor-id="以線性模型解讀自由度">以線性模型解讀自由度</h4>
-<p>這本<strong>用jamovi上手統計學</strong>有一個<a href="https://scgeeker.github.io/lsj-book-zh_tw/13-Factorial-ANOVA.html#%E8%87%AA%E7%94%B1%E5%BA%A6%E5%B0%B1%E6%98%AF%E8%A8%88%E7%AE%97%E6%9C%89%E5%A4%9A%E5%B0%91%E5%8F%83%E6%95%B8">專門的小節</a>，解釋什麼是自由度(degress of freedom)。不過這個小節在更動順序後，落在比較後面的 <a href="13-Factorial-ANOVA.html"><span>Chapter&nbsp;13</span></a> 。做為補充章節，剛好在此為讀者提供一點小小的說明。由於剛好重新學習線性模型與線性代數的知識，我參考翻譯本書時在閱讀的另一本中文教科書：黃志勝先生撰寫的「<a href="https://www.tenlong.com.tw/products/9789863126744">機器學習的統計基礎 : 深度學習背後的核心技術</a>」，其中第4章講自由度的這一節，黃先生給的定義是「包含N個變數的線性模型中，不受限制的變數個數」(該書沒有這一句話，是我重新消化組織的)，我們能透過以下範例來逐漸認識。</p>
+<p>這本<strong>用jamovi上手統計學</strong>有一個<a href="https://scgeeker.github.io/lsj-book-zh_tw/13-Factorial-ANOVA.html#%E8%87%AA%E7%94%B1%E5%BA%A6%E5%B0%B1%E6%98%AF%E8%A8%88%E7%AE%97%E6%9C%89%E5%A4%9A%E5%B0%91%E5%8F%83%E6%95%B8">專門的小節</a>，解釋什麼是自由度(degress of freedom)。不過這個小節在更動順序後，落在比較後面的 <a href="#sec-Factorial-ANOVA"><span class="quarto-unresolved-ref">sec-Factorial-ANOVA</span></a> 。做為補充章節，剛好在此為讀者提供一點小小的說明。由於剛好重新學習線性模型與線性代數的知識，我參考翻譯本書時在閱讀的另一本中文教科書：黃志勝先生撰寫的「<a href="https://www.tenlong.com.tw/products/9789863126744">機器學習的統計基礎 : 深度學習背後的核心技術</a>」，其中第4章講自由度的這一節，黃先生給的定義是「包含N個變數的線性模型中，不受限制的變數個數」(該書沒有這一句話，是我重新消化組織的)，我們能透過以下範例來逐漸認識。</p>
 <ol type="1">
 <li><p>簡單迴歸式 <span class="math inline">\(y = a + bx\)</span>。<span class="math inline">\(y\)</span>與<span class="math inline">\(x\)</span>都是變數，要使等號左右兩邊的數值相等，必須限制其中一個變數等於固定的數值，因此自由度<span class="math inline">\(df = n - k = 2 - 1 = 1\)</span>。</p></li>
 <li><p>多元迴歸式 <span class="math inline">\(y = a + b_1 x_1 +b_2 x_2\)</span>。這個等式有三個變數，要使等號左右兩邊的數值相等，同樣必須限制其中一個變數等於固定的數值，因此自由度<span class="math inline">\(df = n - k = 3 - 1 = 2\)</span>。</p></li>
@@ -427,12 +468,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="單一樣本及相依樣本" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="單一樣本及相依樣本">單一樣本及相依樣本</h3>
-<p><strong>單一樣本及相依樣本</strong>的對應單元有 <a href="11-Comparing-two-means.html#sec-The-one-sample-t-test"><span>Section&nbsp;11.2</span></a> , <a href="11-Comparing-two-means.html#sec-the-paired-t-test"><span>Section&nbsp;11.6</span></a> , <a href="11-Comparing-two-means.html#sec-the-one-tail-t-test"><span>Section&nbsp;11.7</span></a> , <a href="11-Comparing-two-means.html#sec-t-test-effect-size"><span>Section&nbsp;11.8</span></a> , <a href="11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample"><span>Section&nbsp;11.9</span></a> , <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a> 。使用等級資料進行無母數統計分析，最小樣本量必須多於14，如果是採用線性模型教程，建議不要使用 <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a> 的範例，將連續資料的範例轉換為等級資料即可。讀者可使用線性模型版的jamovi示範檔案：<a href="omv_files_for_screenshots/11_onesample_t_lm.omv">單一樣本t檢定</a>、<a href="omv_files_for_screenshots/11_pairedsample_t_lm.omv">相依樣本t檢定</a>，搭配課程錄影學習~ <a href="https://youtu.be/RxRe4Fjy4Vw">影片1</a>、<a href="https://youtu.be/LtXFHi3iQEs">影片2</a>、<a href="https://youtu.be/Yn0aMCdwccs">影片3</a>、<a href="https://youtu.be/Usn802NSv4E">影片4</a>、<a href="https://youtu.be/0JH6uQHqW-4">影片5</a>、<a href="">影片6</a>、<a href="https://youtu.be/Hl6iuGnN6aA">影片7</a>、<a href="https://youtu.be/x6Jnn4NNC_k">影片8</a>。</p>
+<p><strong>單一樣本及相依樣本</strong>的對應單元有 <a href="#sec-The-one-sample-t-test"><span class="quarto-unresolved-ref">sec-The-one-sample-t-test</span></a> , <a href="#sec-the-paired-t-test"><span class="quarto-unresolved-ref">sec-the-paired-t-test</span></a> , <a href="#sec-the-one-tail-t-test"><span class="quarto-unresolved-ref">sec-the-one-tail-t-test</span></a> , <a href="#sec-t-test-effect-size"><span class="quarto-unresolved-ref">sec-t-test-effect-size</span></a> , <a href="#sec-Checking-the-normality-of-a-sample"><span class="quarto-unresolved-ref">sec-Checking-the-normality-of-a-sample</span></a> , <a href="#sec-nonparameter-rank-test"><span class="quarto-unresolved-ref">sec-nonparameter-rank-test</span></a> 。使用等級資料進行無母數統計分析，最小樣本量必須多於14，如果是採用線性模型教程，建議不要使用 <a href="#sec-nonparameter-rank-test"><span class="quarto-unresolved-ref">sec-nonparameter-rank-test</span></a> 的範例，將連續資料的範例轉換為等級資料即可。讀者可使用線性模型版的jamovi示範檔案：<a href="omv_files_for_screenshots/11_onesample_t_lm.omv">單一樣本t檢定</a>、<a href="omv_files_for_screenshots/11_pairedsample_t_lm.omv">相依樣本t檢定</a>，搭配課程錄影學習~ <a href="https://youtu.be/RxRe4Fjy4Vw">影片1</a>、<a href="https://youtu.be/LtXFHi3iQEs">影片2</a>、<a href="https://youtu.be/Yn0aMCdwccs">影片3</a>、<a href="https://youtu.be/Usn802NSv4E">影片4</a>、<a href="https://youtu.be/0JH6uQHqW-4">影片5</a>、<a href="">影片6</a>、<a href="https://youtu.be/Hl6iuGnN6aA">影片7</a>、<a href="https://youtu.be/x6Jnn4NNC_k">影片8</a>。</p>
 </section>
 <section id="比較兩組平均值" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="比較兩組平均值">比較兩組平均值</h3>
-<p><strong>比較兩組平均值</strong>的對應單元有 <a href="11-Comparing-two-means.html#sec-the-independent-samples-t-test-student-test"><span>Section&nbsp;11.3</span></a>, <a href="11-Comparing-two-means.html#sec-the-independent-samples-t-test-welch-test"><span>Section&nbsp;11.5</span></a>, <a href="11-Comparing-two-means.html#sec-the-one-tail-t-test"><span>Section&nbsp;11.7</span></a> , <a href="11-Comparing-two-means.html#sec-t-test-effect-size"><span>Section&nbsp;11.8</span></a> , <a href="11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample"><span>Section&nbsp;11.9</span></a> , <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a>。使用等級資料進行無母數統計分析，最小樣本量必須多於10，如果是採用線性模型教程，建議不要使用 <a href="11-Comparing-two-means.html#sec-nonparameter-rank-test"><span>Section&nbsp;11.10</span></a> 的範例，將連續資料的範例轉換為等級資料即可。</p>
-<p>Welch’s t檢定是無法使用jamovi展示線性模型示範的統計方法，但是近年採用獨立組設計的心理學研究，被呼籲使用Welch’s t檢定的建議越來越多，因為獨立組設計的行為科學資料經常違反變異數同質性的適用條件。在此使用R套件，展示使用線性模型輸出 <a href="11-Comparing-two-means.html#sec-the-independent-samples-t-test-welch-test"><span>Section&nbsp;11.5</span></a> 的範例。</p>
+<p><strong>比較兩組平均值</strong>的對應單元有 <a href="#sec-the-independent-samples-t-test-student-test"><span class="quarto-unresolved-ref">sec-the-independent-samples-t-test-student-test</span></a>, <a href="#sec-the-independent-samples-t-test-welch-test"><span class="quarto-unresolved-ref">sec-the-independent-samples-t-test-welch-test</span></a>, <a href="#sec-the-one-tail-t-test"><span class="quarto-unresolved-ref">sec-the-one-tail-t-test</span></a> , <a href="#sec-t-test-effect-size"><span class="quarto-unresolved-ref">sec-t-test-effect-size</span></a> , <a href="#sec-Checking-the-normality-of-a-sample"><span class="quarto-unresolved-ref">sec-Checking-the-normality-of-a-sample</span></a> , <a href="#sec-nonparameter-rank-test"><span class="quarto-unresolved-ref">sec-nonparameter-rank-test</span></a>。使用等級資料進行無母數統計分析，最小樣本量必須多於10，如果是採用線性模型教程，建議不要使用 <a href="#sec-nonparameter-rank-test"><span class="quarto-unresolved-ref">sec-nonparameter-rank-test</span></a> 的範例，將連續資料的範例轉換為等級資料即可。</p>
+<p>Welch’s t檢定是無法使用jamovi展示線性模型示範的統計方法，但是近年採用獨立組設計的心理學研究，被呼籲使用Welch’s t檢定的建議越來越多，因為獨立組設計的行為科學資料經常違反變異數同質性的適用條件。在此使用R套件，展示使用線性模型輸出 <a href="#sec-the-independent-samples-t-test-welch-test"><span class="quarto-unresolved-ref">sec-the-independent-samples-t-test-welch-test</span></a> 的範例。</p>
 <p><strong>R程式碼</strong></p>
 <pre><code>df &lt;- read_csv("files/Harpo.csv")
 
@@ -449,10 +490,10 @@ as.factor(tutor)Bernadette -5.47778  2.688237 -2.03768  0.0502</code></pre>
 </section>
 <section id="單因子變異數分析" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="單因子變異數分析">單因子變異數分析</h3>
-<p><a href="12-Comparing-several-means-one-way-ANOVA.html"><span>Chapter&nbsp;12</span></a> <strong>單因子變異數分析</strong> 介紹的統計方法有單因子獨立樣本變異數分析，以及單因子重覆量數變異數分析。根據線性模型教程，譯者將這兩個兩個統計方法的示範，改編為以線性迴歸模型實作的<a href="omv_files_for_screenshots/12-oneway-independent-ANOVA.omv">獨立樣本示範檔案</a>，以及<a href="omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv">重覆量數示範檔案</a>。由於Lindeløv的教程並未提供單因子重覆量數變異數的等級資料分析示範，<a href="omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv">重覆量數示範檔案</a>只有連續變項的版本。</p>
-<p>依線性模型教程的順序學習的讀者與學生，可以先復習 <a href="10-Correlation-and-linear-regression.html#sec-what-is-linear-model"><span>Section&nbsp;10.3</span></a> 這一節的內容。譯者的課程教學會從迴歸模型的R-squared起手，帶領學生認識兩種單因子變異數分析的程序及適用條件。</p>
+<p><a href="#sec-Comparing-several-means-one-way-ANOVA"><span class="quarto-unresolved-ref">sec-Comparing-several-means-one-way-ANOVA</span></a> <strong>單因子變異數分析</strong> 介紹的統計方法有單因子獨立樣本變異數分析，以及單因子重覆量數變異數分析。根據線性模型教程，譯者將這兩個兩個統計方法的示範，改編為以線性迴歸模型實作的<a href="omv_files_for_screenshots/12-oneway-independent-ANOVA.omv">獨立樣本示範檔案</a>，以及<a href="omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv">重覆量數示範檔案</a>。由於Lindeløv的教程並未提供單因子重覆量數變異數的等級資料分析示範，<a href="omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv">重覆量數示範檔案</a>只有連續變項的版本。</p>
+<p>依線性模型教程的順序學習的讀者與學生，可以先復習 <a href="#sec-what-is-linear-model"><span class="quarto-unresolved-ref">sec-what-is-linear-model</span></a> 這一節的內容。譯者的課程教學會從迴歸模型的R-squared起手，帶領學生認識兩種單因子變異數分析的程序及適用條件。</p>
 <p><strong>長表單(long table)與寬表單(wide table)</strong></p>
-<p><a href="omv_files_for_screenshots/11_pairedsample_t_lm.omv">相依樣本t檢定</a>處理的分析資料，也是重覆量數設計。在這份<a href="omv_files_for_screenshots/11_pairedsample_t_lm.omv">示範檔案</a>裡，兩次成績列在不同的變項欄位(<code>grade_test1</code>,<code>grade_test2</code>)，這種將同一個獨變項的不同層次之依變項資料，各自列在獨立變項欄位的資料格式，稱為<strong>寬表單(wide table)</strong>。電子書 <a href="12-Comparing-several-means-one-way-ANOVA.html#sec-oneway-repeated-measure"><span>Section&nbsp;12.7</span></a> 示範單因子重覆量數變異數分析使用的資料格式，也是寬表單。</p>
+<p><a href="omv_files_for_screenshots/11_pairedsample_t_lm.omv">相依樣本t檢定</a>處理的分析資料，也是重覆量數設計。在這份<a href="omv_files_for_screenshots/11_pairedsample_t_lm.omv">示範檔案</a>裡，兩次成績列在不同的變項欄位(<code>grade_test1</code>,<code>grade_test2</code>)，這種將同一個獨變項的不同層次之依變項資料，各自列在獨立變項欄位的資料格式，稱為<strong>寬表單(wide table)</strong>。電子書 <a href="#sec-oneway-repeated-measure"><span class="quarto-unresolved-ref">sec-oneway-repeated-measure</span></a> 示範單因子重覆量數變異數分析使用的資料格式，也是寬表單。</p>
 <p>jamovi的ANOVA模組與t檢定模組，都是用來處理寬表單資料。然而線性模型版的<a href="omv_files_for_screenshots/12-oneway-repeated-measure-ANOVA.omv">單因子重覆量數變異數分析示範檔案</a>，獨變項欄位只有一個(<code>Task</code>)，依變項資料也集中於一個變項欄位(<code>Score</code>)。這種資料格式稱為<strong>長表單(long table)</strong>，是各種資料收集平台最原始的儲存格式。請讀者比較兩種資料格式的差異，思考最適合你的資料處理與分析操作，用那一種表單格式與分析模組有最佳效益。</p>
 <ul>
 <li>課程錄影預計於2023/5/17之後上線。</li>
@@ -460,16 +501,16 @@ as.factor(tutor)Bernadette -5.47778  2.688237 -2.03768  0.0502</code></pre>
 </section>
 <section id="多因子變異數分析" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="多因子變異數分析">多因子變異數分析</h3>
-<p>對應 <a href="13-Factorial-ANOVA.html"><span>Chapter&nbsp;13</span></a> <strong>多因子變異數分析</strong>。讀者可以使用改編自這一章原始範例，使用線性模型執行的<a href="omv_files_for_screenshots/13-twoway-independent-ANOVA.omv">二因子獨立樣本變異數分析</a>與<a href="omv_files_for_screenshots/13-ANCOVA.omv">二因子獨立樣本共變數分析</a>的jamovi檔案，自行比對與原書使用變異數分析模組製作的範例，學習如何設定與解讀分析報表與適用條件。經過前三章透過線性模型學習，此章內容應該相當容易。</p>
+<p>對應 <a href="#sec-Factorial-ANOVA"><span class="quarto-unresolved-ref">sec-Factorial-ANOVA</span></a> <strong>多因子變異數分析</strong>。讀者可以使用改編自這一章原始範例，使用線性模型執行的<a href="omv_files_for_screenshots/13-twoway-independent-ANOVA.omv">二因子獨立樣本變異數分析</a>與<a href="omv_files_for_screenshots/13-ANCOVA.omv">二因子獨立樣本共變數分析</a>的jamovi檔案，自行比對與原書使用變異數分析模組製作的範例，學習如何設定與解讀分析報表與適用條件。經過前三章透過線性模型學習，此章內容應該相當容易。</p>
 <ul>
 <li>課程錄影預計於2023/5/24之後上線。</li>
 </ul>
 </section>
 <section id="類別資料分析" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="類別資料分析">類別資料分析</h3>
-<p>對應 <a href="14-Categorical-data-analysis.html"><span>Chapter&nbsp;14</span></a> <strong>類別資料分析</strong>，這個單元介紹四種類別資料分析方法，中文版提供使用線性模型示範檔案有<a href="omv_files_for_screenshots/14_goodness_of_fit.omv">卡方適合度檢定</a>、<a href="omv_files_for_screenshots/14-contigeuncy-table.omv">卡方獨立性檢定</a>、<a href="omv_files_for_screenshots/14_Fisher.omv">小樣本類別資料的費雪精確檢定</a>、以及<a href="omv_files_for_screenshots/14_McNemar.omv">相依樣本類別資料的麥內瑪檢定</a>。讀者開啟之前，請先確定自用的jamovi已經安裝<code>gamlj</code>模組，才能檢視與編輯<strong><a href="https://en.wikipedia.org/wiki/Generalized_linear_model">通用線性模型(Generalized Linear Model)</a></strong>報表及功能選單。請者可搭配課程錄影學習 ~ (預計5/31後上線)</p>
+<p>對應 <a href="#sec-Categorical-data-analysis"><span class="quarto-unresolved-ref">sec-Categorical-data-analysis</span></a> <strong>類別資料分析</strong>，這個單元介紹四種類別資料分析方法，中文版提供使用線性模型示範檔案有<a href="omv_files_for_screenshots/14_goodness_of_fit.omv">卡方適合度檢定</a>、<a href="omv_files_for_screenshots/14-contigeuncy-table.omv">卡方獨立性檢定</a>、<a href="omv_files_for_screenshots/14_Fisher.omv">小樣本類別資料的費雪精確檢定</a>、以及<a href="omv_files_for_screenshots/14_McNemar.omv">相依樣本類別資料的麥內瑪檢定</a>。讀者開啟之前，請先確定自用的jamovi已經安裝<code>gamlj</code>模組，才能檢視與編輯<strong><a href="https://en.wikipedia.org/wiki/Generalized_linear_model">通用線性模型(Generalized Linear Model)</a></strong>報表及功能選單。請者可搭配課程錄影學習 ~ (預計5/31後上線)</p>
 <p>透過線性模型路徑，這四種統計方法都要先建立統計假設<strong>通用線性模型</strong>(<span class="math inline">\(H_0\)</span>與<span class="math inline">\(H_1\)</span>)，運用變異數分析或逐步迴歸比較兩種統計假設的線性模型，才是與一般統計書介紹的方法相同。然而目前jamovi的內建功能或外掛模組，都沒有比較兩套線性模型的功能設定。中文版的示範檔案只有顯示對應<span class="math inline">\(H_1\)</span>的線性模型，並且統計報告裡雖然有<span class="math inline">\(\chi^2\)</span>的資訊，實際上是對數似然比檢定(log-likelihood ratio test)的結果，統計數與p值雖然接近卡方檢定，但並非真正的卡方檢定。由於似然值(likelihood)是貝氏統計方法常用的指標，譯者釋出這些範例檔案有引導讀者認識貝氏統計方法的用意。此外，jamovi 2.3.21版之後，內建Frequencies模組增加<code>log-linear Regression</code>功能，讓使用者能運用<strong>通用線性模型</strong>處理類別資料分析。</p>
-<p>jamovi的內建Regression模組有三種對數迴歸的功能<code>2 Outcomes</code>，<code>N outcomes</code>，以及<code>Ordinal Outcomes</code>。這三種對數迴歸是<strong><a href="https://en.wikipedia.org/wiki/General_linear_model">一般線性模型(General linear model)</a></strong>，與 <a href="10-Correlation-and-linear-regression.html"><span>Chapter&nbsp;10</span></a> 到 <a href="13-Factorial-ANOVA.html"><span>Chapter&nbsp;13</span></a> 介紹的統計方法所採用的線性模型是一樣的。需要注意的是，<strong><a href="https://en.wikipedia.org/wiki/General_linear_model">一般線性模型</a></strong>不同於<strong><a href="https://en.wikipedia.org/wiki/Generalized_linear_model">通用線性模型</a></strong>，兩者主要差異在於<strong>一般線性模型</strong>的依變項資料殘差分佈必須符合或逼近常態分佈，不過<strong>通用線性模型</strong>的依變項資料殘差分佈可以符合或逼近任何分析者指定的機率分佈<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。有興趣了解細節的讀者，可以點選連結開啟維基百科頁面。使用<strong>通用線性模型</strong>示範的四種類別資料分析方法，請見<a href="https://youtu.be/XMqlLb2qNDs">導讀影片</a>。</p>
+<p>jamovi的內建Regression模組有三種對數迴歸的功能<code>2 Outcomes</code>，<code>N outcomes</code>，以及<code>Ordinal Outcomes</code>。這三種對數迴歸是<strong><a href="https://en.wikipedia.org/wiki/General_linear_model">一般線性模型(General linear model)</a></strong>，與 <a href="#sec-Correlation-and-linear-regression"><span class="quarto-unresolved-ref">sec-Correlation-and-linear-regression</span></a> 到 <a href="#sec-Factorial-ANOVA"><span class="quarto-unresolved-ref">sec-Factorial-ANOVA</span></a> 介紹的統計方法所採用的線性模型是一樣的。需要注意的是，<strong><a href="https://en.wikipedia.org/wiki/General_linear_model">一般線性模型</a></strong>不同於<strong><a href="https://en.wikipedia.org/wiki/Generalized_linear_model">通用線性模型</a></strong>，兩者主要差異在於<strong>一般線性模型</strong>的依變項資料殘差分佈必須符合或逼近常態分佈，不過<strong>通用線性模型</strong>的依變項資料殘差分佈可以符合或逼近任何分析者指定的機率分佈<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。有興趣了解細節的讀者，可以點選連結開啟維基百科頁面。使用<strong>通用線性模型</strong>示範的四種類別資料分析方法，請見<a href="https://youtu.be/wLaIwHHXoLE">導讀影片</a>。</p>
 <p>使用通用線性模型操作<a href="omv_files_for_screenshots/14_goodness_of_fit.omv">卡方適合度檢定</a>、<a href="omv_files_for_screenshots/14-contigeuncy-table.omv">卡方獨立性檢定</a>、以及<a href="omv_files_for_screenshots/14_McNemar.omv">相依樣本類別資料的麥內瑪檢定</a>，都要先轉換資料格式，轉換方法與過程請見<a href="https://youtu.be/5SETnRPW_h4">導讀影片</a>。</p>
 <hr>
 
@@ -628,9 +669,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -641,12 +696,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -695,6 +750,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -733,12 +874,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/scgeeker\.github\.io\/lsj-book-zh_tw\//);
+      var filterRegex = new RegExp("https:\/\/scgeeker\.github\.io\/lsj-book-zh_tw\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -755,8 +896,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10-Correlation-and-linear-regression.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10-Categorical-data-analysis.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -764,6 +905,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://learnstatswithjamovi.com">用jamovi上手統計學</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">電子書使用 <a href="https://quarto.org/">Quarto套件</a>創建</div>
   </div>
 </footer>

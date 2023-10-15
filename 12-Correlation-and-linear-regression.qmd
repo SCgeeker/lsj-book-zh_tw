@@ -405,11 +405,13 @@ knitr::include_graphics("images/fig12-13.png")
 
 ## 多元線性迴歸 {#sec-multiple-regression}
 
+<!---
 > 譯註：這個單元全部內容都是談多元迴歸，內容文字編修排在本書最後階段進行。
+--->
 
-到目前為止，我們討論過的簡單線性迴歸模型假設只有一個您感興趣的預測變項，在這種情況下是dani.sleep。事實上，在這一點上，我們談到的每一個統計工具都假設您的分析使用一個預測變項和一個結果變項。然而，在許多（也許是大多數）研究項目中，實際上有多個您想要研究的預測變項。如果是這樣，將線性迴歸框架擴展到包含多個預測變項可能會很好。也許某種多元迴歸模型將會合適？
+我們至此討論過的簡單線性迴歸模型，都是假設只有一個自變項，也就是這一章範例資料的dani.sleep。同樣地，基礎統計會學到的大部分統計方法都是假設只有一個自變項和一個應變項。然而，大多數研究項目實際要處理許多自變項。如果是這樣，學習包含多個自變項線性迴歸模型可能比較好。也許使用多元迴歸模型會更適合這一章的範例資料？
 
-多元迴歸在概念上非常簡單。我們所做的就是在我們的迴歸方程中添加更多項。假設我們對兩個變項感興趣；也許我們想要使用dani.sleep和baby.sleep來預測dani.grump變項。像以前一樣，我們用$Y_{i}$表示第i天的煩躁程度。但現在我們有兩個$ X $變項：第一個對應我得到的睡眠量，第二個對應我兒子得到的睡眠量。所以我們用$X_{i1}$表示第i天我睡的時間，$X_{i2}$表示那一天嬰兒睡的時間。如果是這樣，那麼我們可以這樣寫我們的迴歸模型：
+多元迴歸的概念非常簡單，只要在簡單迴歸模型加入更多自變項。假如我們對資料中的兩個自變項都有興趣，也許可以用dani.sleep和baby.sleep預測依變項dani.grump。就像之前的說明一樣，我們用$Y_{i}$表示第i天的煩躁程度。只是現在有兩個$ X $變項：第一個對應我的睡眠時間，第二個對應我兒子的睡眠時間。所以我們用$X_{i1}$表示第i天我的睡眠時間，$X_{i2}$表示那一天我兒子的睡眠時間。那麼我們可以這樣改寫迴歸模型：
 
 <!--- The simple linear regression model that we've discussed up to this point assumes that there's a single predictor variable that you're interested in, in this case dani.sleep. In fact, up to this point every statistical tool that we've talked about has assumed that your analysis uses one predictor variable and one outcome variable. However, in many (perhaps most) research projects you actually have multiple predictors that you want to examine. If so, it would be nice to be able to extend the linear regression framework to be able to include multiple predictors. Perhaps some kind of **multiple regression** model would be in order?
 
@@ -417,13 +419,13 @@ Multiple regression is conceptually very simple. All we do is add more terms to 
 
 $$Y_i=b_0+b_1X_{i1}+b_2X_{i2}+\epsilon_i$$
 
-像以前一樣，$\epsilon_i$是與第i個觀察值相關的殘差，$\epsilon_i = Y_i - \hat{Y}_i$。在這個模型中，我們現在有三個需要估計的係數：b0是截距，b1是與我的睡眠相關的係數，b2是與我兒子的睡眠相關的係數。然而，儘管需要估計的係數數量有所改變，估計工作的基本思路沒有改變：我們的估計係數$\hat{b}_0$、$\hat{b}_1$和$\hat{b}_2$ 是那些使殘差平方和最小化的係數。
+就像前一節的說，$\epsilon_i$是與第i個觀察值相關的殘差，$\epsilon_i = Y_i - \hat{Y}_i$。多元迴歸模型有三個需要估計的係數：$b_0$是截距，$b_1$是代表我的睡眠時間的迴歸係數，$b_2$是代表我兒子的睡眠時間的迴歸係數。然而，儘管需要估計的迴歸係數變多，估計的基本原理還是一樣：我們要估計的係數$\hat{b}_0$、$\hat{b}_1$和$\hat{b}_2$ 算的都是能得到最小殘差平方和的係數。
 
 <!--- As before, $\epsilon_i$ is the residual associated with the i-th observation, $\epsilon_i = Y_i - \hat{Y}_i$. In this model, we now have three coefficients that need to be estimated: b0 is the intercept, b1 is the coefficient associated with my sleep, and b2 is the coefficient associated with my son's sleep. However, although the number of coefficients that need to be estimated has changed, the basic idea of how the estimation works is unchanged: our estimated coefficients $\hat{b}_0$, $\hat{b}_1$ and $\hat{b}_2$ are those that minimise the sum squared residuals. --->
 
-### jamovi實務示範
+### jamovi實作示範
 
-在jamovi中，多元迴歸與簡單迴歸無異。我們所要做的就是在jamovi中的'協變項'框中添加更多變項。例如，如果我們想要使用dani.sleep和baby.sleep作為預測變項來解釋為什麼我如此煩躁，那麼將baby.sleep移動到與dani.sleep相鄰的'協變項'框中。默認情況下，jamovi假設該模型應該包括一個截距。這次我們得到的係數顯示在 @tbl-tab10-4 中。
+使用jamovi計算多元迴歸的程序與簡單迴歸完全一樣。我們要做的就是在jamovi的'自變項'對話框添加更多自變項。像是要使用dani.sleep和baby.sleep作為預測變項來解釋為什麼我如此煩躁，那麼將baby.sleep移動到與dani.sleep相鄰的'協變項'框中。默認情況下，jamovi假設該模型應該包括一個截距。這次我們得到的係數顯示在 @tbl-tab10-4 中。
 
 <!--- Multiple regression in jamovi is no different to simple regression. All we have to do is add additional variables to the 'Covariates' box in jamovi. For example, if we want to use both dani.sleep and baby.sleep as predictors in our attempt to explain why I'm so grumpy, then move baby.sleep across into the 'Covariates' box alongside dani.sleep. By default, jamovi assumes that the model should include an intercept. The coefficients we get this time are shown in @tbl-tab10-4. --->
 
