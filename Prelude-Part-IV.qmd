@@ -1,28 +1,46 @@
 # 中場故事 {.unnumbered}
 
+(以下為AI初翻，尚待校稿)
+
 <!--- teaching note: riddle of induction 替代版：某位設計師為展覽製作一個能裝10,000顆球的巨大陶瓷瓶子，展覽告示宣稱瓶子裡有5,000顆白球和5,000顆彩色球，歡迎現場觀眾任意取球測試，看看告示是否為真。
 有兩位觀眾W君與C君彼此約定測試方法，每次取出三顆球，逐次評估告示的真實性。
 這天他們連續測試四次，每次取出的都是三顆白球。W君認為告示是錯的，C君認為還要繼續測試。你認為誰的主張是合理的？ 
 --->
 
-Part IV of the book is by far the most theoretical, focusing as it does on the theory of statistical inference. Over the next three chapters my goal is to give you an introduction to probability theory, sampling and estimation in @sec-Estimating-unknown-quantities-from-a-sample and statistical hypothesis testing in @sec-Hypothesis-testing. Before we get started though, I want to say something about the big picture. Statistical inference is primarily about learning from data. The goal is no longer merely to describe our data but to use the data to draw conclusions about the world. To motivate the discussion I want to spend a bit of time talking about a philosophical puzzle known as the riddle of induction, because it speaks to an issue that will pop up over and over again throughout the book: statistical inference relies on assumptions. This sounds like a bad thing. In everyday life people say things like “you should never make assumptions”, and psychology classes often talk about assumptions and biases as bad things that we should try to avoid. From bitter personal experience I have learned never to say such things around philosophers!
+<!---Part IV of the book is by far the most theoretical, focusing as it does on the theory of statistical inference. Over the next three chapters my goal is to give you an introduction to probability theory, sampling and estimation in @sec-Estimating-unknown-quantities-from-a-sample and statistical hypothesis testing in @sec-Hypothesis-testing. Before we get started though, I want to say something about the big picture. Statistical inference is primarily about learning from data. The goal is no longer merely to describe our data but to use the data to draw conclusions about the world. To motivate the discussion I want to spend a bit of time talking about a philosophical puzzle known as the riddle of induction, because it speaks to an issue that will pop up over and over again throughout the book: statistical inference relies on assumptions. This sounds like a bad thing. In everyday life people say things like “you should never make assumptions”, and psychology classes often talk about assumptions and biases as bad things that we should try to avoid. From bitter personal experience I have learned never to say such things around philosophers!--->
+
+
+本書的第IV部分是迄今為止最理論的部分,因為它專注于統計推論理論。在接下來的三章中,我的目標是為您介紹概率論、抽樣和在 @sec-Estimating-unknown-quantities-from-a-sample 中估計參數,以及在 @sec-Hypothesis-testing 中統計假設檢定。在我們開始之前,我想談談全局性內容。統計推論主要是關于從數據中學習。其目標不再僅僅是描述我們的數據,而是利用數據得出有關世界的結論。為了激發討論,我想花些時間談論一個被稱為歸納謎題的哲學難題,因為它談到了一個在整本書中一再出現的問題:統計推論依賴假設。這聽起來不妙。在日常生活中,人們常說“永遠不要做任何假設”之類的話,並且心理課程經常談論假設和偏見是我們應該避免的壞事情。根據痛苦的個人經歷,我已經學會永遠不在哲學家面前說這樣的話!  
+
 
 ## 邏輯推理的侷限 {-}
 
-> *The whole art of war consists in getting at what is on the other side
-> of the hill, or, in other words, in learning what we do not know from
-> what we do.*  
+
+<!---
+> *The whole art of war consists in getting at what is on the other side of the hill, or, in other words, in learning what we do not know from what we do.*  
 > - Arthur Wellesley, 1st Duke of Wellington
 
-I am told that quote above came about as a consequence of a carriage ride across the countryside.[^IV-1] He and his companion, J. W. Croker, were playing a guessing game, each trying to predict what would be on the other side of each hill. In every case it turned out that Wellesley was right and Croker was wrong. Many years later when Wellesley was asked about the game he explained that “the whole art of war consists in getting at what is on the other side of the hill”. Indeed, war is not special in this respect. All of life is a guessing game of one form or another, and getting by on a day to day basis requires us to make good guesses. So let’s play a guessing game of our own.[^translation-1]
+I am told that quote above came about as a consequence of a carriage ride across the countryside.[^IV-1] He and his companion, J. W. Croker, were playing a guessing game, each trying to predict what would be on the other side of each hill. In every case it turned out that Wellesley was right and Croker was wrong. Many years later when Wellesley was asked about the game he explained that “the whole art of war consists in getting at what is on the other side of the hill”. Indeed, war is not special in this respect. All of life is a guessing game of one form or another, and getting by on a day to day basis requires us to make good guesses. So let’s play a guessing game of our own.--->
+
+這是正式翻譯這一節原始文檔的繁体中文译稿,包括引言和对话部分:
+
+> _整個戰爭藝術在於瞭解山的另一邊是什麼,或者換句話說,從我們所知道的東西中學習我們不知道的東西。_
+
+關於這句名言,據說是在一次鄉村馬車旅行中產生的。威靈頓公爵和他的同伴 J. W. Croker 玩着一個猜謎遊戲,各自試圖預測每座山的另一邊會是什麼。結果證明,在每一案例中威靈頓都是對的,而 Croker 都是錯的。多年后當有人詢問威靈頓這場遊戲時,他解釋說“整個戰爭的藝術在於瞭解山的另一邊是什麼”。的確,戰爭在這方面並不特殊。生活的所有方面都是某種形式的猜謎遊戲,而想要度過一天又一天,我們需要做出好的猜測。那麼,讓我們玩一場自己的猜謎遊戲。[^translation-1]
+
 
 [^translation-1]: 譯註~譯者提供的簡化版故事。某位設計師為展覽製作一個能裝10,000顆球的巨大陶瓷瓶子，展覽告示宣稱瓶子裡有5,000顆白球和5,000顆彩色球，歡迎現場觀眾任意取球測試，看看告示是否為真。<br>有兩位觀眾W君與C君彼此約定測試方法(*取出後是否放回，由讀者自行設定*)，每次取出三顆球，逐次評估告示的真實性。<br>這天他們連續測試四次，每次取出的都是三顆白球。W君認為告示是錯的，C君認為還要繼續測試。你認為誰的主張是合理的？ 
 
-Suppose you and I are observing the Wellesley-Croker competition and after every three hills you and I have to predict who will win the next one, Wellesley or Croker. Let’s say that W refers to a Wellesley victory and C refers to a Croker victory. After three hills, our data set looks like this:
+
+
+<!---
+Suppose you and I are observing the Wellesley-Croker competition and after every three hills you and I have to predict who will win the next one, Wellesley or Croker. Let’s say that W refers to a Wellesley victory and C refers to a Croker victory. After three hills, our data set looks like this: --->
+
+假設你和我正在觀察Wellesley-Croker競賽,在每三座山之后,你我需要預測誰將贏得下一座山,Wellesley還是Croker。讓我們說W指的是Wellesley的勝利,C指的是Croker的勝利。在三座山之后,我們的數據集如下:
 
 $WWW$
 
-Our conversation goes like this:
+<!--- Our conversation goes like this:
 
 > you: Three in a row doesn’t mean much. I suppose Wellesley might be better at this than Croker, but it might just be luck. Still, I’m a bit of a gambler. I’ll bet on Wellesley.
 
@@ -33,11 +51,20 @@ Your gamble paid off: three more hills go by and Wellesley wins all three. Going
 > you: Six wins in a row for Duke Wellesley. This is starting to feel a bit suspicious. I’m still not certain, but I reckon that he’s going to win the next one too.
 
 > me: I guess I don’t see that. Sure, I agree that
-Wellesley has won six in a row, but I don’t see any logical reason why that means he’ll win the seventh one. No bet. you: Do you really think so? Fair enough, but my bet worked out last time and I’m okay with my choice.
+Wellesley has won six in a row, but I don’t see any logical reason why that means he’ll win the seventh one. No bet. you: Do you really think so? Fair enough, but my bet worked out last time and I’m okay with my choice. --->
 
-For a second time you were right, and for a second time I was wrong. Wellesley wins the next three hills, extending his winning record against Croker to 9-0. The data set available to us is now this: $WWW$ $WWW$ $WWW$ And our conversation goes like this:    
+我們的對話如下:
 
-> you: Okay, this is pretty obvious. Wellesley is way better at this game. We both agree he’s going to win the next hill, right?
+> 你:三連勝並沒有太大意義。我猜Wellesley在這個遊戲上可能比Croker更擅長,但這也可能只是巧合。儘管如此,我還是有點賭徒精神。我會押註Wellesley。
+
+> 我:我同意三連勝並沒有提供足夠信息,我也找不到任何理由更青睞Wellesley而不是Croker。我在這個階段不能證明下注是正確的。很抱歉,我不會下注。
+
+<!--- For a second time you were right, and for a second time I was wrong. Wellesley wins the next three hills, extending his winning record against Croker to 9-0. The data set available to us is now this: $WWW$ $WWW$ $WWW$ And our conversation goes like this: --->    
+
+你的賭注成功了:又過去三座山,Wellesley贏得了所有三座。進入我們遊戲的下一輪,比分是1比0,你獲勝,我們的資料如下:$WWW$ $WWW$ 我已將數據組織成三個數據塊,以便您可以看到哪個數據塊對應於我們在遊戲每一步可用的觀測。看到這個新數據塊后,我們的對話繼續:
+
+
+> you: Okay, this is pretty obvious. Wellesley is way better at this game. We both agree he’s going to win the next hill, right? 
 
 > me: Is there really any logical evidence for that? Before we started this game, there were lots of possibilities for the first 10 outcomes, and I had no idea which one to expect. $WWW$ $WWW$ $WWW$ $W$ was one possibility, but so was $WCC$ $CWC$ $WWC$ $C$ and $WWW$ $WWW$ $WWW$ $C$ or even $CCC$ $CCC$ $CCC$ $C$. Because I had no idea what would happen so I’d have said they were all equally likely. I assume you would have too, right? I mean, that’s what it means to say you have “no idea”, isn’t it?
 
@@ -46,7 +73,9 @@ For a second time you were right, and for a second time I was wrong. Wellesley w
 > me: Well then, the
 observations we’ve made logically rule out all possibilities except two: $WWW$ $WWW$ $WWW$ $C$ or $WWW$ $WWW$ $WWW$ $W$. Both of these are perfectly consistent with the evidence we’ve encountered so far, aren’t they?
 
-> you: Yes, of course they are. Where are you going with this? me: So what’s changed then? At the start of our game, you’d have agreed with me that these are equally plausible and none of the evidence that we’ve encountered has discriminated between these two possibilities. Therefore, both of these possibilities remain equally plausible and I see no logical reason to prefer one over the other. So yes, while I agree with you that Wellesley’s run of 9 wins in a row is remarkable, I can’t think of a good reason to think he’ll win the 10th hill. No bet.
+> you: Yes, of course they are. Where are you going with this? 
+
+> me: So what’s changed then? At the start of our game, you’d have agreed with me that these are equally plausible and none of the evidence that we’ve encountered has discriminated between these two possibilities. Therefore, both of these possibilities remain equally plausible and I see no logical reason to prefer one over the other. So yes, while I agree with you that Wellesley’s run of 9 wins in a row is remarkable, I can’t think of a good reason to think he’ll win the 10th hill. No bet.
 
 > you: I see your point, but I’m still willing to chance it. I’m betting on Wellesley.
 
@@ -58,26 +87,68 @@ Wellesley’s winning streak continues for the next three hills. The score in th
 
 > you: I think you’re being unreasonable. Why not take a look at our scorecard, if you need evidence? You’re the expert on statistics and you’ve been using this fancy logical analysis, but the fact is you’re losing. I’m just relying on common sense and I’m winning. Maybe you should switch strategies.
 
-> me: Hmm, that is a good point and I don’t want
-to lose the game, but I’m afraid I don’t see any logical evidence that your strategy is better than mine. It seems to me that if there were someone else watching our game, what they’d have observed is a run of three wins to you. Their data would look like this: $YYY$. Logically, I don’t see that this is any different to our first round of watching Wellesley and Croker. Three wins to you doesn’t seem like a lot of evidence, and I see no reason to think that your strategy is working out any better than mine. If I didn’t think that $WWW$ was good evidence then for Wellesley being better than Croker at their game, surely I have no reason now to think that YYY is good evidence that you’re better at ours?
+> me: Hmm, that is a good point and I don’t want to lose the game, but I’m afraid I don’t see any logical evidence that your strategy is better than mine. It seems to me that if there were someone else watching our game, what they’d have observed is a run of three wins to you. Their data would look like this: $YYY$. Logically, I don’t see that this is any different to our first round of watching Wellesley and Croker. Three wins to you doesn’t seem like a lot of evidence, and I see no reason to think that your strategy is working out any better than mine. If I didn’t think that $WWW$ was good evidence then for Wellesley being better than Croker at their game, surely I have no reason now to think that YYY is good evidence that you’re better at ours?
 
 > you: Okay, now I think you’re being a jerk.
 
 > me: I don’t see the logical evidence for that.
 
+--->
+
+> 你:很明顯,Wellesley 在這個遊戲中表現更好。我們都同意他會贏得下一場比賽,對吧?
+
+> 我:這個結論真的有什麼邏輯依據嗎?在我們開始這場遊戲之前,前10次結果有很多可能的組合,我也不知道會是哪一種。$WWW$ $WWW$ $WWW$ $W$ 是一種可能,但 $WCC$ $CWC$ $WWC$ $C$ 和 $WWW$ $WWW$ $WWW$ $C$ 或者甚至 $CCC$ $CCC$ $CCC$ $C$ 也都是可能的。因為我根本不知道會發生什麼,所以我會說這些結果的可能性是一樣的。我假設你也是這樣想的,對吧?我的意思是,這就是“完全不知道”的意思,不是嗎?
+
+> 你:我想是的。
+
+> 我:那麼,我們的觀察從邏輯上排除了所有可能性,只剩下兩種:$WWW$ $WWW$ $WWW$ $C$ 或者 $WWW$ $WWW$ $WWW$ $W$。這兩種情況都和我們目前觀察到的證據完全吻合,不是嗎?
+
+> 你:是的,當然是的。你想說什麼?
+
+> 我:那麼現在情況有什麼改變呢?在遊戲開始時,你會同意這兩種可能性同樣合理,而我們觀察到的證據也没有區分兩者的優劣。所以,這兩種可能性仍然同樣合理,我看不出有任何邏輯理由偏好其中一種。所以,是的,雖然我同意你的看法Wellesley的9連勝很令人印象深刻,但是我想不出任何理由認為他會贏得第10場。不押注。
+
+> 你:我理解你的看法,但是我仍然願意嘗試下注。我押Wellesley。
+
+在接下來的三場比賽中,Wellesley的連勝仍在繼續。Wellesley-Croker比賽的比分現在是12比0,我們遊戲的比分是3比0。當我們進入遊戲的第四輪時,我們的資料集如下:$WWW$ $WWW$ $WWW$ $WWW$ 對話繼續:
+
+> 你:太好了!Wellesley再次取得三連勝,我也再次獲勝了。你得承認,我對他的判斷是對的!我想這一次我們都會押Wellesley,對吧?
+
+> 我:我不知道該怎麼想。我覺得我們和上一輪的情況差不多,沒有太大變化。對於一系列13次未被排除的結果,只有兩種合法的可能:$WWW$ $WWW$ $WWW$ $WWW$ $C$ 和 $WWW$ $WWW$ $WWW$ $WWW$ $W$。就像我上次說的那樣。如果在遊戲開始前所有結果都同樣合理的話,那么鑑於我們的觀察並没有排除其中任何一種,這兩種結果現在應該也同樣合理,不是嗎?我同意你的感覺,Wellesley正處在令人驚嘆的連勝中,但是哪裡有邏輯證據可以證明他會繼續保持下去呢?
+
+> 你:我認為你很不合理。如果你需要證據,為什麼不看看我們的記分牌呢?你是統計學專家,一直在使用這種花哨的邏輯分析,但事實是你正在輸。我只是依靠常識,而我正在獲勝。或許你應該改變策略。
+
+> 我:嗯,你說的有道理,我也不想輸,但是恕我直言,我看不出有任何邏輯證據證明你的策略比我的更好。在我看來,如果有其他人在觀看我們的比賽,他們會看到你取得了三連勝。他們的資料會像這樣:$YYY$。 在邏輯上,我認為這和我們第一次觀察 Wellesley 和 Croker 沒有兩樣。你三次獲勝並不算很有力的證據,我也不認為你的策略有任何優於我的地方。如果我不認為 $WWW$ 是 Wellesley 比 Croker 更優秀的有力證據的話,那么我現在當然也沒有理由相信 YYY 是你比我更擅長這場比賽的有力證據。
+
+> 你:好吧,現在我認為你在裝傻。
+
+> 我:我看不出有什麼邏輯證據可以證明這一點。
+
 ## 學習統計不需要預設條件嗎 {-}
 
+
+<!---
 There are lots of different ways in which we could dissect this dialogue, but since this is a statistics book pitched at psychologists and not an introduction to the philosophy and psychology of reasoning, I’ll keep it brief. What I’ve described above is sometimes referred to as [歸納之謎the *riddle of induction*](https://zh.wikipedia.org/wiki/%E7%B6%A0%E8%97%8D%E6%82%96%E8%AB%96). It seems entirely reasonable to think that a 12-0 winning record by Wellesley is pretty strong evidence that he will win the 13th game, but it is not easy to provide a proper logical justification for this belief. On the contrary, despite the obviousness of the answer, it’s not actually possible to justify betting on Wellesley without relying on some assumption that you don’t have any logical justification for.
 
-The riddle of induction is most associated with the philosophical work of David Hume and more recently 納爾遜·古德曼(Nelson Goodman), but you can find examples of the problem popping up in fields as diverse as literature 愛麗絲夢遊仙境[路易斯·卡羅(Lewis Carroll)](https://zh.wikipedia.org/wiki/%E8%B7%AF%E6%98%93%E6%96%AF%C2%B7%E5%8D%A1%E7%BE%85) and machine learning [沒有免費的午餐定理(the “no free lunch” theorem)](https://blog.maxkit.com.tw/2019/07/nflno-free-lunch-theorems.html). There really is something weird about trying to “learn what we do not know from what we do know”. The critical point is that assumptions[^Preloude_translation_1] and biases are unavoidable if you want to learn anything about the world. There is no escape from this, and it is just as true for statistical inference as it is for human reasoning. **In the dialogue I was taking aim at your perfectly sensible inferences as a human being, but the common sense reasoning that you relied on is no different to what a statistician would have done.** Your “common sense” half of the dialog relied on an implicit assumption that there exists some difference in skill between Wellesley and Croker, and what you were doing was trying to work out what that difference in skill level would be. My “logical analysis” rejects that assumption entirely. All I was willing to accept is that there are sequences of wins and losses and that I did not know which sequences would be observed. Throughout the dialogue I kept insisting that all logically possible data sets were equally plausible at the start of the Wellesely-Croker game, and the only way in which I ever revised my beliefs was to eliminate those possibilities that were factually inconsistent with the observations.
+The riddle of induction is most associated with the philosophical work of David Hume and more recently 納爾遜·古德曼(Nelson Goodman), but you can find examples of the problem popping up in fields as diverse as literature 愛麗絲夢遊仙境[路易斯·卡羅(Lewis Carroll)](https://zh.wikipedia.org/wiki/%E8%B7%AF%E6%98%93%E6%96%AF%C2%B7%E5%8D%A1%E7%BE%85) and machine learning [沒有免費的午餐定理(the “no free lunch” theorem)](https://blog.maxkit.com.tw/2019/07/nflno-free-lunch-theorems.html). There really is something weird about trying to “learn what we do not know from what we do know”. The critical point is that assumptions[^Preloude_translation_1] and biases are unavoidable if you want to learn anything about the world. There is no escape from this, and it is just as true for statistical inference as it is for human reasoning. **In the dialogue I was taking aim at your perfectly sensible inferences as a human being, but the common sense reasoning that you relied on is no different to what a statistician would have done.** Your “common sense” half of the dialog relied on an implicit assumption that there exists some difference in skill between Wellesley and Croker, and what you were doing was trying to work out what that difference in skill level would be. My “logical analysis” rejects that assumption entirely. All I was willing to accept is that there are sequences of wins and losses and that I did not know which sequences would be observed. Throughout the dialogue I kept insisting that all logically possible data sets were equally plausible at the start of the Wellesely-Croker game, and the only way in which I ever revised my beliefs was to eliminate those possibilities that were factually inconsistent with the observations. --->
+
+
+我們可以從多個角度分析上面的對話,但是由于這本書的目標讀者是心理學家而不是哲學或推理心理學專業人士,我會簡單帶過。上面描述的有時被稱為歸納謎題。認為 Wellesley 12連勝是他贏得第13場比賽的非常有力證據,這種想法看起來非常合理,但是很難對這種信念提供恰當的邏輯證明。相反,儘管答案很明顯,但如果不依賴某些你沒有任何邏輯依據的預設條件,實際上不可能證明押注 Wellesley。
+
+歸納作為哲學難題最常與大衛·休謨(David Hume)和納爾遜·古德曼(Nelson Goodman)的哲學工作聯繫在一起,但你可以在各個領域找到這個問題的例子,如文學作家(像是寫愛麗絲夢遊境的[路易斯·卡羅](https://zh.wikipedia.org/wiki/%E8%B7%AF%E6%98%93%E6%96%AF%C2%B7%E5%8D%A1%E7%BE%85) )和機器學習([“免費午餐”定理](https://blog.maxkit.com.tw/2019/07/nflno-free-lunch-theorems.html))。嘗試“從我們所知道的中學習我們不知道的東西”確實有些怪異。關鍵點是,如果你想了解世界上的任何事物,則預設條件[^Preloude_translation_1]和偏見是不可避免的。這是無法逃避的,統計推論和人類推理一樣也是如此。在對話中,我試圖採取合理的人類推理,但是你所依賴的常識推理跟統計學家所做的没有區別。你在對話中“常識”那一半所依賴的隱含預設條件是 Wellesley 和 Croker 之間在技能上存在某些區別,你要做的就是設法找出他們之間的技能差異大小。而我的“邏輯分析”完全拒絕這種預設條件。我所願意接受的只是存在勝利和失敗的序列,并且我不知道會觀察到哪些序列。在整個對話中,我堅持認為在 Wellesley-Croker 比賽開始時所有在邏輯上可能的數據集都同樣合理,我修改信念的唯一方式就是消除與觀察事實不一致的可能性。
+
 
 [^Preloude_translation_1]: 譯註~同學們也許在一些地方看過"hypothesis"與"assumption"都被翻成「假設」，但是在英文這兩個詞是有區別的。"hypothesis"是指根據某種科學理論，設定實驗結果可能是什麼樣子。"assumption"是指研究運用的收集與分析資料的技術，必須符合什麼條件才會有效。因此"hypothesis"翻成「假設」是合理的，"assumption"應該翻成「預設條件」。本書的用詞將依此原則翻譯。
 
-That sounds perfectly sensible on its own terms. In fact, it even sounds like the hallmark of good deductive reasoning. Like Sherlock Holmes, my approach was to *rule out that which is impossible in the hope that what would be left is the truth*. Yet as we saw, ruling out the impossible never led me to make a prediction. On its own terms everything I said in my half of the dialogue was entirely correct. *An inability to make any predictions is the logical consequence of making “no assumptions”.* In the end I lost our game because you did make some assumptions and those assumptions turned out to be right. Skill is a real thing, and because you believed in the existence of skill you were able to learn that Wellesley had more of it than Croker. Had you relied on a less sensible assumption to drive your learning you might not have won the game.
+<!--- That sounds perfectly sensible on its own terms. In fact, it even sounds like the hallmark of good deductive reasoning. Like Sherlock Holmes, my approach was to *rule out that which is impossible in the hope that what would be left is the truth*. Yet as we saw, ruling out the impossible never led me to make a prediction. On its own terms everything I said in my half of the dialogue was entirely correct. *An inability to make any predictions is the logical consequence of making “no assumptions”.* In the end I lost our game because you did make some assumptions and those assumptions turned out to be right. Skill is a real thing, and because you believed in the existence of skill you were able to learn that Wellesley had more of it than Croker. Had you relied on a less sensible assumption to drive your learning you might not have won the game.
 
 Ultimately there are two things you should take away from this. First, as I’ve said, **you cannot avoid making assumptions if you want to learn anything from your data.** But second, **once you realise that assumptions are necessary it becomes important to make sure you make the right ones!** A data analysis that relies on few assumptions is not necessarily better than one that makes many assumptions, it all depends on whether those assumptions are good ones for your data. As we go through the rest of
 this book I’ll often point out the assumptions that underpin a
-particular statistical technique, and how you can check whether those assumptions are sensible.
+particular statistical technique, and how you can check whether those assumptions are sensible.--->
+
+
+就其自身而言,這聽起來非常合理。事實上,它甚至聽起來像是良好的演繹推理的標誌。像福爾摩斯一樣,我的方法是排除不可能發生的事情,以期獲得真相。然而,正如我們所見,排除不可能的事情從未使我能夠做出預測。就其自身而言,我在對話中說的每一件事情都是完全正確的。無法作出任何預測是“不做任何預設條件”的邏輯結果。最終我輸掉了比賽,因為你做出了一些預設條件,而這些觀察結果是正確的。技能是真實存在的,你相信技能的存在,所以你能夠學習到 Wellesley 的技能勝過 Croker。如果你的學習依賴於一個不太合理的預設條件,你可能就不會贏得比賽了。
+
+最終,有兩件事情是你應該了解的。首先,正如我所說,如果你想從數據中學習任何東西,你就必須設定預設條件。但是其次,一旦你意識到預設條件是必要的,那麼確保你做出正確的預設條件就變得非常重要!依賴較少條件的資料分析不一定比依賴更多條件的分析好,這完全取决于這些預設條件對你的數據是否合適。在我們學習這本書的後半部時,我經常會指出某種統計技術所依賴的預設條件,以及如何檢查這些條件是否合理。
 
 ------------------------------------------------------------------------
 

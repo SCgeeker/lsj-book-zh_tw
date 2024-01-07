@@ -15,11 +15,11 @@ source("header.R")
 <!---This is a somewhat strange chapter, even by my standards. My goal in this chapter is to talk a bit more honestly about the realities of working with data than you'll see anywhere else in the book. The problem with real world data sets is that they are *messy*. Very often the data file that you start out with doesn't have the variables stored in the right format for the analysis you want to do. Sometimes there might be a lot of missing values in your data set. Sometimes you only want to analyse a subset of the data. Et cetera. In other words, there's a lot of **data manipulation** that you need to do just to get the variables in your data set into the format that you need it. The purpose of this chapter is to provide a basic introduction to these pragmatic topics. Although the chapter is motivated by the kinds of practical issues that arise when manipulating real data, I'll stick with the practice that I've adopted through most of the book and rely on very small, toy data sets that illustrate the underlying issue. Because this chapter is essentially a collection of techniques and doesn't tell a single coherent story, it may be useful to start with a list of topics: --->
 
 
-- [製作次數表及列聯表](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
-- [邏輯運算](06-Pragmatic-matters.html#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97)
-- [資料變項的轉換與編碼](06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable)
-- [數學函式及運算子](06-Pragmatic-matters.html#%E6%95%B8%E5%AD%B8%E5%87%BD%E5%BC%8F%E5%8F%8A%E9%81%8B%E7%AE%97%E5%AD%90)
-- [篩選部分資料](06-Pragmatic-matters.html#%E7%AF%A9%E9%81%B8%E9%83%A8%E5%88%86%E8%B3%87%E6%96%99)
+- [製作次數表及列聯表]
+- [邏輯運算]
+- [資料變項的轉換與編碼]
+- [數學函式及運算子]
+- [篩選部分資料]
 
 這一章討論的課題很廣泛，而且各有不少篇幅。雖然這一章的長度應該是本書前三名，但是討論的五個課題只是原作者認為相對重要的一部分資料操作技巧。原作者建議與各章相同，同學先讀過一遍，再試著按照範例操作。其餘各章只有少部分會提及實務課題，只要先有基本概念即可。當同學在後續各章發現有需要深入理解的實務課題，再回到這一章了解有什麼解決方法。
 
@@ -241,6 +241,9 @@ kable(data.frame(
 
 ### 在報告中表達邏輯運算子
 
+(以下為AI初翻，尚待校稿)
+
+<!---
 I also want to briefly point out that you can apply these logical operators to text as well as to logical data. It's just that we need to be a bit more careful in understanding how jamovi interprets the different operations. In this section I'll talk about how the equal to operator $==$ applies to text, since this is the most important one. Obviously, the not equal to operator != gives the exact opposite answers to $==$ so I'm implicitly talking about that one too, but I won't give specific commands showing the use of $!=$.
 
 Okay, let's see how it works. In one sense, it's very simple. For instance, I can ask jamovi if the word "cat" is the same as the word "dog", like this:
@@ -261,46 +264,101 @@ This in fact evaluates to 'true'. In other words, jamovi assumes that uppercase 
 
 This evaluates to 'false', and this may seem slightly counter-intuitive. With that in mind, it may help to have a quick look at @tbl-tab6-4 which lists various text characters in the order that jamovi processes them.
 
+Text characters in the order that jamovi processes them
+--->
+
+這是6.2.3節“在報告中表達邏輯運算子”的原始檔,其中使用'$'符號包圍的部分是latex code,要保持原樣不做翻譯。最後還有表格說明。我生成了以下繁體中文翻譯初稿:
+
+我也想簡要指出,您可以將這些邏輯運算符應用於文本以及邏輯數據。只是在理解jamovi如何解讀不同運算時,我們需要更加小心。在本節中,我將談論等於運算符$==$如何應用於文本,因為這是最重要的一個。顯然,不等於運算符$!=$會給出與$==$完全相反的答案,所以我也隱含地談到了這個運算符,但我不會給出顯示使用$!=$的具體命令。  
+
+好的,讓我們看看它的工作原理。在某種意義上,這非常簡單。例如,我可以詢問jamovi“cat”一詞是否與“dog”一詞相同,像这样:  
+
+"cat"$==$"dog"  
+
+這很明顯,很高興知道即使是jamovi也能明白這一點。同樣,jamovi也確實認識到“cat”就是“cat”:
+
+"cat"$==$"cat"  
+
+同樣,這正是我們的預期。然而,您需要记住的是,在語法和空格方面,jamovi完全不寬容。如果兩個字符串在任何方面有任何區別,jamovi會說它們不等於彼此,如下所示:  
+
+" cat" $==$ "cat"  
+"cat" $==$ "CAT"  
+"cat" $==$ "c a t"  
+
+您也可以使用其他邏輯運算符。例如,jamovi還允許您使用\\>和\\<運算符來確定兩個文本“字符串”在字母順序上的先後順序。某種意義上。其實,這比較複雜,但讓我們從一個簡單的示例開始:  
+
+"cat"$<$"dog"  
+
+在jamovi中,這個示例被評估為“真”。這是因為“cat”確實在字母順序上位於“dog”之前,所以jamovi判斷該語句為真。但是,如果我們要求jamovi告訴我們“cat”是否位於“anteater”之前,它會將該運算式評估為假。到目前為止都很好。但文本數據比字典所示的要複雜一些。“cat”和“CAT”怎麼樣?哪個在前?試試看:  
+
+"CAT"$<$"cat"  
+
+這實際上被評估為“真”。換句話說,jamovi假定大寫字母在小寫字母之前。這很公平。不太可能有人會為此感到驚訝。您可能會感到驚訝的是,jamovi假設所有的大寫字母都在所有小寫字母之前。也就是說,“anteater”$<$“zebra”是一個真語句,而大寫對應的“ANTEATER”$<$“ZEBRA”也為真,但是“anteater”$<$“ZEBRA”不是真的,如下所示。嘗試一下: 
+
+"anteater"$<$"ZEBRA"  
+
+這被評估為“假”,這看起來有點反直覺。考慮到這一點,快速查看 @tbl-tab6-4 可能會有幫助,其中列出了 jamovi 處理的各種文本字符的順序。  
+
+
 ```{r}
 #| label: tbl-tab6-4
-#| tbl-cap: Text characters in the order that jamovi processes them
+#| tbl-cap: 表內文本字符按照 jamovi 處理順序排列。
 huxtabs[[6]][[4]] 
 ```
 
 ## 資料變項的轉換與編碼 {#sec-Transforming-and-recoding-a-variable}
 
-It's not uncommon in real world data analysis to find that one of your variables isn't quite equivalent to the variable that you really want. For instance, it's often convenient to take a continuous-valued variable (e.g., age) and break it up into a smallish number of categories (e.g., younger, middle, older). At other times, you may need to convert a numeric variable into a different numeric variable (e.g., you may want to analyse at the absolute value of the original variable). In this section I'll describe a few key ways you can do these things in jamovi.
+<!---It's not uncommon in real world data analysis to find that one of your variables isn't quite equivalent to the variable that you really want. For instance, it's often convenient to take a continuous-valued variable (e.g., age) and break it up into a smallish number of categories (e.g., younger, middle, older). At other times, you may need to convert a numeric variable into a different numeric variable (e.g., you may want to analyse at the absolute value of the original variable). In this section I'll describe a few key ways you can do these things in jamovi.--->
+
+在現實世界的數據分析中,發現您的一個變量與您真正需要的變量不完全等價的情况并不罕見。例如,通常將一個連續值變量(例如年齡)分解為數量較少的類別(例如更年輕、中等和更老)很方便。在其他時候,您可能需要將數值變量轉換為不同的數值變量(例如,您可能希望分析原始變量的絕對值)。在本節中,我將描述您可以在 jamovi 中完成這些操作的一些關鍵方法。
 
 ### 轉換資料數值
 
-The first trick to discuss is the idea of **transforming** a variable. Taken literally, anything you do to a variable is a transformation, but in practice what it usually means is that you apply a relatively simple mathematical function to the original variable in order to create a new variable that either (a) provides a better way of describing the thing you're actually interested in, or (b) is more closely in agreement with the assumptions of the statistical tests you want to do. Since, at this stage, I haven't talked about statistical tests or their assumptions, I'll show you an example based on the first case.
+<!---The first trick to discuss is the idea of **transforming** a variable. Taken literally, anything you do to a variable is a transformation, but in practice what it usually means is that you apply a relatively simple mathematical function to the original variable in order to create a new variable that either (a) provides a better way of describing the thing you're actually interested in, or (b) is more closely in agreement with the assumptions of the statistical tests you want to do. Since, at this stage, I haven't talked about statistical tests or their assumptions, I'll show you an example based on the first case.
 
 Suppose I've run a short study in which I ask 10 people a single question:<br />
 On a scale of 1 (strongly disagree) to 7 (strongly agree), to what extent do you agree with the proposition that "Dinosaurs are awesome"?
 
 Now let's load and look at the data. The data file likert.omv contains a single variable that contains raw Likert-scale responses for these 10 people. However, if you think about it, this isn't the best way to represent these responses. Because of the fairly symmetric way that we set up the response scale, there's a sense in which the midpoint of the scale should have been coded as 0 (no opinion), and the two endpoints should be \`3 (strongly agree) and ´3 (strongly disagree). By recoding the data in this way it's a bit more reflective of how we really think about the responses. The recoding here is pretty straightforward, we just subtract 4 from the raw scores. In jamovi you can do this by computing a new variable: click on the 'Data' - 'Compute' button and you will see that a new variable has been added to the spreadsheet. Let's call this new variable likert.centred (go ahead and type that in) and then add the following in the formula box, like in @fig-fig6-4: 'likert.raw - 4'
+Creating a new computed variable in jamovi
+--->
+
+首先要討論的技巧是**轉換**變項的概念。從字面上看,對變項執行的任何操作都是轉換,但在實踐中,它通常的意思是您對原始變項應用相對簡單的數學函數以創建新變項,新變項要么(a)以更好的方式描述您實際感興趣的事物,要么(b)與您想要執行的統計測試的假設更為一致。由于在這一階段我還沒有談到統計測試或它們的假設,所以我將給您展示第一種情况的示例。
+
+假設我進行了一項短期研究,向10人提出了一個問題:<br />
+
+在1(強烈不同意)到7(強烈同意)的量表上,您在多大程度上同意“恐龍很棒”的主張?
+
+現在讓我們加載資料并查看。omv檔案likert.omv包含了這10個人的單個變項,其中包含原始李克特量表響應。然而,仔細想想,這並不是表示這些響應的最佳方式。由于我們建立響應量表的相當對稱的方式,在某種意義上,量表的中位數應編碼為0(沒有意見),而兩個端點應為\\\`3(強烈同意)和 ́3(強烈不同意)。通過這種方式重新編碼資料,它在一定程度上更能反映我們對響應的真實想法。這裡重新編碼很簡單,只需從原始分數中減去4。在jamovi中,您可以通過計算新變項來完成此操作:點擊“資料”- “計算”按鈕,您將看到電子表格中添加了一個新變項。讓我們將此新變項命名為likert.centred(前往並輸入該名稱),然后在公式框中添加以下內容,如 @fig-fig6-4 所示:“likert.raw - 4”
 
 ```{r}
 #| label: fig-fig6-4
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Creating a new computed variable in jamovi
+#| fig-cap: 在 jamovi 中創建新的計算變項  
 knitr::include_graphics("images/fig6-4.png")
 ```
 
-One reason why it might be useful to have the data in this format is that there are a lot of situations where you might prefer to analyse the strength of the opinion separately from the direction of the opinion. We can do two different transformations on this likert.centred variable in order to distinguish between these two different concepts. First, to compute an opinion.strength variable, we want to take the absolute value of the centred data (using the 'ABS' function).[^pragmatic-matters-6] In jamovi, create another new variable using the 'Compute' button. Name the variable opinion.strength and this time click on the fx button next to the 'Formula' box. This shows the different 'Functions' and 'Variables' that you can add to the 'Formula' box, so double click on 'ABS' and then double click on "likert.centred' and you will see that the 'Formula' box is populated with ABS(likert.centred) and a new variable has been created in the spreadsheet view, as in @fig-fig6-5.
+<!--- One reason why it might be useful to have the data in this format is that there are a lot of situations where you might prefer to analyse the strength of the opinion separately from the direction of the opinion. We can do two different transformations on this likert.centred variable in order to distinguish between these two different concepts. First, to compute an opinion.strength variable, we want to take the absolute value of the centred data (using the 'ABS' function).[^pragmatic-matters-6] In jamovi, create another new variable using the 'Compute' button. Name the variable opinion.strength and this time click on the fx button next to the 'Formula' box. This shows the different 'Functions' and 'Variables' that you can add to the 'Formula' box, so double click on 'ABS' and then double click on "likert.centred' and you will see that the 'Formula' box is populated with ABS(likert.centred) and a new variable has been created in the spreadsheet view, as in @fig-fig6-5.
 
-[^pragmatic-matters-6]: The absolute value of a number is its distance from zero, regardless of whether it's sign is negative or positive.
+[^pragmatic-matters-6]: The absolute value of a number is its distance from zero, regardless of whether it's sign is negative or positive. 
+Using the $f_x$ button to select functions and variables
+--->
+
+以這種格式保存資料的一個原因是,在很多情况下,您可能更喜歡單獨分析意見的力度而不是意見的方向。我們可以對這個likert.centred變項執行兩種不同的轉換,以區分這兩個不同的概念。首先,為了計算opinion.strength變項,我們想采取中心化資料的絕對值(使用ABS函數)。[^pragmatic-matters-6]在jamovi中,使用“計算”按鈕再創建一個新變項。將變項命名為opinion.strength,這次點擊公式框旁邊的fx按鈕。這將顯示可以添加到“公式”框中的不同“函數”和“變量”,所以雙擊“ABS”,然後雙擊“likert.centred”,您將看到“公式”框被填充為ABS(likert.centred),並且在電子表格視圖中創建了一個新變項,如 @fig-fig6-5 所示。  
+
+[^pragmatic-matters-6]: 數的絕對值是其與零的距離,而不管其符號是負數還是正數。  
+
 
 ```{r}
 #| label: fig-fig6-5
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Using the $f_x$ button to select functions and variables
+#| fig-cap: 使用 $f\_x$ 按鈕選擇函數和變項
 knitr::include_graphics("images/fig6-5.png")
 ```
 
-Second, to compute a variable that contains only the direction of the opinion and ignores the strength, we want to calculate the 'sign' of the variable. In jamovi we can use the IF function to do this. Create another new variable using the 'Compute' button, name this one opinion.sign, and then type the following into the function box:
+<!---Second, to compute a variable that contains only the direction of the opinion and ignores the strength, we want to calculate the 'sign' of the variable. In jamovi we can use the IF function to do this. Create another new variable using the 'Compute' button, name this one opinion.sign, and then type the following into the function box:
 
 IF(likert.centred $==$ 0, 0, likert.centred / opinion.strength) When done, you'll see that all negative numbers from the likert.centred variable are converted to -1, all positive numbers are converted to 1 and zero stays as 0, like so:
 
@@ -310,11 +368,23 @@ Let's break down what this 'IF' command is doing. In jamovi there are three part
 
 [^pragmatic-matters-7]: The reason we have to use the 'IF' command and keep zero as zero is that you cannot just use likert.centred / opinion.strength to calculate the sign of likert.centred, because mathematically dividing zero by zero does not work. Try it and see
 
-And we're done. We now have three shiny new variables, all of which are useful transformations of the original likert.raw data.
+And we're done. We now have three shiny new variables, all of which are useful transformations of the original likert.raw data. --->
+
+其次,為了計算仅包含意見方向並忽略力度的變項,我們想計算變量的“符號”。在jamovi中,我們可以使用IF函數來實現。使用“計算”按鈕再創建一個新變量,將此變量命名為opinion.sign,然後在函數框中鍵入以下內容:  
+
+IF(likert.centred $==$ 0, 0, likert.centred / opinion.strength) 完成後,您會看到likert.centred變量中的所有負數都轉換為-1,所有正數都轉換為1,零保持為0,如下所示:  
+
+-1 1 -1 0 0 0 -1 1 1 1  
+
+讓我們分解這個‘IF’命令的工作原理。在jamovi中,’IF’語句有三個部分,寫為‘IF(expression,value,else)’。第一部分“expression”可以是邏輯或數學語句。在我們的示例中,我們已經指定了‘likert.centred $==$ 0’,這對於likert.centred為零的值為真。下一部分“value”是第一部分中的運算式為真時的新值。在我們的示例中,對於所有likert.centred為零的值,我們說保持它們為零。在下一部分“else”中,我們可以輸入另一個邏輯或數學語句,如果第一部分評估為假,即likert.centred不為零,則使用該語句。在我們的示例中,我們將likert.centred除以opinion.strength以給出“-1”或“+1”,具體取決於likert.centred中原始值的符號。[^pragmatic-matters-7]  
+
+[^pragmatic-matters-7]: 我們必須使用‘IF’命令並將零保持為零的原因是,您不能只使用likert.centred / opinion.strength來計算likert.centred的符號,因為在數學上,零除以零無法運作。嘗試一下即可看到  
+
+就這些了。我們現在有三個閃亮的新變量,它們都是原始likert.raw資料的有用轉換。
 
 ### 轉換連續變項為間斷變項
 
-One pragmatic task that comes up quite often is the problem of collapsing a variable into a smaller number of discrete levels or categories. For instance, suppose I'm interested in looking at the age distribution of people at a social gathering:
+<!--- One pragmatic task that comes up quite often is the problem of collapsing a variable into a smaller number of discrete levels or categories. For instance, suppose I'm interested in looking at the age distribution of people at a social gathering:
 
 60,58,24,26,34,42,31,30,33,2,9
 
@@ -324,31 +394,69 @@ IF(Age \>= 0 and Age \<= 20, 1, IF(Age \>= 21 and Age \<= 40, 2, IF(Age \>= 41 a
 
 Note that there are three left parentheses used during the nesting, so the whole statement has to end with three right parentheses otherwise you will get an error message. The jamovi screen shot for this data manipulation, along with an accompanying frequency table, is shown in @fig-fig6-6.
 
+Collapsing a variable into a smaller number of discrete levels using the jamovi ‘IF’ function --->
+
+
+一個非常實用的任務是將變項歸併為更少數量的離散層次或類別的問題。例如,假設我有興趣查看社交聚會上人們的年齡分佈:  
+
+60,58,24,26,34,42,31,30,33,2,9  
+
+在某些情况下,將這些資料分組為少量類別會非常有幫助。例如,我們可以將資料分為三大類:年輕(0-20)、成年(21-40)和老年(41-60)。這是一種相當粗糙的分類,並且我給出的標籤僅在本資料集上下文中有意義(例如,從更廣泛的角度來看,42歲的人不會認為自己是“老年人”)。我們可以使用已經使用過的 jamovi ‘IF’函數輕鬆地劃分這個變項。這次我們必須指定巢狀的 ‘IF’語句,這僅僅意味著如果第一個邏輯運算式為 TRUE,則插入第一個值,但如果第二個邏輯運算式為 TRUE,則插入第二個值,但是如果第三個邏輯運算式為 TRUE,則插入第三個值。這可以寫為: 
+
+IF(Age \>= 0 和 Age \<= 20,1,IF(Age \>= 21 和 Age \<= 40,2,IF(Age \>= 41 和 Age \<= 60,3)))  
+
+請注意,巢狀使用了三個左括號,所以整個語句必須以三個右括號結束,否則您將得到錯誤消息。 這個資料操作的jamovi截圖以及隨附的頻率表如 @fig-fig6-6 所示。  
+
+
 ```{r}
 #| label: fig-fig6-6
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Collapsing a variable into a smaller number of discrete levels using the jamovi ‘IF’ function
+#| fig-cap: 使用 jamovi“IF”函數將變量歸併為更少數量的離散層次  
 knitr::include_graphics("images/fig6-6.png")
 ```
 
-It's important to take the time to figure out whether or not the resulting categories make any sense at all in terms of your research project. If they don't make any sense to you as meaningful categories, then any data analysis that uses those categories is likely to be just as meaningless. More generally, in practice I've noticed that people have a very strong desire to carve their (continuous and messy) data into a few (discrete and simple) categories, and then run analyses using the categorised data instead of the original data.[^pragmatic-matters-8] I wouldn't go so far as to say that this is an inherently bad idea, but it does have some fairly serious drawbacks at times, so I would advise some caution if you are thinking about doing it.
 
-[^pragmatic-matters-8]: If you've read further into the book, and are re-reading this section, then a good example of this would be someone choosing to do an ANOVA using AgeCats as the grouping variable, instead of running a regression using Age as a predictor. There are sometimes good reasons for doing this. For instance, if the relationship between Age and your outcome variable is highly non-linear and you aren't comfortable with trying to run non-linear regression! However, unless you really do have a good rationale for doing this, it's best not to. It tends to introduce all sorts of other problems (e.g., the data will probably violate the normality assumption) and you can lose a lot of statistical power.
+
+<!--- It's important to take the time to figure out whether or not the resulting categories make any sense at all in terms of your research project. If they don't make any sense to you as meaningful categories, then any data analysis that uses those categories is likely to be just as meaningless. More generally, in practice I've noticed that people have a very strong desire to carve their (continuous and messy) data into a few (discrete and simple) categories, and then run analyses using the categorised data instead of the original data.[^pragmatic-matters-8] I wouldn't go so far as to say that this is an inherently bad idea, but it does have some fairly serious drawbacks at times, so I would advise some caution if you are thinking about doing it.
+
+[^pragmatic-matters-8]: If you've read further into the book, and are re-reading this section, then a good example of this would be someone choosing to do an ANOVA using AgeCats as the grouping variable, instead of running a regression using Age as a predictor. There are sometimes good reasons for doing this. For instance, if the relationship between Age and your outcome variable is highly non-linear and you aren't comfortable with trying to run non-linear regression! However, unless you really do have a good rationale for doing this, it's best not to. It tends to introduce all sorts of other problems (e.g., the data will probably violate the normality assumption) and you can lose a lot of statistical power. --->
+
+
+花時間確定結果類別在您的研究項目中是否有任何意義非常重要。 如果對您來說這些類別並沒有任何有意義的區分,那麼使用這些類別的任何資料分析可能同樣沒有意義。 更廣泛地說,在實踐中,我注意到人們非常渴望將他們的(連續和混亂的)資料劃分為少量(離散和簡單的)類別,然後使用分類後的資料而不是原始資料進行分析。[^pragmatic-matters-8] 我不會說這本身就是一個糟糕的主意,但有時確實有一些相當嚴重的缺點,所以如果您正在考慮這樣做,我會建議您保持謹慎。  
+
+[^pragmatic-matters-8]:  如果您已經閱讀了後面更多內容,並在重新閱讀本節,那麼一個很好的示例是,有人選擇使用 AgeCats 作為分組變項進行方差分析,而不是使用 Age 作為預測變項進行迴歸。這種做法有時有很好的理由。例如,如果 Age 和您的結果變項之間的關係高度非線性,並且您不想嘗試運行非線性迴歸!但是,除非您真的有很好的理由這樣做,否則最好不要這樣做。這往往會引入各種其他問題(例如,資料可能會違反常態分佈假設),並且您可能會失去很多統計考驗力。  
+
 
 ### 設計用途多重的轉換功能
 
-Sometimes you want to apply the same transformation to more than one variable, for example when you have multiple questionnaire items that all need to be recalculated or recoded in the same way. And one of the neat features in jamovi is that you can create a transformation, using the 'Data' - 'Transform' button, that can then be saved and applied to multiple variables. Let's go back to the first example above, using the data file likert.omv that contains a single variable with raw Likert-scale responses for 10 people. To create a transformation that you can save and then apply across multiple variables (assuming you had more variables like this in your data file), first in the spreadsheet editor select (i.e., click) the variable you want to use to initially create the transformation. In our example this is likert.raw. Next click the 'Transform' button in the jamovi 'Data' ribbon, and you'll see something like @fig-fig6-7.
+<!--- Sometimes you want to apply the same transformation to more than one variable, for example when you have multiple questionnaire items that all need to be recalculated or recoded in the same way. And one of the neat features in jamovi is that you can create a transformation, using the 'Data' - 'Transform' button, that can then be saved and applied to multiple variables. Let's go back to the first example above, using the data file likert.omv that contains a single variable with raw Likert-scale responses for 10 people. To create a transformation that you can save and then apply across multiple variables (assuming you had more variables like this in your data file), first in the spreadsheet editor select (i.e., click) the variable you want to use to initially create the transformation. In our example this is likert.raw. Next click the 'Transform' button in the jamovi 'Data' ribbon, and you'll see something like @fig-fig6-7.
 
 Give your new variable a name, let's call it opinion.strength and then click on the 'using transform' selection box and select 'Create New Transform...'. This is where you will create, and name, the transformation that can be re-applied to as many variables as you like. The transformation is automatically named for us as 'Transform 1' (imaginative, huh. You can change this if you like). Then type the expression "ABS(\$source - 4)" into the function text box, as in @fig-fig6-8, press Enter or Return on your keyboard and, hey presto, you have created a new transformation and applied it to the likert.raw variable! Good, eh. Note that instead of using the variable label in the expression, we have instead used '\$source'. This is so that we can then use the same transformation with as many different variables as we like - jamovi requires you to use '\$source' to refer to the source variable you are transforming. Your transformation has also been saved and can be re-used any time you like (providing you save the dataset as an '.omv' file, otherwise you'll lose it!).
 
 You can also create a transformation with the second example we looked at, the age distribution of people at a social gathering. Go on, you know you want to! Remember that we collapsed this variable into three groups: younger, adult and older. This time we will achieve the same thing, but using the jamovi 'Transform' - 'Add condition' button. With this data set (go back to it or create it again if you didn't save it) set up a new variable transformation. Call the transformed variable AgeCats and the transformation you will create Agegroupings. Then click on the big "$+$" sign next to the function box. This is the 'Add condition' button and I've stuck a big red arrow onto @fig-fig6-9 so you can see exactly where this is. Re-create the transformation shown in @fig-fig6-9 and when you have done, you will see the new values appear in the spreadsheet window. What's more, the Age groupings transformation has been saved and can be re-applied any time you like. Ok, so I know that it's unlikely you will have more than one 'Age' variable, but you get the idea now of how to set up transformations in jamovi, so you can follow this idea with other sorts of variables. A typical scenario for this is when you have a questionnaire scale with, say, 20 items (variables) and each item was originally scored from 1 to 6 but, for some reason or quirk of the data you decide to recode all the items as 1 to 3. You can easily do this in jamovi by creating and then re-applying your transformation for each variable that you want to recode.
 
+Creating a new variable transformation using the jamovi 'Transform' command
+
+Specifying a transformation in jamovi, to be saved as the imaginatively named 'Transform 1'
+
+jamovi transformation into three age categories, using the 'Add condition' button
+
+Some mathematical operators
+--->
+
+有時您想對多個變量應用相同的轉換,例如,當您有多個問卷項目都需要以相同的方式重新計算或重新編碼時。jamovi 的一個很棒的功能是,您可以使用 “資料” - “轉換”按鈕創建轉換,然后將其保存並應用於多個變量。讓我們回到上面的第一個示例,使用包含10人原始李克特量表響應的單個變量的 omv 檔案 likert.omv。要創建可以保存然后應用於多個變量的轉換(假設您的数据檔中有更多这样的變量),首先在电子表格編輯器中選擇(即點擊)您要用於最初創建轉換的變量。 在我們的示例中,這是 likert.raw。 下一步,點擊 jamovi“資料”功能區中的“轉換”按鈕,您會看到類似 @fig-fig6-7 的界面。
+
+給您的新變量命名,我們將其命名為 opinion.strength,然后點擊“使用轉換”選擇框,并選擇“創建新轉換...”。這是您將創建和命名可以重新應用於任意多個變量的轉換的地方。 該轉換會自動為我們命名為“轉換1”(有創意,哈哈。如果您願意,可以更改此名稱)。 然后在函數文本框中鍵入運算式“ABS(\$source - 4)”,如 @fig-fig6-8 所示,在鍵盤上按 Enter 或 Return 鍵,耶,您已經創建了一個新轉換并將其應用於 likert.raw 變量! 不錯吧。 請注意,在運算式中我們没有使用變量標籤,而是使用了“\$source”。 這樣我們就可以將相同的轉換與任意多的不同變量一起使用 - jamovi 要求您使用“\$source”來引用您正在轉換的源變量。 您的轉換也已經保存並可以在任何時候重用(只要您將資料集保存為“.omv”檔,否則您會失去它!)。
+
+您也可以通過我們查看的第二個示例創建轉換,即社交聚會上人們的年齡分佈。 前往吧,我知道你想試試! 記住我們將這個變量歸併為三組:年輕、成年和老年。 这次我們將達到相同的目的,但是使用 jamovi 的“轉換” - “添加條件”按鈕。 使用這個資料集(返回或如果您没有保存请重新創建),設置一個新的變量轉換。 將轉換後的變量命名為 AgeCats,您將創建的轉換命名為 Agegroupings。 然后點擊函數框旁邊的大“$+$”符號。 這是“添加條件”按鈕,我在 @fig-fig6-9 中加上了一個大紅色箭頭,以便您可以準確看到這在哪裡。 重新創建 @fig-fig6-9 所示的轉換,完成后,您將在電子表格窗口中看到出現新值。 更重要的是,Age groupings 轉換已經保存並可以在任何時候重用。 好吧,所以我知道您不太可能有多於一個“年齡”變量,但是您現在已經了解了如何在 jamovi 中設置轉換,所以您可以跟隨這一想法處理其他類型的變量。 這種典型的情況是,當您有一個問卷量表,比如有 20 個項目(變量),並且每個項目最初得分從 1 分到 6 分,但是由於某些原因或數據的怪癖,您決定將所有項目重新編碼為 1 到 3。 您可以通過在 jamovi 中創建然后為您要重新編碼的每個變量重新應用您的轉換來輕鬆完成此操作。
+
+
 ```{r}
 #| label: fig-fig6-7
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Creating a new variable transformation using the jamovi 'Transform' command
+#| fig-cap: 使用 jamovi“轉換”命令創建新變項轉換  
 knitr::include_graphics("images/fig6-7.png")
 ```
 
@@ -356,7 +464,7 @@ knitr::include_graphics("images/fig6-7.png")
 #| label: fig-fig6-8
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Specifying a transformation in jamovi, to be saved as the imaginatively named 'Transform 1'
+#| fig-cap: 在 jamovi 中指定轉換以保存為名為“轉換 1”的轉換 
 knitr::include_graphics("images/fig6-8.png")
 ```
 
@@ -364,26 +472,40 @@ knitr::include_graphics("images/fig6-8.png")
 #| label: fig-fig6-9
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: jamovi transformation into three age categories, using the 'Add condition' button
+#| fig-cap: 使用jamovi內建函式 將變項轉換為三個年齡類別,使用“添加條件”按鈕  
 knitr::include_graphics("images/fig6-9.png")
 ```
 
 ```{r}
 #| label: tbl-tab6-5
-#| tbl-cap: Some mathematical operators
-huxtabs[[6]][[5]] |>  
-  set_contents(1, 1, "")
+#| tbl-cap: 一些數學運算示範
+#huxtabs[[6]][[5]] |>  
+#  set_contents(1, 1, "")
+kable(data.frame(
+    `&nbsp;` = c("開平方根", "求絕對值", "求對數(底數為10)", "求對數(底數為自然數e)", "求自然指數", "Box-Cox轉換"),
+    `函式` = c("SQRT(x)", "ABS(x)", "LOG10(x)","LN(x)", "EXP(x)", "BOXCOX(x, lamda)"),
+    `輸入範例` = c("SQRT(25)", "ABS(-23)", "LOG10(1000)","LN(1000)", "EXP(6.908)", "BOXCOX(6.908, 3)"),
+    `輸出` = c("5", "23", "3","6.91", "1e+03", "110")
+),align = "c",format = "html")
+
 ```
 
 ## 數學函式及運算子
 
-In the section on [Transforming and recoding a variable] I discussed the ideas behind variable transformations and showed that a lot of the transformations that you might want to apply to your data are based on fairly simple mathematical functions and operations. In this section I want to return to that discussion and mention several other mathematical functions and arithmetic operations that are actually quite useful for a lot of real world data analysis. @tbl-tab6-5 gives a brief overview of the various mathematical functions I want to talk about here, or later.[^pragmatic-matters-9] Obviously this doesn't even come close to cataloguing the range of possibilities available, but it does cover a range of functions that are used regularly in data analysis and that are available in jamovi.
+<!--- In the section on [Transforming and recoding a variable] I discussed the ideas behind variable transformations and showed that a lot of the transformations that you might want to apply to your data are based on fairly simple mathematical functions and operations. In this section I want to return to that discussion and mention several other mathematical functions and arithmetic operations that are actually quite useful for a lot of real world data analysis. @tbl-tab6-5 gives a brief overview of the various mathematical functions I want to talk about here, or later.[^pragmatic-matters-9] Obviously this doesn't even come close to cataloguing the range of possibilities available, but it does cover a range of functions that are used regularly in data analysis and that are available in jamovi.
 
-[^pragmatic-matters-9]: We'll leave the box-cox function until later on
+[^pragmatic-matters-9]: We'll leave the box-cox function until later on --->
+
+這是下一節”數學函式及運算子“的原始文檔。我生成了以下繁体中文翻译初稿:
+
+在[變量轉換和編碼]一節中,我討論了變量轉換背后的思想,并展示了您可能想對數據應用的大多數轉換都基於相當簡單的數學函數和運算。在本節中,我想返回該討論,并提到幾個其他實際上對大多數現實世界數據分析很有用的數學函數和算術運算。@tbl-tab6-5 簡要概述了我在這裡或之后要談論的各種數學函數。[^pragmatic-matters-9] 顯然,這甚至無法接近目錄化可用的可能性範圍,但它确实涵蓋了在數據分析中經常使用並在 jamovi 中可用的一系列函數。  
+
+[^pragmatic-matters-9]: 我們稍后再作 box-cox 函數的討論
+
 
 ### 對數與指數
 
-As I've mentioned earlier, jamovi has an useful range of mathematical functions built into it and there really wouldn't be much point in trying to describe or even list all of them. For the most part, I've focused only on those functions that are strictly necessary for this book. However I do want to make an exception for logarithms and exponentials. Although they aren't needed anywhere else in this book, they are *everywhere* in statistics more broadly. And not only that, there are a *lot of* situations in which it is convenient to analyse the logarithm of a variable (i.e., to take a "log-transform" of the variable). I suspect that many (maybe most) readers of this book will have encountered logarithms and exponentials before, but from past experience I know that there's a substantial proportion of students who take a social science statistics class who haven't touched logarithms since high school, and would appreciate a bit of a refresher.
+<!--- As I've mentioned earlier, jamovi has an useful range of mathematical functions built into it and there really wouldn't be much point in trying to describe or even list all of them. For the most part, I've focused only on those functions that are strictly necessary for this book. However I do want to make an exception for logarithms and exponentials. Although they aren't needed anywhere else in this book, they are *everywhere* in statistics more broadly. And not only that, there are a *lot of* situations in which it is convenient to analyse the logarithm of a variable (i.e., to take a "log-transform" of the variable). I suspect that many (maybe most) readers of this book will have encountered logarithms and exponentials before, but from past experience I know that there's a substantial proportion of students who take a social science statistics class who haven't touched logarithms since high school, and would appreciate a bit of a refresher.
 
 In order to understand logarithms and exponentials, the easiest thing to do is to actually calculate them and see how they relate to other simple calculations. There are three jamovi functions in particular that I want to talk about, namely LN(), LOG10() and EXP(). To start with, let's consider LOG10(), which is known as the "logarithm in base 10". The trick to understanding a **logarithm** is to understand that it's basically the "opposite" of taking a power. Specifically, the logarithm in base 10 is closely related to the powers of 10. So let's start by noting that 10-cubed is 1000. Mathematically, we would write this:
 
@@ -399,39 +521,77 @@ $$e = 2.718282 $$
 
 There are quite a few situation in statistics that require us to calculate powers of $e$, though none of them appear in this book. Raising e to the power $x$ is called the **exponential** of $x$, and so it's very common to see $e^x$ written as exppxq. And so it's no surprise that jamovi has a function that calculates exponentials, called EXP(). Because the number e crops up so often in statistics, the natural logarithm (i.e., logarithm in base e) also tends to turn up. Mathematicians often write it as $log_e(x)$ or $ln(x)$. In fact, jamovi works the same way: the LN() function corresponds to the natural logarithm.
 
-And with that, I think we've had quite enough exponentials and logarithms for this book!
+And with that, I think we've had quite enough exponentials and logarithms for this book! --->
+
+
+正如我之前提到的,jamovi 中內置了很有用的數學函數範圍,并且試圖描述甚至列出它們所有內容真的没有太大意義。在大多數情况下,我只專注於本書所需的那些嚴格必要的函數。然而,我確實想對對數和指數函數做一個例外。儘管它們在本書的其他部分都不是必需的,**但是** 在更廣泛的統計學領域中它們無所不在。不僅如此,還有**很多** 情況下很方便分析變量的對數(即對變量采取“對數轉換”)。我認為這本書的許多(也許大多數)讀者以前都遇到過對數和指數,但根據過去的經驗,我知道有相當比例的社會科學統計課學生從高中以来就没有碰過對数,并會很感謝一些複習。  
+
+為了理解對數和指數,最簡單的方法是实際計算它們并看它們如何與其他簡單計算相關。我特别想談論 jamovi 中的三个函數,即 LN()、LOG10() 和 EXP()。首先,讓我們考慮 LOG10(),它被稱為“以 10 為底的對數”。理解**對數**的技巧是理解它基本上是求冪的“相反”。具體而言,10 為底的對數與 10 的冪密切相關。那麼,讓我們從指出 10 的三次方是 1000 開始。數學上,我們將其寫為:  
+
+$$10^3=1000$$  
+
+理解對數的技巧是認識到“10 的 3 次方等于 1000”的語句相當於“1000 的對數(基數為 10)等於 3”的語句。數學上,我們將其写为:  
+
+$$log_{10}(1000)=3$$  
+
+好的,由於 LOG10() 函數與 10 的冪相關,您可能會期望還有與其他底數的冪相關的其他對數。當然,這是真的:在數學上,數字 10 没有真正特殊之處。您和我发现它很有用是因為十進制數字是圍繞數字 10 構建的,但是大壞數學世界嘲笑我們的十進制數字。遺憾的是,實際上宇宙并不在乎我們如何寫下數字。無論如何,這種宇宙漠不關心的後果是,計算以 10 為底的對數没有什麼特別之處。例如,您可以計算以 2 為底的對數。或者,我們在統計中看到的第三種對数類型,比 10 進制或 2 進制都多得多,稱為**自然對數**,並對應于以 e 為底的對數。既然您有朝一日可能會遇到它,我最好解釋一下 e 是什麼。e 數,稱為**歐拉數**,是那些令人討厭的“無理”數之一,其小數擴展是無限長的,並被認為是數學中最重要的數字之一。 e 的前几位數字是:  
+
+$$e = 2.718282$$  
+
+統計中需要我們計算 $e$ 的幂的情况還是頗多的,儘管它們没有在本書出現。數字 $e$ 的 $x$ 次冪被稱為 $x$ 的**指數**,所以通常可以看到 $e^x$ 用 exp(x) 来写。 所以 jamovi 有一個計算指數的函數並不令人驚訝,該函數稱為 EXP()。因為數字 e 在統計中經常出現,所以自然對數(即以 e 為底的對數)也往往會出現。數學家經常把它寫成 $log_e(x)$ 或 $ln(x)$。实际上,jamovi 的工作方式也是相同的:LN() 函數對應于自然對數。  
+
+至此,我認為對於本書來說,我們已經有足够多的指數和對數了!
+
 
 ## 篩選部分資料
 
-One very important kind of data handling is being able to extract a particular subset of the data. For instance, you might be interested only in analysing the data from one experimental condition, or you may want to look closely at the data from people over 50 years in age. To do this, the first step is getting jamovi to filter the subset of the data corresponding to the observations that you're interested in.
+<!---One very important kind of data handling is being able to extract a particular subset of the data. For instance, you might be interested only in analysing the data from one experimental condition, or you may want to look closely at the data from people over 50 years in age. To do this, the first step is getting jamovi to filter the subset of the data corresponding to the observations that you're interested in.
 
 This section returns to the nightgarden.csv data set. If you're reading this whole chapter in one sitting, then you should already have this data set loaded into a jamovi window. For this section, let's focus on the two variables speaker and utterance (see [Tabulating and cross-tabulating data]) if you've forgotten what those variables look like). Suppose that what I want to do is pull out only those utterances that were made by Makka-Pakka. To that end, we need to specify a filter in jamovi. First open up a filter window by clicking on 'Filters' on the main jamovi 'Data' toolbar. Then, in the 'Filter 1' text box, next to the '=' sign, type the following:
 
 speaker == 'makka-pakka'
 
+Creating a subset of the nightgarden data using the jamovi 'Filters' option --->
+
+
+一種非常重要的數據處理是能够提取特定子集的数据。例如,您可能僅對分析來自一個實驗條件的数据感興趣,或者您可能想仔細查看 50 歲以上人群的数据。為此,第一步是讓 jamovi 過濾與您感興趣的觀測值對應的數據子集。  
+
+本節返回到 nightgarden.csv 資料集。如果您一次坐着閱讀整章內容,則該資料集應已加載到 jamovi 窗口中。 對於本節,讓我們集中討論 speaker 和 utterance 兩個變量(如果您忘記了它們的外觀,請參見[建立次數分佈表])。 假設我想要做的是只提取 Makka-Pakka 發出的語句。為此,我們需要在 jamovi 中指定過濾器。首先通過點擊主 jamovi “資料”工具欄上的“過濾器”打開過濾器窗口。 然后,在“過濾器 1”文本框中,在“=”號旁邊,鍵入以下內容:  
+
+speaker == 'makka-pakka'  
+
+
 ```{r}
 #| label: fig-fig6-10
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: Creating a subset of the nightgarden data using the jamovi 'Filters' option
+#| fig-cap: 使用'篩選器`保留nightgarden資料集內，要做資料分析的部分
 knitr::include_graphics("images/fig6-10.png")
 ```
 
-When you have done this, you will see that a new column has been added to the spreadsheet window (see @fig-fig6-10), labelled 'Filter 1', with the cases where speaker is <u>not</u> 'makka-pakka' greyed-out (i.e., filtered out) and, conversely, the cases where speaker <u>is</u> 'makka-pakka' have a green check mark indicating they are filtered in. You can test this by running 'Exploration' - 'Descriptives' - 'Frequency tables' for the speaker variable and seeing what that shows. Go on, try it!
+<!--- When you have done this, you will see that a new column has been added to the spreadsheet window (see @fig-fig6-10), labelled 'Filter 1', with the cases where speaker is <u>not</u> 'makka-pakka' greyed-out (i.e., filtered out) and, conversely, the cases where speaker <u>is</u> 'makka-pakka' have a green check mark indicating they are filtered in. You can test this by running 'Exploration' - 'Descriptives' - 'Frequency tables' for the speaker variable and seeing what that shows. Go on, try it!
 
 Following on from this simple example, you can also build up more complex filters using logical expressions in jamovi. For instance, suppose I wanted to keep only those cases when the utterance is either "pip" or "oo". In this case in the 'Filter 1' text box, next to the '=' sign, you would type the following:
 
+utterance == 'pip' or utterance == 'oo' --->
+
+
+完成後,您會看到電子表格窗口中添加了一個新列(見 @fig-fig6-10),標籤為“過濾器 1”,其中 speaker 不是 ‘makka-pakka’ 的情况被灰化(即過濾掉),相反地,speaker 是 ‘makka-pakka’ 的情况下有一個綠色的勾號,表示它們被過濾。您可以通過運行“勘探” - “描述統計” - “次數分佈表”的 speaker 變量并查看顯示的內容來測試這一點。 前往試試!  
+
+在此簡單示例的基礎上,您還可以使用 jamovi 中的邏輯運算式構建更複雜的過濾器。例如,假設我只想保留語句為“pip”或“oo”的情况。在這種情况下,在“過濾器 1”文本框中,在“=”號旁邊,您將鍵入以下內容:  
+
 utterance == 'pip' or utterance == 'oo'
+
 
 ## 本章小結
 
 這一章是原作者分享實務經驗會用到的各種不起眼，但是會影響描述統計品質的小技巧或注意項目。最後再次回顧本章的課題
 
-- [製作次數表及列聯表](06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data)
-- [邏輯運算](06-Pragmatic-matters.html#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97)
-- [資料變項的轉換與編碼](06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable)
-- [數學函式及運算子](06-Pragmatic-matters.html#%E6%95%B8%E5%AD%B8%E5%87%BD%E5%BC%8F%E5%8F%8A%E9%81%8B%E7%AE%97%E5%AD%90)
-- [篩選部分資料](06-Pragmatic-matters.html#%E7%AF%A9%E9%81%B8%E9%83%A8%E5%88%86%E8%B3%87%E6%96%99)
+- [製作次數表及列聯表]
+- [邏輯運算]
+- [資料變項的轉換與編碼]
+- [數學函式及運算子]
+- [篩選部分資料]
 
 <!---
 Obviously, there's no real coherence to this chapter. It's just a grab bag of topics and tricks that can be handy to know about, so the best wrap up I can give here is just to repeat this list:

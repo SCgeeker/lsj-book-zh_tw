@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -51,15 +51,16 @@ ul.task-list li input[type="checkbox"] {
   "type": "textbox",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -73,23 +74,32 @@ ul.task-list li input[type="checkbox"] {
 </script>
     
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="用jamovi上手統計學 - 6&nbsp; 實務課題">
-<meta property="og:description" content="這一章要學習的課題，一般基礎…">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://scgeeker.github.io/lsj-book-zh_tw/images/fig6-1.png">
 <meta property="og:site-name" content="用jamovi上手統計學">
+<meta property="og:image:height" content="1800">
+<meta property="og:image:width" content="2880">
 </head>
 
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-Descriptive-statistics.html">資料處理</a></li><li class="breadcrumb-item"><a href="./06-Pragmatic-matters.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -97,30 +107,32 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="./用jamovi上手統計學.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
-    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-            <i class="bi bi-bi-twitter pe-1"></i>
-          Twitter
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-            <i class="bi bi-bi-facebook pe-1"></i>
-          Facebook
-          </a>
-        </li>
-    </ul>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./用jamovi上手統計學.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="切换阅读器模式">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -128,223 +140,252 @@ ul.task-list li input[type="checkbox"] {
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜索"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">&nbsp;</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">&nbsp;</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Preface.html" class="sidebar-item-text sidebar-link">前言</a>
+  <a href="./Preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">新手須知</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">新手須知</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></a>
+  <a href="./01-Why-do-we-learn-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">為什麼要學習統計</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></a>
+  <a href="./02-A-brief-introduction-to-research-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">研究設計入門</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">jamovi初體驗</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">jamovi初體驗</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></a>
+  <a href="./03-Getting-started-with-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">資料處理</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">資料處理</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></a>
+  <a href="./04-Descriptive-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">描述統計</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></a>
+  <a href="./05-Drawing-graphs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">繪製統計圖</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></a>
+  <a href="./06-Pragmatic-matters.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">統計理論</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">統計理論</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">中場故事</a>
+  <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">中場故事</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></a>
+  <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></a>
+  <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></a>
+  <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">統計方法</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">統計方法</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">線性模型的學習取向</a>
+  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">線性模型的學習取向</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">相闗與線性迴歸</span></a>
+  <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較兩組平均值</span></a>
+  <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></a>
+  <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></a>
+  <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">類別資料分析</span></a>
+  <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></a>
+  <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">貝氏統計</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">貝氏統計</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="切換部分">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></a>
+  <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">後記</a>
+  <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">後記</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link">參考資料</a>
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">參考資料</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">目录</h2>
    
   <ul>
-  <li><a href="#sec-Tabulating-and-cross-tabulating-data" id="toc-sec-Tabulating-and-cross-tabulating-data" class="nav-link active" data-scroll-target="#sec-Tabulating-and-cross-tabulating-data"><span class="toc-section-number">6.1</span>  製作次數表及列聯表</a>
+  <li><a href="#sec-Tabulating-and-cross-tabulating-data" id="toc-sec-Tabulating-and-cross-tabulating-data" class="nav-link active" data-scroll-target="#sec-Tabulating-and-cross-tabulating-data"><span class="header-section-number">6.1</span> 製作次數表及列聯表</a>
   <ul class="collapse">
-  <li><a href="#製表示範" id="toc-製表示範" class="nav-link" data-scroll-target="#製表示範"><span class="toc-section-number">6.1.1</span>  製表示範</a></li>
-  <li><a href="#列聯表裡的百分比" id="toc-列聯表裡的百分比" class="nav-link" data-scroll-target="#列聯表裡的百分比"><span class="toc-section-number">6.1.2</span>  列聯表裡的百分比</a></li>
+  <li><a href="#製表示範" id="toc-製表示範" class="nav-link" data-scroll-target="#製表示範"><span class="header-section-number">6.1.1</span> 製表示範</a></li>
+  <li><a href="#列聯表裡的百分比" id="toc-列聯表裡的百分比" class="nav-link" data-scroll-target="#列聯表裡的百分比"><span class="header-section-number">6.1.2</span> 列聯表裡的百分比</a></li>
   </ul></li>
-  <li><a href="#邏輯運算" id="toc-邏輯運算" class="nav-link" data-scroll-target="#邏輯運算"><span class="toc-section-number">6.2</span>  邏輯運算</a>
+  <li><a href="#邏輯運算" id="toc-邏輯運算" class="nav-link" data-scroll-target="#邏輯運算"><span class="header-section-number">6.2</span> 邏輯運算</a>
   <ul class="collapse">
-  <li><a href="#判斷算式真假值" id="toc-判斷算式真假值" class="nav-link" data-scroll-target="#判斷算式真假值"><span class="toc-section-number">6.2.1</span>  判斷算式真假值</a></li>
-  <li><a href="#邏輯運算子" id="toc-邏輯運算子" class="nav-link" data-scroll-target="#邏輯運算子"><span class="toc-section-number">6.2.2</span>  邏輯運算子</a></li>
-  <li><a href="#在報告中表達邏輯運算子" id="toc-在報告中表達邏輯運算子" class="nav-link" data-scroll-target="#在報告中表達邏輯運算子"><span class="toc-section-number">6.2.3</span>  在報告中表達邏輯運算子</a></li>
+  <li><a href="#判斷算式真假值" id="toc-判斷算式真假值" class="nav-link" data-scroll-target="#判斷算式真假值"><span class="header-section-number">6.2.1</span> 判斷算式真假值</a></li>
+  <li><a href="#邏輯運算子" id="toc-邏輯運算子" class="nav-link" data-scroll-target="#邏輯運算子"><span class="header-section-number">6.2.2</span> 邏輯運算子</a></li>
+  <li><a href="#在報告中表達邏輯運算子" id="toc-在報告中表達邏輯運算子" class="nav-link" data-scroll-target="#在報告中表達邏輯運算子"><span class="header-section-number">6.2.3</span> 在報告中表達邏輯運算子</a></li>
   </ul></li>
-  <li><a href="#sec-Transforming-and-recoding-a-variable" id="toc-sec-Transforming-and-recoding-a-variable" class="nav-link" data-scroll-target="#sec-Transforming-and-recoding-a-variable"><span class="toc-section-number">6.3</span>  資料變項的轉換與編碼</a>
+  <li><a href="#sec-Transforming-and-recoding-a-variable" id="toc-sec-Transforming-and-recoding-a-variable" class="nav-link" data-scroll-target="#sec-Transforming-and-recoding-a-variable"><span class="header-section-number">6.3</span> 資料變項的轉換與編碼</a>
   <ul class="collapse">
-  <li><a href="#轉換資料數值" id="toc-轉換資料數值" class="nav-link" data-scroll-target="#轉換資料數值"><span class="toc-section-number">6.3.1</span>  轉換資料數值</a></li>
-  <li><a href="#轉換連續變項為間斷變項" id="toc-轉換連續變項為間斷變項" class="nav-link" data-scroll-target="#轉換連續變項為間斷變項"><span class="toc-section-number">6.3.2</span>  轉換連續變項為間斷變項</a></li>
-  <li><a href="#設計用途多重的轉換功能" id="toc-設計用途多重的轉換功能" class="nav-link" data-scroll-target="#設計用途多重的轉換功能"><span class="toc-section-number">6.3.3</span>  設計用途多重的轉換功能</a></li>
+  <li><a href="#轉換資料數值" id="toc-轉換資料數值" class="nav-link" data-scroll-target="#轉換資料數值"><span class="header-section-number">6.3.1</span> 轉換資料數值</a></li>
+  <li><a href="#轉換連續變項為間斷變項" id="toc-轉換連續變項為間斷變項" class="nav-link" data-scroll-target="#轉換連續變項為間斷變項"><span class="header-section-number">6.3.2</span> 轉換連續變項為間斷變項</a></li>
+  <li><a href="#設計用途多重的轉換功能" id="toc-設計用途多重的轉換功能" class="nav-link" data-scroll-target="#設計用途多重的轉換功能"><span class="header-section-number">6.3.3</span> 設計用途多重的轉換功能</a></li>
   </ul></li>
-  <li><a href="#數學函式及運算子" id="toc-數學函式及運算子" class="nav-link" data-scroll-target="#數學函式及運算子"><span class="toc-section-number">6.4</span>  數學函式及運算子</a>
+  <li><a href="#數學函式及運算子" id="toc-數學函式及運算子" class="nav-link" data-scroll-target="#數學函式及運算子"><span class="header-section-number">6.4</span> 數學函式及運算子</a>
   <ul class="collapse">
-  <li><a href="#對數與指數" id="toc-對數與指數" class="nav-link" data-scroll-target="#對數與指數"><span class="toc-section-number">6.4.1</span>  對數與指數</a></li>
+  <li><a href="#對數與指數" id="toc-對數與指數" class="nav-link" data-scroll-target="#對數與指數"><span class="header-section-number">6.4.1</span> 對數與指數</a></li>
   </ul></li>
-  <li><a href="#篩選部分資料" id="toc-篩選部分資料" class="nav-link" data-scroll-target="#篩選部分資料"><span class="toc-section-number">6.5</span>  篩選部分資料</a></li>
-  <li><a href="#本章小結" id="toc-本章小結" class="nav-link" data-scroll-target="#本章小結"><span class="toc-section-number">6.6</span>  本章小結</a></li>
+  <li><a href="#篩選部分資料" id="toc-篩選部分資料" class="nav-link" data-scroll-target="#篩選部分資料"><span class="header-section-number">6.5</span> 篩選部分資料</a></li>
+  <li><a href="#本章小結" id="toc-本章小結" class="nav-link" data-scroll-target="#本章小結"><span class="header-section-number">6.6</span> 本章小結</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/06-Pragmatic-matters.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/06-Pragmatic-matters.qmd" class="toc-action">编辑该页面</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">报告问题</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7"><span id="sec-Pragmatic-matters" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></span></h1>
+<h1 class="title display-7"><span id="sec-Pragmatic-matters" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">實務課題</span></span></h1>
 
 </header>
 
@@ -355,11 +396,11 @@ ul.task-list li input[type="checkbox"] {
 <p>這一章要學習的課題，一般基礎 統計教科書幾乎都不會涉及。這章要談的幾個課題，是後續各章介紹的方法在現實統計實務操作時會遇到的狀況。現實統計實務遇到的狀況特色是<em>雜亂</em>。最常遇到的狀況是你在預覽資料時，發現資料變項並非按照規畫的格式存檔。有時你可能會發現資料裡有一大堆數值遺漏。有時只需要處理上千萬筆資料中的幾百筆。還有許多狀況不一而足。也就是說，同學們也要學習各種<strong>資料操作</strong>技巧，才能應付各種統計實務的現實狀況。本章目標提供各種實務課題的概述。雖然這章的課題牽涉各種現實狀況，為了幫助同學理解，每個課題的範例都是以設計過的小型資料做示範。由於這一章純粹談技術，沒有一個通用案例貫串每個課題，這些課題包括：</p>
 <!---This is a somewhat strange chapter, even by my standards. My goal in this chapter is to talk a bit more honestly about the realities of working with data than you'll see anywhere else in the book. The problem with real world data sets is that they are *messy*. Very often the data file that you start out with doesn't have the variables stored in the right format for the analysis you want to do. Sometimes there might be a lot of missing values in your data set. Sometimes you only want to analyse a subset of the data. Et cetera. In other words, there's a lot of **data manipulation** that you need to do just to get the variables in your data set into the format that you need it. The purpose of this chapter is to provide a basic introduction to these pragmatic topics. Although the chapter is motivated by the kinds of practical issues that arise when manipulating real data, I'll stick with the practice that I've adopted through most of the book and rely on very small, toy data sets that illustrate the underlying issue. Because this chapter is essentially a collection of techniques and doesn't tell a single coherent story, it may be useful to start with a list of topics: --->
 <ul>
-<li><a href="06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data">製作次數表及列聯表</a></li>
-<li><a href="06-Pragmatic-matters.html#邏輯運算">邏輯運算</a></li>
-<li><a href="06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable">資料變項的轉換與編碼</a></li>
-<li><a href="06-Pragmatic-matters.html#數學函式及運算子">數學函式及運算子</a></li>
-<li><a href="06-Pragmatic-matters.html#篩選部分資料">篩選部分資料</a></li>
+<li><a href="#sec-Tabulating-and-cross-tabulating-data">製作次數表及列聯表</a></li>
+<li><a href="#邏輯運算">邏輯運算</a></li>
+<li><a href="#sec-Transforming-and-recoding-a-variable">資料變項的轉換與編碼</a></li>
+<li><a href="#數學函式及運算子">數學函式及運算子</a></li>
+<li><a href="#篩選部分資料">篩選部分資料</a></li>
 </ul>
 <p>這一章討論的課題很廣泛，而且各有不少篇幅。雖然這一章的長度應該是本書前三名，但是討論的五個課題只是原作者認為相對重要的一部分資料操作技巧。原作者建議與各章相同，同學先讀過一遍，再試著按照範例操作。其餘各章只有少部分會提及實務課題，只要先有基本概念即可。當同學在後續各章發現有需要深入理解的實務課題，再回到這一章了解有什麼解決方法。</p>
 <!---
@@ -380,49 +421,50 @@ As you can see, the list of topics that the chapter covers is pretty broad, and 
 <p>此處以原作者某天晚上照顧剛出生的小孩的時候，偶然看了一集深夜節目，隨手紀錄節目中出現的角色及台詞，整理成”說話者(speaker)“與”台詞(utterance)“兩個變項。這份記錄存於jamovi示範檔案<em>Night Garden</em>，開啟後兩個變項的內容如下：</p>
 <!---Let's start with a simple example. As the father of a small child I naturally spend a lot of time watching TV shows like In the *Night Garden*. In the nightgarden.csv file, I've transcribed a short section of the dialogue. The file contains two variables of interest, speaker and utterance. Open up this data set in jamovi and take a look at the data in the 'spreadsheet' view. You will see that the data looks something like this: --->
 <p>資料變項’說話者’: upsy-daisy upsy-daisy upsy-daisy upsy-daisy tombliboo tombliboo makka-pakka makka-pakka makka-pakka makka-pakka 資料變項’台詞’: pip pip onk onk ee oo pip pip onk onk</p>
-<p>那一晚原作者的腦袋發生了什麽事？讓我們將每個角色的說話次數做成表格吧，只要用將資料變項’speaker’放到jamovi述統計模組選單的Variables視窗，再勾選啟動’Frequency tables’，報表介面就會出現像是 <a href="#tbl-tab6-1">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-1</span></a> 的次數表。</p>
+<p>那一晚原作者的腦袋發生了什麽事？讓我們將每個角色的說話次數做成表格吧，只要用將資料變項’speaker’放到jamovi述統計模組選單的Variables視窗，再勾選啟動’Frequency tables’，報表介面就會出現像是 <a href="#tbl-tab6-1">表格&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-1</span></a> 的次數表。</p>
 
 <!---Looking at this it becomes very clear what happened to my sanity! With these as my data, one task I might find myself needing to do is construct a frequency count of the number of words each character speaks during the show. The jamovi 'Descriptives' screen has a check box called 'Frequency tables' which does just this, see @tbl-tab6-1. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab6-1" class="anchored">
-
-<table><caption>Table&nbsp;6.1:  資料變項’speaker’的次數表 </caption>
- <thead>
-  <tr>
-   <th style="text-align:center;"> 角色名字 </th>
-   <th style="text-align:center;"> 發言次數 </th>
-   <th style="text-align:center;"> 發言百分比 </th>
-   <th style="text-align:center;"> 累積百分比 </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>表格&nbsp;6.1: 資料變項’speaker’的次數表</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">角色名字</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">發言次數</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">發言百分比</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">累積百分比</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:center;"> makka-pakka </td>
-   <td style="text-align:center;"> 4 </td>
-   <td style="text-align:center;"> 40 </td>
-   <td style="text-align:center;"> 40 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> tombliboo </td>
-   <td style="text-align:center;"> 2 </td>
-   <td style="text-align:center;"> 20 </td>
-   <td style="text-align:center;"> 60 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> upsy-daisy </td>
-   <td style="text-align:center;"> 4 </td>
-   <td style="text-align:center;"> 40 </td>
-   <td style="text-align:center;"> 100 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: center;">makka-pakka</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">tombliboo</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">upsy-daisy</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">100</td>
+</tr>
 </tbody>
 </table>
-
 </div>
+
+
 </div>
 </div>
 <p>次數表表格第一行是speaker資料變項的各種基本統計資料的欄位名稱。像是”Levels”這欄列出紀錄在變項裡的所有角色名字，“Counts”這欄之中的數字是每位角色說了幾次台詞。</p>
-<p>jamovi的”Frequency tables”功能只能製作一個變項的次數表。若是要製作能展示兩個變項的列聯表，像是計算每個角色’speaker’講了各種台詞’utterance’幾次，就要使用<code>Frequencies</code>模組之中的<code>Contigency Tables</code>-<code>Independent Samples</code>功能。功能選單如同 <a href="#fig-fig6-1">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-1</span></a> ，請按照畫面範，製造兩個變項的列聯表。</p>
+<p>jamovi的”Frequency tables”功能只能製作一個變項的次數表。若是要製作能展示兩個變項的列聯表，像是計算每個角色’speaker’講了各種台詞’utterance’幾次，就要使用<code>Frequencies</code>模組之中的<code>Contigency Tables</code>-<code>Independent Samples</code>功能。功能選單如同 <a href="#fig-fig6-1">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-1</span></a> ，請按照畫面範，製造兩個變項的列聯表。</p>
 
 <!--- The output here tells us on the first line that what we're looking at is a tabulation of the speaker variable. In the 'Levels' column it lists all the different speakers that exist in the data, and in the 'Counts' column it tells you how many times that speaker appears in the data. In other words, it's a frequency table.
 
@@ -432,7 +474,7 @@ In jamovi, the 'Frequency tables' check box will only produce a table for single
 <div id="fig-fig6-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: 資料變項speaker 與 utterances的列聯表示範畫面。</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.1: 資料變項speaker 與 utterances的列聯表示範畫面。</figcaption>
 </figure>
 </div>
 </div>
@@ -443,7 +485,7 @@ In jamovi, the 'Frequency tables' check box will only produce a table for single
 </section>
 <section id="列聯表裡的百分比" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="列聯表裡的百分比"><span class="header-section-number">6.1.2</span> 列聯表裡的百分比</h3>
-<p><a href="#fig-fig6-1">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-1</span></a> 的列聯表呈現的是原始計數，也就是兩個變項內各層次資料組合的總次數。不過統計實務通常也要呈現<strong>次數百分比</strong>。在這個例子，只要從’Contingency Tables’功能選單下的’Cells’次選單勾選啟動<strong>Percentages</strong>之下的方塊。 <a href="#fig-fig6-2">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-2</span></a> 示範啟動<code>Row</code>，自動計算每個原始計數在各列之內的百分比。</p>
+<p><a href="#fig-fig6-1">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-1</span></a> 的列聯表呈現的是原始計數，也就是兩個變項內各層次資料組合的總次數。不過統計實務通常也要呈現<strong>次數百分比</strong>。在這個例子，只要從’Contingency Tables’功能選單下的’Cells’次選單勾選啟動<strong>Percentages</strong>之下的方塊。 <a href="#fig-fig6-2">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-2</span></a> 示範啟動<code>Row</code>，自動計算每個原始計數在各列之內的百分比。</p>
 
 <!---The contingency table shown in @fig-fig6-1 shows a table of raw frequencies. That is, a count of the total number of cases for different combinations of levels of the specified variables. However, often you want your data to be organised in terms of percentages as well as counts. You can find the check boxes for different percentages under the 'Cells' option in the 'Contingency Tables' window. First, click on the 'Row' check box and the Contingency Table in the output window will change to the one in @fig-fig6-2. --->
 <div class="cell" data-layout-align="left">
@@ -451,12 +493,12 @@ In jamovi, the 'Frequency tables' check box will only produce a table for single
 <div id="fig-fig6-2" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.2: 列聯表呈現資料變項speaker 與 utterances的次數及列內百分比。</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.2: 列聯表呈現資料變項speaker 與 utterances的次數及列內百分比。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>列內百分比讓我們知道每位角色說的台詞次數百分比，所以Makka-Pakka講的台詞有50%是”pip”，另外的50%是”onk”。若是改成計算每欄之內的百分比(取消<code>Row</code>並改成<code>Column</code>)，列聯表就會變成如 <a href="#fig-fig6-3">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-3</span></a> 的樣子。這樣的列聯表告訴我們那個台詞被那些角色講了幾次。像是”ee” 100% 是Tombliboo講的。</p>
+<p>列內百分比讓我們知道每位角色說的台詞次數百分比，所以Makka-Pakka講的台詞有50%是”pip”，另外的50%是”onk”。若是改成計算每欄之內的百分比(取消<code>Row</code>並改成<code>Column</code>)，列聯表就會變成如 <a href="#fig-fig6-3">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-3</span></a> 的樣子。這樣的列聯表告訴我們那個台詞被那些角色講了幾次。像是”ee” 100% 是Tombliboo講的。</p>
 
 <!---What we're looking at here is the percentage of utterances made by each character. In other words, 50% of Makka-Pakka's utterances are "pip", and the other 50% are "onk". Let's contrast this with the table we get when we calculate column percentages (uncheck 'Row' and check 'Column' in the Cells options window), see @fig-fig6-3. In this version, what we're seeing is the percentage of characters associated with each utterance. For instance, whenever the utterance "ee" is made (in this data set), 100% of the time it's a Tombliboo saying it. --->
 <div class="cell" data-layout-align="left">
@@ -464,7 +506,7 @@ In jamovi, the 'Frequency tables' check box will only produce a table for single
 <div id="fig-fig6-3" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.3: 列聯表呈現資料變項speaker 與 utterances的次數及欄內百分比。</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.3: 列聯表呈現資料變項speaker 與 utterances的次數及欄內百分比。</figcaption>
 </figure>
 </div>
 </div>
@@ -503,7 +545,7 @@ Anyway, it was worth having a look at what happens if I try to force jamovi to b
 <section id="邏輯運算子" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="邏輯運算子"><span class="header-section-number">6.2.2</span> 邏輯運算子</h3>
 <p>透過上一節的簡單示範，我們了解邏輯運算子如何運作，結合其他運算子與函式會有更多用途。像是這兩個例子： <span class="math inline">\(3 \times 3 + 4 \times 4 == 5 \times 5\)</span> 還有 <span class="math inline">\(SQRT(25) == 5\)</span></p>
-<p>除此之外，還有其他的基本邏輯運算子，讓我們能在適合條件下運用，如同 <a href="#tbl-tab6-2">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-2</span></a> 的示範。希望同學能從示範中自行認識各種運算子的功能。像是運算子 <span class="math inline">\(&lt;\)</span> 用來計算左邊的數值是不是<strong>小於</strong>右邊的數值。如果運算結果為真，jamovi會傳回TRUE。如果數值相等，或者右邊的數值實際小於左邊的數值，jamovi則會傳回FALSE。</p>
+<p>除此之外，還有其他的基本邏輯運算子，讓我們能在適合條件下運用，如同 <a href="#tbl-tab6-2">表格&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-2</span></a> 的示範。希望同學能從示範中自行認識各種運算子的功能。像是運算子 <span class="math inline">\(&lt;\)</span> 用來計算左邊的數值是不是<strong>小於</strong>右邊的數值。如果運算結果為真，jamovi會傳回TRUE。如果數值相等，或者右邊的數值實際小於左邊的數值，jamovi則會傳回FALSE。</p>
 <p>另一方面，<strong>小於或等於</strong>運算子 <span class="math inline">\(&lt;=\)</span> 的功能正如字面的意思，只要左邊的數值小於或等於右邊的數值就會傳回TRUE。相對地，<strong>大於</strong>運算子 <span class="math inline">\(&gt;\)</span> 與<strong>大於或等於</strong>運算子 <span class="math inline">\(&gt;=\)</span> 則是會傳回相反的真假值。</p>
 <p>現在要理解<strong>不等於</strong>運算子 <span class="math inline">\(!=\)</span> 的功能就比較簡單了。只有兩邊的數值都不一樣，運算結果才會是TRUE。如以下的例子，我們只要心算就知道 <span class="math inline">\(2 + 2\)</span> 不會等於 <span class="math inline">\(5\)</span>。同學可以開啟你的jamovi試試看。</p>
 <!--- So now we've seen logical operations at work. But so far we've only seen the simplest possible example. You probably won't be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this: $3 \times 3 + 4 \times 4 == 5 \times 5$ or this $SQRT(25) == 5$ 
@@ -517,60 +559,61 @@ Next on the list of logical operators is the **not equal to** operator != which,
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab6-2" class="anchored">
-
-<table><caption>Table&nbsp;6.2:  比較數值的邏輯運算子 </caption>
- <thead>
-  <tr>
-   <th style="text-align:center;"> 運算功能 </th>
-   <th style="text-align:center;"> 運算子 </th>
-   <th style="text-align:center;"> 輸入範例 </th>
-   <th style="text-align:center;"> 輸出 </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>表格&nbsp;6.2: 比較數值的邏輯運算子</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">運算功能</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">運算子</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">輸入範例</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">輸出</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:center;"> 小於 </td>
-   <td style="text-align:center;"> &lt; </td>
-   <td style="text-align:center;"> 2 &lt; 3 </td>
-   <td style="text-align:center;"> TRUE </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 小於或等於 </td>
-   <td style="text-align:center;"> &lt;= </td>
-   <td style="text-align:center;"> 2 &lt;= 2 </td>
-   <td style="text-align:center;"> TRUE </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 大於 </td>
-   <td style="text-align:center;"> &gt; </td>
-   <td style="text-align:center;"> 2 &gt; 3 </td>
-   <td style="text-align:center;"> FALSE </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 大於或等於 </td>
-   <td style="text-align:center;"> &gt;= </td>
-   <td style="text-align:center;"> 2 &gt;= 2 </td>
-   <td style="text-align:center;"> TRUE </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 等於 </td>
-   <td style="text-align:center;"> == </td>
-   <td style="text-align:center;"> 2 == 3 </td>
-   <td style="text-align:center;"> FALSE </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 不等於 </td>
-   <td style="text-align:center;"> != </td>
-   <td style="text-align:center;"> 2 != 3 </td>
-   <td style="text-align:center;"> TRUE </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: center;">小於</td>
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;">2 &lt; 3</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">小於或等於</td>
+<td style="text-align: center;">&lt;=</td>
+<td style="text-align: center;">2 &lt;= 2</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">大於</td>
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;">2 &gt; 3</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">大於或等於</td>
+<td style="text-align: center;">&gt;=</td>
+<td style="text-align: center;">2 &gt;= 2</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">等於</td>
+<td style="text-align: center;">==</td>
+<td style="text-align: center;">2 == 3</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">不等於</td>
+<td style="text-align: center;">!=</td>
+<td style="text-align: center;">2 != 3</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
 </tbody>
 </table>
+</div>
+
 
 </div>
 </div>
-</div>
-<p>在 <a href="#tbl-tab6-3">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-3</span></a> 還有三個邏輯運算子是我們必須學會的。他們是<strong>差集</strong>運算子<span class="math inline">\(NOT\)</span>，<strong>交集</strong>運算子<span class="math inline">\(and\)</span>，以及<strong>聯集</strong>運算子<span class="math inline">\(or\)</span>。每個運算子的功能也如同名字的字面意思。像是我現在問同學”<span class="math inline">\(2 + 2 = 4\)</span> 或 <span class="math inline">\(2 + 2 = 5\)</span>“其中一個算式是真的嗎？同學一定要答”是“。因為用”或”連結的兩個命題，我們只要確定其中一個算式是真的，整個命題就為真。<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>在 <a href="#tbl-tab6-3">表格&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-3</span></a> 還有三個邏輯運算子是我們必須學會的。他們是<strong>差集</strong>運算子<span class="math inline">\(NOT\)</span>，<strong>交集</strong>運算子<span class="math inline">\(and\)</span>，以及<strong>聯集</strong>運算子<span class="math inline">\(or\)</span>。每個運算子的功能也如同名字的字面意思。像是我現在問同學”<span class="math inline">\(2 + 2 = 4\)</span> 或 <span class="math inline">\(2 + 2 = 5\)</span>“其中一個算式是真的嗎？同學一定要答”是“。因為用”或”連結的兩個命題，我們只要確定其中一個算式是真的，整個命題就為真。<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <p><span class="math display">\[(2+2 == 4) \text{ or } (2+2 == 5)\]</span></p>
 <!---We're not quite done yet. There are three more logical operations that are worth knowing about, listed in @tbl-tab6-3. These are the **not** operator !, the **and** operator and, and the **or** operator or. Like the other logical operators, their behaviour is more or less exactly what you'd expect given their names. For instance, if I ask you to assess the claim that "either $2 + 2 = 4$ or $2 + 2 = 5$" you'd say that it's true. Since it's an "either-or" statement, all we need is for one of the two parts to be true. That's what the or operator does:[^pragmatic-matters-5]
 
@@ -590,155 +633,342 @@ Of course, in our $2 + 2 = 5$ example, we didn't really need to use the "not" op
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab6-3" class="anchored">
-
-<table><caption>Table&nbsp;6.3:  差集，交集以及聯集運算子 </caption>
- <thead>
-  <tr>
-   <th style="text-align:center;"> 運算功能 </th>
-   <th style="text-align:center;"> 運算子 </th>
-   <th style="text-align:center;"> 輸入範例 </th>
-   <th style="text-align:center;"> 輸出 </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>表格&nbsp;6.3: 差集，交集以及聯集運算子</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">運算功能</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">運算子</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">輸入範例</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">輸出</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:center;"> 差集 </td>
-   <td style="text-align:center;"> NOT </td>
-   <td style="text-align:center;"> NOT(1==1) </td>
-   <td style="text-align:center;"> FALSE </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 聯集 </td>
-   <td style="text-align:center;"> or </td>
-   <td style="text-align:center;"> (1==1) or (2==3) </td>
-   <td style="text-align:center;"> TRUE </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 交集 </td>
-   <td style="text-align:center;"> and </td>
-   <td style="text-align:center;"> (1==1) and (2==3) </td>
-   <td style="text-align:center;"> FALSE </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: center;">差集</td>
+<td style="text-align: center;">NOT</td>
+<td style="text-align: center;">NOT(1==1)</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">聯集</td>
+<td style="text-align: center;">or</td>
+<td style="text-align: center;">(1==1) or (2==3)</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">交集</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: center;">(1==1) and (2==3)</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
 </tbody>
 </table>
-
 </div>
+
+
 </div>
 </div>
 </section>
 <section id="在報告中表達邏輯運算子" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="在報告中表達邏輯運算子"><span class="header-section-number">6.2.3</span> 在報告中表達邏輯運算子</h3>
-<p>I also want to briefly point out that you can apply these logical operators to text as well as to logical data. It’s just that we need to be a bit more careful in understanding how jamovi interprets the different operations. In this section I’ll talk about how the equal to operator <span class="math inline">\(==\)</span> applies to text, since this is the most important one. Obviously, the not equal to operator != gives the exact opposite answers to <span class="math inline">\(==\)</span> so I’m implicitly talking about that one too, but I won’t give specific commands showing the use of <span class="math inline">\(!=\)</span>.</p>
-<p>Okay, let’s see how it works. In one sense, it’s very simple. For instance, I can ask jamovi if the word “cat” is the same as the word “dog”, like this:</p>
-<p>“cat” <span class="math inline">\(==\)</span> “dog” That’s pretty obvious, and it’s good to know that even jamovi can figure that out. Similarly, jamovi does recognise that a “cat” is a “cat”: “cat” <span class="math inline">\(==\)</span> “cat” Again, that’s exactly what we’d expect. However, what you need to keep in mind is that jamovi is not at all tolerant when it comes to grammar and spacing. If two strings differ in any way whatsoever, jamovi will say that they’re not equal to each other, as with the following: ” cat” <span class="math inline">\(==\)</span> “cat” “cat” <span class="math inline">\(==\)</span> “CAT” “cat” <span class="math inline">\(==\)</span> “c a t”</p>
-<p>You can also use other logical operators too. For instance jamovi also allows you to use the &gt; and &gt; operators to determine which of two text ‘strings’ comes first, alphabetically speaking. Sort of. Actually, it’s a bit more complicated than that, but let’s start with a simple example:</p>
-<p>“cat” <span class="math inline">\(&lt;\)</span> “dog”</p>
-<p>In jamovi, this example evaluates to ‘true’. This is because “cat” does does come before “dog” alphabetically, so jamovi judges the statement to be true. However, if we ask jamovi to tell us if “cat” comes before “anteater” then it will evaluate the expression as false. So far, so good. But text data is a bit more complicated than the dictionary suggests. What about “cat” and “CAT”? Which of these comes first? Try it and find out:</p>
-<p>“CAT” <span class="math inline">\(&lt;\)</span> “cat”</p>
-<p>This in fact evaluates to ‘true’. In other words, jamovi assumes that uppercase letters come before lowercase ones. Fair enough. No-one is likely to be surprised by that. What you might find surprising is that jamovi assumes that all uppercase letters come before all lowercase ones. That is, while “anteater” <span class="math inline">\(&lt;\)</span> “zebra” is a true statement, and the uppercase equivalent “ANTEATER” <span class="math inline">\(&lt;\)</span> “ZEBRA” is also true, it is not true to say that “anteater” <span class="math inline">\(&lt;\)</span> “ZEBRA”, as the following extract illustrates. Try this:</p>
-<p>“anteater” <span class="math inline">\(&lt;\)</span> “ZEBRA”</p>
-<p>This evaluates to ‘false’, and this may seem slightly counter-intuitive. With that in mind, it may help to have a quick look at <a href="#tbl-tab6-4">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-4</span></a> which lists various text characters in the order that jamovi processes them.</p>
+<p>(以下為AI初翻，尚待校稿)</p>
+<!---
+I also want to briefly point out that you can apply these logical operators to text as well as to logical data. It's just that we need to be a bit more careful in understanding how jamovi interprets the different operations. In this section I'll talk about how the equal to operator $==$ applies to text, since this is the most important one. Obviously, the not equal to operator != gives the exact opposite answers to $==$ so I'm implicitly talking about that one too, but I won't give specific commands showing the use of $!=$.
+
+Okay, let's see how it works. In one sense, it's very simple. For instance, I can ask jamovi if the word "cat" is the same as the word "dog", like this:
+
+"cat" $==$ "dog" That's pretty obvious, and it's good to know that even jamovi can figure that out. Similarly, jamovi does recognise that a "cat" is a "cat": "cat" $==$ "cat" Again, that's exactly what we'd expect. However, what you need to keep in mind is that jamovi is not at all tolerant when it comes to grammar and spacing. If two strings differ in any way whatsoever, jamovi will say that they're not equal to each other, as with the following: " cat" $==$ "cat" "cat" $==$ "CAT" "cat" $==$ "c a t"
+
+You can also use other logical operators too. For instance jamovi also allows you to use the \> and \> operators to determine which of two text 'strings' comes first, alphabetically speaking. Sort of. Actually, it's a bit more complicated than that, but let's start with a simple example:
+
+"cat" $<$ "dog"
+
+In jamovi, this example evaluates to 'true'. This is because "cat" does does come before "dog" alphabetically, so jamovi judges the statement to be true. However, if we ask jamovi to tell us if "cat" comes before "anteater" then it will evaluate the expression as false. So far, so good. But text data is a bit more complicated than the dictionary suggests. What about "cat" and "CAT"? Which of these comes first? Try it and find out:
+
+"CAT" $<$ "cat"
+
+This in fact evaluates to 'true'. In other words, jamovi assumes that uppercase letters come before lowercase ones. Fair enough. No-one is likely to be surprised by that. What you might find surprising is that jamovi assumes that all uppercase letters come before all lowercase ones. That is, while "anteater" $<$ "zebra" is a true statement, and the uppercase equivalent "ANTEATER" $<$ "ZEBRA" is also true, it is not true to say that "anteater" $<$ "ZEBRA", as the following extract illustrates. Try this:
+
+"anteater" $<$ "ZEBRA"
+
+This evaluates to 'false', and this may seem slightly counter-intuitive. With that in mind, it may help to have a quick look at @tbl-tab6-4 which lists various text characters in the order that jamovi processes them.
+
+Text characters in the order that jamovi processes them
+--->
+<p>這是6.2.3節“在報告中表達邏輯運算子”的原始檔,其中使用’$’符號包圍的部分是latex code,要保持原樣不做翻譯。最後還有表格說明。我生成了以下繁體中文翻譯初稿:</p>
+<p>我也想簡要指出,您可以將這些邏輯運算符應用於文本以及邏輯數據。只是在理解jamovi如何解讀不同運算時,我們需要更加小心。在本節中,我將談論等於運算符<span class="math inline">\(==\)</span>如何應用於文本,因為這是最重要的一個。顯然,不等於運算符<span class="math inline">\(!=\)</span>會給出與<span class="math inline">\(==\)</span>完全相反的答案,所以我也隱含地談到了這個運算符,但我不會給出顯示使用<span class="math inline">\(!=\)</span>的具體命令。</p>
+<p>好的,讓我們看看它的工作原理。在某種意義上,這非常簡單。例如,我可以詢問jamovi“cat”一詞是否與“dog”一詞相同,像这样:</p>
+<p>“cat”<span class="math inline">\(==\)</span>“dog”</p>
+<p>這很明顯,很高興知道即使是jamovi也能明白這一點。同樣,jamovi也確實認識到“cat”就是“cat”:</p>
+<p>“cat”<span class="math inline">\(==\)</span>“cat”</p>
+<p>同樣,這正是我們的預期。然而,您需要记住的是,在語法和空格方面,jamovi完全不寬容。如果兩個字符串在任何方面有任何區別,jamovi會說它們不等於彼此,如下所示:</p>
+<p>” cat” <span class="math inline">\(==\)</span> “cat”<br>
+“cat” <span class="math inline">\(==\)</span> “CAT”<br>
+“cat” <span class="math inline">\(==\)</span> “c a t”</p>
+<p>您也可以使用其他邏輯運算符。例如,jamovi還允許您使用\&gt;和\&lt;運算符來確定兩個文本“字符串”在字母順序上的先後順序。某種意義上。其實,這比較複雜,但讓我們從一個簡單的示例開始:</p>
+<p>“cat”<span class="math inline">\(&lt;\)</span>“dog”</p>
+<p>在jamovi中,這個示例被評估為“真”。這是因為“cat”確實在字母順序上位於“dog”之前,所以jamovi判斷該語句為真。但是,如果我們要求jamovi告訴我們“cat”是否位於“anteater”之前,它會將該運算式評估為假。到目前為止都很好。但文本數據比字典所示的要複雜一些。“cat”和“CAT”怎麼樣?哪個在前?試試看:</p>
+<p>“CAT”<span class="math inline">\(&lt;\)</span>“cat”</p>
+<p>這實際上被評估為“真”。換句話說,jamovi假定大寫字母在小寫字母之前。這很公平。不太可能有人會為此感到驚訝。您可能會感到驚訝的是,jamovi假設所有的大寫字母都在所有小寫字母之前。也就是說,“anteater”<span class="math inline">\(&lt;\)</span>“zebra”是一個真語句,而大寫對應的“ANTEATER”<span class="math inline">\(&lt;\)</span>“ZEBRA”也為真,但是“anteater”<span class="math inline">\(&lt;\)</span>“ZEBRA”不是真的,如下所示。嘗試一下:</p>
+<p>“anteater”<span class="math inline">\(&lt;\)</span>“ZEBRA”</p>
+<p>這被評估為“假”,這看起來有點反直覺。考慮到這一點,快速查看 <a href="#tbl-tab6-4">表格&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-4</span></a> 可能會有幫助,其中列出了 jamovi 處理的各種文本字符的順序。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab6-4" class="anchored">
-
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab6-4"><caption>Table&nbsp;6.4:  Text characters in the order that jamovi processes them </caption>
-<colgroup><col><col><col><col><col><col><col><col></colgroup><tbody><tr>
-<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">\( \text{!} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \text{"} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \# \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \text{\$} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \% \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \&amp; \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \text{'} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">\( \text{(} \)</th></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( \text{)} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{*} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{+} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{,} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{-} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{.} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{/} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">8</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">9</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{:} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{;} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">&lt;</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{=} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">&gt;</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{?} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \text{@} \)</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">A</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">B</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">C</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">D</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">E</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">F</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">G</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">H</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">I</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">J</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">K</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">L</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">M</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">N</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">O</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">P</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Q</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">R</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">S</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">T</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">U</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">V</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">W</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">X</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Y</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">Z</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{[} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \backslash \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{]} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \hat{} \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \_ \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \text{`} \)</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">a</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">b</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">c</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">d</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">e</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">g</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">h</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">i</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">j</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">k</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">l</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">m</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">n</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">o</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">p</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">q</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">r</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">s</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">t</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">u</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">v</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">w</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">x</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">y</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">z</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\text{\{}\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\text{|}\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\text{\}}\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;"></td></tr>
-</tbody></table>
-
+<table id="tab:tbl-tab6-4" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>表格&nbsp;6.4: 表內文本字符按照 jamovi 處理順序排列。</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">\( \text{!} \)</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \text{"} \)</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \# \)</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \text{\$} \)</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \% \)</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \&amp; \)</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">\( \text{'} \)</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">\( \text{(} \)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( \text{)} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{*} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{+} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{,} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{-} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{.} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{/} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">9</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{:} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{;} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">&lt;</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{=} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">&gt;</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{?} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \text{@} \)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">A</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">B</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">C</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">D</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">E</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">F</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">G</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">H</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">I</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">J</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">K</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">L</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">M</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">N</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">O</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">P</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Q</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">R</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">S</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">T</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">U</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">V</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">W</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Y</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">Z</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{[} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \backslash \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \text{]} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \hat{} \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \_ \)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \text{`} \)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">a</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">b</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">c</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">d</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">e</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">g</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">h</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">i</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">j</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">k</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">l</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">m</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">n</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">o</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">p</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">q</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">r</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">s</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">t</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">u</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">v</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">w</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">x</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">z</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\text{\{}\)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\text{|}\)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\text{\}}\)</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;"></td>
+</tr>
+</tbody>
+</table>
 </div>
+
+
 </div>
 </div>
 </section>
 </section>
 <section id="sec-Transforming-and-recoding-a-variable" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="sec-Transforming-and-recoding-a-variable"><span class="header-section-number">6.3</span> 資料變項的轉換與編碼</h2>
-<p>It’s not uncommon in real world data analysis to find that one of your variables isn’t quite equivalent to the variable that you really want. For instance, it’s often convenient to take a continuous-valued variable (e.g., age) and break it up into a smallish number of categories (e.g., younger, middle, older). At other times, you may need to convert a numeric variable into a different numeric variable (e.g., you may want to analyse at the absolute value of the original variable). In this section I’ll describe a few key ways you can do these things in jamovi.</p>
+<!---It's not uncommon in real world data analysis to find that one of your variables isn't quite equivalent to the variable that you really want. For instance, it's often convenient to take a continuous-valued variable (e.g., age) and break it up into a smallish number of categories (e.g., younger, middle, older). At other times, you may need to convert a numeric variable into a different numeric variable (e.g., you may want to analyse at the absolute value of the original variable). In this section I'll describe a few key ways you can do these things in jamovi.--->
+<p>在現實世界的數據分析中,發現您的一個變量與您真正需要的變量不完全等價的情况并不罕見。例如,通常將一個連續值變量(例如年齡)分解為數量較少的類別(例如更年輕、中等和更老)很方便。在其他時候,您可能需要將數值變量轉換為不同的數值變量(例如,您可能希望分析原始變量的絕對值)。在本節中,我將描述您可以在 jamovi 中完成這些操作的一些關鍵方法。</p>
 <section id="轉換資料數值" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="轉換資料數值"><span class="header-section-number">6.3.1</span> 轉換資料數值</h3>
-<p>The first trick to discuss is the idea of <strong>transforming</strong> a variable. Taken literally, anything you do to a variable is a transformation, but in practice what it usually means is that you apply a relatively simple mathematical function to the original variable in order to create a new variable that either (a) provides a better way of describing the thing you’re actually interested in, or (b) is more closely in agreement with the assumptions of the statistical tests you want to do. Since, at this stage, I haven’t talked about statistical tests or their assumptions, I’ll show you an example based on the first case.</p>
-<p>Suppose I’ve run a short study in which I ask 10 people a single question:<br> On a scale of 1 (strongly disagree) to 7 (strongly agree), to what extent do you agree with the proposition that “Dinosaurs are awesome”?</p>
-<p>Now let’s load and look at the data. The data file likert.omv contains a single variable that contains raw Likert-scale responses for these 10 people. However, if you think about it, this isn’t the best way to represent these responses. Because of the fairly symmetric way that we set up the response scale, there’s a sense in which the midpoint of the scale should have been coded as 0 (no opinion), and the two endpoints should be `3 (strongly agree) and ´3 (strongly disagree). By recoding the data in this way it’s a bit more reflective of how we really think about the responses. The recoding here is pretty straightforward, we just subtract 4 from the raw scores. In jamovi you can do this by computing a new variable: click on the ‘Data’ - ‘Compute’ button and you will see that a new variable has been added to the spreadsheet. Let’s call this new variable likert.centred (go ahead and type that in) and then add the following in the formula box, like in <a href="#fig-fig6-4">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-4</span></a>: ‘likert.raw - 4’</p>
+<!---The first trick to discuss is the idea of **transforming** a variable. Taken literally, anything you do to a variable is a transformation, but in practice what it usually means is that you apply a relatively simple mathematical function to the original variable in order to create a new variable that either (a) provides a better way of describing the thing you're actually interested in, or (b) is more closely in agreement with the assumptions of the statistical tests you want to do. Since, at this stage, I haven't talked about statistical tests or their assumptions, I'll show you an example based on the first case.
+
+Suppose I've run a short study in which I ask 10 people a single question:<br />
+On a scale of 1 (strongly disagree) to 7 (strongly agree), to what extent do you agree with the proposition that "Dinosaurs are awesome"?
+
+Now let's load and look at the data. The data file likert.omv contains a single variable that contains raw Likert-scale responses for these 10 people. However, if you think about it, this isn't the best way to represent these responses. Because of the fairly symmetric way that we set up the response scale, there's a sense in which the midpoint of the scale should have been coded as 0 (no opinion), and the two endpoints should be \`3 (strongly agree) and ´3 (strongly disagree). By recoding the data in this way it's a bit more reflective of how we really think about the responses. The recoding here is pretty straightforward, we just subtract 4 from the raw scores. In jamovi you can do this by computing a new variable: click on the 'Data' - 'Compute' button and you will see that a new variable has been added to the spreadsheet. Let's call this new variable likert.centred (go ahead and type that in) and then add the following in the formula box, like in @fig-fig6-4: 'likert.raw - 4'
+Creating a new computed variable in jamovi
+--->
+<p>首先要討論的技巧是<strong>轉換</strong>變項的概念。從字面上看,對變項執行的任何操作都是轉換,但在實踐中,它通常的意思是您對原始變項應用相對簡單的數學函數以創建新變項,新變項要么(a)以更好的方式描述您實際感興趣的事物,要么(b)與您想要執行的統計測試的假設更為一致。由于在這一階段我還沒有談到統計測試或它們的假設,所以我將給您展示第一種情况的示例。</p>
+<p>假設我進行了一項短期研究,向10人提出了一個問題:<br></p>
+<p>在1(強烈不同意)到7(強烈同意)的量表上,您在多大程度上同意“恐龍很棒”的主張?</p>
+<p>現在讓我們加載資料并查看。omv檔案likert.omv包含了這10個人的單個變項,其中包含原始李克特量表響應。然而,仔細想想,這並不是表示這些響應的最佳方式。由于我們建立響應量表的相當對稱的方式,在某種意義上,量表的中位數應編碼為0(沒有意見),而兩個端點應為\`3(強烈同意)和 ́3(強烈不同意)。通過這種方式重新編碼資料,它在一定程度上更能反映我們對響應的真實想法。這裡重新編碼很簡單,只需從原始分數中減去4。在jamovi中,您可以通過計算新變項來完成此操作:點擊“資料”- “計算”按鈕,您將看到電子表格中添加了一個新變項。讓我們將此新變項命名為likert.centred(前往並輸入該名稱),然后在公式框中添加以下內容,如 <a href="#fig-fig6-4">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-4</span></a> 所示:“likert.raw - 4”</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig6-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.4: Creating a new computed variable in jamovi</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.4: 在 jamovi 中創建新的計算變項</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>One reason why it might be useful to have the data in this format is that there are a lot of situations where you might prefer to analyse the strength of the opinion separately from the direction of the opinion. We can do two different transformations on this likert.centred variable in order to distinguish between these two different concepts. First, to compute an opinion.strength variable, we want to take the absolute value of the centred data (using the ‘ABS’ function).<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> In jamovi, create another new variable using the ‘Compute’ button. Name the variable opinion.strength and this time click on the fx button next to the ‘Formula’ box. This shows the different ‘Functions’ and ‘Variables’ that you can add to the ‘Formula’ box, so double click on ‘ABS’ and then double click on “likert.centred’ and you will see that the ‘Formula’ box is populated with ABS(likert.centred) and a new variable has been created in the spreadsheet view, as in <a href="#fig-fig6-5">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-5</span></a>.</p>
+<!--- One reason why it might be useful to have the data in this format is that there are a lot of situations where you might prefer to analyse the strength of the opinion separately from the direction of the opinion. We can do two different transformations on this likert.centred variable in order to distinguish between these two different concepts. First, to compute an opinion.strength variable, we want to take the absolute value of the centred data (using the 'ABS' function).[^pragmatic-matters-6] In jamovi, create another new variable using the 'Compute' button. Name the variable opinion.strength and this time click on the fx button next to the 'Formula' box. This shows the different 'Functions' and 'Variables' that you can add to the 'Formula' box, so double click on 'ABS' and then double click on "likert.centred' and you will see that the 'Formula' box is populated with ABS(likert.centred) and a new variable has been created in the spreadsheet view, as in @fig-fig6-5.
+
+[^pragmatic-matters-6]: The absolute value of a number is its distance from zero, regardless of whether it's sign is negative or positive. 
+Using the $f_x$ button to select functions and variables
+--->
+<p>以這種格式保存資料的一個原因是,在很多情况下,您可能更喜歡單獨分析意見的力度而不是意見的方向。我們可以對這個likert.centred變項執行兩種不同的轉換,以區分這兩個不同的概念。首先,為了計算opinion.strength變項,我們想采取中心化資料的絕對值(使用ABS函數)。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>在jamovi中,使用“計算”按鈕再創建一個新變項。將變項命名為opinion.strength,這次點擊公式框旁邊的fx按鈕。這將顯示可以添加到“公式”框中的不同“函數”和“變量”,所以雙擊“ABS”,然後雙擊“likert.centred”,您將看到“公式”框被填充為ABS(likert.centred),並且在電子表格視圖中創建了一個新變項,如 <a href="#fig-fig6-5">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-5</span></a> 所示。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig6-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.5: Using the <span class="math inline">\(f_x\)</span> button to select functions and variables</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.5: 使用 <span class="math inline">\(f\_x\)</span> 按鈕選擇函數和變項</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Second, to compute a variable that contains only the direction of the opinion and ignores the strength, we want to calculate the ‘sign’ of the variable. In jamovi we can use the IF function to do this. Create another new variable using the ‘Compute’ button, name this one opinion.sign, and then type the following into the function box:</p>
-<p>IF(likert.centred <span class="math inline">\(==\)</span> 0, 0, likert.centred / opinion.strength) When done, you’ll see that all negative numbers from the likert.centred variable are converted to -1, all positive numbers are converted to 1 and zero stays as 0, like so:</p>
+<!---Second, to compute a variable that contains only the direction of the opinion and ignores the strength, we want to calculate the 'sign' of the variable. In jamovi we can use the IF function to do this. Create another new variable using the 'Compute' button, name this one opinion.sign, and then type the following into the function box:
+
+IF(likert.centred $==$ 0, 0, likert.centred / opinion.strength) When done, you'll see that all negative numbers from the likert.centred variable are converted to -1, all positive numbers are converted to 1 and zero stays as 0, like so:
+
+-1 1 -1 0 0 0 -1 1 1 1
+
+Let's break down what this 'IF' command is doing. In jamovi there are three parts to an 'IF' statement, written as 'IF(expression, value, else)'. The first part, 'expression' can be a logical or mathematical statement. In our example, we have specified 'likert.centred $==$ 0', which is TRUE for values where likert.centred is zero. The next part, 'value', is the new value where the expression in part one is TRUE. In our example, we have said that for all those values where likert.centred is zero, keep them zero. In the next part, 'else', we can enter another logical or mathematical statement to be used if part one evaluates to FALSE, i.e. where likert.centred is not zero. In our example we have divided likert.centred by opinion.strength to give '-1' or '+1' depending of the sign of the original value in likert.centred.[^pragmatic-matters-7]
+
+[^pragmatic-matters-7]: The reason we have to use the 'IF' command and keep zero as zero is that you cannot just use likert.centred / opinion.strength to calculate the sign of likert.centred, because mathematically dividing zero by zero does not work. Try it and see
+
+And we're done. We now have three shiny new variables, all of which are useful transformations of the original likert.raw data. --->
+<p>其次,為了計算仅包含意見方向並忽略力度的變項,我們想計算變量的“符號”。在jamovi中,我們可以使用IF函數來實現。使用“計算”按鈕再創建一個新變量,將此變量命名為opinion.sign,然後在函數框中鍵入以下內容:</p>
+<p>IF(likert.centred <span class="math inline">\(==\)</span> 0, 0, likert.centred / opinion.strength) 完成後,您會看到likert.centred變量中的所有負數都轉換為-1,所有正數都轉換為1,零保持為0,如下所示:</p>
 <p>-1 1 -1 0 0 0 -1 1 1 1</p>
-<p>Let’s break down what this ‘IF’ command is doing. In jamovi there are three parts to an ‘IF’ statement, written as ‘IF(expression, value, else)’. The first part, ‘expression’ can be a logical or mathematical statement. In our example, we have specified ‘likert.centred <span class="math inline">\(==\)</span> 0’, which is TRUE for values where likert.centred is zero. The next part, ‘value’, is the new value where the expression in part one is TRUE. In our example, we have said that for all those values where likert.centred is zero, keep them zero. In the next part, ‘else’, we can enter another logical or mathematical statement to be used if part one evaluates to FALSE, i.e.&nbsp;where likert.centred is not zero. In our example we have divided likert.centred by opinion.strength to give ‘-1’ or ‘+1’ depending of the sign of the original value in likert.centred.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-<p>And we’re done. We now have three shiny new variables, all of which are useful transformations of the original likert.raw data.</p>
+<p>讓我們分解這個‘IF’命令的工作原理。在jamovi中,’IF’語句有三個部分,寫為‘IF(expression,value,else)’。第一部分“expression”可以是邏輯或數學語句。在我們的示例中,我們已經指定了‘likert.centred <span class="math inline">\(==\)</span> 0’,這對於likert.centred為零的值為真。下一部分“value”是第一部分中的運算式為真時的新值。在我們的示例中,對於所有likert.centred為零的值,我們說保持它們為零。在下一部分“else”中,我們可以輸入另一個邏輯或數學語句,如果第一部分評估為假,即likert.centred不為零,則使用該語句。在我們的示例中,我們將likert.centred除以opinion.strength以給出“-1”或“+1”,具體取決於likert.centred中原始值的符號。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>就這些了。我們現在有三個閃亮的新變量,它們都是原始likert.raw資料的有用轉換。</p>
 </section>
 <section id="轉換連續變項為間斷變項" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="轉換連續變項為間斷變項"><span class="header-section-number">6.3.2</span> 轉換連續變項為間斷變項</h3>
-<p>One pragmatic task that comes up quite often is the problem of collapsing a variable into a smaller number of discrete levels or categories. For instance, suppose I’m interested in looking at the age distribution of people at a social gathering:</p>
+
+<!--- One pragmatic task that comes up quite often is the problem of collapsing a variable into a smaller number of discrete levels or categories. For instance, suppose I'm interested in looking at the age distribution of people at a social gathering:
+
+60,58,24,26,34,42,31,30,33,2,9
+
+In some situations it can be quite helpful to group these into a smallish number of categories. For example, we could group the data into three broad categories: young (0-20), adult (21-40) and older (41-60). This is a quite coarse-grained classification, and the labels that I've attached only make sense in the context of this data set (e.g., viewed more generally, a 42 year old wouldn't consider themselves as "older"). We can slice this variable up quite easily using the jamovi 'IF' function that we have already used. This time we have to specify nested 'IF' statements, meaning simply that IF the first logical expression is TRUE, insert a first value, but IF a second logical expression is TRUE, insert a second value, but IF a third logical expression is TRUE, then insert a third value. This can be written as:
+
+IF(Age \>= 0 and Age \<= 20, 1, IF(Age \>= 21 and Age \<= 40, 2, IF(Age \>= 41 and Age \<= 60, 3 )))
+
+Note that there are three left parentheses used during the nesting, so the whole statement has to end with three right parentheses otherwise you will get an error message. The jamovi screen shot for this data manipulation, along with an accompanying frequency table, is shown in @fig-fig6-6.
+
+Collapsing a variable into a smaller number of discrete levels using the jamovi ‘IF’ function --->
+<p>一個非常實用的任務是將變項歸併為更少數量的離散層次或類別的問題。例如,假設我有興趣查看社交聚會上人們的年齡分佈:</p>
 <p>60,58,24,26,34,42,31,30,33,2,9</p>
-<p>In some situations it can be quite helpful to group these into a smallish number of categories. For example, we could group the data into three broad categories: young (0-20), adult (21-40) and older (41-60). This is a quite coarse-grained classification, and the labels that I’ve attached only make sense in the context of this data set (e.g., viewed more generally, a 42 year old wouldn’t consider themselves as “older”). We can slice this variable up quite easily using the jamovi ‘IF’ function that we have already used. This time we have to specify nested ‘IF’ statements, meaning simply that IF the first logical expression is TRUE, insert a first value, but IF a second logical expression is TRUE, insert a second value, but IF a third logical expression is TRUE, then insert a third value. This can be written as:</p>
-<p>IF(Age &gt;= 0 and Age &lt;= 20, 1, IF(Age &gt;= 21 and Age &lt;= 40, 2, IF(Age &gt;= 41 and Age &lt;= 60, 3 )))</p>
-<p>Note that there are three left parentheses used during the nesting, so the whole statement has to end with three right parentheses otherwise you will get an error message. The jamovi screen shot for this data manipulation, along with an accompanying frequency table, is shown in <a href="#fig-fig6-6">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-6</span></a>.</p>
+<p>在某些情况下,將這些資料分組為少量類別會非常有幫助。例如,我們可以將資料分為三大類:年輕(0-20)、成年(21-40)和老年(41-60)。這是一種相當粗糙的分類,並且我給出的標籤僅在本資料集上下文中有意義(例如,從更廣泛的角度來看,42歲的人不會認為自己是“老年人”)。我們可以使用已經使用過的 jamovi ’IF’函數輕鬆地劃分這個變項。這次我們必須指定巢狀的 ’IF’語句,這僅僅意味著如果第一個邏輯運算式為 TRUE,則插入第一個值,但如果第二個邏輯運算式為 TRUE,則插入第二個值,但是如果第三個邏輯運算式為 TRUE,則插入第三個值。這可以寫為:</p>
+<p>IF(Age &gt;= 0 和 Age &lt;= 20,1,IF(Age &gt;= 21 和 Age &lt;= 40,2,IF(Age &gt;= 41 和 Age &lt;= 60,3)))</p>
+<p>請注意,巢狀使用了三個左括號,所以整個語句必須以三個右括號結束,否則您將得到錯誤消息。 這個資料操作的jamovi截圖以及隨附的頻率表如 <a href="#fig-fig6-6">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-6</span></a> 所示。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig6-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.6: Collapsing a variable into a smaller number of discrete levels using the jamovi ‘IF’ function</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.6: 使用 jamovi“IF”函數將變量歸併為更少數量的離散層次</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>It’s important to take the time to figure out whether or not the resulting categories make any sense at all in terms of your research project. If they don’t make any sense to you as meaningful categories, then any data analysis that uses those categories is likely to be just as meaningless. More generally, in practice I’ve noticed that people have a very strong desire to carve their (continuous and messy) data into a few (discrete and simple) categories, and then run analyses using the categorised data instead of the original data.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> I wouldn’t go so far as to say that this is an inherently bad idea, but it does have some fairly serious drawbacks at times, so I would advise some caution if you are thinking about doing it.</p>
+
+<!--- It's important to take the time to figure out whether or not the resulting categories make any sense at all in terms of your research project. If they don't make any sense to you as meaningful categories, then any data analysis that uses those categories is likely to be just as meaningless. More generally, in practice I've noticed that people have a very strong desire to carve their (continuous and messy) data into a few (discrete and simple) categories, and then run analyses using the categorised data instead of the original data.[^pragmatic-matters-8] I wouldn't go so far as to say that this is an inherently bad idea, but it does have some fairly serious drawbacks at times, so I would advise some caution if you are thinking about doing it.
+
+[^pragmatic-matters-8]: If you've read further into the book, and are re-reading this section, then a good example of this would be someone choosing to do an ANOVA using AgeCats as the grouping variable, instead of running a regression using Age as a predictor. There are sometimes good reasons for doing this. For instance, if the relationship between Age and your outcome variable is highly non-linear and you aren't comfortable with trying to run non-linear regression! However, unless you really do have a good rationale for doing this, it's best not to. It tends to introduce all sorts of other problems (e.g., the data will probably violate the normality assumption) and you can lose a lot of statistical power. --->
+<p>花時間確定結果類別在您的研究項目中是否有任何意義非常重要。 如果對您來說這些類別並沒有任何有意義的區分,那麼使用這些類別的任何資料分析可能同樣沒有意義。 更廣泛地說,在實踐中,我注意到人們非常渴望將他們的(連續和混亂的)資料劃分為少量(離散和簡單的)類別,然後使用分類後的資料而不是原始資料進行分析。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> 我不會說這本身就是一個糟糕的主意,但有時確實有一些相當嚴重的缺點,所以如果您正在考慮這樣做,我會建議您保持謹慎。</p>
 </section>
 <section id="設計用途多重的轉換功能" class="level3" data-number="6.3.3">
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="設計用途多重的轉換功能"><span class="header-section-number">6.3.3</span> 設計用途多重的轉換功能</h3>
-<p>Sometimes you want to apply the same transformation to more than one variable, for example when you have multiple questionnaire items that all need to be recalculated or recoded in the same way. And one of the neat features in jamovi is that you can create a transformation, using the ‘Data’ - ‘Transform’ button, that can then be saved and applied to multiple variables. Let’s go back to the first example above, using the data file likert.omv that contains a single variable with raw Likert-scale responses for 10 people. To create a transformation that you can save and then apply across multiple variables (assuming you had more variables like this in your data file), first in the spreadsheet editor select (i.e., click) the variable you want to use to initially create the transformation. In our example this is likert.raw. Next click the ‘Transform’ button in the jamovi ‘Data’ ribbon, and you’ll see something like <a href="#fig-fig6-7">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-7</span></a>.</p>
-<p>Give your new variable a name, let’s call it opinion.strength and then click on the ‘using transform’ selection box and select ‘Create New Transform…’. This is where you will create, and name, the transformation that can be re-applied to as many variables as you like. The transformation is automatically named for us as ‘Transform 1’ (imaginative, huh. You can change this if you like). Then type the expression “ABS($source - 4)” into the function text box, as in <a href="#fig-fig6-8">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-8</span></a>, press Enter or Return on your keyboard and, hey presto, you have created a new transformation and applied it to the likert.raw variable! Good, eh. Note that instead of using the variable label in the expression, we have instead used ‘$source’. This is so that we can then use the same transformation with as many different variables as we like - jamovi requires you to use ‘$source’ to refer to the source variable you are transforming. Your transformation has also been saved and can be re-used any time you like (providing you save the dataset as an ‘.omv’ file, otherwise you’ll lose it!).</p>
-<p>You can also create a transformation with the second example we looked at, the age distribution of people at a social gathering. Go on, you know you want to! Remember that we collapsed this variable into three groups: younger, adult and older. This time we will achieve the same thing, but using the jamovi ‘Transform’ - ‘Add condition’ button. With this data set (go back to it or create it again if you didn’t save it) set up a new variable transformation. Call the transformed variable AgeCats and the transformation you will create Agegroupings. Then click on the big “<span class="math inline">\(+\)</span>” sign next to the function box. This is the ‘Add condition’ button and I’ve stuck a big red arrow onto <a href="#fig-fig6-9">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-9</span></a> so you can see exactly where this is. Re-create the transformation shown in <a href="#fig-fig6-9">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-9</span></a> and when you have done, you will see the new values appear in the spreadsheet window. What’s more, the Age groupings transformation has been saved and can be re-applied any time you like. Ok, so I know that it’s unlikely you will have more than one ‘Age’ variable, but you get the idea now of how to set up transformations in jamovi, so you can follow this idea with other sorts of variables. A typical scenario for this is when you have a questionnaire scale with, say, 20 items (variables) and each item was originally scored from 1 to 6 but, for some reason or quirk of the data you decide to recode all the items as 1 to 3. You can easily do this in jamovi by creating and then re-applying your transformation for each variable that you want to recode.</p>
+<!--- Sometimes you want to apply the same transformation to more than one variable, for example when you have multiple questionnaire items that all need to be recalculated or recoded in the same way. And one of the neat features in jamovi is that you can create a transformation, using the 'Data' - 'Transform' button, that can then be saved and applied to multiple variables. Let's go back to the first example above, using the data file likert.omv that contains a single variable with raw Likert-scale responses for 10 people. To create a transformation that you can save and then apply across multiple variables (assuming you had more variables like this in your data file), first in the spreadsheet editor select (i.e., click) the variable you want to use to initially create the transformation. In our example this is likert.raw. Next click the 'Transform' button in the jamovi 'Data' ribbon, and you'll see something like @fig-fig6-7.
+
+Give your new variable a name, let's call it opinion.strength and then click on the 'using transform' selection box and select 'Create New Transform...'. This is where you will create, and name, the transformation that can be re-applied to as many variables as you like. The transformation is automatically named for us as 'Transform 1' (imaginative, huh. You can change this if you like). Then type the expression "ABS(\$source - 4)" into the function text box, as in @fig-fig6-8, press Enter or Return on your keyboard and, hey presto, you have created a new transformation and applied it to the likert.raw variable! Good, eh. Note that instead of using the variable label in the expression, we have instead used '\$source'. This is so that we can then use the same transformation with as many different variables as we like - jamovi requires you to use '\$source' to refer to the source variable you are transforming. Your transformation has also been saved and can be re-used any time you like (providing you save the dataset as an '.omv' file, otherwise you'll lose it!).
+
+You can also create a transformation with the second example we looked at, the age distribution of people at a social gathering. Go on, you know you want to! Remember that we collapsed this variable into three groups: younger, adult and older. This time we will achieve the same thing, but using the jamovi 'Transform' - 'Add condition' button. With this data set (go back to it or create it again if you didn't save it) set up a new variable transformation. Call the transformed variable AgeCats and the transformation you will create Agegroupings. Then click on the big "$+$" sign next to the function box. This is the 'Add condition' button and I've stuck a big red arrow onto @fig-fig6-9 so you can see exactly where this is. Re-create the transformation shown in @fig-fig6-9 and when you have done, you will see the new values appear in the spreadsheet window. What's more, the Age groupings transformation has been saved and can be re-applied any time you like. Ok, so I know that it's unlikely you will have more than one 'Age' variable, but you get the idea now of how to set up transformations in jamovi, so you can follow this idea with other sorts of variables. A typical scenario for this is when you have a questionnaire scale with, say, 20 items (variables) and each item was originally scored from 1 to 6 but, for some reason or quirk of the data you decide to recode all the items as 1 to 3. You can easily do this in jamovi by creating and then re-applying your transformation for each variable that you want to recode.
+
+Creating a new variable transformation using the jamovi 'Transform' command
+
+Specifying a transformation in jamovi, to be saved as the imaginatively named 'Transform 1'
+
+jamovi transformation into three age categories, using the 'Add condition' button
+
+Some mathematical operators
+--->
+<p>有時您想對多個變量應用相同的轉換,例如,當您有多個問卷項目都需要以相同的方式重新計算或重新編碼時。jamovi 的一個很棒的功能是,您可以使用 “資料” - “轉換”按鈕創建轉換,然后將其保存並應用於多個變量。讓我們回到上面的第一個示例,使用包含10人原始李克特量表響應的單個變量的 omv 檔案 likert.omv。要創建可以保存然后應用於多個變量的轉換(假設您的数据檔中有更多这样的變量),首先在电子表格編輯器中選擇(即點擊)您要用於最初創建轉換的變量。 在我們的示例中,這是 likert.raw。 下一步,點擊 jamovi“資料”功能區中的“轉換”按鈕,您會看到類似 <a href="#fig-fig6-7">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-7</span></a> 的界面。</p>
+<p>給您的新變量命名,我們將其命名為 opinion.strength,然后點擊“使用轉換”選擇框,并選擇“創建新轉換…”。這是您將創建和命名可以重新應用於任意多個變量的轉換的地方。 該轉換會自動為我們命名為“轉換1”(有創意,哈哈。如果您願意,可以更改此名稱)。 然后在函數文本框中鍵入運算式“ABS($source - 4)”,如 <a href="#fig-fig6-8">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-8</span></a> 所示,在鍵盤上按 Enter 或 Return 鍵,耶,您已經創建了一個新轉換并將其應用於 likert.raw 變量! 不錯吧。 請注意,在運算式中我們没有使用變量標籤,而是使用了“$source”。 這樣我們就可以將相同的轉換與任意多的不同變量一起使用 - jamovi 要求您使用“$source”來引用您正在轉換的源變量。 您的轉換也已經保存並可以在任何時候重用(只要您將資料集保存為“.omv”檔,否則您會失去它!)。</p>
+<p>您也可以通過我們查看的第二個示例創建轉換,即社交聚會上人們的年齡分佈。 前往吧,我知道你想試試! 記住我們將這個變量歸併為三組:年輕、成年和老年。 这次我們將達到相同的目的,但是使用 jamovi 的“轉換” - “添加條件”按鈕。 使用這個資料集(返回或如果您没有保存请重新創建),設置一個新的變量轉換。 將轉換後的變量命名為 AgeCats,您將創建的轉換命名為 Agegroupings。 然后點擊函數框旁邊的大“<span class="math inline">\(+\)</span>”符號。 這是“添加條件”按鈕,我在 <a href="#fig-fig6-9">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-9</span></a> 中加上了一個大紅色箭頭,以便您可以準確看到這在哪裡。 重新創建 <a href="#fig-fig6-9">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-9</span></a> 所示的轉換,完成后,您將在電子表格窗口中看到出現新值。 更重要的是,Age groupings 轉換已經保存並可以在任何時候重用。 好吧,所以我知道您不太可能有多於一個“年齡”變量,但是您現在已經了解了如何在 jamovi 中設置轉換,所以您可以跟隨這一想法處理其他類型的變量。 這種典型的情況是,當您有一個問卷量表,比如有 20 個項目(變量),並且每個項目最初得分從 1 分到 6 分,但是由於某些原因或數據的怪癖,您決定將所有項目重新編碼為 1 到 3。 您可以通過在 jamovi 中創建然后為您要重新編碼的每個變量重新應用您的轉換來輕鬆完成此操作。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig6-7" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-7.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.7: Creating a new variable transformation using the jamovi ‘Transform’ command</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.7: 使用 jamovi“轉換”命令創建新變項轉換</figcaption>
 </figure>
 </div>
 </div>
@@ -748,7 +978,7 @@ Of course, in our $2 + 2 = 5$ example, we didn't really need to use the "not" op
 <div id="fig-fig6-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.8: Specifying a transformation in jamovi, to be saved as the imaginatively named ‘Transform 1’</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.8: 在 jamovi 中指定轉換以保存為名為“轉換 1”的轉換</figcaption>
 </figure>
 </div>
 </div>
@@ -758,7 +988,7 @@ Of course, in our $2 + 2 = 5$ example, we didn't really need to use the "not" op
 <div id="fig-fig6-9" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.9: jamovi transformation into three age categories, using the ‘Add condition’ button</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.9: 使用jamovi內建函式 將變項轉換為三個年齡類別,使用“添加條件”按鈕</figcaption>
 </figure>
 </div>
 </div>
@@ -766,73 +996,140 @@ Of course, in our $2 + 2 = 5$ example, we didn't really need to use the "not" op
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab6-5" class="anchored">
-
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab6-5"><caption>Table&nbsp;6.5:  Some mathematical operators </caption>
-<colgroup><col><col><col><col></colgroup><tbody><tr>
-<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">function</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">example input</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">(answer)</th></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">square root</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">SQRT(x)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">SQRT(25)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">5</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">absolute value</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">ABS(x)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">ABS(-23)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">23</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">logarithm (base 10)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">LOG10(x)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">LOG10(1000)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">3</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">logarithm (base e)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">LN(x)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">LN(1000)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">6.91</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">exponentiation</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">EXP(x)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">EXP(6.908)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1e+03</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">box-cox</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">BOXCOX(x, lamda)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">BOXCOX(6.908, 3)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">110</td></tr>
-</tbody></table>
-
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>表格&nbsp;6.5: 一些數學運算示範</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">X.nbsp.</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">函式</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">輸入範例</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">輸出</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">開平方根</td>
+<td style="text-align: center;">SQRT(x)</td>
+<td style="text-align: center;">SQRT(25)</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">求絕對值</td>
+<td style="text-align: center;">ABS(x)</td>
+<td style="text-align: center;">ABS(-23)</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">求對數(底數為10)</td>
+<td style="text-align: center;">LOG10(x)</td>
+<td style="text-align: center;">LOG10(1000)</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">求對數(底數為自然數e)</td>
+<td style="text-align: center;">LN(x)</td>
+<td style="text-align: center;">LN(1000)</td>
+<td style="text-align: center;">6.91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">求自然指數</td>
+<td style="text-align: center;">EXP(x)</td>
+<td style="text-align: center;">EXP(6.908)</td>
+<td style="text-align: center;">1e+03</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Box-Cox轉換</td>
+<td style="text-align: center;">BOXCOX(x, lamda)</td>
+<td style="text-align: center;">BOXCOX(6.908, 3)</td>
+<td style="text-align: center;">110</td>
+</tr>
+</tbody>
+</table>
 </div>
+
+
 </div>
 </div>
 </section>
 </section>
 <section id="數學函式及運算子" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="數學函式及運算子"><span class="header-section-number">6.4</span> 數學函式及運算子</h2>
-<p>In the section on [Transforming and recoding a variable] I discussed the ideas behind variable transformations and showed that a lot of the transformations that you might want to apply to your data are based on fairly simple mathematical functions and operations. In this section I want to return to that discussion and mention several other mathematical functions and arithmetic operations that are actually quite useful for a lot of real world data analysis. <a href="#tbl-tab6-5">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-5</span></a> gives a brief overview of the various mathematical functions I want to talk about here, or later.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> Obviously this doesn’t even come close to cataloguing the range of possibilities available, but it does cover a range of functions that are used regularly in data analysis and that are available in jamovi.</p>
+<!--- In the section on [Transforming and recoding a variable] I discussed the ideas behind variable transformations and showed that a lot of the transformations that you might want to apply to your data are based on fairly simple mathematical functions and operations. In this section I want to return to that discussion and mention several other mathematical functions and arithmetic operations that are actually quite useful for a lot of real world data analysis. @tbl-tab6-5 gives a brief overview of the various mathematical functions I want to talk about here, or later.[^pragmatic-matters-9] Obviously this doesn't even come close to cataloguing the range of possibilities available, but it does cover a range of functions that are used regularly in data analysis and that are available in jamovi.
+
+[^pragmatic-matters-9]: We'll leave the box-cox function until later on --->
+<p>這是下一節”數學函式及運算子“的原始文檔。我生成了以下繁体中文翻译初稿:</p>
+<p>在[變量轉換和編碼]一節中,我討論了變量轉換背后的思想,并展示了您可能想對數據應用的大多數轉換都基於相當簡單的數學函數和運算。在本節中,我想返回該討論,并提到幾個其他實際上對大多數現實世界數據分析很有用的數學函數和算術運算。<a href="#tbl-tab6-5">表格&nbsp;<span class="quarto-unresolved-ref">tbl-tab6-5</span></a> 簡要概述了我在這裡或之后要談論的各種數學函數。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> 顯然,這甚至無法接近目錄化可用的可能性範圍,但它确实涵蓋了在數據分析中經常使用並在 jamovi 中可用的一系列函數。</p>
 <section id="對數與指數" class="level3" data-number="6.4.1">
 <h3 data-number="6.4.1" class="anchored" data-anchor-id="對數與指數"><span class="header-section-number">6.4.1</span> 對數與指數</h3>
-<p>As I’ve mentioned earlier, jamovi has an useful range of mathematical functions built into it and there really wouldn’t be much point in trying to describe or even list all of them. For the most part, I’ve focused only on those functions that are strictly necessary for this book. However I do want to make an exception for logarithms and exponentials. Although they aren’t needed anywhere else in this book, they are <em>everywhere</em> in statistics more broadly. And not only that, there are a <em>lot of</em> situations in which it is convenient to analyse the logarithm of a variable (i.e., to take a “log-transform” of the variable). I suspect that many (maybe most) readers of this book will have encountered logarithms and exponentials before, but from past experience I know that there’s a substantial proportion of students who take a social science statistics class who haven’t touched logarithms since high school, and would appreciate a bit of a refresher.</p>
-<p>In order to understand logarithms and exponentials, the easiest thing to do is to actually calculate them and see how they relate to other simple calculations. There are three jamovi functions in particular that I want to talk about, namely LN(), LOG10() and EXP(). To start with, let’s consider LOG10(), which is known as the “logarithm in base 10”. The trick to understanding a <strong>logarithm</strong> is to understand that it’s basically the “opposite” of taking a power. Specifically, the logarithm in base 10 is closely related to the powers of 10. So let’s start by noting that 10-cubed is 1000. Mathematically, we would write this:</p>
+<!--- As I've mentioned earlier, jamovi has an useful range of mathematical functions built into it and there really wouldn't be much point in trying to describe or even list all of them. For the most part, I've focused only on those functions that are strictly necessary for this book. However I do want to make an exception for logarithms and exponentials. Although they aren't needed anywhere else in this book, they are *everywhere* in statistics more broadly. And not only that, there are a *lot of* situations in which it is convenient to analyse the logarithm of a variable (i.e., to take a "log-transform" of the variable). I suspect that many (maybe most) readers of this book will have encountered logarithms and exponentials before, but from past experience I know that there's a substantial proportion of students who take a social science statistics class who haven't touched logarithms since high school, and would appreciate a bit of a refresher.
+
+In order to understand logarithms and exponentials, the easiest thing to do is to actually calculate them and see how they relate to other simple calculations. There are three jamovi functions in particular that I want to talk about, namely LN(), LOG10() and EXP(). To start with, let's consider LOG10(), which is known as the "logarithm in base 10". The trick to understanding a **logarithm** is to understand that it's basically the "opposite" of taking a power. Specifically, the logarithm in base 10 is closely related to the powers of 10. So let's start by noting that 10-cubed is 1000. Mathematically, we would write this:
+
+$$10^3=1000$$
+
+The trick to understanding a logarithm is to recognise that the statement that "10 to the power of 3 is equal to 1000" is equivalent to the statement that "the logarithm (in base 10) of 1000 is equal to 3". Mathematically, we write this as follows,
+
+$$log_{10}(1000)=3$$
+
+Okay, since the LOG10() function is related to the powers of 10, you might expect that there are other logarithms (in bases other than 10) that are related to other powers too. And of course that's true: there's not really anything mathematically special about the number 10. You and I happen to find it useful because decimal numbers are built around the number 10, but the big bad world of mathematics scoffs at our decimal numbers. Sadly, the universe doesn't actually care how we write down numbers. Anyway, the consequence of this cosmic indifference is that there's nothing particularly special about calculating logarithms in base 10. You could, for instance, calculate your logarithms in base 2. Alternatively, a third type of logarithm, and one we see a lot more of in statistics than either base 10 or base 2, is called the **natural logarithm**, and corresponds to the logarithm in base e. Since you might one day run into it, I'd better explain what e is. The number e, known as **Euler's number**, is one of those annoying "irrational" numbers whose decimal expansion is infinitely long, and is considered one of the most important numbers in mathematics. The first few digits of e are:
+
+$$e = 2.718282 $$
+
+There are quite a few situation in statistics that require us to calculate powers of $e$, though none of them appear in this book. Raising e to the power $x$ is called the **exponential** of $x$, and so it's very common to see $e^x$ written as exppxq. And so it's no surprise that jamovi has a function that calculates exponentials, called EXP(). Because the number e crops up so often in statistics, the natural logarithm (i.e., logarithm in base e) also tends to turn up. Mathematicians often write it as $log_e(x)$ or $ln(x)$. In fact, jamovi works the same way: the LN() function corresponds to the natural logarithm.
+
+And with that, I think we've had quite enough exponentials and logarithms for this book! --->
+<p>正如我之前提到的,jamovi 中內置了很有用的數學函數範圍,并且試圖描述甚至列出它們所有內容真的没有太大意義。在大多數情况下,我只專注於本書所需的那些嚴格必要的函數。然而,我確實想對對數和指數函數做一個例外。儘管它們在本書的其他部分都不是必需的,<strong>但是</strong> 在更廣泛的統計學領域中它們無所不在。不僅如此,還有<strong>很多</strong> 情況下很方便分析變量的對數(即對變量采取“對數轉換”)。我認為這本書的許多(也許大多數)讀者以前都遇到過對數和指數,但根據過去的經驗,我知道有相當比例的社會科學統計課學生從高中以来就没有碰過對数,并會很感謝一些複習。</p>
+<p>為了理解對數和指數,最簡單的方法是实際計算它們并看它們如何與其他簡單計算相關。我特别想談論 jamovi 中的三个函數,即 LN()、LOG10() 和 EXP()。首先,讓我們考慮 LOG10(),它被稱為“以 10 為底的對數”。理解<strong>對數</strong>的技巧是理解它基本上是求冪的“相反”。具體而言,10 為底的對數與 10 的冪密切相關。那麼,讓我們從指出 10 的三次方是 1000 開始。數學上,我們將其寫為:</p>
 <p><span class="math display">\[10^3=1000\]</span></p>
-<p>The trick to understanding a logarithm is to recognise that the statement that “10 to the power of 3 is equal to 1000” is equivalent to the statement that “the logarithm (in base 10) of 1000 is equal to 3”. Mathematically, we write this as follows,</p>
+<p>理解對數的技巧是認識到“10 的 3 次方等于 1000”的語句相當於“1000 的對數(基數為 10)等於 3”的語句。數學上,我們將其写为:</p>
 <p><span class="math display">\[log_{10}(1000)=3\]</span></p>
-<p>Okay, since the LOG10() function is related to the powers of 10, you might expect that there are other logarithms (in bases other than 10) that are related to other powers too. And of course that’s true: there’s not really anything mathematically special about the number 10. You and I happen to find it useful because decimal numbers are built around the number 10, but the big bad world of mathematics scoffs at our decimal numbers. Sadly, the universe doesn’t actually care how we write down numbers. Anyway, the consequence of this cosmic indifference is that there’s nothing particularly special about calculating logarithms in base 10. You could, for instance, calculate your logarithms in base 2. Alternatively, a third type of logarithm, and one we see a lot more of in statistics than either base 10 or base 2, is called the <strong>natural logarithm</strong>, and corresponds to the logarithm in base e. Since you might one day run into it, I’d better explain what e is. The number e, known as <strong>Euler’s number</strong>, is one of those annoying “irrational” numbers whose decimal expansion is infinitely long, and is considered one of the most important numbers in mathematics. The first few digits of e are:</p>
-<p><span class="math display">\[e = 2.718282 \]</span></p>
-<p>There are quite a few situation in statistics that require us to calculate powers of <span class="math inline">\(e\)</span>, though none of them appear in this book. Raising e to the power <span class="math inline">\(x\)</span> is called the <strong>exponential</strong> of <span class="math inline">\(x\)</span>, and so it’s very common to see <span class="math inline">\(e^x\)</span> written as exppxq. And so it’s no surprise that jamovi has a function that calculates exponentials, called EXP(). Because the number e crops up so often in statistics, the natural logarithm (i.e., logarithm in base e) also tends to turn up. Mathematicians often write it as <span class="math inline">\(log_e(x)\)</span> or <span class="math inline">\(ln(x)\)</span>. In fact, jamovi works the same way: the LN() function corresponds to the natural logarithm.</p>
-<p>And with that, I think we’ve had quite enough exponentials and logarithms for this book!</p>
+<p>好的,由於 LOG10() 函數與 10 的冪相關,您可能會期望還有與其他底數的冪相關的其他對數。當然,這是真的:在數學上,數字 10 没有真正特殊之處。您和我发现它很有用是因為十進制數字是圍繞數字 10 構建的,但是大壞數學世界嘲笑我們的十進制數字。遺憾的是,實際上宇宙并不在乎我們如何寫下數字。無論如何,這種宇宙漠不關心的後果是,計算以 10 為底的對數没有什麼特別之處。例如,您可以計算以 2 為底的對數。或者,我們在統計中看到的第三種對数類型,比 10 進制或 2 進制都多得多,稱為<strong>自然對數</strong>,並對應于以 e 為底的對數。既然您有朝一日可能會遇到它,我最好解釋一下 e 是什麼。e 數,稱為<strong>歐拉數</strong>,是那些令人討厭的“無理”數之一,其小數擴展是無限長的,並被認為是數學中最重要的數字之一。 e 的前几位數字是:</p>
+<p><span class="math display">\[e = 2.718282\]</span></p>
+<p>統計中需要我們計算 <span class="math inline">\(e\)</span> 的幂的情况還是頗多的,儘管它們没有在本書出現。數字 <span class="math inline">\(e\)</span> 的 <span class="math inline">\(x\)</span> 次冪被稱為 <span class="math inline">\(x\)</span> 的<strong>指數</strong>,所以通常可以看到 <span class="math inline">\(e^x\)</span> 用 exp(x) 来写。 所以 jamovi 有一個計算指數的函數並不令人驚訝,該函數稱為 EXP()。因為數字 e 在統計中經常出現,所以自然對數(即以 e 為底的對數)也往往會出現。數學家經常把它寫成 <span class="math inline">\(log_e(x)\)</span> 或 <span class="math inline">\(ln(x)\)</span>。实际上,jamovi 的工作方式也是相同的:LN() 函數對應于自然對數。</p>
+<p>至此,我認為對於本書來說,我們已經有足够多的指數和對數了!</p>
 </section>
 </section>
 <section id="篩選部分資料" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="篩選部分資料"><span class="header-section-number">6.5</span> 篩選部分資料</h2>
-<p>One very important kind of data handling is being able to extract a particular subset of the data. For instance, you might be interested only in analysing the data from one experimental condition, or you may want to look closely at the data from people over 50 years in age. To do this, the first step is getting jamovi to filter the subset of the data corresponding to the observations that you’re interested in.</p>
-<p>This section returns to the nightgarden.csv data set. If you’re reading this whole chapter in one sitting, then you should already have this data set loaded into a jamovi window. For this section, let’s focus on the two variables speaker and utterance (see [Tabulating and cross-tabulating data]) if you’ve forgotten what those variables look like). Suppose that what I want to do is pull out only those utterances that were made by Makka-Pakka. To that end, we need to specify a filter in jamovi. First open up a filter window by clicking on ‘Filters’ on the main jamovi ‘Data’ toolbar. Then, in the ‘Filter 1’ text box, next to the ‘=’ sign, type the following:</p>
+<!---One very important kind of data handling is being able to extract a particular subset of the data. For instance, you might be interested only in analysing the data from one experimental condition, or you may want to look closely at the data from people over 50 years in age. To do this, the first step is getting jamovi to filter the subset of the data corresponding to the observations that you're interested in.
+
+This section returns to the nightgarden.csv data set. If you're reading this whole chapter in one sitting, then you should already have this data set loaded into a jamovi window. For this section, let's focus on the two variables speaker and utterance (see [Tabulating and cross-tabulating data]) if you've forgotten what those variables look like). Suppose that what I want to do is pull out only those utterances that were made by Makka-Pakka. To that end, we need to specify a filter in jamovi. First open up a filter window by clicking on 'Filters' on the main jamovi 'Data' toolbar. Then, in the 'Filter 1' text box, next to the '=' sign, type the following:
+
+speaker == 'makka-pakka'
+
+Creating a subset of the nightgarden data using the jamovi 'Filters' option --->
+<p>一種非常重要的數據處理是能够提取特定子集的数据。例如,您可能僅對分析來自一個實驗條件的数据感興趣,或者您可能想仔細查看 50 歲以上人群的数据。為此,第一步是讓 jamovi 過濾與您感興趣的觀測值對應的數據子集。</p>
+<p>本節返回到 nightgarden.csv 資料集。如果您一次坐着閱讀整章內容,則該資料集應已加載到 jamovi 窗口中。 對於本節,讓我們集中討論 speaker 和 utterance 兩個變量(如果您忘記了它們的外觀,請參見[建立次數分佈表])。 假設我想要做的是只提取 Makka-Pakka 發出的語句。為此,我們需要在 jamovi 中指定過濾器。首先通過點擊主 jamovi “資料”工具欄上的“過濾器”打開過濾器窗口。 然后,在“過濾器 1”文本框中,在“=”號旁邊,鍵入以下內容:</p>
 <p>speaker == ‘makka-pakka’</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig6-10" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig6-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.10: Creating a subset of the nightgarden data using the jamovi ‘Filters’ option</figcaption><p></p>
+<figcaption class="figure-caption">图&nbsp;6.10: 使用’篩選器`保留nightgarden資料集內，要做資料分析的部分</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>When you have done this, you will see that a new column has been added to the spreadsheet window (see <a href="#fig-fig6-10">Figure&nbsp;<span class="quarto-unresolved-ref">fig-fig6-10</span></a>), labelled ‘Filter 1’, with the cases where speaker is <u>not</u> ‘makka-pakka’ greyed-out (i.e., filtered out) and, conversely, the cases where speaker <u>is</u> ‘makka-pakka’ have a green check mark indicating they are filtered in. You can test this by running ‘Exploration’ - ‘Descriptives’ - ‘Frequency tables’ for the speaker variable and seeing what that shows. Go on, try it!</p>
-<p>Following on from this simple example, you can also build up more complex filters using logical expressions in jamovi. For instance, suppose I wanted to keep only those cases when the utterance is either “pip” or “oo”. In this case in the ‘Filter 1’ text box, next to the ‘=’ sign, you would type the following:</p>
+
+<!--- When you have done this, you will see that a new column has been added to the spreadsheet window (see @fig-fig6-10), labelled 'Filter 1', with the cases where speaker is <u>not</u> 'makka-pakka' greyed-out (i.e., filtered out) and, conversely, the cases where speaker <u>is</u> 'makka-pakka' have a green check mark indicating they are filtered in. You can test this by running 'Exploration' - 'Descriptives' - 'Frequency tables' for the speaker variable and seeing what that shows. Go on, try it!
+
+Following on from this simple example, you can also build up more complex filters using logical expressions in jamovi. For instance, suppose I wanted to keep only those cases when the utterance is either "pip" or "oo". In this case in the 'Filter 1' text box, next to the '=' sign, you would type the following:
+
+utterance == 'pip' or utterance == 'oo' --->
+<p>完成後,您會看到電子表格窗口中添加了一個新列(見 <a href="#fig-fig6-10">图&nbsp;<span class="quarto-unresolved-ref">fig-fig6-10</span></a>),標籤為“過濾器 1”,其中 speaker 不是 ‘makka-pakka’ 的情况被灰化(即過濾掉),相反地,speaker 是 ‘makka-pakka’ 的情况下有一個綠色的勾號,表示它們被過濾。您可以通過運行“勘探” - “描述統計” - “次數分佈表”的 speaker 變量并查看顯示的內容來測試這一點。 前往試試!</p>
+<p>在此簡單示例的基礎上,您還可以使用 jamovi 中的邏輯運算式構建更複雜的過濾器。例如,假設我只想保留語句為“pip”或“oo”的情况。在這種情况下,在“過濾器 1”文本框中,在“=”號旁邊,您將鍵入以下內容:</p>
 <p>utterance == ‘pip’ or utterance == ‘oo’</p>
 </section>
 <section id="本章小結" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="本章小結"><span class="header-section-number">6.6</span> 本章小結</h2>
 <p>這一章是原作者分享實務經驗會用到的各種不起眼，但是會影響描述統計品質的小技巧或注意項目。最後再次回顧本章的課題</p>
 <ul>
-<li><a href="06-Pragmatic-matters.html#sec-Tabulating-and-cross-tabulating-data">製作次數表及列聯表</a></li>
-<li><a href="06-Pragmatic-matters.html#邏輯運算">邏輯運算</a></li>
-<li><a href="06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable">資料變項的轉換與編碼</a></li>
-<li><a href="06-Pragmatic-matters.html#數學函式及運算子">數學函式及運算子</a></li>
-<li><a href="06-Pragmatic-matters.html#篩選部分資料">篩選部分資料</a></li>
+<li><a href="#sec-Tabulating-and-cross-tabulating-data">製作次數表及列聯表</a></li>
+<li><a href="#邏輯運算">邏輯運算</a></li>
+<li><a href="#sec-Transforming-and-recoding-a-variable">資料變項的轉換與編碼</a></li>
+<li><a href="#數學函式及運算子">數學函式及運算子</a></li>
+<li><a href="#篩選部分資料">篩選部分資料</a></li>
 </ul>
 <!---
 Obviously, there's no real coherence to this chapter. It's just a grab bag of topics and tricks that can be handy to know about, so the best wrap up I can give here is just to repeat this list:
@@ -854,10 +1151,10 @@ Obviously, there's no real coherence to this chapter. It's just a grab bag of to
 <li id="fn3"><p>請初學者留意，相等運算子與一般書寫公式用的”=“是不一樣的。jamovi僅使用”=“做為 <strong>輸入提示</strong>，使用者要在”=“之後輸入要運算的判斷式或函數。如果你輸入錯誤，會在試算表介面看到滿江紅的錯誤訊息。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>譯註~原文這一段描述的是早期版本的運算輸出，最新版已不相同，因此中譯重新改寫。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>這裡以最新版jamovi測試過，提醒一下留意邏輯運算子所輸出計算結果。如果輸入的算式只有一個邏輯運算子，像是2 + 2 == 5，回傳的結果是TRUE或FALSE；但是輸入的算式有交集或聯集運算子，像是(2+2 == 4) or (2+2 == 5)，回傳的結果是0或1。請同學儲存與運用計算結果時要留意。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>The absolute value of a number is its distance from zero, regardless of whether it’s sign is negative or positive.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>The reason we have to use the ‘IF’ command and keep zero as zero is that you cannot just use likert.centred / opinion.strength to calculate the sign of likert.centred, because mathematically dividing zero by zero does not work. Try it and see<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>If you’ve read further into the book, and are re-reading this section, then a good example of this would be someone choosing to do an ANOVA using AgeCats as the grouping variable, instead of running a regression using Age as a predictor. There are sometimes good reasons for doing this. For instance, if the relationship between Age and your outcome variable is highly non-linear and you aren’t comfortable with trying to run non-linear regression! However, unless you really do have a good rationale for doing this, it’s best not to. It tends to introduce all sorts of other problems (e.g., the data will probably violate the normality assumption) and you can lose a lot of statistical power.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>We’ll leave the box-cox function until later on<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>數的絕對值是其與零的距離,而不管其符號是負數還是正數。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>我們必須使用‘IF’命令並將零保持為零的原因是,您不能只使用likert.centred / opinion.strength來計算likert.centred的符號,因為在數學上,零除以零無法運作。嘗試一下即可看到<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>如果您已經閱讀了後面更多內容,並在重新閱讀本節,那麼一個很好的示例是,有人選擇使用 AgeCats 作為分組變項進行方差分析,而不是使用 Age 作為預測變項進行迴歸。這種做法有時有很好的理由。例如,如果 Age 和您的結果變項之間的關係高度非線性,並且您不想嘗試運行非線性迴歸!但是,除非您真的有很好的理由這樣做,否則最好不要這樣做。這往往會引入各種其他問題(例如,資料可能會違反常態分佈假設),並且您可能會失去很多統計考驗力。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>我們稍后再作 box-cox 函數的討論<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1004,9 +1301,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1017,12 +1328,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -1071,6 +1382,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1109,12 +1506,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/scgeeker\.github\.io\/lsj-book-zh_tw\//);
+      var filterRegex = new RegExp("https:\/\/scgeeker\.github\.io\/lsj-book-zh_tw\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1140,6 +1537,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://learnstatswithjamovi.com">用jamovi上手統計學</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">電子書使用 <a href="https://quarto.org/">Quarto套件</a>創建</div>
   </div>
 </footer>
