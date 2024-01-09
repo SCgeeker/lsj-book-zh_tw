@@ -1,4 +1,4 @@
-lang: zh
+language: language-zh-TW.yml
 project: 
   type: book
   output-dir: docs

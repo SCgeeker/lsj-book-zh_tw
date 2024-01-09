@@ -7,7 +7,7 @@ source("header.R")
 
 <!---- $$    $$ bug...need this here otherwise tables don't render latex in html output  --->
 
-> 汝不可填寫任何試卷  
+> 汝不可填答任何試卷  
 > 或回答全球事務的試題,  
 > 也不可順從接受任何考試。  
 > 汝不可同意統計學家的意見,  
