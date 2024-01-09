@@ -1,23 +1,22 @@
-# 為什麼要學習統計
+# 為什麼要學習統計 {#sec-why-do-we-learn-statistics}
 
 ```{r}
 #| include: FALSE
 source("header.R")
 ```
 
-$$    $$ <!---- bug...need this here otherwise tables don't render latex in html output  --->
+<!---- $$    $$ bug...need this here otherwise tables don't render latex in html output  --->
 
-> *"Thou shalt not answer questionnaires\
-> *Or quizzes upon World Affairs,*\
-> *Nor with compliance*\
-> *Take any test. Thou shalt not sit*\
-> *With statisticians nor commit*\
-> *A social science"\
-> -- W.H. Auden[^01-why-do-we-learn-statistics-1]
+> 汝不可填寫任何試卷  
+> 或回答全球事務的試題,  
+> 也不可順從接受任何考試。  
+> 汝不可同意統計學家的意見,  
+> 也不可順從任何社會科學主張。  
+> -- W.H. 奧登[^01-why-do-we-learn-statistics-1]
 
-[^01-why-do-we-learn-statistics-1]: The quote comes from Auden's 1946 poem Under Which Lyre: A Reactionary Tract for the Times, delivered as part of a commencement address at Harvard University. The history of the poem is kind of interesting: <https://www.harvardmagazine.com/2007/11/a-poets-warning.html>
+[^01-why-do-we-learn-statistics-1]: 出自奧登在哈佛大學1946年的畢業典禮致詞中詩作『在哪張豎琴下：時代的反動手冊』。有興趣了解這段致詞的歷史背景，可參考這裡: <https://www.harvardmagazine.com/2007/11/a-poets-warning.html>
 
-## 首先談談統計的心理學
+## 首先談談統計的心理學 {#sec-why-do-we-learn-statistics-begin}
 
 先講許多第一次來上課的同學驚呆的現實，統計學在心理學課程佔有相當的份量。另外一個不令人意外的現實，是統計學很少被上過心理學課程的同學*推薦*。畢竟正常來說，如果是喜歡統計的同學，應該是去修統計系的課，而不是來上心理學系的課。不需要太正式的調查，正在上心理學課程的同學，有一大部分想必很不高興要學有這麼多統計。為了幫助同學渡過這段不適應，我想這本書先來談談一般人對於統計學的一些常見疑問。
 

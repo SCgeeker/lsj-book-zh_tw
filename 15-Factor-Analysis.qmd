@@ -5,39 +5,68 @@
 source("header.R")
 ```
 
-Previous chapters have covered statistical tests for differences between two or more groups. However, sometimes when conducting research, we may wish to examine how multiple variables *co-vary*. That is, how they are related to each other and whether the patterns of relatedness suggest anything interesting and meaningful. For example, we are often interested in exploring whether there are any underlying unobserved latent factors that are represented by the observed, directly measured, variables in our dataset. In statistics, latent factors are initially hidden variables that are not directly observed but are rather inferred (through statistical analysis) from other variables that are observed (directly measured).
+> **譯者註** 20240108初步以Claude-2.1完成翻譯，內容待編修。
 
-In this chapter we will consider a number of different Factor Analysis and related techniques, starting with [Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Then we will cover [Principal Component Analysis] (PCA) which is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables. Following this, the section on [Confirmatory Factor Analysis] (CFA) shows that, unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is. A more sophisticated version of CFA is the so-called [Multi-Trait Multi-Method CFA] approach in which both latent factor and method variance are included in the model. This is useful when there are different methodological approaches used for measurement and therefore method variance is an important consideration. Finally, we will cover a related analysis: [Internal consistency reliability analysis] tests how consistently a scale measures a psychological construct.
+
+<!---Previous chapters have covered statistical tests for differences between two or more groups. However, sometimes when conducting research, we may wish to examine how multiple variables *co-vary*. That is, how they are related to each other and whether the patterns of relatedness suggest anything interesting and meaningful. For example, we are often interested in exploring whether there are any underlying unobserved latent factors that are represented by the observed, directly measured, variables in our dataset. In statistics, latent factors are initially hidden variables that are not directly observed but are rather inferred (through statistical analysis) from other variables that are observed (directly measured).
+
+In this chapter we will consider a number of different Factor Analysis and related techniques, starting with [Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Then we will cover [Principal Component Analysis] (PCA) which is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables. Following this, the section on [Confirmatory Factor Analysis] (CFA) shows that, unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is. A more sophisticated version of CFA is the so-called [Multi-Trait Multi-Method CFA] approach in which both latent factor and method variance are included in the model. This is useful when there are different methodological approaches used for measurement and therefore method variance is an important consideration. Finally, we will cover a related analysis: [Internal consistency reliability analysis] tests how consistently a scale measures a psychological construct. --->
+
+前幾章涵蓋了不同兩個或多個組之間的統計檢定。但是,有時在進行研究時,我們可能希望檢查多個變項如何共變。也就是說,它們彼此之間的關係以及這些關聯性的模式是否顯示出有趣和有意義的東西。例如,我們經常有興趣探索是否存在任何潛在的未觀察到的潛在因素,這些因素是通過我們資料集中直接測量的可觀察變項表示的。在統計學中,潛在因素最初是隱藏變項,不是直接觀察的,而是通過從其他觀察到的(直接測量的)變項推斷出來的。
+
+在本章中,我們將考慮不同的因素分析和相關技術,首先是[探索性因素分析] (EFA)。EFA是一種統計技術,用于識別資料集中的潛在潛在因素。然後,我們將介紹[主成分分析](PCA),它是一種資料的縮減方式,嚴格來說,它並沒有識別潛在的潛在因素。相反,PCA僅僅產生觀察變項的線性組合。在這之後,[驗證性因素分析](CFA)部分表明,與EFA不同,使用CFA,您從一個想法開始——一個模型——關於您的資料中的變項彼此之間的關係。然後,您根據觀察到的資料檢驗您的模型,並評估模型的適配程度。 CFA的一個更複雜的版本是所謂的[多種特質多項相關驗證性因素分析]方法,其中包含了模型中的潛在因素和方法方差。當使用不同的方法學方法進行測量並且方法方差是一個重要的考慮因素時,這很有用。最後,我們將介紹一項相關分析:[內部一致性信度分析]測試一種量表衡量心理結構的一致性。
 
 ## 探索性因素分析 
 
-**Exploratory Factor Analysis (EFA)** is a statistical technique for revealing any hidden latent factors that can be inferred from our observed data. This technique calculates to what extent a set of measured variables, for example $V1, V2, V3, V4$, and $V5$, can be represented as measures of an underlying latent factor. This latent factor cannot be measured through just one observed variable but instead is manifested in the relationships it causes in a set of observed variables.
+<!---**Exploratory Factor Analysis (EFA)** is a statistical technique for revealing any hidden latent factors that can be inferred from our observed data. This technique calculates to what extent a set of measured variables, for example $V1, V2, V3, V4$, and $V5$, can be represented as measures of an underlying latent factor. This latent factor cannot be measured through just one observed variable but instead is manifested in the relationships it causes in a set of observed variables.
 
 In @fig-fig15-1 each observed variable $V$ is 'caused' to some extent by the underlying latent factor ($F$), depicted by the coefficients $b_1$ to $b_5$ (also called factor loadings). Each observed variable also has an associated error term, e1 to e5. Each error term is the variance in the associated observed variable, $V_i$ , that is unexplained by the underlying latent factor.
 
+Latent factor underlying the relationship between several observed variables--->
+
+**探索性因素分析(EFA)** 是一種統計技術,用于發現可以從我們的觀察數據中推斷出的任何隱藏的潛在因素。這種技術計算一組測量變量(例如$V1、V2、V3、V4$ 和 $V5$)在多大程度上可以表示為對潛在潛在因素的測量。這種潛在因素不能通過只有一個觀察變量來測量,而是體現在它導致的一組觀察變量中的關係中。  
+
+在 @fig-fig15-1 中,每个觀察變量 $V$ 在一定程度上是由潛在因素($F$)“導致的”,這是係數 $b\_1$ 到 $b\_5$(也稱為因子負荷)表示。 每个觀察變量也有一個相關的錯誤項,e1 到 e5。 每個錯誤項是与之相關的觀察變量 $V\_i$ 中无法用潛在因素来解釋的方差。  
+
+
 ```{r}
 #| label: fig-fig15-1
-#| fig-cap: Latent factor underlying the relationship between several observed variables
+#| fig-cap: 隱含於幾個觀察變項之間的潛在因素  
 knitr::include_graphics("images/fig15-1.png")
 ```
 
-In Psychology, latent factors represent psychological phenomena or constructs that are difficult to directly observe or measure. For example, personality, or intelligence, or thinking style. In the example in @fig-fig15-1 we may have asked people five specific questions about their behaviour or attitudes, and from that we are able to get a picture about a personality construct called, for example, extraversion. A different set of specific questions may give us a picture about an individual's introversion, or their conscientiousness.
+
+<!---In Psychology, latent factors represent psychological phenomena or constructs that are difficult to directly observe or measure. For example, personality, or intelligence, or thinking style. In the example in @fig-fig15-1 we may have asked people five specific questions about their behaviour or attitudes, and from that we are able to get a picture about a personality construct called, for example, extraversion. A different set of specific questions may give us a picture about an individual's introversion, or their conscientiousness.
 
 Here's another example: we may not be able to directly measure statistics anxiety, but we can measure whether statistics anxiety is high or low with a set of questions in a questionnaire. For example, "$Q1$: Doing the assignment for a statistics course", "$Q2$: Trying to understand the statistics described in a journal article", and "$Q3$: Asking the lecturer for help in understanding something from the course", etc., each rated from low anxiety to high anxiety. People with high statistics anxiety will tend to give similarly high responses on these observed variables because of their high statistics anxiety. Likewise, people with low statistics anxiety will give similar low responses to these variables because of their low statistics anxiety.
 
 In exploratory factor analysis (EFA), we are essentially exploring the correlations between observed variables to uncover any interesting, important underlying (latent) factors that are identified when observed variables co-vary. We can use statistical software to estimate any latent factors and to identify which of our variables have a high loading[^factor-analysis-1] (e.g. loading > 0.5) on each factor, suggesting they are a useful measure, or indicator, of the latent factor. Part of this process includes a step called rotation, which to be honest is a pretty weird idea but luckily we don't have to worry about understanding it; we just need to know that it is helpful because it makes the pattern of loadings on different factors much clearer. As such, rotation helps with seeing more clearly which variables are linked substantively to each factor. We also need to decide how many factors are reasonable given our data, and helpful in this regard is something called Eigen values. We'll come back to this in a moment, after we have covered some of the main assumptions of EFA.
 
-[^factor-analysis-1]: Quite helpfully, factor loadings can be interpreted like standardized regression coefficients
+[^factor-analysis-1]: Quite helpfully, factor loadings can be interpreted like standardized regression coefficients --->
+
+在心理學中,潛在因素表示難以直接觀察或測量的心理現象或構造。 例如,個性,智力或思維方式。 在 @fig-fig15-1 的示例中,我們可能已經就他們的行為或態度向人們提出了五個具體問題,并且從中我們能夠瞭解一種名為外向性的個性構造。 一組不同的具體問題可能會給我們提供有關個人內向性或盡責性的信息。
+
+這裡有另一個示例:我們可能無法直接測量統計焦慮,但是我們可以通過一系列問卷中的問題測量統計焦慮是否高或低。例如,“$Q1$:完成統計課程中的作業”,“$Q2$:試圖理解期刊文章中描述的統計”,和“$Q3$:向講師請教課程中不理解之處的幫助”等等,每个從低焦慮到高焦慮評分。 因為他們的高統計焦慮,統計焦慮较高的人往往會給出类似的高回應。 同樣,由于他們的統計焦慮較低,統計焦慮較低的人會給出這些變量的类似低回應。
+
+在探索性因素分析(EFA)中,我們本質上是探索變量之間的相關以發現變量之間的共變所識別的任何有趣和重要的潛在(潛在)因素。 我們可以使用統計軟件來估計任何潛在因素,並確定在每个因素上具有較高載荷[^factor-analysis-1](例如載荷> 0.5)的變量,這表明它們是潛在因素的一个有用測量或指標。 這個過程的一部分包括一個名為旋轉的步驟,老實說這是一个相當奇怪的想法,但由于我們不必擔心理解它,這很方便; 我們只需要知道它很有用,因為它使得不同因素上的載荷模式清晰得多。 因此,旋轉有助于更清楚地看到哪些變量在實質上與每个因素相聯繫。 我們還需要決定根據數據我們需要多少因素是合理的,這方面幫助我們的東西就是所謂的特徵值。 我們稍後会回到這一點,在我们介紹了一些 EFA 的主要假設之後。
+
+[^factor-analysis-1]: 很有幫助的是,因子負荷可以像標準化迴歸係數一樣解釋
 
 ### 探索性因素分析的執行條件
 
-There are a couple of assumptions that need to be checked as part of the analysis. The first assumption is **sphericity**, which essentially checks that the variables in your dataset are correlated with each other to the extent that they can potentially be summarised with a smaller set of factors. Bartlett's test for sphericity checks whether the observed correlation matrix diverges significantly from a zero (or null) correlation matrix. So, if Bartlett's test is significant ($p < .05$), this indicates that the observed correlation matrix is significantly divergent from the null, and is therefore suitable for EFA.
+<!--- There are a couple of assumptions that need to be checked as part of the analysis. The first assumption is **sphericity**, which essentially checks that the variables in your dataset are correlated with each other to the extent that they can potentially be summarised with a smaller set of factors. Bartlett's test for sphericity checks whether the observed correlation matrix diverges significantly from a zero (or null) correlation matrix. So, if Bartlett's test is significant ($p < .05$), this indicates that the observed correlation matrix is significantly divergent from the null, and is therefore suitable for EFA.
 
-The second assumption is **sampling adequacy** and is checked using the Kaiser-MeyerOlkin (KMO) Measure of Sampling Adequacy (MSA). The KMO index is a measure of the proportion of variance among observed variables that might be common variance. Using partial correlations, it checks for factors that load just two items. We seldom, if ever, want EFA producing a lot of factors loading just two items each. KMO is about sampling adequacy because partial correlations are typically seen with inadequate samples. If the KMO index is high ($\approx 1$), the EFA is efficient whereas if KMO is low ($\approx 0$), the EFA is not relevant. KMO values smaller than $0.5$ indicates that EFA is not suitable and a KMO value of $0.6$ should be present before EFA is considered suitable. Values between $0.5$ and $0.7$ are considered adequate, values between $0.7$ and $0.9$ are good and values between $0.9$ and $1.0$ are excellent.
+The second assumption is **sampling adequacy** and is checked using the Kaiser-MeyerOlkin (KMO) Measure of Sampling Adequacy (MSA). The KMO index is a measure of the proportion of variance among observed variables that might be common variance. Using partial correlations, it checks for factors that load just two items. We seldom, if ever, want EFA producing a lot of factors loading just two items each. KMO is about sampling adequacy because partial correlations are typically seen with inadequate samples. If the KMO index is high ($\approx 1$), the EFA is efficient whereas if KMO is low ($\approx 0$), the EFA is not relevant. KMO values smaller than $0.5$ indicates that EFA is not suitable and a KMO value of $0.6$ should be present before EFA is considered suitable. Values between $0.5$ and $0.7$ are considered adequate, values between $0.7$ and $0.9$ are good and values between $0.9$ and $1.0$ are excellent. --->
+
+
+需要在分析的一部分中檢查一些預設條件。第一個預設條件是**球形性**,它基本上是檢查您的數據集中的變量之間是否相關,以至於可以用更少的因素來概括。巴特利球形性檢驗是用于檢驗觀測相關矩陣是否與零(或空)相關矩陣顯著不同。所以,如果巴特利檢驗顯著($p < .05$),這表明觀測相關矩陣顯著不同於空矩陣,因此適合 EFA。  
+
+第二個預設條件是**抽樣適度性**,並通過KMO抽樣適度性測度(KMO)進行檢查。 KMO 指數是觀察變量之間可能是公共變異的變異數的測量值。 通過偏相關檢查只載入兩個項目的因素。 我們很少(如果不是從未)希望 EFA 產生大量只載入兩個項目的因素。 KMO 與抽樣適度性有關,因為偏相關通常見於樣本不足。 如果 KMO 指數較高($ \approx 1$),則 EFA 是有效的;如果 KMO 較低($ \approx 0$),則 EFA 是不相關的。 KMO 值小於 $0.5$ 表示 EFA 不適用,KMO 值為 $0.6$ 時才考慮 EFA 適用。 $0.5$ 和 $0.7$ 之間的值被認為是適中的,$0.7$ 和 $0.9$ 之間的值是好的,$0.9$ 和 $1.0$ 之間的值是極好的。  
+
 
 ### 探索性因素分析的用途
 
-If the EFA has provided a good solution (i.e. factor model), then we need to decide what to do with our shiny new factors. Researchers often use EFA during psychometric scale development. They will develop a pool of questionnaire items that they think relate to one or more psychological constructs, use EFA to see which items "go together" as latent factors, and then they will assess whether some items should be removed because they don't usefully or distinctly measure one of the latent factors.
+<!---If the EFA has provided a good solution (i.e. factor model), then we need to decide what to do with our shiny new factors. Researchers often use EFA during psychometric scale development. They will develop a pool of questionnaire items that they think relate to one or more psychological constructs, use EFA to see which items "go together" as latent factors, and then they will assess whether some items should be removed because they don't usefully or distinctly measure one of the latent factors.
 
 In line with this approach, another consequence of EFA is to combine the variables that load onto distinct factors into a factor score, sometimes known as a scale score. There are two options for combining variables into a scale score:
 
@@ -46,11 +75,24 @@ In line with this approach, another consequence of EFA is to combine the variabl
 
 In the first option each item's contribution to the combined score depends on how strongly it relates to the factor. In the second option we typically just average across all the items that contribute substantively to a factor to create the combined scale score variable. Which to choose is a matter of preference, though a disadvantage with the first option is that loadings can vary quite a bit from sample to sample, and in behavioural and health sciences we are often interested in developing and using composite questionnaire scale scores across different studies and different samples. In which case it is reasonable to use a composite measure that is based on the substantive items contributing equally rather than weighting by sample specific loadings from a different sample. In any case, understanding a combined variable measure as an average of items is simpler and more intuitive than using a sample specific optimally-weighted combination.
 
-A more advanced statistical technique, one which is beyond the scope of this book, undertakes regression modelling where latent factors are used in prediction models of other latent factors. This is called "structural equation modelling" and there are specific software programmes and R packages dedicated to this approach. But let's not get ahead of ourselves; what we should really focus on now is how to do an EFA in jamovi.
+A more advanced statistical technique, one which is beyond the scope of this book, undertakes regression modelling where latent factors are used in prediction models of other latent factors. This is called "structural equation modelling" and there are specific software programmes and R packages dedicated to this approach. But let's not get ahead of ourselves; what we should really focus on now is how to do an EFA in jamovi. --->
+
+如果 EFA 提供了好的解決方案(即因素模型),那麼我們需要決定對嶄新的因素要做什麼。研究人員經常在心理測量量表開發期間使用 EFA。 他們將開發與一個或多個心理結構相關的問卷項目池,使用 EFA 檢視哪些項目作為潛在因素“聚在一起”,然後評估是否應刪除某些項目,因為它們沒有有用或清楚地測量其中一個潛在因素。  
+
+與這種方法一致,EFA 的另一個後果是將載入不同因素的變量合併為因子得分,有時稱為量表分數。有兩種選擇將變量合併為量表分數的方法:
+
+- 按每個對因素作出貢獻的項目的因子負荷加權創建新的變量。 
+
+- 基於對因素作出貢獻的每個項目創建一個新的變量,但將它們等權重。  
+
+在第一種選擇中,每個項目對合併分數的貢獻取決於它與因素的關係強度。 在第二種選擇中,我們通常只是在所有實質上對一個因素作出貢獻的項目上取平均值來創建合併的量表分數變量。 選擇哪種方法取決於個人喜好,儘管第一種選擇的一個缺點是負荷量在不同樣本之間會有很大不同,而在行為和健康科學領域,我們經常有興趣開發和使用不同研究和不同樣本之間的綜合問卷量表分數。 在這種情況下,使用基於等量貢獻的實質性項目而不是使用來自不同樣本的特定樣本的負荷加權的綜合測量是合理的。 在任何情況下,理解作為項目平均值的合併變量測量都比使用特定樣本的最佳加權組合更簡單、更直觀。  
+
+一種更高級的統計技術(超出本書範圍)進行迴歸建模,其中潛在因素用於預測其他潛在因素的模型。 這稱為“結構方程式建模”,並且有專門的軟件程序和 R 程序包專注於這種方法。 但是,讓我們不要操之過急; 我們現在真正應該關注的重點是如何在 jamovi 中進行 EFA。
+
 
 ### 使用jamovi完成探索性因素分析
 
-First, we need some data. Twenty-five personality self-report items (see @fig-fig15-2) taken from the <a href="http://ipip.ori.org" target="_blank">International Personality Item Pool</a> were included as part of the Synthetic Aperture Personality Assessment (SAPA) web-based personality assessment (SAPA: <a href="http://sapa-project.org"
+<!--- First, we need some data. Twenty-five personality self-report items (see @fig-fig15-2) taken from the <a href="http://ipip.ori.org" target="_blank">International Personality Item Pool</a> were included as part of the Synthetic Aperture Personality Assessment (SAPA) web-based personality assessment (SAPA: <a href="http://sapa-project.org"
 target="_blank">http://sapa-project.org</a>) project. The 25 items are organized by five putative factors: Agreeableness, Conscientiousness, Extraversion, Neuroticism, and Openness.
 
 The item data were collected using a 6-point response scale:
@@ -64,33 +106,71 @@ The item data were collected using a 6-point response scale:
 
 A sample of $N=250$ responses is contained in the dataset *bfi_sample.csv* . As researchers, we are interested in exploring the data to see whether there are some underlying latent factors that are measured reasonably well by the $25$ observed variables in the *bfi_sample.csv*  data file. Open up the dataset and check that the $25$ variables are coded as continuous variables (technically they are ordinal though for EFA in jamovi it mostly doesn't matter, except if you decide to calculate weighted factor scores in which case continuous variables are needed). To perform EFA in jamovi:
 
+Twenty-five observed variable items organised by five putative personality factors in the dataset bfi\_sample.csv
+--->
+
+首先,我們需要一些資料。<a href="http://ipip.ori.org" target="\_blank">國際個性項目庫</a>中的25個人格自我報告項目(見@fig-fig15-2)作為基於網絡的人格評估合成孔徑人格評估(SAPA:<a href="http://sapa-project.org" target="\_blank">http://sapa-project.org</a>)項目的一部分。25個項目由五個假定因素組織:親和力、盡責性、外向性、神經質和開放性。  
+
+使用6點響應量表收集了項目數據:  
+
+1.非常不準確  
+
+2.中度不準確  
+
+3.輕度不準確  
+
+4.輕度準確  
+
+5.中度準確  
+
+6.非常準確。  
+
+資料檔案_bfi\_sample.csv_包含了$N=250$的響應樣本。作為研究人員,我們有興趣探索數據,看看是否有一些由_bfi\_sample.csv_檔案中的$25$個觀察變項合理測量的潛在潛在因素。打開數據集并檢查這$25$個變項是否編碼為連續變項(技術上它們是排序的,雖然對於jamovi中的EFA大多數情況並不重要,除非您決定計算加權因子分數,在這種情况下需要連續變項)。在jamovi中執行EFA:  
+
+
 ```{r}
 #| label: fig-fig15-2
-#| fig-cap: Twenty-five observed variable items organised by five putative personality factors in the dataset bfi\_sample.csv
+#| fig-cap: 在資料檔案bfi\_sample.csv中由五個假定人格因素組織的25個觀察變項  
 knitr::include_graphics("images/fig15-2.png")
 ```
 
--   Select Factor - Exploratory Factor Analysis from the main jamovi button bar to open the EFA analysis window (@fig-fig15-3).
+<!---
+- Select Factor - Exploratory Factor Analysis from the main jamovi button bar to open the EFA analysis window (@fig-fig15-3).
 
--   Select the 25 personality questions and transfer them into the 'Variables' box.
+- Select the 25 personality questions and transfer them into the 'Variables' box.
 
--   Check appropriate options, including 'Assumption Checks', but also Rotation 'Method', 'Number of Factors' to extract, and 'Additional Output' options. See @fig-fig15-3 for suggested options for this illustrative EFA, and please note that the Rotation 'Method' and 'Number of Factors' extracted is typically adjusted by the researcher during the analysis to find the best result, as described below.
+- Check appropriate options, including 'Assumption Checks', but also Rotation 'Method', 'Number of Factors' to extract, and 'Additional Output' options. See @fig-fig15-3 for suggested options for this illustrative EFA, and please note that the Rotation 'Method' and 'Number of Factors' extracted is typically adjusted by the researcher during the analysis to find the best result, as described below.
+
+The jamovi EFA analysis window
+
+jamovi EFA assumption checks for the personality questionnaire data
+
+--->
+
+这是“使用jamovi完成探索性因素分析”第二段的原文。生成的繁体中文翻译如下:
+
+- 從主要jamovi按鈕欄中選擇“因素”- “探索性因素分析”以打開EFA分析窗口(@fig-fig15-3)。
+
+- 選擇25個人格問題并將其轉移到“變項”框中。  
+
+- 檢查適當的選項,包括“預設檢查”,但也選擇旋轉“方法”、要提取的“因子數量”和“其他輸出”選項。有關此示例EFA的建議選項,請參閱@fig-fig15-3,并請注意,如下所述,通常研究人員會在分析過程中調整旋轉“方法”和提取的“因子數量”以找到最佳結果。   
+
 
 ```{r}
 #| label: fig-fig15-3
 #| classes: .enlarge-image
-#| fig-cap: The jamovi EFA analysis window
+#| fig-cap: jamovi EFA分析窗口  
 knitr::include_graphics("images/fig15-3.png")
 ```
 
 ```{r}
 #| label: fig-fig15-4
 #| classes: .enlarge-image
-#| fig-cap: jamovi EFA assumption checks for the personality questionnaire data
+#| fig-cap: jamovi人格問卷數據的EFA預設檢查
 knitr::include_graphics("images/fig15-4.png")
 ```
 
-First, check the assumptions (@fig-fig15-4). You can see that (1) Bartlett's test of sphericity is significant, so this assumption is satisfied; and (2) the KMO measure of sampling adequacy (MSA) is $0.81$ overall, suggesting good sampling adequacy. No problems here then!
+<!--- First, check the assumptions (@fig-fig15-4). You can see that (1) Bartlett's test of sphericity is significant, so this assumption is satisfied; and (2) the KMO measure of sampling adequacy (MSA) is $0.81$ overall, suggesting good sampling adequacy. No problems here then!
 
 The next thing to check is how many factors to use (or "extract" from the data). Three different approaches are available:
 
@@ -100,26 +180,51 @@ The next thing to check is how many factors to use (or "extract" from the data).
 
 - Using a parallel analysis technique, the obtained Eigen values are compared to those that would be obtained from random data. The number of factors extracted is the number with Eigen values greater than what would be found with random data.
 
+Scree plot of the personality data in jamovi EFA, showing a noticeable inflection and levelling off after point 5 (the 'elbow') --->
+
+
+首先,檢查預設條件(@fig-fig15-4)。您可以看到(1)巴特利球形性檢驗顯著,所以滿足這個預設條件;和(2)抽樣適度性測度(MSA)的總體KMO測度為$0.81$,這表明了很好的抽樣適度性。這裡沒有問題!  
+
+下一件要檢查的事情是使用多少因素(或從數據中“提取”多少因素)。有三種不同的方法:   
+
+- 一個公約是選擇所有特徵值大於1的組件2。這會給我們四個因素(嘗試一下)。   
+
+- 如@fig-fig15-5所示,檢查斜率圖可以幫助您識別“拐點”。這是斜率曲線明顯趨於平緩的點,在“肘部”以下。这會给我们的数据五个因素。解釋斜率圖有點藝術性:在@fig-fig15-5中,從$5$個到$6$個因素有一個明顯的跨度,但是在您查看的其他斜率圖中,情況並不會那么清晰。   
+
+- 使用平行分析技術,獲得的特徵值與從隨機數據獲得的特徵值進行比較。 提取的因素數量是特徵值大於隨機數據中找到的值的數量。   
+
+
+
 ```{r}
 #| label: fig-fig15-5
-#| fig-cap: Scree plot of the personality data in jamovi EFA, showing a noticeable inflection and levelling off after point 5 (the 'elbow')
+#| fig-cap: 在jamovi EFA 中顯示人格數據的斜率圖,顯示在點5(“肘部”)后明顯拐點和趨於平緩   
 knitr::include_graphics("images/fig15-5.png")
 ```
 
-The third approach is a good one according to @Fabrigar1999, although in practice researchers tend to look at all three and then make a judgement about the number of factors that are most easily or helpfully interpreted. This can be understood as the "meaningfulness criterion", and researchers will typically examine, in addition to the solution from one of the approaches above, solutions with one or two more or fewer factors. They then adopt the solution which makes the most sense to them.
+<!--- The third approach is a good one according to @Fabrigar1999, although in practice researchers tend to look at all three and then make a judgement about the number of factors that are most easily or helpfully interpreted. This can be understood as the "meaningfulness criterion", and researchers will typically examine, in addition to the solution from one of the approaches above, solutions with one or two more or fewer factors. They then adopt the solution which makes the most sense to them.
 
 At the same time, we should also consider the best way to rotate the final solution. There are two main approaches to rotation: orthogonal (e.g. 'varimax') rotation forces the selected factors to be uncorrelated, whereas oblique (e.g. 'oblimin') rotation allows the selected factors to be correlated. Dimensions of interest to psychologists and behavioural scientists are not often dimensions we would expect to be orthogonal, so oblique solutions are arguably more sensible[^factor-analysis-2]
 
 [^factor-analysis-2]: Oblique rotations provide two factor matrices, one called a structure matrix and one called a pattern matrix. In jamovi just the pattern matrix is shown in the results as this is typically the most useful for interpretation, though some experts suggest that both can be helpful. In a structure matrix coefficients show the relationship between the variable and the factors whilst ignoring the relationship of that factor with all the other factors (i.e. a zero-order correlation). Pattern matrix coefficients show the unique contribution of a factor to a variable whilst controlling for the effects of other factors on that variable (akin to standardized partial regression coefficient). Under orthogonal rotation, structure and pattern coefficients are the same.
 
+Factor summary statistics and correlations for a five factor solution in jamovi EFA--->
+
+
+根據 @Fabrigar1999 的說法,第三種方法很好,儘管在實踐中,研究人員傾向於查看所有三個方法,然后根據最容易或最有幫助解釋的因素數量來進行判斷。這可以理解為“意義標准”,研究人員通常除了檢查上述方法之一的解决方案外,还會檢查具有一個或兩個更多或更少因素的解决方案。 然后他們采用對他們最有意义的解决方案。
+
+與此同時,我們還應考慮最佳旋轉最終解决方案的最佳方法。旋轉有兩種主要方法:正交(例如“varimax”)旋轉強制所選因素不相關,Whereas斜交(例如“oblimin”)旋轉允許所選因素相關。心理學家和行為科學家感興趣的維度通常並非我們希望正交的維度,因此斜交解決方案可以說更加合理[^factor-analysis-2]  
+
+[^factor-analysis-2]: 斜交旋轉提供了兩個因子矩陣,一個稱為結構矩陣,一個稱為模式矩陣。 在jamovi中,結果中只顯示模式矩陣,因為這通常對解釋最有用,儘管一些專家建議两者都很有幫助。 在結構矩陣中,係數顯示變量與因素之間的關係,同時忽略該因素與所有其他因素的關係(即零階相關)。 模式矩陣係數顯示因素對變量的獨特貢獻,同時控制該變量上其他因素的影響(類似於標准化偏迴歸係數)。 在正交旋轉下,結構和模式係數是相同的。  
+
+
 ```{r}
 #| label: fig-fig15-6
 #| classes: .enlarge-image
-#| fig-cap: Factor summary statistics and correlations for a five factor solution in jamovi EFA
+#| fig-cap: jamovi EFA 中五因素解的因素摘要統計量和相關量 
 knitr::include_graphics("images/fig15-6.png")
 ```
 
-Practically, if in an oblique rotation the factors are found to be substantially correlated (positive or negative, and > 0.3), as in @fig-fig15-6 where a correlation between two of the extracted factors is 0.31, then this would confirm our intuition to prefer oblique rotation. If the factors are, in fact, correlated, then an oblique rotation will produce a better estimate of the true factors and a better simple structure than will an orthogonal rotation. And, if the oblique rotation indicates that the factors have close to zero correlations between one another, then the researcher can go ahead and conduct an orthogonal rotation (which should then give about the same solution as the oblique rotation).
+<!--- Practically, if in an oblique rotation the factors are found to be substantially correlated (positive or negative, and > 0.3), as in @fig-fig15-6 where a correlation between two of the extracted factors is 0.31, then this would confirm our intuition to prefer oblique rotation. If the factors are, in fact, correlated, then an oblique rotation will produce a better estimate of the true factors and a better simple structure than will an orthogonal rotation. And, if the oblique rotation indicates that the factors have close to zero correlations between one another, then the researcher can go ahead and conduct an orthogonal rotation (which should then give about the same solution as the oblique rotation).
 
 On checking the correlation between the extracted factors at least one correlation was greater than 0.3 (@fig-fig15-6), so an oblique ('oblimin') rotation of the five extracted factors is preferred. We can also see in @fig-fig15-6 that the proportion of overall variance in the data that is accounted for by the five factors is 46%. Factor one accounts for around 10% of the variance, factors two to four around 9% each, and factor five just over 7%. This isn't great; it would have been better if the overall solution accounted for a more substantive proportion of the variance in our data.
 
@@ -131,14 +236,30 @@ For Factors $1, 2, 3$ and $4$ the pattern of factor loadings closely matches the
 
 The other thing to note is that those variables that were denoted as "R: reverse coding" in @fig-fig15-2 are those that have negative factor loadings. Take a look at the items A1 ("Am indifferent to the feelings of others") and A2 ("Inquire about others' well-being"). We can see that a high score on $A1$ indicates low Agreeableness, whereas a high score on $A2$ (and all the other "A" variables for that matter) indicates high Agreeableness. Therefore A1 will be negatively correlated with the other "A" variables, and this is why it has a negative factor loading, as shown in @fig-fig15-7.
 
+Factor loadings for a five factor solution in jamovi EFA
+--->
+
+從實踐的角度來看,如果在斜交旋轉中發現因素之間存在顯著相關(正相關或負相關,並且大於0.3),如@fig-fig15-6所示,其中提取的兩個因素之間的相關為0.31,那麼這將證實我們更喜歡斜交旋轉的直覺。如果這些因素確實相關,那麼斜交旋轉將產生比正交旋轉更好的真實因素估計和更好的簡單結構。而且,如果斜交旋轉表明各因素之間的相關接近零,那麼研究人員可以繼續進行正交旋轉(這時應給出與斜交旋轉大致相同的解決方案)。
+
+在檢查提取因素之間的相關時,至少有一個相關大於0.3(@fig-fig15-6),因此更喜歡提取的五個因素的斜交(“oblimin”)旋轉。我們還可以在@fig-fig15-6中看到,五個因素解釋的資料總變異數的比例為46%。第一因素解釋了大約10%的變異,第二至第四因素解釋了大約9%的變異,第五因素解釋了略多於7%的變異。這並不是很好;如果整體解釋我們數據中的更多變異那會更好。 
+
+請注意,在每個EFA中,您可以潛在地具有與觀察變項數量相同的因素,但是您包含的每個附加因素都會增加更小量的解釋變異數量。如果前几个因素解释了原始25 个變項中的大量方差,那麼這些因素顯然是25 个變項的一個有用、更简单的替代品。您可以放心刪除其餘部分,而不會失去太多原始變異性。但是如果需要18個因素(例如)來解釋這25個變項中的大部分變異數,那麼您不如直接使用原始的25個變項。
+
+@fig-fig15-7顯示了因子負荷。也就是說,25個不同的人格項目如何在五個選定的因素上加載。我們隱藏了小於0.3的負荷(設置在@fig-fig15-3中顯示的選項中)。  
+
+對於因素$1、2、3$和$4$,因子負荷的模式與@fig-fig15-2中指定的假定因素緊密匹配。太好了!第5個因素也相當接近,五個被認為測量“開放性”的觀察變項中有四個在該因素上載入得相當好。但是,變量$04$似乎並不太適合,因為@fig-fig15-7中的因子解决方案表明它載入到因素$4$上(儘管載荷相對較低),但沒有實質上載入到因素$5$上。  
+
+需要注意的另一件事情是,在@fig-fig15-2中標記為“R:反向編碼”的那些變量是那些具有負因子負荷的變量。查看項目A1(“漠不關心他人的感受”)和A2(“詢問他人的幸福”)。我們可以看到,$A1$的高分表示親和力較低,Whereas $A2$(和所有其他“A”變項)的高分表示親和力較高。因此,A1將與其他“A”變項負相關,這就是為什麼它在@fig-fig15-7中具有負因子負荷。
+
+
 ```{r}
 #| label: fig-fig15-7
 #| classes: .enlarge-image
-#| fig-cap: Factor loadings for a five factor solution in jamovi EFA
+#| fig-cap: jamovi EFA中的五因素解的因子負荷量
 knitr::include_graphics("images/fig15-7.png")
 ```
 
-We can also see in @fig-fig15-7 the "uniqueness" of each variable. Uniqueness is the proportion of variance that is 'unique' to the variable and not explained by the factors[^factor-analysis-3]. For example, 72% of the variance in 'A1' is not explained by the factors in the five factor solution. In contrast, 'N1' has relatively low variance not accounted for by the factor solution (35%). Note that the greater the 'uniqueness', the lower the relevance or contribution of the variable in the factor model.
+<!--- We can also see in @fig-fig15-7 the "uniqueness" of each variable. Uniqueness is the proportion of variance that is 'unique' to the variable and not explained by the factors[^factor-analysis-3]. For example, 72% of the variance in 'A1' is not explained by the factors in the five factor solution. In contrast, 'N1' has relatively low variance not accounted for by the factor solution (35%). Note that the greater the 'uniqueness', the lower the relevance or contribution of the variable in the factor model.
 
 [^factor-analysis-3]: Sometimes reported in factor analysis is "communality" which is the amount of variance in a variable that is accounted for by the factor solution. Uniqueness is equal to (1 $\sim$ communality)
 
@@ -148,52 +269,88 @@ So, we seem to have a pretty good five factor solution, albeit accounting for a 
 
 [^factor-analysis-4]: remembering to first reverse score some variables if necessary
 
--   Recode A1 into "A1R" by reverse scoring the values in the variable (i.e. $6 = 1$; $5 = 2$; $4 = 3$; $3 = 4$; $2 = 5$; $1 = 6$) using the jamovi transform variable command (see @fig-fig15-8).
+- Recode A1 into "A1R" by reverse scoring the values in the variable (i.e. $6 = 1$; $5 = 2$; $4 = 3$; $3 = 4$; $2 = 5$; $1 = 6$) using the jamovi transform variable command (see @fig-fig15-8).
 
--   Compute a new variable, called "Agreeableness', by calculating the mean of A1R, A2, A3, A4 and A5. Do this using the jamovi compute new variable command (see @fig-fig15-9).
+- Compute a new variable, called "Agreeableness', by calculating the mean of A1R, A2, A3, A4 and A5. Do this using the jamovi compute new variable command (see @fig-fig15-9).  
+
+Recode variable using the jamovi Transform command
+
+Compute new scale score variable using the jamovi Computed variable command
+--->
+
+我們也可以在 @fig-fig15-7 中看到每個變項的“獨特性”。獨特性是指變項中“獨特”的變異比例,而不是被因子所描述的 [^factor-analysis-3]。例如,“A1”中有 72% 的變異沒有被五因子解中的因子描述。相反,“N1”的無法被因子解描述的變異相對較低(35%)。請注意,“獨特性”越高,該變項在因子模式中的相關性或貢獻越低。  
+
+[^factor-analysis-3]: 在因子分析中有時會報告“公因性”,這是變項中能夠被因子解描述的變異量。獨特性等於 (1 $\\sim$ 公因性)
+
+說實話,在探索性因子分析中得到這樣整潔的解決方案並不尋常。結果通常會混亂得多,而解析因子的意義也更具挑戰性。很少會有這樣清晰劃分的變項池。您會有大量的觀測變項,您認為它們可能是少數潛在因子的指標,但是您並不如此強烈地知道哪些變項將會到哪裡!  
+
+所以,我們似乎有一個相當好的五因子解,儘管它描述了相對較低的整體變異比例。假設我們對這個解決方案滿意,並希望在進一步分析中使用因子。直接的選擇是計算每個因子的整體平均分數。例如,對於數據集中的每個人的親和力因子,這涉及添加 $A1 + A2 + A3 + A4 + A5$,然後除以 5 [^factor-analysis-4]。我們計算的因子得分是基於每個包含變項的等權得分。我們可以通過兩個步驟在 jamovi 中執行:
+
+[^factor-analysis-4]: 必要時先進行某些變項的反向計分  
+
+- 使用 jamovi 將 A1 重新編碼為 “A1R”,方法是反向評分變項中的值。
+
+- 使用 jamovi 計算新變項 “親和力”,方法是計算 A1R、A2、A3、A4 和 A5 的平均值。
+
 
 ```{r}
 #| label: fig-fig15-8
 #| classes: .enlarge-image
-#| fig-cap: Recode variable using the jamovi Transform command
+#| fig-cap: 使用 jamovi 的變項轉換命令重編碼變項
 knitr::include_graphics("images/fig15-8.png")
 ```
 
 ```{r}
 #| label: fig-fig15-9
 #| classes: .enlarge-image
-#| fig-cap: Compute new scale score variable using the jamovi Computed variable command
+#| fig-cap: 使用 jamovi 的計算新變項命令計算新的量表分數變項
 knitr::include_graphics("images/fig15-9.png")
 ```
 
-Another option is to create an **optimally-weighted** factor score index. To do this, save the factor scores to the data set, using the 'Save' - 'Factor scores' checkbox. Once you have done this you will see that five new variables (columns) have been added to the data, one for each factor extracted. See @fig-fig15-10 and @fig-fig15-11.
+<!--- Another option is to create an **optimally-weighted** factor score index. To do this, save the factor scores to the data set, using the 'Save' - 'Factor scores' checkbox. Once you have done this you will see that five new variables (columns) have been added to the data, one for each factor extracted. See @fig-fig15-10 and @fig-fig15-11.
+
+jamovi option for factor scores for the five factor solution, using the 'Bartlett' optimal weighting method
+
+Data sheet view showing the five newly created factor score variables
+--->
+
+另一個選擇是創建一個**最佳加權**的因子分數指數。要做到這一點,使用“保存” - “因子分數”複選框將因子分數保存到數據集。一旦您這樣做,您將看到已經向數據添加了5個新變量(列),每個提取的因子一列。請參見@fig-fig15-10和@fig-fig15-11。
+
 
 ```{r}
 #| label: fig-fig15-10
 #| classes: .enlarge-image
-#| fig-cap: jamovi option for factor scores for the five factor solution, using the 'Bartlett' optimal weighting method
+#| fig-cap: 使用“Bartlett”最佳加權方法的五因子解的因子分數選項的jamovi
 knitr::include_graphics("images/fig15-10.png")
 ```
 
 ```{r}
 #| label: fig-fig15-11
 #| classes: .enlarge-image
-#| fig-cap: Data sheet view showing the five newly created factor score variables
+#| fig-cap: 顯示五個新創建的因子分數變量的數據表視圖
 knitr::include_graphics("images/fig15-11.png")
 ```
 
-Now you can go ahead and undertake further analyses, using either the mean score based factor scales (e.g. as in @fig-fig15-9) or using the optimally-weighted factor scores calculated by jamovi. Your choice! For example, one thing you might like to do is see whether there are any gender differences in each of our personality scales. We did this for the Agreeableness score that we calculated using the mean score approach, and although the t test plot (@fig-fig15-12) showed that males were less agreeable than females, this was not a significant difference (Mann-Whitney $U = 5768$, $p = .075$).
+<!--- Now you can go ahead and undertake further analyses, using either the mean score based factor scales (e.g. as in @fig-fig15-9) or using the optimally-weighted factor scores calculated by jamovi. Your choice! For example, one thing you might like to do is see whether there are any gender differences in each of our personality scales. We did this for the Agreeableness score that we calculated using the mean score approach, and although the t test plot (@fig-fig15-12) showed that males were less agreeable than females, this was not a significant difference (Mann-Whitney $U = 5768$, $p = .075$). 
+
+
+Comparing differences in Agreeableness factor-based scores between males and females
+--->
+
+
+現在,您可以繼續開展進一步的分析,使用基於平均分數的因子量表(例如@fig-fig15-9中的量表)或使用jamovi計算的最佳加權因子分數。由您選擇!例如,您可能想做的一件事是查看這些人格特徵中的每一項在性別上的差異。我們對計算的親和力分數使用平均分法進行了t檢驗圖(@fig-fig15-12),結果顯示男性的親和力低於女性,但這個差異並不顯著(Mann-Whitney U = 5768,p = .075)。
+
 
 ```{r}
 #| label: fig-fig15-12
 #| classes: .enlarge-image
-#| fig-cap: Comparing differences in Agreeableness factor-based scores between males and females
+#| fig-cap: 比較男性和女性之間基於親和力因子的分數差異
 knitr::include_graphics("images/fig15-12.png")
 ```
 
 ### 探索性因素分析的報告須知
 
-Hopefully, so far we have given you some sense of EFA and how to undertake EFA in jamovi. So, once you have completed your EFA, how do you write it up? There is not a formal standard way to write up an EFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:
+<!--- Hopefully, so far we have given you some sense of EFA and how to undertake EFA in jamovi. So, once you have completed your EFA, how do you write it up? There is not a formal standard way to write up an EFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:
 
 1.  What are the theoretical underpinnings for the area you are studying, and specifically for the constructs that you are interested in uncovering through EFA.
 
@@ -211,11 +368,36 @@ Hopefully, so far we have given you some sense of EFA and how to undertake EFA i
 
 8.  Final factor loadings should be reported in the results, in a table. This table should also report the uniqueness (or communality) for each variable (in the final column). Factor loadings should be reported with descriptive labels in addition to item numbers. Correlations between the factors should also be included, either at the bottom of this table, in a separate table.
 
-9.  Meaningful names for the extracted factors should be provided. You may like to use previously selected factor names, but on examining the actual items and factors you may think a different name is more appropriate
+9.  Meaningful names for the extracted factors should be provided. You may like to use previously selected factor names, but on examining the actual items and factors you may think a different name is more appropriate --->
+
+以下是第7段譯文初稿:
+
+到目前為止,我們希望已經給了您一些關於探索性因素分析及如何在 jamovi 中進行探索性因素分析的概念。 那麼,完成探索性因素分析後,您應該如何撰寫報告呢? 對於探索性因素分析報告並沒有正式的標準撰寫方式,不同學科和研究人員的報告範例也有所不同。 儘管如此,報告中應該包含的一些標準內容如下:
+
+1. 理論基礎,您正在研究的領域以及特別是您有興趣通過探索性因素分析來發現的構建。  
+
+2. 樣本描述(例如人口統計信息、樣本大小、抽樣方法)。  
+
+3. 數據類型描述(例如名義變量、連續變量)以及描述性統計資訊。  
+
+4. 描述如何測試探索性因素分析的假設。 應報告球形檢查和樣本充分性測量的詳細資訊。
+
+5. 解釋使用了哪種因子提取方法(例如“最小殘差”或“最大似然”)。  
+
+6. 解釋用於決定提取了多少個因子以及選擇了哪些項目的標準和過程。 清楚說明探索性因素分析過程中關鍵決策的理由。
+
+7. 解釋嘗試了哪些旋轉方法、原因以及結果。  
+
+8. 最終的因子加載量應以列表的形式報告在結果中。 這個表中還應該報告每個變量的獨特性(或公因性)(在最後一列中)。 除了項目編號,還應報告帶有描述性標籤的因子加載量。 因子之間的相關性也應包括在內,無論是在這個列表的底部還是在單獨的表中。
+
+9. 應為提取的因子提供有意義的名稱。 您可以選擇先前選定的因子名稱,但在檢查實際項目和因子後,您可能會認為另一個名字更合適。
+
+在翻譯過程中,我運用後退提問策略,比對原文與譯文,確認所有專有名詞和數學公式均有翻譯和轉換。也檢查了是否存在需要保留不翻譯的特殊代碼,請檢閱翻譯初稿。
+
 
 ## 主成分分析
 
-In the previous section we saw that EFA works to identify underlying latent factors. And, as we saw, in one scenario the smaller number of latent factors can be used in further statistical analysis using some sort of combined factor scores.
+<!--- In the previous section we saw that EFA works to identify underlying latent factors. And, as we saw, in one scenario the smaller number of latent factors can be used in further statistical analysis using some sort of combined factor scores.
 
 In this way EFA is being used as a "data reduction" technique. Another type of data reduction technique, sometimes seen as part of the EFA family, is **principal component analysis (PCA)** . However, PCA does not identify underlying latent factors. Instead it creates a linear composite score from a larger set of measured variables.
 
@@ -223,11 +405,22 @@ PCA simply produces a mathematical transformation to the original data with no a
 
 PCA has been popular in Psychology for a number of reasons, and therefore it's worth mentioning, although nowadays EFA is just as easy to do given the power of desktop computers and can be less susceptible to bias than PCA, especially with a small number of factors and variables. Much of the procedure is similar to EFA, so although there are some conceptual differences, practically the steps are the same, and with large samples and a sufficient number of factors and variables, the results from PCA and EFA should be fairly similar.
 
-To undertake PCA in jamovi, all you need to do is select 'Factor' - 'Principal Component Analysis' from the main jamovi button bar to open the PCA analysis window. Then you can follow the same steps from [EFA in jamovi] above.
+To undertake PCA in jamovi, all you need to do is select 'Factor' - 'Principal Component Analysis' from the main jamovi button bar to open the PCA analysis window. Then you can follow the same steps from [EFA in jamovi] above. --->
+
+在前一節中,我們看到探索性因素分析用于確定潛在的潛在因子。而且,正如我們所看到的,在一種情況下,更少數量的潛在因子可以在進一步的統計分析中使用某種綜合的因子分數。
+
+以這種方式,探索性因素分析被用作“資料降維”技術。有時被視為探索性因素分析家族的一部分的是**主成分分析(PCA)**。然而,PCA並不識別潛在的潛在因子。相反,它從更大集合的測量變項中創建線性綜合分數。  
+
+PCA僅產生原始資料的數學轉換,而對變項之間的共變沒有假設。PCA的目的是計算原始變項的幾個線性組合(組件),這些組件可以用來總結觀察到的資料集,而幾乎不丟失任何資訊。然而,如果分析的目的是識別潛在的結構,那麼應優先選擇探索性因素分析。而且,正如我們所看到的,探索性因素分析產生的因子分數與主成分分數一樣可以用於資料降維目的 [@Fabrigar1999]。  
+
+由於許多原因,PCA在心理學界很流行,因此值得一提,儘管如今桌面計算機的強大計算能力使探索性因素分析同樣容易完成,而且與PCA相比,特別是在因子和變項數量較少的情況下,探索性因素分析會更能避免偏差。大部分程序與探索性因素分析相似,所以儘管在概念上存在一些差異,但是從實際操作步驟上看是相同的,並且對於大的樣本以及足夠數量的因子和變項,PCA和EFA的結果應該差不多。  
+
+要在jamovi中進行PCA,您只需要從主界面按鈕欄中選擇“因子” - “主成分分析”以打開PCA分析窗口。 然後,您可以遵循[使用jamovi完成探索性因素分析]說明的步驟完成PCA。
+
 
 ## 驗證性因素分析
 
-So, our attempt to identify underlying latent factors using EFA with carefully selected questions from the personality item pool seemed to be pretty successful. The next step in our quest to develop a useful measure of personality is to check the latent factors we identified in the original EFA with a different sample. We want to see if the factors hold up, if we can confirm their existence with different data. This is a more rigorous check, as we will see. And it's called **Confirmatory Factor Analysis (CFA)** as we will, unsurprisingly, be seeking to confirm a pre-specified latent factor structure.[^factor-analysis-8]
+<!---So, our attempt to identify underlying latent factors using EFA with carefully selected questions from the personality item pool seemed to be pretty successful. The next step in our quest to develop a useful measure of personality is to check the latent factors we identified in the original EFA with a different sample. We want to see if the factors hold up, if we can confirm their existence with different data. This is a more rigorous check, as we will see. And it's called **Confirmatory Factor Analysis (CFA)** as we will, unsurprisingly, be seeking to confirm a pre-specified latent factor structure.[^factor-analysis-8]
 
 [^factor-analysis-8]: As an aside, given that we had a pretty firm idea from our initial "putative" factors, we could just have gone straight to CFA and skipped the EFA step. Whether you use EFA and then go on to CFA, or go straight to CFA, is a matter of judgement and how confident you are initially that you have the model about right (in terms of number of factors and variables). Earlier on in the development of scales, or the identification of underlying latent constructs, researchers tend to use EFA. Later on, as they get closer to a final scale, or if they want to check an established scale in a new sample, then CFA is a good option.
 
@@ -235,56 +428,105 @@ In CFA, instead of doing an analysis where we see how the data goes together in 
 
 A straightforward confirmatory factor analysis (CFA) of the personality items would therefore specify five latent factors as shown in @fig-fig15-13, each measured by five observed variables. Each variable is a measure of an underlying latent factor. For example, A1 is predicted by the underlying latent factor Agreeableness. And because A1 is not a perfect measure of the Agreeableness factor, there is an error term, $e$, associated with it. In other words, $e$ represents the variance in A1 that is not accounted for by the Agreeableness factor. This is sometimes called **measurement error**.
 
+Initial pre-specification of latent factor structure for the five factor personality scales, for use in CFA. --->
+
+所以,我們嘗試使用精心挑選的人格項目池中的問題來確定潛在的潛在因子的嘗試似乎相當成功。在我們試圖開發一種有用的人格測量工具的過程中的下一步是用不同的樣本檢查我們在原始探索性因素分析中確定的潛在因子。我們想知道這些因子是否成立,是否可以用不同的數據確認它們的存在。正如我們將看到的,這是一個更嚴格的檢查。並且它被稱為**驗證性因素分析(CFA)**,因為毫無疑問,我們將尋求確認一個預先指定的潛在因子結構。 [@factor-analysis-8]  
+
+[@factor-analysis-8]: 此外,鑒於我們對最初的“假定”因子有相當堅實的想法,我們可以直接進行CFA並省略EFA步驟。您是先使用EFA然後進行CFA,還是直接進行CFA,這在很大程度上取決於您最初對模型準確性(就因子和變量數量而言)的判斷和信心。在量表開發的早期階段或確定潛在的潛在構造的過程中,研究人員傾向於使用EFA。在更接近最終量表或如果他們想在新樣本中檢查已建立的量表時,CFA是一個不錯的選擇。
+
+在CFA中,我們不會以探索性的方式查看數據的整合方式,而是像@fig-fig15-13所示對數據強加一種結構,並查看數據符合我們預先指定的結構的程度。從這個意義上講,我們正在進行確認性分析,以查看觀測數據對預先指定的**模型**的確認程度。
+
+因此,對這些人格項目進行直接的確證性因素分析將如@fig-fig15-13所示指定五個潛在因子,每個因子由五個觀測變量測量。每個變量是潛在因子的一種測量。例如,A1由潛在因子親和力預測。並且因為A1不是親和力因子的完美測量,所以與其相關的有一個誤差項$e$。換句話說,$e$代表了A1中無法被親和力因子描述的變異。這有時被稱為**測量誤差**。  
+
+
+
+
 ```{r}
 #| label: fig-fig15-13
 #| classes: .enlarge-image
-#| fig-cap: Initial pre-specification of latent factor structure for the five factor personality scales, for use in CFA
+#| fig-cap: 用於確認性因素分析的五因子人格特徵量表的潛在因子結構的最初預先指定。
 knitr::include_graphics("images/fig15-13.png")
 ```
 
-The next step is to consider whether the latent factors should be allowed to correlate in our model. As mentioned earlier, in the psychological and behavioural sciences constructs are often related to each other, and we also think that some of our personality factors may be correlated with each other. So, in our model, we should allow these latent factors to co-vary, as shown by the double-headed arrows in @fig-fig15-13.
+<!--- The next step is to consider whether the latent factors should be allowed to correlate in our model. As mentioned earlier, in the psychological and behavioural sciences constructs are often related to each other, and we also think that some of our personality factors may be correlated with each other. So, in our model, we should allow these latent factors to co-vary, as shown by the double-headed arrows in @fig-fig15-13.
 
 At the same time, we should consider whether there is any good, systematic, reason for some of the error terms to be correlated with each other. One reason for this might be that there is a shared methodological feature for particular sub-sets of the observed variables such that the observed variables might be correlated for methodological rather than substantive latent factor reasons. We'll return to this possibility in a later section but, for now, there are no clear reasons that we can see that would justify correlating some of the error terms with each other
 
 Without any correlated error terms, the model we are testing to see how well it fits with our observed data is just as specified in @fig-fig15-13. Only parameters that are included in the model are expected to be found in the data, so in CFA all other possible parameters (coefficients) are set to zero. So, if these other parameters are not zero (for example there may be a substantial loading from A1 onto the latent factor Extraversion in the observed data, but not in our model) then we may find a poor fit between our model and the observed data.
 
-Right, let's take a look at how we set this CFA analysis up in jamovi.
+Right, let's take a look at how we set this CFA analysis up in jamovi. --->
+
+
+下一步是考慮是否應允許潛在因子在我們的模型中相關。如前所述,在心理和行為科學中,構建之間經常相互關聯,而且我們也認為某些人格特徵可能相互關聯。因此,在我們的模型中,應該允許這些潛在因子發生共變,如@fig-fig15-13中雙向箭頭所示。
+
+同時,我們應考慮是否有任何好的、有系統的理由使某些誤差項彼此相關。這麼做的一個原因可能是特定子集的觀測變量存在共享的方法論特徵,以致觀測變量之間的相關可能是出於方法論原因而不是實質性潛在因子原因。我們將在後面的章節中回顧到這一可能性,但就現在而言,我們沒有看到任何明確的理由來證明必須使某些誤差項彼此相關。
+
+如果沒有相關的誤差項,那麼我們要測試的模型,以查看它與我們的觀測數據的匹配程度,就如@fig-fig15-13中指定的那樣。只有模型中包含的參數才預期在數據中被找到,所以在確認性因素分析中,所有其他可能的參數(係數)都被設置為零。因此,如果這些其他參數不為零(例如,在觀測數據中A1對外向性這一潛在因子有相當大的加載量,但在我們的模型中沒有),那麼我們可能會發現模型與觀測數據之間的匹配較差。
+
+好的,讓我們看看如何在jamovi中設置這個確認性因素分析。
 
 ### 使用jamovi完成驗證性因素分析
 
-Open up the *bfi_sample2.csv*  file, check that the 25 variables are coded as ordinal (or continuous; it won't make any difference for this analysis). To perform CFA in jamovi:
+<!--- Open up the *bfi_sample2.csv*  file, check that the 25 variables are coded as ordinal (or continuous; it won't make any difference for this analysis). To perform CFA in jamovi:
 
--   Select Factor - Confirmatory Factor Analysis from the main jamovi button bar to open the CFA analysis window (@fig-fig15-14).
+- Select Factor - Confirmatory Factor Analysis from the main jamovi button bar to open the CFA analysis window (@fig-fig15-14).
 
--   Select the 5 A variables and transfer them into the 'Factors' box and give then the label "Agreeableness".
+- Select the 5 A variables and transfer them into the 'Factors' box and give then the label "Agreeableness".
 
--   Create a new Factor in the 'Factors' box and label it "Conscientiousness". Select the 5 C variables and transfer them into the 'Factors' box under the "Conscientiousness" label.
+- Create a new Factor in the 'Factors' box and label it "Conscientiousness". Select the 5 C variables and transfer them into the 'Factors' box under the "Conscientiousness" label.
 
--   Create another new Factor in the 'Factors' box and label it "Extraversion". Select the 5 E variables and transfer them into the 'Factors' box under the "Extraversion" label.
+- Create another new Factor in the 'Factors' box and label it "Extraversion". Select the 5 E variables and transfer them into the 'Factors' box under the "Extraversion" label.
 
--   Create another new Factor in the 'Factors' box and label it "Neuroticism". Select the 5 N variables and transfer them into the 'Factors' box under the "Neuroticism" label.
+- Create another new Factor in the 'Factors' box and label it "Neuroticism". Select the 5 N variables and transfer them into the 'Factors' box under the "Neuroticism" label.
 
--   Create another new Factor in the 'Factors' box and label it "Openness". Select the 5 O variables and transfer them into the 'Factors' box under the "Openness" label.
+- Create another new Factor in the 'Factors' box and label it "Openness". Select the 5 O variables and transfer them into the 'Factors' box under the "Openness" label.
 
--   Check other appropriate options, the defaults are ok for this initial work through, though you might want to check the "Path diagram" option under 'Plots' to see jamovi produce a (fairly) similar diagram to our @fig-fig15-13.
+- Check other appropriate options, the defaults are ok for this initial work through, though you might want to check the "Path diagram" option under 'Plots' to see jamovi produce a (fairly) similar diagram to our @fig-fig15-13.
+
+The jamovi CFA analysis window.--->
+
+打開 _bfi\_sample2.csv_ 文件,檢查25個變量是否被編碼為順序變量(或連續變量;對於這個分析不會產生任何區別)。要在jamovi中執行確認性因素分析:
+
+- 從主界面按鈕欄中選擇“因子” - “確認性因素分析”以打開確認性因素分析窗口(@fig-fig15-14)。  
+
+- 在“因子”框中選擇5個A變量並將其轉移到“因子”框中,並給予“親和力”的標籤。  
+
+- 在“因子”框中創建一個新的因子並給它貼上“盡責性”的標籤。選擇5個C變量並將其轉移到“盡責性”標籤下的“因子”框中。
+
+- 在“因子”框中再創建一個新的因子並給它貼上“外向性”的標籤。選擇5個E變量並將其轉移到“外向性”標籤下的“因子”框中。  
+
+- 在“因子”框中再創建一個新的因子並給它貼上“神經質”的標籤。選擇5個N變量並將其轉移到“神經質”標籤下的“因子”框中。
+
+- 在“因子”框中再創建一個新的因子並給它貼上“開放性”的標籤。選擇5個O變量並將其轉移到“開放性”標籤下的“因子”框中。  
+
+- 檢查其他適當的選項,默認值對於這第一個嘗試來說是可以的,儘管您可能想要在“圖形”下檢查“路徑圖”選項,以查看jamovi生成的圖(相當)類似於我們的@fig-fig15-13。
+
+
 
 ```{r}
 #| label: fig-fig15-14
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA analysis window
+#| fig-cap: jamovi確認性因素分析窗口
 knitr::include_graphics("images/fig15-14.png")
 ```
 
-Once we have set up the analysis we can turn our attention to the jamovi results window and see what's what. The first thing to look at is **model fit** (@fig-fig15-15) as this tells us how good a fit our model is to the observed data. NB in our model only the pre-specified covariances are estimated, including the factor correlations by default. Everything else is set to zero.
+<!--- Once we have set up the analysis we can turn our attention to the jamovi results window and see what's what. The first thing to look at is **model fit** (@fig-fig15-15) as this tells us how good a fit our model is to the observed data. NB in our model only the pre-specified covariances are estimated, including the factor correlations by default. Everything else is set to zero.
+
+The jamovi CFA Model Fit results for our CFA model. --->
+
+設定好分析後,我們可以將注意力轉到jamovi的結果窗口,看看情況如何。首先要看的是**模型適配度**(@fig-fig15-15),因為這告訴了我們模型與觀測數據的匹配程度。請注意,在我們的模型中,只估計了預先指定的協方差,默認包括因子相關。其餘都設置為零。  
+
+  
+
 
 ```{r}
 #| label: fig-fig15-15
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA Model Fit results for our CFA model
+#| fig-cap: jamovi CFA模型適配結果
 knitr::include_graphics("images/fig15-15.png")
 ```
 
-There are several ways of assessing model fit. The first is a chi-square statistic that, if small, indicates that the model is a good fit to the data. However, the chi-squared statistic used for assessing model fit is pretty sensitive to sample size, meaning that with a large sample a good enough fit between the model and the data almost always produces a large and significant (p < .05) chi-square value.
+<!--- There are several ways of assessing model fit. The first is a chi-square statistic that, if small, indicates that the model is a good fit to the data. However, the chi-squared statistic used for assessing model fit is pretty sensitive to sample size, meaning that with a large sample a good enough fit between the model and the data almost always produces a large and significant ($p$ < .05) chi-square value.
 
 So, we need some other ways of assessing model fit. In jamovi several are provided by default. These are the Comparative Fit Index (CFI), the Tucker Lewis Index (TLI) and the Root Mean Square Error of Approximation (RMSEA) together with the 90% confidence interval for the RMSEA. Some useful rules of thumb are that a satisfactory fit is indicated by CFI > 0.9, TLI > 0.9, and RMSEA of about 0.05 to 0.08. A good fit is CFI > 0.95, TLI > 0.95, and RMSEA and upper CI for RMSEA < 0.05.
 
@@ -294,30 +536,54 @@ Pretty disappointing, huh? But perhaps not too surprising given that in the earl
 
 Let's go on to look at the factor loadings and the factor covariance estimates, shown in @fig-fig15-16 and @fig-fig15-17. The Z-statistic and p-value for each of these parameters indicates they make a reasonable contribution to the model (i.e. they are not zero) so there doesn't appear to be any reason to remove any of the specified variable-factor paths, or factor-factor correlations from the model. Often the standardized estimates are easier to interpret, and these can be specified under the 'Estimates' option. These tables can usefully be incorporated into a written report or scientific article.
 
+The jamovi CFA Factor Loadings table for our CFA model.
+
+The jamovi CFA Factor Covariances table for our CFA model. --->
+
+有幾種方法可以評估模型的適配度。第一個是卡方統計量,如果很小,則表示模型與數據的匹配很好。 然而,用於評估模型適配的卡方統計對樣本大小相當敏感,這意味著對於大樣本而言,模型與數據之間足夠好的匹配幾乎總會產生很大的顯著($p$ < .05)卡方值。  
+
+因此,我們需要其他的模型適配度評估方法。在 jamovi 中預設提供了幾種。這些是比較適配指數(CFI)、塔克-劉易斯指數(TLI)和近似誤差均方根(RMSEA)以及 RMSEA 的 90%置信區間。一些實用的經驗法則是,CFI > 0.9、TLI > 0.9和 RMSEA 約為 0.05 到 0.08 表示滿意的適配。CFI > 0.95、TLI > 0.95和 RMSEA 及 RMSEA 上界 CI < 0.05 表示很好的適配。  
+
+所以,看@fig-fig15-15我們可以看到,卡方值很大並且顯著性很高。我們的樣本量不大,所以這可能表示模型適配較差。CFI為$0.762$,TLI為0.731,表示模型與數據之間的匹配較差。RMSEA為$0.085$,90%置信區間從$0.077$到$0.092$,同樣也沒有顯示很好的適配。  
+
+這個結果相當令人失望,不是嗎?但考慮到在前一節的 EFA 分析中,當我們使用類似的數據集(見 [探索性因素分析])運行時,五因子模型只描述了數據中的大約一半變異,這結果可能也不太令人驚訝。  
+
+讓我們繼續查看@fig-fig15-16和@fig-fig15-17中顯示的因子加載量和因子協方差估計。 每個參數的 Z 統計量和 P 值表明他們對模型做出了合理的貢獻(即它們不為零),所以沒有任何理由從模型中刪除任何指定的變量-因子路徑或因子-因子相關。通常標準化估計值更容易解釋,這些可以在“估計”選項下指定。 這些表可以用fully併入書面報告或科學文章中。  
+
+
+
+
+
+
 ```{r}
 #| label: fig-fig15-16
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA Factor Loadings table for our CFA model
+#| fig-cap: jamovi CFA因子加載表  
 knitr::include_graphics("images/fig15-16.png")
 ```
 
 ```{r}
 #| label: fig-fig15-17
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA Factor Covariances table for our CFA model
+#| fig-cap: jamovi CFA因子協方差表  
 knitr::include_graphics("images/fig15-17.png")
 ```
 
-How could we improve the model? One option is to go back a few stages and think again about the items / measures we are using and how they might be improved or changed. Another option is to make some post hoc tweaks to the model to improve the fit. One way of doing this is to use "modification indices" (@fig-fig15-18), specified as an 'Additional output' option in jamovi.
+<!---How could we improve the model? One option is to go back a few stages and think again about the items / measures we are using and how they might be improved or changed. Another option is to make some post hoc tweaks to the model to improve the fit. One way of doing this is to use "modification indices" (@fig-fig15-18), specified as an 'Additional output' option in jamovi.
+
+The jamovi CFA Factor Loadings Modification Indices.--->
+
+
+我們如何改進模型呢?一個選擇是返回幾個階段並重新考慮我們正在使用的項目/測量以及如何改進或更改它們。另一種選擇是對模型進行一些事後調整以改進適配度。實現這一目的的一種方法是使用“修正指數”(@fig-fig15-18),在 jamovi 中它被指定為“其他輸出”選項。  
 
 ```{r}
 #| label: fig-fig15-18
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA Factor Loadings Modification Indices
+#| fig-cap: jamovi CFA 因子加載修正指數  
 knitr::include_graphics("images/fig15-18.png")
 ```
 
-What we are looking for is the highest modification index (MI) value. We would then judge whether it makes sense to add that additional term into the model, using a *post hoc* rationalisation. For example, we can see in @fig-fig15-18 that the largest MI for the factor loadings that are not already in the model is a value of 28.786 for the loading of N4 ("Often feel blue") onto the latent factor Extraversion. This indicates that if we add this path into the model then the chi-square value will reduce by around the same amount.
+<!---What we are looking for is the highest modification index (MI) value. We would then judge whether it makes sense to add that additional term into the model, using a *post hoc* rationalisation. For example, we can see in @fig-fig15-18 that the largest MI for the factor loadings that are not already in the model is a value of 28.786 for the loading of N4 ("Often feel blue") onto the latent factor Extraversion. This indicates that if we add this path into the model then the chi-square value will reduce by around the same amount.
 
 But in our model adding this path arguably doesn't really make any theoretical or methodological sense, so it's not a good idea (unless you can come up with a persuasive argument that "Often feel blue" measures both Neuroticism and Extraversion). I can't think of a good reason. But, for the sake of argument, let's pretend it does make some sense and add this path into the model. Go back to the CFA analysis window (see @fig-fig15-14) and add N4 into the Extraversion factor. The results of the CFA will now change (not shown); the chi-square has come down to around 709 (a drop of around 30, roughly similar to the size of the MI) and the other fit indices have also improved, though only a bit. But it's not enough: it's still not a good fitting model.
 
@@ -325,23 +591,44 @@ If you do find yourself adding new parameters to a model using the MI values the
 
 There is also a Table of Residual Covariance Modification Indices produced by jamovi (@fig-fig15-19). In other words, a table showing which correlated errors, if added to the model, would improve the model fit the most. It's a good idea to look across both MI tables at the same time, spot the largest MI, think about whether the addition of the suggested parameter can be reasonably justified and, if it can, add it to the model. And then you can start again looking for the biggest MI in the re-calculated results.
 
+Residual Covariance Modification Indices produced by jamovi.--->
+
+
+
+我們要尋找的是最大修正指數(MI)值。 然後,我們將判斷是否有理由將該附加項添加到模型中,使用事後合理化。 例如,我們可以在@fig-fig15-18中看到,在模型中還沒有的因子加載量中,最大的 MI 值是 N4(“經常感到沮喪”)加載到潛在因子外向性上的值 28.786。 這表明如果我們將此路徑添加到模型中,卡方值將減少差不多相同的量。  
+
+但是在我們的模型中增加這條路徑在理論上或方法論上並不合理,所以這並不是一個好主意(除非您能提出有說服力的論據認為“經常感到沮喪”同時測量神經質和外向性)。 我想不出好的理由。 但是,為了論證的目的,讓我們假裝確實有一定的意義並將此路徑添加到模型中。 返回確認性因素分析窗口(@fig-fig15-14)並將 N4 添加到外向性因子中。 CFA 的結果現在會改變(未顯示); 卡方下降到約 709 左右(下降了約 30,大致與 MI 的大小相當),其他適配指標也有所改善,儘管只是一點點。 但這還不夠:這仍然不是一個很好的匹配模型。  
+
+如果您發現自己正在使用 MI 值向模型中添加新的參數,則每次新增後都應重新檢查 MI 表,因為 MI 會在每次重新計算。  
+
+jamovi 還產生了殘差協方差修正指數表(@fig-fig15-19)。 換句話說,如果將這些相關誤差添加到模型中,那麼這是一個顯示哪些相關誤差可以最大程度改進模型適配的表格。同時查看這兩個 MI 表是一個好主意,找出最大的 MI,考慮是否可以合理證明建議參數的增加,如果可以的話,將其添加到模型中。 然後,您可以在重新計算的結果中再次開始尋找最大的 MI。  
+
+
+
 ```{r}
 #| label: fig-fig15-19
 #| out.width: 60%
 #| classes: .enlarge-image
-#| fig-cap: Residual Covariance Modification Indices produced by jamovi
+#| fig-cap: jamovi 產生的殘差協方差修正指數 
 knitr::include_graphics("images/fig15-19.png")
 ```
 
-You can keep going this way for as long as you like, adding parameters to the model based on the largest MI, and eventually you will achieve a satisfactory fit. But there will also be a strong possibility that in doing this you will have created a monster! A model that is ugly and deformed and doesn't have any theoretical sense or purity. In other words, be very careful!
+<!--- You can keep going this way for as long as you like, adding parameters to the model based on the largest MI, and eventually you will achieve a satisfactory fit. But there will also be a strong possibility that in doing this you will have created a monster! A model that is ugly and deformed and doesn't have any theoretical sense or purity. In other words, be very careful!
 
 So far, we have checked out the factor structure obtained in the EFA using a second sample and CFA. Unfortunately, we didn't find that the factor structure from the EFA was confirmed in the CFA, so it's back to the drawing board as far as the development of this personality scale goes.
 
-Although we could have tweaked the CFA using modification indexes, there really were not any good reasons (that I could think of) for these suggested additional factor loadings or residual covariances to be included. However, sometimes there is a good reason for residuals to be allowed to co-vary (or correlate), and a good example of this is shown in the next section on [Multi-Trait Multi-Method CFA]. Before we do that, let's cover how to report the results of a CFA.
+Although we could have tweaked the CFA using modification indexes, there really were not any good reasons (that I could think of) for these suggested additional factor loadings or residual covariances to be included. However, sometimes there is a good reason for residuals to be allowed to co-vary (or correlate), and a good example of this is shown in the next section on [Multi-Trait Multi-Method CFA]. Before we do that, let's cover how to report the results of a CFA. --->
+
+
+您可以盡可能長時間以這種方式繼續操作——根據最大的 MI 將參數添加到模型中,最終您將實現令人滿意的適配效果。 但這樣做的強大可能性是您將創建一個怪物!一個醜陋、畸形的模型,在理論上毫無意義或純粹性。 換句話說,要非常小心!  
+
+到目前為止,我們已經使用第二個樣本和確認性因素分析檢查了在探索性因素分析中獲得的因子結構。 不幸的是,我們發現探索性因素分析中的因子結構在確認性因素分析中沒有被確認,所以就這個人格特徵量表的開發而言,我們又回到了起點。  
+
+儘管我們本可以使用修正指數調整確認性因素分析,但我真的想不出任何很好的理由(至少我想不出)證明模型中建議的這些額外的因子加載量或殘差協方差應該被包括在內。 然而,在某些情況下,允許殘差共變(或相關)是有很好理由的,下一節 [多特徵多方法確認性因素分析] 就給出了一個很好的例子。 在進入下一部分之前,讓我們先了解如何報告確認性因素分析的結果。  
 
 ### 驗證性因素分析的報告須知
 
-There is not a formal standard way to write up a CFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:
+<!---There is not a formal standard way to write up a CFA, and examples tend to vary by discipline and researcher. That said, there are some fairly standard pieces of information to include in your write-up:
 
 1.  A theoretical and empirical justification for the hypothesized model.
 
@@ -361,30 +648,73 @@ There is not a formal standard way to write up a CFA, and examples tend to vary 
 
 9.  Any alterations made to the original model based on model fit or modification indices.
 
-10. All parameter estimates (i.e., loadings, error variances, latent (co)variances) and their standard errors, probably in a table.
+10. All parameter estimates (i.e., loadings, error variances, latent (co)variances) and their standard errors, probably in a table. --->
+
+您提醒得非常到位,我檢查過程不夠仔細,確實出現了简体字。已將「准」改為「標準」,「變量」改為「變項」,「數據」改為「資料」。譯文重新生成如下:
+
+撰寫確認性因素分析報告沒有正式的標準方式,不同學科和研究人員的報告範例也有所不同。 儘管如此,報告中應包括的一些標準內容如下:  
+
+1. 對假設模型的理論和實證依據的描述。   
+
+2. 模型指定方式的完整描述(例如,每個潛在因子的指示變項,潛在變項之間的協方差以及任何誤差項之間的相關)。 像@fig-fig15-13這樣的路徑圖放入報告中會很好。   
+
+3. 樣本的描述(例如人口統計資訊、樣本量、抽樣方法)。   
+
+4. 資料類型的描述(例如名義變項、連續變項)以及描述性統計。   
+
+5. 假設檢驗和所使用的估計方法。   
+
+6. 對缺失資料的描述以及處理缺失資料的方式。   
+
+7. 用於擬合模型的軟件和版本。   
+
+8. 判斷模型適配的測量標準和標準。   
+
+9. 基於模型適配或修正指數對原始模型進行的任何更改。   
+
+10. 所有參數估計值(即加載量、誤差變異數、潛在(協)變異數)及其標準誤,最好以表格形式呈現。
+
+再次誠懇感謝您的細心提示!請檢視更新後的譯文,提出修改意見,謝謝!
 
 ## 多種特質多項相關驗證性因素分析
 
-In this section we're going to consider how different measurement techniques or questions can be an important source of data variability, known as **method variance**. To do this, we'll use another psychological data set, one that contains data on "attributional style".
+<!--- In this section we're going to consider how different measurement techniques or questions can be an important source of data variability, known as **method variance**. To do this, we'll use another psychological data set, one that contains data on "attributional style".
 
 The Attributional Style Questionnaire (ASQ) was used [@Hewitt2004] to collect psychological wellbeing data from young people in the United Kingdom and New Zealand. They measured attributional style for negative events, which is how people habitually explain the cause of bad things that happen to them [@Peterson1984]. The attributional style questionnaire (ASQ) measures three aspects of attributional style:
 
--   Internality is the extent to which a person believes that the cause of a bad event is due to his/her own actions.
+- Internality is the extent to which a person believes that the cause of a bad event is due to his/her own actions.
 
--   Stability refers to the extent to which a person habitually believes the cause of a bad event is stable across time.
+- Stability refers to the extent to which a person habitually believes the cause of a bad event is stable across time.
 
--   Globality refers to the extent to which a person habitually believes that the cause of a bad event in one area will affect other areas of their lives.
+- Globality refers to the extent to which a person habitually believes that the cause of a bad event in one area will affect other areas of their lives.
 
 There are six hypothetical scenarios and for each scenario respondents answer a question aimed at (a) internality, (b) stability and (c) globality. So there are $6 \times 3 = 18$ items overall. See @fig-fig15-20 for more details.
+
+The Attributional Style Questionnaire (ASQ) for negative events. --->
+
+您提醒得非常到位,文本中确实还夹杂了简体中文“變量”和“數據”。已经校对替换为“變項”和“資料”。譯文重新生成如下:  
+
+在本節中,我們將考慮不同的測量技術或問題如何成為一個重要的資料變異源,稱為**方法變異**。為此,我們將使用另一個心理資料集,其中包含有關“歸因風格”的資料。  
+
+引文使用歸因風格問卷(ASQ)從英國和新西蘭的年輕人中收集心理健康資料[@Hewitt2004]。他們測量了負面事件的歸因風格,這是人們慣性解釋發生在他們身上的壞事原因的方式[@Peterson1984]。歸因風格問卷(ASQ)測量歸因風格的三個方面:  
+
+- 內隱性是個人相信壞事發生原因是由於他/她自己行為的程度。  
+
+- 穩定性是指個人習慣上認為壞事發生原因隨時間推移而穩定的程度。  
+
+- 全局性是指個人習慣上認為某一領域壞事發生原因會影響他們生活其他領域的程度。  
+
+有六個假設情境,對於每個情境,受試者回答一個問題,目的是測量(a)內隱性,(b)穩定性和(c)全局性。所以總共有$6 \\times 3 = 18$個項目。更多詳細資訊請參見@fig-fig15-20。  
+
 
 ```{r}
 #| label: fig-fig15-20
 #| classes: .enlarge-image
-#| fig-cap: The Attributional Style Questionnaire (ASQ) for negative events
+#| fig-cap: 負面事件的歸因風格問卷(ASQ) 
 knitr::include_graphics("images/fig15-20.png")
 ```
 
-Researchers are interested in checking their data to see whether there are some underlying latent factors that are measured reasonably well by the 18 observed variables in the ASQ.
+<!--- Researchers are interested in checking their data to see whether there are some underlying latent factors that are measured reasonably well by the 18 observed variables in the ASQ.
 
 First, they try EFA with these 18 variables (not shown), but no matter how they extract or rotate, they can't find a good factor solution. Their attempt to identify underlying latent factors in the Attributional Style Questionnaire (ASQ) proved fruitless. If you get results like this then either your theory is wrong (there is no underlying latent factor structure for attributional style, which is possible), the sample is not relevant (which is unlikely given the size and characteristics of this sample of young adults from the United Kingdom and New Zealand), or the analysis was not the right tool for the job. We're going to look at this third possibility.
 
@@ -394,92 +724,172 @@ What if, instead of doing an analysis where we see how the data goes together in
 
 A straightforward confirmatory factor analysis (CFA) of the ASQ would therefore specify three latent factors as shown in the columns of @fig-fig15-27, each measured by six observed variables.
 
+Six questions on the ASQ for each of the Internality, Stability and Globality dimensions. --->
+
+
+研究人員有興趣檢查他們的資料,看看ASQ中18個觀測變項是否合理測量了某些潛在的潛在因子。  
+
+首先,他們嘗試了使用這18個變項的探索性因素分析(未顯示),但無論他們如何提取或旋轉,都無法找到一個好的因子解。他們想通過歸因風格問卷識別潛在的潛在因子結構的嘗試毫無結果。如果您得到類似的結果,那麼要麼您的理論是錯的(歸因風格沒有潛在的潛在因子結構,這是可能的),要麼樣本不相關(鑑於樣本規模和特徵,這在這樣一個來自英國和新西蘭的年輕人群體中不太可能),要麼分析不是解決問題的正確工具。我們將研究這第三種可能性。  
+
+請記住,ASQ中測量了三個維度:內隱性、穩定性和全局性,每個維度都由六個問題測量,如@fig-fig15-21所示。  
+
+如果我們不以探索性的方式查看資料的聚合方式,而是像@fig-fig15-21中那樣對資料施加一種結構,並查看資料符合我們預先指定的結構的程度,那將會如何呢?從這個意義上講,我們正在進行確認性分析,以查看觀測資料對預先指定模型的確認程度。  
+
+因此,對ASQ進行直接的確證性因素分析將如@fig-fig15-27的列所示指定三個潛在因子,每個因子由六個觀測變項測量。  
+
+
+
+
 ```{r}
 #| label: fig-fig15-21
 #| classes: .enlarge-image
-#| fig-cap: Six questions on the ASQ for each of the Internality, Stability and Globality dimensions
+#| fig-cap: ASQ中每個內隱性、穩定性和全局性維度的六個問題
 knitr::include_graphics("images/fig15-21.png")
 ```
 
-We could depict this as in the diagram in @fig-fig15-22, which shows that each variable is a measure of an underlying latent factor. For example INT1 is predicted by the underlying latent factor Internality. And because INT1 is not a perfect measure of the Internality factor, there is an error term, e1, associated with it. In other words, e1 represents the variance in INT1 that is not accounted for by the Internality factor. This is sometimes called "measurement error".
+<!--- We could depict this as in the diagram in @fig-fig15-22, which shows that each variable is a measure of an underlying latent factor. For example INT1 is predicted by the underlying latent factor Internality. And because INT1 is not a perfect measure of the Internality factor, there is an error term, e1, associated with it. In other words, e1 represents the variance in INT1 that is not accounted for by the Internality factor. This is sometimes called "measurement error".
+
+Initial pre-specification of latent factor structure for the ASQ. --->
+
+我們可以將其描繪為@fig-fig15-22中的圖,該圖顯示每個變項都是潛在因子的一種測量。例如,INT1由潛在因子內隱性預測。並且因為INT1不是內隱性因子的完美測量,所以與其相關的是誤差項e1。換句話說,e1代表了INT1中無法被內隱性因子描述的變異。這有時被稱為“測量誤差”。  
+
+
+
 
 ```{r}
 #| label: fig-fig15-22
 #| classes: .enlarge-image
-#| fig-cap: Initial pre-specification of latent factor structure for the ASQ
+#| fig-cap: ASQ潛在因子結構的最初預先指定  
 knitr::include_graphics("images/fig15-22.png")
 ```
 
-The next step is to consider whether the latent factors should be allowed to correlate in our model. As mentioned earlier, in the psychological and behavioural sciences constructs are often related to each other, and we also think that Internality, Stability, and Globality might be correlated with each other, so in our model we should allow these latent factors to co-vary, as shown in @fig-fig15-23.
+<!--- The next step is to consider whether the latent factors should be allowed to correlate in our model. As mentioned earlier, in the psychological and behavioural sciences constructs are often related to each other, and we also think that Internality, Stability, and Globality might be correlated with each other, so in our model we should allow these latent factors to co-vary, as shown in @fig-fig15-23.
+
+Final pre-specification of latent factor structure for the ASQ, including latent factor correlations, and shared method error term correlations for the observed variable INT1, STAB1 and GLOB1, in a CFA MTMM model. For clarity, other pre-specified error term correlations are not shown. --->
+
+下一步是考慮是否應允許潛在因子在我們的模型中相關。如前所述,在心理和行為科學中,構建之間經常相互關聯,而且我們也認為內隱性、穩定性和全局性可能相互關聯,所以在我們的模型中,應該允許這些潛在因子發生共變,如@fig-fig15-23所示。  
+
+
 
 ```{r}
 #| label: fig-fig15-23
 #| classes: .enlarge-image
-#| fig-cap: Final pre-specification of latent factor structure for the ASQ, including latent factor correlations, and shared method error term correlations for the observed variable INT1, STAB1 and GLOB1, in a CFA MTMM model. For clarity, other pre-specified error term correlations are not shown
+#| fig-cap: ASQ的潛在因子結構的最終預先指定,包括潛在因子相關以及觀測變項INT1、STAB1和GLOB1的共享方法誤差項相關,在一個CFA MTMM模型中。為清楚起見,未顯示其他預先指定的誤差項相關。
 knitr::include_graphics("images/fig15-23.png")
 ```
 
-At the same time, we should consider whether there is any good, systematic, reason for some of the error terms to be correlated with each other. Thinking back to the ASQ questions, there were three different sub-questions (a, b and c) for each main question (1-6). Q1 was about unsuccessful job hunting and it is plausible that this question has some distinctive artefactual or methodological aspects over and above the other questions (2-5), something to do with job hunting perhaps. Similarly, Q2 was about not helping a friend with a problem, and there may be some distinctive artefactual or methodological aspects to do with not helping a friend that is not present in the other questions (1, and 3-5).
+<!--- At the same time, we should consider whether there is any good, systematic, reason for some of the error terms to be correlated with each other. Thinking back to the ASQ questions, there were three different sub-questions (a, b and c) for each main question (1-6). Q1 was about unsuccessful job hunting and it is plausible that this question has some distinctive artefactual or methodological aspects over and above the other questions (2-5), something to do with job hunting perhaps. Similarly, Q2 was about not helping a friend with a problem, and there may be some distinctive artefactual or methodological aspects to do with not helping a friend that is not present in the other questions (1, and 3-5).
 
 So, as well as multiple factors, we also have multiple methodological features in the ASQ, where each of Questions 1-6 has a slightly different "method", but each "method" is shared across the sub-questions a, b and c. In order to incorporate these different methodological features into the model we can specify that certain error terms are correlated with each other. For example, the errors associated with INT1, STAB1 and GLOB1 should be correlated with each other to reflect the distinct and shared methodological variance of Q1a, Q1b and Q1c. Looking at @fig-fig15-21, this means that as well as the latent factors represented by the columns, we will have correlated measurement errors for the variables in each row of the Table.
 
-Whilst a basic CFA model like the one shown in @fig-fig15-22 could be tested against our observed data, we have in fact come up with a more sophisticated model, as shown in the diagram in @fig-fig15-23. This more sophisticated CFA model is known as a **Multi-Trait Multi-Method (MTMM)** model, and it is the one we will test in jamovi.
+Whilst a basic CFA model like the one shown in @fig-fig15-22 could be tested against our observed data, we have in fact come up with a more sophisticated model, as shown in the diagram in @fig-fig15-23. This more sophisticated CFA model is known as a **Multi-Trait Multi-Method (MTMM)** model, and it is the one we will test in jamovi. --->
 
+
+同時,我們應考慮是否有任何好的、有系統的理由使某些誤差項彼此相關。回想一下ASQ的問題,每個主要問題(1-6)都有三個不同的子問題(a、b和c)。Q1與找工作無果有關,這個問題與其他問題(2-5)相比,在工作找工作方面可能具有某些獨特的人為或方法論特徵。 類似地,Q2與不幫助朋友解決問題有關,在不幫助朋友這一點上,與其他問題(1和3-5)相比可能存在某些獨特的人為或方法論特徵。  
+
+因此,除了多個因子外,ASQ中還存在多種方法特徵,其中每個1-6題都具有略有不同的“方法”,但每種“方法”都貫穿於a、b和c子題。為了將這些不同的方法特徵併入模型,我們可以指定某些誤差項彼此相關。例如,INT1、STAB1和GLOB1相關的誤差應該彼此相關,以反映Q1a、Q1b和Q1c的獨特和共享方法變異。看@fig-fig15-21,這意味著除了由列表示的潛在因子,表的每一行中的變項還將具有相關的測量誤差。  
+
+儘管可以用像@fig-fig15-22中所示的基本CFA模型檢驗觀測數據,但我們實際上設計了一個更複雜的模型,如@fig-fig15-23圖中的模型所示。這種更複雜的CFA模型被稱為**多特徵多方法(MTMM)** 模型,這就是我們在jamovi中將測試的模型。
 
 
 ### 使用jamovi完成多種特質多項相關驗證性因素分析
 
-Open up the *ASQ.csv*  file and check that the 18 variables (six "Internality", six "Stability" and six "Globality" variables) are specified as continuous variables.
+<!---Open up the *ASQ.csv*  file and check that the 18 variables (six "Internality", six "Stability" and six "Globality" variables) are specified as continuous variables.
 
 To perform MTMM CFA in jamovi:
 
--   Select Factor - Confirmatory Factor Analysis from the main jamovi button bar to open the CFA analysis window (@fig-fig15-24).
+- Select Factor - Confirmatory Factor Analysis from the main jamovi button bar to open the CFA analysis window (@fig-fig15-24).
 
--   Select the 6 INT variables and transfer them into the 'Factors' box and give them the label "Internality".
+- Select the 6 INT variables and transfer them into the 'Factors' box and give them the label "Internality".
 
--   Create a new Factor in the 'Factors' box and label it "Stability". Select the 6 STAB variables and transfer them into the 'Factors' box under the "Stability" label.
+- Create a new Factor in the 'Factors' box and label it "Stability". Select the 6 STAB variables and transfer them into the 'Factors' box under the "Stability" label.
 
--   Create another new Factor in the 'Factors' box and label it "Globality". Select the 6 GLOB variables and transfer them into the 'Factors' box under the "Globality" label.
+- Create another new Factor in the 'Factors' box and label it "Globality". Select the 6 GLOB variables and transfer them into the 'Factors' box under the "Globality" label.
 
--   Open up the Residual Covariances options, and for each of our pre-specified correlations move the associated variables across into the 'Residual Covariances' box on the right. For example, highlight both INT1 and STAB1 and then click the arrow to move these across. Now do the same for INT1 and GLOB1, for STAB1 and GLOB1, for INT2 and STAB2, for INT2 and GLOB2, for STAB2 and GLOB2, for INT3 and STAB3, and so on.
+- Open up the Residual Covariances options, and for each of our pre-specified correlations move the associated variables across into the 'Residual Covariances' box on the right. For example, highlight both INT1 and STAB1 and then click the arrow to move these across. Now do the same for INT1 and GLOB1, for STAB1 and GLOB1, for INT2 and STAB2, for INT2 and GLOB2, for STAB2 and GLOB2, for INT3 and STAB3, and so on.
 
--   Check other appropriate options, the defaults are ok for this initial work through, though you might want to check the "Path diagram" option under 'Plots' to see jamovi produce a (fairly) similar diagram to our @fig-fig15-23, and including all the error term correlations that we have added above.
+- Check other appropriate options, the defaults are ok for this initial work through, though you might want to check the "Path diagram" option under 'Plots' to see jamovi produce a (fairly) similar diagram to our @fig-fig15-23, and including all the error term correlations that we have added above.
+
+The jamovi CFA analysis window. --->
+
+
+打開 _ASQ.csv_ 文件並檢查18個變項(6個“內隱性”、6個“穩定性”和6個“全局性”變項)是否被指定為連續變項。
+
+要在jamovi中執行多特徵多方法確認性因素分析:  
+
+- 從主界面按鈕欄中選擇“因子” - “確認性因素分析”以打開確認性因素分析窗口(@fig-fig15-24)。
+
+- 在“因子”框中選擇6個INT變量並將其轉移到“因子”框中,並給予“內隱性”的標籤。
+
+- 在“因子”框中創建一個新的因子並給它貼上“穩定性”的標籤。選擇6個STAB變量並將其轉移到“穩定性”標籤下的“因子”框中。  
+
+- 在“因子”框中再創建一個新的因子並給它貼上“全局性”的標籤。選擇6個GLOB變量並將其轉移到“全局性”標籤下的“因子”框中。
+
+- 打開殘差協方差選項,並對於每個預先指定的相關,將相關的變量移動到右側的“殘差協方差”框中。例如,同時突出顯示INT1和STAB1,然後單擊箭頭將其移動。現在對INT1和GLOB1、STAB1和GLOB1、INT2和STAB2、INT2和GLOB2、STAB2和GLOB2、INT3和STAB3等執行相同操作。  
+
+- 檢查其他適當的選項,默認值對於這第一個嘗試來說是可以的,儘管您可能想要在“圖形”下檢查“路徑圖”選項,以查看jamovi生成的圖(相當)類似於我們的@fig-fig15-23,並包括我們上面添加的所有誤差項相關。  
+
+
+
+
 
 ```{r}
 #| label: fig-fig15-24
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA analysis window
+#| fig-cap: jamovi確認性因素分析窗口
 knitr::include_graphics("images/fig15-24.png")
 ```
 
-Once we have set up the analysis we can turn our attention to the jamovi results window and see what's what. The first thing to look at is "Model fit" as this tells us how good a fit our model is to the observed data (@fig-fig15-25). NB in our model only the pre-specified covariances are estimated, everything else is set to zero, so model fit is testing both whether the pre-specified "free" parameters are not zero, and conversely whether the other relationships in the data -- the ones we have not specified in the model -- can be held at zero.
+<!---Once we have set up the analysis we can turn our attention to the jamovi results window and see what's what. The first thing to look at is "Model fit" as this tells us how good a fit our model is to the observed data (@fig-fig15-25). NB in our model only the pre-specified covariances are estimated, everything else is set to zero, so model fit is testing both whether the pre-specified "free" parameters are not zero, and conversely whether the other relationships in the data -- the ones we have not specified in the model -- can be held at zero.
+
+The jamovi CFA Model Fit results for our CFA MTMM model.--->
+
+
+一旦設定好分析,我們就可以把注意力轉到jamovi的結果窗口,看看狀況如何。首先要看的是“模型適配度”,因為這告訴了我們模型與觀測資料的匹配程度(@fig-fig15-25)。請注意,在我們的模型中,只估計了預先指定的協方差,其他都是設定為零,所以模型適配度測試的是預先指定的“自由”參數是否不為零,反過來是否數據中的其他關係——那些我們沒有在模型中指定的關係——可以保持為零。  
 
 ```{r}
 #| label: fig-fig15-25
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA Model Fit results for our CFA MTMM model
+#| fig-cap: jamovi MTMM確認性因素分析模型適配結果
 knitr::include_graphics("images/fig15-25.png")
 ```
 
+<!---
 Looking at @fig-fig15-25 we can see that the chi-square value is highly significant, which is not a surprise given the large sample size (N = 2748). The CFI is 0.98 and the TLI is also 0.98, indicating a very good fit. The RMSEA is 0.02 with a 90% confidence interval from 0.02 to 0.02 -- pretty tight!
 
 Overall, I think we can be satisfied that our pre-specified model is a very good fit to the observed data, lending support to our MTMM model for the ASQ.
 
 We can now go on to look at the factor loadings and the factor covariance estimates, as in @fig-fig15-26. Often the standardized estimates are easier to interpret, and these can be specified under the 'Estimates' option. These tables can usefully be incorporated into a written report or scientific article.
 
+The jamovi CFA Factor Loadings and Covariances tables for our CFA MTMM model.
+--->
+
+看@fig-fig15-25我們可以看到,卡方值非常顯著,考慮到樣本量很大(N = 2748)這一點就不足為奇了。 CFI為0.98,TLI也為0.98,表示模型適配非常好。 RMSEA為0.02,90%置信區間從0.02到0.02,非常緊密!  
+
+總的來說,我認為我們可以滿意地認為我們預先指定的模型與觀測資料的匹配非常好,這支持了我們對ASQ的MTMM模型。  
+
+現在我們可以繼續查看因子加載量和因子協方差估計,如@fig-fig15-26所示。通常標準化估計值更容易解釋,這些可以在“估計”選項下指定。這些表可以很好地併入書面報告或科學文章中。
+
+
 ```{r}
 #| label: fig-fig15-26
 #| classes: .enlarge-image
-#| fig-cap: The jamovi CFA Factor Loadings and Covariances tables for our CFA MTMM model
+#| fig-cap: jamovi MTMM確認性因素分析的因子加載量和協方差表  
 knitr::include_graphics("images/fig15-26.png")
 ```
 
-You can see from @fig-fig15-26 that all of our pre-specified factor loadings and factor covariances are significantly different from zero. In other words, they all seem to be making a useful contribution to the model.
+<!---You can see from @fig-fig15-26 that all of our pre-specified factor loadings and factor covariances are significantly different from zero. In other words, they all seem to be making a useful contribution to the model.
 
-We've been pretty lucky with this analysis, getting a very good fit on our first attempt!
+We've been pretty lucky with this analysis, getting a very good fit on our first attempt! --->
+
+從@fig-fig15-26您可以看到,我們預先指定的所有因子加載量和因子協方差明顯不同於零。換句話說,它們似乎都在為模型做出有用的貢獻。  
+
+在這次分析中,我們相當幸運,在第一次嘗試就得到了非常好的適配效果!
+
 
 ## 內部一致性信度分析 {#sec-Internal-consistency-reliability-analysis}
 
+<!---
 After you have been through the process of initial scale development using EFA and CFA, you should have reached a stage where the scale holds up pretty well using CFA with different samples. One thing that you might also be interested in at this stage is to see how well the factors are measured using a scale that combines the observed variables.
 
 In psychometrics we use reliability analysis to provide information about how consistently a scale measures a psychological construct (See earlier section on @sec-Assessing-the-reliability-of-a-measurement). **Internal consistency** is what we are concerned with here, and that refers to the consistency across all the individual items that make up a measurement scale. So, if we have $V1, V2, V3, V4$ and $V5$ as observed item variables, then we can calculate a statistic that tells us how internally consistent these items are in measuring the underlying construct.
@@ -495,63 +905,117 @@ An alternative is **McDonald's omega** ($\omega$), and jamovi also provides this
 Sometimes a threshold for $\alpha$ or $\omega$ is provided, suggesting a "good enough" value. This might be something like $\alpha$s of $0.70$ or $0.80$ representing "acceptable" and "good" reliability, respectively. However, this does depend on what exactly the scale is supposed to be measuring, so thresholds like this should be used cautiously. It could be better to simply state that an $\alpha$ or $\omega$ of $0.70$ is associated with 30% error variance in a scale, and an $\alpha$ or $\omega$ of $0.80$ is associated with 20%.
 
 Can $\alpha$ be too high? Probably: if you are getting an $\alpha$ coefficient above $0.95$ then this indicates high inter-correlations between the items and that there might be too much overly redundant specificity in the measurement, with a risk that the construct being measured is perhaps overly narrow.
+--->
+
+
+在您通過探索性因素分析和確認性因素分析的最初量表開發過程後,您應該已經達到了這個階段:該量表利用不同樣本的確認性因素分析表現相當良好。在這個階段,您可能還有興趣看看組合觀測變項的量表有多好地測量這些因子。
+
+在心理測量中,我們使用可靠性分析來提供有關心理構建的測量一致性的資訊(見早期有關 @sec-Assessing-the-reliability-of-a-measurement 的部分)。我們在這裡關心的是**內部一致性**,它是指組成一個測量量表的所有個別項目之間的一致性。因此,如果我們將 $V1、V2、V3、V4$ 和 $V5$ 作為觀測項目變量,那麼我們可以計算一個統計量,告訴我們這些項目在測量潛在構建方面的內部一致性。
+
+一個流行的統計量,用於檢查一個量表的內部一致性是**克隆巴赫α系數** \[@Cronbach1951\]。克隆巴赫α是一種等價性的測度(即不同的量表項目組是否會產生相同的測量結果)。驗證等價性的方法是將量表項目分為兩組(“分半”),並查看兩個部分的分析是否產生可比結果。當然,一組項目可以被分割成很多種方式,但是如果進行所有可能的分割,那麼可以產生一個反映整體分半係數模式的統計量。克隆巴赫α($\\alpha$)就是這樣一個統計量:一個量表的所有分半係數的函數。如果一組測量一個構建的項目(例如外向性量表)的 $\\alpha$ 為 $0.80$,那麼該量表的錯誤變異比例為 $0.20$。換句話說,$\\alpha$ 為 $0.80$ 的量表包含了大約 20% 的錯誤。
+
+但是(這是一個巨大的“但是”),克隆巴赫α不是一維性(即一個指示量表是測量單一因子或構建而不是多個相關構建的指標)的一種測量。如果不單獨評估每個維度,多維量表會導致α被低估,但α的高值並不一定表示一維性。因此,$\\alpha$ 0.80並不意味著單一潛在構建中有80%被描述。這80%可能來自多於一個潛在構建。這就是為什麼首先進行探索性因素分析和確認性因素分析很有用的原因。
+
+
+此外,克隆巴赫α的另一個特徵是它傾向于具有樣本特異性:它不是量表的特徵,而是使用該量表的樣本的特徵。有偏見、不代表性或小樣本產生的α係數可能與大型代表性樣本產生的α係數非常不同。即使在大樣本與大樣本之間,α也可能有所不同。儘管存在這些限制,但克隆巴赫α一直流行於心理學領域,用於估計內部一致性可靠性。它非常容易計算、理解和解釋,因此,當您將量表施測於不同樣本、不同環境或人群時,它可以作為對量表性能的有用的最初檢驗。  
+
+另一個選擇是**麥當勞歐米茄**($\omega$),jamovi也提供了這個統計量。克隆巴赫α做了以下假設:(a)沒有殘餘相關,(b)項目具有相同的加載量,和(c)該量表是一維的,而$\omega$ 不做這些假設,因此它是一個更穩健的可靠性統計量。如果這些假設沒有被違反,那麼α和$\omega$ 將會相似,但如果被違反了,那麼應優先使用$\omega$。  
+
+有時會給出一個 α 或 $\omega$ 的閾值,建議一個“足夠好”的值。這可能是像 α 值為 $0.70$ 或 $0.80$ 分別代表“可接受”和“良好”的可靠性。然而,這确实依賴於該量表應測量的內容,因此應謹慎使用這樣的閾值。更好的方法可能僅僅說明α或$\omega$ 為 $0.70$ 與量表中的 30% 錯誤變異相關,而 α 或 $\omega$ 為 $0.80$ 與 20% 的錯誤變異相關。  
+
+α 是否可以太高?可能性是肯定的:如果您獲得的 α 係數高於 $0.95$,這表明項目之間的相關性很高,測量中可能存在太多冗餘的特異性,並且存在測量的構建可能過於狹窄的風險。
+
 
 ### 使用jamovi完成內部一致性信度分析
 
+<!---
 We have a third sample of personality data to use to undertake reliability analysis: in the bfi_sample3.csv file. Once again, check that the 25 personality item variables are coded as continuous. To perform reliability analysis in jamovi:
 
--   Select Factor - Reliability Analysis from the main jamovi button bar to open the reliability analysis window (@fig-fig15-27).
+- Select Factor - Reliability Analysis from the main jamovi button bar to open the reliability analysis window (@fig-fig15-27).
 
--   Select the 5 A variables and transfer them into the 'Items' box.
+- Select the 5 A variables and transfer them into the 'Items' box.
 
--   Under the "Reverse Scaled Items" option, select variable A1 in the "Normal Scaled Items" box and move it across to the "Reverse Scaled Items" box.
+- Under the "Reverse Scaled Items" option, select variable A1 in the "Normal Scaled Items" box and move it across to the "Reverse Scaled Items" box.
 
--   Check other appropriate options, as in @fig-fig15-27.
+- Check other appropriate options, as in @fig-fig15-27.
+
+The jamovi Reliability Analysis window.
+--->
+
+您提醒得非常到位,文本中还存在简体词汇“變量”和“數據”。已经校对替换为“變項”和“資料”。譯文重新生成如下:  
+
+我們有第三個人格資料樣本可以用於進行可靠性分析:在 bfi\_sample3.csv 檔中。再次檢查25個人格項目變項是否被編碼為連續變項。要在 jamovi 中執行可靠性分析:  
+
+- 從主界面按鈕欄中選擇“因子” - “可靠性分析”以打開可靠性分析窗口(@fig-fig15-27)。   
+
+- 選擇5個A變項並將其轉移到“項目”框中。   
+
+- 在“反向計分項目”選項下,選擇“正常計分項目”框中的A1變項,並將其移動到“反向計分項目”框中。   
+
+- 檢查其他適當的選項,如@fig-fig15-27所示。   
+
 
 ```{r}
 #| label: fig-fig15-27
 #| classes: .enlarge-image
-#| fig-cap: The jamovi Reliability Analysis window
+#| fig-cap: jamovi 可靠性分析窗口
 knitr::include_graphics("images/fig15-27.png")
 ```
 
+<!---
 Once done, look across at the jamovi results window. You should see something like @fig-fig15-28. This tells us that the Cronbach's $\alpha$ coefficient for the Agreeableness scale is 0.72. This means that just under 30% of the Agreeableness scale score is error variance. McDonald's $\omega$ is also given, and this is 0.74, not much different from $\alpha$.
+
+The jamovi Reliability Analysis results for the Agreeableness factor.
+--->
+
+
+完成後,查看 jamovi 結果窗口。您應該看到類似 @fig-fig15-28 的內容。這告訴我們親和力量表的克隆巴赫 α 係數為 0.72。這意味著親和力量表分數中的錯誤變異略低於 30%。麥當勞 ω 也給出了,為 0.74,與 α 沒有太大區別。   
+
+
 
 ```{r}
 #| label: fig-fig15-28
 #| classes: .enlarge-image
-#| fig-cap: The jamovi Reliability Analysis results for the Agreeableness factor
+#| fig-cap: jamovi 親和力因子的可靠性分析結果
 knitr::include_graphics("images/fig15-28.png")
 ```
 
+<!---
 We can also check how $\alpha$ or $\omega$ can be improved if a specific item is dropped from the scale. For example, $\alpha$ would increase to 0.74 and $\omega$ to 0.75 if we dropped item A1. This isn't a big increase, so probably not worth doing.
 
 The process of calculating and checking scale statistics ($\alpha$ and $\omega$) is the same for all the other scales, and they all had similar reliability estimates apart from Openness. For Openness, the amount of error variance in the Scale score is around 40%, which is high and indicates that Openness is substantially less consistent as a reliable measure of a personality attribute than the other personality scales.
+--->
+
+
+我們也可以檢查如果從量表中刪除特定項目,α 或 ω 如何得到改善。例如,如果刪除項目 A1,α 將增加到 0.74,ω 增加到 0.75。這個增幅並不大,所以可能不值得這樣做。   
+
+計算和檢查量表統計量(α 和 ω)的過程對於所有其他量表也是相同的,除了開放性,它們都有類似的可靠性估計。 對於開放性,量表分數中的錯誤變異量約為 40%,這很高,並表明與其他人格特徵量表相比,開放性作為人格特徵可靠測量的一致性要差得多。  
+
 
 ## 本章小結
 
 這一章我們學習因素分析的相關技術，特別是評估資料內各種相關性的方法。本章的學習重點包括：
 
-- [探索性因素分析](15-Factor-Analysis.html#%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90) (EFA)用於辨識資料內的潛在因素。根據因素負荷量，每個觀察變項都有可能代表某個潛在因素。研究者也會使用EFA簡化資料項目，像是使用序列分析整合數個觀察變項為一個因素。 
+- [探索性因素分析]  (EFA)用於辨識資料內的潛在因素。根據因素負荷量，每個觀察變項都有可能代表某個潛在因素。研究者也會使用EFA簡化資料項目，像是使用序列分析整合數個觀察變項為一個因素。 
 
-- [主成分分析](15-Factor-Analysis.html#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90) (PCA)是一種簡化資料項目的技術，但是並非用於辨識潛在變項。PCA只是生成觀察變項的線性組合。
+- [主成分分析] (PCA)是一種簡化資料項目的技術，但是並非用於辨識潛在變項。PCA只是生成觀察變項的線性組合。
 
 
-- [驗證性因素分析](15-Factor-Analysis.html#%E9%A9%97%E8%AD%89%E6%80%A7%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90) (CFA)不同於EFA，執行前已經有一個理想的模型～也就是觀察變項之間的關聯模型。CFA的用途是檢測理想模性與資料模型的擬合度。
+- [驗證性因素分析]  (CFA)不同於EFA，執行前已經有一個理想的模型～也就是觀察變項之間的關聯模型。CFA的用途是檢測理想模性與資料模型的擬合度。
 
-- [多種特質多項相關驗證性因素分析](15-Factor-Analysis.html#%E5%A4%9A%E7%A8%AE%E7%89%B9%E8%B3%AA%E5%A4%9A%E9%A0%85%E7%9B%B8%E9%97%9C%E9%A9%97%E8%AD%89%E6%80%A7%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90) (MTMM CFA) 用於分析潛在因素模型的方法不只一種，需要評估各種分析方法所所估計的變異合理程度。
+- [多種特質多項相關驗證性因素分析] (MTMM CFA) 用於分析潛在因素模型的方法不只一種，需要評估各種分析方法所所估計的變異合理程度。
 
-- [內部一致性信度分析](15-Factor-Analysis.html#sec-Internal-consistency-reliability-analysis)用於評估量表所測對象，與假設的心理建構之間的一致性程度。
+- [內部一致性信度分析] 用於評估量表所測對象，與假設的心理建構之間的一致性程度。
 
 <!---
 In this chapter on factor analysis and related techniques we have introduced and demonstrated statistical analyses that assess the pattern of relationships in a data set. Specifically, we have covered:
 
--   [Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Each observed variable is conceptualised as representing the latent factor to some extent, indicated by a factor loading. Researchers also use EFA as a way of data reduction, i.e. identifying observed variables than can be combined into new factor variables for subsequent analysis.
+- [Exploratory Factor Analysis] (EFA). EFA is a statistical technique for identifying underlying latent factors in a data set. Each observed variable is conceptualised as representing the latent factor to some extent, indicated by a factor loading. Researchers also use EFA as a way of data reduction, i.e. identifying observed variables than can be combined into new factor variables for subsequent analysis.
 
--   [Principal Component Analysis] (PCA) is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables.
+- [Principal Component Analysis] (PCA) is a data reduction technique which, strictly speaking, does not identify underlying latent factors. Instead, PCA simply produces a linear combination of observed variables.
 
--   [Confirmatory Factor Analysis] (CFA). Unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is to the data.
+- [Confirmatory Factor Analysis] (CFA). Unlike EFA, with CFA you start with an idea - a model - of how the variables in your data are related to each other. You then test your model against the observed data and assess how good a fit the model is to the data.
 
--   In [Multi-Trait Multi-Method CFA] (MTMM CFA), both latent factor and method variance are included in the model in an approach that is useful when there are different methodological approaches used and therefore method variance is an important consideration.
+- In [Multi-Trait Multi-Method CFA] (MTMM CFA), both latent factor and method variance are included in the model in an approach that is useful when there are different methodological approaches used and therefore method variance is an important consideration.
 
--   [Internal consistency reliability analysis]. This form of reliability analysis tests how consistently a scale measures a measurement (psychological) construct. --->
+- [Internal consistency reliability analysis]. This form of reliability analysis tests how consistently a scale measures a measurement (psychological) construct. --->
