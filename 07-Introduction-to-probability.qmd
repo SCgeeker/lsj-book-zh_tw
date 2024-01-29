@@ -458,10 +458,6 @@ Let's try to get a sense for what it means for a variable to be normally distrib
 
 @fig-fig7-7 An illustration of what happens when you change the the standard deviation of a normal distribution. Both distributions plotted in this figure have a mean of $\mu = 5$, but they have different standard deviations. The solid line plots a distribution with standard deviation $\sigma = 1$, and the dashed line shows a distribution with standard deviation $\sigma = 2$. As a consequence, both distributions are 'centred' on the same spot, but the dashed line is wider than the solid one --->
 
-
-
-(以下為AI初翻，尚待校稿) 
-
 雖然二項分佈是最好懂的機率分佈，不過並不是統計學裡最重要的分佈，運作各種統計方法要依賴的其實是常態分佈,又稱“鐘形曲線”或“高斯分佈”。**常態分佈**用兩個參數描述分佈的形狀：平均值 μ 和標準差$\sigma$。用隨機變數符號 $X$ 來表現的話就是:  
 
 $$X \sim \text{Normal}(\mu,\sigma)$$  
