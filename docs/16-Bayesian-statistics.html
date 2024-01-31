@@ -291,12 +291,6 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">線性模型的學習取向</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></span></a>
   </div>
@@ -436,13 +430,11 @@ This chapter comes in two parts. In the first three sections I talk about what B
 > *I'm carrying an umbrella. Do you think it will rain?*
 
 In this problem I have presented you with a single piece of data (d = I'm carrying the umbrella), and I'm asking you to tell me your belief or hypothesis about whether it's raining. You have two alternatives, h: either it will rain today or it will not. How should you solve this problem? --->
-<p>以下是翻譯初稿:</p>
 <p>從貝氏的角度來看,統計推論都是關於<em>信念修正</em>. 我從一組有關世界的候選假設 h 出發。我不知道這些假設中哪一個是真的,但我確實對哪些假設是合理的和哪些不是有一些信念。當我觀察到數據 d 時,我必須修正那些信念。如果數據與某個假設一致,那麼我對該假設的信心就會增強。如果數據與假設不一致,那麼我對該假設的信心就會減弱。就這樣! 在本節的末尾,我將給出貝葉斯推理如何運作的精確描述,但首先我想通過一個簡單的示例來介紹關鍵思想。考慮以下推理問題。</p>
 <blockquote class="blockquote">
 <p><em>我帶著雨傘。你認為會下雨嗎?</em></p>
 </blockquote>
 <p>在這個問題中,我向您提供了一個數據(d = 我帶著雨傘),並要求您告訴我您對是否下雨的信念或假設。您有兩個選擇,h:今天要麼下雨,要麼不下雨。你應該如何解決這個問題?</p>
-<p>在翻譯過程中,我運用後退提問策略,比對原文與譯文,確認所有專有名詞均有翻譯。也檢查了是否存在需要保留不翻譯的特殊代碼,請檢閱翻譯初稿。</p>
 <section id="事前機率你一開始的信念" class="level3" data-number="16.1.1">
 <h3 data-number="16.1.1" class="anchored" data-anchor-id="事前機率你一開始的信念"><span class="header-section-number">16.1.1</span> 事前機率：你一開始的信念</h3>
 <!--- The first thing you need to do is ignore what I told you about the umbrella, and write down your pre-existing beliefs about rain. This is important. If you want to be honest about how your beliefs have been revised in the light of new evidence (data) then you must say something about what you believed before those data appeared! So, what might you believe about whether it will rain today? You probably know that I live in Australia and that much of Australia is hot and dry. The city of Adelaide where I live has a Mediterranean climate, very similar to southern California, southern Europe or northern Africa. I'm writing this in January and so you can assume it's the middle of summer. In fact, you might have decided to take a quick look on Wikipedia[^bayesian-statistics-2] and discovered that Adelaide gets an average of 4.4 days of rain across the 31 days of January. Without knowing anything else, you might conclude that the probability of January rain in Adelaide is about 15%, and the probability of a dry day is 85% (see @tbl-tab16-1). If this is really what you believe about Adelaide rainfall (and now that I've told it to you I'm betting that this really is what you believe) then what I have written here is your **prior distribution**, written $P(h)$.
@@ -486,7 +478,6 @@ How likely is it to rain in Adelaide - pre-existing beliefs based on knowledge a
 [^bayesian-statistics-3]: It's a leap of faith, I know, but let's run with it okay?
 
 How likely am I to be carrying an umbrella on rainy and dry days? --->
-<p>以下是翻譯初稿:</p>
 <p>為了解決這個推理問題,您需要一個關於我行為的理論。丹帶雨傘是在什麼時候?您可能猜測我並非完全白痴<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>,我只會在雨天帶雨傘。另一方面,您也知道我有小孩,您並不會太驚訝地知道在這類事情上我相當健忘。假設在雨天我記得帶雨傘的機率約為30%(我在這方面真的很糟糕)。但在乾燥的日子裡,我帶雨傘的可能性只有大約5%。所以您可能會像@tbl-tab16-2中這樣寫出來。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">

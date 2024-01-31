@@ -7,11 +7,11 @@ source("header.R")
 
 > **譯者註** 20230417初步以ChatGPT-4完成翻譯，內容待編修。
 
-既然我們已經介紹了假設檢定的基本理論，現在是時候開始研究心理學中常用的具體測試了。那麼我們應該從哪裡開始呢？並非所有教材都同意從哪裡開始，但我將從“卡方檢定”（本章，發音為“chi-square”[^10-categorical-data-analysis-1]）和“t 檢定”（@sec-Comparing-two-means）開始。這兩種工具在科學實踐中使用非常頻繁，雖然它們不如後面章節涵蓋的“迴歸分析”和“變異數分析”那麼強大，但它們更容易理解。
+至此已經了解假設檢定的基本理論，是時候開始學習心理學研究常用的統計檢定方法。那麼應該從那種方法開始學習呢？並非所有教材作者都有共識，我(原作者)建議從“卡方檢定”（英文發音為“chi-square”[^10-categorical-data-analysis-1]）和“t 檢定”（@sec-Comparing-two-means）開始。這兩種方法在科學研究實務經常被使用，雖然解析資料的威力不如後面單元介紹“迴歸分析”和“變異數分析”強大，對初學者來說相對容易理解。
 
-[^10-categorical-data-analysis-1]: 也有時被稱為“卡方”。
+[^10-categorical-data-analysis-1]: 繁體中文報告常直接稱呼“卡方”。
 
-“類別資料”（Categorical data）只是“名義尺度資料”（nominal scale data）的另一個名字。這不是我們尚未討論過的東西，只是在資料分析的背景下，人們傾向於使用“類別資料”而不是“名義尺度資料”。我不知道為什麼。無論如何，**類別資料分析**指的是在資料為名義尺度時可以使用的一系列工具。然而，用於類別資料分析的工具有很多種，本章僅涵蓋其中一些較常用的工具。
+“類別資料”（Categorical data）只是“名義尺度資料”（nominal scale data）的另一種稱呼。這不是本書尚未介紹的東西，只是在資料分析的場合，我不明白為何許多研究者習慣稱呼“類別資料”，而不是“名義尺度資料”。無論如何，**類別資料分析**是指處理名義尺度資料時，可以使用的一套統計方法。不過，專用於分析類別資料的方法非常多種，本單元僅介紹幾種較常用的方法。
 
 <!--- Now that we've covered the basic theory behind hypothesis testing it's time to start looking at specific tests that are commonly used in psychology. So where should we start? Not every textbook agrees on where to start, but I'm going to start with "$\chi^2$ tests" (this chapter, pronounced "chi-square"[^10-categorical-data-analysis-1] and "t-tests" in @sec-Comparing-two-means). Both of these tools are very frequently used in scientific practice, and whilst they're not as powerful as "regression" and "analysis of variance" which we cover in later chapters, they're much easier to understand.
 
@@ -21,15 +21,16 @@ The term "categorical data" is just another name for "nominal scale data". It's 
 
 ## 卡方適合度檢定
 
-卡方適合度檢定是最古老的假設檢定之一。它由 Karl Pearson 在上世紀初發明 [@Pearson1900]，稍後由 Sir Ronald Fisher [@Fisher1922a] 進行了一些修正。它檢驗名義變量的觀察頻率分佈是否符合預期的頻率分佈。例如，假設一組病人正在接受實驗性治療，並對他們的健康狀況進行評估，以了解他們的病情是否有改善、保持不變或惡化。適合度檢定可以用來確定每個類別中的數字 - 改善、無變化、惡化 - 是否與標準治療選項預期的數字相匹配。讓我們用一些心理學研究案例來更深入認識。
+卡方適合度檢定(goodness-of-fit test)是統計學者們最早開發出來的假設檢定方法之一。主要發明者是20世紀初的統計學者卡爾．皮爾森( Karl Pearson , 皮爾森相關係數以他的名字命名)  [@Pearson1900]，之後羅納德·費雪爵士(Sir Ronald Fisher) [@Fisher1922a] 做了一些改良，這個方法是檢定名義變項的觀察次數分佈是否符合預期次數分佈。像是有一組病人接受了實驗性治療，根據治療後的健康狀況分類，醫師紀錄病情是否有改善、保持不變或惡化，接著使用適合度檢定可以確定每個類別的人次，是否匹配標準治療後的預期人次。以下用一些心理學研究案例學習如何使用卡方適合度檢定。
 
 <!--- The $\chi^2$ goodness-of-fit test is one of the oldest hypothesis tests around. It was invented by Karl Pearson around the turn of the century [@Pearson1900], with some corrections made later by Sir Ronald Fisher [@Fisher1922a]. It tests whether an observed frequency distribution of a nominal variable matches an expected frequency distribution. For example, suppose a group of patients has been undergoing an experimental treatment and have had their health assessed to see whether their condition has improved, stayed the same or worsened. A goodness-of-fit test could be used to determine whether the numbers in each category - improved, no change, worsened - match the numbers that would be expected given the standard treatment option. Let's think about this some more, with some psychology. --->
 
-### 撲克牌花色T恤銷售數據
+### 撲克牌花色隨機選擇資料
 
-多年來，許多研究表明人類很難模擬隨機性。儘管我們努力以“隨機”方式行事，但我們以模式和結構進行思考，因此，當被要求“隨機做某事”時，人們實際上做的事情完全不是隨機的。因此，研究人類隨機性（或者可能是非隨機性）揭示了關於我們如何看待世界的許多深刻心理問題。考慮到這一點，讓我們思考一個非常簡單的研究。假設我要求人們想像一副洗牌的牌，然後在這副想象中的牌中“隨機”選擇一張牌。在他們選擇一張牌之後，我要求他們心理上選擇第二張牌。對於兩個選擇，我們要看的是人們選擇的花色（紅心、梅花、黑桃或方塊）。在問了，例如，$N = 200$個人之後，我想查看數據並確定人們假裝選擇的牌是否真的隨機。數據包含在 *randomness.csv* 文件中，當你用 jamovi 打開它並查看電子表格視圖時，你會看到三個變量。這些是：為每個參與者分配唯一標識符的 id 變量，以及表示人們選擇的紙牌花色的兩個變量 choice_1 和 choice_2。
+過去幾十年許多人類模擬隨機現象的研究顯示，這是人類很難學成的能力。雖然每個人或多或少會試表“隨機行動”，依照模式和結構進行思考仍然是一般人難以擺脫的習慣，就算是被要求“隨機做某件事情”，實際上完全無法隨機行事，所以這類研究反過來揭露了許多人類的非隨機行為，其中透露我們如何看待世界的深刻心理問題。這一節的範例啟發自隨機行為研究，以此虛構一個非常簡單的研究。假如研究人員要求參與者想像一副已經洗好的撲克牌，然後從這副牌裡“隨機”選出一張牌。參與者選好想像中的牌之後，再選出第二張牌。參與者選擇好之後，再請他們說出選擇的花色（紅心、梅花、黑桃或方塊）。假如這個研究最後收集了 $N = 200$ 個人選出的牌，研究人員想分析資料，確認一般人假裝選擇的撲克牌是否真的隨機。這份資料存在lsj檔案庫的 *Randomness* ，當讀者從 jamovi 的lsj檔案庫開啟這份資料的試算表，會看到三個變項：為每個參與者分配辨識碼`id` ，以及紀錄每個人先後選出的兩種撲克牌花色 `choice_1` 和 `choice_2`。
 
-目前，讓我們只專注於人們做出的第一個選擇。我們將使用“探索” - “描述性”下的頻率表選項來計算我們觀察到的人們選擇每個花色的次數。我們得到了這個（@tbl-tab14-1）：
+
+現在先看參與者第一次選擇的花色。開啟“Explore” - “Descriptives”的設定視窗，點選`Frequency table`選項計算每個花色被參與者們選擇的次數。得到的結果就如同 @tbl-tab14-1 ：
 
 
 
@@ -39,15 +40,16 @@ For the moment, let's just focus on the first choice that people made. We'll use
 
 ```{r}
 #| label: tbl-tab14-1
-#| tbl-cap: 選擇每個花色的次數
+#| tbl-cap: 的第一次選擇撲克牌花色的次數紀錄
 #Number of times each suit was chosen
 huxtabs[[10]][[1]]
 ```
 
 
-這個小頻率表非常有幫助。看著它，人們可能比選擇梅花更容易選擇紅心的暗示有點明顯，但僅僅看它並不完全明顯，這是真的還是僅僅是巧合。所以我們可能需要進行某種統計分析來找出答案，這就是我將在下一節談論的內容。
+這份小小的次數表非常有用。其中數字似乎暗示，參與者們可能偏好選擇紅心而且比較不想選擇梅花。只看表面數字並不能判斷這樣的差距是不是巧合，因此需要進行統計分析來找出答案，這就是下一節要學習的功課。
 
-很好。從這一點開始，我們將把這個表視為我們要分析的數據。然而，由於我將不得不用數學術語（抱歉！）談論這些數據，所以明確表示符號可能是個好主意。在數學符號中，我們將易讀的單詞“觀察”縮短為字母 $O$，並使用下標表示觀察的位置。所以我們表格中的第二個觀察用數學表示為 $O_2$。英語描述與數學符號之間的關係在 @tbl-tab14-2 中說明。
+沒問題的話，接下來要分析 @tbl-tab14-1 的資料囉。然後，這裡開始不得不用些數學符號討論這些資料，所以最好先認識一下每個符號的意義。首先是至目前為止一直提到“觀察值”，將用大寫字母$O$，而字母的下標表示觀察值在表格裡的位置。像是 @tbl-tab14-1 的第二個觀察值可寫為$O_2$。@tbl-tab14-2  說明每個花色的報告次數與代表符號之間的對應 。
+
 
 
 <!--- That little frequency table is quite helpful. Looking at it, there's a bit of a hint that people might be more likely to select hearts than clubs, but it's not completely obvious just from looking at it whether that's really true, or if this is just due to chance. So we'll probably have to do some kind of statistical analysis to find out, which is what I'm going to talk about in the next section.
@@ -61,13 +63,13 @@ Excellent. From this point on, we'll treat this table as the data that we're loo
 huxtabs[[10]][[2]]
 ```
 
-希望這很清楚。同時值得注意的是，數學家更喜歡談論一般事物而不是具體事物，因此您還會看到符號 $O_i$，它指的是在第 i 類中的觀察數（其中 i 可能是 1，2，3 或 4）。最後，如果我們要引用所有觀察到的頻率，統計學家將所有觀察值組合成一個向量 [^10-categorical-data-analysis-2]，我將其稱為 $O$。
+希望這樣整理能讓你搞清楚。同時提醒一下，數學家更喜歡談論一般事物而不是具體事物，因此接著會一直看到$O_i$之類的符號，這是指在第 i 類別的觀察次數（其中 i 可能是 1，2，3 或 4）。最後，如果我們要在報告裡提及所有觀察次數，統計學家習慣將所有觀察值構成一個向量 [^10-categorical-data-analysis-2]，本書稱為 $O$。
 
-[^10-categorical-data-analysis-2]: 向量是相同基本類型的數據元素的序列。
+[^10-categorical-data-analysis-2]: 向量是由相同測量尺度的資料值所構成的序列。
 
 $$O = (O_1, O_2, O_3, O_4)$$
 
-同樣，這沒有什麼新鮮有趣的地方。這只是符號。如果我說 $O = (35, 51, 64, 50)$，我所做的就是描述觀察到的頻率表（即觀察到的），但我使用數學符號來表示它。
+同樣的，這裡沒有什麼新奇有趣之處，一切只是符號。如果說 $O = (35, 51, 64, 50)$，就只是將描述觀察值的次數表，改用數學符號來表示而已。
 
 <!--- Hopefully that's pretty clear. It's also worth noting that mathematicians prefer to talk about general rather than specific things, so you'll also see the notation $O_i$, which refers to the number of observations that fall within the i-th category (where i could be 1, 2, 3 or 4). Finally, if we want to refer to the set of all observed frequencies, statisticians group all observed values into a vector [^10-categorical-data-analysis-2], which I'll refer to as $O$.
 
@@ -79,22 +81,22 @@ Again, this is nothing new or interesting. It's just notation. If I say that $O 
 
 ### 虛無假設與對立假設
 
-正如上一節所示，我們的研究假設是“人們不會隨機選擇牌”。現在我們要做的是將其轉換為一些統計假設，然後構建對這些假設的統計檢驗。我將向您介紹的檢驗是 **Pearson 的** $\chi^2$ (chi-square) 適合度檢驗，正如往往是這樣的情況，我們必須通過仔細構建零假設來開始。在這種情況下，這很容易。首先，讓我們用文字陳述零假設：
+正如一開始的範例說明，研究者的假設是“一般人不會隨機選出想像中的撲克牌”。接著要做的是將這樣的假設說法，轉換為兩道統計假設，然後建構檢定這些統計假設的統計方法。這個範例需要的統計方法就是需要使用這一節要學習**皮爾森 $\chi^2$ **適合度檢定，建構適合度檢定的第一步是設定虛無假設，撲克牌範例的虛無假設是很簡單地。我們先用文字說明虛無假設：
 
-$$H_0: \text{ 四種花色被選擇的概率相等}$$
+$$H_0: \text{ 四種花色被選擇的機率相等}$$
 
-現在，由於這是統計學，我們必須用數學方式表達相同的事情。為此，讓我們使用表示符號 $P_j$ 來表示選擇第 j 種花色的真實概率。如果零假設成立，那麼四種花色中的每一種都有 25% 的概率被選中。換句話說，我們的零假設聲稱 $P_1 = .25$，$P_2 = .25$，$P_3 = .25$，最後 $P_4 = .25$。然而，正如我們可以將觀察到的頻率分組成一個向量 O 來概括整個數據集一樣，我們可以使用 P 來表示與我們零假設相對應的概率。所以，如果我讓向量 $P = (P_1, P_2, P_3, P_4)$ 表示描述我們零假設的概率集合，那麼我們有：
+在統計學課程，讀者要學習的項目之一是用數學表達虛無假設，這裡使用 $P_j$ 表示第j種花色被參與者 選擇的真實機率。如果研究結果符合虛無假設，那麼任何一種花色都有 25% 的機率被選中。換句話說，以上的虛無假設說明用數學符號表達的方式是$P_1 = .25$，$P_2 = .25$，$P_3 = .25$， $P_4 = .25$。然後，因為統計學者習慣用向量符號涵括同一個變項的資料，在此用P表示虛無假設涵括的所有機率事件。也就是向量 $P = (P_1, P_2, P_3, P_4)$ 表示虛無假設的機率事件集合，這麼一來可將虛無假設寫成：
 
 $$H_0: P =(.25, .25, .25, .25)$$
 
-在這個特定實例中，我們的零假設對應於一個概率向量 P，其中所有的概率彼此相等。但這不一定是這樣。例如，如果實驗任務是讓人們想像他們正在抽取一副牌，這副牌的梅花數量是其他花色的兩倍，那麼零假設將對應於像 $P = (.4, .2, .2, .2)$ 這樣的東西。只要求概率都是正數，並且它們的總和為 1，那麼它就是零假設的合法選擇。然而，適合度檢驗最常用於檢驗所有類別等可能的零假設，所以我們將在我們的示例中堅持使用這個。
+這個範例的虛無假設對應機率向量 P，涵括的所有事件發生機率剛好相等，不過真實的研究條件不一定會是這樣。如同這個範例的實驗任務是讓參與者從想像中的一副撲克牌抽一張，若是這副牌的梅花數量是其他花色的兩倍，那麼虛無假設就要寫成$P = (.4, .2, .2, .2)$。只要機率值都是正數，且總和為 1，這樣的向量就是合法的虛無假設。因為許多使用適合度檢定的場景，是用來對付所有類別事件發生機率相等的虛無假設，以下討論繼續使用四種花色被選擇機率相等的虛無假設。
 
-那麼我們的對立假設 $H_1$ 呢？我們真正感興趣的是證明所涉及的概率並不都相同（也就是說，人們的選擇不是完全隨機的）。因此，我們假設的“適合人類理解”的版本看起來像這樣：
+那麼對立假設 $H_1$是什麼呢？這則統計假設表示研究者感興趣的研究結果，也就是認為參與者的選擇不是完全隨機，因此四種花色的發生機率並不相等。所以兩則統計假設的白話版本看起來像這樣：
 
-$H_0: \text{ 四種花色被選擇的概率相等}$
-$H_1: \text{ 至少有一個選擇花色的概率不是 0.25}$
+$H_0: \text{ 四種花色被選擇的機率相等}$
+$H_1: \text{ 至少有一個選擇花色的機率不是 0.25}$
 
-...以及“數學家友好”版本是：
+...或者可寫成“數學家偏好的”版本：
 
 <!--- As the last section indicated, our research hypothesis is that "people don't choose cards randomly". What we're going to want to do now is translate this into some statistical hypotheses and then construct a statistical test of those hypotheses. The test that I'm going to describe to you is **Pearson's** $\chi^2$ (chi-square) goodness-of-fit test, and as is so often the case we have to begin by carefully constructing our null hypothesis. In this case, it's pretty easy. First, let's state the null hypothesis in words:
 
@@ -118,13 +120,13 @@ $H_1: P \neq (.25, .25, .25, .25)$
 
 ### 適合度檢定統計程序
 
-在此階段，我們有我們觀察到的頻率 O 和一組與我們要測試的零假設相對應的概率 P。我們現在要做的是構造一個零假設的檢驗。與往常一樣，如果我們想要檢驗 $H_0$ 和 $H_1$，我們將需要一個檢驗統計量。適合度檢驗所使用的基本技巧是構造一個檢驗統計量，用來衡量數據與零假設之間的“接近度”。如果數據與零假設為真時所期望的情況不相符，那麼它可能不是真的。好吧，如果零假設是真的，我們會看到什麼呢？或者，使用正確的術語，這些是什麼**期望頻率**。總共有 $N = 200$ 次觀察，並且（如果零假設為真），任何一個選擇紅心的概率是 $P_3 = .25$，所以我猜我們期望 $200 \times .25 = 50$ 顆紅心，對吧？或者，更具體地說，如果我們讓 Ei 指的是“在零假設為真時，我們期望觀察到的第 i 類反應的數量”，那麼
+在此階段，我們有我們觀察到的頻率 O 和一組與我們要測試的虛無假設相對應的機率 P。我們現在要做的是構造一個虛無假設的檢驗。與往常一樣，如果我們想要檢驗 $H_0$ 和 $H_1$，我們將需要一個檢驗統計量。適合度檢驗所使用的基本技巧是構造一個檢驗統計量，用來衡量資料與虛無假設之間的“接近度”。如果資料與虛無假設為真時所期望的情況不相符，那麼它可能不是真的。好吧，如果虛無假設是真的，我們會看到什麼呢？或者，使用正確的術語，這些是什麼**期望頻率**。總共有 $N = 200$ 次觀察，並且（如果虛無假設為真），任何一個選擇紅心的機率是 $P_3 = .25$，所以我猜我們期望 $200 \times .25 = 50$ 顆紅心，對吧？或者，更具體地說，如果我們讓 Ei 指的是“在虛無假設為真時，我們期望觀察到的第 i 類反應的數量”，那麼
 
 $$E_i=N \times P_i$$
 
 這非常容易計算。如果有 200 個觀察可以分為四個類別，我們認為所有四個類別的可能性相等，那麼平均每個類別應該有 50 個觀察，對吧？
 
-那麼，我們如何將這個轉換為檢驗統計量呢？顯然，我們要做的是比較每個類別的期望觀察數量（$E_i$）與該類別的實際觀察數量（$O_i$）。基於這種比較，我們應該能夠得出一個好的檢驗統計量。首先，讓我們計算零假設期望我們找到的數量和我們實際找到的數量之間的差異，也就是，我們計算“觀察到的值減去期望值”的差分數，$O_i - E_i$。這在 @tbl-tab14-3 中說明。
+那麼，我們如何將這個轉換為檢驗統計量呢？顯然，我們要做的是比較每個類別的期望觀察數量（$E_i$）與該類別的實際觀察數量（$O_i$）。基於這種比較，我們應該能夠得出一個好的檢驗統計量。首先，讓我們計算虛無假設期望我們找到的數量和我們實際找到的數量之間的差異，也就是，我們計算“觀察到的值減去期望值”的差分數，$O_i - E_i$。這在 @tbl-tab14-3 中說明。
 
 
 
@@ -143,7 +145,7 @@ Now, how do we translate this into a test statistic? Clearly, what we want to do
 huxtabs[[10]][[3]]
 ```
 
-因此，根據我們的計算，顯然人們選擇紅心的次數比零假設預測的多，而選擇梅花的次數則少。然而，稍作思考便會發現，這些原始差異並非我們所尋求的。直覺上，當零假設預測觀察次數過少（就像紅心那樣）時，它與預測觀察次數過多（就像梅花那樣）一樣糟糕。因此，對於梅花有負數，對於紅心有正數有點奇怪。解決這個問題的一個簡單方法是將所有數字平方，這樣我們現在就可以計算平方差，$(E_i - O_i)^2$。就像以前一樣，我們可以手工計算（@tbl-tab14-4）。
+因此，根據我們的計算，顯然人們選擇紅心的次數比虛無假設預測的多，而選擇梅花的次數則少。然而，稍作思考便會發現，這些原始差異並非我們所尋求的。直覺上，當虛無假設預測觀察次數過少（就像紅心那樣）時，它與預測觀察次數過多（就像梅花那樣）一樣糟糕。因此，對於梅花有負數，對於紅心有正數有點奇怪。解決這個問題的一個簡單方法是將所有數字平方，這樣我們現在就可以計算平方差，$(E_i - O_i)^2$。就像以前一樣，我們可以手工計算（@tbl-tab14-4）。
 
 <!--- So, based on our calculations, it's clear that people chose more hearts and fewer clubs than the null hypothesis predicted. However, a moment's thought suggests that these raw differences aren't quite what we're looking for. Intuitively, it feels like it's just as bad when the null hypothesis predicts too few observations (which is what happened with hearts) as it is when it predicts too many (which is what happened with clubs). So it's a bit weird that we have a negative number for clubs and a positive number for hearts. One easy way to fix this is to square everything, so that we now calculate the squared differences, $(E_i - O_i)^2$ . As before, we can do this by hand (@tbl-tab14-4). --->
 
@@ -154,7 +156,7 @@ huxtabs[[10]][[3]]
 huxtabs[[10]][[4]]
 ```
 
-現在我們取得了進展。現在我們有了一組數字，在零假設做出糟糕預測時（梅花和紅心），數字很大，但在做出好的預測時（方塊和黑桃），數字很小。接下來，由於我將在稍後解釋的一些技術原因，讓我們也將這些數字除以期望頻率 Ei，因此我們實際上計算的是 $\frac{(E_i-O_i)^2}{E_i}$。由於我們例子中所有類別的 $E_i = 50$，所以這不是一個非常有趣的計算，但無論如何，讓我們這麼做（@tbl-tab14-5）。
+現在我們取得了進展。現在我們有了一組數字，在虛無假設做出糟糕預測時（梅花和紅心），數字很大，但在做出好的預測時（方塊和黑桃），數字很小。接下來，由於我將在稍後解釋的一些技術原因，讓我們也將這些數字除以期望頻率 Ei，因此我們實際上計算的是 $\frac{(E_i-O_i)^2}{E_i}$。由於我們例子中所有類別的 $E_i = 50$，所以這不是一個非常有趣的計算，但無論如何，讓我們這麼做（@tbl-tab14-5）。
 
 <!--- Now we're making progress. What we've got now is a collection of numbers that are big whenever the null hypothesis makes a bad prediction (clubs and hearts), but are small whenever it makes a good one (diamonds and spades). Next, for some technical reasons that I'll explain in a moment, let's also divide all these numbers by the expected frequency Ei , so we're actually calculating $\frac{(E_i-O_i)^2}{E_i}$ . Since $E_i = 50$ for all categories in our example, it's not a very interesting calculation, but let's do it anyway (@tbl-tab14-5). -->
 
@@ -165,7 +167,7 @@ huxtabs[[10]][[4]]
 huxtabs[[10]][[5]]
 ```
 
-實際上，我們在這裡得到的是四個不同的“誤差”得分，每個都告訴我們在嘗試用零假設預測我們的觀察頻率時，空假設所犯的“錯誤”有多大。因此，為了將其轉換為有用的檢驗統計量，我們可以做的一件事就是將這些數字加起來。結果被稱為**適合度**統計量，通常表示為 $\chi^2$（卡方）或 GOF。我們可以像 @tbl-tab14-6 中那樣計算它。
+實際上，我們在這裡得到的是四個不同的“誤差”得分，每個都告訴我們在嘗試用虛無假設預測我們的觀察頻率時，空假設所犯的“錯誤”有多大。因此，為了將其轉換為有用的檢驗統計量，我們可以做的一件事就是將這些數字加起來。結果被稱為**適合度**統計量，通常表示為 $\chi^2$（卡方）或 GOF。我們可以像 @tbl-tab14-6 中那樣計算它。
 
 $$\sum( (observed - expected)^2 / expected )$$
 
@@ -173,9 +175,9 @@ $$\sum( (observed - expected)^2 / expected )$$
 
 [額外的技術細節 [^10-categorical-data-analysis-3]]
 
-[^10-categorical-data-analysis-3]: 如果我們讓 k 指的是總類別數（即，對於我們的卡片數據，k = 4），則 $\chi^2$ 統計量由以下公式給出：$$\chi^2 = \sum_{i=1}^{k} \frac{(O_i-E_i)^2}{E_i}$$ 直觀地說，如果 $chi^2$ 很小，那麼觀察到的數據 Oi 與零假設預測的 $E_i$ 非常接近，因此我們需要一個很大的 $\chi^2$ 統計量來拒絕零假設。
+[^10-categorical-data-analysis-3]: 如果我們讓 k 指的是總類別數（即，對於我們的卡片資料，k = 4），則 $\chi^2$ 統計量由以下公式給出：$$\chi^2 = \sum_{i=1}^{k} \frac{(O_i-E_i)^2}{E_i}$$ 直觀地說，如果 $chi^2$ 很小，那麼觀察到的資料 Oi 與虛無假設預測的 $E_i$ 非常接近，因此我們需要一個很大的 $\chi^2$ 統計量來拒絕虛無假設。
 
-如我們從計算中看到的，在我們的卡片數據集中，我們得到了一個 $\chi^2$ = 8.44 的值。那麼現在的問題是，這個值是否足夠大以拒絕零假設？
+如我們從計算中看到的，在我們的卡片資料集中，我們得到了一個 $\chi^2$ = 8.44 的值。那麼現在的問題是，這個值是否足夠大以拒絕虛無假設？
 
 
 <!--- In effect, what we've got here are four different "error" scores, each one telling us how big a "mistake" the null hypothesis made when we tried to use it to predict our observed frequencies. So, in order to convert this into a useful test statistic, one thing we could do is just add these numbers up. The result is called the **goodness-of-fit** statistic, conventionally referred to either as $\chi^2$ (chi-square) or GOF. We can calculate it as in @tbl-tab14-6.
@@ -192,13 +194,13 @@ As we've seen from our calculations, in our cards data set we've got a value of 
 
 ### 適合度檢定的樣本分佈
 
-要確定某個 $\chi^2$ 值是否足夠大，以便拒絕零假設，我們需要確定如果零假設為真，$\chi^2$ 的抽樣分佈會是什麼。因此，在本節中我將做的就是這件事。我將詳細向您展示這個抽樣分佈的構建方式，然後在下一節中使用它構建一個假設檢驗。如果你想跳過本節的其他部分，並且願意相信抽樣分佈是具有 $k - 1$ 自由度的 $\chi^2$（卡方）分佈，你可以跳過本節的其他部分。然而，如果您想了解*為什麼*適合度檢驗的工作方式是這樣的，請繼續閱讀。
+要確定某個 $\chi^2$ 值是否足夠大，以便拒絕虛無假設，我們需要確定如果虛無假設為真，$\chi^2$ 的抽樣分佈會是什麼。因此，在本節中我將做的就是這件事。我將詳細向您展示這個抽樣分佈的構建方式，然後在下一節中使用它構建一個假設檢驗。如果你想跳過本節的其他部分，並且願意相信抽樣分佈是具有 $k - 1$ 自由度的 $\chi^2$（卡方）分佈，你可以跳過本節的其他部分。然而，如果您想了解*為什麼*適合度檢驗的工作方式是這樣的，請繼續閱讀。
 
-好吧，讓我們假設零假設實際上是真的。如果是這樣，那麼觀察值落入第 i 類的真實概率是 $P_i$。畢竟，這幾乎就是我們的零假設的定義。讓我們思考一下這實際上意味著什麼。這有點像說“自然”通過翻轉一個加權硬幣（即，得到正面的概率是 $P_j$ ）來決定觀察值是否最終落入第 i 類。因此，我們可以將觀察到的頻率 $O_i$ 想像成自然界翻轉了 N 個這樣的硬幣（數據集中每個觀察值各有一個），並且其中正好 $O_i$ 個硬幣是正面朝上。顯然，這是一種非常奇怪的思考實驗的方式。但是，這樣做（希望）是提醒你我們之前其實已經見過這種情景。這與 @sec-Introduction-to-probability 中 @sec-The-binomial-distribution 部分所提到的設置完全相同。換句話說，如果零假設是真的，那麼我們的觀察頻率是由抽樣自二項分佈生成的：
+好吧，讓我們假設虛無假設實際上是真的。如果是這樣，那麼觀察值落入第 i 類的真實機率是 $P_i$。畢竟，這幾乎就是我們的虛無假設的定義。讓我們思考一下這實際上意味著什麼。這有點像說“自然”通過翻轉一個加權硬幣（即，得到正面的機率是 $P_j$ ）來決定觀察值是否最終落入第 i 類。因此，我們可以將觀察到的頻率 $O_i$ 想像成自然界翻轉了 N 個這樣的硬幣（資料集中每個觀察值各有一個），並且其中正好 $O_i$ 個硬幣是正面朝上。顯然，這是一種非常奇怪的思考實驗的方式。但是，這樣做（希望）是提醒你我們之前其實已經見過這種情景。這與 @sec-Introduction-to-probability 中 @sec-The-binomial-distribution 部分所提到的設置完全相同。換句話說，如果虛無假設是真的，那麼我們的觀察頻率是由抽樣自二項分佈生成的：
 
 $$O_i \sim Binomial(P_i,N) $$
 
-現在，如果您還記得我們對 @sec-The-central-limit-theorem 限定定理的討論，特別是當 $N$ 較大且 $P_i$ 與 0 或 1 不太接近時，二項分佈看起來幾乎與正態分佈相同。換句話說，只要 $N^P_i$ 足夠大。或者，換句話說，當期望頻率 Ei 足夠大時，$O_i$ 的理論分佈近似為正態分佈。更好的是，如果 $O_i$ 是正態分佈的，那麼 $(O_i-E_i)/\sqrt{(E_i)}$ 也是正態分佈的。因為 $E_i$ 是一個固定值，所以減去 Ei 並除以？ Ei 改變了正態分佈的均值和標準差，但這就是它所做的全部。好吧，現在讓我們看看我們的適合度統計量實際上是什麼。我們正在做的是取一堆近似正態分佈的東西，將它們平方，然後加起來。等等。我們之前也見過這個！正如我們在談論@sec-Other-useful-distributions時所討論的那樣，當您取一堆具有標準正態分佈（即，均值為 0 且標準差為 1）的東西，將它們平方然後加起來時，所得到的數量具有卡方分佈。所以現在我們知道了零假設預測適合度統計量的抽樣分佈是卡方分佈。很酷。
+現在，如果您還記得我們對 @sec-The-central-limit-theorem 限定定理的討論，特別是當 $N$ 較大且 $P_i$ 與 0 或 1 不太接近時，二項分佈看起來幾乎與正態分佈相同。換句話說，只要 $N^P_i$ 足夠大。或者，換句話說，當期望頻率 Ei 足夠大時，$O_i$ 的理論分佈近似為正態分佈。更好的是，如果 $O_i$ 是正態分佈的，那麼 $(O_i-E_i)/\sqrt{(E_i)}$ 也是正態分佈的。因為 $E_i$ 是一個固定值，所以減去 Ei 並除以？ Ei 改變了正態分佈的均值和標準差，但這就是它所做的全部。好吧，現在讓我們看看我們的適合度統計量實際上是什麼。我們正在做的是取一堆近似正態分佈的東西，將它們平方，然後加起來。等等。我們之前也見過這個！正如我們在談論@sec-Other-useful-distributions時所討論的那樣，當您取一堆具有標準正態分佈（即，均值為 0 且標準差為 1）的東西，將它們平方然後加起來時，所得到的數量具有卡方分佈。所以現在我們知道了虛無假設預測適合度統計量的抽樣分佈是卡方分佈。很酷。
 
 還有一個最後的細節要談論，即自由度。如果您回想一下@sec-Other-useful-distributions，我說過如果你加起來的東西數量是 k，那麼生成的卡方分佈的自由度就是 k。然而，在本節開始時我所說的是，卡方適合度檢驗的實際自由度是 $k - 1$。這是怎麼回事呢？答案在於，我們應該考慮的是被加在一起的真正獨立的東西數量。正如我將在下一節中談論的那樣，儘管我們加起來有 k 個東西，但只有 $k - 1$ 個東西是真正獨立的，所以自由度實際上只有 $k - 1$。這就是下一節的主題[^10-categorical-data-analysis-4]。
 
@@ -244,15 +246,15 @@ ggplot(data = data.frame(x = seq(0, 12, 1)), aes(x)) +
 
 ```
 
-當我在@sec-Other-useful-distributions中介紹卡方分佈時，對於**“自由度”**的含義有點籠統。顯然，它很重要。觀察@fig-fig14-1，可以看到如果我們改變自由度，那麼卡方分佈的形狀會發生很大變化。但它究竟是什麼呢？同樣，當我介紹分佈並解釋它與正態分佈的關係時，我確實提供了一個答案：它是我要平方並相加的“正態分布變量”的數量。但是，對於大多數人來說，這有點抽象，並不十分有幫助。我們真正需要做的是嘗試根據我們的數據來理解自由度。下面就讓我們開始吧。
+當我在@sec-Other-useful-distributions中介紹卡方分佈時，對於**“自由度”**的含義有點籠統。顯然，它很重要。觀察@fig-fig14-1，可以看到如果我們改變自由度，那麼卡方分佈的形狀會發生很大變化。但它究竟是什麼呢？同樣，當我介紹分佈並解釋它與正態分佈的關係時，我確實提供了一個答案：它是我要平方並相加的“正態分布變項”的數量。但是，對於大多數人來說，這有點抽象，並不十分有幫助。我們真正需要做的是嘗試根據我們的資料來理解自由度。下面就讓我們開始吧。
 
-自由度背後的基本概念非常簡單。您計算它的方法是將描述數據的不同“數量”加起來，然後減去這些數據必須滿足的所有“約束”。[^10-categorical-data-analysis-5]這有點籠統，所以讓我們用我們的撲克牌數據作為一個具體例子。我們使用四個數字來描述我們的數據，分別是 $O1, O2, O3$ 和 $O4$，對應於四個不同類別（紅心，梅花，方塊，黑桃）的觀察頻率。這四個數字是我們實驗的隨機結果。但是我的實驗實際上內置了一個固定的約束：樣本大小 $N$。[^10-categorical-data-analysis-6]也就是說，如果我們知道
+自由度背後的基本概念非常簡單。您計算它的方法是將描述資料的不同“數量”加起來，然後減去這些資料必須滿足的所有“約束”。[^10-categorical-data-analysis-5]這有點籠統，所以讓我們用我們的撲克牌資料作為一個具體例子。我們使用四個數字來描述我們的資料，分別是 $O1, O2, O3$ 和 $O4$，對應於四個不同類別（紅心，梅花，方塊，黑桃）的觀察頻率。這四個數字是我們實驗的隨機結果。但是我的實驗實際上內置了一個固定的約束：樣本大小 $N$。[^10-categorical-data-analysis-6]也就是說，如果我們知道
 
 [^10-categorical-data-analysis-5]: 我有責任指出，這是一個過於簡化的說法。它適用於很多情況，但偶爾我們會遇到自由度值不是整數的情況。不要讓這個問題過於困擾您；遇到這個問題時，只需提醒自己“自由度”實際上是一個有點混亂的概念，而且我在這裡告訴您的簡單故事並不是全部故事。對於一個入門課程，通常最好堅持簡單的故事，但我認為最好警告您期望這個簡單的故事會崩潰。如果我沒有給您這個警告，您可能會在看到 $df = 3.4$ 或類似的東西時開始困惑（錯誤地）認為您理解錯了我教給您的東西，而不是（正確地）意識到有些事情是我沒有告訴您的。
 
 [^10-categorical-data-analysis-6]: 實際上，樣本大小並不總是固定的。例如，我們可能在固定時間內運行實驗，參與人數取決於有多少人出現。對於當前的目的，這並不重要
 
-有多少人選擇紅心，有多少人選擇方塊，以及有多少人選擇梅花，那麼我們就能確切地知道有多少人選擇黑桃。換句話說，雖然我們的數據是用四個數字描述的，但它們實際上只對應於 $4 - 1 = 3$ 个自由度。稍微不同的思考方式是注意到我們感興趣的四個概率（同樣，對應於四個不同類別），但是這些概率必須加起來等於一，這將施加一個約束。因此，自由度是 $4 - 1 = 3$。無論您想用觀察頻率還是概率的方式來思考它，答案都是一樣的。通常，當進行涉及 $k$ 個組的卡方適合度檢定時，自由度將為 $k - 1$。
+有多少人選擇紅心，有多少人選擇方塊，以及有多少人選擇梅花，那麼我們就能確切地知道有多少人選擇黑桃。換句話說，雖然我們的資料是用四個數字描述的，但它們實際上只對應於 $4 - 1 = 3$ 个自由度。稍微不同的思考方式是注意到我們感興趣的四個機率（同樣，對應於四個不同類別），但是這些機率必須加起來等於一，這將施加一個約束。因此，自由度是 $4 - 1 = 3$。無論您想用觀察頻率還是機率的方式來思考它，答案都是一樣的。通常，當進行涉及 $k$ 個組的卡方適合度檢定時，自由度將為 $k - 1$。
 
 <!--- When I introduced the chi-square distribution in @sec-Other-useful-distributions, I was a bit vague about what **"degrees of freedom"** actually means. Obviously, it matters. Looking at @fig-fig14-1, you can see that if we change the degrees of freedom then the chi-square distribution changes shape quite substantially. But what exactly is it? Again, when I introduced the distribution and explained its relationship to the normal distribution, I did offer an answer: it's the number of "normally distributed variables" that I'm squaring and adding together. But, for most people, that's kind of abstract and not entirely helpful. What we really need to do is try to understand degrees of freedom in terms of our data. So here goes.
 
@@ -266,7 +268,7 @@ how many people chose hearts, how many chose diamonds and how many chose clubs, 
 
 ### 檢定虛無假設
 
-構建假設檢定的過程的最後一步是找出拒絕域是什麼。也就是說，哪些 $\chi^2$ 值會讓我們拒絕零假設。如我們之前所見，$\chi^2$ 的大值意味著零假設在預測我們實驗中的數據方面做得很差，而 $\chi^2$ 的小值則意味著它實際上做得相當好。因此，一個相當明智的策略是說，有一個臨界值，如果 $\chi^2$ 大於臨界值，我們拒絕零假設；但如果 $\chi^2$ 小於這個值，我們保留零假設。換句話說，用我們在 @sec-Hypothesis-testing 中引入的語言，卡方適合度檢定總是一個**單邊檢定**。好的，所以我們要做的就是找出這個臨界值。這很簡單。如果我們希望檢定具有顯著性水平 $\alpha = .05$（即，我們願意容忍 Type I 錯誤率為 $5%$），那麼我們必須選擇我們的臨界值，使得在零假設成立的情況下，$\chi^2$ 達到那麼大的概率只有 5%。這在 @fig-fig14-2 中得到了說明。
+構建假設檢定的過程的最後一步是找出拒絕域是什麼。也就是說，哪些 $\chi^2$ 值會讓我們拒絕虛無假設。如我們之前所見，$\chi^2$ 的大值意味著虛無假設在預測我們實驗中的資料方面做得很差，而 $\chi^2$ 的小值則意味著它實際上做得相當好。因此，一個相當明智的策略是說，有一個臨界值，如果 $\chi^2$ 大於臨界值，我們拒絕虛無假設；但如果 $\chi^2$ 小於這個值，我們保留虛無假設。換句話說，用我們在 @sec-Hypothesis-testing 中引入的語言，卡方適合度檢定總是一個**單邊檢定**。好的，所以我們要做的就是找出這個臨界值。這很簡單。如果我們希望檢定具有顯著性水平 $\alpha = .05$（即，我們願意容忍 Type I 錯誤率為 $5%$），那麼我們必須選擇我們的臨界值，使得在虛無假設成立的情況下，$\chi^2$ 達到那麼大的機率只有 5%。這在 @fig-fig14-2 中得到了說明。
 
 <!--- The final step in the process of constructing our hypothesis test is to figure out what the rejection region is. That is, what values of $\chi^2$ would lead us to reject the null hypothesis. As we saw earlier, large values of $\chi^2$ imply that the null hypothesis has done a poor job of predicting the data from our experiment, whereas small values of $\chi^2$ imply that it's actually done pretty well. Therefore, a pretty sensible strategy would be to say there is some critical value such that if $\chi^2$ is bigger than the critical value we reject the null, but if $\chi^2$ is smaller than this value we retain the null. In other words, to use the language we introduced in @sec-Hypothesis-testing the chi-square goodness-of-fit test is always a **one-sided test**. Right, so all we have to do is figure out what this critical value is. And it's pretty straightforward. If we want our test to have significance level of $\alpha = .05$ (that is, we are willing to tolerate a Type I error rate of $5%$), then we have to choose our critical value so that there is only a 5% chance that $\chi^2$ could get to be that big if the null hypothesis is true. This is illustrated in @fig-fig14-2. --->
 
@@ -316,13 +318,13 @@ knitr::include_graphics("images/fig10-3.png")
 ```
 
 
-因此，如果我們計算出的 $\chi^2$ 統計量大於 7.815 的臨界值，那麼我們可以拒絕零假設（記住，零假設 $H_0$ 是所有四個花色都以相等的概率被選擇）。既然我們之前已經計算過了（即，$\chi^2$ = 8.44），我們可以拒絕零假設。基本上就是這樣了。現在你知道了“皮爾森卡方適合度檢定”。真幸運。
+因此，如果我們計算出的 $\chi^2$ 統計量大於 7.815 的臨界值，那麼我們可以拒絕虛無假設（記住，虛無假設 $H_0$ 是所有四個花色都以相等的機率被選擇）。既然我們之前已經計算過了（即，$\chi^2$ = 8.44），我們可以拒絕虛無假設。基本上就是這樣了。現在你知道了“皮爾森卡方適合度檢定”。真幸運。
 
 <!--- So, if our calculated $\chi^2$ statistic is bigger than the critical value of $7.815$, then we can reject the null hypothesis (remember that the null hypothesis, $H_0$, is that all four suits are chosen with equal probability). Since we actually already calculated that before (i.e., $\chi^2$ = 8.44) we can reject the null hypothesis. And that's it, basically. You now know "Pearson's $\chi^2$ test for the goodness-of-fit". Lucky you. --->
 
 ### jamovi實作
 
-毫不意外地，jamovi 提供了一個分析工具，可以幫你完成這些計算。讓我們使用 *Randomness.omv* 文件。在主要的“分析”工具欄中，選擇“頻率” - “單樣本比例檢驗” - “$N$ 個結果”。然後在出現的分析視窗中將要分析的變量（從選擇 1 開始）移到“變量”框中。此外，單擊“預期計數”復選框，以便將這些數據顯示在結果表中。完成所有這些操作後，你應該會在 jamovi 中看到分析結果，如 @fig-fig14-4。然後不出所料，jamovi 提供了與我們上面手動計算相同的預期計數和統計數據，$\chi^2$ 值為 $(8.44$，自由度為 $3$，$p=0.038$。注意，我們不再需要查找臨界 p 值閾值，因為 jamovi 給出了在 $3$ 自由度下計算得出的 $\chi^2$ 的實際 p 值。
+毫不意外地，jamovi 提供了一個分析工具，可以幫你完成這些計算。讓我們使用 *Randomness.omv* 文件。在主要的“分析”工具欄中，選擇“頻率” - “單樣本比例檢驗” - “$N$ 個結果”。然後在出現的分析視窗中將要分析的變項（從選擇 1 開始）移到“變項”框中。此外，單擊“預期計數”復選框，以便將這些資料顯示在結果表中。完成所有這些操作後，你應該會在 jamovi 中看到分析結果，如 @fig-fig14-4。然後不出所料，jamovi 提供了與我們上面手動計算相同的預期計數和統計資料，$\chi^2$ 值為 $(8.44$，自由度為 $3$，$p=0.038$。注意，我們不再需要查找臨界 p 值閾值，因為 jamovi 給出了在 $3$ 自由度下計算得出的 $\chi^2$ 的實際 p 值。
 
 
 
@@ -339,7 +341,7 @@ knitr::include_graphics("images/fig10-4.png")
 ### 另一種虛無假設
 
 
-此時，你可能會想知道如果你想進行適合度檢驗，但你的零假設不是所有類別的概率都相等該怎麼辦。例如，假設有人提出了這樣的理論預測，即人們應該以 $60\%$ 的概率選擇紅色牌，以 $40\%$ 的概率選擇黑色牌（我不知道為什麼你會這樣預測），但沒有其他偏好。如果是這樣，零假設將期望選擇愛心的比例為 $30\%$，選擇方塊的比例為 $30\%$，選擇黑桃的比例為 $20\%$，選擇梅花的比例為 $20\%$。換句話說，我們期望愛心和方塊的出現次數是黑桃和梅花的 1.5 倍（$30\%$ : $20\%$ 的比例與 1.5 : 1 相同）。對我來說，這似乎是一個愚蠢的理論，但是用我們的 jamovi 分析可以很容易地測試這個明確指定的零假設。在分析視窗中（標記為“比例檢驗（N個結果）”的 @fig-fig14-4 中，你可以展開“預期比例”的選項。當你這樣做時，將會出現一些選項，讓你為選定的變量輸入不同的比例值，在我們的案例中，這個變量是 choice 1。將比例更改為反映新的零假設，如 @fig-fig14-5 所示，並觀察結果如何變化。
+此時，你可能會想知道如果你想進行適合度檢驗，但你的虛無假設不是所有類別的機率都相等該怎麼辦。例如，假設有人提出了這樣的理論預測，即人們應該以 $60\%$ 的機率選擇紅色牌，以 $40\%$ 的機率選擇黑色牌（我不知道為什麼你會這樣預測），但沒有其他偏好。如果是這樣，虛無假設將期望選擇愛心的比例為 $30\%$，選擇方塊的比例為 $30\%$，選擇黑桃的比例為 $20\%$，選擇梅花的比例為 $20\%$。換句話說，我們期望愛心和方塊的出現次數是黑桃和梅花的 1.5 倍（$30\%$ : $20\%$ 的比例與 1.5 : 1 相同）。對我來說，這似乎是一個愚蠢的理論，但是用我們的 jamovi 分析可以很容易地測試這個明確指定的虛無假設。在分析視窗中（標記為“比例檢驗（N個結果）”的 @fig-fig14-4 中，你可以展開“預期比例”的選項。當你這樣做時，將會出現一些選項，讓你為選定的變項輸入不同的比例值，在我們的案例中，這個變項是 choice 1。將比例更改為反映新的虛無假設，如 @fig-fig14-5 所示，並觀察結果如何變化。
 
 <!--- At this point you might be wondering what to do if you want to run a goodness-of-fit test but your null hypothesis is not that all categories are equally likely. For instance, let's suppose that someone had made the theoretical prediction that people should choose red cards $60\%$ of the time, and black cards $40\%$ of the time (I've no idea why you'd predict that), but had no other preferences. If that were the case, the null hypothesis would be to expect $30\%$ of the choices to be hearts, $30\%$ to be diamonds, $20\%$ to be spades and $20\%$ to be clubs. In other words we would expect hearts and diamonds to appear 1.5 times more often than spades and clubs (the ratio $30\%$ : $20\%$ is the same as 1.5 : 1). This seems like a silly theory to me, and it's pretty easy to test this explicitly specified null hypothesis with the data in our jamovi analysis. In the analysis window (labelled 'Proportion Test (N Outcomes)' in @fig-fig14-4 you can expand the options for 'Expected Proportions'. When you do this, there are options for entering different ratio values for the variable you have selected, in our case this is choice 1. Change the ratio to reflect the new null hypothesis, as in @fig-fig14-5, and see how the results change. --->
 
@@ -356,39 +358,39 @@ knitr::include_graphics("images/fig10-5.png")
 
 ```{r}
 #| label: tbl-tab14-6
-#| tbl-cap: 不同零假設的預期計數
+#| tbl-cap: 不同虛無假設的預期計數
 #Expected counts for a different null hypothesis
 huxtabs[[10]][[6]]
 ```
 
-$\chi^2$ 統計量為 4.74，自由度為 3，$p = 0.182$。現在，我們更新的假設和預期頻率與上次的結果有所不同。因此，我們的 $\chi^2$ 檢驗統計量和 p 值也有所不同。令人惱火的是，p 值為 $.182$，因此我們不能拒絕零假設（回顧 @sec-The-p-value-of-a-test 提醒自己為什麼）。可悲的是，儘管零假設對應著一個非常愚蠢的理論，這些數據並沒有提供足夠的證據來反駁它。
+$\chi^2$ 統計量為 4.74，自由度為 3，$p = 0.182$。現在，我們更新的假設和預期頻率與上次的結果有所不同。因此，我們的 $\chi^2$ 檢驗統計量和 p 值也有所不同。令人惱火的是，p 值為 $.182$，因此我們不能拒絕虛無假設（回顧 @sec-The-p-value-of-a-test 提醒自己為什麼）。可悲的是，儘管虛無假設對應著一個非常愚蠢的理論，這些資料並沒有提供足夠的證據來反駁它。
 
 <!--- and the $\chi^2$ statistic is 4.74, 3 d.f., $p = 0.182$. Now, the results of our updated hypotheses and the expected frequencies are different from what they were last time. As a consequence our $\chi^2$ test statistic is different, and our p-value is different too. Annoyingly, the p-value is $.182$, so we can't reject the null hypothesis (look back at @sec-The-p-value-of-a-test to remind yourself why). Sadly, despite the fact that the null hypothesis corresponds to a very silly theory, these data don't provide enough evidence against it. --->
 
 ### 適合度檢定的報告寫作 {#sec-How-to-report-the-results-of-a-test}
 
-現在你知道了這個測試的運作方式，也知道如何使用神奇的jamovi計算盒來進行測試。接下來你需要知道的是如何撰寫結果。畢竟，設計和執行實驗，然後分析數據，如果不告訴別人結果是沒有意義的！所以讓我們來談談在報告分析時需要做的事情。讓我們繼續以撲克牌花色為例。如果我想將這個結果寫成一篇論文之類的東西，那麼慣常的報告方式是這樣寫的：
+現在你知道了這個測試的運作方式，也知道如何使用神奇的jamovi計算盒來進行測試。接下來你需要知道的是如何撰寫結果。畢竟，設計和執行實驗，然後分析資料，如果不告訴別人結果是沒有意義的！所以讓我們來談談在報告分析時需要做的事情。讓我們繼續以撲克牌花色為例。如果我想將這個結果寫成一篇論文之類的東西，那麼慣常的報告方式是這樣寫的：
 
-> 在實驗的200名參與者中，有64人首選紅心，51人選擇方塊，50人選擇黑桃，35人選擇梅花。進行了卡方適合度檢驗以測試四種花色的選擇概率是否相同。結果顯著（$\chi^2(3) = 8.44, p< .05$），這表明人們在選擇花色時並非完全隨機。
+> 在實驗的200名參與者中，有64人首選紅心，51人選擇方塊，50人選擇黑桃，35人選擇梅花。進行了卡方適合度檢驗以測試四種花色的選擇機率是否相同。結果顯著（$\chi^2(3) = 8.44, p< .05$），這表明人們在選擇花色時並非完全隨機。
 
 這相當直接，希望它看起來很不起眼。儘管如此，你應該注意到這個描述中的幾點內容：
 
-- *描述統計數據在統計檢驗之前*。也就是說，在進行檢驗之前，我告訴讀者有關數據的一些信息。通常，這是一個很好的做法。永遠記住，你的讀者對你的數據了解得遠不如你。因此，除非你妥善地向他們描述，否則統計檢驗對他們來說毫無意義，他們會感到沮喪和哭泣。
-- *描述告訴你正在測試的虛無假設是什麼*。老實說，作者並不總是這樣做，但在存在一定歧義的情況下，或者在你不能依賴你的讀者非常熟悉你正在使用的統計工具時，這通常是一個好主意。很多時候讀者可能不知道（或記不起）你正在使用的檢驗的所有細節，所以提醒他們是一種禮貌！對於適合度檢驗來說，你通常可以依賴科學觀眾了解它的運作方式（因為它涵蓋在大多數入門統計課程中）。然而，明確陳述虛無假設（簡要地！）仍然是一個好主意，因為虛無假設可能因你使用檢驗的目的而有所不同。例如，在撲克牌的例子中，我的虛無假設是四個花色的概率相同（即，$P1 = P2 = P3 = P4 = 0.25$），但這個假設並沒有什麼特別的。我可以同樣使用適合度檢驗測試虛無假設，即$P_1 = 0.7$和$P2 = P3 = P4 = 0.1$。所以，向讀者解釋你的虛無假設是有幫助的。另外，注意到我用文字而不是數學描述虛無假設。這是完全可以接受的。你可以用數學描述它，但是因為大多數讀者發現文字比符號更容易閱讀，所以大多數作者傾向於用文字描述虛無假設（如果可以的話）。
+- *描述統計資料在統計檢驗之前*。也就是說，在進行檢驗之前，我告訴讀者有關資料的一些信息。通常，這是一個很好的做法。永遠記住，你的讀者對你的資料了解得遠不如你。因此，除非你妥善地向他們描述，否則統計檢驗對他們來說毫無意義，他們會感到沮喪和哭泣。
+- *描述告訴你正在測試的虛無假設是什麼*。老實說，作者並不總是這樣做，但在存在一定歧義的情況下，或者在你不能依賴你的讀者非常熟悉你正在使用的統計工具時，這通常是一個好主意。很多時候讀者可能不知道（或記不起）你正在使用的檢驗的所有細節，所以提醒他們是一種禮貌！對於適合度檢驗來說，你通常可以依賴科學觀眾了解它的運作方式（因為它涵蓋在大多數入門統計課程中）。然而，明確陳述虛無假設（簡要地！）仍然是一個好主意，因為虛無假設可能因你使用檢驗的目的而有所不同。例如，在撲克牌的例子中，我的虛無假設是四個花色的機率相同（即，$P1 = P2 = P3 = P4 = 0.25$），但這個假設並沒有什麼特別的。我可以同樣使用適合度檢驗測試虛無假設，即$P_1 = 0.7$和$P2 = P3 = P4 = 0.1$。所以，向讀者解釋你的虛無假設是有幫助的。另外，注意到我用文字而不是數學描述虛無假設。這是完全可以接受的。你可以用數學描述它，但是因為大多數讀者發現文字比符號更容易閱讀，所以大多數作者傾向於用文字描述虛無假設（如果可以的話）。
 - *包括"統計塊"*。在報告檢驗結果本身時，我不僅僅說結果顯著，還包括了一個“統計塊”（即括號內密集的數學部分），其中報告了所有“關鍵”統計信息。對於卡方適應度檢驗，報告的信息包括檢驗統計量（即適應度統計量為8.44）、用於檢驗的分布信息（具有3個自由度的$\chi^2$，通常縮寫為$\chi^2$(3)），然後是結果是否顯著（在本例中為$p< .05$）。每個檢驗所需的統計塊中的特定信息各不相同，因此每次我介紹一個新檢驗時，我都會向您展示統計塊應該是什麼樣子。[^10-categorical-data-analysis-7] 但是，一般原則是您應該始終提供足夠的信息，以便讀者在需要時可以自己檢查測試結果。
 
-- *對結果進行解釋*。除了指出結果顯著之外，我還提供了結果的解釋（即，人們沒有隨機選擇）。這對讀者也是一種友善，因為它告訴他們關於數據中發生了什麼事的一些信息。如果不包括這樣的東西，讀者很難理解發生了什麼事。[^10-categorical-data-analysis-8]
+- *對結果進行解釋*。除了指出結果顯著之外，我還提供了結果的解釋（即，人們沒有隨機選擇）。這對讀者也是一種友善，因為它告訴他們關於資料中發生了什麼事的一些信息。如果不包括這樣的東西，讀者很難理解發生了什麼事。[^10-categorical-data-analysis-8]
 
-[^10-categorical-data-analysis-7]: 嗯，有點。如何報告統計數據的慣例在不同的學科之間有所不同。我傾向於堅持心理學的做法，因為這就是我的工作。但是，我認為向讀者提供足夠的信息，以便他們可以檢查你的結果的一般原則是相當普遍的。
+[^10-categorical-data-analysis-7]: 嗯，有點。如何報告統計資料的慣例在不同的學科之間有所不同。我傾向於堅持心理學的做法，因為這就是我的工作。但是，我認為向讀者提供足夠的信息，以便他們可以檢查你的結果的一般原則是相當普遍的。
 
-[^10-categorical-data-analysis-8]: 對有些人來說，這個建議可能聽起來有點奇怪，或者至少與編寫技術報告的“通常”建議相衝突。通常，學生們被告知報告的“結果”部分是用來描述數據並報告統計分析，而“討論”部分是提供解釋的。這在某種程度上是對的，但我認為人們經常過於照字面解釋它。我通常的做法是在結果部分提供對數據的快速而簡單的解釋，以便我的讀者理解數據告訴我們什麼。然後，在討論中，我嘗試講述一個關於我的結果如何與其他科學文獻相適應的更大的故事。簡而言之，不要讓“解釋屬於討論”這個建議使你的結果部分變得難以理解。讓讀者明白你的意思更重要。
+[^10-categorical-data-analysis-8]: 對有些人來說，這個建議可能聽起來有點奇怪，或者至少與編寫技術報告的“通常”建議相衝突。通常，學生們被告知報告的“結果”部分是用來描述資料並報告統計分析，而“討論”部分是提供解釋的。這在某種程度上是對的，但我認為人們經常過於照字面解釋它。我通常的做法是在結果部分提供對資料的快速而簡單的解釋，以便我的讀者理解資料告訴我們什麼。然後，在討論中，我嘗試講述一個關於我的結果如何與其他科學文獻相適應的更大的故事。簡而言之，不要讓“解釋屬於討論”這個建議使你的結果部分變得難以理解。讓讀者明白你的意思更重要。
 
 正如其他所有事物一樣，你應該首要關注的是向讀者解釋事物。永遠記住，報告結果的目的是與另一個人溝通。我無法告訴您我看過多少次報告、論文甚至科學文章的結果部分就是胡言亂語，因為作者只關注確保包含所有數字，卻忘記了與人類讀者真正交流。
 
 > *撒旦在統計和引用經文中同樣感到高興*[^10-categorical-data-analysis-9]
 > -- H.G. 威爾斯
 
-[^10-categorical-data-analysis-9]: 如果你一直在仔細閱讀，並且像我一樣是一個數學苛刻的人，那麼上一節中我寫卡方檢驗的方式可能會讓你有點困擾。你可能會想，用 "$\chi^2(3) = 8.44$" 這樣寫感覺有點不對勁。畢竟，是適合度統計數等於8.44，所以我不應該寫 $X^2 = 8.44$ 或者 $GOF = 8.44$ 嗎？這似乎混淆了抽樣分布（即$\chi^2$與df=3）與檢驗統計量（即$X^2$）。可能性是你認為這是錯字，因為$\chi$和X看起來非常相似。奇怪的是，這並非如此。寫 $\chi^2$(3)= 8.44 本質上是一種高度縮略的寫法，表示“檢驗統計量的抽樣分布為$\chi^2$(3)，檢驗統計量的值為8.44”。從某種意義上說，這有點愚蠢。有很多不同的檢驗統計量最終具有卡方抽樣分布。我們用於適合度檢驗的$X^2$統計量只是眾多統計量中的一種（儘管是最常見的一種）。在一個明智、完全組織的世界裡，我們總是為檢驗統計量和抽樣分布分配一個單獨的名字。這樣，統計塊本身就可以告訴你研究者究竟計算了什麼。有時這確實是可能的。例如，Pearson適合度檢驗中使用的檢驗統計量寫作$X^2$，但還有一種與G-test$^a$ [@Sokal1994]關係密切的檢驗稱為G-test，其中檢驗統計量寫作$G$。事實上，Pearson適合度檢驗和G-test都檢驗相同的虛無假設，抽樣分布完全相同（即，具有$k-1$自由度的卡方分布）。如果我對卡片數據進行G-test而不是適合度檢驗，那麼我最終會得到一個檢驗統計量$G = 8.65$，它略有不同於我之前得到的$X^2 = 8.44$值，並產生稍微小一點的p值$p = .034$。假設約定俗成地報告檢驗統計量，然後是抽樣分布，然後是p值。如果是這樣的話，這兩種情況將產生不同的統計塊：我原來的結果將寫成$X^2 = 8.44$，$\chi^2(3)$，$p = .038$，而使用G-test的新版本將寫成$G = 8.65$，$\chi^2(3)$，$p = .034$。然而，使用縮略報告標準，原始結果寫作$\chi^2(3) = 8.44, p =.038$，新結果寫作$\chi^2(3) = 8.65, p = .034$，所以實際上不清楚我實際上運行了哪個檢驗。那麼為什麼我們不生活在一個統計塊的內容能唯一確定哪些檢驗被執行的世界呢？根本原因是生活是混亂的。我們（作為統計工具的用戶）希望它整齊、有序並且有組織。我們希望它像產品一樣被設計，但這不是生活的運作方式。統計是一門與其他任何學科一樣的智力學科，因此它是一個大規模的分布式、部分協作和部分競爭的項目，沒有人真正完全了解它。你和我作為數據分析工具的東西並非由統計之神的行為創造的。它們是由很多不同的人發明的，作為學術期刊中的論文發表，由很多其他人實施、糾正和修改，然後由其他人在教科書中向學生解釋。因此，有很多檢驗統計量甚至沒有名字，因此它們只是被賦予與相應抽樣分布相同的名字。稍後我們將看到，任何遵循$\chi^2$分布的檢驗統計量通常被稱為“卡方統計量”，遵循$t$分布的任何統計量被稱為“t統計量”，等等。但是，正如$\chi^2$與$G$的例子所說明的，具有相同抽樣分布的兩個不同事物仍然是不同的。因此，有時候明確表明你實際上運行的檢驗是很好的主意，特別是如果你在做一些不尋常的事情。如果你只說“卡方檢驗”，實際上並不清楚你在談論哪種檢驗。儘管如此，由於兩個最常見的卡方檢驗是適合度檢驗和獨立性檢驗，大多數具有統計培訓的讀者可能都能猜到。儘管如此，這仍然是需要注意的事情。—$^a$ 讓事情變得複雜的是，G-test是一整類被稱為似然比檢驗的檢驗的特例。我在這本書中沒有介紹LRT，但它們確實是值得了解的好東西。
+[^10-categorical-data-analysis-9]: 如果你一直在仔細閱讀，並且像我一樣是一個數學苛刻的人，那麼上一節中我寫卡方檢驗的方式可能會讓你有點困擾。你可能會想，用 "$\chi^2(3) = 8.44$" 這樣寫感覺有點不對勁。畢竟，是適合度統計數等於8.44，所以我不應該寫 $X^2 = 8.44$ 或者 $GOF = 8.44$ 嗎？這似乎混淆了抽樣分布（即$\chi^2$與df=3）與檢驗統計量（即$X^2$）。可能性是你認為這是錯字，因為$\chi$和X看起來非常相似。奇怪的是，這並非如此。寫 $\chi^2$(3)= 8.44 本質上是一種高度縮略的寫法，表示“檢驗統計量的抽樣分布為$\chi^2$(3)，檢驗統計量的值為8.44”。從某種意義上說，這有點愚蠢。有很多不同的檢驗統計量最終具有卡方抽樣分布。我們用於適合度檢驗的$X^2$統計量只是眾多統計量中的一種（儘管是最常見的一種）。在一個明智、完全組織的世界裡，我們總是為檢驗統計量和抽樣分布分配一個單獨的名字。這樣，統計塊本身就可以告訴你研究者究竟計算了什麼。有時這確實是可能的。例如，Pearson適合度檢驗中使用的檢驗統計量寫作$X^2$，但還有一種與G-test$^a$ [@Sokal1994]關係密切的檢驗稱為G-test，其中檢驗統計量寫作$G$。事實上，Pearson適合度檢驗和G-test都檢驗相同的虛無假設，抽樣分布完全相同（即，具有$k-1$自由度的卡方分布）。如果我對卡片資料進行G-test而不是適合度檢驗，那麼我最終會得到一個檢驗統計量$G = 8.65$，它略有不同於我之前得到的$X^2 = 8.44$值，並產生稍微小一點的p值$p = .034$。假設約定俗成地報告檢驗統計量，然後是抽樣分布，然後是p值。如果是這樣的話，這兩種情況將產生不同的統計塊：我原來的結果將寫成$X^2 = 8.44$，$\chi^2(3)$，$p = .038$，而使用G-test的新版本將寫成$G = 8.65$，$\chi^2(3)$，$p = .034$。然而，使用縮略報告標準，原始結果寫作$\chi^2(3) = 8.44, p =.038$，新結果寫作$\chi^2(3) = 8.65, p = .034$，所以實際上不清楚我實際上運行了哪個檢驗。那麼為什麼我們不生活在一個統計塊的內容能唯一確定哪些檢驗被執行的世界呢？根本原因是生活是混亂的。我們（作為統計工具的用戶）希望它整齊、有序並且有組織。我們希望它像產品一樣被設計，但這不是生活的運作方式。統計是一門與其他任何學科一樣的智力學科，因此它是一個大規模的分布式、部分協作和部分競爭的項目，沒有人真正完全了解它。你和我作為資料分析工具的東西並非由統計之神的行為創造的。它們是由很多不同的人發明的，作為學術期刊中的論文發表，由很多其他人實施、糾正和修改，然後由其他人在教科書中向學生解釋。因此，有很多檢驗統計量甚至沒有名字，因此它們只是被賦予與相應抽樣分布相同的名字。稍後我們將看到，任何遵循$\chi^2$分布的檢驗統計量通常被稱為“卡方統計量”，遵循$t$分布的任何統計量被稱為“t統計量”，等等。但是，正如$\chi^2$與$G$的例子所說明的，具有相同抽樣分布的兩個不同事物仍然是不同的。因此，有時候明確表明你實際上運行的檢驗是很好的主意，特別是如果你在做一些不尋常的事情。如果你只說“卡方檢驗”，實際上並不清楚你在談論哪種檢驗。儘管如此，由於兩個最常見的卡方檢驗是適合度檢驗和獨立性檢驗，大多數具有統計培訓的讀者可能都能猜到。儘管如此，這仍然是需要注意的事情。—$^a$ 讓事情變得複雜的是，G-test是一整類被稱為似然比檢驗的檢驗的特例。我在這本書中沒有介紹LRT，但它們確實是值得了解的好東西。
 
 <!--- So now you know how the test works, and you know how to do the test using a wonderful jamovi flavoured magic computing box. The next thing you need to know is how to write up the results. After all, there's no point in designing and running an experiment and then analysing the data if you don't tell anyone about it! So let's now talk about what you need to do when reporting your analysis. Let's stick with our card-suits example. If I wanted to write this result up for a paper or something, then the conventional way to report this would be to write something like this:
 
@@ -419,11 +421,11 @@ As with everything else, your overriding concern should be that you explain thin
 > 莉娜：機器人...我們是。\
 > 弗萊：呃，對！只是兩個機器人在機器人世界裡像機器人一樣生活！呃？\
 > 警衛機器人 1：進行測試。\
-> 警衛機器人 2：以下哪一個是你最喜歡的？A：一只小狗，B：來自你心上人的漂亮花朵，或C：一個大的、格式正確的數據文件？\
+> 警衛機器人 2：以下哪一個是你最喜歡的？A：一只小狗，B：來自你心上人的漂亮花朵，或C：一個大的、格式正確的資料文件？\
 > 警衛機器人 1：選擇！\
 > 《飛出個未來》第一季第5集"Fear of a Bot Planet"台詞(1999~2003的美國情境喜劇；台灣無代理商引進播映)
 
-有一天，我在觀看一部動畫紀錄片，研究*Chapek 9*星球上當地人的古怪風俗。顯然，要進入他們的首府，訪客必須證明他們是機器人而不是人類。為了確定訪客是否是人類，當地人會詢問訪客是喜歡小狗、花還是大型、格式正確的數據文件。我心想：“相當聰明，但如果人類和機器人有相同的喜好呢？那可能不是一個很好的測試了，對吧？”事實上，我得到了*Chapek 9*市民當局用來檢查這個問題的測試數據。他們所做的非常簡單。他們找了一堆機器人和一堆人，問他們喜歡什麼。我把他們的數據保存在一個名為*chapek9.omv*的文件中，現在我們可以將其加載到jamovi中。除了識別個人的ID變量外，還有兩個名義文本變量，species和choice。總共有180個條目在數據集中，每個人（將機器人和人類都算作“人”）被要求做出選擇。具體而言，有93個人類和87個機器人，絕大多數人選擇了數據文件。你可以通過在'探索'-'描述統計'按鈕下詢問jamovi的頻率表來自己檢查這一點。然而，這個總結並沒有解決我們感興趣的問題。要做到這一點，我們需要對數據進行更詳細的描述。我們想要做的是查看按*物種*劃分的選擇。也就是說，我們需要對數據進行交叉分類（見@sec-Tabulating-and-cross-tabulating-data）。在jamovi中，我們使用'頻率'-'列聯表'-'獨立樣本'分析來完成這個操作，我們應該得到一個類似@tbl-tab14-7的表格。
+有一天，我在觀看一部動畫紀錄片，研究*Chapek 9*星球上當地人的古怪風俗。顯然，要進入他們的首府，訪客必須證明他們是機器人而不是人類。為了確定訪客是否是人類，當地人會詢問訪客是喜歡小狗、花還是大型、格式正確的資料文件。我心想：“相當聰明，但如果人類和機器人有相同的喜好呢？那可能不是一個很好的測試了，對吧？”事實上，我得到了*Chapek 9*市民當局用來檢查這個問題的測試資料。他們所做的非常簡單。他們找了一堆機器人和一堆人，問他們喜歡什麼。我把他們的資料保存在一個名為*chapek9.omv*的文件中，現在我們可以將其加載到jamovi中。除了識別個人的ID變項外，還有兩個名義文本變項，species和choice。總共有180個條目在資料集中，每個人（將機器人和人類都算作“人”）被要求做出選擇。具體而言，有93個人類和87個機器人，絕大多數人選擇了資料文件。你可以通過在'探索'-'描述統計'按鈕下詢問jamovi的頻率表來自己檢查這一點。然而，這個總結並沒有解決我們感興趣的問題。要做到這一點，我們需要對資料進行更詳細的描述。我們想要做的是查看按*物種*劃分的選擇。也就是說，我們需要對資料進行交叉分類（見@sec-Tabulating-and-cross-tabulating-data）。在jamovi中，我們使用'頻率'-'列聯表'-'獨立樣本'分析來完成這個操作，我們應該得到一個類似@tbl-tab14-7的表格。
 
 <!---
 > GUARDBOT 1: Halt! \
@@ -439,53 +441,53 @@ The other day I was watching an animated documentary examining the quaint custom
 
 ```{r}
 #| label: tbl-tab14-7
-#| tbl-cap: 交叉分類數據
+#| tbl-cap: 交叉分類資料
 #Cross-tabulating the data
 huxtabs[[10]][[7]]
 ```
 
-從這個表格中，我們可以很清楚地看到，絕大多數人類選擇了數據文件，而機器人在他們的選擇中則相對更均衡。撇開為什麼人類可能更喜歡選擇數據文件的問題（這確實看起來有點奇怪，承認吧），我們首要任務是確定數據集中人類選擇和機器人選擇之間的差異是否具有統計顯著性。
+從這個表格中，我們可以很清楚地看到，絕大多數人類選擇了資料文件，而機器人在他們的選擇中則相對更均衡。撇開為什麼人類可能更喜歡選擇資料文件的問題（這確實看起來有點奇怪，承認吧），我們首要任務是確定資料集中人類選擇和機器人選擇之間的差異是否具有統計顯著性。
 
 <!--- From this, it's quite clear that the vast majority of the humans chose the data file, whereas the robots tended to be a lot more even in their preferences. Leaving aside the question of why the humans might be more likely to choose the data file for the moment (which does seem quite odd, admittedly), our first order of business is to determine if the discrepancy between human choices and robot choices in the data set is statistically significant. --->
 
 ### 建立獨立性的假設檢定  {#sec-Constructing-independence-test}
 
-我們如何分析這些數據？具體來說，由於我的研究假設是"人類和機器人回答問題的方式不同"，我該如何構建對虛無假設的檢驗，即"人類和機器人以相同的方式回答問題"？與以前一樣，我們首先建立一些符號來描述數據（@tbl-tab14-8）。
+我們如何分析這些資料？具體來說，由於我的研究假設是"人類和機器人回答問題的方式不同"，我該如何構建對虛無假設的檢驗，即"人類和機器人以相同的方式回答問題"？與以前一樣，我們首先建立一些符號來描述資料（@tbl-tab14-8）。
 
 <!--- How do we analyse this data? Specifically, since my research hypothesis is that "humans and robots answer the question in different ways", how can I construct a test of the null hypothesis that "humans and robots answer the question the same way"? As before, we begin by establishing some notation to describe the data (@tbl-tab14-8). --->
 
 ```{r}
 #| label: tbl-tab14-8
-#| tbl-cap: 描述數據的符號
+#| tbl-cap: 描述資料的符號
 #Notation to describe the data
 huxtabs[[10]][[8]]
 ```
 
 
-在這個符號中，我們用 $O_{ij}$ 表示被調查者在物種 j（機器人或人類）中選擇 i（小狗，花或數據）的計數（觀察頻率）。總觀察數通常表示為 $N$。最後，我用 $R_i$ 表示行總數（例如，$R_1$ 是選擇花的人的總數），用 $C_j$ 表示列總數（例如，$C_1$ 是機器人的總數）。[^10-categorical-data-analysis-10]
+在這個符號中，我們用 $O_{ij}$ 表示被調查者在物種 j（機器人或人類）中選擇 i（小狗，花或資料）的計數（觀察頻率）。總觀察數通常表示為 $N$。最後，我用 $R_i$ 表示行總數（例如，$R_1$ 是選擇花的人的總數），用 $C_j$ 表示列總數（例如，$C_1$ 是機器人的總數）。[^10-categorical-data-analysis-10]
 
 [^10-categorical-data-analysis-10]: 技術說明。在我描述的測試方法中，假設列總數是固定的（即研究者打算調查87個機器人和93個人類），行總數是隨機的（即碰巧有28個人選擇了小狗）。根據我的數理統計教科書[@Hogg2005]的術語，我應該將這種情況稱為卡方同質性檢驗，並保留卡方獨立性檢驗一詞用於行總數和列總數都是實驗隨機結果的情況。在這本書的初稿中，我確實是這樣做的。然而，事實證明，這兩種測試是相同的，所以我將它們合併在一起。
 
-那麼，現在讓我們考慮一下虛無假設是什麼。如果機器人和人類對這個問題的回答方式相同，那麼“機器人說小狗”的概率與“人類說小狗”的概率相同，對其他兩種可能性也是如此。所以，如果我們用 $P_{ij}$ 表示“物種 j 的成員給出回應 i 的概率”，那麼我們的虛無假設是：
+那麼，現在讓我們考慮一下虛無假設是什麼。如果機器人和人類對這個問題的回答方式相同，那麼“機器人說小狗”的機率與“人類說小狗”的機率相同，對其他兩種可能性也是如此。所以，如果我們用 $P_{ij}$ 表示“物種 j 的成員給出回應 i 的機率”，那麼我們的虛無假設是：
 
 $$
 \begin{aligned}
 H_0 &: \text{以下全部成立：} \\
-&P_{11} = P_{12}\text{ （選擇“小狗”的概率相同），} \\
-&P_{21} = P_{22}\text{ （選擇“花”的概率相同），以及} \\
-&P_{31} = P_{32}\text{ （選擇“數據”的概率相同）}
+&P_{11} = P_{12}\text{ （選擇“小狗”的機率相同），} \\
+&P_{21} = P_{22}\text{ （選擇“花”的機率相同），以及} \\
+&P_{31} = P_{32}\text{ （選擇“資料”的機率相同）}
 \end{aligned}
 $$
 
-事實上，由於虛無假設聲稱真實的選擇概率不取決於做出選擇的人的物種，我們可以讓 Pi 代表這個概率，例如，P1 是選擇小狗的真實概率。
+事實上，由於虛無假設聲稱真實的選擇機率不取決於做出選擇的人的物種，我們可以讓 Pi 代表這個機率，例如，P1 是選擇小狗的真實機率。
 
-接下來，就像我們在適配度檢驗中所做的那樣，我們需要計算期望頻率。也就是說，對於每個觀察到的計數 $O_{ij}$，我們需要弄清楚虛無假設告訴我們期望什麼。我們用 $E_{ij}$ 表示這個期望頻率。這次，情況有點棘手。如果物種 $j$ 中有 $C_j$ 人，而無論物種如何選擇選項 $i$ 的真實概率為 $P_i$，那麼期望頻率只是：
+接下來，就像我們在適配度檢驗中所做的那樣，我們需要計算期望頻率。也就是說，對於每個觀察到的計數 $O_{ij}$，我們需要弄清楚虛無假設告訴我們期望什麼。我們用 $E_{ij}$ 表示這個期望頻率。這次，情況有點棘手。如果物種 $j$ 中有 $C_j$ 人，而無論物種如何選擇選項 $i$ 的真實機率為 $P_i$，那麼期望頻率只是：
 
 $$E_{ij}=C_j \times P_i$$
 
 現在，這固然很好，但我們遇到了一個問題。與適配度檢驗的情況不同，虛無假設實際上並未指定 Pi 的特定值。
 
-這是我們必須估計（見 @sec-Estimating-unknown-quantities-from-a-sample）的數據！幸運的是，這非常容易做到。如果有 28 位擇一的人選擇了花朵，那麼選擇花朵的概率的自然估計就是 $\frac{28}{180}$，大約是 $0.16$。如果我們用數學語言來表示，我們所說的是，選擇選項 i 的概率估計只是行總數除以總樣本量：
+這是我們必須估計（見 @sec-Estimating-unknown-quantities-from-a-sample）的資料！幸運的是，這非常容易做到。如果有 28 位擇一的人選擇了花朵，那麼選擇花朵的機率的自然估計就是 $\frac{28}{180}$，大約是 $0.16$。如果我們用數學語言來表示，我們所說的是，選擇選項 i 的機率估計只是行總數除以總樣本量：
 
 $$\hat{P}_{i}= \frac{R_i}{N}$$
 
@@ -495,27 +497,27 @@ $$\hat{P}_{i}= \frac{R_i}{N}$$
 
 $$\hat{E}_{ij}= \frac{R_i \times C_j}{N}$$
 
-<!--- 現在我們已經了解了如何從虛無假設中計算期望頻率，接下來的步驟與適配度檢驗相似。首先，對於每個 $O_{ij}$ 和 $E_{ij}$，我們計算 $(O_{ij} - E_{ij})^2 / E_{ij}$ 的值。然後，我們將這些值相加，得到一個名為卡方的統計量（$\chi^2$）。這個統計量也遵循卡方分布，因此我們可以將其用於計算 p 值，並進行檢驗。實際上，與適配度檢驗相似，卡方獨立性檢驗的自由度是由數據中的類別數量決定的，而不是預先知道的。
+<!--- 現在我們已經了解了如何從虛無假設中計算期望頻率，接下來的步驟與適配度檢驗相似。首先，對於每個 $O_{ij}$ 和 $E_{ij}$，我們計算 $(O_{ij} - E_{ij})^2 / E_{ij}$ 的值。然後，我們將這些值相加，得到一個名為卡方的統計量（$\chi^2$）。這個統計量也遵循卡方分布，因此我們可以將其用於計算 p 值，並進行檢驗。實際上，與適配度檢驗相似，卡方獨立性檢驗的自由度是由資料中的類別數量決定的，而不是預先知道的。
 
-總之，我們可以通過將卡方獨立性檢驗應用於類別數據來檢驗虛無假設，即人類和機器人對問題的回答方式相同。這種方法允許我們計算期望頻率、卡方統計量以及對應的 p 值，從而幫助我們判斷是否拒絕虛無假設。--->
+總之，我們可以通過將卡方獨立性檢驗應用於類別資料來檢驗虛無假設，即人類和機器人對問題的回答方式相同。這種方法允許我們計算期望頻率、卡方統計量以及對應的 p 值，從而幫助我們判斷是否拒絕虛無假設。--->
 
 [額外的技術細節[^10-categorical-data-analysis-12]]
 
 [^10-categorical-data-analysis-12]: 現在我們已經弄清楚了如何計算期望頻率，根據我們在適配度檢驗中使用的策略，定義一個檢驗統計量是很容易的。實際上，這幾乎是相同的統計量。對於有 r 行和 c 列的列聯表，定義我們的 $X^2$ 統計量的方程式是 $$X^2=\sum_{i=1}^{r}\sum_{j=1}^{c} \frac{(E_{ij}-O_{ij})^2}{E_{ij}}$$ 唯一的區別是我必須包含兩個求和符號（即 $\sum$ ）以表示我們要對行和列進行求和。
 
-與以前一樣，$X^2$ 的大值表示虛無假設對數據的描述效果不佳，而 $X^2$ 的小值則表示虛無假設對數據的解釋效果很好。因此，就像上次一樣，如果 $X^2$ 太大，我們希望拒絕虛無假設。
+與以前一樣，$X^2$ 的大值表示虛無假設對資料的描述效果不佳，而 $X^2$ 的小值則表示虛無假設對資料的解釋效果很好。因此，就像上次一樣，如果 $X^2$ 太大，我們希望拒絕虛無假設。
 
-不出所料，這個統計量遵循 $\chi^2$ 分布。我們需要做的就是弄清楚有多少自由度，實際上這並不困難。如我之前提到的，你可以（通常）將自由度視為等於你正在分析的數據點數量，減去約束的數量。具有 r 行和 c 列的列聯表包含總共 $r^{c}$ 個觀察到的頻率，所以這是觀察到的總數量。約束呢？在這裡，情況稍微複雜一些。答案始終是相同的
+不出所料，這個統計量遵循 $\chi^2$ 分布。我們需要做的就是弄清楚有多少自由度，實際上這並不困難。如我之前提到的，你可以（通常）將自由度視為等於你正在分析的資料點數量，減去約束的數量。具有 r 行和 c 列的列聯表包含總共 $r^{c}$ 個觀察到的頻率，所以這是觀察到的總數量。約束呢？在這裡，情況稍微複雜一些。答案始終是相同的
 
 $$df=(r-1)(c-1)$$
 
-但是根據實驗設計，解釋為什麼自由度具有此值的原因是不同的。為了便於說明，假設我們確實打算調查 87 台機器人和 93 人（實驗者固定列總數），但讓行總數自由變化（行總數是隨機變量）。讓我們考慮在這裡適用的約束。好吧，因為我們故意通過實驗者的行為固定了列總數，所以在這裡就有 c 個約束。但實際上，還有更多的約束。記住我們的虛無假設中有一些自由參數（即，我們不得不估計 Pi 值）？這些也很重要。在這本書中，我不會解釋為什麼，但虛無假設中的每個自由參數都像是一個額外的約束。那麼，這些參數有多少呢？好吧，由於這些概率必須加起來等於 1，所以只有 $r - 1$ 個。因此，我們的自由度總數是：
+但是根據實驗設計，解釋為什麼自由度具有此值的原因是不同的。為了便於說明，假設我們確實打算調查 87 台機器人和 93 人（實驗者固定列總數），但讓行總數自由變化（行總數是隨機變項）。讓我們考慮在這裡適用的約束。好吧，因為我們故意通過實驗者的行為固定了列總數，所以在這裡就有 c 個約束。但實際上，還有更多的約束。記住我們的虛無假設中有一些自由參數（即，我們不得不估計 Pi 值）？這些也很重要。在這本書中，我不會解釋為什麼，但虛無假設中的每個自由參數都像是一個額外的約束。那麼，這些參數有多少呢？好吧，由於這些機率必須加起來等於 1，所以只有 $r - 1$ 個。因此，我們的自由度總數是：
 
 $$ \begin{split} df & = \text{(number of
 observations) - (number of constraints)} \\\\ & = (r \times c) - (c +
 (r - 1)) \\\\ & = rc - c - r + 1 \\\\ & = (r - 1)(c - 1) \end{split}$$
 
-另一種假設，假設實驗者確定的唯一事物是總樣本量 N。也就是說，我們對見到的前 180 人進行了問卷調查，結果發現 87 人是機器人，93 人是人類。這一次，我們的推理會有所不同，但仍然會得到相同的答案。我們的虛無假設仍然有 $r - 1$ 個自由參數，對應於選擇概率，但現在還有 $c - 1$ 個自由參數，對應於種類概率，因為我們還必須估計隨機抽樣的人類確實是機器人的概率。[^10-categorical-data-analysis-13] 最後，由於我們確實確定了觀察數量的總數 N，所以這是另一個約束。因此，現在我們有 rc 次觀察，並且有 $(c-1)+(r-1)+1$ 約束。這會給出什麼呢？
+另一種假設，假設實驗者確定的唯一事物是總樣本量 N。也就是說，我們對見到的前 180 人進行了問卷調查，結果發現 87 人是機器人，93 人是人類。這一次，我們的推理會有所不同，但仍然會得到相同的答案。我們的虛無假設仍然有 $r - 1$ 個自由參數，對應於選擇機率，但現在還有 $c - 1$ 個自由參數，對應於種類機率，因為我們還必須估計隨機抽樣的人類確實是機器人的機率。[^10-categorical-data-analysis-13] 最後，由於我們確實確定了觀察數量的總數 N，所以這是另一個約束。因此，現在我們有 rc 次觀察，並且有 $(c-1)+(r-1)+1$ 約束。這會給出什麼呢？
 
 [^10-categorical-data-analysis-13]: 現實生活中很多人都在擔心的問題。
 
@@ -601,20 +603,20 @@ That was easy, wasn't it! You can also ask jamovi to show you the expected count
 ```{r}
 #| label: fig-fig14-6
 #| classes: .enlarge-image
-#| fig-cap: 在 jamovi 中使用 *Chapek 9* 數據進行獨立樣本 $\chi^2$ 檢驗
+#| fig-cap: 在 jamovi 中使用 *Chapek 9* 資料進行獨立樣本 $\chi^2$ 檢驗
 #Independent samples $\chi^2$ test in jamovi using the *Chapek 9* data
 knitr::include_graphics("images/fig10-6.png")
 ```
 
 這個輸出為我們提供了足夠的信息來寫出結果：
 
-> *Pearson* 的 $\chi^2$ 顯示了物種和選擇之間存在顯著關聯（$\chi^2(2) = 10.7, p< .01$）。機器人似乎更傾向於說他們喜歡花，而人類更傾向於說他們喜歡數據。
+> *Pearson* 的 $\chi^2$ 顯示了物種和選擇之間存在顯著關聯（$\chi^2(2) = 10.7, p< .01$）。機器人似乎更傾向於說他們喜歡花，而人類更傾向於說他們喜歡資料。
 
-注意，再次，我提供了一些解釋，以幫助人類讀者理解數據發生的情況。稍後在我的討論部分，我會提供更多的上下文。舉例來說，這是我可能會在之後說的：
+注意，再次，我提供了一些解釋，以幫助人類讀者理解資料發生的情況。稍後在我的討論部分，我會提供更多的上下文。舉例來說，這是我可能會在之後說的：
 
-> 人類似乎比機器人更喜歡原始數據文件，這有點反直覺。但在某種程度上，它是有道理的，因為 Chapek 9 上的民事當局往往在發現人類時會將其殺死並解剖。因此，最有可能的是，人類參與者並未如實回答問題，以避免可能產生不良後果。這應該被認為是一個嚴重的方法論缺陷。
+> 人類似乎比機器人更喜歡原始資料文件，這有點反直覺。但在某種程度上，它是有道理的，因為 Chapek 9 上的民事當局往往在發現人類時會將其殺死並解剖。因此，最有可能的是，人類參與者並未如實回答問題，以避免可能產生不良後果。這應該被認為是一個嚴重的方法論缺陷。
 
-我想，這可以被歸類為反應效應的一個極端例子。顯然，在這種情況下，問題嚴重到研究幾乎毫無價值，作為理解人類和機器人之間的差異偏好的工具。然而，我希望這能夠說明在獲得統計顯著結果（我們拒絕零假設，轉而接受替代假設）和找到具有科學價值的東西（由於嚴重的方法論缺陷，數據對我們研究假設的興趣一無所知）之間的區別。
+我想，這可以被歸類為反應效應的一個極端例子。顯然，在這種情況下，問題嚴重到研究幾乎毫無價值，作為理解人類和機器人之間的差異偏好的工具。然而，我希望這能夠說明在獲得統計顯著結果（我們拒絕虛無假設，轉而接受替代假設）和找到具有科學價值的東西（由於嚴重的方法論缺陷，資料對我們研究假設的興趣一無所知）之間的區別。
 
 
 <!--- This output gives us enough information to write up the result:
@@ -629,7 +631,7 @@ This could be classified as a rather extreme example of a reactivity effect, I s
 
 ## 卡方檢定的校正
 
-好吧，是時候稍作偏離了。到目前為止，我對您有點不誠實。當您只有 1 個自由度時，需要對計算稍作改變。這被稱為 "連續性修正"，或者有時稱為**葉氏修正**。請記住我之前指出的：$\chi^2$ 檢定是基於一個近似值，具體來說，是假設當 $N$ 較大時，二項分佈開始類似於正態分佈。這樣做的一個問題是，它通常並不完全奏效，尤其是當你只有 1 個自由度時（例如，當你對一個 $2 \times 2$ 的列聯表進行獨立性檢定時）。造成這一現象的主要原因是，$X^{2}$ 統計量的真實抽樣分佈實際上是離散的（因為您在處理分類數據！），但 $\chi^2$ 分佈是連續的。這可能引入系統性問題。具體來說，當 N 很小且 $df = 1$ 時，適合度統計量往往 "太大"，這意味著您實際上的α值比您想象的要大（或者等效地說，p值稍微太小）。
+好吧，是時候稍作偏離了。到目前為止，我對您有點不誠實。當您只有 1 個自由度時，需要對計算稍作改變。這被稱為 "連續性修正"，或者有時稱為**葉氏修正**。請記住我之前指出的：$\chi^2$ 檢定是基於一個近似值，具體來說，是假設當 $N$ 較大時，二項分佈開始類似於正態分佈。這樣做的一個問題是，它通常並不完全奏效，尤其是當你只有 1 個自由度時（例如，當你對一個 $2 \times 2$ 的列聯表進行獨立性檢定時）。造成這一現象的主要原因是，$X^{2}$ 統計量的真實抽樣分佈實際上是離散的（因為您在處理分類資料！），但 $\chi^2$ 分佈是連續的。這可能引入系統性問題。具體來說，當 N 很小且 $df = 1$ 時，適合度統計量往往 "太大"，這意味著您實際上的α值比您想象的要大（或者等效地說，p值稍微太小）。
 
 根據我從閱讀葉氏論文[^10-categorical-data-analysis-14]中獲得的了解，修正基本上是一個突破。它不是源於任何原則性的理論。相反，它是基於對檢定行為的觀察，並發現經過修正的版本似乎效果更好。您可以在 jamovi 的 'Statistics' 選項中的復選框中指定這個修正，其中它被稱為 '$\chi^2$ 連續性修正'。
 
@@ -643,7 +645,7 @@ As far as I can tell from reading Yates' paper[^10-categorical-data-analysis-14]
 
 ## 卡方檢定的效果量
 
-正如我們在 @sec-Effect-size-sample-size-and-power 中早先討論的，要求研究人員報告某種效應量測的情況越來越普遍。因此，假設您已經進行了卡方檢定，結果顯示具有顯著性。所以您現在知道您的變量之間存在某種關聯（獨立性檢定）或與指定概率的某種偏差（適合度檢定）。現在，您想報告一個效應量測。也就是說，假設存在關聯或偏差，其強度如何？
+正如我們在 @sec-Effect-size-sample-size-and-power 中早先討論的，要求研究人員報告某種效應量測的情況越來越普遍。因此，假設您已經進行了卡方檢定，結果顯示具有顯著性。所以您現在知道您的變項之間存在某種關聯（獨立性檢定）或與指定機率的某種偏差（適合度檢定）。現在，您想報告一個效應量測。也就是說，假設存在關聯或偏差，其強度如何？
 
 您可以選擇報告幾種不同的測量值，並使用幾種不同的工具來計算它們。我不會討論所有這些測量值，而是將重點放在最常報告的效應大小測量值上。
 
@@ -672,7 +674,7 @@ And you're done. This seems to be a fairly popular measure, presumably because i
 所有統計檢驗都有一定的假設，通常檢查這些假設是否符合是一個好主意。對於本章迄今為止討論的卡方檢驗，其假設包括：
 
 - *期望頻率足夠大*。還記得我們在上一節看到的 $\chi^2$ 抽樣分佈是如何產生的嗎？因為二項分佈非常類似於正態分佈，正如我們在 @sec-Introduction-to-probability 中討論的那樣，這只有在觀察次數足夠多的情況下才成立。實際上，這意味著所有的期望頻率都需要相對較大。什麼是合理的大小？意見不一，但默認的假設似乎是你通常希望看到所有的期望頻率都大於大約5，儘管對於更大的表格，如果至少80%的期望頻率在5以上，並且沒有一個低於1，那可能還可以。然而，從我所能發現的資料（例如， @Cochran1954 ）來看，這些似乎是作為粗略指導原則提出的，而不是硬性規定，而且它們似乎有些保守 [@Larntz1978]。
-- *數據彼此獨立*。卡方檢驗的一個稍微隱藏的假設是，你必須真正相信觀察結果是獨立的。我舉個例子。假設我對在某個特定醫院出生的男嬰的比例感興趣。我在產科病房走來走去，觀察到20個女孩和只有10個男孩。看起來是相當明顯的差異，對吧？但稍後，原來我實際上走進了同一個病房10次，事實上我只看到了2個女孩和1個男孩。現在不那麼令人信服了，是吧？我的原始30個觀察結果大量地不獨立，實際上只相當於3個獨立的觀察結果。顯然這是一個極端（而且非常愚蠢）的例子，但它說明了基本問題。非獨立性會“搞砸事情”。有時它會導致你錯誤地拒絕零假設，就像愚蠢的醫院例子那樣，但它也可能朝相反的方向發展。為了給出一個稍微不那麼愚蠢的例子，讓我們考慮一下如果我對卡片實驗做了一些不同的嘗試會怎麼樣。假設我不是要求200個人嘗試想像隨機抽取一張卡片，而是要求50個人選擇4張卡片。其中一種可能是*每個人*都選擇一張紅心、一張梅花、一張方塊和一張黑桃（符合“代表性啟發法則”[@Tversky1974]）。這是人們的高度非隨機行為，但在這種情況下，我對四種花色都會得到50的觀察頻率。對於這個例子，觀察結果非獨立性（因為你選擇的四張卡片之間將彼此關聯）實際上導致了相反的效果，即錯誤地保留了零假設。
+- *資料彼此獨立*。卡方檢驗的一個稍微隱藏的假設是，你必須真正相信觀察結果是獨立的。我舉個例子。假設我對在某個特定醫院出生的男嬰的比例感興趣。我在產科病房走來走去，觀察到20個女孩和只有10個男孩。看起來是相當明顯的差異，對吧？但稍後，原來我實際上走進了同一個病房10次，事實上我只看到了2個女孩和1個男孩。現在不那麼令人信服了，是吧？我的原始30個觀察結果大量地不獨立，實際上只相當於3個獨立的觀察結果。顯然這是一個極端（而且非常愚蠢）的例子，但它說明了基本問題。非獨立性會“搞砸事情”。有時它會導致你錯誤地拒絕虛無假設，就像愚蠢的醫院例子那樣，但它也可能朝相反的方向發展。為了給出一個稍微不那麼愚蠢的例子，讓我們考慮一下如果我對卡片實驗做了一些不同的嘗試會怎麼樣。假設我不是要求200個人嘗試想像隨機抽取一張卡片，而是要求50個人選擇4張卡片。其中一種可能是*每個人*都選擇一張紅心、一張梅花、一張方塊和一張黑桃（符合“代表性啟發法則”[@Tversky1974]）。這是人們的高度非隨機行為，但在這種情況下，我對四種花色都會得到50的觀察頻率。對於這個例子，觀察結果非獨立性（因為你選擇的四張卡片之間將彼此關聯）實際上導致了相反的效果，即錯誤地保留了虛無假設。
 
 如果你碰巧處於獨立性受到違反的情況，你可以使用 McNemar 檢驗（我們將討論）或 Cochran 檢驗（我們不會討論）。同樣，如果你的預期單元計數太小，可以查看 Fisher 確切檢驗。我們現在將轉向這些主題。
 
@@ -686,7 +688,7 @@ If you happen to find yourself in a situation where independence is violated, it
 ## 費雪精確檢定 {#sec-The-Fisher-test}
 
 
-如果你的單元計數太小，但你仍然想檢驗兩個變量是否獨立的零假設，該怎麼辦？一個答案是“收集更多數據”，但這太輕浮了。有很多情況下，進行此操作要么不可行，要么不道德。如果是這樣，統計學家有一種道德責任，為科學家提供更好的檢驗方法。在這個例子中， @Fisher1922a 恰好提供了問題的正確答案。為了說明這個基本概念，假設我們正在分析一個田野實驗的數據，研究被指控為巫術的人的情感狀況，其中一些人正在被燒死。[^10-categorical-data-analysis-16] 不幸的是，對於科學家來說（但對普通大眾來說相當幸運），實際上很難找到正在被點火的人，所以在某些情況下，單元計數非常小。*salem.csv* 數據的列聯表說明了這一點（@tbl-tab14-9）。
+如果你的單元計數太小，但你仍然想檢驗兩個變項是否獨立的虛無假設，該怎麼辦？一個答案是“收集更多資料”，但這太輕浮了。有很多情況下，進行此操作要么不可行，要么不道德。如果是這樣，統計學家有一種道德責任，為科學家提供更好的檢驗方法。在這個例子中， @Fisher1922a 恰好提供了問題的正確答案。為了說明這個基本概念，假設我們正在分析一個田野實驗的資料，研究被指控為巫術的人的情感狀況，其中一些人正在被燒死。[^10-categorical-data-analysis-16] 不幸的是，對於科學家來說（但對普通大眾來說相當幸運），實際上很難找到正在被點火的人，所以在某些情況下，單元計數非常小。*salem.csv* 資料的列聯表說明了這一點（@tbl-tab14-9）。
 
 [^10-categorical-data-analysis-16]: 這個例子是基於在*Journal of Irreproducible Results*上發表的一篇玩笑文章。
 
@@ -696,12 +698,12 @@ If you happen to find yourself in a situation where independence is violated, it
 
 ```{r}
 #| label: tbl-tab14-9
-#| tbl-cap: salem.csv 數據的列聯表
+#| tbl-cap: salem.csv 資料的列聯表
 #Contingency table of the *salem.csv* data
 huxtabs[[10]][[9]]
 ```
 
-查看這些數據，你會很難不懷疑沒有被點火的人比正在被點火的人更可能感到快樂。然而，由於樣本量很小，卡方檢驗使得這一點很難檢驗。所以，作為一個不想被點火的人，我*非常*希望能得到比這更好的答案。這就是**費雪精確檢定（Fisher's exact test）**[@Fisher1922a] 派上用場的地方。
+查看這些資料，你會很難不懷疑沒有被點火的人比正在被點火的人更可能感到快樂。然而，由於樣本量很小，卡方檢驗使得這一點很難檢驗。所以，作為一個不想被點火的人，我*非常*希望能得到比這更好的答案。這就是**費雪精確檢定（Fisher's exact test）**[@Fisher1922a] 派上用場的地方。
 
 費雪精確檢定的運作方式與卡方檢定（事實上，在本書中我談論的任何其他假設檢定）有所不同，因為它沒有檢定統計量，而是“直接”計算 p 值。我將解釋該檢定在 $2 \times 2$ 列聯表中的運作基本原理。與以前一樣，讓我們使用一些符號（@tbl-tab14-10）。
 
@@ -717,15 +719,15 @@ huxtabs[[10]][[10]]
 ```
 
 
-為了構建檢定，費雪將行和列總數（$R_1, R_2, C_1$ 和 $C_2$）都視為已知的固定量，然後計算在給定這些總數的情況下，我們會得到我們所觀察到的頻率（$O_{11}, O_{12}, O_{21}$ 和 $O_{22}$）的概率。在我們在 @sec-Introduction-to-probability 中開發的表示法中，這是寫作：
+為了構建檢定，費雪將行和列總數（$R_1, R_2, C_1$ 和 $C_2$）都視為已知的固定量，然後計算在給定這些總數的情況下，我們會得到我們所觀察到的頻率（$O_{11}, O_{12}, O_{21}$ 和 $O_{22}$）的機率。在我們在 @sec-Introduction-to-probability 中開發的表示法中，這是寫作：
 
-$$P(O_{11}, O_{12}, O_{21}, O_{22} \text{ | } R_1, R_2, C_1, C_2)$$ 並且如您所料，弄清楚這個概率是什麼有點困難。但事實證明，這個概率是由一個稱為超幾何分佈的分佈描述的。要計算我們的 p 值，我們必須計算觀察到這個特定表格或者一個更“極端”的表格的概率。[^10-categorical-data-analysis-17] 在 20 世紀 20 年代，即使在最簡單的情況下，計算這個和也是令人生畏的，但如今只要表格不是太大，樣本量不是太大，這就相當容易了。概念上棘手的問題是弄清楚一個列聯表比另一個列聯表更“極端”的含義。最簡單的解決方案是說，概率最低的表格是最極端的。這將給我們 p 值。
+$$P(O_{11}, O_{12}, O_{21}, O_{22} \text{ | } R_1, R_2, C_1, C_2)$$ 並且如您所料，弄清楚這個機率是什麼有點困難。但事實證明，這個機率是由一個稱為超幾何分佈的分佈描述的。要計算我們的 p 值，我們必須計算觀察到這個特定表格或者一個更“極端”的表格的機率。[^10-categorical-data-analysis-17] 在 20 世紀 20 年代，即使在最簡單的情況下，計算這個和也是令人生畏的，但如今只要表格不是太大，樣本量不是太大，這就相當容易了。概念上棘手的問題是弄清楚一個列聯表比另一個列聯表更“極端”的含義。最簡單的解決方案是說，機率最低的表格是最極端的。這將給我們 p 值。
 
 [^10-categorical-data-analysis-17]: 毫不意外，費雪精確檢定是根據費雪對 p 值的解釋，而不是奈曼的！請參見 @sec-The-p-value-of-a-test 。
 
-您可以在 jamovi 中的“列聯表”分析中的“統計”選項中的復選框中指定此檢定。當您使用 *salem.csv* 文件中的數據執行此操作時，費雪精確檢定統計量將顯示在結果中。我們在這里感興趣的主要是 p 值，這個例子中 p 值足夠小（p = .036），足以證明拒絕那些正在燃燒的人和沒有燃燒的人一樣快樂的零假設。參見 @fig-fig14-7。
+您可以在 jamovi 中的“列聯表”分析中的“統計”選項中的復選框中指定此檢定。當您使用 *salem.csv* 文件中的資料執行此操作時，費雪精確檢定統計量將顯示在結果中。我們在這里感興趣的主要是 p 值，這個例子中 p 值足夠小（p = .036），足以證明拒絕那些正在燃燒的人和沒有燃燒的人一樣快樂的虛無假設。參見 @fig-fig14-7。
 
-<!---在這個例子中，我們使用了費雪精確檢定，該檢定使我們能夠在樣本量較小的情況下仍然對數據進行檢驗。通過這種方法，我們發現了正在燃燒的人和沒有燃燒的人之間的快樂程度存在顯著差異。--->
+<!---在這個例子中，我們使用了費雪精確檢定，該檢定使我們能夠在樣本量較小的情況下仍然對資料進行檢驗。通過這種方法，我們發現了正在燃燒的人和沒有燃燒的人之間的快樂程度存在顯著差異。--->
 
 <!--- In order to construct the test Fisher treats both the row and column totals $(R_1, R_2, C_1 \text{ and } C_2)$ as known, fixed quantities and then calculates the probability that we would have obtained the observed frequencies that we did $(O_{11}, O_{12}, O_{21} \text{ and } O_{22})$ given those totals. In the notation that we developed in @sec-Introduction-to-probability this is written:
 
@@ -746,7 +748,7 @@ knitr::include_graphics("images/fig10-7.png")
 ## 麥內瑪檢定 {#sec-The-McNemar-test}
 
 
-假設您被聘請為*澳大利亞通用政治黨*(AGPP)工作[^14-translation-01]，您的工作的一部分是了解AGPP政治廣告的有效性。因此，您決定組織一個包含$N = 100$人的樣本，讓他們觀看AGPP的廣告。在他們看到任何內容之前，您問他們是否打算投票支持AGPP，然後在播放廣告之後再問他們一遍，看看有沒有人改變主意。顯然，如果你擅長你的工作，你還會做很多其他事情，但讓我們考慮一下這個簡單的實驗。描述數據的一種方法是通過 @tbl-tab14-11 中顯示的列聯表。
+假設您被聘請為*澳大利亞通用政治黨*(AGPP)工作[^14-translation-01]，您的工作的一部分是了解AGPP政治廣告的有效性。因此，您決定組織一個包含$N = 100$人的樣本，讓他們觀看AGPP的廣告。在他們看到任何內容之前，您問他們是否打算投票支持AGPP，然後在播放廣告之後再問他們一遍，看看有沒有人改變主意。顯然，如果你擅長你的工作，你還會做很多其他事情，但讓我們考慮一下這個簡單的實驗。描述資料的一種方法是通過 @tbl-tab14-11 中顯示的列聯表。
 
 [^14-translation-01]: 譯註~這是原作者虛構的政黨，現實中無此政黨或團體。詳見[維基百科條目](https://en.wikipedia.org/w/index.php?title=List_of_political_parties_in_Australia&oldid=1149812960)。
 
@@ -754,7 +756,7 @@ knitr::include_graphics("images/fig10-7.png")
 
 ```{r}
 #| label: tbl-tab14-11
-#| tbl-cap: 帶有AGPP政治廣告數據的列聯表
+#| tbl-cap: 帶有AGPP政治廣告資料的列聯表
 #Contingency table with data on AGPP political advertisements
 huxtabs[[10]][[11]]
 ```
@@ -762,7 +764,7 @@ huxtabs[[10]][[11]]
 
 首先，您可能會認為這種情況適合用皮爾森$\chi^2$檢驗獨立性（如[獨立性（或關聯性）的$\chi^2$檢驗]）。然而，稍加思考就會發現我們遇到了一個問題。我們有100名參與者，但卻有200個觀察值。這是因為每個人在"之前"的列和"之後"的列中都給出了答案。這意味著這200個觀察值彼此之間並不獨立。如果選民A第一次說“是”，選民B說“否”，那麼您就可以預期選民A第二次比選民B更可能說“是”！由於獨立性假設的違反，這意味著通常的$\chi^2$檢驗不會給出可靠的答案。現在，如果這是一個非常不常見的情況，我不會浪費你的時間來討論它。但它並不罕見。這是一個標準的重複測量設計，而到目前為止，我們考慮的所有測試都無法處理它。哎呀。
 
-問題的解決方案是麥內瑪（McNemar，1947）發表的。訣竅是先用稍微不同的方式整理數據（@tbl-tab14-12）。
+問題的解決方案是麥內瑪（McNemar，1947）發表的。訣竅是先用稍微不同的方式整理資料（@tbl-tab14-12）。
 
 
 
@@ -772,12 +774,12 @@ The solution to the problem was published by McNemar (1947). The trick is to sta
 
 ```{r}
 #| label: tbl-tab14-12
-#| tbl-cap: 當你有重複測量數據時，以不同的方式整理數據
+#| tbl-cap: 當你有重複測量資料時，以不同的方式整理資料
 #Tabulate the data in a different way when you have repeated measures data
 huxtabs[[10]][[12]]
 ```
 
-接下來，讓我們思考一下我們的零假設是什麼：它是“之前”測試和“之後”測試中有相同比例的人說：“是的，我會投票支持AGPP。” 由於我們已經重新整理了數據，這意味著我們現在正在測試行總數和列總數來自相同分佈的假設。因此，麥內瑪檢驗中的零假設是邊際同質性。也就是說，行總數和列總數具有相同的分佈：$P_a + P_b = P_a + P_c$，同樣地，$P_c + P_d = P_b + P_d$。注意，這意味著零假設實際上簡化為Pb = Pc。換句話說，就麥內瑪檢驗而言，只有這個表格中的對角線條目（即b和c）才是重要的！注意到這一點後，**麥內瑪邊際同質性檢定(McNemar test of marginal homogeneity)**與通常的$\chi^2$檢驗沒有什麼不同。在應用Yates修正後，我們的檢驗統計量變為：
+接下來，讓我們思考一下我們的虛無假設是什麼：它是“之前”測試和“之後”測試中有相同比例的人說：“是的，我會投票支持AGPP。” 由於我們已經重新整理了資料，這意味著我們現在正在測試行總數和列總數來自相同分佈的假設。因此，麥內瑪檢驗中的虛無假設是邊際同質性。也就是說，行總數和列總數具有相同的分佈：$P_a + P_b = P_a + P_c$，同樣地，$P_c + P_d = P_b + P_d$。注意，這意味著虛無假設實際上簡化為Pb = Pc。換句話說，就麥內瑪檢驗而言，只有這個表格中的對角線條目（即b和c）才是重要的！注意到這一點後，**麥內瑪邊際同質性檢定(McNemar test of marginal homogeneity)**與通常的$\chi^2$檢驗沒有什麼不同。在應用Yates修正後，我們的檢驗統計量變為：
 
 $$\chi^2=\frac{(|b-c|-0.5)^2}{b+c}$$ 或者，恢復到我們在本章前面使用的表示法：
 
@@ -791,7 +793,7 @@ $$\chi^2=\frac{(|O_{12}-O_{21}|-0.5)^2}{O_{12}+O_{21}}$$ and this statistic has 
 
 ### 實作麥內瑪檢定 {#sec-doing-The-McNemar-test}
 
-現在您已經了解麥內瑪檢驗的所有內容，讓我們實際運行一個。*agpp.csv* 文件包含了我之前討論過的原始數據。*agpp* 數據集包含三個變量，一個id變量標記數據集中的每個參與者（我們將在片刻之後看到這有什麼用），一個**response_before** 變量記錄了當他們第一次被問到這個問題時的答案，以及一個response_after變量顯示他們在第二次被問到同樣問題時給出的答案。注意每個參與者在這個數據集中只出現一次。在jamovi中，轉到 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' 分析，並將**response_before** 放入 'Rows' 框，將**response_after** 放入 'Columns' 框。然後，您將在結果窗口中獲得一個列聯表，麥內瑪檢驗的統計數據就在它下面，參見 @fig-fig14-8 。
+現在您已經了解麥內瑪檢驗的所有內容，讓我們實際運行一個。*agpp.csv* 文件包含了我之前討論過的原始資料。*agpp* 資料集包含三個變項，一個id變項標記資料集中的每個參與者（我們將在片刻之後看到這有什麼用），一個**response_before** 變項記錄了當他們第一次被問到這個問題時的答案，以及一個response_after變項顯示他們在第二次被問到同樣問題時給出的答案。注意每個參與者在這個資料集中只出現一次。在jamovi中，轉到 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' 分析，並將**response_before** 放入 'Rows' 框，將**response_after** 放入 'Columns' 框。然後，您將在結果窗口中獲得一個列聯表，麥內瑪檢驗的統計資料就在它下面，參見 @fig-fig14-8 。
 
 <!--- Now that you know what the McNemar test is all about, lets actually run one. The *agpp.csv* file contains the raw data that I discussed previously. The *agpp* data set contains three variables, an id variable that labels each participant in the data set (we'll see why that's useful in a moment), a **response_before** variable that records the person's answer when they were asked the question the first time, and a response_after variable that shows the answer that they gave when asked the same question a second time. Notice that each participant appears only once in this data set. Go to the 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' analysis in jamovi, and move **response_before** into the 'Rows' box, and **response_after** into the 'Columns' box. You will then get a contingency table in the results window, with the statistic for the McNemar test just below it, see @fig-fig14-8. --->
 
@@ -809,14 +811,14 @@ knitr::include_graphics("images/fig10-8.png")
 
 ### 與獨立性檢定有可分別? {#sec-difference-McNemar-independence}
 
-讓我們回到本章的開頭，再次查看卡片數據集。如果您回憶一下，我描述的實際實驗設計涉及人們進行兩次選擇。因為我們有關於每個人第一次選擇和第二次選擇的信息，我們可以構建以下列聯表，用於將第一次選擇與第二次選擇交叉列聯（@tbl-tab14-13）。
+讓我們回到本章的開頭，再次查看卡片資料集。如果您回憶一下，我描述的實際實驗設計涉及人們進行兩次選擇。因為我們有關於每個人第一次選擇和第二次選擇的信息，我們可以構建以下列聯表，用於將第一次選擇與第二次選擇交叉列聯（@tbl-tab14-13）。
 
 
 <!--- Let's go all the way back to the beginning of the chapter and look at the cards data set again. If you recall, the actual experimental design that I described involved people making two choices. Because we have information about the first choice and the second choice that everyone made, we can construct the following contingency table that cross-tabulates the first choice against the second choice (@tbl-tab14-13). --->
 
 ```{r}
 #| label: tbl-tab14-13
-#| tbl-cap: 用*Randomness.omv*（卡片）數據交叉列聯第一次與第二次選擇
+#| tbl-cap: 用*Randomness.omv*（卡片）資料交叉列聯第一次與第二次選擇
 #Cross-tabulating first against second choice with the *Randomness.omv* (cards) data
 huxtabs[[10]][[13]]
 ```
@@ -825,7 +827,7 @@ huxtabs[[10]][[13]]
 
 另外，假設我想知道平均而言，第二次選擇的花色頻率是否與第一次選擇不同。在這種情況下，我真正想做的是看看行總數是否不同於列總數。這就是您使用麥內瑪檢驗的時候。
 
-這些不同分析產生的不同統計數據顯示在 @fig-fig14-9 中。注意結果是不同的！這些檢驗並不相同。
+這些不同分析產生的不同統計資料顯示在 @fig-fig14-9 中。注意結果是不同的！這些檢驗並不相同。
 
 <!--- Suppose I wanted to know whether the choice you make the second time is dependent on the choice you made the first time. This is where a test of independence is useful, and what we're trying to do is see if there's some relationship between the rows and columns of this table.
 
@@ -836,7 +838,7 @@ The different statistics produced by these different analyses are shown in @fig-
 ```{r}
 #| label: fig-fig14-9
 #| out.width: 60%
-#| fig-cap: Randomness.omv（卡片）數據中的獨立與成對（麥內瑪）
+#| fig-cap: Randomness.omv（卡片）資料中的獨立與成對（麥內瑪）
 #Independent vs. Paired (McNemar) with the *Randomness.omv* (cards) data
 knitr::include_graphics("images/fig10-9.png")
 ```

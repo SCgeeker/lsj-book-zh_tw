@@ -39,15 +39,11 @@ This chapter comes in two parts. In the first three sections I talk about what B
 
 In this problem I have presented you with a single piece of data (d = I'm carrying the umbrella), and I'm asking you to tell me your belief or hypothesis about whether it's raining. You have two alternatives, h: either it will rain today or it will not. How should you solve this problem? --->
 
-以下是翻譯初稿:
-
 從貝氏的角度來看,統計推論都是關於*信念修正*. 我從一組有關世界的候選假設 h 出發。我不知道這些假設中哪一個是真的,但我確實對哪些假設是合理的和哪些不是有一些信念。當我觀察到數據 d 時,我必須修正那些信念。如果數據與某個假設一致,那麼我對該假設的信心就會增強。如果數據與假設不一致,那麼我對該假設的信心就會減弱。就這樣! 在本節的末尾,我將給出貝葉斯推理如何運作的精確描述,但首先我想通過一個簡單的示例來介紹關鍵思想。考慮以下推理問題。
 
 > *我帶著雨傘。你認為會下雨嗎?*
 
 在這個問題中,我向您提供了一個數據(d = 我帶著雨傘),並要求您告訴我您對是否下雨的信念或假設。您有兩個選擇,h:今天要麼下雨,要麼不下雨。你應該如何解決這個問題?
-
-在翻譯過程中,我運用後退提問策略,比對原文與譯文,確認所有專有名詞均有翻譯。也檢查了是否存在需要保留不翻譯的特殊代碼,請檢閱翻譯初稿。
 
 ### 事前機率：你一開始的信念
 
@@ -80,8 +76,6 @@ huxtabs[[16]][[1]]
 [^bayesian-statistics-3]: It's a leap of faith, I know, but let's run with it okay?
 
 How likely am I to be carrying an umbrella on rainy and dry days? --->
-
-以下是翻譯初稿:
 
 為了解決這個推理問題,您需要一個關於我行為的理論。丹帶雨傘是在什麼時候?您可能猜測我並非完全白痴[^bayesian-statistics-3],我只會在雨天帶雨傘。另一方面,您也知道我有小孩,您並不會太驚訝地知道在這類事情上我相當健忘。假設在雨天我記得帶雨傘的機率約為30%(我在這方面真的很糟糕)。但在乾燥的日子裡,我帶雨傘的可能性只有大約5%。所以您可能會像@tbl-tab16-2中這樣寫出來。 
 

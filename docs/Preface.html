@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,7 +59,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出"
+    "search-submit-button-title": "送出",
+    "search-label": "搜尋"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -92,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preface.html">前言</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -106,8 +107,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./用jamovi上手統計學.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -136,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜尋"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -268,12 +268,6 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">線性模型的學習取向</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></span></a>
   </div>
@@ -349,8 +343,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">目錄</h2>
    
   <ul>
-  <li><a href="#沿革與版權說明" id="toc-沿革與版權說明" class="nav-link active" data-scroll-target="#沿革與版權說明">沿革與版權說明</a></li>
+  <li><a href="#中文化版本沿革與版權說明" id="toc-中文化版本沿革與版權說明" class="nav-link active" data-scroll-target="#中文化版本沿革與版權說明">中文化版本沿革與版權說明</a>
+  <ul class="collapse">
+  <li><a href="#中文化編修進度表" id="toc-中文化編修進度表" class="nav-link" data-scroll-target="#中文化編修進度表">中文化編修進度表</a></li>
+  </ul></li>
+  <li><a href="#英文版版本沿革與版權說明" id="toc-英文版版本沿革與版權說明" class="nav-link" data-scroll-target="#英文版版本沿革與版權說明">英文版版本沿革與版權說明</a>
+  <ul class="collapse">
   <li><a href="#preface-to-version-0.75" id="toc-preface-to-version-0.75" class="nav-link" data-scroll-target="#preface-to-version-0.75">Preface to Version 0.75</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/Preface.qmd" class="toc-action">編輯本頁面</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">回報問題</a></p></div></div></nav>
     </div>
@@ -362,33 +362,159 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="沿革與版權說明" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="沿革與版權說明">沿革與版權說明</h2>
+<section id="中文化版本沿革與版權說明" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="中文化版本沿革與版權說明">中文化版本沿革與版權說明</h2>
+<p>中文化電子書翻譯及改編自統計學教材~ Navarro DJ and Foxcroft DR (2022). learning statistics with jamovi: a tutorial for psychology students and other beginners. (Version 0.75). <a href="https://dx.doi.org/10.24384/hgc3-7p15">DOI: 10.24384/hgc3-7p15</a></p>
+<p>中文化電子書採用<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant">姓名標示-相同方式分享 4.0 國際</a>開放授權釋出。任何人得以任何媒介或格式重製及散布本素材，或重混、轉換本素材、及依本素材建立新素材且為任何目的，包含商業性質之使用。只要使用者遵守授權條款規定，授權人不能撤回任何使用者使用本素材的自由。</p>
+<section id="中文化編修進度表" class="level3">
+<h3 class="anchored" data-anchor-id="中文化編修進度表">中文化編修進度表</h3>
+<ul>
+<li>AI初翻: 已全部完成。</li>
+<li>第一次編修: 依各單元完成次單元估計。</li>
+<li>第二次編修: 歡迎使用者透過各單元網頁右方<strong>編輯本頁面</strong>或<strong>問報問題</strong>的留言連結，協助編修及提出指正。</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>單元</th>
+<th>AI初翻</th>
+<th>第一次編修</th>
+<th>第二次編修</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="01-Why-do-we-learn-statistics.html">單元1</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="02-A-brief-introduction-to-research-design.html">單元2</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="03-Getting-started-with-jamovi.html">單元3</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="04-Descriptive-statistics.html">單元4</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="05-Drawing-graphs.html">單元5</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="06-Pragmatic-matters.html">單元6</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="Prelude-Part-IV.html">中途單元</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="07-Introduction-to-probability.html">單元7</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="08-Estimating-unknown-quantities-from-a-sample.html">單元8</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="09-Hypothesis-testing.html">單元9</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="10-Categorical-data-analysis.html">單元10</a></td>
+<td>100%</td>
+<td>10%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="11-Comparing-two-means.html">單元11</a></td>
+<td>100%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="12-Correlation-and-linear-regression.html">單元12</a></td>
+<td>100%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="13-Comparing-several-means-one-way-ANOVA.html">單元13</a></td>
+<td>100%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="14-Factorial-ANOVA.html">單元14</a></td>
+<td>100%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td><a href="15-Factor-Analysis.html">單元15</a></td>
+<td>100%</td>
+<td>75%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td><a href="16-Bayesian-statistics">單元16</a></td>
+<td>100%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="英文版版本沿革與版權說明" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="英文版版本沿革與版權說明">英文版版本沿革與版權說明</h2>
 <p>This book is an adaptation of DJ Navarro (2018). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6). <a href="https://learningstatisticswithr.com/">https://learningstatisticswithr.com/</a>.</p>
 <p>The book is released under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">creative commons CC BY-SA 4.0 licence</a>. This means that this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA.</p>
-</section>
-<section id="preface-to-version-0.75" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="preface-to-version-0.75">Preface to Version 0.75</h2>
+<section id="preface-to-version-0.75" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="preface-to-version-0.75">Preface to Version 0.75</h3>
 <p>In this version we have updated the figures, images and text to maintain compatibility with latest versions of jamovi (2.2); many thanks to Peter Fisk for his help with this. Also tweaked and corrected are a few sections where improvements have been suggested by readers. This has mainly included fixing typos but also in places correcting conceptual detail, for example we have updated the information on kurtosis to reflect that it isn’t really about distribution “pointiness” and instead kurtosis is about whether data distributions have thin or fat tails. Thanks to all the readers who made suggestions, either through contacting me by email, or raising an issue on github.</p>
 <p><em>David Foxcroft<br>
 February 9th, 2022</em></p>
 </section>
-<section id="preface-to-version-0.70" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.70">Preface to Version 0.70</h2>
+<section id="preface-to-version-0.70" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.70">Preface to Version 0.70</h3>
 <p>This update from version 0.65 introduces some new analyses. In the ANOVA chapters we have added sections on repeated measures ANOVA and analysis of covariance (ANCOVA). In a new chapter we have introduced Factor Analysis and related techniques. Hopefully the style of this new material is consistent with the rest of the book, though eagle-eyed readers might spot a bit more of an emphasis on conceptual and practical explanations, and a bit less algebra. I’m not sure this is a good thing, and might add the algebra in a bit later. But it reflects both my approach to understanding and teaching statistics, and also some feedback I have received from students on a course I teach. In line with this, I have also been through the rest of the book and tried to separate out some of the algebra by putting it into a box or frame. It’s not that this stuff is not important or useful, but for some students they may wish to skip over it and therefore the boxing of these parts should help some readers.</p>
 <p>With this version I am very grateful to comments and feedback received from my students and colleagues, notably Wakefield Morys-Carter, and also to numerous people all over the world who have sent in small suggestions and corrections - much appreciated, and keep them coming! One pretty neat new feature is that the example data files for the book can now be loaded into jamovi as an add-on module - thanks to Jonathon Love for helping with that.</p>
 <p><em>David Foxcroft<br>
 February 1st, 2019</em></p>
 </section>
-<section id="preface-to-version-0.65" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.65">Preface to Version 0.65</h2>
+<section id="preface-to-version-0.65" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.65">Preface to Version 0.65</h3>
 <p>In this adaptation of the excellent ‘Learning statistics with R’, by Danielle Navarro, we have replaced the statistical software used for the analyses and examples with jamovi. Although R is a powerful statistical programming language, it is not the first choice for every instructor and student at the beginning of their statistical learning. Some instructors and students tend to prefer the point-and-click style of software, and that’s where jamovi comes in. jamovi is software that aims to simplify two aspects of using R. It offers a point-and-click graphical user interface (GUI), and it also provides functions that combine the capabilities of many others, bringing a more SPSS- or SAS-like method of programming to R. Importantly, jamovi will always be free and open - that’s one of its core values - because jamovi is made by the scientific community, for the scientific community.</p>
 <p>With this version I am very grateful for the help of others who have read through drafts and provided excellent suggestions and corrections, particularly Dr David Emery and Kirsty Walter.</p>
 <p><em>David Foxcroft<br>
 July 1st, 2018</em></p>
 </section>
-<section id="preface-to-version-0.6" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.6">Preface to Version 0.6</h2>
+<section id="preface-to-version-0.6" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.6">Preface to Version 0.6</h3>
 <p>The book hasn’t changed much since 2015 when I released Version 0.5 – it’s probably fair to say that I’ve changed more than it has. I moved from Adelaide to Sydney in 2016 and my teaching profile at UNSW is different to what it was at Adelaide, and I haven’t really had a chance to work on it since arriving here! It’s a little strange looking back at this actually. A few quick comments…</p>
 <ul>
 <li>Weirdly, the book consistently misgenders me, but I suppose I have only myself to blame for that one :-) There’s now a brief footnote on page 12 that mentions this issue; in real life I’ve been working through a gender affirmation process for the last two years and mostly go by she/her pronouns. I am, however, just as lazy as I ever was so I haven’t bothered updating the text in the book.</li>
@@ -399,22 +525,22 @@ July 1st, 2018</em></p>
 <p>Best,<br>
 <em>Danielle Navarro</em></p>
 </section>
-<section id="preface-to-version-0.5" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.5">Preface to Version 0.5</h2>
+<section id="preface-to-version-0.5" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.5">Preface to Version 0.5</h3>
 <p>Another year, another update. This time around, the update has focused almost entirely on the theory sections of the book. Chapters 9, 10 and 11 have been rewritten, hopefully for the better. Along the same lines, Chapter 17 is entirely new, and focuses on Bayesian statistics. I think the changes have improved the book a great deal. I’ve always felt uncomfortable about the fact that all the inferential statistics in the book are presented from an orthodox perspective, even though I almost always present Bayesian data analyses in my own work. Now that I’ve managed to squeeze Bayesian methods into the book somewhere, I’m starting to feel better about the book as a whole. I wanted to get a few other things done in this update, but as usual I’m running into teaching deadlines, so the update has to go out the way it is!</p>
 <p><em>Danielle Navarro<br>
 February 16, 2015</em></p>
 </section>
-<section id="preface-to-version-0.4" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.4">Preface to Version 0.4</h2>
+<section id="preface-to-version-0.4" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.4">Preface to Version 0.4</h3>
 <p>A year has gone by since I wrote the last preface. The book has changed in a few important ways: Chapters 3 and 4 do a better job of documenting some of the time saving features of Rstudio, Chapters 12 and 13 now make use of new functions in the lsr package for running chi-square tests and t tests, and the discussion of correlations has been adapted to refer to the new functions in the lsr package. The soft copy of 0.4 now has better internal referencing (i.e., actual hyperlinks between sections), though that was introduced in 0.3.1. There’s a few tweaks here and there, and many typo corrections (thank you to everyone who pointed out typos!), but overall 0.4 isn’t massively different from 0.3.</p>
 <p>I wish I’d had more time over the last 12 months to add more content. The absence of any discussion of repeated measures ANOVA and mixed models more generally really does annoy me. My excuse for this lack of progress is that my second child was born at the start of 2013, and so I spent most of last year just trying to keep my head above water. As a consequence, unpaid side projects like this book got sidelined in favour of things that actually pay my salary! Things are a little calmer now, so with any luck version 0.5 will be a bigger step forward.</p>
 <p>One thing that has surprised me is the number of downloads the book gets. I finally got some basic tracking information from the website a couple of months ago, and (after excluding obvious robots) the book has been averaging about 90 downloads per day. That’s encouraging: there’s at least a few people who find the book useful!</p>
 <p><em>Danielle Navarro<br>
 February 4, 2014</em></p>
 </section>
-<section id="preface-to-version-0.3" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.3">Preface to Version 0.3</h2>
+<section id="preface-to-version-0.3" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="preface-to-version-0.3">Preface to Version 0.3</h3>
 <p>There’s a part of me that really doesn’t want to publish this book. It’s not finished.</p>
 <p>And when I say that, I mean it. The referencing is spotty at best, the chapter summaries are just lists of section titles, there’s no index, there are no exercises for the reader, the organisation is suboptimal, and the coverage of topics is just not comprehensive enough for my liking. Additionally, there are sections with content that I’m not happy with, figures that really need to be redrawn, and I’ve had almost no time to hunt down inconsistencies, typos, or errors. In other words, this book is not finished. If I didn’t have a looming teaching deadline and a baby due in a few weeks, I really wouldn’t be making this available at all.</p>
 <p>What this means is that if you are an academic looking for teaching materials, a Ph.D.&nbsp;student looking to learn R, or just a member of the general public interested in statistics, I would advise you to be cautious. What you’re looking at is a first draft, and it may not serve your purposes. If we were living in the days when publishing was expensive and the internet wasn’t around, I would never consider releasing a book in this form. The thought of someone shelling out $80 for this (which is what a commercial publisher told me it would retail for when they offered to distribute it) makes me feel more than a little uncomfortable. However, it’s the 21st century, so I can post the pdf on my website for free, and I can distribute hard copies via a print-on-demand service for less than half what a textbook publisher would charge. And so my guilt is assuaged, and I’m willing to share! With that in mind, you can obtain free soft copies and cheap hard copies online, from the following webpages:</p>
@@ -430,6 +556,7 @@ Hard copy: <a href="https://www.lulu.com/content/13570633">www.lulu.com/content/
 January 13, 2013</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

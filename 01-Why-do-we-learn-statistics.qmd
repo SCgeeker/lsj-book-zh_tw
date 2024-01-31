@@ -133,13 +133,13 @@ Now, suppose that people really are perfectly able to set aside their pre-existi
 	</tr>
 	<tr>
 		<th>論證有效</th>
-		<td>100\(\%\) 認為“有效”</td>
-		<td>100\(\%\) 認為“有效”</td>
+		<td>100% 認為“有效”</td>
+		<td>100% 認為“有效”</td>
 	</tr>
 	<tr>
 		<th>論證無效</th>
-		<td>0\(\%\) 認為“有效”</td>
-		<td>0\(\%\) 認為“有效”</td>
+		<td>0% 認為“有效”</td>
+		<td>0% 認為“有效”</td>
 	</tr>
 </table>
 ```
@@ -161,13 +161,13 @@ Now, suppose that people really are perfectly able to set aside their pre-existi
 	</tr>
 	<tr>
 		<th>論證有效</th>
-		<td>92\(\%\) 認為“有效”</td>
+		<td>92% 認為“有效”</td>
 		<td> </td>
 	</tr>
 	<tr>
 		<th>論證無效</th>
 		<td> </td>
-		<td>8\(\%\) 認為“有效”</td>
+		<td>8% 認為“有效”</td>
 	</tr>
 </table>
 ```
@@ -197,13 +197,13 @@ In a classic study, @Evans1983 ran an experiment looking at exactly this. What t
 	</tr>
 	<tr>
 		<th>論證有效</th>
-		<td>92\(\%\) 認為“有效”</td>
-		<td><b>46\(\%\) 認為“有效”</b></td>
+		<td>92% 認為“有效”</td>
+		<td><b>46% 認為“有效”</b></td>
 	</tr>
 	<tr>
 		<th>論證無效</th>
-		<td><b>92\(\%\) 認為“有效”</b></td>
-		<td>8\(\%\) 認為“有效”</td>
+		<td><b>92% 認為“有效”</b></td>
+		<td>8% 認為“有效”</td>
 	</tr>
 </table>
 ```
@@ -242,12 +242,12 @@ If you think about it, it's not as if these data are horribly damning. Overall, 
 	<tr>
 		<th>男性</th>
 		<td>8442</td>
-		<td>44\(\%\)</td>
+		<td>44%</td>
 	</tr>
 	<tr>
 		<th>女性</th>
 		<td>4321</td>
-		<td>35\(\%\)</td>
+		<td>35%</td>
 	</tr>
 </table>
 ```
@@ -286,44 +286,44 @@ huxtabs[[1]][[4]] |> set_contents(1, 1, "")--->
 	<tr>
 		<th>A</th>
 		<td>825</td>
-		<td>62\(\%\)</td>
+		<td>62%</td>
 		<td>108</td>
-		<td>82\(\%\)</td>
+		<td>82%</td>
 	</tr>
 	<tr>
 		<th>B</th>
 		<td>560</td>
-		<td>63\(\%\)</td>
+		<td>63%</td>
 		<td>25</td>
-		<td>68\(\%\)</td>
+		<td>68%</td>
 	</tr>
 	<tr>
 		<th>C</th>
 		<td>325</td>
-		<td>37\(\%\)</td>
+		<td>37%</td>
 		<td>593</td>
-		<td>34\(\%\)</td>
+		<td>34%</td>
 	</tr>
 	<tr>
 		<th>D</th>
 		<td>417</td>
-		<td>33\(\%\)</td>
+		<td>33%</td>
 		<td>375</td>
-		<td>35\(\%\)</td>
+		<td>35%</td>
 	</tr>
 	<tr>
 		<th>E</th>
 		<td>191</td>
-		<td>28\(\%\)</td>
+		<td>28%</td>
 		<td>393</td>
-		<td>24\(\%\)</td>
+		<td>24%</td>
 	</tr>
 	<tr>
 		<th>F</th>
 		<td>272</td>
-		<td>6\(\%\)</td>
+		<td>6%</td>
 		<td>341</td>
-		<td>7\(\%\)</td>
+		<td>7%</td>
 	</tr>
 </table>
 ```
@@ -395,7 +395,7 @@ knitr::include_graphics("images/fig1-1.png")
 
 <!---To some extent, but not completely. It's true that you don't need to become a fully trained statistician just to do psychology, but you do need to reach a certain level of statistical competence. In my view, there's three reasons that every psychological researcher ought to be able to do basic statistics:--->
 
--   首先是最基本的原因：統計學與研究設計密不可分。如果你想成為設計心理學研究的專家，你至少需要了解統計學的基礎。(譯註：[第2章](docs/02-A-brief-introduction-to-research-design.html)就是談研究設計)
+-   首先是最基本的原因：統計學與研究設計密不可分。如果你想成為設計心理學研究的專家，你至少需要了解統計學的基礎。(譯註： @sec-A-brief-introduction-to-research-design 就是談研究設計)
 -   其次，如果你想成為研究心理學的專家，那麼你就需要有能夠讀懂心理學文獻的能力，對吧？但是幾乎每篇心理學論文都有報告統計分析結果。如果你真的想徹底搞懂心理學，你就需要理解報告作者對資料做了什麼分析。也就是說你需要了解一定程度的統計學。
 -   第三，依靠別人做統計學有一個很實際問題：統計分析是件**價格昂貴的工作**。如果你曾經無聊到去查詢澳洲政府制定的大學學費標準，會發現一件有趣的事情：統計學被指定為"國家優先"項目，因此學費比任何其他學科都低得多。這是因為社會各界都需要統計學專家的協助。從心理學研究者的立場來看，我們面對的是供給遠少於需求的賣方市場！幾乎任何一個心理學研究室都能看到相同的殘酷現實，就是沒有足夠經費聘請統計專家。因此，經濟現實逼迫心理學家必須自立自強。
 
