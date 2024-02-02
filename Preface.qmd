@@ -14,23 +14,24 @@
 
 |單元|AI初翻|第一次編修|第二次編修|
 |---|---|---|---|
-|[單元1](01-Why-do-we-learn-statistics.html)|100%|100%|0%|
-|[單元2](02-A-brief-introduction-to-research-design.html)|100%|100%|0%|
-|[單元3](03-Getting-started-with-jamovi.html)|100%|100%|0%|
-|[單元4](04-Descriptive-statistics.html)|100%|100%|0%|
-|[單元5](05-Drawing-graphs.html)|100%|100%|0%|
-|[單元6](06-Pragmatic-matters.html)|100%|100%|0%|
-|[中途單元](Prelude-Part-IV.html)|100%|100%|0%|
-|[單元7](07-Introduction-to-probability.html)|100%|100%|0%|
-|[單元8](08-Estimating-unknown-quantities-from-a-sample.html)|100%|100%|0%|
-|[單元9](09-Hypothesis-testing.html)|100%|100%|0%|
-|[單元10](10-Categorical-data-analysis.html)|100%|10%|0%|
-|[單元11](11-Comparing-two-means.html)|100%|0%|0%|
-|[單元12](12-Correlation-and-linear-regression.html)|100%|0%|0%|
-|[單元13](13-Comparing-several-means-one-way-ANOVA.html)|100%|0%|0%|
-|[單元14](14-Factorial-ANOVA.html)|100%|0%|0%|
-|[單元15](15-Factor-Analysis.html)|100%|75%|0%|
-|[單元16](16-Bayesian-statistics)|100%|0%|0%|
+| @sec-why-do-we-learn-statistics |100%|100%|0%|
+| @sec-A-brief-introduction-to-research-design |100%|100%|0%|
+| [單元3](03-Getting-started-with-jamovi.html) |100%|100%|0%|
+| @sec-Descriptive-statistics|100%|100%|0%|
+| @sec-Drawing-graphs|100%|100%|0%|
+| @sec-Pragmatic-matters|100%|100%|0%|
+| [中場故事](Prelude-Part-IV.html) |100%|100%|0%|
+| @sec-Introduction-to-probability|100%|100%|0%|
+| @sec-Estimating-unknown-quantities-from-a-sample|100%|100%|0%|
+| @sec-Hypothesis-testing|100%|100%|0%|
+| @sec-Categorical-data-analysis|100%|10%|0%|
+| @sec-Comparing-two-means|100%|0%|0%|
+| @sec-Correlation-and-linear-regression|100%|0%|0%|
+| @sec-Comparing-several-means-one-way-ANOVA|100%|0%|0%|
+| @sec-Factorial-ANOVA |100%|0%|0%|
+| @sec-Factor-Aanalysis |100%|75%|0%|
+| @sec-Bayesian-statistics |100%|0%|0%|
+| [後記](Epilogue.html) |100%|5%|0%|
 
 
 ## 英文版版本沿革與版權說明 {.unnumbered}
@@ -211,7 +212,7 @@ With that in mind, you can obtain free soft copies and cheap hard copies
 online, from the following webpages:
 
 Soft copy:
-[www.compcogscisydney.com/learning-statistics-with-r.html](https://www.compcogscisydney.com/learning-statistics-with-r.html)  
+[www.compcogscisydney.com/learning-statistics-with-r.html](https://www.compcogscisydney.com/learning-statistics-with-r  
 Hard copy:
 [www.lulu.com/content/13570633](https://www.lulu.com/content/13570633)  
 [***Ed: these links are defunct, try this instead:

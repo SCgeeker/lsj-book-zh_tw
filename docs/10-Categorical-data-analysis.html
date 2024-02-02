@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./11-Comparing-two-means.html" rel="next">
-<link href="./Prelude-Part-V.html" rel="prev">
+<link href="./09-Hypothesis-testing.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -78,7 +78,8 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出"
+    "search-submit-button-title": "送出",
+    "search-label": "搜尋"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -113,10 +114,10 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prelude-Part-V.html">統計方法</a></li><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html">統計方法</a></li><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -130,8 +131,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./用jamovi上手統計學.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -160,7 +160,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜尋"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -290,12 +290,6 @@ div.csl-indent {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">線性模型的學習取向</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link active">
@@ -549,10 +543,10 @@ $H_1: \text{ At least one of the suit-choice probabilities isn’t 0.25}$
 </section>
 <section id="適合度檢定統計程序" class="level3" data-number="10.1.3">
 <h3 data-number="10.1.3" class="anchored" data-anchor-id="適合度檢定統計程序"><span class="header-section-number">10.1.3</span> 適合度檢定統計程序</h3>
-<p>在此階段，我們有我們觀察到的頻率 O 和一組與我們要測試的虛無假設相對應的機率 P。我們現在要做的是構造一個虛無假設的檢驗。與往常一樣，如果我們想要檢驗 <span class="math inline">\(H_0\)</span> 和 <span class="math inline">\(H_1\)</span>，我們將需要一個檢驗統計量。適合度檢驗所使用的基本技巧是構造一個檢驗統計量，用來衡量資料與虛無假設之間的“接近度”。如果資料與虛無假設為真時所期望的情況不相符，那麼它可能不是真的。好吧，如果虛無假設是真的，我們會看到什麼呢？或者，使用正確的術語，這些是什麼<strong>期望頻率</strong>。總共有 <span class="math inline">\(N = 200\)</span> 次觀察，並且（如果虛無假設為真），任何一個選擇紅心的機率是 <span class="math inline">\(P_3 = .25\)</span>，所以我猜我們期望 <span class="math inline">\(200 \times .25 = 50\)</span> 顆紅心，對吧？或者，更具體地說，如果我們讓 Ei 指的是“在虛無假設為真時，我們期望觀察到的第 i 類反應的數量”，那麼</p>
+<p>到了這一步，手上有觀察次數 O 以及一組對應要測試的虛無假設的機率 P，接著就是建構虛無假設的檢定方法。如同 <a href="09-Hypothesis-testing.html"><span>單元&nbsp;9</span></a> 的說明，要檢測 <span class="math inline">\(H_0\)</span> 和 <span class="math inline">\(H_1\)</span>，就需要計算檢測統計值，構成適合度檢定的統計值是衡量資料與虛無假設之間的“接近程度”。如果資料不相符虛無假設的期望機率，那麼虛無假設呈現的情況可能不是真的。那麼，如果虛無假設是真的，檢測結果會是什麼樣子呢？或者專有名詞來問，<strong>期望次數</strong>是什麼？總共有 <span class="math inline">\(N = 200\)</span> 次觀察，若是虛無假設為真，任何一位參與者選擇紅心的機率是 <span class="math inline">\(P_3 = .25\)</span>，所以紅心的期望次數是 <span class="math inline">\(200 \times .25 = 50\)</span> ，對吧？更具體的方式是用<span class="math inline">\(E_i\)</span>代表“虛無假設為真時，研究人員期望觀察到第 i 類反應的次數”，也就是這個數學式：</p>
 <p><span class="math display">\[E_i=N \times P_i\]</span></p>
-<p>這非常容易計算。如果有 200 個觀察可以分為四個類別，我們認為所有四個類別的可能性相等，那麼平均每個類別應該有 50 個觀察，對吧？</p>
-<p>那麼，我們如何將這個轉換為檢驗統計量呢？顯然，我們要做的是比較每個類別的期望觀察數量（<span class="math inline">\(E_i\)</span>）與該類別的實際觀察數量（<span class="math inline">\(O_i\)</span>）。基於這種比較，我們應該能夠得出一個好的檢驗統計量。首先，讓我們計算虛無假設期望我們找到的數量和我們實際找到的數量之間的差異，也就是，我們計算“觀察到的值減去期望值”的差分數，<span class="math inline">\(O_i - E_i\)</span>。這在 <a href="#tbl-tab14-3">表&nbsp;<span>10.3</span></a> 中說明。</p>
+<p>這個式子很好計算。就像現在的200 個觀察值是分為四個類別，研究人員認為參與者會選擇任何一個類別的可能性相等，那麼每個類別應該都有50人次，對吧？</p>
+<p>接著要如何將觀察次數和期望次數轉換為檢測統計值呢？只要比較每個類別的期望觀察次數（<span class="math inline">\(E_i\)</span>）與各自的實際觀察次數（<span class="math inline">\(O_i\)</span>），就能得出一個有用的檢測統計值。首先要計算虛無假設的期望次數與實際總計出的次數之間差異也就是計算“觀察次數減去期望次數”的差異值，<span class="math inline">\(O_i - E_i\)</span>。詳細計算請見 <a href="#tbl-tab14-3">表&nbsp;<span>10.3</span></a> 。</p>
 <!--- At this point, we have our observed frequencies O and a collection of probabilities P corresponding to the null hypothesis that we want to test. What we now want to do is construct a test of the null hypothesis. As always, if we want to test $H_0$ against $H_1$, we're going to need a test statistic. The basic trick that a goodness-of-fit test uses is to construct a test statistic that measures how "close" the data are to the null hypothesis. If the data don't resemble what you'd "expect" to see if the null hypothesis were true, then it probably isn't true. Okay, if the null hypothesis were true, what would we expect to see? Or, to use the correct terminology, what are the **expected frequencies**. There are $N = 200$ observations, and (if the null is true) the probability of any one of them choosing a heart is $P_3 = .25$, so I guess we're expecting $200 \times .25 = 50$ hearts, right? Or, more specifically, if we let Ei refer to "the number of category i responses that we're expecting if the null is true", then
 
 $$E_i=N \times P_i$$
@@ -564,7 +558,7 @@ Now, how do we translate this into a test statistic? Clearly, what we want to do
 <div class="cell-output-display">
 <div id="tbl-tab14-3" class="anchored">
 <table id="tab:tbl-tab14-3" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;10.3: 預期和觀察到的頻率</caption>
+<caption>表&nbsp;10.3: 期望次數和實際次數</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
@@ -601,13 +595,13 @@ Now, how do we translate this into a test statistic? Clearly, what we want to do
 
 </div>
 </div>
-<p>因此，根據我們的計算，顯然人們選擇紅心的次數比虛無假設預測的多，而選擇梅花的次數則少。然而，稍作思考便會發現，這些原始差異並非我們所尋求的。直覺上，當虛無假設預測觀察次數過少（就像紅心那樣）時，它與預測觀察次數過多（就像梅花那樣）一樣糟糕。因此，對於梅花有負數，對於紅心有正數有點奇怪。解決這個問題的一個簡單方法是將所有數字平方，這樣我們現在就可以計算平方差，<span class="math inline">\((E_i - O_i)^2\)</span>。就像以前一樣，我們可以手工計算（<a href="#tbl-tab14-4">表&nbsp;<span>10.4</span></a>）。</p>
+<p>根據以上的計算，選擇紅心的人數顯然比虛無假設預測的多，選擇梅花的人較少。不過稍微想一下就會發現，最後一列的差異值有負的數值！這裡的奇怪之處在於虛無假設所做的預測少於觀察次數(像示範資料的紅心)，和預測多於觀察次數(像示範資料的梅花)一樣糟糕。最簡單的解決方法是將所有數字平方，如此就可以計算平方差，<span class="math inline">\((E_i - O_i)^2\)</span>。這樣就能算出如 <a href="#tbl-tab14-4">表&nbsp;<span>10.4</span></a> 的數值。</p>
 <!--- So, based on our calculations, it's clear that people chose more hearts and fewer clubs than the null hypothesis predicted. However, a moment's thought suggests that these raw differences aren't quite what we're looking for. Intuitively, it feels like it's just as bad when the null hypothesis predicts too few observations (which is what happened with hearts) as it is when it predicts too many (which is what happened with clubs). So it's a bit weird that we have a negative number for clubs and a positive number for hearts. One easy way to fix this is to square everything, so that we now calculate the squared differences, $(E_i - O_i)^2$ . As before, we can do this by hand (@tbl-tab14-4). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab14-4" class="anchored">
 <table id="tab:tbl-tab14-4" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;10.4: 將差異得分平方</caption>
+<caption>表&nbsp;10.4: 四種花色差異次數平方</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">\( \clubsuit \)</td>
@@ -628,13 +622,13 @@ Now, how do we translate this into a test statistic? Clearly, what we want to do
 
 </div>
 </div>
-<p>現在我們取得了進展。現在我們有了一組數字，在虛無假設做出糟糕預測時（梅花和紅心），數字很大，但在做出好的預測時（方塊和黑桃），數字很小。接下來，由於我將在稍後解釋的一些技術原因，讓我們也將這些數字除以期望頻率 Ei，因此我們實際上計算的是 <span class="math inline">\(\frac{(E_i-O_i)^2}{E_i}\)</span>。由於我們例子中所有類別的 <span class="math inline">\(E_i = 50\)</span>，所以這不是一個非常有趣的計算，但無論如何，讓我們這麼做（<a href="#tbl-tab14-5">表&nbsp;<span>10.5</span></a>）。</p>
+<p>現在的算出來的這組數字有明顯的特色，虛無假設預測太差的類別（梅花和紅心），數字都很大；預測不錯的類別（方塊和黑桃），數字都很小。為了解釋稍後的步驟，要將這些平方差除以期望次數 <span class="math inline">\(E_i\)</span> ，也就是<span class="math inline">\(\frac{(E_i-O_i)^2}{E_i}\)</span>。因為這個例子裡所有類別的 <span class="math inline">\(E_i = 50\)</span>，用手一個一個算還挺無聊的，不過算完後會得到（<a href="#tbl-tab14-5">表&nbsp;<span>10.5</span></a>）。</p>
 <!--- Now we're making progress. What we've got now is a collection of numbers that are big whenever the null hypothesis makes a bad prediction (clubs and hearts), but are small whenever it makes a good one (diamonds and spades). Next, for some technical reasons that I'll explain in a moment, let's also divide all these numbers by the expected frequency Ei , so we're actually calculating $\frac{(E_i-O_i)^2}{E_i}$ . Since $E_i = 50$ for all categories in our example, it's not a very interesting calculation, but let's do it anyway (@tbl-tab14-5). -->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab14-5" class="anchored">
 <table id="tab:tbl-tab14-5" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;10.5: 將平方差異得分除以期望頻率以提供一個’誤差’得分</caption>
+<caption>表&nbsp;10.5: 四種花色’誤差’分數~差異平方除以期望次數</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">\( \clubsuit \)</td>
@@ -655,11 +649,11 @@ Now, how do we translate this into a test statistic? Clearly, what we want to do
 
 </div>
 </div>
-<p>實際上，我們在這裡得到的是四個不同的“誤差”得分，每個都告訴我們在嘗試用虛無假設預測我們的觀察頻率時，空假設所犯的“錯誤”有多大。因此，為了將其轉換為有用的檢驗統計量，我們可以做的一件事就是將這些數字加起來。結果被稱為<strong>適合度</strong>統計量，通常表示為 <span class="math inline">\(\chi^2\)</span>（卡方）或 GOF。我們可以像 <a href="#tbl-tab14-6">表&nbsp;<span>10.6</span></a> 中那樣計算它。</p>
+<p>這裡所算出的是四種’誤差’分數，每個分數代表用虛無假設預測實際次數，所造成的“錯誤”程度。為了轉換為檢測統計值，接下來要做的事就是將這些數字加起來。最後加起來的值就是<strong>適合度</strong>，通常在報告裡寫成<span class="math inline">\(\chi^2\)</span>（卡方）或 GOF。所有步驟總結如下列公式(譯註：原文這裡可能寫錯)：</p>
 <p><span class="math display">\[\sum( (observed - expected)^2 / expected )\]</span></p>
-<p>這給了我們一個 8.44 的值。</p>
+<p>最後得到適合度統計值 8.44。</p>
 <p>[額外的技術細節 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>]</p>
-<p>如我們從計算中看到的，在我們的卡片資料集中，我們得到了一個 <span class="math inline">\(\chi^2\)</span> = 8.44 的值。那麼現在的問題是，這個值是否足夠大以拒絕虛無假設？</p>
+<p>根據以上的計算，這項研究資料分析結果得到了 <span class="math inline">\(\chi^2\)</span> = 8.44。那麼現在的問題就是，這個值是否大到足夠拒絕虛無假設？</p>
 <!--- In effect, what we've got here are four different "error" scores, each one telling us how big a "mistake" the null hypothesis made when we tried to use it to predict our observed frequencies. So, in order to convert this into a useful test statistic, one thing we could do is just add these numbers up. The result is called the **goodness-of-fit** statistic, conventionally referred to either as $\chi^2$ (chi-square) or GOF. We can calculate it as in @tbl-tab14-6.
 
 $$\sum( (observed - expected)^2 / expected )$$
@@ -1485,7 +1479,7 @@ Tversky, A., &amp; Kahneman, D. (1974). Judgment under uncertainty: Heuristics a
 <ol>
 <li id="fn1"><p>繁體中文報告常直接稱呼“卡方”。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>向量是由相同測量尺度的資料值所構成的序列。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>如果我們讓 k 指的是總類別數（即，對於我們的卡片資料，k = 4），則 <span class="math inline">\(\chi^2\)</span> 統計量由以下公式給出：<span class="math display">\[\chi^2 = \sum_{i=1}^{k} \frac{(O_i-E_i)^2}{E_i}\]</span> 直觀地說，如果 <span class="math inline">\(chi^2\)</span> 很小，那麼觀察到的資料 Oi 與虛無假設預測的 <span class="math inline">\(E_i\)</span> 非常接近，因此我們需要一個很大的 <span class="math inline">\(\chi^2\)</span> 統計量來拒絕虛無假設。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>如果說 k 是指資料的類別數目（在這個研究資料是指撲克牌花色，所以 k = 4），則 <span class="math inline">\(\chi^2\)</span> 統計值可用這個公式計算：<span class="math display">\[\chi^2 = \sum_{i=1}^{k} \frac{(O_i-E_i)^2}{E_i}\]</span> 如果 <span class="math inline">\(\chi^2\)</span> 統計值很小，代表觀察次數 Oi 非常接近虛無假設預測的次數 <span class="math inline">\(E_i\)</span> ，因此 <span class="math inline">\(\chi^2\)</span> 統計值要夠大，才能拒絕虛無假設。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>如果將適合度統計量的方程式重寫為 k - 1 個獨立東西之和，您將得到“正確的”抽樣分佈，即具有 k - 1 自由度的卡方分佈。在這本入門書中，展示這麼多細節的數學超出了範疇。我只想給您一個為什麼適合度統計量與卡方分佈相關的感覺。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>我有責任指出，這是一個過於簡化的說法。它適用於很多情況，但偶爾我們會遇到自由度值不是整數的情況。不要讓這個問題過於困擾您；遇到這個問題時，只需提醒自己“自由度”實際上是一個有點混亂的概念，而且我在這裡告訴您的簡單故事並不是全部故事。對於一個入門課程，通常最好堅持簡單的故事，但我認為最好警告您期望這個簡單的故事會崩潰。如果我沒有給您這個警告，您可能會在看到 <span class="math inline">\(df = 3.4\)</span> 或類似的東西時開始困惑（錯誤地）認為您理解錯了我教給您的東西，而不是（正確地）意識到有些事情是我沒有告訴您的。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>實際上，樣本大小並不總是固定的。例如，我們可能在固定時間內運行實驗，參與人數取決於有多少人出現。對於當前的目的，這並不重要<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1869,8 +1863,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Prelude-Part-V.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">線性模型的學習取向</span>
+      <a href="./09-Hypothesis-testing.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

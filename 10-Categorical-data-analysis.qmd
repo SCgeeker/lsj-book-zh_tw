@@ -120,13 +120,15 @@ $H_1: P \neq (.25, .25, .25, .25)$
 
 ### 適合度檢定統計程序
 
-在此階段，我們有我們觀察到的頻率 O 和一組與我們要測試的虛無假設相對應的機率 P。我們現在要做的是構造一個虛無假設的檢驗。與往常一樣，如果我們想要檢驗 $H_0$ 和 $H_1$，我們將需要一個檢驗統計量。適合度檢驗所使用的基本技巧是構造一個檢驗統計量，用來衡量資料與虛無假設之間的“接近度”。如果資料與虛無假設為真時所期望的情況不相符，那麼它可能不是真的。好吧，如果虛無假設是真的，我們會看到什麼呢？或者，使用正確的術語，這些是什麼**期望頻率**。總共有 $N = 200$ 次觀察，並且（如果虛無假設為真），任何一個選擇紅心的機率是 $P_3 = .25$，所以我猜我們期望 $200 \times .25 = 50$ 顆紅心，對吧？或者，更具體地說，如果我們讓 Ei 指的是“在虛無假設為真時，我們期望觀察到的第 i 類反應的數量”，那麼
+到了這一步，手上有觀察次數 O 以及一組對應要測試的虛無假設的機率 P，接著就是建構虛無假設的檢定方法。如同 @sec-Hypothesis-testing 的說明，要檢測 $H_0$ 和 $H_1$，就需要計算檢測統計值，構成適合度檢定的統計值是衡量資料與虛無假設之間的“接近程度”。如果資料不相符虛無假設的期望機率，那麼虛無假設呈現的情況可能不是真的。那麼，如果虛無假設是真的，檢測結果會是什麼樣子呢？或者專有名詞來問，**期望次數**是什麼？總共有 $N = 200$ 次觀察，若是虛無假設為真，任何一位參與者選擇紅心的機率是 $P_3 = .25$，所以紅心的期望次數是 $200 \times .25 = 50$ ，對吧？更具體的方式是用$E_i$代表“虛無假設為真時，研究人員期望觀察到第 i 類反應的次數”，也就是這個數學式：
+
 
 $$E_i=N \times P_i$$
 
-這非常容易計算。如果有 200 個觀察可以分為四個類別，我們認為所有四個類別的可能性相等，那麼平均每個類別應該有 50 個觀察，對吧？
+這個式子很好計算。就像現在的200 個觀察值是分為四個類別，研究人員認為參與者會選擇任何一個類別的可能性相等，那麼每個類別應該都有50人次，對吧？
 
-那麼，我們如何將這個轉換為檢驗統計量呢？顯然，我們要做的是比較每個類別的期望觀察數量（$E_i$）與該類別的實際觀察數量（$O_i$）。基於這種比較，我們應該能夠得出一個好的檢驗統計量。首先，讓我們計算虛無假設期望我們找到的數量和我們實際找到的數量之間的差異，也就是，我們計算“觀察到的值減去期望值”的差分數，$O_i - E_i$。這在 @tbl-tab14-3 中說明。
+接著要如何將觀察次數和期望次數轉換為檢測統計值呢？只要比較每個類別的期望觀察次數（$E_i$）與各自的實際觀察次數（$O_i$），就能得出一個有用的檢測統計值。首先要計算虛無假設的期望次數與實際總計出的次數之間差異也就是計算“觀察次數減去期望次數”的差異值，$O_i - E_i$。詳細計算請見 @tbl-tab14-3 。
+
 
 
 
@@ -140,44 +142,46 @@ Now, how do we translate this into a test statistic? Clearly, what we want to do
 
 ```{r}
 #| label: tbl-tab14-3
-#| tbl-cap: 預期和觀察到的頻率
+#| tbl-cap: 期望次數和實際次數
 #Expected and observed frequencies
 huxtabs[[10]][[3]]
 ```
 
-因此，根據我們的計算，顯然人們選擇紅心的次數比虛無假設預測的多，而選擇梅花的次數則少。然而，稍作思考便會發現，這些原始差異並非我們所尋求的。直覺上，當虛無假設預測觀察次數過少（就像紅心那樣）時，它與預測觀察次數過多（就像梅花那樣）一樣糟糕。因此，對於梅花有負數，對於紅心有正數有點奇怪。解決這個問題的一個簡單方法是將所有數字平方，這樣我們現在就可以計算平方差，$(E_i - O_i)^2$。就像以前一樣，我們可以手工計算（@tbl-tab14-4）。
+根據以上的計算，選擇紅心的人數顯然比虛無假設預測的多，選擇梅花的人較少。不過稍微想一下就會發現，最後一列的差異值有負的數值！這裡的奇怪之處在於虛無假設所做的預測少於觀察次數(像示範資料的紅心)，和預測多於觀察次數(像示範資料的梅花)一樣糟糕。最簡單的解決方法是將所有數字平方，如此就可以計算平方差，$(E_i - O_i)^2$。這樣就能算出如 @tbl-tab14-4 的數值。
+
 
 <!--- So, based on our calculations, it's clear that people chose more hearts and fewer clubs than the null hypothesis predicted. However, a moment's thought suggests that these raw differences aren't quite what we're looking for. Intuitively, it feels like it's just as bad when the null hypothesis predicts too few observations (which is what happened with hearts) as it is when it predicts too many (which is what happened with clubs). So it's a bit weird that we have a negative number for clubs and a positive number for hearts. One easy way to fix this is to square everything, so that we now calculate the squared differences, $(E_i - O_i)^2$ . As before, we can do this by hand (@tbl-tab14-4). --->
 
 ```{r}
 #| label: tbl-tab14-4
-#| tbl-cap: 將差異得分平方
+#| tbl-cap: 四種花色差異次數平方
 #Squaring the difference scores
 huxtabs[[10]][[4]]
 ```
 
-現在我們取得了進展。現在我們有了一組數字，在虛無假設做出糟糕預測時（梅花和紅心），數字很大，但在做出好的預測時（方塊和黑桃），數字很小。接下來，由於我將在稍後解釋的一些技術原因，讓我們也將這些數字除以期望頻率 Ei，因此我們實際上計算的是 $\frac{(E_i-O_i)^2}{E_i}$。由於我們例子中所有類別的 $E_i = 50$，所以這不是一個非常有趣的計算，但無論如何，讓我們這麼做（@tbl-tab14-5）。
+現在的算出來的這組數字有明顯的特色，虛無假設預測太差的類別（梅花和紅心），數字都很大；預測不錯的類別（方塊和黑桃），數字都很小。為了解釋稍後的步驟，要將這些平方差除以期望次數 $E_i$ ，也就是$\frac{(E_i-O_i)^2}{E_i}$。因為這個例子裡所有類別的 $E_i = 50$，用手一個一個算還挺無聊的，不過算完後會得到（@tbl-tab14-5）。
+
 
 <!--- Now we're making progress. What we've got now is a collection of numbers that are big whenever the null hypothesis makes a bad prediction (clubs and hearts), but are small whenever it makes a good one (diamonds and spades). Next, for some technical reasons that I'll explain in a moment, let's also divide all these numbers by the expected frequency Ei , so we're actually calculating $\frac{(E_i-O_i)^2}{E_i}$ . Since $E_i = 50$ for all categories in our example, it's not a very interesting calculation, but let's do it anyway (@tbl-tab14-5). -->
 
 ```{r}
 #| label: tbl-tab14-5
-#| tbl-cap: 將平方差異得分除以期望頻率以提供一個'誤差'得分
+#| tbl-cap: 四種花色'誤差'分數~差異平方除以期望次數
 #Dividing the squared difference scores by the expected frequency to provide an 'error' score
 huxtabs[[10]][[5]]
 ```
 
-實際上，我們在這裡得到的是四個不同的“誤差”得分，每個都告訴我們在嘗試用虛無假設預測我們的觀察頻率時，空假設所犯的“錯誤”有多大。因此，為了將其轉換為有用的檢驗統計量，我們可以做的一件事就是將這些數字加起來。結果被稱為**適合度**統計量，通常表示為 $\chi^2$（卡方）或 GOF。我們可以像 @tbl-tab14-6 中那樣計算它。
+這裡所算出的是四種'誤差'分數，每個分數代表用虛無假設預測實際次數，所造成的“錯誤”程度。為了轉換為檢測統計值，接下來要做的事就是將這些數字加起來。最後加起來的值就是**適合度**，通常在報告裡寫成$\chi^2$（卡方）或 GOF。所有步驟總結如下列公式(譯註：原文這裡可能寫錯)：
 
 $$\sum( (observed - expected)^2 / expected )$$
 
-這給了我們一個 8.44 的值。
+最後得到適合度統計值 8.44。
 
 [額外的技術細節 [^10-categorical-data-analysis-3]]
 
-[^10-categorical-data-analysis-3]: 如果我們讓 k 指的是總類別數（即，對於我們的卡片資料，k = 4），則 $\chi^2$ 統計量由以下公式給出：$$\chi^2 = \sum_{i=1}^{k} \frac{(O_i-E_i)^2}{E_i}$$ 直觀地說，如果 $chi^2$ 很小，那麼觀察到的資料 Oi 與虛無假設預測的 $E_i$ 非常接近，因此我們需要一個很大的 $\chi^2$ 統計量來拒絕虛無假設。
+[^10-categorical-data-analysis-3]: 如果說 k 是指資料的類別數目（在這個研究資料是指撲克牌花色，所以 k = 4），則 $\chi^2$ 統計值可用這個公式計算：$$\chi^2 = \sum_{i=1}^{k} \frac{(O_i-E_i)^2}{E_i}$$ 如果 $\chi^2$ 統計值很小，代表觀察次數 Oi 非常接近虛無假設預測的次數 $E_i$ ，因此 $\chi^2$ 統計值要夠大，才能拒絕虛無假設。
 
-如我們從計算中看到的，在我們的卡片資料集中，我們得到了一個 $\chi^2$ = 8.44 的值。那麼現在的問題是，這個值是否足夠大以拒絕虛無假設？
+根據以上的計算，這項研究資料分析結果得到了 $\chi^2$ = 8.44。那麼現在的問題就是，這個值是否大到足夠拒絕虛無假設？
 
 
 <!--- In effect, what we've got here are four different "error" scores, each one telling us how big a "mistake" the null hypothesis made when we tried to use it to predict our observed frequencies. So, in order to convert this into a useful test statistic, one thing we could do is just add these numbers up. The result is called the **goodness-of-fit** statistic, conventionally referred to either as $\chi^2$ (chi-square) or GOF. We can calculate it as in @tbl-tab14-6.

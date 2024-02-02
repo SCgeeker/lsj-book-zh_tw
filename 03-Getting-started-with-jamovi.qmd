@@ -1,4 +1,4 @@
-# 與jamovi的第一次接觸
+# 與jamovi的第一次接觸 {#sec-Gettng-started-with-jamovi}
 
 ```{r}
 #| include: FALSE
