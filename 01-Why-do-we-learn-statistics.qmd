@@ -18,12 +18,12 @@ source("header.R")
 
 ## 首先談談統計的心理學 {#sec-why-do-we-learn-statistics-begin}
 
-先講許多第一次來上課的同學驚呆的現實，統計學在心理學課程佔有相當的份量。另外一個不令人意外的現實，是統計學很少被上過心理學課程的同學*推薦*。畢竟正常來說，如果是喜歡統計的同學，應該是去修統計系的課，而不是來上心理學系的課。不需要太正式的調查，正在上心理學課程的同學，有一大部分想必很不高興要學有這麼多統計。為了幫助同學渡過這段不適應，我想這本書先來談談一般人對於統計學的一些常見疑問。
+先講一個讓許多心理系新鮮人驚呆的事實，統計學在心理學課程佔有相當的份量。另外一個不令人意外的事實，是統計學很少被上過心理學課程的同學*推薦*。畢竟正常來說，喜歡統計的同學都是去修統計系的課，而不是來上心理學系的課。不需要太正式的調查，一大部分正在上心理學課程的同學，想必很不高興要學這麼多統計。為了幫助同學渡過這段不適應，我想先來談談一般人對於統計學的一些常見疑問。
 
 <!---
 To the surprise of many students, statistics is a fairly significant part of a psychological education. To the surprise of no-one, statistics is very rarely the *favourite* part of one's psychological education. After all, if you really loved the idea of doing statistics, you'd probably be enrolled in a statistics class right now, not a psychology class. So, not surprisingly, there's a pretty large proportion of the student base that isn't happy about the fact that psychology has so much statistics in it. In view of this, I thought that the right place to start might be to answer some of the more common questions that people have about stats.--->
 
-這個問題的很大一部分與統計學的本質有關。統計學是什麼？統計學是做什麼用的？為什麼科學家如此迷戀統計？只要你能提出這些問題，都是值得好好回答的問題。我們先從最後一個問題開始談吧。科學家集體似乎想對每件事情進行統計分析，旁人看來近乎固執。科學家確實經常使用統計學，有時候甚至忘記向一般人解釋為什麽這樣做。這是科學家之間的一種信仰，尤其是社會科學家。任何科學家沒有完成統計之前，他的發現是不會被其他科學家信任的。(新鮮人)大學生看了，可能會認為這群人都是瘋子，因為沒有科學家會花時間向一般人回答這個非常簡單的問題：
+這個問題的很大一部分與統計學的本質有關。統計學是什麼？統計學是做什麼用的？為什麼科學家如此迷戀統計？這些都是值得好好回答的問題，我們先從最後一個問題開始談吧。科學家們似乎想對每件事情進行統計分析，旁人看來近乎固執。科學家確實經常使用統計學，有時候甚至忘記向一般人解釋為什麽這樣做。這是科學家之間的一種信仰，尤其是社會科學家。任何科學家沒有完成統計之前，他的發現是不會被其他科學家信任的。大學新鮮人看了，可能會學得這群人都是瘋子，因為沒有科學家會花時間向一般人回答這個非常簡單的問題：
 
 <!---A big part of this issue at hand relates to the very idea of statistics. What is it? What's it there for? And why are scientists so bloody obsessed with it? These are all good questions, when you think about it. So let's start with the last one. As a group, scientists seem to be bizarrely fixated on running statistical tests on everything. In fact, we use statistics so often that we sometimes forget to explain to people why we do. It's a kind of article of faith among scientists -- and especially social scientists -- that your findings can't be trusted until you've done some stats. Undergraduate students might be forgiven for thinking that we're all completely mad, because no-one takes the time to answer one very simple question:--->
 
