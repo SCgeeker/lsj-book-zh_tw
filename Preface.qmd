@@ -23,8 +23,8 @@
 | [中場故事](Prelude-Part-IV.html) |100%|100%|0%|
 | @sec-Introduction-to-probability|100%|100%|0%|
 | @sec-Estimating-unknown-quantities-from-a-sample|100%|100%|0%|
-| @sec-Hypothesis-testing|100%|100%|0%|
-| @sec-Categorical-data-analysis|100%|10%|0%|
+| @sec-Hypothesis-testing|100%|100%|0.5%|
+| @sec-Categorical-data-analysis|100%|79%|0%|
 | @sec-Comparing-two-means|100%|0%|0%|
 | @sec-Correlation-and-linear-regression|100%|0%|0%|
 | @sec-Comparing-several-means-one-way-ANOVA|100%|0%|0%|

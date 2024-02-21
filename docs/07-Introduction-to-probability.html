@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.427">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>用jamovi上手統計學 - 7&nbsp; 機率入門</title>
+<title>用jamovi上手統計學 - 8&nbsp; 機率入門</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,8 +78,7 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出",
-    "search-label": "搜尋"
+    "search-submit-button-title": "送出"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -97,7 +96,7 @@ div.csl-indent {
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="用jamovi上手統計學 - 7&nbsp; 機率入門">
+<meta property="og:title" content="用jamovi上手統計學 - 8&nbsp; 機率入門">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://scgeeker.github.io/lsj-book-zh_tw/07-Introduction-to-probability_files/figure-html/fig-fig7-1-1.png">
 <meta property="og:site-name" content="用jamovi上手統計學">
@@ -114,10 +113,10 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prelude-Part-IV.html">統計理論</a></li><li class="breadcrumb-item"><a href="./07-Introduction-to-probability.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prelude-Part-IV.html">統計理論</a></li><li class="breadcrumb-item"><a href="./07-Introduction-to-probability.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">機率入門</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -131,7 +130,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -160,7 +159,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="搜尋"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -258,25 +257,25 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Prelude-Part-IV.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">中場故事</span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">中場故事</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-Introduction-to-probability.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">機率入門</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-Hypothesis-testing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">假設檢定</span></span></a>
   </div>
 </li>
       </ul>
@@ -293,37 +292,37 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">類別資料分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11-Comparing-two-means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12-Correlation-and-linear-regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13-Comparing-several-means-one-way-ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">比較多組平均值(單因子變異數分析)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14-Factorial-ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">多因子變異數分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./15-Factor-Analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">因素分析</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">因素分析</span></span></a>
   </div>
 </li>
       </ul>
@@ -340,7 +339,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./16-Bayesian-statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">貝氏統計</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">貝氏統計</span></span></a>
   </div>
 </li>
       </ul>
@@ -348,7 +347,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Epilogue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">後記</span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">後記</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -367,27 +366,27 @@ div.csl-indent {
     <h2 id="toc-title">目錄</h2>
    
   <ul>
-  <li><a href="#機率和統計有什麼不一樣" id="toc-機率和統計有什麼不一樣" class="nav-link active" data-scroll-target="#機率和統計有什麼不一樣"><span class="header-section-number">7.1</span> 機率和統計有什麼不一樣？</a></li>
-  <li><a href="#sec-What-does-probability-mean" id="toc-sec-What-does-probability-mean" class="nav-link" data-scroll-target="#sec-What-does-probability-mean"><span class="header-section-number">7.2</span> 如何解讀機率？</a>
+  <li><a href="#機率和統計有什麼不一樣" id="toc-機率和統計有什麼不一樣" class="nav-link active" data-scroll-target="#機率和統計有什麼不一樣"><span class="header-section-number">8.1</span> 機率和統計有什麼不一樣？</a></li>
+  <li><a href="#sec-What-does-probability-mean" id="toc-sec-What-does-probability-mean" class="nav-link" data-scroll-target="#sec-What-does-probability-mean"><span class="header-section-number">8.2</span> 如何解讀機率？</a>
   <ul class="collapse">
-  <li><a href="#次數主義觀點" id="toc-次數主義觀點" class="nav-link" data-scroll-target="#次數主義觀點"><span class="header-section-number">7.2.1</span> 次數主義觀點</a></li>
-  <li><a href="#貝氏觀點" id="toc-貝氏觀點" class="nav-link" data-scroll-target="#貝氏觀點"><span class="header-section-number">7.2.2</span> 貝氏觀點</a></li>
-  <li><a href="#觀點之間的差異是什麼何者正確" id="toc-觀點之間的差異是什麼何者正確" class="nav-link" data-scroll-target="#觀點之間的差異是什麼何者正確"><span class="header-section-number">7.2.3</span> 觀點之間的差異是什麼？何者正確？</a></li>
+  <li><a href="#次數主義觀點" id="toc-次數主義觀點" class="nav-link" data-scroll-target="#次數主義觀點"><span class="header-section-number">8.2.1</span> 次數主義觀點</a></li>
+  <li><a href="#貝氏觀點" id="toc-貝氏觀點" class="nav-link" data-scroll-target="#貝氏觀點"><span class="header-section-number">8.2.2</span> 貝氏觀點</a></li>
+  <li><a href="#觀點之間的差異是什麼何者正確" id="toc-觀點之間的差異是什麼何者正確" class="nav-link" data-scroll-target="#觀點之間的差異是什麼何者正確"><span class="header-section-number">8.2.3</span> 觀點之間的差異是什麼？何者正確？</a></li>
   </ul></li>
-  <li><a href="#sec-Basic-probability-theory" id="toc-sec-Basic-probability-theory" class="nav-link" data-scroll-target="#sec-Basic-probability-theory"><span class="header-section-number">7.3</span> 基本機率論</a>
+  <li><a href="#sec-Basic-probability-theory" id="toc-sec-Basic-probability-theory" class="nav-link" data-scroll-target="#sec-Basic-probability-theory"><span class="header-section-number">8.3</span> 基本機率論</a>
   <ul class="collapse">
-  <li><a href="#sec-introducing-probability-distributions" id="toc-sec-introducing-probability-distributions" class="nav-link" data-scroll-target="#sec-introducing-probability-distributions"><span class="header-section-number">7.3.1</span> 機率分佈入門</a></li>
+  <li><a href="#sec-introducing-probability-distributions" id="toc-sec-introducing-probability-distributions" class="nav-link" data-scroll-target="#sec-introducing-probability-distributions"><span class="header-section-number">8.3.1</span> 機率分佈入門</a></li>
   </ul></li>
-  <li><a href="#sec-The-binomial-distribution" id="toc-sec-The-binomial-distribution" class="nav-link" data-scroll-target="#sec-The-binomial-distribution"><span class="header-section-number">7.4</span> 二項分佈</a>
+  <li><a href="#sec-The-binomial-distribution" id="toc-sec-The-binomial-distribution" class="nav-link" data-scroll-target="#sec-The-binomial-distribution"><span class="header-section-number">8.4</span> 二項分佈</a>
   <ul class="collapse">
-  <li><a href="#二項分佈入門" id="toc-二項分佈入門" class="nav-link" data-scroll-target="#二項分佈入門"><span class="header-section-number">7.4.1</span> 二項分佈入門</a></li>
+  <li><a href="#二項分佈入門" id="toc-二項分佈入門" class="nav-link" data-scroll-target="#二項分佈入門"><span class="header-section-number">8.4.1</span> 二項分佈入門</a></li>
   </ul></li>
-  <li><a href="#sec-The-normal-distribution" id="toc-sec-The-normal-distribution" class="nav-link" data-scroll-target="#sec-The-normal-distribution"><span class="header-section-number">7.5</span> 常態分佈</a>
+  <li><a href="#sec-The-normal-distribution" id="toc-sec-The-normal-distribution" class="nav-link" data-scroll-target="#sec-The-normal-distribution"><span class="header-section-number">8.5</span> 常態分佈</a>
   <ul class="collapse">
-  <li><a href="#機率密度" id="toc-機率密度" class="nav-link" data-scroll-target="#機率密度"><span class="header-section-number">7.5.1</span> 機率密度</a></li>
+  <li><a href="#機率密度" id="toc-機率密度" class="nav-link" data-scroll-target="#機率密度"><span class="header-section-number">8.5.1</span> 機率密度</a></li>
   </ul></li>
-  <li><a href="#sec-Other-useful-distributions" id="toc-sec-Other-useful-distributions" class="nav-link" data-scroll-target="#sec-Other-useful-distributions"><span class="header-section-number">7.6</span> 其他常見機率分佈</a></li>
-  <li><a href="#本章小結" id="toc-本章小結" class="nav-link" data-scroll-target="#本章小結"><span class="header-section-number">7.7</span> 本章小結</a></li>
+  <li><a href="#sec-Other-useful-distributions" id="toc-sec-Other-useful-distributions" class="nav-link" data-scroll-target="#sec-Other-useful-distributions"><span class="header-section-number">8.6</span> 其他常見機率分佈</a></li>
+  <li><a href="#本章小結" id="toc-本章小結" class="nav-link" data-scroll-target="#本章小結"><span class="header-section-number">8.7</span> 本章小結</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/edit/main/07-Introduction-to-probability.qmd" class="toc-action">編輯本頁面</a></p><p><a href="https://github.com/SCgeeker/lsj-book-zh_tw/issues/new" class="toc-action">回報問題</a></p></div></div></nav>
     </div>
@@ -395,7 +394,7 @@ div.csl-indent {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7"><span id="sec-Introduction-to-probability" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">機率入門</span></span></h1>
+<h1 class="title display-7"><span id="sec-Introduction-to-probability" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">機率入門</span></span></h1>
 
 </header>
 
@@ -431,8 +430,8 @@ The answer to the question is pretty obvious. If I call 1000 people at random, a
 <p>這種報導在報紙或日常生活中並不特別吸引人,但讓我們思考裡面所提示的資訊。民調機構做的民意調查,通常是相當大規模的,因為這些機構有資金。由於原作者太懶了,不想查找原始資訊,所以讓我們假裝這家機構隨機調查了1000位住在新南威爾斯(NSW)的選民,其中230人(23%)聲稱他們打算投票給澳大利亞工黨(ALP)。根據澳大利亞選舉委員會的報告,2010年聯邦大選登記在新南威爾斯投票的選民有4,610,795位,所以其餘4,609,795名選民(約99.98%的選民)的意見對我們來說是一片混沌。即使就當沒有人在民調中說謊,我們可以100%確定的是,ALP真正的初選得票數就是在230/4610795(約0.005%)和4610025/4610795(約99.83%)之間。那麼看了民調結果的民調機構、報社和讀者得出ALP的初選得票大約只有23%的結論是依據什麼?</p>
 <p>這個問題的答案很明顯。如果我隨機打電話給1000人,其中230人表示打算投ALP，這些人很可能並不是全體選民裡真正要投給ALP的唯一230人。換句話說,我們假設民調機構收集的資料能代表所有有投票權的選民。但是究竟有多少代表性呢?如果開票後，ALP得到的初選票實際上是24%? 甚至是29%或 37%? 這時候只憑直覺的想法會開始有點動搖。沒有人會對24%感到驚訝,但是會對37%感到驚訝,然而很難說29%會讓人相信民調結果。在這個狀況，我們需要比查看數字和直覺猜測更強大的工具。</p>
 <p><strong>推論統計學</strong>提供我們回答這些問題所需要的工具,而且這類問題就是科學研究工作的核心,每門簡介統計學和研究方法課程的一大部分單元都是在學推論統計。然而,推論統計的理論基礎是建立在<strong>機率論</strong>，因此這個單元要討論機率論，內容是了解機率論必須掌握的背景知識。本單元沒有太多統計學,讀者也不用像其他單元一樣，需要深入理解這個單元的所有內容。儘管如此,由於機率論是推論統計的重要基礎，認識一些基本的機率論知識是值得的。</p>
-<section id="機率和統計有什麼不一樣" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="機率和統計有什麼不一樣"><span class="header-section-number">7.1</span> 機率和統計有什麼不一樣？</h2>
+<section id="機率和統計有什麼不一樣" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="機率和統計有什麼不一樣"><span class="header-section-number">8.1</span> 機率和統計有什麼不一樣？</h2>
 <!--- teaching note:
 要用數字回答的問題，需不需要用「機率模型」解決？必須用「機率模型」解決的數字問題，一定是機率問題。 
 要用數字回答的問題，只要找到合理方法排列數字就能解決，只是（描述）統計問題。例如1854年倫敦蘇活區霍亂疫情。
@@ -486,8 +485,8 @@ and what I'm trying to do is work out which "model of the world" I should put my
 <p>正面 正面 正面 正面 正面 正面 正面 正面 正面 正面</p>
 <p>我要努力弄清楚我應該相信哪種“世界模型”。 如果硬幣是公平的,那麼我應該相信的模型是正面機率為0.5,即 <span class="math inline">\(P(\text{正面}) = 0.5\)</span>。 如果硬幣是有機關的,那麼我應該判斷出現正面的機率不是0.5,可以寫成 <span class="math inline">\(P(\text{正面})\neq0.5\)</span>。 換句話說,使用推論統計的目標是要弄清楚那一種機率模型是正確的。統計問題與機率問題顯然不是一樣的,但是兩者之間有深刻的關聯。因此,要充分學懂統計理論，就要從認識什麼是機率及運算機率的定理開始。</p>
 </section>
-<section id="sec-What-does-probability-mean" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="sec-What-does-probability-mean"><span class="header-section-number">7.2</span> 如何解讀機率？</h2>
+<section id="sec-What-does-probability-mean" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="sec-What-does-probability-mean"><span class="header-section-number">8.2</span> 如何解讀機率？</h2>
 <!--- teaching note:
 探討「歸納之謎」，如何估計未知的事件發生機率，你認為W君與C君誰的想法合理？
 C君 = 次數主義觀點 ~ 只有長期觀察的結果才能掌握發生機率。標示相對發生次數的統計量是解答的元素。
@@ -511,8 +510,8 @@ Each of these seems sensible. However, they're not identical and not every stati
 <li><p>我對阿杜伊諾阿森納隊獲勝的主觀“信念”或“信心”，比米蘭隊獲勝的信念高出四倍。</p></li>
 </ul>
 <p>這些解釋似乎都有道理。然而,每種解釋的意義是不一樣的,並且不是每位統計學家都會認同所有解釋。原因是現代統計學存在壁壘分明的門派(沒錯,真的有!),並且會因為你追隨其中一派學習久了,你會認為另一派的解釋毫無意義。在這一節,我簡單介紹文兩大主要門派的方法論。不過請讀者記得，這兩種主要方法論，沒有那一方是統計學的唯一方法論。</p>
-<section id="次數主義觀點" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="次數主義觀點"><span class="header-section-number">7.2.1</span> 次數主義觀點</h3>
+<section id="次數主義觀點" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="次數主義觀點"><span class="header-section-number">8.2.1</span> 次數主義觀點</h3>
 <!---The first of the two major approaches to probability, and the more dominant one in statistics, is referred to as the **次數主義觀點(frequentist view)** and it defines probability as a **長期累積的相對次數(long-run frequency)**. Suppose we were to try flipping a fair coin over and over again. By definition this is a coin that has $P(H) = 0.5$. What might we observe? One possibility is that the first 20 flips might look like this:
                                                                                                                                                    
 T,H,H,H,H,T,T,H,H,H,H,T,H,H,T,T,T,T,T,H
@@ -520,12 +519,12 @@ T,H,H,H,H,T,T,H,H,H,H,T,H,H,T,T,T,T,T,H
 In this case 11 of these 20 coin flips (55%) came up heads. Now suppose that I'd been keeping a running tally of the number of heads (which I'll call $N_H$) that I've seen, across the first N flips, and calculate the proportion of heads $\frac{N_H}{N}$ every time. @tbl-tab7-1 shows what I'd get (I did literally flip coins to produce this!): --->
 <p>兩大觀點中佔現代統計學主導地位的是次數主義觀點(frequentist view)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>,這個觀點將機率定義為長期累積次數。假如我們投擲一枚公平硬幣無數次，按照次數主義的定義,這一枚硬幣的機率模型是<span class="math inline">\(P(H)= 0.5\)</span>。那麼可能的觀察結果是什麼?某次連續投擲20次的結果可能像以下紀錄:</p>
 <p>反,正,正,正,正,反,反,正,正,正,正,反,正,正,反,反,反,反,反,正</p>
-<p>在這20次裡有11次為正面(55%)。 假如一直記錄下去，以<span class="math inline">\(N_H\)</span>表示擲出正面的次數，<span class="math inline">\(N\)</span>代表累積至紀錄當下的總次數，每次紀錄計算擲出正面的比例就是 <span class="math inline">\(\frac{N_H}{N}\)</span>。 <a href="#tbl-tab7-1">表&nbsp;<span>7.1</span></a> 整理我得到的結果(原作者的親自實驗結果!):</p>
+<p>在這20次裡有11次為正面(55%)。 假如一直記錄下去，以<span class="math inline">\(N_H\)</span>表示擲出正面的次數，<span class="math inline">\(N\)</span>代表累積至紀錄當下的總次數，每次紀錄計算擲出正面的比例就是 <span class="math inline">\(\frac{N_H}{N}\)</span>。 <a href="#tbl-tab7-1">表&nbsp;<span>8.1</span></a> 整理我得到的結果(原作者的親自實驗結果!):</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab7-1" class="anchored">
 <table id="tab:tbl-tab7-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;7.1: 擲硬幣和正面的比例</caption>
+<caption>表&nbsp;8.1: 擲硬幣和正面的比例</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">投擲硬幣次數</td>
@@ -649,7 +648,7 @@ The frequentist definition of probability has some desirable characteristics. Fi
 [^07-introduction-to-probability-1]: This doesn't mean that frequentists can't make hypothetical statements, of course. It's just that if you want to make a statement about probability then it must be possible to redescribe that statement in terms of a sequence of potentially observable events, together with the relative frequencies of different outcomes that appear within that sequence.
 
 However, it also has undesirable characteristics. First, infinite sequences don't exist in the physical world. Suppose you picked up a coin from your pocket and started to flip it. Every time it lands it impacts on the ground. Each impact wears the coin down a bit. Eventually the coin will be destroyed. So, one might ask whether it really makes sense to pretend that an "infinite" sequence of coin flips is even a meaningful concept, or an objective one. We can't say that an "infinite sequence" of events is a real thing in the physical universe, because the physical universe doesn't allow infinite anything. More seriously, the frequentist definition has a narrow scope. There are lots of things out there that human beings are happy to assign probability to in everyday language, but cannot (even in theory) be mapped onto a hypothetical sequence of events. For instance, if a meteorologist comes on TV and says "the probability of rain in Adelaide on 2 November 2048 is 60%" we humans are happy to accept this. But it's not clear how to define this in frequentist terms. There's only one city of Adelaide, and only one 2 November 2048. There's no infinite sequence of events here, just a one-off thing. Frequentist probability genuinely *forbids* us from making probability statements about a single event. From the frequentist perspective it will either rain tomorrow or it will not. There is no "probability" that attaches to a single non-repeatable event. Now, it should be said that there are some very clever tricks that frequentists can use to get around this. One possibility is that what the meteorologist means is something like "There is a category of days for which I predict a 60% chance of rain, and if we look only across those days for which I make this prediction, then on 60% of those days it will actually rain". It's very weird and counter-intuitive to think of it this way, but you do see frequentists do this sometimes. And it will come up later in this book (e.g. in @sec-Estimating-a-confidence-interval). --->
-<p>留意一下這次實驗一開始,擲出正面的比例波動很大,一開始是<span class="math inline">\(.00\)</span>,後來陡升至<span class="math inline">\(.80\)</span>。到後來,累積的紀錄越来越多，比例值會接近多數人印象中的“正确”答案 <span class="math inline">\(.50\)</span>。這就是次數主義觀點對於「機率」的核心定義：一次又一次地擲出一枚公平的硬幣,當 N 越大(接近無窮大,數學表示為 <span class="math inline">\(N \rightarrow \infty\)</span> ),正面的比例將收斂至 50%。數學家還會關注一些其他技術細節,但是以質性的角度來說,這就是次數主義論者定義機率的方式。可惜的是,我没有辦法拿到無限數量的硬幣，還有反覆做無限次地投擲硬幣所需要的耐心。不過只要有一台電腦,就可以讓電腦做不必動腦的重複性作業。所以我用電腦模擬投擲硬幣1000次,然後畫出隨著<span class="math inline">\(N\)</span>增加， <span class="math inline">\(\frac{N_H}{N}\)</span> 的比例如何變化的趨勢圖。為了確保這不是偶然發生的現象,我做了四次獨立的模擬計算。模擬結果就像 <a href="#fig-fig7-1">圖&nbsp;<span>7.1</span></a> 。如圖所示,擲出正面的比例值最後會停止波動並趨向中間的數值，趨勢線最後停留的數值就是擲出正面的真實機率值。</p>
+<p>留意一下這次實驗一開始,擲出正面的比例波動很大,一開始是<span class="math inline">\(.00\)</span>,後來陡升至<span class="math inline">\(.80\)</span>。到後來,累積的紀錄越来越多，比例值會接近多數人印象中的“正确”答案 <span class="math inline">\(.50\)</span>。這就是次數主義觀點對於「機率」的核心定義：一次又一次地擲出一枚公平的硬幣,當 N 越大(接近無窮大,數學表示為 <span class="math inline">\(N \rightarrow \infty\)</span> ),正面的比例將收斂至 50%。數學家還會關注一些其他技術細節,但是以質性的角度來說,這就是次數主義論者定義機率的方式。可惜的是,我没有辦法拿到無限數量的硬幣，還有反覆做無限次地投擲硬幣所需要的耐心。不過只要有一台電腦,就可以讓電腦做不必動腦的重複性作業。所以我用電腦模擬投擲硬幣1000次,然後畫出隨著<span class="math inline">\(N\)</span>增加， <span class="math inline">\(\frac{N_H}{N}\)</span> 的比例如何變化的趨勢圖。為了確保這不是偶然發生的現象,我做了四次獨立的模擬計算。模擬結果就像 <a href="#fig-fig7-1">圖&nbsp;<span>8.1</span></a> 。如圖所示,擲出正面的比例值最後會停止波動並趨向中間的數值，趨勢線最後停留的數值就是擲出正面的真實機率值。</p>
 <p>次數主義觀點的機率定義有一些理想化的條件。首先,觀察必須是客觀的。事件發生的機率必然取決於事實，機率模型的數學表述式，只有定義其中的符號代指物理世界所發生的一系列事件才有意義。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 還有,每個機率事件是可被明確觀察的。任何兩個人觀察同一種事件的所紀錄的發生序列,都能用來計算特定事件的機率,計算的結果必定會相同。</p>
 <p>然而次數主義方法論要成立的條件很難達成。首先,物理世界並不存在無窮序列。就拿你錢包裡的硬幣來說，拿出來做擲硬幣實驗，每次落地都會撞到地面，每撞擊一次都會磨損硬幣表面一點，最终這枚硬幣會被磨光。有些同學聽了可能會問，討論能“無限次”擲硬幣的假設是有意義的概念，還是客觀的概念，對於了解機率是什麼有何幫助？物理世界不會存在任何無限的事物，所以“無限序列”的機率事件不可能是真實的。更嚴重的是,次數主義定義容許的範圍非常狹窄。人類的語言能力可以給很多看得到的事物發生用機率表達，但是就理論來說，也無法將機率對應到假想的事件序列。例如,如果澳洲電視台的氣象預報員說“2018年11月2日阿德雷德降雨的機率是60%”,所有人都很樂意接受這種說法，但是很難用次數主義的條件來定義報導中所提的機率。 全世界只有一個地方叫阿德雷德,2018年11月2日也只是一個時間點。所以不存在無限序列，只是一時一地的單一事件。然而，次數主義的機率觀點不允許我們對單一事件以機率描述。從次數主義的角度來想,明天要麼下雨,要麼不下雨，不可重複事件不可能有“機率”。 其實次數主義的追隨者可以使用一些非常聰明的技巧來解決這道難題，一種方案就像有的氣象預報員會用的說辭：「以我所使用的預測方法，只要出現某些氣象條件就能預測60%的降雨機率。只要明日的氣象具備這些條件，預測有60%的降雨機率是合理的。」這樣的說法好像繞了好幾圈又違反直覺,不過之後的單元裡，我們會看到這套次數主義方法論如何形塑現代統計方法(例如 <a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-a-confidence-interval"><span>小單元&nbsp;8.5</span></a>)。</p>
 <div class="cell" data-layout-align="left">
@@ -657,14 +656,14 @@ However, it also has undesirable characteristics. First, infinite sequences don'
 <div id="fig-fig7-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-1-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.1: 次數主義機率論的模擬實驗範例。 如果您投擲一枚公平的硬幣無數次,最後會看到正面的比例值會趨近真實機率 0.5。每個趨勢圖呈現四個不同的模擬實驗， 每次實驗都是模擬投擲硬幣 <span class="math inline">\(1000\)</span> 次,並且逐次紀錄擲出正面的比例。 儘管没有一個實驗結果的最後紀錄停在 <span class="math inline">\(.5\)</span> ,如是能將模擬次數增加到無限次則必定會達到。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.1: 次數主義機率論的模擬實驗範例。 如果您投擲一枚公平的硬幣無數次,最後會看到正面的比例值會趨近真實機率 0.5。每個趨勢圖呈現四個不同的模擬實驗， 每次實驗都是模擬投擲硬幣 <span class="math inline">\(1000\)</span> 次,並且逐次紀錄擲出正面的比例。 儘管没有一個實驗結果的最後紀錄停在 <span class="math inline">\(.5\)</span> ,如是能將模擬次數增加到無限次則必定會達到。</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="貝氏觀點" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="貝氏觀點"><span class="header-section-number">7.2.2</span> 貝氏觀點</h3>
+<section id="貝氏觀點" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="貝氏觀點"><span class="header-section-number">8.2.2</span> 貝氏觀點</h3>
 
 <!---
 **貝氏觀點(The Bayesian view)** of probability is often called the subjectivist view, and although it has been a minority view among statisticians it has been steadily gaining traction for the last several decades. There are many flavours of Bayesianism, making it hard to say exactly what "the" Bayesian view is. The most common way of thinking about subjective probability is to define the probability of an event as the **事件發生的信念程度(degree of belief)** that an intelligent and rational agent assigns to that truth of that event. From that perspective, probabilities don't exist in the world but rather in the thoughts and assumptions of people and other intelligent beings.[^translation-4]
@@ -678,8 +677,8 @@ What are the advantages and disadvantages to the Bayesian approach? The main adv
 <p>然而,為了實際應用主觀機率發展出來的方法，我們需要先把“信念程度”轉換為可操作的形式。今天已經發展出許多方法，在此介紹的形式化方法是“理性博弈”(rational gamling)： 假如我相信明天下雨的機率為 60%。若有人讓我下注,賭明天下雨的話,我會贏5美元,如果沒下雨,我就輸5美元。從我的角度來看,這顯然是一個相當不錯的賭注。 換句話說,如果我看到明天降雨機率只有 40%, 那麼接受這個賭注就是不明智的。 因此,我們可以通過我願意接受的賭注大小操作“主觀機率”。</p>
 <p>貝氏的方法論有什麼優缺點? 主要優點是你能指定想要評估的任何事件是否發生的機率，而且不必考慮那些事件會不會重複。對許多人來說，最大的缺點是你不能完全客觀看待機率事件。指定一個事件機率需要一個對應信念程度的實體，這個實體可能是一個人類、外星人、機器人或者甚至一個統計學家，無論如何必須設定存在一位持有某種信念的智能代理者。對許多計較客觀的學者來說,這是令人不舒服的想法,似乎會讓機率運算變得武斷。儘管貝氏方法論強調信念的代理者是理性的(遵守機率規則),但是每個人都可以有屬於自己，不一定和他人相同的信念。以前面的擲硬幣問題來說，觀察者A可以相信硬幣是公平的,而觀察者B不需要,不過兩者的看法都是理性的。次數主義觀點則不允許任兩位觀察者認為同一事件的機率有不同看法。如果有這種情況,至少其中一種看法是錯的。 然而貝氏方法論觀點容許歧異看法並存的情形， 不同背景知識的兩造觀察者，(在貝氏的機率擂台)可以合法地對同一事件持有不同信念。簡而言之,次數主義觀點有時被認為範圍太狹窄(禁止觀察者對許多事件指定機率),貝氏觀點有時則被認為範圍太廣泛(允許觀察者保留彼此看法的差異)。</p>
 </section>
-<section id="觀點之間的差異是什麼何者正確" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="觀點之間的差異是什麼何者正確"><span class="header-section-number">7.2.3</span> 觀點之間的差異是什麼？何者正確？</h3>
+<section id="觀點之間的差異是什麼何者正確" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="觀點之間的差異是什麼何者正確"><span class="header-section-number">8.2.3</span> 觀點之間的差異是什麼？何者正確？</h3>
 <!--- Now that you've seen each of these two views independently it's useful to make sure you can compare the two. Go back to the hypothetical robot soccer game at the start of the section. What do you think a frequentist and a Bayesian would say about these three statements? Which statement would a frequentist say is the correct definition of probability? Which one would a Bayesian opt for? Would some of these statements be meaningless to a frequentist or a Bayesian? If you've understood the two perspectives you should have some sense of how to answer those questions.
 
 Okay, assuming you understand the difference then you might be wondering which of them is *right*? Honestly, I don't know that there is a right answer. As far as I can tell there's nothing mathematically incorrect about the way frequentists think about sequences of events, and there's nothing mathematically incorrect about the way that Bayesians define the beliefs of a rational agent. In fact, when you dig down into the details Bayesians and frequentists actually agree about a lot of things. Many frequentist methods lead to decisions that Bayesians agree a rational agent would make. Many Bayesian methods have very good frequentist properties.
@@ -693,11 +692,11 @@ In any case, whilst I personally prefer the Bayesian view, the majority of stati
 <p>無論如何,雖然我(原作者)比較喜歡貝氏主義的觀點,但大多數統計分析都是建立在次數主義方法論，有用的推論方法都有實用價值。本書介紹的統計方法與多數心理學系統計課內容大致相同,如果讀者想了解大多數心理學家使用的統計工具,需要好好掌握次數主義方法。我能保證,學習次數主義的統計方法不會浪費時間。就算之後有一天想要跳到貝氏的陣營,讀者也應該至少要讀通一本談論 “正統” 次數主義觀點的書。此外,我不會完全忽略貝氏觀點。之後每個章節,我會在適當的段落添加一些貝氏觀點, 最後的 <a href="16-Bayesian-statistics.html"><span>單元&nbsp;16</span></a> 會詳細介紹貝氏觀點的統計方法。</p>
 </section>
 </section>
-<section id="sec-Basic-probability-theory" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="sec-Basic-probability-theory"><span class="header-section-number">7.3</span> 基本機率論</h2>
+<section id="sec-Basic-probability-theory" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="sec-Basic-probability-theory"><span class="header-section-number">8.3</span> 基本機率論</h2>
 <!---Ideological arguments between Bayesians and frequentists notwithstanding, it turns out that people mostly agree on the rules that probabilities should obey. There are lots of different ways of arriving at these rules. The most commonly used approach is based on the work of Andrey Kolmogorov, one of the great Soviet mathematicians of the 20th century. I won't go into a lot of detail, but I'll try to give you a bit of a sense of how it works. And in order to do so I'm going to have to talk about my trousers. --->
-<section id="sec-introducing-probability-distributions" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="sec-introducing-probability-distributions"><span class="header-section-number">7.3.1</span> 機率分佈入門</h3>
+<section id="sec-introducing-probability-distributions" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="sec-introducing-probability-distributions"><span class="header-section-number">8.3.1</span> 機率分佈入門</h3>
 <!--- teaching note
 使用 seeing theory展示機率分佈
 https://seeing-theory.brown.edu/
@@ -709,12 +708,12 @@ Okay, now that we have a sample space (a wardrobe), which is built from lots of 
 At this point, we're almost done. The last thing we need to recognise is that "something always happens". Every time I put on trousers, I really do end up wearing trousers (crazy, right?). What this somewhat trite statement means, in probabilistic terms, is that the probabilities of the elementary events need to add up to 1. This is known as the **law of total probability**, not that any of us really care. More importantly, if these requirements are satisfied then what we have is a **probability distribution**. For example, @tbl-tab7-2 shows an example of a probability distribution. --->
 <p>我(原作者)個人最難以啟齒的一件事情是,我的衣櫃裡只有5條褲子。三條牛仔褲,一件西裝褲和一條運動褲。更讓我的朋友感到無聊的是,每條褲子都有個代號:<span class="math inline">\(X_1\)</span>、<span class="math inline">\(X_2\)</span>、<span class="math inline">\(X_3\)</span>、<span class="math inline">\(X_4\)</span> 和 <span class="math inline">\(X_5\)</span>。這是真的，這是為什麼我的朋友都叫我「內心小劇場男子」。每個要外出的日子，我都會想好要穿那一條。即使我充滿想像力，也不會想要穿兩條褲子出門，而且都活了這麼久，我不會不穿褲子就出門。如果要用機率論的語言來描述我今天穿那條褲子出門,每條褲子的代號( <span class="math inline">\(X\)</span> )合稱為基本事件。<strong>基本事件</strong>的關鍵條件是每紀錄一次觀察，紀錄結果可用其中一個代號代表，像是每天我穿了其中一條褲子就紀下這條的代號。因為現在我出門只會穿一條褲子，每一天穿那條褲子出門的紀錄剛好滿足基本事件的條件。同樣的,所有可能發生的基本事件集合稱為<strong>樣本空間</strong>。當然,我的朋友或有些學生會說“衣櫃”,那是因為他們不想用機率的詞彙來想像我的褲子。哭哭。</p>
 <p>好的,現在有一個樣本空間(衣櫃),包括許多可能的基本事件(今天穿出門的褲子),現在要做的就是為每一個基本事件分派一個機率。對於其中一個事件<span class="math inline">\(X\)</span>,該事件的機率<span class="math inline">\(P(X)\)</span>是介於0和1之間的數字。<span class="math inline">\(P(X)\)</span>的值越大,事件發生的可能性就越大。例如<span class="math inline">\(P(X)=0\)</span> 表示事件<span class="math inline">\(X\)</span>是不可能發生的(我從不穿那一條褲子出門)。另一方面,<span class="math inline">\(P(X)=1\)</span> 表示事件<span class="math inline">\(X\)</span>必定會發生(我總是穿那一條褲子出門)。至於介於兩者之間的機率值,代表我有時候會穿那條褲子。例如 <span class="math inline">\(P(X)=0.5\)</span>代表我會出門的某幾天，有一半都會穿這條褲子。</p>
-<p>到這裡,我們快要建好一套機率分佈模型了。最後一件要知道的事懂是“某個事件總是會發生”。每一天我穿上褲子,我一定會穿好穿滿(你會想這是廢話對吧?)。這幾句陳腔濫調在機率的語彙裡，代表所有基本事件的機率加起來必定等於1。儘管多數人都不太在意，數學家給這個事實命名為<strong>總機率律(law of total probability)</strong>。更重要的是,只要符合總機率律的條件，就自然會得到了一個<strong>機率分佈(probability distribution)</strong>。<a href="#tbl-tab7-2">表&nbsp;<span>7.2</span></a> 就是有關原作者本人會穿那條褲子出門的機率分佈。</p>
+<p>到這裡,我們快要建好一套機率分佈模型了。最後一件要知道的事懂是“某個事件總是會發生”。每一天我穿上褲子,我一定會穿好穿滿(你會想這是廢話對吧?)。這幾句陳腔濫調在機率的語彙裡，代表所有基本事件的機率加起來必定等於1。儘管多數人都不太在意，數學家給這個事實命名為<strong>總機率律(law of total probability)</strong>。更重要的是,只要符合總機率律的條件，就自然會得到了一個<strong>機率分佈(probability distribution)</strong>。<a href="#tbl-tab7-2">表&nbsp;<span>8.2</span></a> 就是有關原作者本人會穿那條褲子出門的機率分佈。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab7-2" class="anchored">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>表&nbsp;7.2: 今天穿那條褲子出門的機率分佈</caption>
+<caption>表&nbsp;8.2: 今天穿那條褲子出門的機率分佈</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">褲子樣式</th>
@@ -761,14 +760,14 @@ A visual depiction of the 'trousers' probability distribution. There are five 'e
 
 Some rules that probabilities satisfy
 --->
-<p>每個基本事件都有一個介於 0 和 1 之間的機率值,只要加總所有事件的機率,會發現總和為 1。太棒了！我們還可以畫出一張漂亮的長條圖將這套機率分佈視覺化(複習一下 <a href="05-Drawing-graphs.html#sec-Bar-graphs"><span>小單元&nbsp;5.3</span></a>),成果就像 <a href="#fig-fig7-2">圖&nbsp;<span>7.2</span></a> 。到這裡的學習如果沒有意外，代表讀者已經熟悉之後的單元討論機率分佈的方式了，我(原作者)也能用一張圖解釋為何我總是穿牛仔褲出門了! 還需要強調的事情是,機率論容許<strong>非基本事件</strong>以及基本事件並存。舉個例子來說明，同樣也是用原作者會穿那條褲子出門的機率分佈，要如何用樣本空間裡的基本事件，描述穿任何一條牛仔褲出門的機率？也就是今天出門穿的是“藍色牛仔褲”、“黑色牛仔褲”或“灰色牛仔褲”，都是符合這個狀況的事件。以數學的詞彙來說，我們可以將事件 <span class="math inline">\(E\)</span> 定義為對應符合條件的基本事件集合 <span class="math inline">\((X1,X2,X3)\)</span>。只要其中任何一個基本事件發生,就是代表事件 <span class="math inline">\(E\)</span> 發生。<span class="math inline">\(E\)</span> 的定義確立後, <span class="math inline">\(P(E)\)</span> 的機率是多少很容易了，就是全部加起來：因為藍色、灰色和黑色牛仔褲的機率分別是 <span class="math inline">\(.5\)</span>、<span class="math inline">\(.3\)</span> 和 <span class="math inline">\(.1\)</span> ，所以我穿牛仔褲出門的機率等於 <span class="math inline">\(.9\)</span>。用數學式子表達的話，就是 <span class="math display">\[P(E)=P(X_1)+P(X_2)+P(X_3)\]</span></p>
-<p>也許您會認為,這些都太好懂，計算也沒什麼困難,這樣的感覺很多學生都會有。 現在討論的內容只是將日常生活的直觀用一些基本數學算則包裝而已。 不過，從簡單的案例開始,我們能構建一些非常強大的數學工具。 雖然這本書不會討論更深的細節, <a href="#tbl-tab7-3">表&nbsp;<span>7.3</span></a> 列出滿足總機率律的樣本空間，可用的其他運算規則。 這些規則可以從前面描述的基本條件推導,由於本書不會用到這些規則,所以不會展示如何推導。</p>
+<p>每個基本事件都有一個介於 0 和 1 之間的機率值,只要加總所有事件的機率,會發現總和為 1。太棒了！我們還可以畫出一張漂亮的長條圖將這套機率分佈視覺化(複習一下 <a href="05-Drawing-graphs.html#sec-Bar-graphs"><span>小單元&nbsp;5.3</span></a>),成果就像 <a href="#fig-fig7-2">圖&nbsp;<span>8.2</span></a> 。到這裡的學習如果沒有意外，代表讀者已經熟悉之後的單元討論機率分佈的方式了，我(原作者)也能用一張圖解釋為何我總是穿牛仔褲出門了! 還需要強調的事情是,機率論容許<strong>非基本事件</strong>以及基本事件並存。舉個例子來說明，同樣也是用原作者會穿那條褲子出門的機率分佈，要如何用樣本空間裡的基本事件，描述穿任何一條牛仔褲出門的機率？也就是今天出門穿的是“藍色牛仔褲”、“黑色牛仔褲”或“灰色牛仔褲”，都是符合這個狀況的事件。以數學的詞彙來說，我們可以將事件 <span class="math inline">\(E\)</span> 定義為對應符合條件的基本事件集合 <span class="math inline">\((X1,X2,X3)\)</span>。只要其中任何一個基本事件發生,就是代表事件 <span class="math inline">\(E\)</span> 發生。<span class="math inline">\(E\)</span> 的定義確立後, <span class="math inline">\(P(E)\)</span> 的機率是多少很容易了，就是全部加起來：因為藍色、灰色和黑色牛仔褲的機率分別是 <span class="math inline">\(.5\)</span>、<span class="math inline">\(.3\)</span> 和 <span class="math inline">\(.1\)</span> ，所以我穿牛仔褲出門的機率等於 <span class="math inline">\(.9\)</span>。用數學式子表達的話，就是 <span class="math display">\[P(E)=P(X_1)+P(X_2)+P(X_3)\]</span></p>
+<p>也許您會認為,這些都太好懂，計算也沒什麼困難,這樣的感覺很多學生都會有。 現在討論的內容只是將日常生活的直觀用一些基本數學算則包裝而已。 不過，從簡單的案例開始,我們能構建一些非常強大的數學工具。 雖然這本書不會討論更深的細節, <a href="#tbl-tab7-3">表&nbsp;<span>8.3</span></a> 列出滿足總機率律的樣本空間，可用的其他運算規則。 這些規則可以從前面描述的基本條件推導,由於本書不會用到這些規則,所以不會展示如何推導。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-2" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-2-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.2: “褲子”機率分佈的視覺化呈現。 五個“基本事件”各自對應五條褲子。 每個事件都有發生的機率 - 這個值是 0 到 1 之間的數字。 所有事件的機率總和為 1。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.2: “褲子”機率分佈的視覺化呈現。 五個“基本事件”各自對應五條褲子。 每個事件都有發生的機率 - 這個值是 0 到 1 之間的數字。 所有事件的機率總和為 1。</figcaption>
 </figure>
 </div>
 </div>
@@ -781,7 +780,7 @@ https://seeing-theory.brown.edu/compound-probability/index.html#section1
 <div class="cell-output-display">
 <div id="tbl-tab7-3" class="anchored">
 <table id="tab:tbl-tab7-3" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;7.3: 滿足總機率律的一些運算規則</caption>
+<caption>表&nbsp;8.3: 滿足總機率律的一些運算規則</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">English</td>
@@ -812,12 +811,12 @@ https://seeing-theory.brown.edu/compound-probability/index.html#section1
 </div>
 </section>
 </section>
-<section id="sec-The-binomial-distribution" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="sec-The-binomial-distribution"><span class="header-section-number">7.4</span> 二項分佈</h2>
+<section id="sec-The-binomial-distribution" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="sec-The-binomial-distribution"><span class="header-section-number">8.4</span> 二項分佈</h2>
 <!---As you might imagine, probability distributions vary enormously and there's an enormous range of distributions out there. However, they aren't all equally important. In fact, the vast majority of the content in this book relies on one of five distributions: the binomial distribution, the normal distribution, the t distribution, the $\chi^2$ ("chi-square") distribution and the F distribution. Given this, what I'll do over the next few sections is provide a brief introduction to all five of these, paying special attention to the binomial and the normal. I'll start with the binomial distribution since it's the simplest of the five. --->
 <p>可想而知現在用於統計分析的機率分佈非常多,還有很 多分佈是只有純數學家才會研究的，不過不是所有機率分佈都必須要認識。本書介紹的統計方法主要依靠五種機率分佈運作:二項分佈(binomial distribution)、常態分佈(normal distribution)、 t 分佈(t distribution)、卡方分佈( <span class="math inline">\(\chi^2\)</span> distribution )以及 F 分佈( F distribution )。所以這個單元後半部就是簡要介紹這五種機率分佈,二項分佈和常態分佈的篇幅會比較多。我們先從二項分佈開始,因為這是五種之中最簡單的機率分佈。</p>
-<section id="二項分佈入門" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="二項分佈入門"><span class="header-section-number">7.4.1</span> 二項分佈入門</h3>
+<section id="二項分佈入門" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="二項分佈入門"><span class="header-section-number">8.4.1</span> 二項分佈入門</h3>
 <!--- The theory of probability originated in the attempt to describe how games of chance work, so it seems fitting that our discussion of the **binomial distribution** should involve a discussion of rolling dice and flipping coins. Let's imagine a simple "experiment". In my hot little hand I'm holding 20 identical six-sided dice. On one face of each die there's a picture of a skull, the other five faces are all blank. If I proceed to roll all 20 dice, what's the probability that I'll get exactly 4 skulls? Assuming that the dice are fair, we know that the chance of any one die coming up skulls is 1 in 6. To say this another way, the skull probability for a single die is approximately .167. This is enough information to answer our question, so let's have a look at how it's done.
 
 As usual, we'll want to introduce some names and some notation. We'll let $N$ denote the number of dice rolls in our experiment, which is often referred to as the **size parameter** of our binomial distribution. We'll also use $\theta$ to refer to the the probability that a single die comes up skulls, a quantity that is usually called the **success probability** of the binomial.[^07-introduction-to-probability-2] Finally, we'll use $X$ to refer to the results of our experiment, namely the number of skulls I get when I roll the dice. Since the actual value of $X$ is due to chance we refer to it as a **random variable**. In any case, now that we have all this terminology and notation we can use it to state the problem a little more precisely. The quantity that we want to calculate is the probability that $X = 4$ given that we know that $\theta = .167$ and $N = 20$. The general "form" of the thing I'm interested in calculating could be written as
@@ -844,33 +843,33 @@ To give you a feel for how the binomial distribution changes when we alter the v
 <p>表示我們要算出的是 <span class="math inline">\(X = 4, \theta = .167\)</span> 和 <span class="math inline">\(N = 20\)</span> 的機率值。</p>
 <p>[附加技術細節 <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>]</p>
 <p>我知道很多讀者走到這裡會想：怎麼又是一堆符號，能不用知道那麼多嗎？這本書是為不想學太多數學符號的讀者而設計的，所以接下來會直接談如何運用二項分佈計算機率。不過有些比較好學的讀者可能想知道細節，所以我將詳細公式說明寫在腳注^07-introduction-to-probability-3_1]。因為多數讀者沒興趣知道如何用公式計算機率，本書也不要求讀者要了解公式才能學如何計算，只要看看符合實驗條件 的二項分佈長什麼樣子。</p>
-<p>請看 <a href="#fig-fig7-3">圖&nbsp;<span>7.3</span></a> 。這個柱狀圖展示這個擲骰實驗所有可能結果 <span class="math inline">\(X\)</span> 的出現機率，包括<span class="math inline">\(X = 0\)</span>(没有一個骷髏) 到<span class="math inline">\(X = 20\)</span>(全部都是骷髏)。讀者只要知道，解讀這個柱狀圖的方式與 <a href="#fig-fig7-2">圖&nbsp;<span>7.2</span></a> 一樣，水平軸的值代表所有可能的實驗結果,垂直軸的值代表看到各種實驗結果的機率。所以,擲出 <span class="math inline">\(4\)</span> 個骷髏的機率是約 <span class="math inline">\(0.20\)</span>(實際答案是 <span class="math inline">\(0.2022036\)</span>,我們很快會學到怎麼算)。也就是說，若你試著重做這個時驗，看到相同結果的機率大約是20%。</p>
+<p>請看 <a href="#fig-fig7-3">圖&nbsp;<span>8.3</span></a> 。這個柱狀圖展示這個擲骰實驗所有可能結果 <span class="math inline">\(X\)</span> 的出現機率，包括<span class="math inline">\(X = 0\)</span>(没有一個骷髏) 到<span class="math inline">\(X = 20\)</span>(全部都是骷髏)。讀者只要知道，解讀這個柱狀圖的方式與 <a href="#fig-fig7-2">圖&nbsp;<span>8.2</span></a> 一樣，水平軸的值代表所有可能的實驗結果,垂直軸的值代表看到各種實驗結果的機率。所以,擲出 <span class="math inline">\(4\)</span> 個骷髏的機率是約 <span class="math inline">\(0.20\)</span>(實際答案是 <span class="math inline">\(0.2022036\)</span>,我們很快會學到怎麼算)。也就是說，若你試著重做這個時驗，看到相同結果的機率大約是20%。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-3" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-3-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.3: 大小參數為 <span class="math inline">\(N = 20\)</span>,基礎成功機率為 <span class="math inline">\(\theta = \frac{1}{6}\)</span> 的二項分佈。 每個柱子對應一個特定结果(即X的一個可能值)的機率。 因為這是一個機率分佈,所以每個事件的機率值必須在 0 到 1 之間,所有柱子的高度之和必須為 1</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.3: 大小參數為 <span class="math inline">\(N = 20\)</span>,基礎成功機率為 <span class="math inline">\(\theta = \frac{1}{6}\)</span> 的二項分佈。 每個柱子對應一個特定结果(即X的一個可能值)的機率。 因為這是一個機率分佈,所以每個事件的機率值必須在 0 到 1 之間,所有柱子的高度之和必須為 1</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <!--- I were to flip the coin $N = 20$ times. In this example, I've changed the success probability but kept the size of the experiment the same. What does this do to our binomial distribution? Well, as @fig-fig7-4 (a) shows, the main effect of this is to shift the whole distribution, as you'd expect. Okay, what if we flipped a coin $N = 100$ times? Well, in that case we get @fig-fig7-4 (a). The distribution stays roughly in the middle but there's a bit more variability in the possible outcomes. --->
-<p>因為二項分佈柱狀圖的形狀會隨<span class="math inline">\(\theta\)</span> 和 <span class="math inline">\(N\)</span>改變，為了讓讀者好好感受，現在我們把實驗材料改成一面是骷髏頭像硬幣。這次的實驗是持續投擲一枚公平的硬幣，我會紀錄會有幾次骷髏的那面朝上，所以設定這個實驗每次結果的成功機率<span class="math inline">\(\theta = \frac{1}{2}\)</span>，做完實驗一共擲硬幣 <span class="math inline">\(N = 20\)</span> 次。只有成功機率改變的話，二項分佈有會有什麼變化？你有稍微研究一下公式的話，會預期如 <a href="#fig-fig7-4">圖&nbsp;<span>7.4</span></a> (a) 展示的柱狀圖一樣，分佈的中心點位置移動到水平軸中央了。那麼連續擲<span class="math inline">\(N = 100\)</span> 次呢? 如同 <a href="#fig-fig7-4">圖&nbsp;<span>7.4</span></a>(b) ，分佈依然位於中間，但是可能的實驗結果(柱子)數量增加了。</p>
+<p>因為二項分佈柱狀圖的形狀會隨<span class="math inline">\(\theta\)</span> 和 <span class="math inline">\(N\)</span>改變，為了讓讀者好好感受，現在我們把實驗材料改成一面是骷髏頭像硬幣。這次的實驗是持續投擲一枚公平的硬幣，我會紀錄會有幾次骷髏的那面朝上，所以設定這個實驗每次結果的成功機率<span class="math inline">\(\theta = \frac{1}{2}\)</span>，做完實驗一共擲硬幣 <span class="math inline">\(N = 20\)</span> 次。只有成功機率改變的話，二項分佈有會有什麼變化？你有稍微研究一下公式的話，會預期如 <a href="#fig-fig7-4">圖&nbsp;<span>8.4</span></a> (a) 展示的柱狀圖一樣，分佈的中心點位置移動到水平軸中央了。那麼連續擲<span class="math inline">\(N = 100\)</span> 次呢? 如同 <a href="#fig-fig7-4">圖&nbsp;<span>8.4</span></a>(b) ，分佈依然位於中間，但是可能的實驗結果(柱子)數量增加了。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-4-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.4: 兩個擲硬幣實驗的二項分佈,假如是公平硬幣,基礎成功機率是 <span class="math inline">\(\theta = \frac{1}{2}\)</span>。 圖(a)是連續擲 <span class="math inline">\(N = 20\)</span> 次硬幣的所有可能結果。 圖(b)是連續擲 <span class="math inline">\(N = 100\)</span> 次硬幣的所有可能結果。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.4: 兩個擲硬幣實驗的二項分佈,假如是公平硬幣,基礎成功機率是 <span class="math inline">\(\theta = \frac{1}{2}\)</span>。 圖(a)是連續擲 <span class="math inline">\(N = 20\)</span> 次硬幣的所有可能結果。 圖(b)是連續擲 <span class="math inline">\(N = 100\)</span> 次硬幣的所有可能結果。</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="sec-The-normal-distribution" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="sec-The-normal-distribution"><span class="header-section-number">7.5</span> 常態分佈</h2>
+<section id="sec-The-normal-distribution" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="sec-The-normal-distribution"><span class="header-section-number">8.5</span> 常態分佈</h2>
 <!---While the binomial distribution is conceptually the simplest distribution to understand, it's not the most important one. That particular honour goes to the normal distribution, also referred to as "the bell curve" or a "Gaussian distribution". A **normal distribution** is described using two parameters: the mean of the distribution µ and the standard deviation of the distribution $\sigma$.
 
 [Additional technical detail [^07-introduction-to-probability-3_1]]
@@ -889,13 +888,13 @@ Let's try to get a sense for what it means for a variable to be normally distrib
 <p>雖然二項分佈是最好懂的機率分佈，不過並不是統計學裡最重要的分佈，運作各種統計方法要依賴的其實是常態分佈,又稱“鐘形曲線”或“高斯分佈”。<strong>常態分佈</strong>用兩個參數描述分佈的形狀：平均值 μ 和標準差<span class="math inline">\(\sigma\)</span>。用隨機變數符號 <span class="math inline">\(X\)</span> 來表現的話就是:</p>
 <p><span class="math display">\[X \sim \text{Normal}(\mu,\sigma)\]</span></p>
 <p>[附加技術細節 <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>]</p>
-<p>接著來談談為何常態分佈的視覺化長得如同 <a href="#fig-fig7-5">圖&nbsp;<span>7.5</span></a> 的樣子。圖中的常態分佈參數是平均值 <span class="math inline">\(\mu = 0\)</span> 、標準差 <span class="math inline">\(\sigma = 1\)</span> 。從外形就能了解又稱為“鐘形曲線”的原因;真得看起來有點像中世紀時期的鐘。那麼常態分佈和二項分佈有何不同？首先 <a href="#fig-fig7-5">圖&nbsp;<span>7.5</span></a> 的常態分佈呈現光滑的曲線，而不是“柱狀圖”。這不是隨便畫的,因為常態分佈是連續隨機變數,而二項分佈是離散隨機變數。用上一節的擲骰子範例來解釋的話,每次會獲得3個骷髏或4個骷髏,但是不可能會獲得3.9個骷髏。如同 <a href="#fig-fig7-3">圖&nbsp;<span>7.3</span></a> 呈現的事實：<span class="math inline">\(X = 3\)</span> 有一個長條, <span class="math inline">\(X = 4\)</span> 處也有一個長條,但是兩者之間没有。連續隨機變數没有這樣的限制。以天氣溫度來說，某個春天的日子氣溫可能是23度、24度、23.9度、或介於任兩個數值之間的任何數字,因為溫度是連續變數。這也是為什麼，常態分佈很適合描述春季的氣溫<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。</p>
+<p>接著來談談為何常態分佈的視覺化長得如同 <a href="#fig-fig7-5">圖&nbsp;<span>8.5</span></a> 的樣子。圖中的常態分佈參數是平均值 <span class="math inline">\(\mu = 0\)</span> 、標準差 <span class="math inline">\(\sigma = 1\)</span> 。從外形就能了解又稱為“鐘形曲線”的原因;真得看起來有點像中世紀時期的鐘。那麼常態分佈和二項分佈有何不同？首先 <a href="#fig-fig7-5">圖&nbsp;<span>8.5</span></a> 的常態分佈呈現光滑的曲線，而不是“柱狀圖”。這不是隨便畫的,因為常態分佈是連續隨機變數,而二項分佈是離散隨機變數。用上一節的擲骰子範例來解釋的話,每次會獲得3個骷髏或4個骷髏,但是不可能會獲得3.9個骷髏。如同 <a href="#fig-fig7-3">圖&nbsp;<span>8.3</span></a> 呈現的事實：<span class="math inline">\(X = 3\)</span> 有一個長條, <span class="math inline">\(X = 4\)</span> 處也有一個長條,但是兩者之間没有。連續隨機變數没有這樣的限制。以天氣溫度來說，某個春天的日子氣溫可能是23度、24度、23.9度、或介於任兩個數值之間的任何數字,因為溫度是連續變數。這也是為什麼，常態分佈很適合描述春季的氣溫<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-5-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.5: 平均值 <span class="math inline">\(\mu = 0\)</span> 和標準差 <span class="math inline">\(\sigma = 1\)</span> 的常態分佈。 x 軸對應某個隨機變數的值,y 軸的值代表測得某數值的可能性有多大。請留意 y 軸標籤是<strong>機率密度(probability density)</strong>而不是機率。 連續分佈具有一些微妙且不太好懂的特徵,使得 y 軸的數值不能直觀理解—這條曲條的高度並不是觀測到特定 x 值的機率，曲線的高度只是顯示那些 x 值特別容易觀測到(最高點之下的那一小塊!)。 這些需要花多一點時間學習的細節,請見<a href="#機率密度">機率密度</a>。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.5: 平均值 <span class="math inline">\(\mu = 0\)</span> 和標準差 <span class="math inline">\(\sigma = 1\)</span> 的常態分佈。 x 軸對應某個隨機變數的值,y 軸的值代表測得某數值的可能性有多大。請留意 y 軸標籤是<strong>機率密度(probability density)</strong>而不是機率。 連續分佈具有一些微妙且不太好懂的特徵,使得 y 軸的數值不能直觀理解—這條曲條的高度並不是觀測到特定 x 值的機率，曲線的高度只是顯示那些 x 值特別容易觀測到(最高點之下的那一小塊!)。 這些需要花多一點時間學習的細節,請見<a href="#機率密度">機率密度</a>。</figcaption>
 </figure>
 </div>
 </div>
@@ -905,7 +904,7 @@ Let's try to get a sense for what it means for a variable to be normally distrib
 <div id="fig-fig7-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-6-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.6: 展示更改常態分佈的平均值後會改變什麼。 實線是平均值為 <span class="math inline">\(\mu = 4\)</span> 的常態分佈。 虛線是平均值為 <span class="math inline">\(\mu = 7\)</span> 的常態分佈。 兩個分佈的標準差都是 <span class="math inline">\(\sigma = 1\)</span>。 兩個分佈的形狀相同並不讓人意外,只是虛線部分站得更右邊。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.6: 展示更改常態分佈的平均值後會改變什麼。 實線是平均值為 <span class="math inline">\(\mu = 4\)</span> 的常態分佈。 虛線是平均值為 <span class="math inline">\(\mu = 7\)</span> 的常態分佈。 兩個分佈的標準差都是 <span class="math inline">\(\sigma = 1\)</span>。 兩個分佈的形狀相同並不讓人意外,只是虛線部分站得更右邊。</figcaption>
 </figure>
 </div>
 </div>
@@ -917,13 +916,13 @@ Let's try to get a sense for what it means for a variable to be normally distrib
 
 @fig-fig7-9 Two more examples of the 'area under the curve idea'. There is a 15.9% chance that an observation is one standard deviation below the mean or smaller (panel (a)), and a 34.1% chance that the observation is somewhere between one standard deviation below the mean and the mean (panel (b)). Notice that if you add these two numbers together you get 15.9% + 34.1% = 50%. For normally distributed data, there is a 50% chance that an observation falls below the mean. And of course that also implies that there is a 50% chance that it falls above the mean
 --->
-<p>讓我們試著用直觀的方式瞭解常態分佈為何是連續隨機變數，首先看一下改變分佈的參數會改變什麼。<a href="#fig-fig7-6">圖&nbsp;<span>7.6</span></a> 並列平均值不同，但是標準差相同的常態分佈。讀者可以預期兩個分佈都具有相同的“寬度”，唯一區別是其中一個的最高點在左邊、另一個在右邊。兩者的其他特徵都是相同的。如果保持平均值不變、增加標準差的話,新的分佈最高點還是在同樣的位置,不過分佈曲線變得更寬,如同 <a href="#fig-fig7-7">圖&nbsp;<span>7.7</span></a> 的展示。留意一下分佈寬度變大時,最高點的高度會跟著降低。這是必然的,如同離散二項分佈的所有柱子，高度相加起來必須為1,常態分佈曲線覆蓋的面積也必須等於1。 除此之外，常態分佈還有一個重要特徵需要讀者知道：無論實際平均值和標準差是多少,從平均值向左右延伸1個標準差覆蓋了 <span class="math inline">\(68.3\%\)</span> 的面積；從平均值向左右延伸2個標準差覆蓋了 <span class="math inline">\(95.4\%\)</span> ；從平均值向左右延伸3個標準差覆蓋了 <span class="math inline">\(99.7\%\)</span> 。 請參考@fig-fig7-8和 <a href="#fig-fig7-9">圖&nbsp;<span>7.9</span></a> 的說明。</p>
+<p>讓我們試著用直觀的方式瞭解常態分佈為何是連續隨機變數，首先看一下改變分佈的參數會改變什麼。<a href="#fig-fig7-6">圖&nbsp;<span>8.6</span></a> 並列平均值不同，但是標準差相同的常態分佈。讀者可以預期兩個分佈都具有相同的“寬度”，唯一區別是其中一個的最高點在左邊、另一個在右邊。兩者的其他特徵都是相同的。如果保持平均值不變、增加標準差的話,新的分佈最高點還是在同樣的位置,不過分佈曲線變得更寬,如同 <a href="#fig-fig7-7">圖&nbsp;<span>8.7</span></a> 的展示。留意一下分佈寬度變大時,最高點的高度會跟著降低。這是必然的,如同離散二項分佈的所有柱子，高度相加起來必須為1,常態分佈曲線覆蓋的面積也必須等於1。 除此之外，常態分佈還有一個重要特徵需要讀者知道：無論實際平均值和標準差是多少,從平均值向左右延伸1個標準差覆蓋了 <span class="math inline">\(68.3\%\)</span> 的面積；從平均值向左右延伸2個標準差覆蓋了 <span class="math inline">\(95.4\%\)</span> ；從平均值向左右延伸3個標準差覆蓋了 <span class="math inline">\(99.7\%\)</span> 。 請參考@fig-fig7-8和 <a href="#fig-fig7-9">圖&nbsp;<span>8.9</span></a> 的說明。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-7" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-7-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.7: 說明變更常態分佈的標準差會發生什麼事。 圖中的兩個分佈平均值相同 <span class="math inline">\(\mu = 5\)</span>,只有標準差不一樣。 實線是標準差為 <span class="math inline">\(\sigma = 1\)</span> 的分佈,虛線顯示了一個標準差為 <span class="math inline">\(\sigma = 2\)</span> 的分佈。 因此,這兩個分佈均以相同的位置“置中”,只是虛線比實線寬。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.7: 說明變更常態分佈的標準差會發生什麼事。 圖中的兩個分佈平均值相同 <span class="math inline">\(\mu = 5\)</span>,只有標準差不一樣。 實線是標準差為 <span class="math inline">\(\sigma = 1\)</span> 的分佈,虛線顯示了一個標準差為 <span class="math inline">\(\sigma = 2\)</span> 的分佈。 因此,這兩個分佈均以相同的位置“置中”,只是虛線比實線寬。</figcaption>
 </figure>
 </div>
 </div>
@@ -933,7 +932,7 @@ Let's try to get a sense for what it means for a variable to be normally distrib
 <div id="fig-fig7-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-8-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.8: 曲線下的陰影面積表示觀察值落在特定範圍内的機率。 實線是根據平均值 <span class="math inline">\(\mu = 0\)</span> 和標準差 <span class="math inline">\(\sigma = 1\)</span> 的常態分佈繪製。 灰色區域呈現了指定標準差的“曲線下陰影面積”。 圖(a)顯示觀察值落在距離平均值一個標準差内的機率為 68.3%。 圖(b),顯示觀察值落在距離平均值兩個標準差内的機率為 95.4%。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.8: 曲線下的陰影面積表示觀察值落在特定範圍内的機率。 實線是根據平均值 <span class="math inline">\(\mu = 0\)</span> 和標準差 <span class="math inline">\(\sigma = 1\)</span> 的常態分佈繪製。 灰色區域呈現了指定標準差的“曲線下陰影面積”。 圖(a)顯示觀察值落在距離平均值一個標準差内的機率為 68.3%。 圖(b),顯示觀察值落在距離平均值兩個標準差内的機率為 95.4%。</figcaption>
 </figure>
 </div>
 </div>
@@ -943,13 +942,13 @@ Let's try to get a sense for what it means for a variable to be normally distrib
 <div id="fig-fig7-9" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-9-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.9: 另外兩個說明“曲線下面積”的例子。圖(a)展示 觀察值小於或等於距離平均值一個標準差之外的機率為 15.9%；圖(b)展示觀察值落在距離平均值一個標準差和平均值之間的機率為 34.1%。 留意一下，把這兩個圖的面積加在一起,就是 15.9% + 34.1% = 50%。也就是說，對於符合常態分佈的資料,觀察值低於平均值的機率為 50%。 這也表示高於平均值的觀察值出現機率為 50%。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.9: 另外兩個說明“曲線下面積”的例子。圖(a)展示 觀察值小於或等於距離平均值一個標準差之外的機率為 15.9%；圖(b)展示觀察值落在距離平均值一個標準差和平均值之間的機率為 34.1%。 留意一下，把這兩個圖的面積加在一起,就是 15.9% + 34.1% = 50%。也就是說，對於符合常態分佈的資料,觀察值低於平均值的機率為 50%。 這也表示高於平均值的觀察值出現機率為 50%。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="機率密度" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="機率密度"><span class="header-section-number">7.5.1</span> 機率密度</h3>
+<section id="機率密度" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="機率密度"><span class="header-section-number">8.5.1</span> 機率密度</h3>
 
 <!--- There's something I've been trying to hide throughout my discussion of the normal distribution, something that some introductory textbooks omit completely. They might be right to do so. This "thing" that I'm hiding is weird and counter-intuitive even by the admittedly distorted standards that apply in statistics. Fortunately, it's not something that you need to understand at a deep level in order to do basic statistics. Rather, it's something that starts to become important later on when you move beyond the basics. So, if it doesn't make complete sense, don't worry too much, but try to make sure that you follow the gist of it.
 
@@ -970,12 +969,12 @@ Okay, so that explains part of the story. I've explained a little bit about how 
 <p>在介紹常態分佈的視覺化統計圖裡,讀者可能已經注意到這些圖中的 y 軸標記為“機率密度”而不是密度。還有若是有仔細看常態分佈公式的話,應該會注意到符號是 <span class="math inline">\(p(X)\)</span> 而不是 <span class="math inline">\(P(X)\)</span>。</p>
 <p>這是因為圖中呈現數值的並不是實際的機率,而是某種代理指標。要理解那些y軸的數值是什麼意思,需要花一些時間了解 <span class="math inline">\(X\)</span> 是連續隨機變數是什麼意思。比如我們正在聊現在戶外氣溫有幾度。溫度計顯示 <span class="math inline">\(23\)</span> 度,但我知道這並不是真的。因為不是剛好 <span class="math inline">\(23\)</span> 度，我心裡想也可能是 <span class="math inline">\(23.1\)</span> 度。但我知道這也並不是真的,因為它實際上可能是 <span class="math inline">\(23.09\)</span> 度。但是我知道……好啦,我講這麼一大串，是讓你了解連續隨機變數的真正棘手之處是，沒有工具能測出準確的數值。</p>
 <p>現在來想一想如何計算連續隨機變數的機率。假設要預測明天的最高溫度，就從從平均值為 <span class="math inline">\(23\)</span> 度、標準差為 1 的常態分佈中隨機選出一個數值。溫度正好是 <span class="math inline">\(23\)</span> 度的機率是多少?答案是“零”,或者可能是“一個如此接近零以至於可以視為零的數字”。為什麼會這樣?這就像往一個無限小的飛鏢靶心丟飛鏢。無論你多會瞄準,你永遠不會命中(除非你是某個娛樂作品的主角)。在現實生活中,永遠不會出現剛好是 <span class="math inline">\(23\)</span> 度的值，真實數值總是會像 <span class="math inline">\(23.1\)</span> 或 <span class="math inline">\(22.99998\)</span>等一類的數值。換句話說,想要知道溫度正好是 <span class="math inline">\(23\)</span> 度的機率是多少是完全没有意義的。然而,日常的溝通我跟你說戶外是 <span class="math inline">\(23\)</span> 度,就算實際上是 <span class="math inline">\(22.9998\)</span> 度,你也不會認為我在騙你。因為在日常溝通的情境,<span class="math inline">\(23\)</span> 度通常涵蓋“ <span class="math inline">\(22.5\)</span> 度及 <span class="math inline">\(23.5\)</span> 度之間的某個位數值”。雖然計較溫度正好是 <span class="math inline">\(23\)</span> 度的機率沒有不太意義,但是評估溫度在 <span class="math inline">\(22.5\)</span> 度和 <span class="math inline">\(23.5\)</span> 度之間，或者 <span class="math inline">\(20\)</span> 度和 <span class="math inline">\(30\)</span> 度之間，或者任何兩個數值範圍之間的機率相當合理。</p>
-<p>這段討論的重點是,當我們使用連續機率分佈時,計算某個特定值的機率並没有意義。然而,我們可以評估某個數值落在那段數值範圍內的機率。為了找出某個數值範圍的機率,要做的就是計算“曲線下的面積”。我們已經在 <a href="#fig-fig7-8">圖&nbsp;<span>7.8</span></a> 看到這個概念的視覺化,其中顯示的陰影區域代表真實機率，像是其中的圖(a)顯示了觀察到的值落在離平均值 1 個標準差範圍內的機率。</p>
+<p>這段討論的重點是,當我們使用連續機率分佈時,計算某個特定值的機率並没有意義。然而,我們可以評估某個數值落在那段數值範圍內的機率。為了找出某個數值範圍的機率,要做的就是計算“曲線下的面積”。我們已經在 <a href="#fig-fig7-8">圖&nbsp;<span>8.8</span></a> 看到這個概念的視覺化,其中顯示的陰影區域代表真實機率，像是其中的圖(a)顯示了觀察到的值落在離平均值 1 個標準差範圍內的機率。</p>
 <p>到這裡已經解釋了一部分被省略的情節，以上說明了為何知道一段數值範圍覆蓋的曲線下面積，是解讀連續機率分佈的面積關鍵。那麼這一節開始提到的 <span class="math inline">\(p(x)\)</span> 在 公式裡是什麼角色?很 顯然<span class="math inline">\(p(x)\)</span> 不是代表一個機率值,那究竟是什麼?這個符號 <span class="math inline">\(p(x)\)</span> 的正式名稱是<strong>機率密度</strong>。在這個單元展示的曲線圖，就是y軸的數值，對應曲線的高度。密度本身並没有任何意義,但是經過“調整”，就可確保曲線下的部分面積可以代表真實機率。老實說,這就是現在你需要學習有關<strong>機率密度</strong>的全部知識。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 </section>
 </section>
-<section id="sec-Other-useful-distributions" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="sec-Other-useful-distributions"><span class="header-section-number">7.6</span> 其他常見機率分佈</h2>
+<section id="sec-Other-useful-distributions" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="sec-Other-useful-distributions"><span class="header-section-number">8.6</span> 其他常見機率分佈</h2>
 <!--- The normal distribution is the distribution that statistics makes most use of (for reasons to be discussed shortly), and the binomial distribution is a very useful one for lots of purposes. But the world of statistics is filled with probability distributions, some of which we'll run into in passing. In particular, the three that will appear in this book are the t distribution, the $\chi^2$ distribution and the F distribution. I won't give formulas for any of these, or talk about them in too much detail, but I will show you some pictures: @fig-fig7-10, @fig-fig7-11 and @fig-fig7-12. 
 
 @fig-fig7-10 A $t$ distribution with 3 degrees of freedom (solid line). It looks similar to a normal distribution, but it's not quite the same. For comparison purposes I've plotted a standard normal distribution as the dashed line.
@@ -984,39 +983,39 @@ Okay, so that explains part of the story. I've explained a little bit about how 
 
 @fig-fig7-12 An $F$ distribution with 3 and 5 degrees of freedom. Qualitatively speaking, it looks pretty similar to a chi-square distribution, but they're not quite the same in general.
 --->
-<p>常態分佈是統計學最常使用的機率分佈(原因很快就會討論),二項分佈在很多狀況也會用到。 因為使用統計都是遇到各式各樣機率分佈,我們將在後面的單元會遇到其中一些。 特別是另外三個還沒介紹的t 分佈、<span class="math inline">\(\chi^2\)</span> 分佈和 F 分佈。 我也不會跟你解釋這些分佈的公式,也不會多寫幾段話討論這些分佈,讀者只要透過這些視覺化圖像感受他們:<a href="#fig-fig7-10">圖&nbsp;<span>7.10</span></a>、<a href="#fig-fig7-11">圖&nbsp;<span>7.11</span></a> 和 <a href="#fig-fig7-12">圖&nbsp;<span>7.12</span></a>。</p>
+<p>常態分佈是統計學最常使用的機率分佈(原因很快就會討論),二項分佈在很多狀況也會用到。 因為使用統計都是遇到各式各樣機率分佈,我們將在後面的單元會遇到其中一些。 特別是另外三個還沒介紹的t 分佈、<span class="math inline">\(\chi^2\)</span> 分佈和 F 分佈。 我也不會跟你解釋這些分佈的公式,也不會多寫幾段話討論這些分佈,讀者只要透過這些視覺化圖像感受他們:<a href="#fig-fig7-10">圖&nbsp;<span>8.10</span></a>、<a href="#fig-fig7-11">圖&nbsp;<span>8.11</span></a> 和 <a href="#fig-fig7-12">圖&nbsp;<span>8.12</span></a>。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-10" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-10-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.10: 自由度為 3 的 t 分佈(實線)。 看起來很像常態分佈,但完全是另位一種機率分佈。 請比較虛線繪製的標準常態分佈。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.10: 自由度為 3 的 t 分佈(實線)。 看起來很像常態分佈,但完全是另位一種機率分佈。 請比較虛線繪製的標準常態分佈。</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <ul>
-<li>t 分佈是一種與常態分佈非常相似的連續分佈,請見 <a href="#fig-fig7-10">圖&nbsp;<span>7.10</span></a>。 仔細看t 分佈的“尾巴”比常態分佈的尾巴更“重”(尾巴曲線稍微高一些)。這是兩者之間的重要區別，當你認為資料的分佈符合常態分佈但並不知道平均值或標準差，其實應該是符合t分佈。 <a href="11-Comparing-two-means.html"><span>單元&nbsp;11</span></a> 將學習使用t分佈的統計分析方法。</li>
+<li>t 分佈是一種與常態分佈非常相似的連續分佈,請見 <a href="#fig-fig7-10">圖&nbsp;<span>8.10</span></a>。 仔細看t 分佈的“尾巴”比常態分佈的尾巴更“重”(尾巴曲線稍微高一些)。這是兩者之間的重要區別，當你認為資料的分佈符合常態分佈但並不知道平均值或標準差，其實應該是符合t分佈。 <a href="11-Comparing-two-means.html"><span>單元&nbsp;12</span></a> 將學習使用t分佈的統計分析方法。</li>
 </ul>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-11" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-11-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.11: 自由度為 3 的 <span class="math inline">\(\chi^2\)</span> 分佈。 請注意,所有觀察值都是大於零,並且該分佈形狀相當歪斜。 這些是 <span class="math inline">\(\chi^2\)</span> 分佈的關鍵特徵</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.11: 自由度為 3 的 <span class="math inline">\(\chi^2\)</span> 分佈。 請注意,所有觀察值都是大於零,並且該分佈形狀相當歪斜。 這些是 <span class="math inline">\(\chi^2\)</span> 分佈的關鍵特徵</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <ul>
-<li><span class="math inline">\(\chi^2\)</span> 分佈也是經常在許多文獻報告裡看到的機率分佈。 最常使用的場景是 <a href="10-Categorical-data-analysis.html"><span>單元&nbsp;10</span></a> 介紹的分類資料分析,實際上這個分佈無處不在。如果讀者有興趣深入研究機率分佈的數學原理(如果你上完這個課程開竅的話?),會發現 <span class="math inline">\(\chi^2\)</span> 分佈隨處可見的主要原因是,如果要處理不只一個符合常態分佈的變項,計算出平方和之總和後(稱為計算“平方和”),形成的隨機變數就是 <span class="math inline">\(\chi^2\)</span> 分佈。知道這個原理會提昇你運用統計的能力。 現在先感受一下 <span class="math inline">\(\chi^2\)</span> 分佈的視覺特徵: <a href="#fig-fig7-11">圖&nbsp;<span>7.11</span></a>。</li>
+<li><span class="math inline">\(\chi^2\)</span> 分佈也是經常在許多文獻報告裡看到的機率分佈。 最常使用的場景是 <a href="10-Categorical-data-analysis.html"><span>單元&nbsp;11</span></a> 介紹的分類資料分析,實際上這個分佈無處不在。如果讀者有興趣深入研究機率分佈的數學原理(如果你上完這個課程開竅的話?),會發現 <span class="math inline">\(\chi^2\)</span> 分佈隨處可見的主要原因是,如果要處理不只一個符合常態分佈的變項,計算出平方和之總和後(稱為計算“平方和”),形成的隨機變數就是 <span class="math inline">\(\chi^2\)</span> 分佈。知道這個原理會提昇你運用統計的能力。 現在先感受一下 <span class="math inline">\(\chi^2\)</span> 分佈的視覺特徵: <a href="#fig-fig7-11">圖&nbsp;<span>8.11</span></a>。</li>
 </ul>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig7-12" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="07-Introduction-to-probability_files/figure-html/fig-fig7-12-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;7.12: 自由度為 3 及 5 的 F 分佈。 以關鍵特徵來看,非常像 <span class="math inline">\(\chi^2\)</span> 分佈,但他們完全是兩種不同的機率分佈。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;8.12: 自由度為 3 及 5 的 F 分佈。 以關鍵特徵來看,非常像 <span class="math inline">\(\chi^2\)</span> 分佈,但他們完全是兩種不同的機率分佈。</figcaption>
 </figure>
 </div>
 </div>
@@ -1028,12 +1027,12 @@ Okay, so that explains part of the story. I've explained a little bit about how 
 
 Okay, time to wrap this section up. We've seen three new distributions: $\chi^2$), $t$ and $F$. They're all continuous distributions, and they're all closely related to the normal distribution. The main thing for our purposes is that you grasp the basic idea that these distributions are all deeply related to one another, and to the normal distribution. Later on in this book we're going to run into data that are normally distributed, or at least assumed to be normally distributed. What I want you to understand right now is that, if you make the assumption that your data are normally distributed, you shouldn't be surprised to see $\chi^2$, $t$ and $F$ distributions popping up all over the place when you start trying to do your data analysis. --->
 <ul>
-<li>F 分佈看起來有點像 <span class="math inline">\(\chi^2\)</span> 分佈,並且需要比較個 <span class="math inline">\(\chi^2\)</span> 分佈就會遇到。 雖然任何有頭腦的人都不會想挖這個坑跳進去,但這種比較在資料分析實務非常重要。 還記得 <span class="math inline">\(\chi^2\)</span> 分佈是處理“平方和”會用到的機率分佈嗎?這也就是說如果要處理的統計問題是比較兩個“平方和”，就要使用F分佈。當然，我們目前還沒遇到有平方和的範例，這是 <a href="13-Comparing-several-means-one-way-ANOVA.html"><span>單元&nbsp;13</span></a> 的學習課題，我們將在那個單元好好認識F分佈。現在請看 <a href="#fig-fig7-12">圖&nbsp;<span>7.12</span></a> 感受F分佈的特徵。</li>
+<li>F 分佈看起來有點像 <span class="math inline">\(\chi^2\)</span> 分佈,並且需要比較個 <span class="math inline">\(\chi^2\)</span> 分佈就會遇到。 雖然任何有頭腦的人都不會想挖這個坑跳進去,但這種比較在資料分析實務非常重要。 還記得 <span class="math inline">\(\chi^2\)</span> 分佈是處理“平方和”會用到的機率分佈嗎?這也就是說如果要處理的統計問題是比較兩個“平方和”，就要使用F分佈。當然，我們目前還沒遇到有平方和的範例，這是 <a href="13-Comparing-several-means-one-way-ANOVA.html"><span>單元&nbsp;13</span></a> 的學習課題，我們將在那個單元好好認識F分佈。現在請看 <a href="#fig-fig7-12">圖&nbsp;<span>8.12</span></a> 感受F分佈的特徵。</li>
 </ul>
 <p>這個單元終於要結束了。讀者們又看到三種機率分佈:<span class="math inline">\(\chi^2\)</span>、t 和 F。 這些都是連續分佈,並且都與常態分佈有密切關聯。不想深究數學原理的讀者，只要知道這些基本事實就足夠了。在後面的單元，我們將遭遇遵循常態分佈或至少假定遵循常態分佈的資料。讀者現在只要記住，如果假定要處理的資料遵循常態分佈，其實應該使用<span class="math inline">\(\chi^2\)</span>、t 或 F 分佈的話，不必感到驚慌了。</p>
 </section>
-<section id="本章小結" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="本章小結"><span class="header-section-number">7.7</span> 本章小結</h2>
+<section id="本章小結" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="本章小結"><span class="header-section-number">8.7</span> 本章小結</h2>
 <!--- In this chapter we've talked about probability. We've talked about what probability means and why statisticians can't agree on what it means. We talked about the rules that probabilities have to obey. And we introduced the idea of a probability distribution and spent a good chunk of the chapter talking about some of the more important probability distributions that statisticians work with. The section by section breakdown looks like this:
 
 - Probability theory versus statistics: [How are probability and statistics different?]
@@ -1052,7 +1051,7 @@ Picking up on that last point, there's a sense in which this whole chapter is so
 <li><p><a href="#sec-The-binomial-distribution">二項分佈</a>、<a href="#sec-The-normal-distribution">常態分佈</a>和<a href="#sec-Other-useful-distributions">其他常見機率分佈</a></p></li>
 </ul>
 <p>如您所料,我的內容絕不詳盡。機率論本身就是數學的一個巨大分支,與其在統計和資料分析中的應用完全分開。因此,這個主題上已經寫了上千本書,大學通常提供多門完全致力於機率論的課程。即使是記錄標準機率分佈這樣“更簡單”的任務也是一個大課題。我在本章中描述了五種標準機率分佈,但在我的書架上有一本45章的書,名為“統計分佈” <span class="citation" data-cites="Evans2011">(<a href="References.html#ref-Evans2011" role="doc-biblioref">Evans et al., 2011</a>)</span>,其中列出了很多更多分佈。幸運的是,您需要的很少。當您走出去做現實世界的資料分析時,您不太可能需要知道幾十種統計分佈,在本書中您肯定不需要它們,但是瞭解還有其他可能性永遠不會有害。</p>
-<p>關於最後一點,在某種意義上,整章可以說是額外的內容。許多本科心理學統計課程會很快減少這部分內容(我知道我的課程就是這樣),即使是更高級的課程也經常會“忘記”重新訪問該領域的基礎。大多數學術心理學家不會區分機率和密度,直到最近,很少有人意識到貝式和次數主義機率之間的區別。然而,我認為在繼續應用之前理解這些很重要。例如,在進行統計推論時,有很多關於您“允許”說什麼的規則,其中許多看起來很武斷和奇怪。然而,如果您瞭解貝式與次數主義的區別,它們就會變得有意義。同樣,在 <a href="11-Comparing-two-means.html"><span>單元&nbsp;11</span></a> 中,我們將談論所謂的 t 檢定,如果您真的想完全理解 t 檢定的機制,那麼瞭解 t 分佈的實際情況真的會有幫助。我希望您理解我的意思。</p>
+<p>關於最後一點,在某種意義上,整章可以說是額外的內容。許多本科心理學統計課程會很快減少這部分內容(我知道我的課程就是這樣),即使是更高級的課程也經常會“忘記”重新訪問該領域的基礎。大多數學術心理學家不會區分機率和密度,直到最近,很少有人意識到貝式和次數主義機率之間的區別。然而,我認為在繼續應用之前理解這些很重要。例如,在進行統計推論時,有很多關於您“允許”說什麼的規則,其中許多看起來很武斷和奇怪。然而,如果您瞭解貝式與次數主義的區別,它們就會變得有意義。同樣,在 <a href="11-Comparing-two-means.html"><span>單元&nbsp;12</span></a> 中,我們將談論所謂的 t 檢定,如果您真的想完全理解 t 檢定的機制,那麼瞭解 t 分佈的實際情況真的會有幫助。我希望您理解我的意思。</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
@@ -1448,12 +1447,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Prelude-Part-IV.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">中場故事</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">中場故事</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./08-Estimating-unknown-quantities-from-a-sample.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

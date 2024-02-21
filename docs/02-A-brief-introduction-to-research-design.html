@@ -99,7 +99,7 @@ div.csl-indent {
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="用jamovi上手統計學 - 2&nbsp; 研究設計入門">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://scgeeker.github.io/lsj-book-zh_tw/images/variable-nominal.svg">
+<meta property="og:image" content="https://scgeeker.github.io/lsj-book-zh_tw/images/variable-ordinal.svg">
 <meta property="og:site-name" content="用jamovi上手統計學">
 </head>
 
@@ -433,6 +433,9 @@ div.csl-indent {
 <!---In this chapter， we're going to start thinking about the basic ideas that go into designing a study， collecting data， checking whether your data collection works， and so on. It won't give you enough information to allow you to design studies of your own， but it will give you a lot of the basic tools that you need to assess the studies done by other people. However， since the focus of this book is much more on data analysis than on data collection， I'm only giving a very brief overview. Note that this chapter is "special" in two ways. Firstly， it's much more psychology specific than the later chapters. Secondly， it focuses much more heavily on the scientific problem of research methodology， and much less on the statistical problem of data analysis. Nevertheless， the two problems are related to one another， so it's traditional for stats textbooks to discuss the problem in a little detail. This chapter relies heavily on @Campbell1963 and @Stevens1946 for the discussion of scales of measurement. --->
 <section id="sec-Introduction-to-psychological-measurement" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-Introduction-to-psychological-measurement"><span class="header-section-number">2.1</span> 認識心理測量</h2>
+<blockquote class="blockquote">
+<p><a href="slides2A.html" target="_blank">導讀簡報</a></p>
+</blockquote>
 <p>首先請同學理解資料分析就是一種<strong>測量</strong>。在心理學系要學的就是如何測量人類行為及心智活動。那麼到底”測量”是什麼？</p>
 <!---The first thing to understand is data collection can be thought of as a kind of **measurement**. That is， what we're trying to do here is measure something about human behaviour or the human mind. What do I mean by "measurement"?--->
 <section id="心理測量面面觀" class="level3" data-number="2.1.1">
@@ -490,11 +493,11 @@ Moving beyond these issues， there's the question of methodology. What specific
 <p>以上討論這麼多，是要引導同學理解<strong>操作型定義</strong>的概念。用更清楚簡潔的話來說，操作型定義是<em>將有意義但有些模糊的概念，轉換為精確測量程序的設定過程</em>。完整的操作型定義要在過程中考慮這些條件：</p>
 <ul>
 <li>清楚定義研究要測量的項目。以“年齡”為例，研究要測量的是“胎兒出生起算的時間長度”還是“母體受孕起算的時間長度”。</li>
-<li>確認用什麼方法進行測量。同樣以“年齡”為例，研穵 要用自陳式報告、詢問受測對象雙親、還是查閱官方紀錄？如果決定用自陳式報告，要如何設定問題內容？</li>
+<li>確認用什麼方法進行測量。同樣以“年齡”為例，研究要用自陳式報告、詢問受測對象雙親、還是查閱官方紀錄？如果決定用自陳式報告，要如何設定問題內容？</li>
 <li>定義可做紀錄的測量數值範圍。請留意數值不一定要是數字！雖然年齡的測量數值無疑問題數字，依然要考慮什麼單位的數字是需要被紀錄的。是年份？月份？還是小時？像性別一類數值不是數字的測量方法，同樣也要考慮數值的範圍。像是請受測對象透過自陳報告回報性別，要設計什麼樣的選項讓人選擇？只有“男性”和“女性”兩個選項夠嗎？需不需要增加“其他”這一項？或者改用開放式回答，讓受測對象自已寫下個人認同的性別？如果確定使用開放式回答，要如何解讀各式各樣的答案？</li>
 </ul>
 <p>設定操作型定義有各種方法，沒有一種“唯一正解”。任何研究都是根據測量目的，透過設定操作型定義的過程，將“年齡”與”性別”等不具形式的概念，轉化為可用數值形式表達的測量值。每個科學領域都對研究對象的測量方式有基本共識。因此，要理解如何設定操作型定義，是因研究主題而異。畢竟有許多主題存在大量差異化的個別研究，有些主題則有一致的研究模式，無法用統一的方法設定操作型定義。</p>
-<p>進入下一節之前，讓我們整理一些之後的單元會經常遇到，與測量有關的專用名詞，這些名詞彼此之間有許多關聯：</p>
+<p>進入下一節之前，讓我們整理一些之後的單元會經常遇到，與測量有關的專有名詞，這些名詞彼此之間有許多關聯：</p>
 <ul>
 <li><strong>理論建構(A theoretical construct)</strong> 研究者想要測量的目標，像是”年齡”、“性別”、或”選項”。理論建構不能直接觀察記錄，都是模糊抽象的概念。</li>
 <li><strong>測量程序(measure)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></strong> 測量程序是進行觀察紀錄的方法或工具。像是問卷的題目、行為觀察、腦部活動掃瞄都是一種測量程序。</li>
@@ -731,7 +734,7 @@ Again， lets look at a more psychological example. Suppose I'm interested in lo
 <tr class="odd">
 <td style="text-align: center;">名義尺度</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><img src="images/variable-nominal.svg" class="img-fluid">，<img src="images/variable-id.svg" class="img-fluid"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">次序尺度</td>
@@ -741,12 +744,12 @@ Again， lets look at a more psychological example. Suppose I'm interested in lo
 <tr class="odd">
 <td style="text-align: center;">等距尺度</td>
 <td style="text-align: center;"><img src="images/variable-continuous.svg" class="img-fluid"></td>
-<td style="text-align: center;"><img src="images/variable-nominal.svg" class="img-fluid">，<img src="images/variable-ordinal.svg" class="img-fluid"></td>
+<td style="text-align: center;"><img src="images/variable-ordinal.svg" class="img-fluid"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">比例尺度</td>
 <td style="text-align: center;"><img src="images/variable-continuous.svg" class="img-fluid"></td>
-<td style="text-align: center;"><img src="images/variable-nominal.svg" class="img-fluid">，<img src="images/variable-ordinal.svg" class="img-fluid"></td>
+<td style="text-align: center;"><img src="images/variable-ordinal.svg" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>

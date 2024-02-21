@@ -381,7 +381,7 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></h1>
+<h1 class="title display-7"><span id="sec-Gettng-started-with-jamovi" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">與jamovi的第一次接觸</span></span></h1>
 
 </header>
 
@@ -421,11 +421,11 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="啟動jamovi"><span class="header-section-number">3.1.1</span> 啟動jamovi</h3>
 <p>不論讀者的作業系統是什麼，安裝成功就可以啟動jamovi開始第一次接觸。首次啟動的jamovi視窗介面應該像 <a href="#fig-fig3-1">圖&nbsp;<span>3.1</span></a>。</p>
 <!---One way or another, regardless of what operating system you're using, it's time to open jamovi and get started. When first starting jamovi you will be presented with a user interface which looks something like @fig-fig3-1.--->
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig3-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig3-1.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig3-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;3.1: 啟動jamovi!</figcaption>
 </figure>
 </div>
@@ -454,11 +454,11 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="變項"><span class="header-section-number">3.3.1</span> 變項</h3>
 <p>jamovi試算表介面最常見的變項是<code>資料變項</code>(Data Variables)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，純粹展示從資料檔匯入的數值，或者使用者自行輸入的數值。每個資料變項能設定為各種測量級別(見 <a href="#fig-fig3-2">圖&nbsp;<span>3.2</span></a> )</p>
 <!---The most commonly used variables in jamovi are 'Data Variables', these variables simply contain data either loaded from a data file, or 'typed in' by the user. Data variables can be one of several measurement levels (@fig-fig3-2).--->
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig3-2" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig3-2.png" class="img-fluid figure-img" width="251"></p>
+<p><img src="images/fig3-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;3.2: 測量級別設定面板</figcaption>
 </figure>
 </div>
@@ -493,11 +493,11 @@ MEAN(A, B)<br>
 (len - VMEAN(len)) / VSTDEV(len)</p>
 <p>以上公式依序是變項A與變項B的總和，變項len的log轉換(底數為10)，變項A與變項B的平均值，以及變項len的z分數<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。 <a href="#fig-fig3-3">圖&nbsp;<span>3.3</span></a> 示範建立新變項存儲變項len的z分數(這份資料來自<code>Tooth Growh</code>練習資料集)。</p>
 <!---In order, these are the sum of A and B, a log (base 10) transform of len, the mean of A and B, and the z-score of the variable len[^getting-started-with-jamovi-0]. @fig-fig3-3 shows the jamovi screen for the new variable computed as the z-score of len (from the 'Tooth Growth' example data set). --->
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig3-3" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig3-3.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig3-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;3.3: 設定計算變項<code>zscore-len</code>存放變項len的z分數。</figcaption>
 </figure>
 </div>
@@ -546,11 +546,11 @@ There are also several other kinds of data file that you might want to import in
 <!---One quite commonly used data format is the humble "comma separated value" file, also called a csv file, and usually bearing the file extension .csv. csv files are just plain old-fashioned text files and what they store is basically just a table of data. This is illustrated in @fig-fig3-4, which shows a file called booksales.csv that I've created. As you can see, each row represents the book sales data for one month. The first row doesn't contain actual data though, it has the names of the variables.
 
 The booksales.csv data file. On the left I have opened the file using a spreadsheet program (OpenOffice), which shows that the file is basically a table. On the right the same file is open in a standard text editor (the TextEdit program on a Mac), which shows how the file is formatted. The entries in the table are wrapped in quote marks and separated by commas--->
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig3-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig3-4.png" class="img-fluid figure-img" width="364"></p>
+<p><img src="images/fig3-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;3.4: booksales.csv的資料內容。畫面左方是以試算表軟體OpenOffice開啟的視窗，可見到清楚的表格標記。畫面右方是以純文字編輯器開啟的視窗，可見到逗號標記。試算表裡的每一格在csv檔是以逗號間隔。</figcaption>
 </figure>
 </div>
@@ -560,11 +560,11 @@ The booksales.csv data file. On the left I have opened the file using a spreadsh
 <!---It's easy to open csv files in jamovi. From the top left menu (the button with three parallel lines) choose 'Open' and browse to where you have stored the csv file on your computer. If you're on a Mac, it'll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in @fig-fig3-5. I'm assuming that you're familiar with your own computer, so you should have no problem finding the csv file that you want to import! Find the one you want, then click on the "Open" button. 
 
 A dialog box on a Mac asking you to select the csv file jamovi should try to import. Mac users will recognise this immediately, it's the usual way in which a Mac asks you to find a file. Windows users won't see this, instead they'll see the usual explorer window that Windows always gives you when it wants you to select a file--->
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig3-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig3-5.png" class="img-fluid figure-img" width="364"></p>
+<p><img src="images/fig3-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;3.5: Mac作業系統的檔案瀏覽及對話視窗，相信Mac使用者都很熟悉。Windows系統有類似的檔案總管，選取檔案的操作大同小異。</figcaption>
 </figure>
 </div>
@@ -641,11 +641,11 @@ Earlier we saw how to specify different variable levels, and if you want to chan
 <!---A really great feature of jamovi is the ability to install add-on modules from the jamovi library. These add-on modules have been developed by the jamovi community, i.e., jamovi users and developers who have created special software add-ons that do other, usually more advanced, analyses that go beyond the capabilities of the base jamovi program.
 
 To install add-on modules, just click on the large $+$ in the top right of the jamovi window, select "jamovi-library" and then browse through the various add-on modules that are available. Choose the one(s) you want, and then install them, as in @fig-fig3-6. It's that easy. The newly installed modules can then be accessed from the "Analyses" button bar. Try it...useful add-on modules to install include "scatr" (added under "Descriptives") and $R_j$. --->
-<div class="cell">
+<div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig3-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig3-6.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="images/fig3-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;3.6: jamovi擴充模組庫管理面板</figcaption>
 </figure>
 </div>

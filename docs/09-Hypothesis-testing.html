@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.427">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Prelude-Part-V.html" rel="next">
+<link href="./10-Categorical-data-analysis.html" rel="next">
 <link href="./08-Estimating-unknown-quantities-from-a-sample.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -78,8 +78,7 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出",
-    "search-label": "搜尋"
+    "search-submit-button-title": "送出"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -120,7 +119,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prelude-Part-IV.html">統計理論</a></li><li class="breadcrumb-item"><a href="./09-Hypothesis-testing.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -134,8 +133,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./用jamovi上手統計學.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -164,7 +162,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="搜尋"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -294,12 +292,6 @@ div.csl-indent {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Prelude-Part-V.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">線性模型的學習取向</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-Categorical-data-analysis.html" class="sidebar-item-text sidebar-link">
@@ -612,7 +604,7 @@ So, what about the type II error rate? Well, we'd also like to keep those under 
 <h2 data-number="9.3" class="anchored" data-anchor-id="運用取樣分佈檢測統計值"><span class="header-section-number">9.3</span> 運用取樣分佈檢測統計值</h2>
 <p>現在我們可以開始討論如何建立一個假設檢定的具體步驟，讓我們回到一開始提的靈異感知（ESP）研究題目。暫時不管我們實際獲得的資料，先專注於實驗設計。無論資料裡的數值是什麼，都是表示 <span class="math inline">\(N\)</span> 個人當中有 <span class="math inline">\(X\)</span> 個人正確地辨認出隱藏卡牌的顏色。此外，若是虛無假設（null hypothesis）確實是真的，也就是說靈異感知不存在，每個人正確辨認出卡牌顏色的真實機率 <span class="math inline">\(\theta\)</span> 等於 <span class="math inline">\(0.5\)</span>。在這種狀況，我們預期的資料是什麼樣子呢？很明顯，我們期望作出正確反應的人數比例接近 <span class="math inline">\(50%\)</span>。換言之，我們可以用更數學式的語言表達 <span class="math inline">\(\frac{X}{N}\)</span> 大約等於 <span class="math inline">\(0.5\)</span>。當然，我們不會預期真實的比例完全等於 <span class="math inline">\(0.5\)</span>。例如，如果我們測試了 <span class="math inline">\(N=100\)</span> 個人，其中有 <span class="math inline">\(X=53\)</span> 人回答正確，我們也許不得不承認這筆資料與虛無假設是相當一致的。另一方面，如果有 <span class="math inline">\(X=99\)</span> 個參與者回答正確，我們會非常有信心地認為虛無假設是錯的。同樣地，如果只有 <span class="math inline">\(X=3\)</span> 人回答正確，我們也會非常有信心地認為虛無假設是錯的。現在讓我們用更專業的方式描述這些推論：我們有一個數值 <span class="math inline">\(X\)</span> ，可以通過觀察資料計算出來。評估 <span class="math inline">\(X\)</span> 之後，我們就必須決定是相信虛無假設，還是拒絕虛無假設並接受另一種假設。用來幫助我們作出決策的數值就稱為<strong>統計檢定值</strong>。</p>
 <p>選定了一個統計檢定值後，下一步是正式宣告那些統計值將導致我們拒絕虛無假設，那些統計值將導致我們接受虛無假設。為了做出決策，我們需要確定當實際結果符合虛無假設時，統計值的取樣分佈是什麼（不大記得的話，可以回到 <a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-Sampling-distribution-of-the-mean"><span>小單元&nbsp;8.3.1</span></a> 復習）。為什麼我們需要設定取樣分佈？因為這能告訴我們，如果虛無假設是正確的，我們可以預期會得到那些 <span class="math inline">\(X\)</span> 的數值。因此，我們可以使用這個分佈作為評估虛無假設與我們的資料是否一致的工具。</p>
-<p>如何確定統計值的取樣分佈呢？對於大多數假設檢定程序來說，這個步驟通常相當複雜，甚至有些假設檢定原作者和譯者自己都不是很懂，稍後在本書中同學們會看到某些檢定程序的介紹會有些含糊其辭。不過在某些檢定程序，設定取樣分佈是非常簡單的。ESP研究案例所使用的檢定程序，剛好是最簡單的一種。這個案例的母群參數 <span class="math inline">\(\theta\)</span> 就是參與者們回答問題時的總機率，而統計值 <span class="math inline">\(X\)</span> 就等於所有參與者人數 <span class="math inline">\(N\)</span> 裡正確回答的人數。我們之前在 <a href="07-Introduction-to-probability.html#sec-The-binomial-distribution"><span>小單元&nbsp;7.4</span></a> 這一節裡已經見過「二項分佈」，ESP案例的取樣分佈性質正好符合二項分佈！因此，為了使用二項分佈的符號和術語，我們會說虛無假設預測 <span class="math inline">\(X\)</span> 的分佈是二項分佈，數學式就寫作</p>
+<p>如何確定統計值的取樣分佈呢？對於大多數假設檢定程序來說，這個步驟通常相當複雜，甚至有些假設檢定原作者和譯者自己都不是很懂，稍後在本書中同學們會看到某些檢定程序的介紹會有些含糊其辭。不過在某些檢定程序，設定取樣分佈是非常簡單的。ESP研究案例所使用的檢定程序，剛好是最簡單的一種。這個案例的母群參數 <span class="math inline">\(\theta\)</span> 就是參與者們回答問題時的總機率，而統計值 <span class="math inline">\(X\)</span> 就等於所有參與者人數 <span class="math inline">\(N\)</span> 裡正確回答的人數。我們之前在 <a href="07-Introduction-to-probability.html#sec-The-binomial-distribution"><span>小單元&nbsp;8.4</span></a> 這一節裡已經見過「二項分佈」，ESP案例的取樣分佈性質正好符合二項分佈！因此，為了使用二項分佈的符號和術語，我們會說虛無假設預測 <span class="math inline">\(X\)</span> 的分佈是二項分佈，數學式就寫作</p>
 <!--- At this point we need to start talking specifics about how a hypothesis test is constructed. To that end, let's return to the ESP example. Let's ignore the actual data that we obtained, for the moment, and think about the structure of the experiment. Regardless of what the actual numbers are, the form of the data is that $X$ out of $N$ people correctly identified the colour of the hidden card. Moreover, let's suppose for the moment that the null hypothesis really is true, that ESP doesn't exist and the true probability that anyone picks the correct colour is exactly $\theta = 0.5$. What would we expect the data to look like? Well, obviously we'd expect the proportion of people who make the correct response to be pretty close to $50\%$. Or, to phrase this in more mathematical terms, we'd say that $\frac{X}{N}$ is approximately $0.5$. Of course, we wouldn't expect this fraction to be exactly $0.5$. If, for example, we tested $N = 100$ people and $X = 53$ of them got the question right, we'd probably be forced to concede that the data are quite consistent with the null hypothesis. On the other hand, if $X = 99$ of our participants got the question right then we'd feel pretty confident that the null hypothesis is wrong. Similarly, if only $X = 3$ people got the answer right we'd be similarly confident that the null was wrong. Let's be a little more technical about this. We have a quantity $X$ that we can calculate by looking at our data. After looking at the value of $X$ we make a decision about whether to believe that the null hypothesis is correct, or to reject the null hypothesis in favour of the alternative. The name for this thing that we calculate to guide our choices is a **test statistic**.
 
 Having chosen a test statistic, the next step is to state precisely which values of the test statistic would cause is to reject the null hypothesis, and which values would cause us to keep it. In order to do so we need to determine what the **sampling distribution of the test statistic** would be if the null hypothesis were actually true (we talked about sampling distributions earlier in @sec-Sampling-distribution-of-the-mean. Why do we need this? Because this distribution tells us exactly what values of X our null hypothesis would lead us to expect. And, therefore, we can use this distribution as a tool for assessing how closely the null hypothesis agrees with our data.
@@ -721,7 +713,7 @@ When this happens, we have what's called a **one-sided test** and the critical r
 </section>
 <section id="sec-The-p-value-of-a-test" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="sec-The-p-value-of-a-test"><span class="header-section-number">9.5</span> 統計檢定的<em>p</em>值</h2>
-<p>在某種意義上，我們已經完成假設檢定程序。我們已經建立一個統計檢定值，設定好如果虛無假設符合事實的取樣分佈，並為檢定結果決策設定棄卻域。然而，其實我還省略了一個最重要的數值 – <strong><em>p</em>值</strong>。p 值有兩種不同的解釋版本，一種是由羅納德·費雪爵士(Sir Ronald Fisher)提出，另一種是由傑茲·尼曼 (Jerzy Neyman) 提出。兩種版本都是統計學家接受的解釋方法，雖然彼此反映非常不同的假設檢定思維途徑。大多數統計學教課書只會講費雪的版本，但我認為這有點可惜。我認為尼曼的版本更簡潔，更能反映虛無假設檢定的邏輯。當然，也許讀者會有不同意見，以下兩種版本都會介紹。我先從尼曼的版本開始說。</p>
+<p>在某種意義上，我們已經完成假設檢定程序。我們已經建立一個統計檢定值，設定好如果虛無假設符合事實的取樣分佈，並為檢定結果決策設定棄卻域。然而，其實我還省略了一個最重要的數值 – <strong><em>p</em>值</strong>。p 值有兩種不同的解釋版本，一種是由羅納德·費雪爵士(Sir Ronald Fisher)提出，另一種是由傑茲·尼曼 (Jerzy Neyman) 提出。兩種版本都是統計學家接受的解釋方法，雖然兩位大師的假設檢定思維彼此不相同。大多數統計學教科書只會講費雪的版本，但我認為這有點可惜。我認為尼曼的版本更簡潔，更能反映虛無假設檢定的邏輯。當然，也許讀者會有不同意見，以下兩種版本都會介紹。我先從尼曼的版本開始介紹。</p>
 <!---In one sense, our hypothesis test is complete. We've constructed a test statistic, figured out its sampling distribution if the null hypothesis is true, and then constructed the critical region for the test. Nevertheless, I've actually omitted the most important number of all, **the p value**. It is to this topic that we now turn. There are two somewhat different ways of interpreting a p value, one proposed by Sir Ronald Fisher and the other by Jerzy Neyman. Both versions are legitimate, though they reflect very different ways of thinking about hypothesis tests. Most introductory textbooks tend to give Fisher's version only, but I think that's a bit of a shame. To my mind, Neyman's version is cleaner and actually better reflects the logic of the null hypothesis test. You might disagree though, so I've included both. I'll start with Neyman's version. --->
 <section id="運用p值做決策的簡單理由" class="level3" data-number="9.5.1">
 <h3 data-number="9.5.1" class="anchored" data-anchor-id="運用p值做決策的簡單理由"><span class="header-section-number">9.5.1</span> 運用<em>p</em>值做決策的簡單理由</h3>
@@ -764,7 +756,7 @@ This is where the p value comes in handy. To understand how it works, let's supp
 </div>
 <p>對我的ESP資料（100次觀察中有62次成功）進行幾次檢定後，以<span class="math inline">\(\alpha=.03\)</span>及以上的顯著水準決策，都是會拒絕虛無假設。以<span class="math inline">\(\alpha=.02\)</span>及以下的水準，都是是會保留虛無假設。因此，在<span class="math inline">\(.02\)</span>和<span class="math inline">\(.03\)</span>之間必定有一個最小的<span class="math inline">\(\alpha\)</span>值，讓我們可以拒絕虛無假設，這個值就是<em>p</em>值。最後我得到這筆ESP資料的<em>p</em>值為<span class="math inline">\(.021\)</span>。簡而言之，<em>p</em>值被定義為如果你想要拒絕虛無假設的話，<strong>你必須願意容忍的最小型一錯誤率</strong>(<span class="math inline">\(\alpha\)</span>)。</p>
 <p>如果<em>p</em>值顯示的決策錯誤率是大到你無法接受，那麼你必須保留虛無假設。如果你對等於<em>p</em>值的決策錯誤率感到滿意，那麼你可以拒絕虛無假設並支持偏好的對立假設。</p>
-<p>總而言之，<em>p</em>值是對以所有可能的顯著水準<span class="math inline">\(\alpha\)</span>，所執行的假設檢定結果總結。因此<em>p</em>值有”軟化”決策難度的效果。檢定結果的<em>p</em>值比 <span class="math inline">\(\alpha\)</span> 大的話，我們會拒絕虛無假設；而檢定結果的<em>p</em>值比 <span class="math inline">\(\alpha\)</span> 小的話，我們會保留虛無假設。由於我的 ESP 實驗結果是 <span class="math inline">\(X = 62\)</span>，因此 <em>p</em> = .021，要宣稱人類有ESP的話，我必須容忍 <span class="math inline">\(2.1%\)</span> 的型一錯誤率。另一方面，若是我的實驗結果是 <span class="math inline">\(X = 97\)</span>，那麼<em>p</em>值會是多少？這次縮小為 <span class="math inline">\(p = 1.36 \times 10^{-25}\)</span> <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>，這是一個非常、非常微小的型一錯誤率。對於第二個實驗結果，我會更有信心地拒絕虛無假設，因為我只需要 “願意” 容忍大約十分之一兆兆兆兆的型一錯誤率，我的結論會是正確的。</p>
+<p>總而言之，<em>p</em>值是對以所有可能的顯著水準<span class="math inline">\(\alpha\)</span>，所執行的假設檢定結果總結。因此<em>p</em>值有”軟化”決策難度的效果。檢定結果的<em>p</em>值比 <span class="math inline">\(\alpha\)</span> 小的話，我們會拒絕虛無假設；而檢定結果的<em>p</em>值比 <span class="math inline">\(\alpha\)</span> 大的話，我們會保留虛無假設。由於我的 ESP 實驗結果是 <span class="math inline">\(X = 62\)</span>，因此 <em>p</em> = .021，要宣稱人類有ESP的話，我必須容忍 <span class="math inline">\(2.1%\)</span> 的型一錯誤率。另一方面，若是我的實驗結果是 <span class="math inline">\(X = 97\)</span>，那麼<em>p</em>值會是多少？這次縮小為 <span class="math inline">\(p = 1.36 \times 10^{-25}\)</span> <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>，這是一個非常、非常微小的型一錯誤率。根據第二次實驗結果，我會更有信心地拒絕虛無假設，因為我只需要 “願意” 容忍大約十分之一兆兆兆兆的型一錯誤率，我的結論會是正確的。</p>
 
 <!--- When we test the ESP data ($X = 62$ successes out of $N = 100$ observations), using $\alpha$ levels of $.03$ and above, we'd always find ourselves rejecting the null hypothesis. For $\alpha$ levels of $.02$ and below we always end up retaining the null hypothesis. Therefore, somewhere between $.02$ and $.03$ there must be a smallest value of $\alpha$ that would allow us to reject the null hypothesis for this data. This is the $p$ value. As it turns out the ESP data has $p = .021$. In short, $p$ is defined to be the smallest Type I error rate ($\alpha$) that you have to be willing to tolerate if you want to reject the null hypothesis.
 
@@ -1090,7 +1082,7 @@ Lehmann, E. L. (2011). <em>Fisher, <span>N</span>eyman, and the creation of clas
 <li id="fn5"><p>關於描述假設檢定結果會使用的詞彙，有一些需要注意的地方。首先，建議要避免使用「證明」(prove)這個詞。統計檢定不能證明一個假設是真的或假的，因為「證明」暗示絕對的確定性，但是統計學中永遠沒有絕對的確定性。這點幾乎所有懂統計的人都會同意(<strong>譯註</strong>:本書中文版一律用「證實」)。然而，還有一些讓人混淆的用語。有些人認為，我們只可以說「拒絕虛無假設」、「未能拒絕虛無假設」或「保留虛無假設」。按照這種思路，我們不可以說「接受對立假設」或「接受虛無假設」。對我而言，這樣說法太過嚴格了。我認為這混淆了虛無假設檢定和卡爾·波普認為科學研究是證偽過程的觀點。儘管證偽主義和虛無假設檢定兩者思路有相似之處，但是不完全一樣。雖然就我個人而言，我認為可以談論接受一個假設（「接受」一個假設並不意味著它一定要是真的，特別是虛無假設所主張的情況），不過許多人會持不同意見。更重要的是，同學們應該曉得這些詞彙的特殊使用方式，這樣在寫自己的報告時就不會手足無措了。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>嚴格來說，這裡設定的顯著水準其實是 <span class="math inline">\(\alpha = .057\)</span>，這有點太寬鬆了。不過，如果是選擇 <span class="math inline">\(39\)</span> 和 <span class="math inline">\(61\)</span> 做為臨界值，那麼棄卻域只會涵蓋分佈的 <span class="math inline">\(3.5%\)</span>。原作者覺得使用 <span class="math inline">\(40\)</span> 和 <span class="math inline">\(60\)</span> 作為臨界值更好討論，並願意容忍 <span class="math inline">\(5.7%\)</span> 的型一錯誤率，因為這是最接近 <span class="math inline">\(\alpha = .05\)</span> 的整數了。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>原作者在網路找到的資訊都是說這是Ashley說的，但是無法找到可靠的消息來源。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p><span class="math inline">\(p = .000000000000000000000000136\)</span> 在一般人看來並不是科學的表達方式！<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>完整的數值<span class="math inline">\(p = .000000000000000000000000136\)</span> 在一般人看來並不是科學的表達方式！<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>注意，<code>Test value</code>要填入的 p 與<em>p</em>值是兩回事。用 jamovi 進行二項式檢定，要先設定 <span class="math inline">\(p\)</span> 參數代表根據虛無假設猜測正確答案的機率，也就是 <span class="math inline">\(\theta\)</span> 值。換句話說，這個 <span class="math inline">\(p\)</span> 是指根據虛無假設，參與者能答對的機率。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>請注意，ESP案例的回答正確率我習慣會用p代表，但是這個p與<em>p</em>值無關。在 jamovi 的二項檢定中， 參數<span class="math inline">\(p\)</span>對應到根據虛無假設所作出的正確反應的機率。換句話說，它是 <span class="math inline">\(\theta\)</span> 的值。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>請注意，母群參數的真實數值 <span class="math inline">\(\theta\)</span> 不一定對應自然界中不可改變的事實。在ESP實驗的狀況， <span class="math inline">\(\theta\)</span> 只是代表參與者正確猜對隔壁房間的卡片顏色機率。所以，各種因素都可以影響母群參數。當然，我們能這樣設計實驗的前提是超感官力量確實存在！<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1098,7 +1090,7 @@ Lehmann, E. L. (2011). <em>Fisher, <span>N</span>eyman, and the creation of clas
 <li id="fn13"><p>譯註~ 譯者認為原作者應該還有另一層考量。由於本書定位是入門教科書，考驗力分析需要進一步學習各種研究方法(也就是 ＠sec-A-brief-introduction-to-research-design 的完整版)，才能充分了解其用途。如果教師想為學生介紹預先註冊(preregisteration)的觀念及做法，可考慮在統計課程介紹考驗力分析的必要性。<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn14"><p>在這種情況下，皮爾森卡方獨立性檢驗（參見 <a href="10-Categorical-data-analysis.html"><span>單元&nbsp;10</span></a> ）<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn15"><p>讀完原作者虛構的ESP研究案例，打開示範檔案庫的”Binomial Test”，找一找虛無假設與對立假設、型一與型二錯誤有沒有呈現在jamovi介面的任何地方？有的話是如何呈現？<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>如果在 <a href="07-Introduction-to-probability.html"><span>單元&nbsp;7</span></a> 有用過distrACTION這個模組認識機率分佈，再次使用這個模組繪製雙側檢定與單側檢定的棄卻域。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>如果在 <a href="07-Introduction-to-probability.html"><span>單元&nbsp;8</span></a> 有用過distrACTION這個模組認識機率分佈，再次使用這個模組繪製雙側檢定與單側檢定的棄卻域。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn17"><p>分別以雙側檢定與單側檢定的結果，使用distrACTION模組確認表格內量數之外的累積機率，確認是否與表格裡的p值一致？<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn18"><p>首先定義一個你期望為真的成功率或失敗率，使用distrACTION模組製作一個代表這項機率的二項分佈機率，繪製出雙側與單側考驗力的區域。<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
@@ -1474,8 +1466,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Prelude-Part-V.html" class="pagination-link">
-        <span class="nav-page-text">線性模型的學習取向</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10-Categorical-data-analysis.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

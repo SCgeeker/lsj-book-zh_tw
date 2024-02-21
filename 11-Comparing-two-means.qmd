@@ -7,13 +7,14 @@ source("header.R")
 
 > **譯者註** 20230415初步以ChatGPT-4完成翻譯，內容待編修。
 
-@sec-Categorical-data-analysis 討論的是依變項是名義尺度，而且獨變項也是名目尺度的情況。許多現實的資料都有這種特點，因此卡方檢定的應用特別廣泛。[^11-translation-01]然而，統計實務更有可能遇到的情況是，依變項是間斷尺度或者層次更高的連續尺度，研究目標的是比較兩組群體的依變項平均值。例如，一位心理學家想知道有小孩的夫妻的焦慮水準是否比沒小孩的夫妻更高，或者聽音樂會不會降低工作記憶容量（相對於不聽音樂）。在醫學論文裡，我們會想知道一種新藥物是否會增加或降低血壓。一位農學科學家可能想知道是否對澳大利亞原生植物施磷肥會導致植物死亡。[^11-comparing-two-means-1]在這些情況，依變項都是一種連續、間斷或比例尺度變項，而獨變項是一個二元的「分組」變項。換句話說，我們想比較兩組的平均值。
+@sec-Categorical-data-analysis 討論的檢定方法適用於依變項是名義尺度，獨變項也是名義尺度的資料。現實世界的許多研究問題都是要處理這種資料，所以卡方檢定的用途非常廣泛。然而，現實統計問題更有可能遇到的資料是，依變項為等距尺度或者更高階的連續尺度，研究目標是比較兩個獨立組之間的依變項平均值。例如，某位心理學家想知道有小孩的夫婦焦慮程度會不會比沒小孩的夫婦更高，或者相對於不聽音樂的人們，聽音樂會不會降低人們的工作記憶容量。閱讀一篇醫學論文，我們會想知道一種新藥物會不會增加或降低血壓。某位農業研究人員也許想知道磷肥會不會造成澳大利亞原生植物枯萎死亡。[^11-comparing-two-means-1]就這些問題來說，依變項都是一種連續的、等距尺度或比例尺度變項，獨變項則是一種二元的「分組」變項。也就是說，處理資料的研究人員想比較兩組平均值的差異。
 
-[^11-translation-01]: 原書先介紹類別資料的統計方法，繁體中文版這一章往後挪動。
+<!---
+[^11-translation-01]: 原書先介紹類別資料的統計方法，繁體中文版這一章往後挪動。--->
 
-[^11-comparing-two-means-1]: 在我的私人花園中做的非正式實驗發現，相對於地球上其他地區，澳大利亞的本土植物只能適應低度磷肥，如果你買了一個有大量外來植物的房子，還想種植本土植物，請把兩種植物分開；對歐洲植物有營養的物質對澳大利亞本土植物來說是毒藥。
+[^11-comparing-two-means-1]: 根據原作者在私家花園做的非正式實驗發現，相對於地球上其他地區，澳大利亞的原生植物只能適應低度磷肥，如果你在當地買了一間種植大量外來種植物的房子，還想種本土植物的話，請先把兩種植物分開；對歐洲植物有營養的肥料對澳大利亞原生植物來說是毒藥。
 
-比較平均值的標準統計方法是使用 t 檢定，要使用那種t檢定取決於您想解決的問題。因此，本章主要內容都集中在不同類型的 t 檢定上：單樣本 t 檢定、獨立樣本 t 檢定和配對樣本 t 檢定。然後我們將談論單側檢定，之後我們將簡要討論 Cohen's d，這是 t 檢定的標準效應量。本章後面的部分集中討論 t 檢定的假設以及可能違反這些假設時的補救方法。<!---但是，在討論任何這些有用的事情之前，我們將從 z 檢定開始討論。--->
+比較平均值的標準推論統計方法是 t 檢定，至於要使用那種t檢定則取決於問題內容。因此，本章重點是介紹各種類型的 t 檢定：單一樣本 t 檢定、獨立樣本 t 檢定和相依樣本 t 檢定。每種檢定方法都會討論單側與雙側檢定，還有 t 檢定的標準效果量 Cohen's d。每個t檢定最後還有討論適用條件，以及可能違反這些條件時的補救方法。但是，在介紹t檢定之前，我們先介紹一下 z 檢定。
 
 <!--- In @sec-Categorical-data-analysis we covered the situation when your outcome variable is nominal scale and your predictor variable is also nominal scale. Lots of real world situations have that character, and so you'll find that chi-square tests in particular are quite widely used. However, you're much more likely to find yourself in a situation where your outcome variable is interval scale or higher, and what you're interested in is whether the average value of the outcome variable is higher in one group or another. For instance, a psychologist might want to know if anxiety levels are higher among parents than non-parents, or if working memory capacity is reduced by listening to music (relative to not listening to music). In a medical context we might want to know if a new drug increases or decreases blood pressure. An agricultural scientist might want to know whether adding phosphorus to Australian native plants will kill them.[^11-comparing-two-means-1] In all these situations our outcome variable is a fairly continuous, interval or ratio scale variable, and our predictor is a binary "grouping" variable. In other words, we want to compare the means of the two groups.
 
@@ -21,27 +22,29 @@ source("header.R")
 
 The standard answer to the problem of comparing means is to use a t-test, of which there are several varieties depending on exactly what question you want to solve. As a consequence, the majority of this chapter focuses on different types of t-test: one sample t-tests, independent samples t-tests and paired samples t-tests. We'll then talk about one sided tests and, after that, we'll talk a bit about Cohen's d, which is the standard measure of effect size for a t-test. The later sections of the chapter focus on the assumptions of the t-tests, and possible remedies if they are violated. However, before discussing any of these useful things, we'll start with a discussion of the z-test. --->
 
-## 單一樣本z檢定[^11-translatino-02]
+## 單一樣本z檢定
 
-[^11-translatino-02]: 譯註~這是傳統統計教科書必放的部分。因為本書中文版整合**線性模型的學習取向**，學生與教師可選擇跳過這一節。
+<!---
+[^11-translatino-02]: 譯註~這是傳統統計教科書必放的部分。因為本書中文版整合**線性模型的學習取向**，學生與教師可選擇跳過這一節。--->
 
-在本節中，我將介紹統計學中最無用的測試之一：z 檢定。認真地說，這種測試在現實生活中幾乎從不使用。它唯一的真正用途是，在教授統計學時，它是通往 t 檢定的一個非常方便的墊腳石，而 t 檢定可能是統計學中最（過度）使用的工具。
+這一節要介紹統計學裡最無用的一種統計檢定方法：z 檢定。嚴格來說，這種檢定方法幾乎沒什麼研究人員會使用。學習z檢定的真正用途是，這個方法是學習 t 檢定前相當方便的墊腳石，但是 t 檢定可能是最被過度使用的統計學工具。
 
 <!---In this section I'll describe one of the most useless tests in all of statistics: the z-test. Seriously -- this test is almost never used in real life. Its only real purpose is that, when teaching statistics, it's a very convenient stepping stone along the way towards the t-test, which is probably the most (over)used tool in all statistics. --->
 
 ### 使用z檢定前的注意事項
 
-為了介紹 z 檢定背後的概念，讓我們舉一個簡單的例子。我的一位朋友 Zeppo 老師按曲線給他的入門統計學班級打分。假設他班級的平均分數是 $67.5$，標準差是 $9.5$。他有很多學生，其中有 20 個學生還修了心理學課程。出於好奇心，我想知道這些心理學生的成績是否傾向於與其他人獲得相同的成績（即平均分數為 $67.5$），還是他們的成績往高或往低得分？他給我發了一個 *zeppo.csv* 文件，我用它來查看這些學生的成績，並在 jamovi 試算表視圖中計算了 "探索" - "描述性統計" 中的平均值。[^11-comparing-two-means-2]平均值為 $72.3$。
+我們先用一個簡單的例子介紹 z 檢定如何運作的概念：我有一位朋友 Zeppo 老師準備按照常態分佈曲線為他的基礎統計學課程修課學生打分數。假如這門課程的平均分數是 $67.5$，標準差是 $9.5$，修課學生有數百人，其中有 20 位還修了心理學課程。出於好奇心，我想知道這些學生的成績是否與其他學生的成績一致，也就是這20位學生的平均分數也是 $67.5$，還是他們的成績比全體平均分數更高或更低？這些學生的成績存於Zeppo老師分享給我的 *zeppo.csv* 資料檔(lsj資料集`Zeppo`)，開啟 jamovi 的 'Exploration' - 'Descriptives'的設定視窗，按照 @sec-Descriptive-statistics 學過的方法，就能得到平均值為 $72.3$。[^11-comparing-two-means-2]
 
-[^11-comparing-two-means-2]: 為了這樣做，我必須將 $X$ 的測量水平更改為「連續」，因為在打開 / 導入 csv 文件時，jamovi 使其成為一個名義水平變量，這對我的分析不正確。
+[^11-comparing-two-means-2]: 一開始匯入資料後， $X$ 的測量尺度要更改為「連續」(Continuous)，因為jamovi 預設功能會將這些成績數值自動定義為名義尺度，這樣子做的分析會不正確。
 
 50 60 60 64 66 66 67 69 70 74 76 76 77 79 79 79 81 82 82 89
 
-嗯，也許心理學生的成績比正常情況高一些。樣本平均值 $\bar{X}=72.3$ 比假設的母群平均值 $\mu=67.5$ 要高得多，但是，另一方面，樣本大小 $N=20$ 並不是很大。也許這只是純粹的巧合。
+看起來有修心理學課程的學生成績比全部同學的好一些。樣本平均值 $\bar{X}=72.3$ 比假設的母群平均值 $\mu=67.5$ 要高了不少分，但是，樣本量 $N=20$ 其實並不是很大，也許這只是純粹的巧合。
 
-為了回答這個問題，有助於能夠寫下我所知道的。首先，我知道樣本平均值為 $\bar{X}=72.3$。如果我願意假設心理學生的標準差與班上其他學生的標準差相同，那麼我可以說母群標準差為 $\sigma=9.5$。我還假設由於 Zeppo 博士是按曲線給分，心理學生的成績服從正態分布。
+為了能做出合理的評估，寫出我所知道的細節能幫助讀者了解。首先知道的是樣本平均值為 $\bar{X}=72.3$，如果我相信這20位學生的標準差與班上其他學生的標準差相同，那麼母群標準差就是 $\sigma=9.5$。同時我還相信 Zeppo 老師是按常態分佈曲線給分，這20位學生的成績分佈也應該符合常態分佈。
 
-接下來，要明確我希望從資料中學到什麼。在這種情況下，我的研究假設與心理學生的成績母群平均值 $\mu$ 相關，而這個值是未知的。具體而言，我想知道 $\mu=67.5$ 是否成立。鑒於這是我所知道的，我們能否設計一個假設檢定來解決我們的問題？資料以及它們被認為來自的假設分佈顯示在 @fig-fig11-1 中。不是非常明顯什麼是正確的答案，對嗎？為此，我們需要一些統計學知識。
+接著我要具體呈現如何從資料取得能做判斷的資訊。我對此問題的假設可用這20位學生來源母群平均值 $\mu$ 表示，而這個值是未知的。在有資料的當下，我想知道是不是 $\mu=67.5$ ？因為這是我目前所知道的，需要設定一個假設檢定程序來解答這個問題。樣本資料以及可能的來源母群分佈顯示在 @fig-fig11-1 。畫出統計圖還不能解答我的問題嗎？ 現在需要學習更進一步的統計知識了。
+
 
 <!---To introduce the idea behind the z-test, let's use a simple example. A friend of mine, Dr Zeppo, grades his introductory statistics class on a curve. Let's suppose that the average grade in his class is $67.5$, and the standard deviation is $9.5$. Of his many hundreds of students, it turns out that 20 of them also take psychology classes. Out of curiosity, I find myself wondering if the psychology students tend to get the same grades as everyone else (i.e., mean $67.5$) or do they tend to score higher or lower? He emails me the *zeppo.csv* file, which I use to look at the grades of those students, in the jamovi spreadsheet view,and then calculate the mean in 'Exploration' - 'Descriptives' [^11-comparing-two-means-2]. The mean value is $72.3$.
 
@@ -58,14 +61,14 @@ Next, it helps to be clear about what I want to learn from the data. In this cas
 ```{r}
 #| label: fig-fig11-1
 #| out.width: 60%
-#| fig-cap: 心理學生的成績（柱形圖）應該是由理論分佈（實線）生成的。
+#| fig-cap: 20位學生的統計課成績（直方圖）與理論的來源母群分佈（實線）。
 #The theoretical distribution (solid line) from which the psychology student grades (bars) are supposed to have been generated
 
 load("data_and_tables/zeppo.Rdata") #grades
 ggplot(as.data.frame(grades), aes(x=grades)) +
   geom_histogram(aes(y =after_stat(density)), binwidth=5, col=blueshade, fill=blueshade, alpha=0.4) +
   stat_function(fun = dnorm, args = list(mean = 67.7, sd = sd(grades)), col="black", linewidth=1) +
-  xlab("\nGrades") +
+  xlab("\n成績") +
   theme_classic() +
   theme(
     axis.line.y = element_blank(),
@@ -75,18 +78,18 @@ ggplot(as.data.frame(grades), aes(x=grades)) +
 
 ```
 
-### 建立z檢定的假設
+### z檢定的統計假設
 
-構建假設檢定的第一步是明確虛無假設和對立假設是什麼。這不太難做到。我們的虛無假設 $H_0$ 是，心理學生的成績母群平均值 $\mu$ 為 $67.5\%$，而我們的對立假設是母群平均值不是 $67.5\%$。如果我們用數學符號表示，這些假設就變成了：
+假設檢定的第一步是確定虛無假設和對立假設分表是代表什麼結果，以這個問題來說不難了解。這裡的虛無假設 $H_0$ 是，心理系學生的成績母群平均值 $\mu$ 等於 $67.5\%$，對立假設是母群平均值不等於 $67.5\%$。若是用數學符號表示，這些假設的白話說明就變成了：
 
 $$ H_0:\mu= 67.5 $$ $$ H_1:\mu \neq 67.5 $$
 
-不過老實說，這種表示法對我們理解問題沒有太大幫助，它只是一種簡潔的寫下我們試圖從資料中學到什麼的方法。我們測試的虛無假設 $H_0$ 和對立假設 $H_1$ 都在 @fig-fig11-2 中有圖示。除了提供這些假設外，上面概述的情況還為我們提供了相當多的有用的背景知識。具體而言，有兩個特殊的信息可以添加：
+不過，使用數學記號表示，其實不大能讓大家更好理解統計假設，這只是呈現完成資料分析後會得到什麼簡記方法。要被檢定的虛無假設 $H_0$ 和對立假設 $H_1$ 的視覺圖像都呈現在 @fig-fig11-2 。配合上一段的背景說明，視覺圖像除了能我們了解統計假設的重點在於結果是符合那個平均值(或者說期望值)，還有提供一些有用的資訊，特別是以下兩點：：
 
-1. 心理學成績服從正態分布。
-2. 這些分數的真實標準差 $\sigma$ 已知為 9.5。
+1. 20位學生成績分佈符合常態分佈。
+2. 20位學生成績分佈的真實標準差 $\sigma$ 等於 9.5。
 
-暫時，我們將表現得好像這些是絕對可信的事實。在現實生活中，這種絕對可信的背景知識是不存在的，因此，如果我們想依賴這些事實，我們只能假設這些東西是真實的。但是，由於這些假設可能成立或不成立，我們可能需要檢查它們。不過，現在我們還是保持簡單。
+我們暫時先將這些條件當成是絕對沒錯的事實，許多現實世界的研究問題，這類絕對可信的背景條件通常是不可能成立的。若是要靠這些條件執行假設檢定，只能當做所有條件都是成立的。要確認這些條件是否成立，其實需要做些檢查程序，只是為了方便解說z檢定程序，目前先暫時跳過。
 
 <!--- The first step in constructing a hypothesis test is to be clear about what the null and alternative hypotheses are. This isn't too hard to do. Our null hypothesis, $H_0$, is that the true population mean $\mu$ for psychology student grades is $67.5\%$, and our alternative hypothesis is that the population mean isn't $67.5\%$. If we write this in mathematical notation, these hypotheses become:
 
@@ -103,7 +106,7 @@ For the moment, we'll act as if these are absolutely trustworthy facts. In real 
 #| label: fig-fig11-2
 #| fig-width: 10
 #| fig-height: 5
-#| fig-cap: 單一樣本 $z$ 檢定（雙側版本）所假設的虛無假設和對立假設的圖形說明。虛無假設和對立假設都假設母群分布是正態分布，並且進一步假設母群標準差已知（固定在某個值 $\sigma_0$）。虛無假設（左）是母群平均值 $\mu$ 等於某個指定值 $\mu_0$。對立假設（右）是母群平均值與此值不同，即 $\mu \neq \mu_0$。
+#| fig-cap: 以單一樣本 $z$ 檢定檢測的虛無假設和對立假設的視覺圖解，此例進行雙側檢定。虛無假設和對立假設都根據母群分佈是常態分佈，以及母群標準差（ $\sigma_0$）為已知數值等條件成立。虛無假設（左）的 期望值 （$\mu$） 等於母群平均值 （$\mu_0$）。對立假設（右）的期望值不等於母群平均值( $\mu \neq \mu_0$)。
 #Graphical illustration of the null and alternate hypotheses assumed by the one sample $z$-test (the two sided version, that is). The null and alternate hypotheses both assume that the population distribution is normal, and additionally assumes that the population standard deviation is known (fixed at some value $\$sigma_0$). The null hypothesis (left) is that the population mean $\mu$ is equal to some specified value $\mu_0$. The alternative hypothesis (right) is that the population mean differs from this value, $\mu \neq \mu_0$
 
 p1 <- ggplot(data = data.frame(x = seq(-4, 4, 1)), aes(x)) +
@@ -114,8 +117,8 @@ p1 <- ggplot(data = data.frame(x = seq(-4, 4, 1)), aes(x)) +
   geom_text(x= 0, y=.42, label=expression(~mu~" = "~mu[0]), size=5) +
   scale_x_continuous(breaks = seq(-4, 4, 2)) +
   ylim(0,0.5) +
-  ggtitle("null hypothesis") +
-  xlab("\nValue of X") +
+  ggtitle("虛無假設") +
+  xlab("\n依變項數值") +
   theme_classic() +
   theme(
     axis.title.y = element_blank(),
@@ -133,8 +136,8 @@ p2 <- ggplot(data = data.frame(x = seq(-4, 4, 1)), aes(x)) +
   geom_text(x= 0, y=.42, label=expression(~mu~" \U2260 "~mu[0]), size=5) +
   scale_x_continuous(breaks = seq(-4, 4, 2)) +
   ylim(0,0.5) +
-  ggtitle("alternative hypothesis") +
-  xlab("\nValue of X") +
+  ggtitle("對立假設") +
+  xlab("\n依變項數值") +
   theme_classic() +
   theme(
     axis.title.y = element_blank(),
@@ -148,36 +151,40 @@ gridExtra::grid.arrange(p1,p2, ncol=2)
 
 ```
 
-下一步是找出一個好的診斷檢定統計量，這樣可以幫助我們區分 $H_0$ 和 $H_1$。考慮到這些假設都涉及母群平均值 $\mu$，你會相當有信心樣本平均值 $\bar{X}$ 是一個很有用的起點。我們可以計算樣本平均值 $\bar{X}$ 與虛無假設預測的母群平均值之間的差異。在我們的例子中，這意味著我們計算 $\bar{X} - 67.5$。更一般地，如果讓 $\mu_0$ 指虛無假設聲稱為我們的母群平均值的值，那麼我們想要計算
+接下來是設定一個可靠的檢定統計量，用來診斷成績分佈是符合$H_0$ 還是 $H_1$。因為兩種假設都與母群平均值 $\mu$有關，樣本平均值 $\bar{X}$是我們能用來檢定的絕佳參考點，也就是計算樣本平均值 $\bar{X}$ 與虛無假設預測的母群平均值之間的差異，在這個例子是 $\bar{X} - 67.5$。若要類推到同樣的分析問題，以$\mu_0$ 代指虛無假設主張的母群平均值，這樣一來要計算的就是
 
 $$\bar{X}-\mu_0$$
 
-如果這個量等於或非常接近於0，虛無假設看起來是可接受的。如果這個量遠離0，那麼虛無假設似乎不太可能是有價值的。但是，它離0有多遠才能拒絕 H0 呢？
+如果這個差異值等於或非常接近於0，虛無假設似乎是可接受的結論。如果這個差異值完全不等於0，那麼虛無假設似乎不太可能是有意義的結論。不過，這個差異離0多遠才有可能拒絕 $H_0$ 呢？
 
-為了弄清楚這一點，我們需要再狡猾一點，並且我們需要依賴我之前提到的那兩個背景知識，即原始資料服從正態分布，而且我們知道母群標準差 $\sigma$ 的值。如果虛無假設實際上是真的，真正的平均值是 $\mu_0$，那麼這些事實一起意味著我們知道資料的完整母群分布：平均值為 $\mu_0$，標準差為 $\sigma$ 的正態分布。[^11-comparing-two-means-3]
+為了搞清楚，我們需要耍一點小手段，就是之前提到的樣本資料服從常態分佈，以及母群標準差 $\sigma$ 的值是已知的。若是成績分佈確實符合虛無假設，真正的平均值確實是 $\mu_0$，這些事實支持母群分布是平均值為 $\mu_0$，標準差為 $\sigma$ 的常態分佈。[^11-comparing-two-means-3]
 
-[^11-comparing-two-means-3]: 採用 @sec-The-normal-distribution 中的符號表示法，統計學家可以將其寫成：$$X \sim Normal(\mu_0,\sigma^2)$$
+[^11-comparing-two-means-3]: 採用 @sec-The-normal-distribution 的符號表示法，統計學家通成寫成：$$X \sim Normal(\mu_0,\sigma^2)$$
 
-好的，如果這是真的，那麼我們可以關於 $\bar{X}$ 的分布說些什麼呢？嗯，正如我們之前討論過的（見 @sec-The-central-limit-theorem），平均數 $\bar{X}$ 的取樣分佈也是正態分布，並且具有平均值 $\mu$。但是這個取樣分佈的標準差 $\\{se(\bar{X})\\}$，也被稱為平均值的標準誤差，是[^11-comparing-two-means-4]
+好啦，若真的那麼順利， $\bar{X}$ 的分佈能告訴我們什麼事情呢？根據 @sec-The-central-limit-theorem 討論過的中央極限定理，平均數 $\bar{X}$ 的取樣分佈也是常態分佈，並且等於母群平均值 $\mu$。只是這個取樣分佈的標準差 $se(\bar{X})$–也被稱為平均值的標準誤差–真面目是[^11-comparing-two-means-4]
 
-[^11-comparing-two-means-4]: 換句話說，如果虛無假設成立，那麼平均值的取樣分佈可以寫成：$$\bar{X} \sim Normal(\mu_0,SE(\bar{X})) $$
+[^11-comparing-two-means-4]: 換句話說，如果虛無假設成立，平均值的取樣分佈可以寫成：$$\bar{X} \sim Normal(\mu_0,se(\bar{X})) $$
 
 
-$$se(\bar{X}=\frac{\sigma}{\sqrt{N}})$$
+$$se(\bar{X})=\frac{\sigma}{\sqrt{N}}$$
 
-現在來了解這個技巧。我們可以將樣本平均數 $\bar{X}$ 轉換成標準分數（參見 @sec-Standard-scores）。這通常被寫成 z，但現在我將其稱為 $z_{\bar{X}}$。使用這種擴展符號的原因是為了幫助您記住，我們正在計算樣本平均值的標準化版本，而不是單個觀察值的標準化版本，後者是通常指的 z 分數）。當我們這樣做時，樣本平均值的 z 分數為
+讓我們進一步了解這個技巧。運用 @sec-Standard-scores 學過的標準分數，樣本平均數 $\bar{X}$可以轉換成標準分數，因為通常被寫成z，這裡可以改寫為 $z_{\bar{X}}$。改寫符號是為了方便記住，這裡正在計算的是樣本平均值的標準分數，不是單一觀察值的標準分數。如此一來，樣本平均值的 z 分數
+
 
 $$z_{\bar{X}}=\frac{\bar{X}-\mu_0}{SE(\bar{X})}$$ 
 
-也可寫成
+也可以寫成
 
 $$z_{\bar{X}}=\frac{\bar{X}-\mu_0}{\frac{\sigma}{\sqrt{N}}}$$
 
-這個 z 分數就是我們的檢定統計量。使用這個作為我們的檢定統計量的好處是，像所有 z 分數一樣，它具有標準正態分布：[^11-comparing-two-means-5]
+這個 z 分數就是這裡要用的檢定統計值，使用這個檢定統計值的好處是，像所有 z 分數一樣，它符合標準常態分佈：[^11-comparing-two-means-5]
 
-[^11-comparing-two-means-5]: 如果您忘記了這是為什麼，可以參考 @sec-Standard-scores。
+[^11-comparing-two-means-5]: 如果讀者忘記了其中的原理，可以再參考 @sec-Standard-scores。
 
-換句話說，無論原始資料所處的比例尺是什麼，z 統計量本身的解釋始終相同：它等於觀察到的樣本均值 $\bar{X}$ 與零假設所預測的母群均值 $\mu_0$ 相隔的標準誤數。更好的是，無論原始分數的母群參數是什麼，z 檢定的 5% 臨界區域始終相同，如 @fig-fig11-3 所示。而這意味著，在人們手動進行所有統計計算的時代，某人可以發表像 @tbl-tab11-1 這樣的表格。這反過來又意味著研究人員可以手動計算他們的 z 統計量，然後在教科書中查找臨界值。$$z_{\bar{X}} \sim Normal(0,1) $$
+$$z_{\bar{X}} \sim Normal(0,1) $$
+
+
+換句話說，無論原始資料的測量尺度是什麼，解讀z統計值的方法都是一樣的：z值代表觀察到的樣本平均值 $\bar{X}$ 與虛無假設預測的母群平均值 $\mu_0$相差了多少標準誤。更棒的是，無論原始分數的母群參數是多少，z 檢定的 5% 棄絕域始終不變，如同 @fig-fig11-3 的圖解。所以在以前大多數研究者和學生都要用手算統計的時代，可以從 @tbl-tab11-1 找出要報告的p值。也可以反過來使用手算得出的z統計值，從教科書的附表找出臨界值。
 
 <!--- The next step is to figure out what we would be a good choice for a diagnostic test statistic, something that would help us discriminate between $H_0$ and $H_1$. Given that the hypotheses all refer to the population mean $\mu$, you'd feel pretty confident that the sample mean $\bar{X}$ would be a pretty useful place to start. What we could do is look at the difference between the sample mean $\bar{X}$ and the value that the null hypothesis predicts for the population mean. In our example that would mean we calculate $\bar{X} - 67.5$. More generally, if we let $\mu_0$ refer to the value that the null hypothesis claims is our population mean, then we'd want to calculate
 
@@ -217,7 +224,7 @@ huxtabs[[11]][[1]] |>
 
 ### 手作z檢定
 
-現在，正如我之前提到的，z-test在實際應用中幾乎從不使用。這個測試在實際生活中如此罕見，以至於jamovi的基本安裝不包含內置功能。然而，這個測試是如此地簡單，以至於手動進行這個測試非常容易。讓我們回到Dr Zeppo班級的資料。在載入成績資料後，我需要做的第一件事是計算樣本均值，我已經做到了($72.3$)。我們已經有了已知的母群標準差($\sigma = 9.5$)，零假設所指定的母群平均值($\mu_0 = 67.5$)的值，以及樣本大小($N=20$)。
+現在，正如我之前提到的，z-test在實際應用中幾乎從不使用。這個測試在實際生活中如此罕見，以至於jamovi的基本安裝不包含內置功能。然而，這個測試是如此地簡單，以至於手動進行這個測試非常容易。讓我們回到Dr Zeppo課程的資料。在載入成績資料後，我需要做的第一件事是計算樣本均值，我已經做到了($72.3$)。我們已經有了已知的母群標準差($\sigma = 9.5$)，零假設所指定的母群平均值($\mu_0 = 67.5$)的值，以及樣本大小($N=20$)。
 
 <!--- Now, as I mentioned earlier, the z-test is almost never used in practice. It's so rarely used in real life that the basic installation of jamovi doesn't have a built in function for it. However, the test is so incredibly simple that it's really easy to do one manually. Let's go back to the data from Dr Zeppo's class. Having loaded the grades data, the first thing I need to do is calculate the sample mean, which I've already done ($72.3$). We already have the known population standard deviation ($\sigma = 9.5$), and the value of the population mean that the null hypothesis specifies ($\mu_0 = 67.5$), and we know the sample size ($N=20$). --->
 
@@ -292,7 +299,7 @@ $$
 
 此時，我們會傳統地在臨界值表中查詢 $2.26$ 的值。我們原來的假設是雙邊的（我們對心理學生在統計學上表現得比其他學生好或差沒有任何理論基礎），因此我們的假設檢驗也是雙邊的（或者是兩尾的）。從我先前顯示的小表中，我們可以看到 $2.26$ 大於需要在 $\alpha = .05$ 的顯著性水平下具有顯著性的臨界值 $1.96$，但小於需要在 $\alpha = .01$ 的水平下具有顯著性的值 $2.58$。因此，我們可以得出結論，我們可以這樣寫：
 
-> *在心理學學生的樣本中，平均成績為* $73.2$，假定真正的人口標準差為 $9.5$，我們可以得出結論，心理學學生在統計學上的得分與班級平均分有顯著差異（$z = 2.26, N = 20, p<.05$）。
+> *在心理學學生的樣本中，平均成績為* $73.2$，假定真正的人口標準差為 $9.5$，我們可以得出結論，心理學學生在統計學上的得分與課程平均分有顯著差異（$z = 2.26, N = 20, p<.05$）。
 
 <!---At this point, we would traditionally look up the value $2.26$ in our table of critical values. Our original hypothesis was two-sided (we didn't really have any theory about whether psych students would be better or worse at statistics than other students) so our hypothesis test is two-sided (or two-tailed) also. Looking at the little table that I showed earlier, we can see that $2.26$ is bigger than the critical value of $1.96$ that would be required to be significant at $\alpha = .05$, but smaller than the value of $2.58$ that would be required to be significant at a level of $\alpha = .01$. Therefore, we can conclude that we have a significant effect, which we might write up by saying something like this:
 
@@ -300,15 +307,18 @@ $$
 
 ### z檢定的適用條件
 
-如前所述，所有統計檢驗都有其前提假設，有些假設是合理的，有些則不是。我剛剛介紹的「單樣本 z 檢定」也有三個基本的前提假設，分別為：
+正如先前所述，所有統計檢定皆建立於特定的假設條件之上，這些假設有的是基於合理的考量，有的則可能不太合適。這裡介紹的「單樣本z檢定」也有以下三條基礎假設條件：
 
-- *常態性*。通常所描述的z-test假設真正的母群分布是正態的。[^11-comparing-two-means-6]這通常是一個相當合理的假設，如果我們感到擔憂，也是我們可以檢查的假設（請參見[檢查樣本的正態性](11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample)一節）。
-- *獨立性*。測試的第二個假設是資料集中的觀察結果彼此不相關或以某種有趣的方式相關。這在統計上不是那麼容易檢查，而是有賴於良好的實驗設計。違反此假設的一個明顯（且愚蠢）的例子是將同一個觀察結果在資料文件中“複製”多次，以便您最終獲得只有一個真正觀察結果的龐大“樣本大小”。更現實的是，您必須問自己，是否真的可以想像每個觀察結果都是從您感興趣的人口中完全隨機抽樣得到的。在實踐中，此假設永遠不會被滿足，但我們會盡力設計研究來最小化相關資料的問題。
-- *已知標準差假設*。z檢驗的第三個假設是，研究人員知道母群的真實標準差。這簡直太傻了。在沒有真正的世界資料分析問題中，你知道母群的標準差$\sigma$，但對平均值$\mu$卻一無所知。換句話說，這個假設永遠是錯的。
+- *常態分佈假設*。一般來說，z檢定必須假定母群分佈符合常態分佈。[^11-comparing-two-means-6]這是一個相對合理的假設，若有疑慮，我們有方法可以進行驗證（請參考 @sec-Checking-the-normality-of-a-sample ）。
 
-[^11-comparing-two-means-6]: 事實上這個說法有些過分了。嚴格來說，z檢定只要求平均值的取樣分佈是正態分布即可。如果母群分布是正態分布，則平均值的取樣分佈必然也是正態分布。但是，就像我們在談論中心極限定理時所看到的那樣，即使母群分布本身不正常，取樣分佈仍然可能是正常的（甚至很常見）。然而，考慮到假設真實標準差已知的荒謬性，對於這個假設沒有必要進行詳細討論！
+- *獨立性假設*。第二條要求構成資料集的觀察值互不相關，或者說，觀察值之間的相關性沒有某種特定模式。這一點不容易直接用統計方法檢驗，而是要依賴嚴謹的實驗設計確保此條件成立。一個明顯違反此條件的不合理例子是，在資料集多次「複製貼上」同一個觀察值，導致得到的資料是基於單一測量結果的巨大“樣本”。實際上，每一個觀察值應該是從目標群體裡完全隨機選出，分別評估而得到的。這項條件在有些研究實務難以完全滿足，但是能透過精心安排的研究設計儘可能減少觀察資料的相關性對結果造成的影響。
 
-鑒於假設 $\alpha$ 已知的荒謬，我們試著不使用它。這將我們帶離了 z-test 這個枯燥領域，走進了有獨角獸、仙女和小矮人的神奇王國，那就是 t-test！
+- *母群標準差已知*。z檢定的第三個條件是，研究者必須知道母群的真實標準差。這個條件實在是難以滿足。在現實世界的資料分析中，極少遇到可知母群標準差$\sigma$，卻對母群平均值$\mu$一無所知的情況。也就是這個條件基本上難以成立。
+
+[^11-comparing-two-means-6]: 實際上，這種說法可能太過絕對。嚴格來說，z檢定僅要求樣本平均數的分佈呈常態分佈。如果母群分佈是常態的，那麼樣本平均數的分佈自然也會是常態的。然而，正如在討論中心極限定理時看到的，即便母群分佈本身不是常態的，樣本平均數的分佈還是可能呈現常態（這種情況還相當常見）。不過，考慮到假定已知母群標準差是不合理的條件，詳細探討這個條件並無太大必要！
+
+
+有鑒於假設 $\sigma$ 已知的荒謬性，我們需要知道z檢定之外的統計方法。接著我們要離開z檢定這個枯燥領域，走入有獨角獸、仙女和小矮人的神奇王國，就是t檢定！
 
 
 <!--- As I've said before, all statistical tests make assumptions. Some tests make reasonable assumptions, while other tests do not. The test I've just described, the one sample z-test, makes three basic assumptions. These are:
@@ -323,11 +333,13 @@ In view of the stupidity of assuming that $\alpha$ is known, let's see if we can
 
 ## 單一樣本t檢定 {#sec-The-one-sample-t-test}
 
-經過一番思考，我(原作者)認為不能安心地假設 Zeppo 老師班上的心理系學生的成績標準差與同班其他科系的學生一樣。若是我假設不同科系的平均值不同，那麼，為什麼我要相信不同科系的標準差是一樣的？基於這些理由，我不應該假設我知道 $\sigma$ 的真實值。如此就違反了 z檢定的適用條件。在這層意義來說，我們的分析習作回到了起點。但是，我們還有其他選擇。畢竟，原始資料還是一樣的，這些原始資料可以給我們一種母群標準差的估計，也就是 9.52。換句話說，雖然我不能說我知道 $\sigma = 9.5$，但是我可以說 $\hat{\sigma}$ = 9.52。
+經過深思熟慮，我（原作者）認為無法輕易假定Zeppo教授班上心理學系學生的成績標準差與其他科系學生相同。如果我們已預設不同科系學生的平均成績存在差異，那麼為何我們要假定他們的標準差相等呢？基於這個理由，我認為不應該預先假定自己知道真實的$\sigma$是多少，這樣就違反了z檢定的前提條件。這麼一來，我們的分析工作似乎回到了原點。然而，我們還是有其他方法可用。最重要的是，原始資料依然是一樣的，這些資料提供了母群標準差的估計值，即9.52。換言之，雖然我不能假定$\sigma = 9.5$，但我可以提出$\hat{\sigma} = 9.52$。
 
-好的，這很不錯。你可能會想到的明顯做法是，使用 $9.52$ 的估計標準差來進行 z 檢定，而不是依賴於我對真實標準差為 $9.5$ 的假設。你可能不會感到意外，這種方法仍然會給我們一個顯著的結果。這種方法很接近，但不是完全正確的。因為現在我們依賴於對人群標準差的估計，所以我們需要對我們對真實人群標準差的不確定性進行一些調整。也許我們的資料只是一個偶然事件......也許真實人群標準差是 $11$。但如果這確實是真的，我們進行 z 檢定時假設 $\sigma=11$，那麼結果將變得不顯著。這是一個問題，我們需要解決。
+這是一個不錯的開頭。你可能會很自然地想到，也許能使用樣本估計的標準差9.52來進行z檢定，而不是依賴於對$\sigma = 9.5$的假定，這種方法依然能夠得到顯著的結果。這樣的檢定方法接近正確，但是並非完全無懈可擊。由於現在是用母群標準差的估計值計算統計值，因此需要調整一下面對真實母群標準差不確定性的看法：或許手頭上的資料僅是一次偶發事件……或許真實的母群標準差其實是$11$，如果這是真的，假定$\sigma=11$進行z檢定，分析結果可能不會是顯著的。這是一個需要解決的問題。
 
-<!--- After some thought, I decided that it might not be safe to assume that the psychology student grades necessarily have the same standard deviation as the other students in Dr Zeppo's class. After all, if I'm entertaining the hypothesis that they don't have the same mean, then why should I believe that they absolutely have the same standard deviation? In view of this, I should really stop assuming that I know the true value of $\sigma$. This violates the assumptions of my z-test, so in one sense I'm back to square one. However, it's not like I'm completely bereft of options. After all, I've still got my raw data, and those raw data give me an estimate of the population standard deviation, which is 9.52. In other words, while I can't say that I know that $\sigma = 9.5$, I can say that $\hat{\sigma}$ = 9.52.
+<!---
+
+ After some thought, I decided that it might not be safe to assume that the psychology student grades necessarily have the same standard deviation as the other students in Dr Zeppo's class. After all, if I'm entertaining the hypothesis that they don't have the same mean, then why should I believe that they absolutely have the same standard deviation? In view of this, I should really stop assuming that I know the true value of $\sigma$. This violates the assumptions of my z-test, so in one sense I'm back to square one. However, it's not like I'm completely bereft of options. After all, I've still got my raw data, and those raw data give me an estimate of the population standard deviation, which is 9.52. In other words, while I can't say that I know that $\sigma = 9.5$, I can say that $\hat{\sigma}$ = 9.52.
 
 Okay, cool. The obvious thing that you might think to do is run a z-test, but using the estimated standard deviation of $9.52$ instead of relying on my assumption that the true standard deviation is $9.5$. And you probably wouldn't be surprised to hear that this would still give us a significant result. This approach is close, but it's not quite correct. Because we are now relying on an estimate of the population standard deviation we need to make some adjustment for the fact that we have some uncertainty about what the true population standard deviation actually is. Maybe our data are just a fluke...maybe the true population standard deviation is $11$, for instance. But if that were actually true, and we ran the z-test assuming $\sigma=11$, then the result would end up being non-significant. That's a problem, and it's one we're going to have to address. --->
 
@@ -335,7 +347,7 @@ Okay, cool. The obvious thing that you might think to do is run a z-test, but us
 #| label: fig-fig11-4
 #| fig-width: 10
 #| fig-height: 5
-#| fig-cap: 圖解單一樣本t檢定的虛無假設和對立假設（兩側）。請注意，t檢定和z檢定有相似之處（見 @fig-fig11-2 ）。虛無假設的母群平均值$\mu$等於某個特定值$\mu_0$，對立假設不等於$\mu_0$。與z檢定一樣，適用資料服從常態分佈，但是不適用母群標準差$\sigma$事先已知。
+#| fig-cap: 圖解單一樣本雙側t檢定的虛無假設和對立假設。留意t檢定和z檢定的相似之處（請見 @fig-fig11-2 ），就是虛無假設的母群平均值$\mu$等於某個特定值$\mu_0$，對立假設不等於$\mu_0$。與z檢定一樣，t檢定也有資料服從常態分佈的適用條件，但是不必事先已知母群標準差$\sigma$。
 #Graphical illustration of the null and alternative hypotheses assumed by the (two sided) one sample t-test. Note the similarity to the z-test (@fig-fig11-2). The null hypothesis is that the population mean $\mu$ is equal to some specified value $\mu_0$, and the alternative hypothesis is that it is not. Like the z-test, we assume that the data are normally distributed, but we do not assume that the population standard deviation $\sigma$ is known in advance
 
 
@@ -383,11 +395,16 @@ gridExtra::grid.arrange(p1,p2, ncol=2)
 
 ### 深入認識單一樣本t檢定
 
-這種模稜兩可的情況非常煩人，這個難題在 1908 年被 William Sealy Gosset 解決 [@Student1908]。當時他是吉尼斯啤酒廠聘雇的專職化學分析員（參見 @Box1987）。由於吉尼斯公司約束員工自行發表統計分析（顯然公司高層認為這是商業機密），所以他用化名“學生”發表了這項發現。直到今天，t 檢定的真正全名是 **Student's t-test**。Gosset 所發現的關鍵是，我們要如何讓不完全確定真實標準差的取樣分佈與真實資料相容。解法是只要稍微改變取樣分佈。[^11-comparing-two-means-7]在 t 檢定中，我們的檢定統計量，現在稱為 t 統計量，以我上面提到的方式計算。如果我們的虛無假設是真實均值為 $\mu$，但我們的樣本平均值是 $\bar{X}$，而我們對人口標準差的估計是 $\hat{\sigma}$，那麼我們的 t 統計量是：
+這段歷史性的難題在 1908 年由 William Sealy Gosset 解決了。當時他在吉尼斯啤酒公司擔任專職化學分析師（見 @Box1987），吉尼斯有規定禁止員工公開發表有關統計分析的研究，因為公司認為這屬於商業機密，因此Gosset 用了筆名“學生”發表他的研究成果。這是為什麼今天t檢定的正式名稱是「學生t檢定」(Student's t-test)。Gosset 的關鍵貢獻是，他發現即使我們不完全確定母群標準差的確切數值，如何確保取樣分佈充分匹配真實資料，解決方法是適當調整取樣分佈。在t檢定中，我們所使用的檢定統計值是t統計值(t statistic)，如同之前z檢定的計算方法，我們假定虛無假設的真實平均值是$\mu$，然而樣本平均值是$\bar{X}$，根據母群標準差的估計值$\hat{\sigma}$，t統計值的計算公式就是：
+
+[^11-comparing-two-means-7]: 其實這道難題的解法不完全是一個人的功勞。就我所知，最早由高斯有提出部分解決方法，最終版本的解決方法是由羅納德·費雪爵士提出。
+
+
+<!--- 這種模稜兩可的情況非常煩人，這個難題在 1908 年被 William Sealy Gosset 解決 [@Student1908]。當時他是吉尼斯啤酒廠聘雇的專職化學分析員（參見 @Box1987）。由於吉尼斯公司約束員工自行發表統計分析（顯然公司高層認為這是商業機密），所以他用化名“學生”發表了這項發現。直到今天，t 檢定的真正全名是 **Student's t-test**。Gosset 所發現的關鍵是，我們要如何讓不完全確定真實標準差的取樣分佈與真實資料相容。解法是只要稍微改變取樣分佈。[^11-comparing-two-means-7]在 t 檢定中，我們的檢定統計量，現在稱為 t 統計量，以我上面提到的方式計算。如果我們的虛無假設是真實均值為 $\mu$，但我們的樣本平均值是 $\bar{X}$，而我們對人口標準差的估計是 $\hat{\sigma}$，那麼我們的 t 統計量是：
 
 [^11-comparing-two-means-7]: 嗯，其實這個問題不完全由一個人解決。據我所知，最早高斯有提出部分解決方法；最終解決方法由羅納德·費雪爵士提出。
 
-<!--- This ambiguity is annoying, and it was resolved in 1908 by a guy called William Sealy Gosset [@Student1908], who was working as a chemist for the Guinness brewery at the time (see @Box1987). Because Guinness took a dim view of its employees publishing statistical analysis (apparently they felt it was a trade secret), he published the work under the pseudonym "A Student" and, to this day, the full name of the t-test is actually **Student's t-test**. The key thing that Gosset figured out is how we should accommodate the fact that we aren't completely sure what the true standard deviation is.[^11-comparing-two-means-7] The answer is that it subtly changes the sampling distribution. In the t-test our test statistic, now called a t-statistic, is calculated in exactly the same way I mentioned above. If our null hypothesis is that the true mean is $\mu$, but our sample has mean $\bar{X}$ and our estimate of the population standard deviation is $\hat{\sigma}$, then our t statistic is:
+This ambiguity is annoying, and it was resolved in 1908 by a guy called William Sealy Gosset [@Student1908], who was working as a chemist for the Guinness brewery at the time (see @Box1987). Because Guinness took a dim view of its employees publishing statistical analysis (apparently they felt it was a trade secret), he published the work under the pseudonym "A Student" and, to this day, the full name of the t-test is actually **Student's t-test**. The key thing that Gosset figured out is how we should accommodate the fact that we aren't completely sure what the true standard deviation is.[^11-comparing-two-means-7] The answer is that it subtly changes the sampling distribution. In the t-test our test statistic, now called a t-statistic, is calculated in exactly the same way I mentioned above. If our null hypothesis is that the true mean is $\mu$, but our sample has mean $\bar{X}$ and our estimate of the population standard deviation is $\hat{\sigma}$, then our t statistic is:
 
 [^11-comparing-two-means-7]: Well, sort of. As I understand the history, Gosset only provided a partial solution; the general solution to the problem was provided by Sir Ronald Fisher. --->
 
@@ -399,7 +416,7 @@ $$
 #| label: fig-fig11-5
 #| fig-width:  10
 #| fig-height: 5
-#| fig-cap: 具有2個自由度（左）和10個自由度（右）的t分布，標準正態分布（即，均值為0，標準差為1）以虛線繪製，以進行比較。請注意，t分布的尾部比正態分布重（高峰度），當自由度非常小時，這種效應會被極大地夸大，但對於較大的值可以忽略不計。換句話說，對於大的自由度，t分布基本上與正態分布相同。
+#| fig-cap: 具有2個自由度（左）和10個自由度（右）的t分布，標準常態分佈（即，均值為0，標準差為1）以虛線繪製，以進行比較。請注意，t分布的尾部比常態分佈重（高峰度），當自由度非常小時，這種效應會被極大地夸大，但對於較大的值可以忽略不計。換句話說，對於大的自由度，t分布基本上與常態分佈相同。
 #The t distribution with 2 degrees of freedom (left) and 10 degrees of freedom (right), with a standard normal distribution (i.e., mean 0 and std dev 1) plotted as dotted lines for comparison purposes. Notice that the t distribution has heavier tails (leptokurtic, higher kurtosis) than the normal distribution; this effect is quite exaggerated when the degrees of freedom are very small, but negligible for larger values. In other words, for large $df$ the t distribution is essentially identical to a normal distribution
 
 p1 <- ggplot(data = data.frame(x = seq(-4, 4, 1)), aes(x)) +
@@ -407,7 +424,7 @@ p1 <- ggplot(data = data.frame(x = seq(-4, 4, 1)), aes(x)) +
   stat_function(fun = dt, n = 1000, args = list(df = 2), col="black", linewidth=1) +
   scale_x_continuous(breaks = seq(-4, 4, 2)) +
   ggtitle("df = 2") +
-  xlab("\nValue of t-statistic") +
+  xlab("\n t檢定統計值") +
   theme_classic() +
   theme(
     axis.title.y = element_blank(),
@@ -422,7 +439,7 @@ p2 <- ggplot(data = data.frame(x = seq(-4, 4, 1)), aes(x)) +
   stat_function(fun = dt, n = 1000, args = list(df = 20), col="black", linewidth=1) +
   scale_x_continuous(breaks = seq(-4, 4, 2)) +
   ggtitle("df = 10") +
-  xlab("\nValue of t-statistic") +
+  xlab("\n t檢定統計值") +
   theme_classic() +
   theme(
     axis.title.y = element_blank(),
@@ -435,7 +452,8 @@ gridExtra::grid.arrange(p1,p2, ncol=2)
 
 ```
 
-等式中唯一變化的是我們使用估計值 $\hat{\sigma}$ 取代已知的真實值 $\sigma$。而如果這個估計值是由 N 個觀察值所構成，那麼樣本分布就會變成一個有 $N-1$ 個自由度的 t 分布。t 分布和正態分布非常相似，但有更重的尾部，正如 @sec-Other-useful-distributions 中討論的，也在 @fig-fig11-5 中呈現。然而，注意到當自由度變大時，t 分布開始看起來和標準正態分布相同。這就是我們期望的：如果樣本大小為 $N = 70,000,000$，那麼你對標準差的「估計」就幾乎完美了，對吧？因此，你應該期望在大樣本時，t 檢驗的表現會和 z 檢驗完全一致。而這也確實如此！
+t統計值的公式與z統計值公式的唯一不同處是我們使用母群標準差的估計值 $\hat{\sigma}$ ，取代真實的母群標準差$\sigma$。如果這個估計值是由 N 個觀察值所構成，那麼樣本分佈就會符合一個自由度是$N-1$的 t 分佈。 t 分佈的長相和常態分佈非常類似，但是兩側密度高一點。這個特性在 @sec-Other-useful-distributions 曾經提到，也呈現在 @fig-fig11-5 。不過，各位可注意到自由度越大，t 分佈會越來越和標準常態分佈一致，而這就是許多研究者希望的，若是樣本量有$N = 70,000,000$，母群標準差的「估計值」就幾乎等於真實的數值了？所以我們可以期待分析大樣本資料，使用t 檢定的結果完全等於z檢定，用數學推導來看也是如此！
+
 
 <!---The only thing that has changed in the equation is that instead of using the known true value $\sigma$, we use the estimate $\hat{\sigma}$. And if this estimate has been constructed from N observations, then the sampling distribution turns into a t-distribution with $N-1$ **degrees of freedom** (df). The t distribution is very similar to the normal distribution, but has "heavier" tails, as discussed earlier in @sec-Other-useful-distributions and illustrated in @fig-fig11-5. Notice, though, that as df gets larger, the t-distribution starts to look identical to the standard normal distribution. This is as it should be: if you have a sample size of $N = 70,000,000$ then your "estimate" of the standard deviation would be pretty much perfect, right? So, you should expect that for large $N$, the t-test would behave exactly the same way as a z-test. And that's exactly what happens! --->
 
@@ -484,7 +502,7 @@ $$t(19)=2.25, p = .036, CI_{95} = [0.34, 9.26]$$ With that much jargon crammed i
 - 正態性。我們仍然假設母群分布是正態的 [^11-comparing-two-means-9]，如前所述，有標準的工具可以用來檢查這種假設是否符合（[檢查樣本正態性](11-Comparing-two-means.html#sec-Checking-the-normality-of-a-sample)），如果這種假設被違反，還有其他的測試方法可以替代（[檢驗非正態資料](11-Comparing-two-means.html#testing-non-normal-data)）。
 - 獨立性。再次，我們必須假設樣本中的觀察值是相互獨立的產生的。詳細討論請參見之前有關 z 檢驗的討論（[z 檢驗的假設](11-Comparing-two-means.html#assumptions-of-the-z-test)）。
 
-[^11-comparing-two-means-9]: 技術性的註解：以與 z 檢定的假設一樣的方式，我們可以削弱 t 檢定的假設，以便只談論取樣分佈。但是，對於 t 檢定，這樣做比較困難。像以前一樣，我們可以將母群正態性的假設替換為樣本平均數的取樣分佈是正態分布的假設。然而，請記住我們還依賴於對標準差的樣本估計，因此我們還需要 $\hat{\sigma}$ 的取樣分佈是卡方分布的假設。這使得事情變得更加麻煩，這個版本很少在實踐中使用。幸運的是，如果母群分布是正態的，那麼這兩個假設都得到滿足。
+[^11-comparing-two-means-9]: 技術性的註解：以與 z 檢定的假設一樣的方式，我們可以削弱 t 檢定的假設，以便只談論取樣分佈。但是，對於 t 檢定，這樣做比較困難。像以前一樣，我們可以將母群正態性的假設替換為樣本平均數的取樣分佈是常態分佈的假設。然而，請記住我們還依賴於對標準差的樣本估計，因此我們還需要 $\hat{\sigma}$ 的取樣分佈是卡方分布的假設。這使得事情變得更加麻煩，這個版本很少在實踐中使用。幸運的是，如果母群分布是正態的，那麼這兩個假設都得到滿足。
 
 
 總的來說，這兩個假設並不是非常不合理的，因此單樣本 t 檢定在實踐中被廣泛用於比較樣本平均數與假定的母群平均數。
@@ -536,7 +554,7 @@ huxtabs[[11]][[2]]
 
 ```{r}
 #| label: fig-fig11-7
-#| fig-cap: 盒形圖和小提琴圖顯示Anastasia和Bernadette的班級學生成績分布。從視覺上看，這些圖表暗示著Anastasia的學生平均成績可能會更好，但它們也似乎更加變化不定。
+#| fig-cap: 盒形圖和小提琴圖顯示Anastasia和Bernadette的課程學生成績分布。從視覺上看，這些圖表暗示著Anastasia的學生平均成績可能會更好，但它們也似乎更加變化不定。
 #Box and violin plots showing the distribution of grades for students in Anastasia's and Bernadette's classes. Visually, these suggest that students in Anastasia's class may be getting slightly better grades on average, though they also seem a bit more variable
 knitr::include_graphics("images/fig11-7.png")
 ```
@@ -644,7 +662,7 @@ Just as we saw with our one-sample test, the sampling distribution of this t-sta
 
 ### jamovi實作
 
-不出所料，您可以很容易地在 jamovi 中進行獨立樣本 t 檢定。我們測試的結果變量是學生成績，而組是根據每個班級的導師定義的。因此，您可能不會對 jamovi 中的相應分析（“分析”-“T 檢定”-“獨立樣本 T 檢定”）感到意外，只需將成績變量移動到“依變變量”框中，將導師變量移動到“分組變量”框中，如 @fig-fig11-9 所示。
+不出所料，您可以很容易地在 jamovi 中進行獨立樣本 t 檢定。我們測試的結果變量是學生成績，而組是根據每個課程的導師定義的。因此，您可能不會對 jamovi 中的相應分析（“分析”-“T 檢定”-“獨立樣本 T 檢定”）感到意外，只需將成績變量移動到“依變變量”框中，將導師變量移動到“分組變量”框中，如 @fig-fig11-9 所示。
 
 <!---Not surprisingly, you can run an independent samples t-test easily in jamovi. The outcome variable for our test is the student grade, and the groups are defined in terms of the tutor for each class. So you probably won't be too surprised that all you have to do in jamovi is go to the relevant analysis ('Analyses' - 'T-Tests' - 'Independent Samples T-Test') and move the grade variable across to the 'Dependent Variables' box, and the tutor variable across into the 'Grouping Variable' box, as shown in @fig-fig11-9. --->
 
@@ -662,7 +680,7 @@ knitr::include_graphics("images/fig11-9.png")
 
 在任何情況下，兩組之間的差異是顯著的（僅僅）。因此，我們可以使用以下文本編寫結果:
 
-> Anastasia 班級的平均成績為 $74.5\%$（標準差為 $9.0$），而 Bernadette 班級的平均成績為 $69.1\%$（標準差為 $5.8$）。 學生的獨立樣本 t 檢驗顯示此 $5.4\%$ 差異是顯著的 $(t(31) = 2.1, p<.05, CI_{95} = [0.2, 10.8], d = .74)$，表明學習成果存在真正的差異。
+> Anastasia 課程的平均成績為 $74.5\%$（標準差為 $9.0$），而 Bernadette 課程的平均成績為 $69.1\%$（標準差為 $5.8$）。 學生的獨立樣本 t 檢驗顯示此 $5.4\%$ 差異是顯著的 $(t(31) = 2.1, p<.05, CI_{95} = [0.2, 10.8], d = .74)$，表明學習成果存在真正的差異。
 
 注意到我在統計區塊中包含了信心區間和效應大小。人們並不總是這樣做。至少，您應該期望看到t統計量、自由度和p值。所以您應該至少包含像這樣的內容：$t(31) = 2.1, p< .05$。如果統計學家得到了他們想要的結果，那麼每個人都會報告信心區間，可能還有效應大小測量，因為它們是有用的知識。但現實並不總是按照統計學家的期望運作，所以您應該根據您認為會幫助讀者的情況進行判斷，如果您正在撰寫科學論文，那麼應根據期刊的編輯標準進行決策。有些期刊希望您報告效應大小，而有些則不是。在某些科學社區中，報告信心區間是標準做法，在其他社區中則不是。您需要找出您的觀眾期望什麼。但是，僅僅為了清晰起見，如果您正在上我的課，我的默認立場是通常值得包括效應大小和信心區間。
 
@@ -686,9 +704,9 @@ $$t=\frac{\text{平均值1-平均值2}}{SE}$$
 
 好的，當你考慮這件事時，其實很簡單，但現在考慮比較阿納斯塔西亞班和伯納德班的 t 檢定。我們應該把哪一個稱為 "mean 1"，哪一個稱為 "mean 2"。這是任意的。然而，你真的需要將其中之一指定為 "mean 1"，另一個為 "mean 2"。不出所料，jamovi 處理這個的方式也相當任意。在本書早期的版本中，我試圖解釋這一點，但過了一段時間後，我放棄了，因為這並不是真正重要的事情，老實說我自己也記不清楚。每當我得到一個顯著的 t 檢定結果，並且我想找出哪個均值較大，我不會嘗試通過查看 t 統計量來找出答案。我為什麼要這麼做？這是愚蠢的。最簡單的方法就是查看實際的組均值，因為 jamovi 的輸出實際上就顯示了它們！
 
-這是重要的一點。因為 jamovi 向您顯示的內容實際上並不重要，所以我通常會嘗試以使數字與文本相符的方式報告 t 統計量。假設我想在報告中寫道：「阿納斯塔西亞的班級的成績高於伯納德的班級。」這種措辭意味著阿納斯塔西亞的組排在第一位，因此把阿納斯塔西亞的班級對應到第一組是有道理的。如果是這樣，我會寫成 *阿納斯塔西亞的班级成绩比伯纳德的班级更*<u>高</u>$(t(31) = 2.1，p = .04)$。
+這是重要的一點。因為 jamovi 向您顯示的內容實際上並不重要，所以我通常會嘗試以使數字與文本相符的方式報告 t 統計量。假設我想在報告中寫道：「阿納斯塔西亞的課程的成績高於伯納德的課程。」這種措辭意味著阿納斯塔西亞的組排在第一位，因此把阿納斯塔西亞的課程對應到第一組是有道理的。如果是這樣，我會寫成 *阿納斯塔西亞的班级成绩比伯纳德的班级更*<u>高</u>$(t(31) = 2.1，p = .04)$。
 
-（在現實中我不會真的用下劃線來強調 “higher”，我只是這樣做是為了強調 “higher” 與正的 t 值對應）。另一方面，假設我想使用的措辭是 Bernadette 的班級排在第一位，如果這樣的話，把她的班級作為第一組更有意義，這樣的話報告應該寫成：Bernadette 的班級的成績比 Anastasia 的班級更低 $(t(31) = -2.1, p = .04)$。
+（在現實中我不會真的用下劃線來強調 “higher”，我只是這樣做是為了強調 “higher” 與正的 t 值對應）。另一方面，假設我想使用的措辭是 Bernadette 的課程排在第一位，如果這樣的話，把她的課程作為第一組更有意義，這樣的話報告應該寫成：Bernadette 的課程的成績比 Anastasia 的課程更低 $(t(31) = -2.1, p = .04)$。
 
 最後要注意的是，這種寫法只適用於t檢定，對於卡方檢定、F檢定或本書中提到的大多數檢定而言並無意義。因此不要過度將這個建議泛化！這裡我真的只是在談論t檢定，而不是其他任何東西！
 
@@ -851,11 +869,11 @@ Welch檢定的假設與學生t檢定的假設非常相似（請參閱[獨立樣�
 
 ### 示範資料
 
-這次我們要使用的資料集來自Chico博士的班級。[^11-comparing-two-means-17] 在她的課堂上，學生要參加兩次主要考試，一次在學期初，一次在學期後。據她所說，她開的課很難，大多數學生都覺得很有挑戰性。但她認為，通過設置困難的評估，學生會被鼓勵更加努力地學習。她的理論是，第一次考試對學生來說是一個“提醒”，當他們意識到她的課有多難時，他們會為第二次考試更加努力，取得更好的成績。她的觀點正確嗎？為了測試這個問題，讓我們將*chico.csv*文件導入到jamovi中。這次，jamovi在導入期間做了一個好工作，正確地分類了變量的測量水平。*chico*資料集包含三個變量：一個id變量，用於識別班級中的每個學生，grade_test1變量記錄第一次考試的學生成績，grade_test2變量則是第二次考試的成績。
+這次我們要使用的資料集來自Chico博士的課程。[^11-comparing-two-means-17] 在她的課堂上，學生要參加兩次主要考試，一次在學期初，一次在學期後。據她所說，她開的課很難，大多數學生都覺得很有挑戰性。但她認為，通過設置困難的評估，學生會被鼓勵更加努力地學習。她的理論是，第一次考試對學生來說是一個“提醒”，當他們意識到她的課有多難時，他們會為第二次考試更加努力，取得更好的成績。她的觀點正確嗎？為了測試這個問題，讓我們將*chico.csv*文件導入到jamovi中。這次，jamovi在導入期間做了一個好工作，正確地分類了變量的測量水平。*chico*資料集包含三個變量：一個id變量，用於識別課程中的每個學生，grade_test1變量記錄第一次考試的學生成績，grade_test2變量則是第二次考試的成績。
 
 [^11-comparing-two-means-17]: 此時，我們有 Harpo 博士、Chico 博士和 Zeppo 博士。猜猜看誰是 Groucho 博士，不用給獎品。
 
-如果我們看一下 jamovi 的試算表，似乎這個班級很難（大多數的成績都在50%到60%之間），但從第一次測驗到第二次測驗似乎有進步的趨勢。
+如果我們看一下 jamovi 的試算表，似乎這個課程很難（大多數的成績都在50%到60%之間），但從第一次測驗到第二次測驗似乎有進步的趨勢。
 
 如果我們快速查看一下描述性統計，在 @fig-fig11-12 中，我們可以看到這種印象似乎得到了支持。在所有20個學生中，第一次測驗的平均成績為57%，但第二次測驗的平均成績為58%。但是，考慮到標準差分別為6.6%和6.4%，這種進步感覺起來可能只是虛假的，也可能只是隨機變異。當你看到在@fig-fig11-13a中繪製的平均值和置信區間時，這種印象得到了加強。如果我們僅僅依靠這個圖表，看看這些置信區間有多寬，我們會認為學生表現的明顯改善純粹是偶然的。
 
@@ -1288,7 +1306,7 @@ QQ圖提供了一種非正式檢查資料正態性的好方法，但有時您可
 #| label: fig-fig11-24
 #| fig-width: 5
 #| fig-height: 5
-#| fig-cap: 在樣本大小為10、20和50的情況下，據擷取的Shapiro-Wilk $W$統計量分布，據此推出空假設是資料呈正態分布。注意，$W$值較小表示偏離正態分布。
+#| fig-cap: 在樣本大小為10、20和50的情況下，據擷取的Shapiro-Wilk $W$統計量分布，據此推出空假設是資料呈常態分佈。注意，$W$值較小表示偏離常態分佈。
 #Sampling distribution of the Shapiro-Wilk $W$ statistic, under the null hypothesis that the data are normally distributed, for samples of size 10, 20 and 50. Note that small values of $W$ indicate departure from normality
 
 

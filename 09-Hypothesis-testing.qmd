@@ -293,7 +293,7 @@ knitr::include_graphics("images/fig9-3.png")
 
 ## 統計檢定的*p*值{#sec-The-p-value-of-a-test}
 
-在某種意義上，我們已經完成假設檢定程序。我們已經建立一個統計檢定值，設定好如果虛無假設符合事實的取樣分佈，並為檢定結果決策設定棄卻域。然而，其實我還省略了一個最重要的數值 – ***p*值**。p 值有兩種不同的解釋版本，一種是由羅納德·費雪爵士(Sir Ronald Fisher)提出，另一種是由傑茲·尼曼 (Jerzy Neyman) 提出。兩種版本都是統計學家接受的解釋方法，雖然彼此反映非常不同的假設檢定思維途徑。大多數統計學教課書只會講費雪的版本，但我認為這有點可惜。我認為尼曼的版本更簡潔，更能反映虛無假設檢定的邏輯。當然，也許讀者會有不同意見，以下兩種版本都會介紹。我先從尼曼的版本開始說。
+在某種意義上，我們已經完成假設檢定程序。我們已經建立一個統計檢定值，設定好如果虛無假設符合事實的取樣分佈，並為檢定結果決策設定棄卻域。然而，其實我還省略了一個最重要的數值 – ***p*值**。p 值有兩種不同的解釋版本，一種是由羅納德·費雪爵士(Sir Ronald Fisher)提出，另一種是由傑茲·尼曼 (Jerzy Neyman) 提出。兩種版本都是統計學家接受的解釋方法，雖然兩位大師的假設檢定思維彼此不相同。大多數統計學教科書只會講費雪的版本，但我認為這有點可惜。我認為尼曼的版本更簡潔，更能反映虛無假設檢定的邏輯。當然，也許讀者會有不同意見，以下兩種版本都會介紹。我先從尼曼的版本開始介紹。
 
 <!---In one sense, our hypothesis test is complete. We've constructed a test statistic, figured out its sampling distribution if the null hypothesis is true, and then constructed the critical region for the test. Nevertheless, I've actually omitted the most important number of all, **the p value**. It is to this topic that we now turn. There are two somewhat different ways of interpreting a p value, one proposed by Sir Ronald Fisher and the other by Jerzy Neyman. Both versions are legitimate, though they reflect very different ways of thinking about hypothesis tests. Most introductory textbooks tend to give Fisher's version only, but I think that's a bit of a shame. To my mind, Neyman's version is cleaner and actually better reflects the logic of the null hypothesis test. You might disagree though, so I've included both. I'll start with Neyman's version. --->
 
@@ -328,9 +328,9 @@ data.frame(
 
 如果*p*值顯示的決策錯誤率是大到你無法接受，那麼你必須保留虛無假設。如果你對等於*p*值的決策錯誤率感到滿意，那麼你可以拒絕虛無假設並支持偏好的對立假設。
 
-總而言之，*p*值是對以所有可能的顯著水準$\alpha$，所執行的假設檢定結果總結。因此*p*值有"軟化"決策難度的效果。檢定結果的*p*值比 $\alpha$ 大的話，我們會拒絕虛無假設；而檢定結果的*p*值比 $\alpha$ 小的話，我們會保留虛無假設。由於我的 ESP 實驗結果是 $X = 62$，因此 *p* = .021，要宣稱人類有ESP的話，我必須容忍 $2.1%$ 的型一錯誤率。另一方面，若是我的實驗結果是 $X = 97$，那麼*p*值會是多少？這次縮小為 $p = 1.36 \times 10^{-25}$ [^09-hypothesis-testing-8]，這是一個非常、非常微小的型一錯誤率。對於第二個實驗結果，我會更有信心地拒絕虛無假設，因為我只需要 "願意" 容忍大約十分之一兆兆兆兆的型一錯誤率，我的結論會是正確的。
+總而言之，*p*值是對以所有可能的顯著水準$\alpha$，所執行的假設檢定結果總結。因此*p*值有"軟化"決策難度的效果。檢定結果的*p*值比 $\alpha$ 小的話，我們會拒絕虛無假設；而檢定結果的*p*值比 $\alpha$ 大的話，我們會保留虛無假設。由於我的 ESP 實驗結果是 $X = 62$，因此 *p* = .021，要宣稱人類有ESP的話，我必須容忍 $2.1%$ 的型一錯誤率。另一方面，若是我的實驗結果是 $X = 97$，那麼*p*值會是多少？這次縮小為 $p = 1.36 \times 10^{-25}$ [^09-hypothesis-testing-8]，這是一個非常、非常微小的型一錯誤率。根據第二次實驗結果，我會更有信心地拒絕虛無假設，因為我只需要 "願意" 容忍大約十分之一兆兆兆兆的型一錯誤率，我的結論會是正確的。
 
-[^09-hypothesis-testing-8]: $p = .000000000000000000000000136$ 在一般人看來並不是科學的表達方式！
+[^09-hypothesis-testing-8]: 完整的數值$p = .000000000000000000000000136$ 在一般人看來並不是科學的表達方式！
 
 <!--- When we test the ESP data ($X = 62$ successes out of $N = 100$ observations), using $\alpha$ levels of $.03$ and above, we'd always find ourselves rejecting the null hypothesis. For $\alpha$ levels of $.02$ and below we always end up retaining the null hypothesis. Therefore, somewhere between $.02$ and $.03$ there must be a smallest value of $\alpha$ that would allow us to reject the null hypothesis for this data. This is the $p$ value. As it turns out the ESP data has $p = .021$. In short, $p$ is defined to be the smallest Type I error rate ($\alpha$) that you have to be willing to tolerate if you want to reject the null hypothesis.
 

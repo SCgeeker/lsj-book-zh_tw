@@ -23,6 +23,8 @@ source("header.R")
 
 ## 認識心理測量 {#sec-Introduction-to-psychological-measurement}
 
+> [導讀簡報](slides2A.html){target="_blank"}
+
 首先請同學理解資料分析就是一種**測量**。在心理學系要學的就是如何測量人類行為及心智活動。那麼到底"測量"是什麼？
 
 <!---The first thing to understand is data collection can be thought of as a kind of **measurement**. That is， what we're trying to do here is measure something about human behaviour or the human mind. What do I mean by "measurement"?--->
@@ -86,12 +88,12 @@ Moving beyond these issues， there's the question of methodology. What specific
 以上討論這麼多，是要引導同學理解**操作型定義**的概念。用更清楚簡潔的話來說，操作型定義是*將有意義但有些模糊的概念，轉換為精確測量程序的設定過程*。完整的操作型定義要在過程中考慮這些條件：
 
 - 清楚定義研究要測量的項目。以“年齡”為例，研究要測量的是“胎兒出生起算的時間長度”還是“母體受孕起算的時間長度”。
-- 確認用什麼方法進行測量。同樣以“年齡”為例，研穵 要用自陳式報告、詢問受測對象雙親、還是查閱官方紀錄？如果決定用自陳式報告，要如何設定問題內容？
+- 確認用什麼方法進行測量。同樣以“年齡”為例，研究要用自陳式報告、詢問受測對象雙親、還是查閱官方紀錄？如果決定用自陳式報告，要如何設定問題內容？
 - 定義可做紀錄的測量數值範圍。請留意數值不一定要是數字！雖然年齡的測量數值無疑問題數字，依然要考慮什麼單位的數字是需要被紀錄的。是年份？月份？還是小時？像性別一類數值不是數字的測量方法，同樣也要考慮數值的範圍。像是請受測對象透過自陳報告回報性別，要設計什麼樣的選項讓人選擇？只有“男性”和“女性”兩個選項夠嗎？需不需要增加“其他”這一項？或者改用開放式回答，讓受測對象自已寫下個人認同的性別？如果確定使用開放式回答，要如何解讀各式各樣的答案？
 
 設定操作型定義有各種方法，沒有一種“唯一正解”。任何研究都是根據測量目的，透過設定操作型定義的過程，將“年齡”與"性別"等不具形式的概念，轉化為可用數值形式表達的測量值。每個科學領域都對研究對象的測量方式有基本共識。因此，要理解如何設定操作型定義，是因研究主題而異。畢竟有許多主題存在大量差異化的個別研究，有些主題則有一致的研究模式，無法用統一的方法設定操作型定義。
 
-進入下一節之前，讓我們整理一些之後的單元會經常遇到，與測量有關的專用名詞，這些名詞彼此之間有許多關聯：
+進入下一節之前，讓我們整理一些之後的單元會經常遇到，與測量有關的專有名詞，這些名詞彼此之間有許多關聯：
 
 - **理論建構(A theoretical construct)** 研究者想要測量的目標，像是"年齡"、"性別"、或"選項"。理論建構不能直接觀察記錄，都是模糊抽象的概念。
 - **測量程序(measure)[^02-transltion-02]** 測量程序是進行觀察紀錄的方法或工具。像是問卷的題目、行為觀察、腦部活動掃瞄都是一種測量程序。
@@ -293,10 +295,10 @@ Again， lets look at a more psychological example. Suppose I'm interested in lo
 
 ||連續變項|間斷變項|
 |:---:|:---:|:---:|
-|名義尺度||![](images/variable-nominal.svg)，![](images/variable-id.svg)|
+|名義尺度|||
 |次序尺度||![](images/variable-ordinal.svg)|
-|等距尺度|![](images/variable-continuous.svg)|![](images/variable-nominal.svg)，![](images/variable-ordinal.svg)|
-|比例尺度|![](images/variable-continuous.svg)|![](images/variable-nominal.svg)，![](images/variable-ordinal.svg)|
+|等距尺度|![](images/variable-continuous.svg)|![](images/variable-ordinal.svg)|
+|比例尺度|![](images/variable-continuous.svg)|![](images/variable-ordinal.svg)|
 
 [^02-translation-2]: 譯註~原著並未提供變項符號，表內符號取自[jamovi說明文件](https://docs.jamovi.org/_pages/um_4_spreadsheet.html)。
 
