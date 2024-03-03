@@ -507,6 +507,9 @@ The alternative approach， case studies， aims to provide a very detailed desc
 
 ## 研究的效度
 
+> [導讀簡報](slides2C.html){target="_blank"}
+
+
 <!---More than any other thing， a scientist wants their research to be "valid". The conceptual idea behind **validity** is very simple. Can you trust the results of your study? If not， the study is invalid. However， whilst it's easy to state， in practice it's much harder to check validity than it is to check reliability. And in all honesty， there's no precise， clearly agreed upon notion of what validity actually is. In fact， there are lots of different kinds of validity， each of which raises it's own issues. And not all forms of validity are relevant to all studies. I'm going to talk about five different types of validity:
 
 -   Internal validity
@@ -735,8 +738,6 @@ There's probably a lot more issues like this to think about， but that'll do to
 請注意，以上只是一個粗略的研究設計指引。各種實驗研究絕對存在混淆因素，非實驗研究也可能會引導出人為反應。由於各種原因，這兩種情况都有可能會發生，無法單純歸咎於的是研究設計者或實驗執行者的錯誤。在研究實務，提前考慮到所有條件真的很不容易，就算是非常有經驗的研究者也會犯錯。  
 
 儘管可以將可能降低效度的各種問題大致區分為混淆因素或人為反應，但兩者依然是相當模糊的概念。以下介紹一些常見的非研究條件因素。
-
-(以下為AI初翻，尚待校稿)
 
 
 ### 歷史效應  
