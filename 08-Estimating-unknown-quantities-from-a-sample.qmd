@@ -16,7 +16,7 @@ source("header.R")
 
 ## 樣本、母群、取樣{#sec-sample-population-sampling}
 
-[中場報告](Prelude-Part-IV.html)提到一則歸納之謎，讓同學從中學習如何建構能判斷故事結局的假設。如果現在你能接受這樣的思考方式，應該能同意任何統計實務都是從接受原始資料的通用假設開始，這就是我們要學習**取樣理論**的原因。如果說統計理論都是要建立在機率理論的地基之上，取樣理論則是組建統計理論的材料。有效統計推論所需要的條件都是來自取樣理論，也就是要達到統計學者們認可的“推論過程”，我們必須清楚說明推論*來自*什麼樣本，推論適用於什麼樣的母群。
+[中場報告](Prelude-Part-IV.html)提到一則歸納之謎，讓同學從中學習如何建構能判斷故事結局的條件。如果現在你能接受這樣的思考方式，應該能同意任何統計實務都是從接受原始資料的適用條件開始，這就是我們要學習**取樣理論**的原因。如果說統計理論都是要建立在機率理論的地基之上，取樣理論則是組建統計理論的材料。有效統計推論所需要的條件都是來自取樣理論，也就是要達到統計學者們認可的“推論過程”，我們必須清楚說明推論*來自*什麼樣本，推論適用於什麼樣的母群。
 
 身為研究者，在任何要使用統計的狀況，最感興趣的都是資料代表的**樣本**。像是參加實驗的受試者反應，民調公司打電話詢問民眾投票意向等等。透過這類方式收集的資料，通常是有限且不完整的。因為我們不可能請全世界的人來參加實驗，民調公司也沒有時間和經費詢問所有選民。在 @sec-Descriptive-statistics 學習的描述統計，目標只有處理手上使用的資料。那一章只有學到如何描述、總結和視覺化樣本的特點。現在我們要再往前一步了。
 
@@ -39,18 +39,18 @@ In almost every situation of interest what we have available to us as researcher
 - 任何能在行星環境生存，有足夠智能的生物個體?
 - 任何有智能的實體?
 
-上述每一條都是有智慧的個體所組成的群體，不過到底是那一個群體才是原作者設計的認知實驗目標母群呢？另一個很難定義清楚母群條件的狀況，就是[中場故事](/Prelude-Part-IV.html)提到的瓶子裡裝什麼球的例子[^08-translation-01]。
-例子提到抽出的12個球都是白球，並沒有彩球。我們要如何設定這個例子的母群呢？似乎以下每一條設定都有道理。
+上述每一條都是有智慧的個體所組成的群體，不過到底是那一個群體才是原作者設計的認知實驗目標母群呢？另一個很難定義清楚母群條件的狀況，就是[中場故事](/Prelude-Part-IV.html)提到的威靈頓公爵和朋友猜謎的故事<!---[^08-translation-01]--->。故事中威靈頓公爵連贏十二次，他的朋友一次都沒猜中。我們要如何設定這個故事的母群呢？以下每一條設定似乎都有道理。
 
-- 瓶子裡的球都被抽完？
-- 負責抽球的人抽到不想抽為止？
-- 用機器人抽球，抽到機器人無法運作為止？
-- 找奇異博士去無限多的平行宇宙查看，看看每個宇宙抽出12個球的結果？
+- 威靈頓公爵和他的朋友到目的地的每一次猜謎？
+- 故事還沒說到的兩人猜謎結果？
+- 假定威靈頓公爵和他的朋友永生不死，能一直猜到世界末日來臨？
+- 拜託奇異博士去無限多的平行宇宙見證這兩個人的對決，算一算有多少平行宇宙的結果是威靈頓公爵連贏十二次？
 
 
+<!---
 [^08-translation-01]: 譯註~原文的例子已換成較通用的例子，置換理由請見[中場故事](/Prelude-Part-IV.html)的翻譯說明。
 
-<!---A sample is a concrete thing. You can open up a data file and there's the data from your sample. A **population**, on the other hand, is a more abstract idea. It refers to the set of all possible people, or all possible observations, that you want to draw conclusions about and is generally *much bigger* than the sample. In an ideal world the researcher would begin the study with a clear idea of what the population of interest is, since the process of designing a study and testing hypotheses with the data does depend on the population about which you want to make statements.
+A sample is a concrete thing. You can open up a data file and there's the data from your sample. A **population**, on the other hand, is a more abstract idea. It refers to the set of all possible people, or all possible observations, that you want to draw conclusions about and is generally *much bigger* than the sample. In an ideal world the researcher would begin the study with a clear idea of what the population of interest is, since the process of designing a study and testing hypotheses with the data does depend on the population about which you want to make statements.
 
 Sometimes it's easy to state the population of interest. For instance, in the "polling company" example that opened the chapter the population consisted of all voters enrolled at the time of the study, millions of people. The sample was a set of 1000 people who all belong to that population. In most studies the situation is much less straightforward. In a typical psychological experiment determining the population of interest is a bit more complicated. Suppose I run an experiment using 100 undergraduate students as my participants. My goal, as a cognitive scientist, is to try to learn something about how the mind works. So, which of the following would count as "the population":
 
