@@ -15,7 +15,7 @@ source("header.R")
 
 The goal in this chapter is to extend the idea of using multiple predictors into the ANOVA framework. For instance, suppose we were interested in using the reading comprehension test to measure student achievements in three different schools, and we suspect that girls and boys are developing at different rates (and so would be expected to have different performance on average). Each student is classified in two different ways: on the basis of their gender and on the basis of their school. What we'd like to do is analyse the reading comprehension scores in terms of both of these grouping variables. The tool for doing so is generically referred to as **factorial ANOVA**. However, since we have two grouping variables, we sometimes refer to the analysis as a two-way ANOVA, in contrast to the one-way ANOVAs that we ran in @sec-Comparing-several-means-one-way-ANOVA. --->
 
-## 平衡且無交互作用的因子設計分析
+## 平衡且無交互作用的因子設計分析 {#sec-Factorial-ANOVA-balanced-n-interaction}
 
 當我們在 @sec-Comparing-several-means-one-way-ANOVA 中討論變異數分析時，我們假設了一個相對簡單的實驗設計。每個人都在幾個小組中，我們想知道這些小組在某些結果變量上的平均分數是否有所不同。在本節中，我將討論一個更廣泛的實驗設計類別，稱為**因子設計**，其中我們有多個分組變量。在上面給出了這種設計可能產生的一個例子。另一個例子出現在 @sec-Comparing-several-means-one-way-ANOVA 中，我們在其中研究了不同藥物對每個人的情緒增益的影響。在那一章中，我們確實發現了藥物的顯著影響，但在章節的最後，我們還進行了一個分析，以查看治療是否有影響。我們沒有找到，但是在試圖預測相同結果的兩個單獨分析中有點令人擔憂。也許治療對情緒增益確實有影響，但我們找不到它，因為它被藥物的影響“隱藏”了？換句話說，我們將要進行一個包括藥物和治療作為預測因子的單一分析。對於這種分析，每個人都按照他們給定的藥物（具有3個水平的因子）和接受的治療（具有2個水平的因子）進行交叉分類。我們將此稱為$3 \times 2$因子設計。
 
@@ -246,7 +246,7 @@ Why does that happen? The answer lies in understanding how the residuals are cal
 
 <!--- The ANOVA model that we've been talking about so far covers a range of different patterns that we might observe in our data. For instance, in a two-way ANOVA design there are four possibilities: (a) only Factor A matters, (b) only Factor B matters, (c) both A and B matter, and (d) neither A nor B matters. An example of each of these four possibilities is plotted in @fig-fig13-4. --->
 
-## 平衡且有交互作用的因子設計分析
+## 平衡且有交互作用的因子設計分析 {#sec-Factorial-ANOVA-balanced-w-interaction}
 
 @fig-fig13-4中顯示的四種數據模式都非常現實。有很多數據集正好產生這些模式。然而，它們並非全部故事，到目前為止我們一直在談論的變異數分析模型並不足以充分解釋一個組均值表格。為什麼呢？嗯，到目前為止，我們可以討論藥物如何影響心情，以及治療如何影響心情，但無法談論兩者之間可能存在的**交互作用**。只有當因素$A$的效果因為我們討論的因素$B$的水平而有*差異*時，我們才說$A$和$B$之間存在交互作用。@fig-fig13-5中顯示了在$2 \times 2$ ANOVA環境下的幾個交互作用效果實例。舉一個更具體的例子，假設Anxifree和Joyzepam的運作受到完全不同的生理機制控制。這導致了一個結果，即儘管在接受治療的情況下，Joyzepam對心情的影響基本相同，但與CBT一起使用時，Anxifree實際上更有效。我們在上一節中開發的ANOVA無法捕捉到這個想法。要判斷此處是否確實存在交互作用，最好繪製各個組的均值。在jamovi中，這是通過ANOVA的“估計邊際均值”選項完成的——只需將藥物和治療移至“條款1”下的“邊際均值”框中。這應該看起來像@fig-fig13-6。我們的主要關注點與這兩條線不平行的事實有關。當藥物為Joyzepam（右側）時，CBT的效果（實線與虛線之間的差異）似乎接近零，甚至比使用安慰劑時（左側）的CBT效果還要小。然而，當給予Anxifree時，CBT的效果大於安慰劑（中間）。這種效果是真實的，還是僅僅由於機會引起的隨機變化？我們最初的ANOVA無法回答這個問題，因為我們根本不允許交互作用的存在！在本節中，我們將解決這個問題。
 
