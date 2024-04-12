@@ -25,9 +25,9 @@
 | @sec-Estimating-unknown-quantities-from-a-sample|100%|100%|0%|
 | @sec-Hypothesis-testing|100%|100%|0.5%|
 | @sec-Categorical-data-analysis|100%|79%|0%|
-| @sec-Comparing-two-means|100%|9%|0%|
-| @sec-Correlation-and-linear-regression|100%|0%|0%|
-| @sec-Comparing-several-means-one-way-ANOVA|100%|0%|0%|
+| @sec-Comparing-two-means|100%|81%|0%|
+| @sec-Correlation-and-linear-regression|100%|37%|0%|
+| @sec-Comparing-several-means-one-way-ANOVA|100%|53%|0%|
 | @sec-Factorial-ANOVA |100%|0%|0%|
 | @sec-Factor-Aanalysis |100%|75%|0%|
 | @sec-Bayesian-statistics |100%|0%|0%|

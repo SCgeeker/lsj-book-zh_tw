@@ -1336,7 +1336,7 @@ This is the version of Cohen's $d$ that gets reported by the jamovi 'Paired Samp
 </section>
 <section id="shapiro-wilk檢定" class="level3" data-number="11.9.3">
 <h3 data-number="11.9.3" class="anchored" data-anchor-id="shapiro-wilk檢定"><span class="header-section-number">11.9.3</span> Shapiro-Wilk檢定</h3>
-<p>Q-Q圖是一種非正式檢查資料常態性的好方法，若是需要做更正式的檢驗，<strong>Shapiro-Wilk檢定</strong><span class="citation" data-cites="Shapiro1965">(<a href="References.html#ref-Shapiro1965" role="doc-biblioref">Shapiro &amp; Wilk, 1965</a>)</span>是較正式的檢驗工具。<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>讀者如果已經了解假設定的思維，這裡的虛無假設設定一組<span class="math inline">\(n\)</span>個觀測值分佈符合常態分佈。</p>
+<p>Q-Q圖是一種非正式檢查資料常態性的好方法，若是需要做更正式的檢驗，<strong>Shapiro-Wilk檢定</strong><span class="citation" data-cites="Shapiro1965">(<a href="References.html#ref-Shapiro1965" role="doc-biblioref">Shapiro &amp; Wilk, 1965</a>)</span>是較正式的檢驗工具。<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>讀者如果已經了解假設檢定的思維，這裡的虛無假設設定一組<span class="math inline">\(n\)</span>個觀測值分佈符合常態分佈。</p>
 <p>[其他技術細節 <a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>]</p>
 <!--- QQ plots provide a nice way to informally check the normality of your data, but sometimes you'll want to do something a bit more formal and the **Shapiro-Wilk檢定(Shapiro-Wilk test)** [@Shapiro1965] is probably what you're looking for.[^11-comparing-two-means-21] As you'd expect, the null hypothesis being tested is that a set of $N$ observations is normally distributed.
 
@@ -1643,7 +1643,7 @@ Welch, B. L. (1947). The generalization of <span>“<span>S</span>tudent’s”<
 <li id="fn19"><p>將Cohen’s <span class="math inline">\(d\)</span>乘以<span class="math inline">\(\frac{(N - 3)}{(N - 2.25)}\)</span>，就是Hedges’ g。<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn20"><p>有興趣的讀者可以自行查看<em>chico2.omv</em>的成果。(譯者註)現在有新模組<code>jReshape</code>及<code>jTransform</code>可讓使用者轉換資料結構。<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn21"><p>這裡的描述其實過度簡化。<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn22"><p>另一種可用的方法是Kolmogorov-Smirnov檢驗，這種方法的判定水準應該比Shapiro-Wilk更嚴格。雖然大部分文獻似乎都主張Shapiro-Wilk是更好的常態性檢驗工具，但是Kolomogorov Smirnov是一種通用的分佈等價性檢驗，可以應對其他類型的分佈性質檢驗。在jamovi所提供的選項，Shapiro-Wilk檢驗是首要選項。<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>另一種可用的方法是Kolmogorov-Smirnov檢驗，這種方法的判定水準應該比Shapiro-Wilk更嚴格。雖然大部分文獻似乎都主張Shapiro-Wilk是更好的常態性檢核工具，但是Kolomogorov Smirnov是一種通用的分佈性質檢核方法，可以應對其他類型的分佈性質檢驗。在jamovi所提供的選項，Shapiro-Wilk檢驗是首要選項。<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn23"><p>*Shapiro-Wilk檢定的統計量通常寫做<span class="math inline">\(W\)</span>，計算步驟是。(1)按照數值大小的遞增順序，排序觀測值，使得<span class="math inline">\(\bar{X_1}\)</span>成為樣本中最小的值，<span class="math inline">\(X_2\)</span>成為第二小的值，依此類推。(2)用以下公式計算<span class="math inline">\(W\)</span><br><span class="math display">\[W=\frac{(\sum_{i=1}^N a_iX_i)^2}{\sum_{i=1}^N(X_i-\bar{X})^2}\]</span><br><span class="math inline">\(\bar{X}\)</span>是所有觀測值的平均值，<span class="math inline">\(a_i\)</span>值是…由於超出了入門級教材的範圍，以下略。<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn24"><p>實際上，有兩種不同的檢定統計量公式，它們之間相差一個常數。這裡所說的是jamovi演算的版本。<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>

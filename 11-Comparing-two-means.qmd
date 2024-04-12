@@ -1308,9 +1308,9 @@ knitr::include_graphics("images/fig11-23.png")
 
 ### Shapiro-Wilk檢定
 
-Q-Q圖是一種非正式檢查資料常態性的好方法，若是需要做更正式的檢驗，**Shapiro-Wilk檢定**[@Shapiro1965]是較正式的檢驗工具。[^11-comparing-two-means-21]讀者如果已經了解假設定的思維，這裡的虛無假設設定一組$n$個觀測值分佈符合常態分佈。
+Q-Q圖是一種非正式檢查資料常態性的好方法，若是需要做更正式的檢驗，**Shapiro-Wilk檢定**[@Shapiro1965]是較正式的檢驗工具。[^11-comparing-two-means-21]讀者如果已經了解假設檢定的思維，這裡的虛無假設設定一組$n$個觀測值分佈符合常態分佈。
 
-[^11-comparing-two-means-21]: 另一種可用的方法是Kolmogorov-Smirnov檢驗，這種方法的判定水準應該比Shapiro-Wilk更嚴格。雖然大部分文獻似乎都主張Shapiro-Wilk是更好的常態性檢驗工具，但是Kolomogorov Smirnov是一種通用的分佈等價性檢驗，可以應對其他類型的分佈性質檢驗。在jamovi所提供的選項，Shapiro-Wilk檢驗是首要選項。
+[^11-comparing-two-means-21]: 另一種可用的方法是Kolmogorov-Smirnov檢驗，這種方法的判定水準應該比Shapiro-Wilk更嚴格。雖然大部分文獻似乎都主張Shapiro-Wilk是更好的常態性檢核工具，但是Kolomogorov Smirnov是一種通用的分佈性質檢核方法，可以應對其他類型的分佈性質檢驗。在jamovi所提供的選項，Shapiro-Wilk檢驗是首要選項。
 
 [其他技術細節 [^11-comparing-two-means-22]]
 
@@ -1410,7 +1410,6 @@ Like the t檢定, the Wilcoxon test comes in two forms, one-sample and two-sampl
 
 
 ### 單一樣本的Wilcoxon檢定
-
 
 要如何執行**單一樣本 Wilcoxon 檢定**或者**相依樣本 Wilcoxon 檢定**呢？這裡使用的範例資料集是*happiness*，收集修統計課程的學生幸福感。資料集的變項有每個學生在上課前和上課後測量的幸福感分數，以及兩次測量差距的變化分數。如同 t 檢定的示範，以上課前後的分數進行相依樣本檢定，和以變化分數進行單一樣本檢定的結果是一樣的。同t檢定的程序，最簡單的執行方式是先做標記，這次要將大於零的變化分數，與所有變化分數表列標記，得到的表格如  @tbl-tab11-5 。
 
