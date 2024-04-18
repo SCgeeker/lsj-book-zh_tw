@@ -375,7 +375,7 @@ div.csl-indent {
   <li><a href="#虛無假設與對立假設" id="toc-虛無假設與對立假設" class="nav-link" data-scroll-target="#虛無假設與對立假設"><span class="header-section-number">9.1.2</span> 虛無假設與對立假設</a></li>
   </ul></li>
   <li><a href="#兩種決策失誤" id="toc-兩種決策失誤" class="nav-link" data-scroll-target="#兩種決策失誤"><span class="header-section-number">9.2</span> 兩種決策失誤</a></li>
-  <li><a href="#運用取樣分佈檢測統計值" id="toc-運用取樣分佈檢測統計值" class="nav-link" data-scroll-target="#運用取樣分佈檢測統計值"><span class="header-section-number">9.3</span> 運用取樣分佈檢測統計值</a></li>
+  <li><a href="#運用取樣分佈檢定統計值" id="toc-運用取樣分佈檢定統計值" class="nav-link" data-scroll-target="#運用取樣分佈檢定統計值"><span class="header-section-number">9.3</span> 運用取樣分佈檢定統計值</a></li>
   <li><a href="#sec-Hypothesis-testing-decision" id="toc-sec-Hypothesis-testing-decision" class="nav-link" data-scroll-target="#sec-Hypothesis-testing-decision"><span class="header-section-number">9.4</span> 統計推論的決策要素</a>
   <ul class="collapse">
   <li><a href="#棄卻域與臨界值" id="toc-棄卻域與臨界值" class="nav-link" data-scroll-target="#棄卻域與臨界值"><span class="header-section-number">9.4.1</span> 棄卻域與臨界值</a></li>
@@ -430,6 +430,9 @@ div.csl-indent {
 In the last chapter I discussed the ideas behind estimation, which is one of the two "big ideas" in inferential statistics. It's now time to turn our attention to the other big idea, which is *hypothesis testing*. In its most abstract form, hypothesis testing is really a very simple idea. The researcher has some theory about the world and wants to determine whether or not the data actually support that theory. However, the details are messy and most people find the theory of hypothesis testing to be the most frustrating part of statistics. The structure of the chapter is as follows. First, I'll describe how hypothesis testing works in a fair amount of detail, using a simple running example to show you how a hypothesis test is "built". I'll try to avoid being too dogmatic while doing so, and focus instead on the underlying logic of the testing procedure.[^09-hypothesis-testing-2] Afterwards, I'll spend a bit of time talking about the various dogmas, rules and heresies that surround the theory of hypothesis testing.
 
 [^09-hypothesis-testing-2]: A technical note. The description below differs subtly from the standard description given in a lot of introductory texts. The orthodox theory of null hypothesis testing emerged from the work of Sir Ronald Fisher and Jerzy Neyman in the early 20th century; but Fisher and Neyman actually had very different views about how it should work. The standard treatment of hypothesis testing that most texts use is a hybrid of the two approaches. The treatment here is a little more Neyman-style than the orthodox view, especially as regards the meaning of the p-value.--->
+<blockquote class="blockquote">
+<p><a href="slides9A.html" target="_blank">導讀簡報</a></p>
+</blockquote>
 <section id="假設的層次" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="假設的層次"><span class="header-section-number">9.1</span> 假設的層次</h2>
 <p>我們從一個原作者虛構的狂想開始談吧：<em>我認為每個人活得夠老，都會向瘋狂的想法屈服。我這輩子真正想做的研究，將在我升任正教授的那一天開始，因為我在象牙塔中會受到終身職的保障，那天我總算能夠拋棄理智，完全投入那個最沒有成效的心理研究領域：證實人類有超感官知覺（ESP）。</em><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
@@ -600,8 +603,8 @@ So, what about the type II error rate? Well, we'd also like to keep those under 
 <p>一個「有力」的假設檢定是指保持最小 <span class="math inline">\(\beta\)</span> 值，同時保持 <span class="math inline">\(\alpha\)</span> 在預期的水準。依照領域慣例，科學家通常會使用三種 <span class="math inline">\(\alpha\)</span> 水準：<span class="math inline">\(0.05\)</span>、<span class="math inline">\(0.01\)</span> 和 <span class="math inline">\(0.001\)</span>。值得注意的是，兩者的控制強度有一種不對稱性：檢定的目的是確保 <span class="math inline">\(\alpha\)</span> 值如同預期的小，但是對於 <span class="math inline">\(\beta\)</span> 則不預其能控制到相應的水準。當然，我們也希望型二錯誤率能夠保持最小，並設計一些測試來實現，但這方面的控制需求通常不如型一錯誤率的迫切。倘若把布萊克斯通 的話換成統計學家的說法，那就是說“保留十個結論錯誤的虛無假設，總比拒絕一個真實的假設要好”。老實說，我不完全同意這種哲學觀點。在某些情況下，我認為這種觀點是有道理的，其他情況則不然。但是這不是重點，重點是這就是假設檢定的設計原則。</p>
 <!--- A "powerful" hypothesis test is one that has a small value of $\beta$, while still keeping $\alpha$ fixed at some (small) desired level. By convention, scientists make use of three different $\alpha$ levels: $.05$, $.01$ and $.001$. Notice the asymmetry here; the tests are designed to ensure that the $\alpha$ level is kept small but there's no corresponding guarantee regarding $\beta$. We'd certainly like the type II error rate to be small and we try to design tests that keep it small, but this is typically secondary to the overwhelming need to control the type I error rate. As Blackstone might have said if he were a statistician, it is "better to retain 10 false null hypotheses than to reject a single true one". To be honest, I don't know that I agree with this philosophy. There are situations where I think it makes sense, and situations where I think it doesn't, but that's neither here nor there. It's how the tests are built. --->
 </section>
-<section id="運用取樣分佈檢測統計值" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="運用取樣分佈檢測統計值"><span class="header-section-number">9.3</span> 運用取樣分佈檢測統計值</h2>
+<section id="運用取樣分佈檢定統計值" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="運用取樣分佈檢定統計值"><span class="header-section-number">9.3</span> 運用取樣分佈檢定統計值</h2>
 <p>現在我們可以開始討論如何建立一個假設檢定的具體步驟，讓我們回到一開始提的靈異感知（ESP）研究題目。暫時不管我們實際獲得的資料，先專注於實驗設計。無論資料裡的數值是什麼，都是表示 <span class="math inline">\(N\)</span> 個人當中有 <span class="math inline">\(X\)</span> 個人正確地辨認出隱藏卡牌的顏色。此外，若是虛無假設（null hypothesis）確實是真的，也就是說靈異感知不存在，每個人正確辨認出卡牌顏色的真實機率 <span class="math inline">\(\theta\)</span> 等於 <span class="math inline">\(0.5\)</span>。在這種狀況，我們預期的資料是什麼樣子呢？很明顯，我們期望作出正確反應的人數比例接近 <span class="math inline">\(50%\)</span>。換言之，我們可以用更數學式的語言表達 <span class="math inline">\(\frac{X}{N}\)</span> 大約等於 <span class="math inline">\(0.5\)</span>。當然，我們不會預期真實的比例完全等於 <span class="math inline">\(0.5\)</span>。例如，如果我們測試了 <span class="math inline">\(N=100\)</span> 個人，其中有 <span class="math inline">\(X=53\)</span> 人回答正確，我們也許不得不承認這筆資料與虛無假設是相當一致的。另一方面，如果有 <span class="math inline">\(X=99\)</span> 個參與者回答正確，我們會非常有信心地認為虛無假設是錯的。同樣地，如果只有 <span class="math inline">\(X=3\)</span> 人回答正確，我們也會非常有信心地認為虛無假設是錯的。現在讓我們用更專業的方式描述這些推論：我們有一個數值 <span class="math inline">\(X\)</span> ，可以通過觀察資料計算出來。評估 <span class="math inline">\(X\)</span> 之後，我們就必須決定是相信虛無假設，還是拒絕虛無假設並接受另一種假設。用來幫助我們作出決策的數值就稱為<strong>統計檢定值</strong>。</p>
 <p>選定了一個統計檢定值後，下一步是正式宣告那些統計值將導致我們拒絕虛無假設，那些統計值將導致我們接受虛無假設。為了做出決策，我們需要確定當實際結果符合虛無假設時，統計值的取樣分佈是什麼（不大記得的話，可以回到 <a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-Sampling-distribution-of-the-mean"><span>小單元&nbsp;8.3.1</span></a> 復習）。為什麼我們需要設定取樣分佈？因為這能告訴我們，如果虛無假設是正確的，我們可以預期會得到那些 <span class="math inline">\(X\)</span> 的數值。因此，我們可以使用這個分佈作為評估虛無假設與我們的資料是否一致的工具。</p>
 <p>如何確定統計值的取樣分佈呢？對於大多數假設檢定程序來說，這個步驟通常相當複雜，甚至有些假設檢定原作者和譯者自己都不是很懂，稍後在本書中同學們會看到某些檢定程序的介紹會有些含糊其辭。不過在某些檢定程序，設定取樣分佈是非常簡單的。ESP研究案例所使用的檢定程序，剛好是最簡單的一種。這個案例的母群參數 <span class="math inline">\(\theta\)</span> 就是參與者們回答問題時的總機率，而統計值 <span class="math inline">\(X\)</span> 就等於所有參與者人數 <span class="math inline">\(N\)</span> 裡正確回答的人數。我們之前在 <a href="07-Introduction-to-probability.html#sec-The-binomial-distribution"><span>小單元&nbsp;7.4</span></a> 這一節裡已經見過「二項分佈」，ESP案例的取樣分佈性質正好符合二項分佈！因此，為了使用二項分佈的符號和術語，我們會說虛無假設預測 <span class="math inline">\(X\)</span> 的分佈是二項分佈，數學式就寫作</p>
@@ -694,7 +697,7 @@ A very brief digression is in order at this point, regarding the word "significa
 </section>
 <section id="sec-The-difference-between-one-sided-and-two-sided-tests" class="level3" data-number="9.4.3">
 <h3 data-number="9.4.3" class="anchored" data-anchor-id="sec-The-difference-between-one-sided-and-two-sided-tests"><span class="header-section-number">9.4.3</span> 單側與雙側檢定的不同</h3>
-<p>還有一件事情要提醒各位同學，就是虛無假設與對立假設的設定方式。假如前面我所使用的統計假設是：<span class="math display">\[H_0: \theta=0.5\]</span> <span class="math display">\[H_1:\theta \neq 0.5\]</span> 我們會發現對立假設涵蓋了 <span class="math inline">\(\theta &lt; .5\)</span> 和 <span class="math inline">\(\theta &gt; .5\)</span> 這兩種可能的數值集合。這代表我認為超感官知覺可能造成優於純粹猜測的表現，也可能產生比純粹猜測還差的表現（有些人就是會這麼認為），那麼這樣的設定是有意義的。在統計學的語彙庫，這稱為<strong>雙側檢定</strong>(two-sided test)。這是因為對立假設涵蓋了 無假設兩側的數值集合，因此檢定的棄卻域覆蓋取樣分佈的兩側尾部（如果 <span class="math inline">\(\alpha = .05\)</span>，則每側尾部佔取樣分佈的2.5％），如同 <a href="#fig-fig9-2">圖&nbsp;<span>9.2</span></a> 的展示。不過，這不是唯一的可能結果。如果我只在乎超感官知覺能夠產生優於純粹猜測的表現時，才願意相信這是事實，那麼對立假設就只會涵蓋 <span class="math inline">\(\theta &gt; .5\)</span> 的數值集合。因此，虛無假設和對立假設就會變成<span class="math display">\[H_0: \theta \leq 0.5\]</span> <span class="math display">\[H_1: \theta &gt; 0.5\]</span> 這種檢定條件 就是所謂的<strong>單側檢定</strong>(one-sided test)，此時檢定的棄卻域只有覆蓋取樣分佈的右側尾部，如同 <a href="#fig-fig9-3">圖&nbsp;<span>9.3</span></a> 的展示。</p>
+<p>還有一件事情要提醒讀者，就是虛無假設與對立假設的設定方式。假如前面我所使用的統計假設是：<span class="math display">\[H_0: \theta=0.5\]</span> <span class="math display">\[H_1:\theta \neq 0.5\]</span> 我們會發現對立假設涵蓋了 <span class="math inline">\(\theta &lt; .5\)</span> 和 <span class="math inline">\(\theta &gt; .5\)</span> 這兩種可能的數值集合。這代表我認為超感官知覺可能造成優於純粹猜測的表現，也可能產生比純粹猜測還差的表現（有些人就是會這麼認為），那麼這樣的設定是有意義的。在統計學的語彙庫，這稱為<strong>雙側檢定</strong>(two-sided test)。這是因為對立假設涵蓋了 無假設兩側的數值集合，因此檢定的棄卻域覆蓋取樣分佈的兩側尾部（如果 <span class="math inline">\(\alpha = .05\)</span>，則每側尾部佔取樣分佈的2.5％），如同 <a href="#fig-fig9-2">圖&nbsp;<span>9.2</span></a> 的展示。不過，這不是唯一的可能結果。如果我只在乎超感官知覺能夠產生優於純粹猜測的表現時，才願意相信這是事實，那麼對立假設就只會涵蓋 <span class="math inline">\(\theta &gt; .5\)</span> 的數值集合。因此，虛無假設和對立假設就會變成<span class="math display">\[H_0: \theta \leq 0.5\]</span> <span class="math display">\[H_1: \theta &gt; 0.5\]</span> 這種檢定條件 就是所謂的<strong>單側檢定</strong>(one-sided test)，此時檢定的棄卻域只有覆蓋取樣分佈的右側尾部，如同 <a href="#fig-fig9-3">圖&nbsp;<span>9.3</span></a> 的展示。</p>
 <!--- There's one more thing I want to point out about the hypothesis test that I've just constructed. If we take a moment to think about the statistical hypotheses I've been using, $$H_0: \theta=0.5$$ $$H_1:\theta \neq 0.5$$ we notice that the alternative hypothesis covers both the possibility that $\theta < .5$ and the possibility that $\theta \> .5.$ This makes sense if I really think that ESP could produce either better-than chance performance or worse-than-chance performance (and there are some people who think that). In statistical language this is an example of a **two-sided test**. It's called this because the alternative hypothesis covers the area on both "sides" of the null hypothesis, and as a consequence the critical region of the test covers both tails of the sampling distribution (2.5% on either side if α = .05), as illustrated earlier in @fig-fig9-2. However, that's not the only possibility. I might only be willing to believe in ESP if it produces better than chance performance. If so, then my alternative hypothesis would only covers the possibility that $\theta > .5$, and as a consequence the null hypothesis now becomes 
 $$H_0: \theta \leq 0.5$$ 
 $$H_1: \theta > 0.5$$ 
@@ -709,6 +712,9 @@ When this happens, we have what's called a **one-sided test** and the critical r
 </div>
 </div>
 </div>
+<blockquote class="blockquote">
+<p><a href="slides9B.html" target="_blank">導讀簡報</a></p>
+</blockquote>
 </section>
 </section>
 <section id="sec-The-p-value-of-a-test" class="level2" data-number="9.5">
@@ -731,11 +737,11 @@ This is where the p value comes in handy. To understand how it works, let's supp
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">α值</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X0.05</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X0.04</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X0.03</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X0.02</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X0.01</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.05.</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.04.</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.03.</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.02.</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.01.</th>
 </tr>
 </thead>
 <tbody>

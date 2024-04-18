@@ -23,6 +23,10 @@ In the last chapter I discussed the ideas behind estimation, which is one of the
 
 [^09-hypothesis-testing-2]: A technical note. The description below differs subtly from the standard description given in a lot of introductory texts. The orthodox theory of null hypothesis testing emerged from the work of Sir Ronald Fisher and Jerzy Neyman in the early 20th century; but Fisher and Neyman actually had very different views about how it should work. The standard treatment of hypothesis testing that most texts use is a hybrid of the two approaches. The treatment here is a little more Neyman-style than the orthodox view, especially as regards the meaning of the p-value.--->
 
+
+> [導讀簡報](slides9A.html){target="_blank"}
+
+
 ## 假設的層次
 
 我們從一個原作者虛構的狂想開始談吧：*我認為每個人活得夠老，都會向瘋狂的想法屈服。我這輩子真正想做的研究，將在我升任正教授的那一天開始，因為我在象牙塔中會受到終身職的保障，那天我總算能夠拋棄理智，完全投入那個最沒有成效的心理研究領域：證實人類有超感官知覺（ESP）。*[^09-hypothesis-testing-3]
@@ -164,7 +168,7 @@ huxtabs[[9]][[3]]
 
 <!--- A "powerful" hypothesis test is one that has a small value of $\beta$, while still keeping $\alpha$ fixed at some (small) desired level. By convention, scientists make use of three different $\alpha$ levels: $.05$, $.01$ and $.001$. Notice the asymmetry here; the tests are designed to ensure that the $\alpha$ level is kept small but there's no corresponding guarantee regarding $\beta$. We'd certainly like the type II error rate to be small and we try to design tests that keep it small, but this is typically secondary to the overwhelming need to control the type I error rate. As Blackstone might have said if he were a statistician, it is "better to retain 10 false null hypotheses than to reject a single true one". To be honest, I don't know that I agree with this philosophy. There are situations where I think it makes sense, and situations where I think it doesn't, but that's neither here nor there. It's how the tests are built. --->
 
-## 運用取樣分佈檢測統計值
+## 運用取樣分佈檢定統計值
 
 現在我們可以開始討論如何建立一個假設檢定的具體步驟，讓我們回到一開始提的靈異感知（ESP）研究題目。暫時不管我們實際獲得的資料，先專注於實驗設計。無論資料裡的數值是什麼，都是表示 $N$ 個人當中有 $X$ 個人正確地辨認出隱藏卡牌的顏色。此外，若是虛無假設（null hypothesis）確實是真的，也就是說靈異感知不存在，每個人正確辨認出卡牌顏色的真實機率 $\theta$ 等於 $0.5$。在這種狀況，我們預期的資料是什麼樣子呢？很明顯，我們期望作出正確反應的人數比例接近 $50%$。換言之，我們可以用更數學式的語言表達 $\frac{X}{N}$ 大約等於 $0.5$。當然，我們不會預期真實的比例完全等於 $0.5$。例如，如果我們測試了 $N=100$ 個人，其中有 $X=53$ 人回答正確，我們也許不得不承認這筆資料與虛無假設是相當一致的。另一方面，如果有 $X=99$ 個參與者回答正確，我們會非常有信心地認為虛無假設是錯的。同樣地，如果只有 $X=3$ 人回答正確，我們也會非常有信心地認為虛無假設是錯的。現在讓我們用更專業的方式描述這些推論：我們有一個數值 $X$ ，可以通過觀察資料計算出來。評估 $X$ 之後，我們就必須決定是相信虛無假設，還是拒絕虛無假設並接受另一種假設。用來幫助我們作出決策的數值就稱為**統計檢定值**。
 
@@ -274,7 +278,7 @@ A very brief digression is in order at this point, regarding the word "significa
 
 ### 單側與雙側檢定的不同 {#sec-The-difference-between-one-sided-and-two-sided-tests}
 
-還有一件事情要提醒各位同學，就是虛無假設與對立假設的設定方式。假如前面我所使用的統計假設是：$$H_0: \theta=0.5$$ $$H_1:\theta \neq 0.5$$ 我們會發現對立假設涵蓋了 $\theta < .5$ 和 $\theta > .5$ 這兩種可能的數值集合。這代表我認為超感官知覺可能造成優於純粹猜測的表現，也可能產生比純粹猜測還差的表現（有些人就是會這麼認為），那麼這樣的設定是有意義的。在統計學的語彙庫，這稱為**雙側檢定**(two-sided test)。這是因為對立假設涵蓋了 無假設兩側的數值集合，因此檢定的棄卻域覆蓋取樣分佈的兩側尾部（如果 $\alpha = .05$，則每側尾部佔取樣分佈的2.5％），如同 @fig-fig9-2 的展示。不過，這不是唯一的可能結果。如果我只在乎超感官知覺能夠產生優於純粹猜測的表現時，才願意相信這是事實，那麼對立假設就只會涵蓋 $\theta > .5$ 的數值集合。因此，虛無假設和對立假設就會變成$$H_0: \theta \leq 0.5$$ 
+還有一件事情要提醒讀者，就是虛無假設與對立假設的設定方式。假如前面我所使用的統計假設是：$$H_0: \theta=0.5$$ $$H_1:\theta \neq 0.5$$ 我們會發現對立假設涵蓋了 $\theta < .5$ 和 $\theta > .5$ 這兩種可能的數值集合。這代表我認為超感官知覺可能造成優於純粹猜測的表現，也可能產生比純粹猜測還差的表現（有些人就是會這麼認為），那麼這樣的設定是有意義的。在統計學的語彙庫，這稱為**雙側檢定**(two-sided test)。這是因為對立假設涵蓋了 無假設兩側的數值集合，因此檢定的棄卻域覆蓋取樣分佈的兩側尾部（如果 $\alpha = .05$，則每側尾部佔取樣分佈的2.5％），如同 @fig-fig9-2 的展示。不過，這不是唯一的可能結果。如果我只在乎超感官知覺能夠產生優於純粹猜測的表現時，才願意相信這是事實，那麼對立假設就只會涵蓋 $\theta > .5$ 的數值集合。因此，虛無假設和對立假設就會變成$$H_0: \theta \leq 0.5$$ 
 $$H_1: \theta > 0.5$$  這種檢定條件 就是所謂的**單側檢定**(one-sided test)，此時檢定的棄卻域只有覆蓋取樣分佈的右側尾部，如同 @fig-fig9-3 的展示。
 
 <!--- There's one more thing I want to point out about the hypothesis test that I've just constructed. If we take a moment to think about the statistical hypotheses I've been using, $$H_0: \theta=0.5$$ $$H_1:\theta \neq 0.5$$ we notice that the alternative hypothesis covers both the possibility that $\theta < .5$ and the possibility that $\theta \> .5.$ This makes sense if I really think that ESP could produce either better-than chance performance or worse-than-chance performance (and there are some people who think that). In statistical language this is an example of a **two-sided test**. It's called this because the alternative hypothesis covers the area on both "sides" of the null hypothesis, and as a consequence the critical region of the test covers both tails of the sampling distribution (2.5% on either side if α = .05), as illustrated earlier in @fig-fig9-2. However, that's not the only possibility. I might only be willing to believe in ESP if it produces better than chance performance. If so, then my alternative hypothesis would only covers the possibility that $\theta > .5$, and as a consequence the null hypothesis now becomes 
@@ -290,6 +294,8 @@ When this happens, we have what's called a **one-sided test** and the critical r
 #The critical region for a one sided test. In this case, the alternative hypothesis is that $\theta \geq .5$ so we would only reject the null hypothesis for large values of $X$. As a consequence, the critical region only covers the upper tail of the sampling distribution, specifically the upper $5\%$ of the distribution. Contrast this to the two-sided version in @fig-fig9-2
 knitr::include_graphics("images/fig9-3.png")
 ```
+
+> [導讀簡報](slides9B.html){target="_blank"}
 
 ## 統計檢定的*p*值{#sec-The-p-value-of-a-test}
 
@@ -314,11 +320,11 @@ This is where the p value comes in handy. To understand how it works, let's supp
 #huxtabs[[9]][[4]] 
 data.frame(
     "α值" = "是否拒絕虛無假設",
-    "0.05" = c("是"),
-    "0.04" = c("是"),
-    "0.03" = c("是"),
-    "0.02" = c("否"),
-    "0.01" = c("否")
+    "`0.05`" = c("是"),
+    "`0.04`" = c("是"),
+    "`0.03`" = c("是"),
+    "`0.02`" = c("否"),
+    "`0.01`" = c("否")
 ) %>%
   kbl(booktabs=TRUE,escape = T, align = "c") %>%
   kable_paper(full_width = T)
