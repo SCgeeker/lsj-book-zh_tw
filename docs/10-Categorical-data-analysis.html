@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,7 +78,8 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出"
+    "search-submit-button-title": "送出",
+    "search-label": "搜尋"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -116,7 +117,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html">統計方法</a></li><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">類別資料分析</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -130,7 +131,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -159,7 +160,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜尋"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -1089,7 +1090,7 @@ This could be classified as a rather extreme example of a reactivity effect, I s
 <section id="卡方檢定的校正" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="卡方檢定的校正"><span class="header-section-number">10.3</span> 卡方檢定的校正</h2>
 <p>好了，是時候稍微離題一下下，其實談到這裡，我隱瞞了一點細節沒有交待。自由度只有 1 的時候，需要稍微改變計算方法。這被稱為 “連續性修正(continuity correction)”，或者<strong>葉氏修正(Yates correction)</strong>。記得稍早提到：<span class="math inline">\(\chi^2\)</span> 檢定的統計值是一種近似值，嚴格來說是假設當 <span class="math inline">\(N\)</span>的值夠大時，二項分佈會逼近常態分佈。然這依賴這條假設的問題是，現實的研究問題很少遇到這種條件，尤其是自由度只有 1 的時候，像是用<span class="math inline">\(2 \times 2\)</span>規模的列聯表進行獨立性檢定。無法保證這種資料的機率分佈逼近常態分佈，原因是處理的資料是分類資料！所以<span class="math inline">\(\chi^2\)</span>統計值的真實樣本分佈其實是離散的，但是<span class="math inline">\(\chi^2\)</span> 分佈是連續的。如此會導致系統性問題：當<span class="math inline">\(N\)</span>很小且 <span class="math inline">\(df = 1\)</span> 時，適合度統計值往往”過大”，需要比原來預設更大的<span class="math inline">\(\alpha\)</span>，或者更小的p值，才能正確拒絕虛無假設。</p>
-<p>根據描述<strong>葉氏修正</strong>的論文主張，這種修正其實是一種操作方法的破解。<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>因為修正方法不是基於任何機率或統計理論，而是檢討多數分析人員的操作行為，經過測試發現經過校正後的統計值似乎比較正確。讀者可以在 jamovi 卡方檢定模組的操作視窗， 於’Statistics’這個部分勾選<code>$\chi^2$ continuity correction</code>，就能輸出校正後的統計值。</p>
+<p>根據描述<strong>葉氏修正</strong>的論文主張，這種修正其實是一種操作方法的破解。<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>因為修正方法不是基於任何機率或統計理論，而是檢討多數分析人員的操作行為，經過測試發現經過校正後的統計值似乎比較正確。讀者可以在 jamovi 卡方檢定模組的操作視窗， 於’Statistics’這個部分勾選 <span class="math inline">\(\chi^2\)</span> continuity correction，就能輸出校正後的統計值。</p>
 
 <!--- Okay, time for a little bit of a digression. I've been lying to you a little bit so far. There's a tiny change that you need to make to your calculations whenever you only have 1 degree of freedom. It's called the "continuity correction", or sometimes the **Yates correction**. Remember what I pointed out earlier: the $\chi^2$ test is based on an approximation, specifically on the assumption that the binomial distribution starts to look like a normal distribution for large $N$. One problem with this is that it often doesn't quite work, especially when you've only got 1 degree of freedom (e.g., when you're doing a test of independence on a $2 \times 2$ contingency table). The main reason for this is that the true sampling distribution for the $X^{2}$ statistic is actually discrete (because you're dealing with categorical data!) but the $\chi^2$ distribution is continuous. This can introduce systematic problems. Specifically, when N is small and when $df = 1$, the goodness-of-fit statistic tends to be "too big", meaning that you actually have a bigger α value than you think (or, equivalently, the p values are a bit too small).
 
@@ -1102,7 +1103,6 @@ As far as I can tell from reading Yates' paper[^10-categorical-data-analysis-14]
 <p>稍早在 <a href="09-Hypothesis-testing.html#sec-Effect-size-sample-size-and-power"><span>小單元&nbsp;9.8</span></a> 提到，現在各種要求研究人員在報告中說明效果量測量指標的規範越來越普遍。若是現在已經完成了卡方檢定，結果顯示有統計顯著性，表示我們能肯定所探討的變項之間存在某種關聯（獨立性檢定）或特定條件之間存在某種差異（適合度檢定）。那麼要如何報告其中的效應量強度，也就是變項條件之間關聯性或差異程度？</p>
 <p>有好幾種不同的測量指標可在報告裡呈現，而且有好幾種公式和程式能做計算。這裡不會介紹所有可用的測量指標，只重點介紹最多報告使用的效果量測量指標。最常見於研究報告，以及最多統計軟體預設計算的指標是 <span class="math inline">\(\phi\)</span>，以及克拉默氏<span class="math inline">\(V\)</span>(Cramér’s V)。</p>
 <p>[額外的技術細節<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>]</p>
-<p>讀者很容易就能算出兩種效果量測量值。這兩種效果量指標相當受歡迎，可能是因為容易計算，又不會讓人覺得有虛應故事的感覺。用了Cramér’s ，還能確認變項之間的相關程度確實在 0（完全無關聯）和 1（完全關聯）。</p>
 
 <!--- As we discussed earlier in @sec-Effect-size-sample-size-and-power, it's becoming commonplace to ask researchers to report some measure of effect size. So, let's suppose that you've run your chi-square test, which turns out to be significant. So you now know that there is some association between your variables (independence test) or some deviation from the specified probabilities (goodness-of-fit test). Now you want to report a measure of effect size. That is, given that there is an association or deviation, how strong is it?
 
@@ -1445,6 +1445,9 @@ Agresti, A. (2002). <em>Categorical data analysis</em> (2nd ed.). Wiley.
 <div id="ref-Cochran1954" class="csl-entry" role="listitem">
 Cochran, W. G. (1954). The <span class="math inline">\(\chi^2\)</span> test of goodness of fit. <em>The Annals of Mathematical Statistics</em>, <em>23</em>, 315–345.
 </div>
+<div id="ref-Cramer1946" class="csl-entry" role="listitem">
+Cramer, H. (1946). <em>Mathematical methods of statistics</em>. Princeton University Press.
+</div>
 <div id="ref-Fisher1922a" class="csl-entry" role="listitem">
 Fisher, R. A. (1922). On the interpretation of <span class="math inline">\(\chi^2\)</span> from contingency tables, and the calculation of <span class="math inline">\(p\)</span>. <em>Journal of the Royal Statistical Society</em>, <em>84</em>, 87–94.
 </div>
@@ -1485,7 +1488,7 @@ Tversky, A., &amp; Kahneman, D. (1974). Judgment under uncertainty: Heuristics a
 ((c-1) + (r - 1)+1) \\\\ &amp; = (r- 1)(c - 1) \end{split}
 \]</span><a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn15"><p><a href="https://www.jstor.org/stable/2983604">Yates (1934)</a> 提出了一個簡單的校正公式，將適合度統計值重新定義為：<span class="math display">\[\chi^{2}=\sum_{i}\frac{(|E_i-O_i|-0.5)^2}{E_i}\]</span> 基本上，他將所有公式裡的數值都減了 0.5。<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p><span class="math inline">\(\phi\)</span> 與 Cramér’s V的數學公式非常簡潔。要計算 <span class="math inline">\(\phi\)</span>，只需將的 <span class="math inline">\(\chi^2\)</span>統計值除以樣本大小，然後取平方根：<span class="math display">\[\phi=\sqrt{\frac{\chi^2}{N}}\]</span> <span class="math inline">\(\phi\)</span>的值域只在0（完全無關聯）和 1（完全關聯）之間，但是當列聯表規模大於 <span class="math inline">\(2 \times 2\)</span> ，就不適合用這個指標計算了。因為規模更大的列聯表，有可能會獲得大於1的數值，這是令人感到相當麻煩的。所以更多人喜歡使用@Cramer1946 提出的<span class="math inline">\(V\)</span>來測量列聯表統計檢定的效量。調整方法非常簡單，如果有一個 r 行和 c 列的列聯表，那麼定義 <span class="math inline">\(k = min(r, c)\)</span> 取兩個值中較小的那個，放到計算 <span class="math inline">\(\phi\)</span>的公式裡就變成計算Cramér’s V的公式<span class="math display">\[V=\sqrt{\frac{\chi^2}{N(k-1)}}\]</span><a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p><span class="math inline">\(\phi\)</span> 與 Cramér’s V的數學公式非常簡潔。要計算 <span class="math inline">\(\phi\)</span>，只需將的 <span class="math inline">\(\chi^2\)</span>統計值除以樣本大小，然後取平方根：<span class="math display">\[\phi=\sqrt{\frac{\chi^2}{N}}\]</span> <span class="math inline">\(\phi\)</span>的值域只在0（完全無關聯）和 1（完全關聯）之間，但是當列聯表規模大於 <span class="math inline">\(2 \times 2\)</span> ，就不適合用這個指標計算了。因為規模更大的列聯表，有可能會獲得大於1的數值，這是令人感到相當麻煩的。所以更多人喜歡使用 <span class="citation" data-cites="Cramer1946">Cramer (<a href="References.html#ref-Cramer1946" role="doc-biblioref">1946</a>)</span> 提出的<span class="math inline">\(V\)</span>來測量列聯表統計檢定的效量。調整方法非常簡單，如果有一個 r 行和 c 列的列聯表，那麼定義 <span class="math inline">\(k = min(r, c)\)</span> 取兩個值中較小的那個，放到計算 <span class="math inline">\(\phi\)</span>的公式裡就變成計算Cramér’s V的公式<span class="math display">\[V=\sqrt{\frac{\chi^2}{N(k-1)}}\]</span>讀者很容易就能算出兩種效果量測量值。這兩種效果量指標相當受歡迎，可能是因為容易計算，又不會讓人覺得有虛應故事的感覺。用了Cramér’s ，還能確認變項之間的相關程度確實在 0（完全無關聯）和 1（完全關聯）。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn17"><p>這個例子來自發表在<em>Journal of Irreproducible Results</em>的一則笑話。<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn18"><p>不必懷疑，費雪精確檢定是根據費雪對 p 值的解釋，而不是尼曼的！請參考 <a href="09-Hypothesis-testing.html#sec-The-p-value-of-a-test"><span>小單元&nbsp;9.5</span></a> 。<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn19"><p>譯註~這是原作者虛構的政黨，現實中無此政黨或團體。詳見<a href="https://en.wikipedia.org/w/index.php?title=List_of_political_parties_in_Australia&amp;oldid=1149812960">維基百科條目</a>。<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

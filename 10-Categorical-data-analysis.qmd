@@ -642,7 +642,7 @@ This could be classified as a rather extreme example of a reactivity effect, I s
 
 好了，是時候稍微離題一下下，其實談到這裡，我隱瞞了一點細節沒有交待。自由度只有 1 的時候，需要稍微改變計算方法。這被稱為 "連續性修正(continuity correction)"，或者**葉氏修正(Yates correction)**。記得稍早提到：$\chi^2$ 檢定的統計值是一種近似值，嚴格來說是假設當 $N$的值夠大時，二項分佈會逼近常態分佈。然這依賴這條假設的問題是，現實的研究問題很少遇到這種條件，尤其是自由度只有 1 的時候，像是用$2 \times 2$規模的列聯表進行獨立性檢定。無法保證這種資料的機率分佈逼近常態分佈，原因是處理的資料是分類資料！所以$\chi^2$統計值的真實樣本分佈其實是離散的，但是$\chi^2$ 分佈是連續的。如此會導致系統性問題：當$N$很小且 $df = 1$ 時，適合度統計值往往"過大"，需要比原來預設更大的$\alpha$，或者更小的p值，才能正確拒絕虛無假設。
 
-根據描述**葉氏修正**的論文主張，這種修正其實是一種操作方法的破解。[^10-categorical-data-analysis-14]因為修正方法不是基於任何機率或統計理論，而是檢討多數分析人員的操作行為，經過測試發現經過校正後的統計值似乎比較正確。讀者可以在 jamovi 卡方檢定模組的操作視窗， 於'Statistics'這個部分勾選`$\chi^2$ continuity correction`，就能輸出校正後的統計值。
+根據描述**葉氏修正**的論文主張，這種修正其實是一種操作方法的破解。[^10-categorical-data-analysis-14]因為修正方法不是基於任何機率或統計理論，而是檢討多數分析人員的操作行為，經過測試發現經過校正後的統計值似乎比較正確。讀者可以在 jamovi 卡方檢定模組的操作視窗， 於'Statistics'這個部分勾選 $\chi^2$ continuity correction，就能輸出校正後的統計值。
 
 [^10-categorical-data-analysis-14]: [Yates (1934)](https://www.jstor.org/stable/2983604) 提出了一個簡單的校正公式，將適合度統計值重新定義為：$$\chi^{2}=\sum_{i}\frac{(|E_i-O_i|-0.5)^2}{E_i}$$ 基本上，他將所有公式裡的數值都減了 0.5。
 
@@ -662,9 +662,7 @@ As far as I can tell from reading Yates' paper[^10-categorical-data-analysis-14]
 
 [額外的技術細節[^10-categorical-data-analysis-15]]
 
-[^10-categorical-data-analysis-15]: $\phi$ 與 Cramér's V的數學公式非常簡潔。要計算 $\phi$，只需將的 $\chi^2$統計值除以樣本大小，然後取平方根：$$\phi=\sqrt{\frac{\chi^2}{N}}$$ $\phi$的值域只在0（完全無關聯）和 1（完全關聯）之間，但是當列聯表規模大於 $2 \times 2$ ，就不適合用這個指標計算了。因為規模更大的列聯表，有可能會獲得大於1的數值，這是令人感到相當麻煩的。所以更多人喜歡使用@Cramer1946 提出的$V$來測量列聯表統計檢定的效量。調整方法非常簡單，如果有一個 r 行和 c 列的列聯表，那麼定義 $k = min(r, c)$ 取兩個值中較小的那個，放到計算 $\phi$的公式裡就變成計算Cramér's V的公式$$V=\sqrt{\frac{\chi^2}{N(k-1)}}$$
-
-讀者很容易就能算出兩種效果量測量值。這兩種效果量指標相當受歡迎，可能是因為容易計算，又不會讓人覺得有虛應故事的感覺。用了Cramér's ，還能確認變項之間的相關程度確實在 0（完全無關聯）和 1（完全關聯）。
+[^10-categorical-data-analysis-15]: $\phi$ 與 Cramér's V的數學公式非常簡潔。要計算 $\phi$，只需將的 $\chi^2$統計值除以樣本大小，然後取平方根：$$\phi=\sqrt{\frac{\chi^2}{N}}$$ $\phi$的值域只在0（完全無關聯）和 1（完全關聯）之間，但是當列聯表規模大於 $2 \times 2$ ，就不適合用這個指標計算了。因為規模更大的列聯表，有可能會獲得大於1的數值，這是令人感到相當麻煩的。所以更多人喜歡使用 @Cramer1946  提出的$V$來測量列聯表統計檢定的效量。調整方法非常簡單，如果有一個 r 行和 c 列的列聯表，那麼定義 $k = min(r, c)$ 取兩個值中較小的那個，放到計算 $\phi$的公式裡就變成計算Cramér's V的公式$$V=\sqrt{\frac{\chi^2}{N(k-1)}}$$讀者很容易就能算出兩種效果量測量值。這兩種效果量指標相當受歡迎，可能是因為容易計算，又不會讓人覺得有虛應故事的感覺。用了Cramér's ，還能確認變項之間的相關程度確實在 0（完全無關聯）和 1（完全關聯）。
 
 <!--- As we discussed earlier in @sec-Effect-size-sample-size-and-power, it's becoming commonplace to ask researchers to report some measure of effect size. So, let's suppose that you've run your chi-square test, which turns out to be significant. So you now know that there is some association between your variables (independence test) or some deviation from the specified probabilities (goodness-of-fit test). Now you want to report a measure of effect size. That is, given that there is an association or deviation, how strong is it?
 
