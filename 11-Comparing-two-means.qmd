@@ -333,6 +333,8 @@ $$
 In view of the stupidity of assuming that $\alpha$ is known, let's see if we can live without it. This takes us out of the dreary domain of the z-test, and into the magical kingdom of the t檢定, with unicorns and fairies and leprechauns! --->
 
 
+> [導讀簡報](slides11.html){target="_blank"}
+
 
 ## 單一樣本t檢定 {#sec-The-one-sample-t檢定}
 
@@ -377,7 +379,7 @@ p2 <- ggplot(data = data.frame(x = seq(-4, 4, 1)), aes(x)) +
   stat_function(fun = dnorm, n = 1000, args = list(mean = -.75, sd = 1), col="black", linewidth=1) +
   geom_segment(x = -.75, y = 0.25, xend = -1.75, yend = 0.25) +
   geom_segment(x = 0, y = 0, xend = 0, yend = dnorm(0)) +
-  geom_text(x=-3, y=.25, label=expression(~sigma~" = ??"), size=5) +
+  geom_text(x=-3, y=.25, label=expression(~sigma~" = ?"), size=5) +
   geom_text(x= 0, y=.42, label=expression(~mu~" \U2260 "~mu[0]), size=5) +
   scale_x_continuous(breaks = seq(-4, 4, 2)) +
   ylim(0,0.5) +
@@ -464,7 +466,7 @@ gridExtra::grid.arrange(p1,p2, ncol=2)
 
 > **譯者註** 本單元內容為AI初翻，請謹慎使用。
 
-正如你所預期的，t檢定的機制幾乎與z檢定的機制完全相同。因此，沒有必要繁瑣地展示如何使用低級命令進行計算。它與我們之前所做的計算幾乎相同，只是使用了估計的標準差，然後使用t分佈而不是常態分佈來測試假設。因此，我將直接跳到顯示如何實際進行t檢定。jamovi配備了一個專門用於t檢定的分析，非常靈活（它可以運行許多不同類型的t檢定）。它非常簡單易用；您需要做的只是指定“分析”-“T檢定”-“單樣本T檢定”，將您感興趣的變項（X）移動到“變項”框中，並在“假設”-“測試值”框中輸入虛無假設的平均值（'67.5'）。很容易。見@fig-fig11-6，除了我們稍後會提到的其他事項之外，它還提供了t檢定統計量=2.25，自由度為19，相關的p值為$0.036$。
+正如你所預期的，t檢定的機制幾乎與z檢定的機制完全相同。因此，沒有必要繁瑣地展示如何使用低級命令進行計算。它與我們之前所做的計算幾乎相同，只是使用了估計的標準差，然後使用t分佈而不是常態分佈來測試假設。因此，我將直接跳到顯示如何實際進行t檢定。jamovi配備了一個專門用於t檢定的分析，非常靈活（它可以運行許多不同類型的t檢定）。它非常簡單易用；您需要做的只是指定“分析”-“T檢定”-“單樣本T檢定”，將您感興趣的變項（X）移動到“變項”框中，並在“假設”-“測試值”框中輸入虛無假設的平均值（'67.5'）。很容易。見 @fig-fig11-6 ，除了我們稍後會提到的其他事項之外，它還提供了t檢定統計量=2.25，自由度為19，相關的p值為$0.036$。
 
 <!---As you might expect, the mechanics of the t檢定 are almost identical to the mechanics of the z-test. So there's not much point in going through the tedious exercise of showing you how to do the calculations using low level commands. It's pretty much identical to the calculations that we did earlier, except that we use the estimated standard deviation and then we test our hypothesis using the t distribution rather than the normal distribution. And so instead of going through the calculations in tedious detail for a second time, I'll jump straight to showing you how t檢定s are actually done. jamovi comes with a dedicated analysis for t檢定s that is very flexible (it can run lots of different kinds of t檢定s). It's pretty straightforward to use; all you need to do is specify 'Analyses' - 't檢定s' - 'One Sample t檢定', move the variable you are interested in (X) across into the 'Variables' box, and type in the mean value for the null hypothesis ('67.5') in the 'Hypothesis' - 'Test value' box. Easy enough. See @fig-fig11-6, which, amongst other things that we will get to in a moment, gives you a t檢定 statistic = 2.25, with 19 degrees of freedom and an associated p-value of $0.036$. --->
 
@@ -584,7 +586,7 @@ p1 <- ggplot(data = data.frame(x = seq(30, 110, 10)), aes(x)) +
   geom_text(x=70, y=.047, label=expression(~mu), size=5) +
   ylim(0,0.05) +
   ggtitle("虛無假設") +
-  xlab("\n變項X數值") +
+  xlab("\n依變項數值") +
   theme_classic() +
   theme(
     axis.title.y = element_blank(),
@@ -602,7 +604,7 @@ p2 <- ggplot(data = data.frame(x = seq(30, 110, 10)), aes(x)) +
   geom_text(x=75, y=.047, label=expression(~mu[2]), size=5) +
   ylim(0,0.05) +
   ggtitle("對立假設") +
-  xlab("\n變項X數值") +
+  xlab("\n依變項數值") +
   theme_classic() +
   theme(
     axis.title.y = element_blank(),
@@ -657,7 +659,7 @@ We just need to figure out what this standard error estimate actually is. This i
 
 [^11-comparing-two-means-13]: 只要這兩組樣本的標準差確實相等，標準誤的估計值公式就是 $$SE(\bar{X}_1-\bar{X}_2)=\hat{\sigma}\sqrt{\frac{1}{N_1}+\frac{1}{N_2}}$$ 所以 t 統計值的公式是 $$t=\frac{\bar{X}_1-\bar{X}_2}{SE(\bar{X}_1-\bar{X}_2)}$$
 
-如同[單一樣本t檢定]所學到的，只要虛無假設為真，而且都符合所有適要條件，t 統計值的取樣分佈就是 t 分佈。然而，這裡的自由度計算方法略有不同。通常，我們可以把自由度視為資料點個數減去要估計的變項個數。有關獨立組設計，我們有 $n$ 個觀察值（樣本 1有$n_1$ 個，樣本 2 有$n_2$個），和 2 個變項（樣本平均值）。因此，獨立樣本t檢定的自由度是 $n-2$。
+如同[單一樣本t檢定]所學到的，只要虛無假設為真，而且都符合所有適要條件，t 統計值的取樣分佈就是 t 分佈。然而，這裡的自由度計算方法略有不同。通常，我們可以把自由度視為資料點個數減去要估計的變項個數。有關獨立組設計，我們有 $n$ 個觀察值（樣本 1有$n_1$ 個，樣本 2 有$n_2$個），和 2 個變項（樣本平均值）。因此，獨立樣本t檢定的自由度是 $n_1 + n_2 -2$。
 
 <!---Regardless of which way you want to think about it, we now have our pooled estimate of the standard deviation. From now on, I'll drop the silly p subscript, and just refer to this estimate as $\hat{\sigma}$. Great. Let's now go back to thinking about the bloody hypothesis test, shall we? Our whole reason for calculating this pooled estimate was that we knew it would be helpful when calculating our standard error estimate. But standard error of what? In the one-sample t檢定 it was the standard error of the sample mean, $se(\bar{X})$, and since $se(\bar{X}) = \frac{\sigma}{\sqrt{N}}$ that's what the denominator of our t-statistic looked like. This time around, however, we have two sample means. And what we're interested in, specifically, is the the difference between the two $\bar{X}_1-\bar{X}_2$ As a consequence, the standard error that we need to divide by is in fact the **standard error of the difference** between means.
 
@@ -1379,7 +1381,7 @@ ggplot(W_sampdist) +
 > **譯者註** 本單元內容為AI初翻，請謹慎使用。
 
 
-與此同時，當資料變得非常態時，展示一下 QQ 圖和 Shapiro-Wilk 檢定的變化可能是值得的。為此，讓我們看一下我們的澳式足球聯賽（AFL）勝利幅度資料的分佈，如果您還記得@sec-描述性統計，它看起來根本不是來自常態分佈。以下是 QQ 圖發生的情況（@fig-fig11-25）。
+與此同時，當資料變得非常態時，展示一下 QQ 圖和 Shapiro-Wilk 檢定的變化可能是值得的。為此，讓我們看一下我們的澳式足球聯賽（AFL）勝利幅度資料的分佈，如果您還記得 @sec-Descriptive-statistics ，它看起來根本不是來自常態分佈。以下是 QQ 圖發生的情況（@fig-fig11-25）。
 
 
 <!---In the meantime, it's probably worth showing you an example of what happens to the QQ plot and the Shapiro-Wilk test when the data turn out to be non-normal. For that, let's look at the distribution of our AFL winning margins data, which if you remember back to @sec-Descriptive-statistics it didn't look like they came from a normal distribution at all. Here's what happens to the QQ plot (@fig-fig11-25). --->
