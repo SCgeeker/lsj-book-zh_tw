@@ -13,7 +13,7 @@ The goal in this chapter is to introduce **correlation** and **linear regression
 
 ## 相關 {#sec-what-is-correlation}
 
-這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的**相關**。首先，讓我們看一下列在 @tbl-tab10-1 的本章示範資料描述統計。
+這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的**相關**。首先，讓我們看一下 @tbl-tab10-1 的示範資料描述統計。
 
 <!---In this section we'll talk about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the **correlation** between variables. But first, we need some data (@tbl-tab10-1). --->
 
@@ -411,7 +411,7 @@ knitr::include_graphics("images/fig12-13.png")
 
 我們至此討論過的簡單線性迴歸模型，都是假設只有一個自變項，也就是這一章範例資料的`dani.sleep`。同樣地，基礎統計會學到的大部分統計方法都是假設只有一個自變項和一個應變項。然而，大多數研究項目實際要處理許多自變項。如果是這樣，學習包含多個自變項線性迴歸模型可能比較好。也許使用多元迴歸模型會更適合這一章的範例資料？
 
-多元迴歸的概念非常簡單，只要在簡單迴歸模型加入更多自變項。假如我們對資料中的兩個自變項都有興趣，也許可以用dani.sleep和baby.sleep預測依變項dani.grump。就像之前的說明一樣，我們用$Y_{i}$表示第i天的煩躁程度。只是現在有兩個$ X $變項：第一個對應我的睡眠時間，第二個對應我兒子的睡眠時間。所以我們用$X_{i1}$表示第i天我的睡眠時間，$X_{i2}$表示那一天我兒子的睡眠時間。那麼我們可以這樣改寫迴歸模型：
+多元迴歸的概念非常簡單，只要在簡單迴歸模型加入更多自變項。假如我們對資料中的兩個自變項都有興趣，也許可以用dani.sleep和baby.sleep預測依變項dani.grump。就像之前的說明一樣，我們用$Y_{i}$表示第i天的煩躁程度。只是現在有兩個$X$變項：第一個對應我的睡眠時間，第二個對應我兒子的睡眠時間。所以我們用$X_{i1}$表示第i天我的睡眠時間，$X_{i2}$表示那一天我兒子的睡眠時間。那麼我們可以這樣改寫迴歸模型：
 
 <!--- The simple linear regression model that we've discussed up to this point assumes that there's a single predictor variable that you're interested in, in this case dani.sleep. In fact, up to this point every statistical tool that we've talked about has assumed that your analysis uses one predictor variable and one outcome variable. However, in many (perhaps most) research projects you actually have multiple predictors that you want to examine. If so, it would be nice to be able to extend the linear regression framework to be able to include multiple predictors. Perhaps some kind of **multiple regression** model would be in order?
 
@@ -792,7 +792,7 @@ $$\epsilon_i=Y_i-\hat{Y_i}$$
 
 使用線性迴歸模型時，您可能會遇到一個危險，那就是您的分析可能會對一小部分"不尋常"或"異常"的觀測值過於敏感。我之前在 @sec-Using-box-plots-to-detect-outliers 的上下文中討論過這個想法，當時是在討論用 '探索' - '描述統計' 下的 boxplot 選項自動識別的異常值，但這次我們需要更精確。在線性迴歸的背景下，有三個概念上不同的方式可以將觀測值稱為"異常"。這三者都很有趣，但對你的分析有很不同的影響。
 
-第一種不尋常的觀測值是**異常值**。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。@fig-fig10-17 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，$\epsilon_i^*$，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。
+第一種不尋常的觀測值是**異常值**。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。 @fig-fig10-17 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，$\epsilon_i^*$，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。
 
 ```{r}
 #| label: fig-fig10-17
@@ -802,7 +802,7 @@ $$\epsilon_i=Y_i-\hat{Y_i}$$
 knitr::include_graphics("images/fig12-17.png")  
 ```
 
-觀測值不尋常的第二種方式是具有高**槓桿作用(leverage)**，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如@fig-fig10-18所示。觀測值的槓桿作用通常用帽子值表示，通常寫作$h_i$。帽子值的公式相當複雜[^correlation-and-linear-regression-18]，但它的解釋並不複雜：$h_i$是衡量第i個觀測值“控制”迴歸線走向的程度。
+觀測值不尋常的第二種方式是具有高**槓桿作用(leverage)**，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如 @fig-fig10-18 所示。觀測值的槓桿作用通常用帽子值表示，通常寫作$h_i$。帽子值的公式相當複雜[^correlation-and-linear-regression-18]，但它的解釋並不複雜：$h_i$是衡量第i個觀測值“控制”迴歸線走向的程度。
 
 [^correlation-and-linear-regression-18]: 再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量$y$轉換為擬合值向量$\hat{y}$的矩陣$H$，使得$\hat{y} = Hy$。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為$h_{ii}$而不是$h_i$）。哦，如果你在意，這是它的計算方法：$H = X(X^{'}X)^{1}X^{'}$。漂亮，不是嗎？
 
@@ -816,7 +816,7 @@ knitr::include_graphics("images/fig12-18.png")
 
 一般來說，如果觀測值在預測變項方面遠離其他觀測值，它將具有較大的帽子值（作為粗略指南，高槓桿是指帽子值大於平均值的2-3倍；注意帽子值的總和被限制為等於$K + 1$）。高槓桿點也值得更詳細地查看，但除非它們也是異常值，否則它們不太可能引起擔憂。
 
-這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的**影響力(influence)**。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在@fig-fig10-19中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為**Cook's distance**的衡量指標來度量影響力。[^correlation-and-linear-regression-19]
+這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的**影響力(influence)**。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在 @fig-fig10-19 中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為**Cook's distance**的衡量指標來度量影響力。[^correlation-and-linear-regression-19]
 
 [^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ 請注意，這是衡量觀測值的異常程度（左邊的部分）和衡量觀測值的槓桿（右邊的部分）的乘積。
 
@@ -830,7 +830,7 @@ knitr::include_graphics("images/fig12-19.png")
 
 要具有較大的Cook's距離，觀測值必須是相當大的異常值並具有高槓桿。作為粗略指南，大於1的Cook's距離通常被認為很大（這是我通常用作快速而簡單的規則）。
 
-在jamovi中，可以通過單擊'Assumption Checks' - 'Data Summary'選項下的'Cook's Distance'複選框來計算有關Cook's距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如@fig-fig10-20所示的結果。
+在jamovi中，可以通過單擊'Assumption Checks' - 'Data Summary'選項下的'Cook's Distance'複選框來計算有關Cook's距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如 @fig-fig10-20 所示的結果。
 
 ```{r}
 #| label: fig-fig10-20
@@ -1112,7 +1112,7 @@ AIC 值越小，模型性能越好。如果我們忽略低水平的細節，AIC 
 
 [^correlation-and-linear-regression-25]: 我們可以將兩個模型都應用於資訊並獲得兩個模型的殘差平方和。我將它們分別表示為$SS_{res}^{(1)}$和$SS_{res}^{(2)}$。上標表示我們正在談論哪個模型。然後我們的F統計量是 $$F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }$$，其中$N$是觀察次數，$p$是完整模型中的預測變項數量（不包括截距），$k$是兩個模型之間參數的差異。這裡的自由度是$k$和$N -p-1$。值得注意的是，將這兩個SS值之間的差異表示為它自己的平方和經常更方便。也就是說 $$SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}$$。這樣有幫助的原因是我們可以將$SS_\Delta$表示為兩個模型對結果變項的預測有所不同的程度。具體來說，$$SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}$$，其中$\hat{y}_{i^{(1)}}$是根據模型$M_1$對$y_i$的預測值，$\hat{y}_{i^{(2)}}$是根據模型$M_2$對$y_i$的預測值。 <br /> --- <br /> $^d$順便提一下，這個相同的F統計量可以用來檢驗比我在這裡提到的更廣泛的範圍的假設。非常簡要地說，注意嵌套模型M1對應於當我們將某些迴歸係數限制為零時的完整模型M2。在某些情況下，通過對迴歸係數施加其他類型的約束來構建子模型是有用的。例如，也許兩個不同的係數可能必須相加為零，或類似的情況。您可以為這些類型的約束構建假設檢定，但這有點更複雜，而且F的抽樣分布可能會是所謂的非中心F分布，這已經超出了本書的範疇！我想做的只是提醒您這種可能性。
 
-那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如@fig-fig10-25所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，$F(1,96) = 0.00$，$p = 0.954$。由於我們的p > .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為**分層迴歸**。
+那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 @fig-fig10-25 所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，$F(1,96) = 0.00$，$p = 0.954$。由於我們的p > .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為**分層迴歸**。
 
 我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如@fig-fig10-25所示。
 
