@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.427">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,8 +78,7 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出",
-    "search-label": "搜尋"
+    "search-submit-button-title": "送出"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -120,7 +119,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html">統計方法</a></li><li class="breadcrumb-item"><a href="./12-Correlation-and-linear-regression.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -134,7 +133,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -163,7 +162,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="搜尋"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -441,9 +440,12 @@ div.csl-indent {
 
 The goal in this chapter is to introduce **correlation** and **linear regression**. These are the standard tools that statisticians rely on when analysing the relationship between continuous predictors and continuous outcomes. 
 [^10-translation-01]: 本章在原書為第12章，繁體中文版為了整合 **[基礎統計方法的線性模型學習取向](Prelude-Part-V.html)**，改為第10章。---></p>
+<blockquote class="blockquote">
+<p><a href="slides12.html" target="_blank">導讀簡報</a></p>
+</blockquote>
 <section id="sec-what-is-correlation" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="sec-what-is-correlation"><span class="header-section-number">12.1</span> 相關</h2>
-<p>這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的<strong>相關</strong>。首先，讓我們看一下列在 <a href="#tbl-tab10-1">表&nbsp;<span>12.1</span></a> 的本章示範資料描述統計。</p>
+<p>這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的<strong>相關</strong>。首先，讓我們看一下 <a href="#tbl-tab10-1">表&nbsp;<span>12.1</span></a> 的示範資料描述統計。</p>
 <!---In this section we'll talk about how to describe the relationships between variables in the data. To do that, we want to talk mostly about the **correlation** between variables. But first, we need some data (@tbl-tab10-1). --->
 <section id="示範資料" class="level3" data-number="12.1.1">
 <h3 data-number="12.1.1" class="anchored" data-anchor-id="示範資料"><span class="header-section-number">12.1.1</span> 示範資料</h3>
@@ -925,7 +927,7 @@ At this point, we now have a concrete definition for what counts as our "best" c
 > 譯註：這個單元全部內容都是談多元迴歸，內容文字編修排在本書最後階段進行。
 --->
 <p>我們至此討論過的簡單線性迴歸模型，都是假設只有一個自變項，也就是這一章範例資料的<code>dani.sleep</code>。同樣地，基礎統計會學到的大部分統計方法都是假設只有一個自變項和一個應變項。然而，大多數研究項目實際要處理許多自變項。如果是這樣，學習包含多個自變項線性迴歸模型可能比較好。也許使用多元迴歸模型會更適合這一章的範例資料？</p>
-<p>多元迴歸的概念非常簡單，只要在簡單迴歸模型加入更多自變項。假如我們對資料中的兩個自變項都有興趣，也許可以用dani.sleep和baby.sleep預測依變項dani.grump。就像之前的說明一樣，我們用<span class="math inline">\(Y_{i}\)</span>表示第i天的煩躁程度。只是現在有兩個$ X <span class="math inline">\(變項：第一個對應我的睡眠時間，第二個對應我兒子的睡眠時間。所以我們用\)</span>X_{i1}<span class="math inline">\(表示第i天我的睡眠時間，\)</span>X_{i2}$表示那一天我兒子的睡眠時間。那麼我們可以這樣改寫迴歸模型：</p>
+<p>多元迴歸的概念非常簡單，只要在簡單迴歸模型加入更多自變項。假如我們對資料中的兩個自變項都有興趣，也許可以用dani.sleep和baby.sleep預測依變項dani.grump。就像之前的說明一樣，我們用<span class="math inline">\(Y_{i}\)</span>表示第i天的煩躁程度。只是現在有兩個<span class="math inline">\(X\)</span>變項：第一個對應我的睡眠時間，第二個對應我兒子的睡眠時間。所以我們用<span class="math inline">\(X_{i1}\)</span>表示第i天我的睡眠時間，<span class="math inline">\(X_{i2}\)</span>表示那一天我兒子的睡眠時間。那麼我們可以這樣改寫迴歸模型：</p>
 <!--- The simple linear regression model that we've discussed up to this point assumes that there's a single predictor variable that you're interested in, in this case dani.sleep. In fact, up to this point every statistical tool that we've talked about has assumed that your analysis uses one predictor variable and one outcome variable. However, in many (perhaps most) research projects you actually have multiple predictors that you want to examine. If so, it would be nice to be able to extend the linear regression framework to be able to include multiple predictors. Perhaps some kind of **multiple regression** model would be in order?
 
 Multiple regression is conceptually very simple. All we do is add more terms to our regression equation. Let's suppose that we've got two variables that we're interested in; perhaps we want to use both dani.sleep and baby.sleep to predict the dani.grump variable. As before, we let $Y_{i}$ refer to my grumpiness on the i-th day. But now we have two \$ X \$ variables: the first corresponding to the amount of sleep I got and the second corresponding to the amount of sleep my son got. So we'll let $X_{i1}$ refer to the hours I slept on the i-th day and $X_{i2}$ refers to the hours that the baby slept on that day. If so, then we can write our regression model like this: --->
@@ -1240,7 +1242,7 @@ So, we have four main assumptions for linear regression (that neatly form the ac
 <section id="sec-three-kinds-of-anomalous-data" class="level3" data-number="12.10.2">
 <h3 data-number="12.10.2" class="anchored" data-anchor-id="sec-three-kinds-of-anomalous-data"><span class="header-section-number">12.10.2</span> 三種異常資料</h3>
 <p>使用線性迴歸模型時，您可能會遇到一個危險，那就是您的分析可能會對一小部分”不尋常”或”異常”的觀測值過於敏感。我之前在 <a href="05-Drawing-graphs.html#sec-Using-box-plots-to-detect-outliers"><span>小單元&nbsp;5.2.3</span></a> 的上下文中討論過這個想法，當時是在討論用 ‘探索’ - ‘描述統計’ 下的 boxplot 選項自動識別的異常值，但這次我們需要更精確。在線性迴歸的背景下，有三個概念上不同的方式可以將觀測值稱為”異常”。這三者都很有趣，但對你的分析有很不同的影響。</p>
-<p>第一種不尋常的觀測值是<strong>異常值</strong>。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。<a href="#fig-fig10-17">圖&nbsp;<span>12.17</span></a> 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，<span class="math inline">\(\epsilon_i^*\)</span>，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。</p>
+<p>第一種不尋常的觀測值是<strong>異常值</strong>。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。 <a href="#fig-fig10-17">圖&nbsp;<span>12.17</span></a> 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，<span class="math inline">\(\epsilon_i^*\)</span>，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-17" class="quarto-figure quarto-figure-left anchored">
@@ -1251,7 +1253,7 @@ So, we have four main assumptions for linear regression (that neatly form the ac
 </div>
 </div>
 </div>
-<p>觀測值不尋常的第二種方式是具有高<strong>槓桿作用(leverage)</strong>，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如@fig-fig10-18所示。觀測值的槓桿作用通常用帽子值表示，通常寫作<span class="math inline">\(h_i\)</span>。帽子值的公式相當複雜<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>，但它的解釋並不複雜：<span class="math inline">\(h_i\)</span>是衡量第i個觀測值“控制”迴歸線走向的程度。</p>
+<p>觀測值不尋常的第二種方式是具有高<strong>槓桿作用(leverage)</strong>，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如 <a href="#fig-fig10-18">圖&nbsp;<span>12.18</span></a> 所示。觀測值的槓桿作用通常用帽子值表示，通常寫作<span class="math inline">\(h_i\)</span>。帽子值的公式相當複雜<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>，但它的解釋並不複雜：<span class="math inline">\(h_i\)</span>是衡量第i個觀測值“控制”迴歸線走向的程度。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-18" class="quarto-figure quarto-figure-left anchored">
@@ -1263,7 +1265,7 @@ So, we have four main assumptions for linear regression (that neatly form the ac
 </div>
 </div>
 <p>一般來說，如果觀測值在預測變項方面遠離其他觀測值，它將具有較大的帽子值（作為粗略指南，高槓桿是指帽子值大於平均值的2-3倍；注意帽子值的總和被限制為等於<span class="math inline">\(K + 1\)</span>）。高槓桿點也值得更詳細地查看，但除非它們也是異常值，否則它們不太可能引起擔憂。</p>
-<p>這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的<strong>影響力(influence)</strong>。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在@fig-fig10-19中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為<strong>Cook’s distance</strong>的衡量指標來度量影響力。<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
+<p>這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的<strong>影響力(influence)</strong>。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在 <a href="#fig-fig10-19">圖&nbsp;<span>12.19</span></a> 中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為<strong>Cook’s distance</strong>的衡量指標來度量影響力。<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-19" class="quarto-figure quarto-figure-left anchored">
@@ -1275,7 +1277,7 @@ So, we have four main assumptions for linear regression (that neatly form the ac
 </div>
 </div>
 <p>要具有較大的Cook’s距離，觀測值必須是相當大的異常值並具有高槓桿。作為粗略指南，大於1的Cook’s距離通常被認為很大（這是我通常用作快速而簡單的規則）。</p>
-<p>在jamovi中，可以通過單擊’Assumption Checks’ - ’Data Summary’選項下的’Cook’s Distance’複選框來計算有關Cook’s距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如@fig-fig10-20所示的結果。</p>
+<p>在jamovi中，可以通過單擊’Assumption Checks’ - ’Data Summary’選項下的’Cook’s Distance’複選框來計算有關Cook’s距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如 <a href="#fig-fig10-20">圖&nbsp;<span>12.20</span></a> 所示的結果。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig10-20" class="quarto-figure quarto-figure-left anchored">
@@ -1535,7 +1537,7 @@ We have some fairly large correlations between some of our predictor variables! 
 <h3 data-number="12.11.4" class="anchored" data-anchor-id="比較迴歸模型"><span class="header-section-number">12.11.4</span> 比較迴歸模型</h3>
 <p>與使用自動模型選擇程序的方法相反，研究人員可以明確地選擇兩個或多個迴歸模型以相互比較。您可以用幾種不同的方法做到這一點，具體取決於您要回答的研究問題。假設我們想知道我兒子睡眠的多少是否與我煩躁的程度有關，超出了我自己睡眠的影響。我們還希望確保測量的那一天對這種關係沒有影響。也就是說，我們對baby.sleep和dani.grump之間的關係感興趣，從這個角度看，dani.sleep和day是我們想控制的<strong>協變項</strong>。在這種情況下，我們想知道dani.grump ~ dani.sleep + day + baby.sleep（我將其稱為Model 2，或M2）是否比dani.grump ~ dani.sleep + day（我將其稱為Model 1，或M1）更適合這些資訊。我們可以用兩種不同的方式來比較這兩個模型，一種基於像AIC這樣的模型選擇標準，另一種基於顯式假設檢定。我首先向您展示基於AIC的方法，因為它更簡單，並且自然地延續了上一節的討論。首先，我需要實際運行兩個迴歸，注意每個迴歸的AIC，然後選擇AIC值較小的模型，因為它被認為是這些資訊的更好模型。實際上，不要立即這樣做。繼續閱讀，因為jamovi中有一種簡單的方法可以在一個表格中獲取不同模型的AIC值。<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></p>
 <p>基於假設檢定框架的某種不同方法來解決這個問題。假設您有兩個迴歸模型，其中一個（Model 1）包含另一個（Model 2）的一部分預測變項。也就是說，Model 2包含Model 1中包含的所有預測變項，再加上一個或多個其他預測變項。當這種情況發生時，我們說Model 1嵌套在Model 2中，或者可能說Model 1是Model 2的子模型。無論使用哪種術語，這意味著我們可以將Model 1視為虛無假設，將Model 2視為替代假設。事實上，我們可以用相當簡單的方式構建一個F檢驗。<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></p>
-<p>那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如@fig-fig10-25所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，<span class="math inline">\(F(1,96) = 0.00\)</span>，<span class="math inline">\(p = 0.954\)</span>。由於我們的p &gt; .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為<strong>分層迴歸</strong>。</p>
+<p>那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 <a href="#fig-fig10-25">圖&nbsp;<span>12.25</span></a> 所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，<span class="math inline">\(F(1,96) = 0.00\)</span>，<span class="math inline">\(p = 0.954\)</span>。由於我們的p &gt; .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為<strong>分層迴歸</strong>。</p>
 <p>我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如@fig-fig10-25所示。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">

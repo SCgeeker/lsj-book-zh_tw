@@ -11,6 +11,9 @@ The goal in this chapter is to introduce **correlation** and **linear regression
 [^10-translation-01]: 本章在原書為第12章，繁體中文版為了整合 **[基礎統計方法的線性模型學習取向](Prelude-Part-V.html)**，改為第10章。--->
 
 
+> [導讀簡報](slides12.html){target="_blank"}
+
+
 ## 相關 {#sec-what-is-correlation}
 
 這一節要談如何描述資料變項之間的關係，因此會不斷提到變項之間的**相關**。首先，讓我們看一下 @tbl-tab10-1 的示範資料描述統計。

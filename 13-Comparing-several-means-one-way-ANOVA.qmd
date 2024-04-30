@@ -5,7 +5,7 @@
 source("header.R")
 ```
 
-> **譯者註** 20230416初步以ChatGPT-4完成翻譯，內容待編修。
+> **譯者註** 20240414完成實例演練以外的編修。
 
 這個單元要介紹心理學研究最常使用的一種統計方法～"變異數分析"，通常簡稱ANOVA。羅蘭．費雪爵士在20世紀初奠定了今天這套方法的基本運算原則，同時他給的命名也困擾著今天的學習者，**變異數分析**這個名稱通常會造成兩種誤會。其一是「變異數」，實際上ANOVA是比較平均數之間的差異。其二是有好幾套統計方法都是奠基於變異數分析，然而有些方法與變異數的關係非常微弱。後面的單元裡，讀者會學到各式各樣的變異數分析方法，分別有各自適用的條件。這個單元要學的只是最簡單的單因子變異數分析，適用研究設計只有幾個實驗組，研究者想要分析每個實驗組在各獨變項條件之間的測量結果差異。<!---這就是單因素ANOVA所要解決的問題。--->
 
@@ -18,6 +18,10 @@ source("header.R")
 The structure of this chapter is as follows: first I'll introduce a fictitious data set that we'll use as a running example throughout the chapter. After introducing the data, I'll describe the mechanics of how a one-way ANOVA actually works [How ANOVA works] and then focus on how you can run one in jamovi [Running an ANOVA in jamovi]. These two sections are the core of the chapter.
 
 The remainder of the chapter discusses a range of important topics that inevitably arise when running an ANOVA, namely how to calculate effect sizes, post hoc tests and corrections for multiple comparisons and the assumptions that ANOVA relies upon. We'll also talk about how to check those assumptions and some of the things you can do if the assumptions are violated. Then we'll cover repeated measures ANOVA. --->
+
+
+> [導讀簡報](slides13.html){target="_blank"}
+
 
 ## 獨立樣本變異數分析示範資料
 
