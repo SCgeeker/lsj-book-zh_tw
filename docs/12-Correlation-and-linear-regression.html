@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,7 +78,8 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出"
+    "search-submit-button-title": "送出",
+    "search-label": "搜尋"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -119,7 +120,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html">統計方法</a></li><li class="breadcrumb-item"><a href="./12-Correlation-and-linear-regression.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">相關與線性迴歸</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -133,7 +134,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -162,7 +163,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜尋"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -413,9 +414,11 @@ div.csl-indent {
   <li><a href="#sec-regression-Model-diagnosis" id="toc-sec-regression-Model-diagnosis" class="nav-link" data-scroll-target="#sec-regression-Model-diagnosis"><span class="header-section-number">12.10</span> 診斷迴歸模型的適用條件</a>
   <ul class="collapse">
   <li><a href="#三種殘差" id="toc-三種殘差" class="nav-link" data-scroll-target="#三種殘差"><span class="header-section-number">12.10.1</span> 三種殘差</a></li>
-  <li><a href="#sec-three-kinds-of-anomalous-data" id="toc-sec-three-kinds-of-anomalous-data" class="nav-link" data-scroll-target="#sec-three-kinds-of-anomalous-data"><span class="header-section-number">12.10.2</span> 三種異常資料</a></li>
-  <li><a href="#檢測殘差常態性" id="toc-檢測殘差常態性" class="nav-link" data-scroll-target="#檢測殘差常態性"><span class="header-section-number">12.10.3</span> 檢測殘差常態性</a></li>
-  <li><a href="#sec-check-regression-collinearity" id="toc-sec-check-regression-collinearity" class="nav-link" data-scroll-target="#sec-check-regression-collinearity"><span class="header-section-number">12.10.4</span> 檢測共線性</a></li>
+  <li><a href="#sec-checking-liniearity-relationshp" id="toc-sec-checking-liniearity-relationshp" class="nav-link" data-scroll-target="#sec-checking-liniearity-relationshp"><span class="header-section-number">12.10.2</span> 檢測變項的線性關係</a></li>
+  <li><a href="#sec-Checking-the-normality-of-the-residuals" id="toc-sec-Checking-the-normality-of-the-residuals" class="nav-link" data-scroll-target="#sec-Checking-the-normality-of-the-residuals"><span class="header-section-number">12.10.3</span> 檢測殘差常態性</a></li>
+  <li><a href="#sec-check-equality-of-variance" id="toc-sec-check-equality-of-variance" class="nav-link" data-scroll-target="#sec-check-equality-of-variance"><span class="header-section-number">12.10.4</span> 檢測變異數同質性</a></li>
+  <li><a href="#sec-check-regression-collinearity" id="toc-sec-check-regression-collinearity" class="nav-link" data-scroll-target="#sec-check-regression-collinearity"><span class="header-section-number">12.10.5</span> 檢測共線性</a></li>
+  <li><a href="#sec-outliers-and-anomalous-data" id="toc-sec-outliers-and-anomalous-data" class="nav-link" data-scroll-target="#sec-outliers-and-anomalous-data"><span class="header-section-number">12.10.6</span> 極端值與異常資料</a></li>
   </ul></li>
   <li><a href="#sec-multiple-variables-combinaion" id="toc-sec-multiple-variables-combinaion" class="nav-link" data-scroll-target="#sec-multiple-variables-combinaion"><span class="header-section-number">12.11</span> 決定線性模型的變項組合</a>
   <ul class="collapse">
@@ -501,18 +504,18 @@ The goal in this chapter is to introduce **correlation** and **linear regression
 </div>
 </div>
 <p>讓我們從一個所有新生兒父母都會煩惱的問題談起：睡眠。這裡使用的資料集是虛構的，但是來自原作者本人的真實經驗：我想知道我那剛出生的兒子的睡眠習慣對我個人的情緒有多大影響。假想我可以非常精確地評估我的沮喪分數，評分從0分（一點都不沮喪）到100分（像一個非常非常沮喪的老頭子），還有我每天都有自主測量的沮喪分數、我個人的睡眠時間和兒子的睡眠時間等紀錄持續100天。身為一位數位時代的書呆子，資料都保存在一個名為parenthood.csv的檔案，讀者可由本書資料庫匯入。在jamovi開啟後，可以看到四個變項：<code>dani.sleep</code>，<code>baby.sleep</code>，<code>dani.grump</code>和<code>day</code>。請注意，第一次打開這份檔案，jamovi可能無法正確設定每個變項的資料類型，請讀者自行修正，四個變項都可以被設定為連續變項，<code>ID</code>是一個名義尺度且為整數的變項。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>接著我會先看一些基本的描述統計報表，包括三個我有興趣的變項統計圖，也就是 <a href="#fig-fig10-1">圖&nbsp;<span>12.1</span></a> 展示的直方圖。需要注意的是，不要因為jamovi可以一次計算幾十種不同的統計資訊，你就要在報表顯示所有資訊。如果我要以此結果撰寫報告，我會挑出那些我自己以及讀者最感興趣的統計資訊，然後將它們放入像 <a href="#tbl-tab10-1">表&nbsp;<span>12.1</span></a> 這樣的簡潔的表格裡。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 需要注意的是，當我將資訊放入表格時，我給了每個變項一個“高可讀性”的名稱。這是很好的做法。另外，請注意這一百天我都沒有睡飽，這不是好的習慣，不過其他帶過小孩的父母告訴我，這是很正常的事情。</p>
+<p>接著我會先看一些基本的描述統計報表，包括三個我有興趣的變項統計圖，也就是 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-1">圖&nbsp;<span>13.1</span></a> 展示的直方圖。需要注意的是，不要因為jamovi可以一次計算幾十種不同的統計資訊，你就要在報表顯示所有資訊。如果我要以此結果撰寫報告，我會挑出那些我自己以及讀者最感興趣的統計資訊，然後將它們放入像 <a href="#tbl-tab10-1">表&nbsp;<span>12.1</span></a> 這樣的簡潔的表格裡。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 需要注意的是，當我將資訊放入表格時，我給了每個變項一個“高可讀性”的名稱。這是很好的做法。另外，請注意這一百天我都沒有睡飽，這不是好的習慣，不過其他帶過小孩的父母告訴我，這是很正常的事情。</p>
 
 <!---Let's turn to a topic close to every parent's heart: sleep. The data set we'll use is fictitious, but based on real events. Suppose I'm curious to find out how much my infant son's sleeping habits affect my mood. Let's say that I can rate my grumpiness very precisely, on a scale from 0 (not at all grumpy) to $100$ (grumpy as a very, very grumpy old man or woman). And lets also assume that I've been measuring my grumpiness, my sleeping patterns and my son's sleeping patterns for quite some time now. Let's say, for $100$ days. And, being a nerd, I've saved the data as a file called parenthood.csv. If we load the data we can see that the file contains four variables dani.sleep, baby.sleep, dani.grump and day. Note that when you first load this data set jamovi may not have guessed the data type for each variable correctly, in which case you should fix it: dani.sleep, baby.sleep, dani.grump and day can be specified as continuous variables, and ID is a nominal(integer) variable.[^correlation-and-linear-regression-1] 
 
 [^correlation-and-linear-regression-1]: I've noticed that in jamovi you can also specify an 'ID' variable type, but for our purposes it does not matter how we specify the ID variable as we won't be including it in any analyses.
 
-Next, I'll take a look at some basic descriptive statistics and, to give a graphical depiction of what each of the three interesting variables looks like, @fig-fig10-1 plots histograms. One thing to note: just because jamovi can calculate dozens of different statistics doesn't mean you should report all of them. If I were writing this up for a report, I'd probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table 12.1.[^correlation-and-linear-regression-2] Notice that when I put it into a table, I gave everything "human readable" names. This is always good practice. Notice also that I'm not getting enough sleep. This isn't good practice, but other parents tell me that it's pretty standard.
+Next, I'll take a look at some basic descriptive statistics and, to give a graphical depiction of what each of the three interesting variables looks like, @fig-fig12-1 plots histograms. One thing to note: just because jamovi can calculate dozens of different statistics doesn't mean you should report all of them. If I were writing this up for a report, I'd probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table 12.1.[^correlation-and-linear-regression-2] Notice that when I put it into a table, I gave everything "human readable" names. This is always good practice. Notice also that I'm not getting enough sleep. This isn't good practice, but other parents tell me that it's pretty standard.
 
 [^correlation-and-linear-regression-2]: Actually, even that table is more than I'd bother with. In practice most people pick one measure of central tendency, and one measure of variability only.--->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-1" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-1" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.1: 原作者照顧新生兒百日紀錄的三個變項直方圖。</figcaption>
@@ -523,11 +526,11 @@ Next, I'll take a look at some basic descriptive statistics and, to give a graph
 </section>
 <section id="相關的強度與方向" class="level3" data-number="12.1.2">
 <h3 data-number="12.1.2" class="anchored" data-anchor-id="相關的強度與方向"><span class="header-section-number">12.1.2</span> 相關的強度與方向</h3>
-<p>我們還可以繪製散佈圖，來俯瞰兩個變項之間的相關性。雖然在理想情況下，我們希望能多看到一些資訊。例如，讓我們比較<code>dani.sleep</code>和<code>dani.grump</code>之間的關係（ <a href="#fig-fig10-2">圖&nbsp;<span>12.2</span></a> ，左）與<code>baby.sleep</code>和<code>dani.grump</code>之間的關係（ <a href="#fig-fig10-2">圖&nbsp;<span>12.2</span></a> ，右）。當我們並排比較這兩份散佈圖，這兩種情況的關係很明顯是同質的：我本人或我兒子的睡眠時間越長，我的情緒就越好！不過很明顯的是，<code>dani.sleep</code>和<code>dani.grump</code>之間的關係比<code>baby.sleep</code>和<code>dani.grump</code>之間的關係更強：左圖比右圖更加<em>整齊</em>。直覺來看，如果你想預測我的情緒，知道我兒子睡了多少個小時會有點幫助，但是知道我睡了多少個小時會更有幫助。</p>
-<!---We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig10-1), left) with that between baby.sleep and dani.grump (@fig-fig10-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept. --->
+<p>我們還可以繪製散佈圖，來俯瞰兩個變項之間的相關性。雖然在理想情況下，我們希望能多看到一些資訊。例如，讓我們比較<code>dani.sleep</code>和<code>dani.grump</code>之間的關係（ <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-2">圖&nbsp;<span>13.2</span></a> ，左）與<code>baby.sleep</code>和<code>dani.grump</code>之間的關係（ <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-2">圖&nbsp;<span>13.2</span></a> ，右）。當我們並排比較這兩份散佈圖，這兩種情況的關係很明顯是同質的：我本人或我兒子的睡眠時間越長，我的情緒就越好！不過很明顯的是，<code>dani.sleep</code>和<code>dani.grump</code>之間的關係比<code>baby.sleep</code>和<code>dani.grump</code>之間的關係更強：左圖比右圖更加<em>整齊</em>。直覺來看，如果你想預測我的情緒，知道我兒子睡了多少個小時會有點幫助，但是知道我睡了多少個小時會更有幫助。</p>
+<!---We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig12-1), left) with that between baby.sleep and dani.grump (@fig-fig12-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-2" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-2" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.2: 左圖是<code>dani.sleep</code>(老爸睡眠小時數)與<code>dani.grump</code>(老爸的沮喪程度)的散佈圖,右圖是<code>baby.sleep</code>(小嬰兒睡眠小時數)與<code>dani.grump</code>(老爸的沮喪程度)的散佈圖。</figcaption>
@@ -535,11 +538,11 @@ Next, I'll take a look at some basic descriptive statistics and, to give a graph
 </div>
 </div>
 </div>
-<p>相反地， <a href="#fig-fig10-3">圖&nbsp;<span>12.3</span></a> 的兩個散佈圖告訴我們另一個角度的故事。比較<code>baby.sleep</code> 與 <code>dani.grump</code>的散佈圖（左）和<code>baby.sleep</code> 與 <code>dani.sleep</code>的散佈圖（右），變項之間的整體關係強度相同，但是方向不同。也就是說，如果我的兒子睡得較長，我也會睡得更多（正相關，右圖），但是他如果睡得更多，我就不會那麼沮喪（負相關，左圖）。</p>
-<!---In contrast, let's consider the two scatterplots shown in @fig-fig10-3. If we compare the scatterplot of "baby.sleep v dani.grump" (left) to the scatterplot of "'baby.sleep v dani.sleep" (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side). --->
+<p>相反地， <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-3">圖&nbsp;<span>13.3</span></a> 的兩個散佈圖告訴我們另一個角度的故事。比較<code>baby.sleep</code> 與 <code>dani.grump</code>的散佈圖（左）和<code>baby.sleep</code> 與 <code>dani.sleep</code>的散佈圖（右），變項之間的整體關係強度相同，但是方向不同。也就是說，如果我的兒子睡得較長，我也會睡得更多（正相關，右圖），但是他如果睡得更多，我就不會那麼沮喪（負相關，左圖）。</p>
+<!---In contrast, let's consider the two scatterplots shown in @fig-fig12-3. If we compare the scatterplot of "baby.sleep v dani.grump" (left) to the scatterplot of "'baby.sleep v dani.sleep" (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-3" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-3" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.3: 左圖是<code>baby.sleep</code>(小嬰兒睡眠小時數)與<code>dani.grump</code>(老爸的沮喪程度)的散佈圖,右圖是<code>baby.sleep</code>(小嬰兒睡眠小時數)與<code>dani.sleep</code>(老爸睡眠小時數)的散佈圖。</figcaption>
@@ -550,16 +553,16 @@ Next, I'll take a look at some basic descriptive statistics and, to give a graph
 </section>
 <section id="相關係數" class="level3" data-number="12.1.3">
 <h3 data-number="12.1.3" class="anchored" data-anchor-id="相關係數"><span class="header-section-number">12.1.3</span> 相關係數</h3>
-<p>現在我們要進一步延伸上述的概念，也就是正式認識 <strong>相關係數(correlation coefficient)</strong>。本節主要介紹皮爾森相關係數（Pearson’s correlation），樣本資料的書寫符號是 <span class="math inline">\(r\)</span>。在下一節，我們會用更精確符號 <span class="math inline">\(r_{XY}\)</span> ，表示兩個變項 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 之間的相關係數，值域涵蓋-1到1。當<span class="math inline">\(r = -1\)</span>時，表示變項之間是完全的負相關；當<span class="math inline">\(r = 1\)</span>時，表示變項之間是完全的正相關；當<span class="math inline">\(r = 0\)</span>時，表示變項之間是完全沒有關係。 <a href="#fig-fig10-4">圖&nbsp;<span>12.4</span></a> 展示幾種不同相關性的散佈圖。</p>
+<p>現在我們要進一步延伸上述的概念，也就是正式認識 <strong>相關係數(correlation coefficient)</strong>。本節主要介紹皮爾森相關係數（Pearson’s correlation），樣本資料的書寫符號是 <span class="math inline">\(r\)</span>。在下一節，我們會用更精確符號 <span class="math inline">\(r_{XY}\)</span> ，表示兩個變項 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 之間的相關係數，值域涵蓋-1到1。當<span class="math inline">\(r = -1\)</span>時，表示變項之間是完全的負相關；當<span class="math inline">\(r = 1\)</span>時，表示變項之間是完全的正相關；當<span class="math inline">\(r = 0\)</span>時，表示變項之間是完全沒有關係。 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-4">圖&nbsp;<span>13.4</span></a> 展示幾種不同相關性的散佈圖。</p>
 <p>[其他技術細節 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>]</p>
-<!--- We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig10-4, you can see several plots showing what different correlations look like.
+<!--- We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig12-4, you can see several plots showing what different correlations look like.
 
 [Additional technical detail [^correlation-and-linear-regression-3]]
 
-[^correlation-and-linear-regression-3]: The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ Because we're multiplying (i.e., taking the "product" of) a quantity that depends on X by a quantity that depends on Y and then averaging$^a$, you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in @fig-fig10-4 then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret as it depends on the units in which $X$ and $Y$ are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the dani.sleep variable (units: hours) and $Y$ refers to the dani.grump variable (units: grumps), then the units for their covariance are $hours \times grumps$. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.$^b$ In other words, the correlation between $X$ and $Y$ can be written as follows: $$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ Just like we saw with the variance and the standard deviation, in practice we divide by $N - 1$ rather than $N$. <br /> $^b$ This is an oversimplification, but it'll do for our purposes.  --->
+[^correlation-and-linear-regression-3]: The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ Because we're multiplying (i.e., taking the "product" of) a quantity that depends on X by a quantity that depends on Y and then averaging$^a$, you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in @fig-fig12-4 then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret as it depends on the units in which $X$ and $Y$ are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the dani.sleep variable (units: hours) and $Y$ refers to the dani.grump variable (units: grumps), then the units for their covariance are $hours \times grumps$. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.$^b$ In other words, the correlation between $X$ and $Y$ can be written as follows: $$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ Just like we saw with the variance and the standard deviation, in practice we divide by $N - 1$ rather than $N$. <br /> $^b$ This is an oversimplification, but it'll do for our purposes.  --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-4" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.4: 圖解相關係數的強度及方向。左欄的相關係數由上而下為<span class="math inline">\(0, .33, .66, 1\)</span>。右欄的相關係數由上而下為<span class="math inline">\(0, -.33, -.66, -1\)</span>。</figcaption>
@@ -572,11 +575,11 @@ Next, I'll take a look at some basic descriptive statistics and, to give a graph
 </section>
 <section id="相關係數計算實務" class="level3" data-number="12.1.4">
 <h3 data-number="12.1.4" class="anchored" data-anchor-id="相關係數計算實務"><span class="header-section-number">12.1.4</span> 相關係數計算實務</h3>
-<p>只要在jamovi’迴歸’模組選單，選點要計算的相關係數，就能計算所有納入變項對話框的任何兩個變項之間相關係數，如同 <a href="#fig-fig10-5">圖&nbsp;<span>12.5</span></a> 的示範，沒有出錯的話，報表會輸出’相關係數矩陣’(Correlation Matrix)。</p>
-<!---Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig10-5. --->
+<p>只要在jamovi’迴歸’模組選單，選點要計算的相關係數，就能計算所有納入變項對話框的任何兩個變項之間相關係數，如同 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-5">圖&nbsp;<span>13.5</span></a> 的示範，沒有出錯的話，報表會輸出’相關係數矩陣’(Correlation Matrix)。</p>
+<!---Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig12-5. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-5" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.5: 使用jamovi相關分析模組計算parenthood.csv資料變項的示範畫面。</figcaption>
@@ -660,15 +663,15 @@ Next, I'll take a look at some basic descriptive statistics and, to give a graph
 </div>
 </div>
 <p>然而，有一件點任何一位統計學教師都會不厭其煩地提醒學生，就是解讀資料變項相關係之前，一定要看散佈圖，一個相關係數可能無法充分表達你要說的意思。統計學中有個經典案例「安斯庫姆四重奏」(Anscombe’s Quartet)<span class="citation" data-cites="Anscombe1973">(<a href="References.html#ref-Anscombe1973" role="doc-biblioref">Anscombe, 1973</a>)</span>，其中有四個資料集。每個資料集都有兩個變項， <span class="math inline">\(X\)</span> 與 <span class="math inline">\(Y\)</span>。四個資料集的 <span class="math inline">\(X\)</span> 平均值都是 <span class="math inline">\(9\)</span>， <span class="math inline">\(Y\)</span> 的平均值都是 <span class="math inline">\(7.5\)</span>。所有 <span class="math inline">\(X\)</span> 變項的標準差幾乎相同，<span class="math inline">\(Y\)</span> 變項的標準差也是一致。每種資料集的<span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 相關係數均為 <span class="math inline">\(r = 0.816\)</span>。同學可以打開本書示範資料庫裡的Anscombe資料檔親自驗證。</p>
-<p>也許你認為這四個資料集看起來很相似，其實上並非如此。從 <a href="#fig-fig10-6">圖&nbsp;<span>12.6</span></a> 的散佈圖可以發現，所有四個資料集的<span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 變項之間的關係各有千秋。這個案例給我們的教訓是，實務中很多人經常會忘記：「視覺化你的原始資訊」（見 <a href="05-Drawing-graphs.html"><span>單元&nbsp;5</span></a> ）。</p>
+<p>也許你認為這四個資料集看起來很相似，其實上並非如此。從 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-6">圖&nbsp;<span>13.6</span></a> 的散佈圖可以發現，所有四個資料集的<span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 變項之間的關係各有千秋。這個案例給我們的教訓是，實務中很多人經常會忘記：「視覺化你的原始資訊」（見 <a href="05-Drawing-graphs.html"><span>單元&nbsp;5</span></a> ）。</p>
 <!---However, something that can never be stressed enough is that you should always look at the scatterplot before attaching any interpretation to the data. A correlation might not mean what you think it means. The classic illustration of this is "Anscombe's Quartet" [@Anscombe1973], a collection of four data sets. Each data set has two variables, an $X$ and a $Y$. For all four data sets the mean value for $X$ is $9$ and the mean for $Y$ is $7.5$. The standard deviations for all $X$ variables are almost identical, as are those for the Y variables. And in each case the correlation between $X$ and $Y$ is $r = 0.816$. You can verify this yourself, since I happen to have saved it in a file called anscombe.csv.
 
  http://localhost:7972/10-Correlation-and-linear-regression.html#%E7%9B%B8%E9%97%9C%E4%BF%82%E6%95%B8
 
-You'd think that these four data sets would look pretty similar to one another. They do not. If we draw scatterplots of $X$ against $Y$ for all four variables, as shown in @fig-fig10-6, we see that all four of these are spectacularly different to each other. The lesson here, which so very many people seem to forget in real life, is "always graph your raw data" (see @sec-Drawing-graphs). --->
+You'd think that these four data sets would look pretty similar to one another. They do not. If we draw scatterplots of $X$ against $Y$ for all four variables, as shown in @fig-fig12-6, we see that all four of these are spectacularly different to each other. The lesson here, which so very many people seem to forget in real life, is "always graph your raw data" (see @sec-Drawing-graphs). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-6" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.6: 安斯庫姆四重奏。四份資料的相關係數都是.816，但是資料數值都不一樣。</figcaption>
@@ -681,15 +684,15 @@ You'd think that these four data sets would look pretty similar to one another. 
 <h3 data-number="12.1.6" class="anchored" data-anchor-id="斯皮爾曼等級相關"><span class="header-section-number">12.1.6</span> 斯皮爾曼等級相關</h3>
 <p>皮爾森相關係數的用途很多，不過也有一些缺點，尤其是這個係數只是測量兩個變項之間的線性關係強度。換句話說，係數數值是計量整體資料與一條完美直線的趨近程度。當我們想具體表達兩個變項的“關係”時，皮爾森相關係數通常是很好的選擇。但有時並非最佳選項。</p>
 <p>線性關係是當一個變項<span class="math inline">\(X\)</span>的數值增加，也能反映另一個變項<span class="math inline">\(Y\)</span>的增加。但是兩者關係不是線性的話，皮爾森相關係數就不太合適。例如，準備考試所花的時間和考試成績之間的關係，可能就是這樣的情況。如果一位同學沒有花時間（<span class="math inline">\(X\)</span>）準備一個科目，那麼他排名的成績應該只有0％（<span class="math inline">\(Y\)</span>）。然而，只要一點點努力就會帶來巨大的改善，像是認真上幾堂課並且做筆記就可以學到很多東西，成績排名有可能會提高到35％，而且這是假設沒有做課後復習的情況。然而，想要獲得排名90％的成績，就要比排名55％的成績付出更多努力。也就是說，當我們要分析學習時間和成績的相關係，皮爾森相關係數可能導致錯誤的解讀。</p>
-<p>我們用 <a href="#fig-fig10-7">圖&nbsp;<span>12.7</span></a> 的資料舉例說明，這張散佈圖顯示10名學生在某個課程的讀書時間和考試成績之間的關係。這份虛構的資料怪異之處在於，增加讀書時間總是會提高成績。可能大幅提高，也可能略有提高，但是增加讀書時間絕不會讓成績降低。若是計算這兩個資料變項的皮爾森相關係數，得到的數值為0.91，顯示讀書時間和成績之間有強烈的關係。然而，實際這個分析結果並未充分呈現增加工作時間總是提高成績的關係。儘管我們想要主張兩者的相關性是完全的正相關，但是需要用稍微不同的“關係”來強調，也就是需要另一種方法，能夠呈現這份資料裡完全的<strong>次序關係(ordinal relationship)</strong>。也就是說，如果第一名學生的讀書時間比二名學生長，那麼我們可以預測第一名學生的成績會更好，而這不是相關係數<span class="math inline">\(r=0.91\)</span>能表達的。</p>
+<p>我們用 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-7">圖&nbsp;<span>13.7</span></a> 的資料舉例說明，這張散佈圖顯示10名學生在某個課程的讀書時間和考試成績之間的關係。這份虛構的資料怪異之處在於，增加讀書時間總是會提高成績。可能大幅提高，也可能略有提高，但是增加讀書時間絕不會讓成績降低。若是計算這兩個資料變項的皮爾森相關係數，得到的數值為0.91，顯示讀書時間和成績之間有強烈的關係。然而，實際這個分析結果並未充分呈現增加工作時間總是提高成績的關係。儘管我們想要主張兩者的相關性是完全的正相關，但是需要用稍微不同的“關係”來強調，也就是需要另一種方法，能夠呈現這份資料裡完全的<strong>次序關係(ordinal relationship)</strong>。也就是說，如果第一名學生的讀書時間比二名學生長，那麼我們可以預測第一名學生的成績會更好，而這不是相關係數<span class="math inline">\(r=0.91\)</span>能表達的。</p>
 <!--- The Pearson correlation coefficient is useful for a lot of things, but it does have shortcomings. One issue in particular stands out: what it actually measures is the strength of the linear relationship between two variables. In other words, what it gives you is a measure of the extent to which the data all tend to fall on a single, perfectly straight line. Often, this is a pretty good approximation to what we mean when we say "relationship", and so the Pearson correlation is a good thing to calculate. Sometimes though, it isn't.
 
 One very common situation where the Pearson correlation isn't quite the right thing to use arises when an increase in one variable $X$ really is reflected in an increase in another variable Y , but the nature of the relationship isn't necessarily linear. An example of this might be the relationship between effort and reward when studying for an exam. If you put zero effort ($X$) into learning a subject then you should expect a grade of $0\%$ ($Y$). However, a little bit of effort will cause a massive improvement. Just turning up to lectures means that you learn a fair bit, and if you just turn up to classes and scribble a few things down your grade might rise to 35%, all without a lot of effort. However, you just don't get the same effect at the other end of the scale. As everyone knows, it takes a lot more effort to get a grade of $90\%$ than it takes to get a grade of $55\%$. What this means is that, if I've got data looking at study effort and grades, there's a pretty good chance that Pearson correlations will be misleading. 
 
-To illustrate, consider the data plotted in @fig-fig10-7, showing the relationship between hours worked and grade received for 10 students taking some class. The curious thing about this (highly fictitious) data set is that increasing your effort always increases your grade. It might be by a lot or it might be by a little, but increasing effort will never decrease your grade. If we run a standard Pearson correlation, it shows a strong relationship between hours worked and grade received, with a correlation coefficient of $0.91$. However, this doesn't actually capture the observation that increasing hours worked always increases the grade. There's a sense here in which we want to be able to say that the correlation is perfect but for a somewhat different notion of what a "relationship" is. What we're looking for is something that captures the fact that there is a perfect **ordinal relationship** here. That is, if student 1 works more hours than student 2, then we can guarantee that student 1 will get the better grade. That's not what a correlation of $r = .91$ says at all.--->
+To illustrate, consider the data plotted in @fig-fig12-7, showing the relationship between hours worked and grade received for 10 students taking some class. The curious thing about this (highly fictitious) data set is that increasing your effort always increases your grade. It might be by a lot or it might be by a little, but increasing effort will never decrease your grade. If we run a standard Pearson correlation, it shows a strong relationship between hours worked and grade received, with a correlation coefficient of $0.91$. However, this doesn't actually capture the observation that increasing hours worked always increases the grade. There's a sense here in which we want to be able to say that the correlation is perfect but for a somewhat different notion of what a "relationship" is. What we're looking for is something that captures the fact that there is a perfect **ordinal relationship** here. That is, if student 1 works more hours than student 2, then we can guarantee that student 1 will get the better grade. That's not what a correlation of $r = .91$ says at all.--->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-7" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-7" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-7.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.7: 此散佈圖展示虛擬資料集的兩個變項”讀書時間”和”成績”之間的關係，這個資料集只有10位學生（每個點代表一個學生）。圖中的直線顯示兩個變項之間的線性關係，兩者之間有很強的皮爾森相關係數<span class="math inline">\(r = .91\)</span>。不過有趣的是，兩個變項之間存在一個完美的單調函數關係。這條直線顯示，根據這份虛擬資料，增加工作時間總是會增加得分，這反映在斯皮爾曼等級相關係數<span class="math inline">\(\rho = 1\)</span>。然而，由於這個資料集很小，因此仍然存在一個問題：那一種係數是真正描述兩個變項的關係。</figcaption>
@@ -785,13 +788,13 @@ What we've just re-invented is **斯皮爾曼等級相關(Spearman's rank order 
 <section id="sec-the-scatter-plot" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="sec-the-scatter-plot"><span class="header-section-number">12.2</span> 散佈圖</h2>
 <p>散佈圖是一種簡單但有效的視覺化工具，用於具現兩個變項之間的關係，就像<a href="#sec-what-is-correlation">相關</a>這一節所展示的圖表。通常提到“散佈圖”這個術語時，指的是兩個變項的具體視覺化。在散佈圖中，每個觀察值都是對應一個資料點。一個點的水平位置表示一個變項的觀察值，垂直位置表示觀察值在另一個變項的數值。在許多使用情境，我們對於變項間的因果關係並沒有清晰的看法（例如，A是否引起B，還是B引起A，還是其他變項C控制A和B）。若是這樣，x軸和y軸上代表那個變項並不重要。然而在許多情境，研究者對於那個變項最有可能是原因或結果，會有一個相當明確的想法，或者對於何者為因至少有一些懷疑。若是這樣，用x軸代表原因的自變項，用y軸代表效應的應變項是一種傳統的繪圖規範。了解這樣的規範，讓我們來看一下如何合理運用jamovi繪製散佈圖，同樣使用在<a href="#sec-what-is-correlation">相關</a>這一節做為示範的資料集（parenthood.csv）。</p>
-<p>假定我的目標是繪製一個顯示本人睡眠時間<code>dani.sleep</code>與隔天沮喪程度<code>dani.grump</code>兩個變項關係的散佈圖，我們有兩種不同的方法使用jamovi得到我們想要的圖。第一種方法是設定’Regression’ - ‘Correlation Matrix’選單下方的’Plot’選項，這樣可以得到如圖 <a href="#fig-fig10-8">圖&nbsp;<span>12.8</span></a> 的結果。請注意，jamovi會繪製一條通過資料點的直線，稍後在<a href="#sec-what-is-linear-model">認識線性迴歸模型</a>這一節進一步說明。以這種方法繪製散佈圖也能繪製’變項密度’，這個選項會添加一條密度曲線，顯示每個變項的資料分佈狀況。</p>
+<p>假定我的目標是繪製一個顯示本人睡眠時間<code>dani.sleep</code>與隔天沮喪程度<code>dani.grump</code>兩個變項關係的散佈圖，我們有兩種不同的方法使用jamovi得到我們想要的圖。第一種方法是設定’Regression’ - ‘Correlation Matrix’選單下方的’Plot’選項，這樣可以得到如圖 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-8">圖&nbsp;<span>13.8</span></a> 的結果。請注意，jamovi會繪製一條通過資料點的直線，稍後在<a href="#sec-what-is-linear-model">認識線性迴歸模型</a>這一節進一步說明。以這種方法繪製散佈圖也能繪製’變項密度’，這個選項會添加一條密度曲線，顯示每個變項的資料分佈狀況。</p>
 <!--- **Scatterplots** are a simple but effective tool for visualising the relationship between two variables, like we saw with the figures in the section on [Correlations](10-Correlation-and-linear-regression.html#sec-what-is-correlation). It's this latter application that we usually have in mind when we use the term "scatterplot". In this kind of plot each observation corresponds to one dot. The horizontal location of the dot plots the value of the observation on one variable, and the vertical location displays its value on the other variable. In many situations you don't really have a clear opinions about what the causal relationship is (e.g., does A cause B, or does B cause A, or does some other variable C control both A and B). If that's the case, it doesn't really matter which variable you plot on the x-axis and which one you plot on the y-axis. However, in many situations you do have a pretty strong idea which variable you think is most likely to be causal, or at least you have some suspicions in that direction. If so, then it's conventional to plot the cause variable on the x-axis, and the effect variable on the y-axis. With that in mind, let's look at how to draw scatterplots in jamovi, using the same parenthood data set (i.e. parenthood.csv) that I used when introducing correlations.
 
-Suppose my goal is to draw a scatterplot displaying the relationship between the amount of sleep that I get (dani.sleep) and how grumpy I am the next day (dani.grump). There are two different ways in which we can use jamovi to get the plot that we're after. The first way is to use the 'Plot' option under the 'Regression' - 'Correlation Matrix' button, giving us the output shown in @fig-fig10-8.  Note that jamovi draws a line through the points, we'll come onto this a bit later in the section on [What is a linear regression model?]. Plotting a scatterplot in this way also allow you to specify 'Densities for variables' and this option adds a density curve showing how the data in each variable is distributed. --->
+Suppose my goal is to draw a scatterplot displaying the relationship between the amount of sleep that I get (dani.sleep) and how grumpy I am the next day (dani.grump). There are two different ways in which we can use jamovi to get the plot that we're after. The first way is to use the 'Plot' option under the 'Regression' - 'Correlation Matrix' button, giving us the output shown in @fig-fig12-8.  Note that jamovi draws a line through the points, we'll come onto this a bit later in the section on [What is a linear regression model?]. Plotting a scatterplot in this way also allow you to specify 'Densities for variables' and this option adds a density curve showing how the data in each variable is distributed. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-8" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.8: 使用jamovi相關分析模組的’Correlation Matrix’所繪製的散佈圖。</figcaption>
@@ -799,11 +802,11 @@ Suppose my goal is to draw a scatterplot displaying the relationship between the
 </div>
 </div>
 </div>
-<p>第二種方法是使用jamovi的附加模組之一<code>scatr</code>，只要點擊jamovi介面右上角的那個大「<span class="math inline">\(+\)</span>」，在jamovi模組庫裡找到<code>scatr</code>，然後點擊「install」進行安裝。安裝成功後，在「Exploration」的選單下方會多出新的「Scatterplot」選項。這種方法繪製的散佈圖和第一種方法不大一樣，如同 <a href="#fig-fig10-9">圖&nbsp;<span>12.9</span></a> 所顯示，但是透露的訊息是一樣的。</p>
-<!--- The second way do to it is to use one of the jamovi add-on modules. This module is called 'scatr' and you can install it by clicking on the large '$+$' icon in the top right of the jamovi screen, opening the jamovi library, scrolling down until you find 'scatr' and clicking 'install'. When you have done this, you will find a new 'Scatterplot' command available under the 'Exploration' button. This plot is a bit different than the first way, see @fig-fig10-9, but the important information is the same. --->
+<p>第二種方法是使用jamovi的附加模組之一<code>scatr</code>，只要點擊jamovi介面右上角的那個大「<span class="math inline">\(+\)</span>」，在jamovi模組庫裡找到<code>scatr</code>，然後點擊「install」進行安裝。安裝成功後，在「Exploration」的選單下方會多出新的「Scatterplot」選項。這種方法繪製的散佈圖和第一種方法不大一樣，如同 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-9">圖&nbsp;<span>13.9</span></a> 所顯示，但是透露的訊息是一樣的。</p>
+<!--- The second way do to it is to use one of the jamovi add-on modules. This module is called 'scatr' and you can install it by clicking on the large '$+$' icon in the top right of the jamovi screen, opening the jamovi library, scrolling down until you find 'scatr' and clicking 'install'. When you have done this, you will find a new 'Scatterplot' command available under the 'Exploration' button. This plot is a bit different than the first way, see @fig-fig12-9, but the important information is the same. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-9" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-9" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.9: 使用jamovi擴充模組’scatr’繪製的散佈圖</figcaption>
@@ -813,11 +816,11 @@ Suppose my goal is to draw a scatterplot displaying the relationship between the
 </div>
 <section id="更多解讀散佈圖的方法" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="更多解讀散佈圖的方法"><span class="header-section-number">12.2.1</span> 更多解讀散佈圖的方法</h3>
-<p>通常我們會需要查看多個變項之間的關係，可以在 jamovi 的 ‘Correlation Matrix’選單下方的’Plot’ 選項，勾選繪制<strong>散佈圖矩陣</strong>。只要加入另一個變項到要變項列表，例如 <code>baby.sleep</code>，jamovi 就會生成一個散佈圖矩陣，如同 <a href="#fig-fig10-10">圖&nbsp;<span>12.10</span></a> 的示範。</p>
-<!--- Often you will want to look at the relationships between several variables at once, using a **scatterplot matrix** (in jamovi via the 'Correlation Matrix' - 'Plot' command). Just add another variable, for example baby.sleep to the list of variables to be correlated, and jamovi will create a scatterplot matrix for you, just like the one in @fig-fig10-10. --->
+<p>通常我們會需要查看多個變項之間的關係，可以在 jamovi 的 ‘Correlation Matrix’選單下方的’Plot’ 選項，勾選繪制<strong>散佈圖矩陣</strong>。只要加入另一個變項到要變項列表，例如 <code>baby.sleep</code>，jamovi 就會生成一個散佈圖矩陣，如同 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-10">圖&nbsp;<span>13.10</span></a> 的示範。</p>
+<!--- Often you will want to look at the relationships between several variables at once, using a **scatterplot matrix** (in jamovi via the 'Correlation Matrix' - 'Plot' command). Just add another variable, for example baby.sleep to the list of variables to be correlated, and jamovi will create a scatterplot matrix for you, just like the one in @fig-fig12-10. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-10" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-10" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.10: jamovi繪製的散佈圖矩陣</figcaption>
@@ -832,22 +835,22 @@ Suppose my goal is to draw a scatterplot displaying the relationship between the
 <!---
 > **譯者註** 20230415初步以ChatGPT-4完成翻譯，以下內容待編修。 --->
 <p>我們可以將線性迴歸模型理解為稍微複雜一點的皮爾森相關係數分析程序（請見<a href="#sec-what-is-correlation">相關</a>這一節），稍後我們會看到，迴歸模型是用途更廣泛的統計方法。</p>
-<p>由於迴歸模型的基本觀念與相關係數緊密相關，以下同樣使用parenthood.csv資料集進行介紹及示範。回想一下，我們分析這個資料集的目的是，找出我(原作者Dani)為什麼總是非常沮喪的原因，而我的研究假設是我沒有得到足夠的睡眠。所以畫了一些散佈圖，檢示實際睡眠時間與隔天沮喪程度之間的關係，就像 <a href="#fig-fig10-9">圖&nbsp;<span>12.9</span></a> 展示的散佈圖，兩者之間的相關係數達到<span class="math inline">\(r=-0.90\)</span>。但是，我想描述的變項間關係更像 <a href="#fig-fig10-11">圖&nbsp;<span>12.11</span></a> (a) ，也就是有一條直線穿過資料點的中間。這條直線的統計學術語是<strong>迴歸線</strong>。請注意，由於我不是統計新手，因此畫出的迴歸線一定會穿過資料散佈區域的中間地帶，絕不會認為是像 <a href="#fig-fig10-11">圖&nbsp;<span>12.11</span></a> (b) 的樣子。</p>
+<p>由於迴歸模型的基本觀念與相關係數緊密相關，以下同樣使用parenthood.csv資料集進行介紹及示範。回想一下，我們分析這個資料集的目的是，找出我(原作者Dani)為什麼總是非常沮喪的原因，而我的研究假設是我沒有得到足夠的睡眠。所以畫了一些散佈圖，檢示實際睡眠時間與隔天沮喪程度之間的關係，就像 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-9">圖&nbsp;<span>13.9</span></a> 展示的散佈圖，兩者之間的相關係數達到<span class="math inline">\(r=-0.90\)</span>。但是，我想描述的變項間關係更像 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-11">圖&nbsp;<span>13.11</span></a> (a) ，也就是有一條直線穿過資料點的中間。這條直線的統計學術語是<strong>迴歸線</strong>。請注意，由於我不是統計新手，因此畫出的迴歸線一定會穿過資料散佈區域的中間地帶，絕不會認為是像 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-11">圖&nbsp;<span>13.11</span></a> (b) 的樣子。</p>
 <!---Stripped to its bare essentials, linear regression models are basically a slightly fancier version of the Pearson correlation (see [Correlations]), though as we'll see regression models are much more powerful tools.
 
-Since the basic ideas in regression are closely tied to correlation, we'll return to the parenthood.csv file that we were using to illustrate how correlations work. Recall that, in this data set we were trying to find out why Dani is so very grumpy all the time and our working hypothesis was that I'm not getting enough sleep. We drew some scatterplots to help us examine the relationship between the amount of sleep I get and my grumpiness the following day, as in @fig-fig10-9, and as we saw previously this corresponds to a correlation of $r = -.90$, but what we find ourselves secretly imagining is something that looks closer to @fig-fig10-11 (a). That is, we mentally draw a straight line through the middle of the data. In statistics, this line that we're drawing is called a **regression line**. Notice that, since we're not idiots, the regression line goes through the middle of the data. We don't find ourselves imagining anything like the rather silly plot shown in @fig-fig10-11 (b). --->
+Since the basic ideas in regression are closely tied to correlation, we'll return to the parenthood.csv file that we were using to illustrate how correlations work. Recall that, in this data set we were trying to find out why Dani is so very grumpy all the time and our working hypothesis was that I'm not getting enough sleep. We drew some scatterplots to help us examine the relationship between the amount of sleep I get and my grumpiness the following day, as in @fig-fig12-9, and as we saw previously this corresponds to a correlation of $r = -.90$, but what we find ourselves secretly imagining is something that looks closer to @fig-fig12-11 (a). That is, we mentally draw a straight line through the middle of the data. In statistics, this line that we're drawing is called a **regression line**. Notice that, since we're not idiots, the regression line goes through the middle of the data. We don't find ourselves imagining anything like the rather silly plot shown in @fig-fig12-11 (b). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-11" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-11" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.11: 圖a展示同 <a href="#fig-fig10-9">圖&nbsp;<span>12.9</span></a> 的資料散佈圖，並加上穿過資料中心地帶的迴歸線。圖b的散佈圖來自同一份資料，但是迴歸線並不擬合這份資料。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;12.11: 圖a展示同 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-9">圖&nbsp;<span>13.9</span></a> 的資料散佈圖，並加上穿過資料中心地帶的迴歸線。圖b的散佈圖來自同一份資料，但是迴歸線並不擬合這份資料。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>解讀變項間關係的迴歸線，並不需要什麼厲害的技巧。 <a href="#fig-fig10-11">圖&nbsp;<span>12.11</span></a> （b）的那條線與資料的適合度(fittedness)並不高，用來解讀資料沒有太大的意義，對吧？迴歸線能很直覺地呈現變項間的關係，若是再應用迴歸線的數學理論解讀資料，會變成非常強大的分析工具。我們複習一下高中數學，至少幾十年前澳洲的高中數學課是這樣教的，一條直線的公式可以寫成這樣的線性迴歸式：</p>
-<!--- This is not highly surprising. The line that I've drawn in @fig-fig10-11 (b) doesn't "fit" the data very well, so it doesn't make a lot of sense to propose it as a way of summarising the data, right? This is a very simple observation to make, but it turns out to be very powerful when we start trying to wrap just a little bit of maths around it. To do so, let's start with a refresher of some high school maths. The formula for a straight line is usually written like this --->
+<p>解讀變項間關係的迴歸線，並不需要什麼厲害的技巧。 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-11">圖&nbsp;<span>13.11</span></a> （b）的那條線與資料的適合度(fittedness)並不高，用來解讀資料沒有太大的意義，對吧？迴歸線能很直覺地呈現變項間的關係，若是再應用迴歸線的數學理論解讀資料，會變成非常強大的分析工具。我們複習一下高中數學，至少幾十年前澳洲的高中數學課是這樣教的，一條直線的公式可以寫成這樣的線性迴歸式：</p>
+<!--- This is not highly surprising. The line that I've drawn in @fig-fig12-11 (b) doesn't "fit" the data very well, so it doesn't make a lot of sense to propose it as a way of summarising the data, right? This is a very simple observation to make, but it turns out to be very powerful when we start trying to wrap just a little bit of maths around it. To do so, let's start with a refresher of some high school maths. The formula for a straight line is usually written like this --->
 <p><span class="math display">\[y=a+bx\]</span></p>
 <p>兩個資料變項用 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span>代表，搭配兩個係數 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 形成變項之間的等價性。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>係數 <span class="math inline">\(a\)</span> 代表迴歸線的截距，係數 <span class="math inline">\(b\)</span> 代表迴歸線的斜率。努力回憶一下高中曾學過的內容（很抱歉，某些讀者也許已經離開高中校園很久了），記得截距被解釋為“當 <span class="math inline">\(x=0\)</span> 時得到的 <span class="math inline">\(y\)</span> 值”。同樣地，斜率 <span class="math inline">\(b\)</span> 若為正值，代表增加 <span class="math inline">\(x\)</span> 的數值一個單位， <span class="math inline">\(y\)</span> 值會增加 <span class="math inline">\(b\)</span> 個單位；而斜率 <span class="math inline">\(b\)</span> 若為負值，則代表 <span class="math inline">\(y\)</span> 值會下降而不是上升。啊，是的，我們現在全都回想起來了。現在我們的記憶已經回來，所以自然會發現可以使用完全相同的公式計算迴歸線。如果 <span class="math inline">\(Y\)</span> 是預測變項（依變項），<span class="math inline">\(X\)</span> 是應變項（自變項），那麼描述示範資料的迴歸線等式就會像是這樣：</p>
 <!---Or, at least, that's what it was when I went to high school all those years ago. The two variables are $x$ and $y$, and we have two coefficients, $a$ and $b$.[^correlation-and-linear-regression-4] The coefficient a represents the y-intercept of the line, and coefficient b represents the slope of the line. Digging further back into our decaying memories of high school (sorry, for some of us high school was a long time ago), we remember that the intercept is interpreted as "the value of y that you get when $x = 0$". Similarly, a slope of b means that if you increase the x-value by 1 unit, then the y-value goes up by b units, and a negative slope means that the y-value would go down rather than up. Ah yes, it's all coming back to me now. Now that we've remembered that it should come as no surprise to discover that we use the exact same formula for a regression line. If $Y$ is the outcome variable (the DV) and X is the predictor variable (the $IV$), then the formula that describes our regression is written like this
@@ -870,16 +873,16 @@ Excellent, excellent. Next, I can't help but notice that, regardless of whether 
 <h2 data-number="12.4" class="anchored" data-anchor-id="sec-the-regression-coefficients-parameters"><span class="header-section-number">12.4</span> 線性迴歸模型的參數估計</h2>
 <!---
 > **譯者註** 20230415初步以ChatGPT-4完成翻譯，以下內容待編修。 --->
-<p>好的，現在讓我們重新繪製散佈圖，這次會添加一些線條顯示所有觀察值的殘差。當迴歸線的適合度(fittedness)最佳時，每個殘差數值（實心黑線的長度）看起來都非常小且接近，如同 <a href="#fig-fig10-12">圖&nbsp;<span>12.12</span></a> (a) ，但是當迴歸線的適合度不夠好，每個殘差之間的差異就會非常大，可以從 <a href="#fig-fig10-12">圖&nbsp;<span>12.12</span></a> (b)看到這樣的差別。嗯，也許在尋找一條最好的迴歸模型時，我們會希望得到<em>儘可能小</em>的殘差。是的，這確實有道理。在統計實務，我們可以說「最適合」的迴歸線是具有所有殘差最小的線。或者更好的說法是，因為統計學家似乎喜歡將所有數值都用<em>平方(sqaured)</em>處理，也就是說：</p>
+<p>好的，現在讓我們重新繪製散佈圖，這次會添加一些線條顯示所有觀察值的殘差。當迴歸線的適合度(fittedness)最佳時，每個殘差數值（實心黑線的長度）看起來都非常小且接近，如同 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-12">圖&nbsp;<span>13.12</span></a> (a) ，但是當迴歸線的適合度不夠好，每個殘差之間的差異就會非常大，可以從 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-12">圖&nbsp;<span>13.12</span></a> (b)看到這樣的差別。嗯，也許在尋找一條最好的迴歸模型時，我們會希望得到<em>儘可能小</em>的殘差。是的，這確實有道理。在統計實務，我們可以說「最適合」的迴歸線是具有所有殘差最小的線。或者更好的說法是，因為統計學家似乎喜歡將所有數值都用<em>平方(sqaured)</em>處理，也就是說：</p>
 <blockquote class="blockquote">
 <p>以資料估計的迴歸係數 <span class="math inline">\(\hat{b}_0\)</span> 和 <span class="math inline">\(\hat{b}_1\)</span> 是殘差平方和最小得到時得到的估計值，我們可以兩者的公式展開寫成 <span class="math inline">\(\sum_i (Y_i - \hat{Y}_i)^2\)</span> 與 <span class="math inline">\(\sum_i \epsilon_i^2\)</span> 。</p>
 </blockquote>
-<!--- Okay, now let's redraw our pictures but this time I'll add some lines to show the size of the residual for all observations. When the regression line is good, our residuals (the lengths of the solid black lines) all look pretty small, as shown in @fig-fig10-12 (a), but when the regression line is a bad one the residuals are a lot larger, as you can see from looking at @fig-fig10-12 (b). Hmm. Maybe what we "want" in a regression model is *small* residuals. Yes, that does seem to make sense. In fact, I think I'll go so far as to say that the "best fitting" regression line is the one that has the smallest residuals. Or, better yet, since statisticians seem to like to take squares of everything why not say that:
+<!--- Okay, now let's redraw our pictures but this time I'll add some lines to show the size of the residual for all observations. When the regression line is good, our residuals (the lengths of the solid black lines) all look pretty small, as shown in @fig-fig12-12 (a), but when the regression line is a bad one the residuals are a lot larger, as you can see from looking at @fig-fig12-12 (b). Hmm. Maybe what we "want" in a regression model is *small* residuals. Yes, that does seem to make sense. In fact, I think I'll go so far as to say that the "best fitting" regression line is the one that has the smallest residuals. Or, better yet, since statisticians seem to like to take squares of everything why not say that:
 
 > The estimated regression coefficients, $\hat{b}_0$ and $\hat{b}_1$, are those that minimise the sum of the squared residuals, which we could either write as $\sum_i (Y_i - \hat{Y}_i)^2$ or as $\sum_i \epsilon_i^2$. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-12" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-12" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.12: 圖(a)展示各觀察值資料點與穿越資料點中心地帶的最佳迴歸線之殘差，圖(b)展示觀察值資料點與最差迴歸線的殘差。前者的殘差總和明顯小於後者。</figcaption>
@@ -896,12 +899,12 @@ At this point, we now have a concrete definition for what counts as our "best" c
 [^correlation-and-linear-regression-6]: Or at least, I'm assuming that it doesn't help most people. But on the off chance that someone reading this is a proper kung fu master of linear algebra (and to be fair, I always have a few of these people in my intro stats class), it will help you to know that the solution to the estimation problem turns out to be $\hat{b} = (X^{'}X)^{-1}X^{'}y$, where $\hat{b}$ is a vector containing the estimated regression coefficients, $X$ is the "design matrix" that contains the predictor variables (plus an additional column containing all ones; strictly $X$ is a matrix of the regressors, but I haven't discussed the distinction yet), and y is a vector containing the outcome variable. For everyone else, this isn't exactly helpful and can be downright scary. However, since quite a few things in linear regression can be written in linear algebra terms, you'll see a bunch of footnotes like this one in this chapter. If you can follow the maths in them, great. If not, ignore it. --->
 <section id="實作線性迴歸模型" class="level3" data-number="12.4.1">
 <h3 data-number="12.4.1" class="anchored" data-anchor-id="實作線性迴歸模型"><span class="header-section-number">12.4.1</span> 實作線性迴歸模型</h3>
-<p>以下是用parenthood.csv 資料檔案執行線性迴歸分析的步驟，請打開 jamovi 的 ‘Regression’ - ‘Linear Regression’ 選單 。接著，將 dani.grump 指定為 ‘Dependent Variable’，dani.sleep 輸入到 ‘Covariates’ 對話框。報表介面將出現如 <a href="#fig-fig10-13">圖&nbsp;<span>12.13</span></a> 的結果，結果顯示截距 <span class="math inline">\(\hat{b}_0 = 125.96\)</span> 和斜率 <span class="math inline">\(\hat{b}_1 = -8.94\)</span>。換言之， <a href="#fig-fig10-11">圖&nbsp;<span>12.11</span></a> 的最適合迴歸線的公式為：</p>
-<!--- To run my linear regression, open up the 'Regression' - 'Linear Regression' analysis in jamovi, using the parenthood.csv data file. Then specify dani.grump as the 'Dependent Variable' and dani.sleep as the variable entered in the 'Covariates' box. This gives the results shown in @fig-fig10-13, showing an intercept $\hat{b}_0 = 125.96$ and the slope $\hat{b}_1 = -8.94$. In other words, the best fitting regression line that I plotted in @fig-fig10-11 has this formula: --->
+<p>以下是用parenthood.csv 資料檔案執行線性迴歸分析的步驟，請打開 jamovi 的 ‘Regression’ - ‘Linear Regression’ 選單 。接著，將 dani.grump 指定為 ‘Dependent Variable’，dani.sleep 輸入到 ‘Covariates’ 對話框。報表介面將出現如 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-13">圖&nbsp;<span>13.13</span></a> 的結果，結果顯示截距 <span class="math inline">\(\hat{b}_0 = 125.96\)</span> 和斜率 <span class="math inline">\(\hat{b}_1 = -8.94\)</span>。換言之， <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-11">圖&nbsp;<span>13.11</span></a> 的最適合迴歸線的公式為：</p>
+<!--- To run my linear regression, open up the 'Regression' - 'Linear Regression' analysis in jamovi, using the parenthood.csv data file. Then specify dani.grump as the 'Dependent Variable' and dani.sleep as the variable entered in the 'Covariates' box. This gives the results shown in @fig-fig12-13, showing an intercept $\hat{b}_0 = 125.96$ and the slope $\hat{b}_1 = -8.94$. In other words, the best fitting regression line that I plotted in @fig-fig12-11 has this formula: --->
 <p><span class="math display">\[\hat{Y}_i=125.96+(-8.94 X_i)\]</span></p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-13" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-13" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-13.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.13: jamovi的線性迴歸分析示範畫面。</figcaption>
@@ -963,11 +966,11 @@ Multiple regression is conceptually very simple. All we do is add more terms to 
 
 </div>
 </div>
-<p><code>dani.sleep</code>的係數值非常大，表示每少睡一個小時，我會變得更沮喪。然而，<code>baby.sleep</code>的係數值非常小，表示我的兒子睡多少其實無關緊要。就我的煩躁程度而言，重要的是我睡多少。為了讓您對這個多元迴歸模型有所了解， <a href="#fig-fig10-14">圖&nbsp;<span>12.14</span></a> 是一幅三維圖，包括所有三個變項以及迴歸模型本身。</p>
-<!--- The coefficient associated with dani.sleep is quite large, suggesting that every hour of sleep I lose makes me a lot grumpier. However, the coefficient for baby.sleep is very small, suggesting that it doesn't really matter how much sleep my son gets. What matters as far as my grumpiness goes is how much sleep I get. To get a sense of what this multiple regression model looks like, @fig-fig10-14 shows a 3D plot that plots all three variables, along with the regression model itself. --->
+<p><code>dani.sleep</code>的係數值非常大，表示每少睡一個小時，我會變得更沮喪。然而，<code>baby.sleep</code>的係數值非常小，表示我的兒子睡多少其實無關緊要。就我的煩躁程度而言，重要的是我睡多少。為了讓您對這個多元迴歸模型有所了解， <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-14">圖&nbsp;<span>13.14</span></a> 是一幅三維圖，包括所有三個變項以及迴歸模型本身。</p>
+<!--- The coefficient associated with dani.sleep is quite large, suggesting that every hour of sleep I lose makes me a lot grumpier. However, the coefficient for baby.sleep is very small, suggesting that it doesn't really matter how much sleep my son gets. What matters as far as my grumpiness goes is how much sleep I get. To get a sense of what this multiple regression model looks like, @fig-fig12-14 shows a 3D plot that plots all three variables, along with the regression model itself. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-14" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-14" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-14.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.14: 這張立體視覺圖以三個維度展示多元迴歸模型。此模型有兩個預測變項， <code>dani.sleep</code> 和 <code>baby.sleep</code>，結果變項是 <code>dani.grump</code>，這三個變項構成三維空間。每筆資料都是這個空間中的一個點。就像簡單線性迴歸模型在二維散佈圖形成一條線一樣，多元迴歸模型在三維空間構成一個平面。估計迴歸係數，就是找到一個盡可能靠近所有資料點的平面。</figcaption>
@@ -1070,10 +1073,10 @@ An obvious question then is whether you should report $R^2$ or adjusted $R^2$ . 
 </section>
 <section id="sec-jamovi-regression-hypothesis-testing" class="level3" data-number="12.7.3">
 <h3 data-number="12.7.3" class="anchored" data-anchor-id="sec-jamovi-regression-hypothesis-testing"><span class="header-section-number">12.7.3</span> 用 jamovi 執行假設檢定</h3>
-<p>要計算以上介紹的統計量數，只需要在jamovi迴歸模組選單勾選對應的選項。要選擇的選項如同 <a href="#fig-fig10-15">圖&nbsp;<span>12.15</span></a> 的示範，會得到一系列有用的報表輸出。</p>
+<p>要計算以上介紹的統計量數，只需要在jamovi迴歸模組選單勾選對應的選項。要選擇的選項如同 <a href="#fig-fig12-15">圖&nbsp;<span>12.15</span></a> 的示範，會得到一系列有用的報表輸出。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-15" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-15" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-15.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.15: jamovi示範畫面，顯示一個多元線性迴歸分析，請留意其中勾選的選項</figcaption>
@@ -1116,17 +1119,17 @@ In any case, this t-statistic can be interpreted in the same way as the t-statis
 
 ### Running the hypothesis tests in jamovi
 
-To compute all of the statistics that we have talked about so far, all you need to do is make sure the relevant options are checked in jamovi and then run the regression. If we do that, as in @fig-fig10-15, we get a whole bunch of useful output.
+To compute all of the statistics that we have talked about so far, all you need to do is make sure the relevant options are checked in jamovi and then run the regression. If we do that, as in @fig-fig12-15, we get a whole bunch of useful output.
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![A jamovi screenshot showing a multiple linear regression analysis, with some useful options checked](images/fig12-15.png){#fig-fig10-15eng fig-align='left' width=80%}
+![A jamovi screenshot showing a multiple linear regression analysis, with some useful options checked](images/fig12-15.png){#fig-fig12-15eng fig-align='left' width=80%}
 :::
 :::
 
 
-The 'Model Coefficients' at the bottom of the jamovi analysis results shown in @fig-fig10-15 provides the coefficients of the regression model. Each row in this table refers to one of the coefficients in the regression model. The first row is the intercept term, and the later ones look at each of the predictors. The columns give you all of the relevant information. The first column is the actual estimate of $b$ (e.g., $125.97$ for the intercept, and -8.95 for the dani.sleep predictor). The second column is the standard error estimate $\hat{\sigma}_b$. The third and fourth columns provide the lower and upper values for the 95% confidence interval around the b estimate (more on this later). The fifth column gives you the t-statistic, and it's worth noticing that in this table $t=\frac{\hat{b}} {se({\hat{b}})}$ every time. Finally, the last column gives you the actual p-value for each of these tests.[^correlation-and-linear-regression-12]
+The 'Model Coefficients' at the bottom of the jamovi analysis results shown in @fig-fig12-15 provides the coefficients of the regression model. Each row in this table refers to one of the coefficients in the regression model. The first row is the intercept term, and the later ones look at each of the predictors. The columns give you all of the relevant information. The first column is the actual estimate of $b$ (e.g., $125.97$ for the intercept, and -8.95 for the dani.sleep predictor). The second column is the standard error estimate $\hat{\sigma}_b$. The third and fourth columns provide the lower and upper values for the 95% confidence interval around the b estimate (more on this later). The fifth column gives you the t-statistic, and it's worth noticing that in this table $t=\frac{\hat{b}} {se({\hat{b}})}$ every time. Finally, the last column gives you the actual p-value for each of these tests.[^correlation-and-linear-regression-12]
 
 [^correlation-and-linear-regression-12]: Note that, although jamovi has done multiple tests here, it hasn't done a Bonferroni correction or anything (see @sec-Comparing-several-means-one-way-ANOVA). These are standard one-sample t-tests with a two-sided alternative. If you want to make corrections for multiple tests, you need to do that yourself.
 
@@ -1140,17 +1143,17 @@ The only thing that the coefficients table itself doesn't list is the degrees of
 <h3 data-number="12.8.1" class="anchored" data-anchor-id="迴歸係數的信賴區間"><span class="header-section-number">12.8.1</span> 迴歸係數的信賴區間</h3>
 <p>就像任何人口變項一樣，迴歸係數b無法從樣本資料精確地估算出來；這就是為什麼需要使用假設檢定的一部分原因。有鑑於此，信賴區間能夠呈現捕捉<span class="math inline">\(b\)</span>真實數值的不確定性，是非常有用的工具。這在嘗試找出變項<span class="math inline">\(X\)</span>與變項<span class="math inline">\(Y\)</span>之間的關係強度的研究問題尤其有用，因為在這些研究裡，主要關注的是迴歸權重<span class="math inline">\(b\)</span>(regression weight)。</p>
 <p>[額外技術細節<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>]</p>
-<p>在jamovi的操作界面，我們可以指定“95％信賴區間”，如 <a href="#fig-fig10-15">圖&nbsp;<span>12.15</span></a> 的示範，如果想要更嚴謹的話，我們可以輕鬆選擇另一種區間，例如“99％信賴區間”。</p>
+<p>在jamovi的操作界面，我們可以指定“95％信賴區間”，如 <a href="#fig-fig12-15">圖&nbsp;<span>12.15</span></a> 的示範，如果想要更嚴謹的話，我們可以輕鬆選擇另一種區間，例如“99％信賴區間”。</p>
 </section>
 <section id="標準化迴歸係數的計算方法" class="level3" data-number="12.8.2">
 <h3 data-number="12.8.2" class="anchored" data-anchor-id="標準化迴歸係數的計算方法"><span class="header-section-number">12.8.2</span> 標準化迴歸係數的計算方法</h3>
 <p>有經驗的使用者可能還會計算“標準化”迴歸係數，通常報告中用<span class="math inline">\(\beta\)</span>表示。標準化係數的基本原理是：在很多情況下，每個變項的測量尺度是不一樣的。例如，如果有個迴歸模型要探討受教育程度（受教育年數）和收入作為預測變項，來預測受測者的智力測驗得分。顯然，受教育程度和收入的計量尺度是不相同的。一般人的教育年限可能只有10多年，而收入差距可能高達10,000美元（或更多）。計量單位對迴歸係數有很大影響，只有預測變項和依變項的計量單位一致時，迴歸係數才具有意義，否則比較不同預測變項的迴歸係數將會非常困難。然而，有時我們希望能比較不同變項的係數。具體來說，研究者最想找到那些預測變項與依變項之間相關性最強力的標準衡量指標，這就是為什麼有<strong>標準化迴歸係數</strong>。</p>
 <p><strong>標準化迴歸係數</strong>的思路很簡單；如果在執行迴歸分析之前將所有變項轉換為z分數，標準化係數就是您會得到的係數。<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>這裡的想法是，將所有預測變項數值轉換為z分數，使得迴歸模型的生成的機率分佈具有可對應的比例，進而消除不同尺度的變項產生的問題。無論變項的原始尺度是什麼，<span class="math inline">\(\beta\)</span>值為1都代表增加預測變項的1個標準差，就是導致依變項的對應數值增加1個標準差。因此，如果預測變項A的<span class="math inline">\(\beta\)</span>絕對值大於預測變項B的<span class="math inline">\(\beta\)</span>，研究者至少能主張預測變項A與依變項的相關性更強。值得小心的是，對於所有變項變異基本相同的這個條件 ，其實非常依賴“1個標準差變化”，並不是什麼形式的變項都可見。</p>
 <p>[額外技術細節<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>]</p>
-<p>為了讓簡化分析程序，只要在jamovi模組選單裡，從”Model Coefficients”的選項中勾選”Standardized estimate”，就能計算<span class="math inline">\(\beta\)</span>，如同 <a href="#fig-fig10-16">圖&nbsp;<span>12.16</span></a> 的示範。</p>
+<p>為了讓簡化分析程序，只要在jamovi模組選單裡，從”Model Coefficients”的選項中勾選”Standardized estimate”，就能計算<span class="math inline">\(\beta\)</span>，如同 <a href="#fig-fig12-16">圖&nbsp;<span>12.16</span></a> 的示範。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-16" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-16" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-16.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;12.16: 多元線性迴歸的標準化係數及其95％信賴區間</figcaption>
@@ -1169,7 +1172,7 @@ Like any population parameter, the regression coefficients b cannot be estimated
 
 [^correlation-and-linear-regression-13]: Fortunately, confidence intervals for the regression weights can be constructed in the usual fashion $CI(b)=\hat{b} \pm (t_{crit} \times SE(\hat{b}))$ where $se(\hat{b})$ is the standard error of the regression coefficient, and t_crit is the relevant critical value of the appropriate t distribution. For instance, if it's a 95% confidence interval that we want, then the critical value is the $97.5$th quantile of a t distribution with $N -K -1$ degrees of freedom. In other words, this is basically the same approach to calculating confidence intervals that we've used throughout.
 
-In jamovi we had already specified the '95% Confidence interval' as shown in @fig-fig10-15, although we could easily have chosen another value, say a '99% Confidence interval' if that is what we decided on.
+In jamovi we had already specified the '95% Confidence interval' as shown in @fig-fig12-15, although we could easily have chosen another value, say a '99% Confidence interval' if that is what we decided on.
 
 ### 標準化迴歸係數的計算方法
 
@@ -1183,12 +1186,12 @@ The basic idea is quite simple; the standardised coefficients are the coefficien
 
 [^correlation-and-linear-regression-15]: Leaving aside the interpretation issues, let's look at how it's calculated. What you could do is standardise all the variables yourself and then run a regression, but there's a much simpler way to do it. As it turns out, the $\beta$ coefficient for a predictor $X$ and outcome $Y$ has a very simple formula, namely $\beta_X=b_X \times \frac{\sigma_X}{\sigma_Y}$ where $\sigma_X$ is the standard deviation of the predictor, and σY is the standard deviation of the outcome variable Y. This makes matters a lot simpler.
 
-To make things even simpler, jamovi has an option that computes the $\beta$ coefficients for you using the 'Standardized estimate' checkbox in the 'Model Coefficients' options, see results in @fig-fig10-16.
+To make things even simpler, jamovi has an option that computes the $\beta$ coefficients for you using the 'Standardized estimate' checkbox in the 'Model Coefficients' options, see results in @fig-fig12-16.
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![Standardised coefficients, with 95% confidence intervals, for multiple linear regression](images/fig12-16.png){#fig-fig10-16eng fig-align='left' width=80%}
+![Standardised coefficients, with 95% confidence intervals, for multiple linear regression](images/fig12-16.png){#fig-fig12-16eng fig-align='left' width=80%}
 :::
 :::
 
@@ -1207,8 +1210,8 @@ These results clearly show that the dani.sleep variable has a much stronger effe
 </ul>
 <p>所以，要執行有效的線性迴歸分析，首先要檢查是不是符合這四個適用條件 （剛好可以縮寫成<strong>LINE</strong>）。此外，還有一些需要檢查的條件 ：</p>
 <ul>
-<li><p>沒有“不良”極端值。其實這並非必要的適用條件，但是極端值可能造成潛在的問題。就是迴歸模型雖然不會因為一兩個異常極端值，造成不符合上述任何一條適用條件(譯註~特別是<strong>線性</strong>)，但是在某些情況下會引起對模型的適當性和資料可靠性的質疑。詳細說明及示範請見 <a href="#sec-three-kinds-of-anomalous-data"><span>小單元&nbsp;12.10.2</span></a> <em>三種異常資料</em>。</p></li>
-<li><p>預測變項之間無相關性。執行多元迴歸模型分析時，我們不希望預測變項彼此間的存在高度相關。這並非迴歸模型的“必要”適用條件，但在統計實務是必需的。預測變項之間相關性過強（通常稱為“共線性”）可能會造成錯誤解讀分析結果。詳細說明及示範請見 <a href="#sec-check-regression-collinearity"><span>小單元&nbsp;12.10.4</span></a> <em>檢查共線性</em>。</p></li>
+<li><p>沒有“不良”極端值。其實這並非必要的適用條件，但是極端值可能造成潛在的問題。就是迴歸模型雖然不會因為一兩個異常極端值，造成不符合上述任何一條適用條件(譯註~特別是<strong>線性</strong>)，但是在某些情況下會引起對模型的適當性和資料可靠性的質疑。詳細說明及示範請見 <span class="quarto-unresolved-ref">?sec-three-kinds-of-anomalous-data</span> <em>三種異常資料</em>。</p></li>
+<li><p>預測變項之間無相關性。執行多元迴歸模型分析時，我們不希望預測變項彼此間的存在高度相關。這並非迴歸模型的“必要”適用條件，但在統計實務是必需的。預測變項之間相關性過強（通常稱為“共線性”）可能會造成錯誤解讀分析結果。詳細說明及示範請見 <a href="#sec-check-regression-collinearity"><span>小單元&nbsp;12.10.5</span></a> <em>檢查共線性</em>。</p></li>
 </ul>
 <!--- The linear regression model that I've been discussing relies on several assumptions. In [Model checking] we'll talk a lot more about how to check that these assumptions are being met, but first let's have a look at each of them.
 
@@ -1238,58 +1241,6 @@ So, we have four main assumptions for linear regression (that neatly form the ac
 <p>[額外技術細節<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>]</p>
 <p>第三種殘差是<strong>學生化殘差</strong>（也稱為 “剃刀切割殘差”），它們比標準化殘差更高級。同樣，目的是將普通殘差除以某個量，以估計殘差的某種標準化概念。<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></p>
 <p>在繼續之前，我應該指出，即使這些殘差是幾乎所有迴歸診斷的核心，你通常也不需要自己獲得這些殘差。大多數時候，提供診斷或假設檢查的各種選項將為您處理這些計算。即使如此，知道如何實際自己獲得這些東西，以防你需要進行一些非標準操作，總是很好的。</p>
-</section>
-<section id="sec-three-kinds-of-anomalous-data" class="level3" data-number="12.10.2">
-<h3 data-number="12.10.2" class="anchored" data-anchor-id="sec-three-kinds-of-anomalous-data"><span class="header-section-number">12.10.2</span> 三種異常資料</h3>
-<p>使用線性迴歸模型時，您可能會遇到一個危險，那就是您的分析可能會對一小部分”不尋常”或”異常”的觀測值過於敏感。我之前在 <a href="05-Drawing-graphs.html#sec-Using-box-plots-to-detect-outliers"><span>小單元&nbsp;5.2.3</span></a> 的上下文中討論過這個想法，當時是在討論用 ‘探索’ - ‘描述統計’ 下的 boxplot 選項自動識別的異常值，但這次我們需要更精確。在線性迴歸的背景下，有三個概念上不同的方式可以將觀測值稱為”異常”。這三者都很有趣，但對你的分析有很不同的影響。</p>
-<p>第一種不尋常的觀測值是<strong>異常值</strong>。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。 <a href="#fig-fig10-17">圖&nbsp;<span>12.17</span></a> 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，<span class="math inline">\(\epsilon_i^*\)</span>，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。</p>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div id="fig-fig10-17" class="quarto-figure quarto-figure-left anchored">
-<figure class="figure">
-<p><img src="images/fig12-17.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.17: 異常值的示例。虛線繪製了不包括異常觀測值的迴歸線，以及相應的殘差（即Studentised殘差）。實線顯示了包含異常觀測值的迴歸線。異常值在結果值（y軸位置）上具有不尋常的值，但在預測變項（x軸位置）上並不不尋常，並且距離迴歸線很遠</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>觀測值不尋常的第二種方式是具有高<strong>槓桿作用(leverage)</strong>，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如 <a href="#fig-fig10-18">圖&nbsp;<span>12.18</span></a> 所示。觀測值的槓桿作用通常用帽子值表示，通常寫作<span class="math inline">\(h_i\)</span>。帽子值的公式相當複雜<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>，但它的解釋並不複雜：<span class="math inline">\(h_i\)</span>是衡量第i個觀測值“控制”迴歸線走向的程度。</p>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div id="fig-fig10-18" class="quarto-figure quarto-figure-left anchored">
-<figure class="figure">
-<p><img src="images/fig12-18.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.18: 高槓桿點的示例。在這種情況下，異常觀測值在預測變項（x軸）和結果變項（y軸）方面都不尋常，但這種不尋常性與其他觀測值之間存在的相關性模式高度一致。觀測值非常接近迴歸線並且不會使其變形</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>一般來說，如果觀測值在預測變項方面遠離其他觀測值，它將具有較大的帽子值（作為粗略指南，高槓桿是指帽子值大於平均值的2-3倍；注意帽子值的總和被限制為等於<span class="math inline">\(K + 1\)</span>）。高槓桿點也值得更詳細地查看，但除非它們也是異常值，否則它們不太可能引起擔憂。</p>
-<p>這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的<strong>影響力(influence)</strong>。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在 <a href="#fig-fig10-19">圖&nbsp;<span>12.19</span></a> 中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為<strong>Cook’s distance</strong>的衡量指標來度量影響力。<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div id="fig-fig10-19" class="quarto-figure quarto-figure-left anchored">
-<figure class="figure">
-<p><img src="images/fig12-19.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.19: 高影響力點的示例。在這種情況下，異常觀測值在預測變項（x軸）上非常不尋常，並且距離迴歸線很遠。因此，即使在這種情況下，異常觀測值在結果變項（y軸）上完全正常，迴歸線也會受到很大影響</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>要具有較大的Cook’s距離，觀測值必須是相當大的異常值並具有高槓桿。作為粗略指南，大於1的Cook’s距離通常被認為很大（這是我通常用作快速而簡單的規則）。</p>
-<p>在jamovi中，可以通過單擊’Assumption Checks’ - ’Data Summary’選項下的’Cook’s Distance’複選框來計算有關Cook’s距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如 <a href="#fig-fig10-20">圖&nbsp;<span>12.20</span></a> 所示的結果。</p>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div id="fig-fig10-20" class="quarto-figure quarto-figure-left anchored">
-<figure class="figure">
-<p><img src="images/fig12-20.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.20: jamovi輸出顯示Cook’s距離統計表格</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>您可以看到，在這個例子中，平均Cook’s距離值為<span class="math inline">\(0.01\)</span>，範圍從<span class="math inline">\(0.00\)</span>到<span class="math inline">\(0.11\)</span>，因此這與前面提到的指標相去甚遠，即大於1的Cook’s距離被認為很大。</p>
-<p>接下來明顯要問的問題是，如果您確實擁有很大的Cook’s距離值，您應該怎麼辦？一如既往，沒有固定不變的規則。可能首先要做的是嘗試運行迴歸，排除具有最大Cook’s距離的異常值<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>，看看模型性能和迴歸係數會發生什麼變化。如果它們確實有很大不同，那就該開始深入研究您的資訊集和您在運行研究時無疑在抄寫的筆記。嘗試找出該點為何如此不同。如果您開始確信這個資訊點嚴重扭曲了您的結果，那麼您可能會考慮將其排除在外，但除非您對於這個特定案例與其他案例有本質上的不同並因此應該單獨處理，否則這種做法是不理想的。</p>
 <!--- 大多數迴歸診斷都圍繞著**殘差**的概念。在某種程度上，這很有道理：迴歸模型的目標是找到一條能夠最小化殘差的線，因此我們當然會關注殘差的性質。然而，當我們討論殘差時，其實有很多不同類型的殘差可以關注，以下是其中三個最重要的類型：
 
 1. 原始殘差：這些是最簡單的殘差，也是我們迄今為止討論的唯一一種殘差。對於每個觀察值 i，原始殘差 e_i 被定義為觀察值 y_i 與預測值 ŷ_i 之間的差異。
@@ -1336,50 +1287,50 @@ Before moving on, I should point out that you don't often need to obtain these r
 
 One danger that you can run into with linear regression models is that your analysis might be disproportionately sensitive to a smallish number of "unusual" or "anomalous" observations. I discussed this idea previously in @sec-Using-box-plots-to-detect-outliers in the context of discussing the outliers that get automatically identified by the boxplot option under 'Exploration' - 'Descriptives', but this time we need to be much more precise. In the context of linear regression, there are three conceptually distinct ways in which an observation might be called "anomalous". All three are interesting, but they have rather different implications for your analysis.
 
-The first kind of unusual observation is an **outlier**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in @fig-fig10-17. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, $\epsilon_i^*$. Outliers are interesting: a big outlier might correspond to junk data, e.g., the variables might have been recorded incorrectly in the data set, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case and try to find out why it's so different.
+The first kind of unusual observation is an **outlier**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in @fig-fig12-17. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, $\epsilon_i^*$. Outliers are interesting: a big outlier might correspond to junk data, e.g., the variables might have been recorded incorrectly in the data set, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case and try to find out why it's so different.
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line](images/fig12-17.png){#fig-fig10-17eng fig-align='left' width=80%}
+![An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line](images/fig12-17.png){#fig-fig12-17eng1 fig-align='left' width=80%}
 :::
 :::
 
 
-The second way in which an observation can be unusual is if it has high **槓桿作用(leverage)**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig10-18. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^correlation-and-linear-regression-18] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
+The second way in which an observation can be unusual is if it has high **槓桿作用(leverage)**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig12-18. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^correlation-and-linear-regression-18] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
 
 [^correlation-and-linear-regression-18]: Again, for the linear algebra fanatics: the "hat matrix" is defined to be that matrix $H$ that converts the vector of observed values $y$ into a vector of fitted values $\hat{y}$, such that $\hat{y} = Hy$. The name comes from the fact that this is the matrix that "puts a hat on y". The hat value of the i-th observation is the i-th diagonal element of this matrix (so technically I should be writing it as $h_{ii}$ rather than $h_i$). Oh, and in case you care, here's how it's calculated: $H = X(X^{'}X)^{1}X^{'}$. Pretty, isn't it?
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations. The observation falls very close to the regression line and does not distort it](images/fig12-18.png){#fig-fig10-18eng fig-align='left' width=80%}
+![An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations. The observation falls very close to the regression line and does not distort it](images/fig12-18.png){#fig-fig12-18eng1 fig-align='left' width=80%}
 :::
 :::
 
 
 In general, if an observation lies far away from the other ones in terms of the predictor variables, it will have a large hat value (as a rough guide, high leverage is when the hat value is more than 2-3 times the average; and note that the sum of the hat values is constrained to be equal to $K + 1$). High leverage points are also worth looking at in more detail, but they're much less likely to be a cause for concern unless they are also outliers.
 
-This brings us to our third measure of unusualness, the **影響力(influence)** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig10-19. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^correlation-and-linear-regression-19]
+This brings us to our third measure of unusualness, the **影響力(influence)** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig12-19. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^correlation-and-linear-regression-19]
 
 [^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ Notice that this is a multiplication of something that measures the outlier-ness of the observation (the bit on the left), and something that measures the leverage of the observation (the bit on the right).
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)](images/fig12-19.png){#fig-fig10-19eng fig-align='left' width=80%}
+![An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)](images/fig12-19.png){#fig-fig12-19eng fig-align='left' width=80%}
 :::
 :::
 
 
 In order to have a large Cook's distance an observation must be a fairly substantial outlier and have high leverage. As a rough guide, Cook's distance greater than 1 is often considered large (that's what I typically use as a quick and dirty rule).
 
-In jamovi, information about Cook's distance can be calculated by clicking on the 'Cook's Distance' checkbox in the 'Assumption Checks' - 'Data Summary' options. When you do this, for the multiple regression model we have been using as an example in this chapter, you get the results as shown in @fig-fig10-20.
+In jamovi, information about Cook's distance can be calculated by clicking on the 'Cook's Distance' checkbox in the 'Assumption Checks' - 'Data Summary' options. When you do this, for the multiple regression model we have been using as an example in this chapter, you get the results as shown in @fig-fig12-20.
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![jamovi output showing the table for the Cook's distance statistics](images/fig12-20.png){#fig-fig10-20eng fig-align='left' width=80%}
+![jamovi output showing the table for the Cook's distance statistics](images/fig12-20.png){#fig-fig12-20eng fig-align='left' width=80%}
 :::
 :::
 
@@ -1390,115 +1341,249 @@ An obvious question to ask next is, if you do have large values of Cook's distan
 
 [^correlation-and-linear-regression-20]: although currently there isn't a very easy way to do this in jamovi, so a more powerful regression program such as the 'car' package in R would be better for this more advanced analysis --->
 </section>
-<section id="檢測殘差常態性" class="level3" data-number="12.10.3">
-<h3 data-number="12.10.3" class="anchored" data-anchor-id="檢測殘差常態性"><span class="header-section-number">12.10.3</span> 檢測殘差常態性</h3>
-<p>像我們在本書中討論過的許多統計工具一樣，迴歸模型依賴於常態性假設。在這種情況下，我們假設殘差呈常態分布。首先，我們可以通過 ‘Assumption Checks’ - ‘Assumption Checks’ - ‘Q-Q plot of residuals’ 選項繪製一個 QQ 圖。輸出顯示在 <a href="#fig-fig10-21">圖&nbsp;<span>12.21</span></a>，顯示了標準化殘差作為其根據迴歸模型的理論分位數的函數的圖。</p>
+<section id="sec-checking-liniearity-relationshp" class="level3" data-number="12.10.2">
+<h3 data-number="12.10.2" class="anchored" data-anchor-id="sec-checking-liniearity-relationshp"><span class="header-section-number">12.10.2</span> 檢測變項的線性關係</h3>
+<p>我們應該檢查預測變項和結果之間關係的線性。有幾種不同的方法可以檢查這一點。首先,繪製結果變項的預測值<span class="math inline">\(\hat{Y}_i\)</span>和觀察值<span class="math inline">\(Y_i\)</span>之間的關係總是有幫助的,如 <a href="#fig-fig12-17">圖&nbsp;<span>12.17</span></a> 所示。為了在jamovi中繪製這個圖,我們將預測值保存到數據集,然後繪製觀察值與預測值(擬合值)的散點圖。這給您一種”大局觀” - 如果這個圖看起來大致呈線性,那麼我們可能做得不算太差(儘管這並不意味著沒有問題)。然而,如果您能在這裡看到明顯偏離線性的地方,那麼這有力地表明您需要做出一些改變。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-21" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-17" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-21.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.21: 模型理論分位數與標準化殘差的分位數之間的圖，由 jamovi 生成</figcaption>
+<p><img src="images/fig12-17.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.17: jamovi 繪製的預測值與結果變項觀察值的對照圖。我們希望在這裡看到一條(近似)直線。這看起來相當不錯,表明沒有任何嚴重的錯誤。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>我們還應該檢查擬合值和殘差本身之間的關係。我們可以使用 ‘Residuals Plots’ 選項讓 jamovi 做到這一點，該選項為每個預測變項、結果變項以及擬合值與殘差提供了散點圖，見 <a href="#fig-fig10-22">圖&nbsp;<span>12.22</span></a>。在這些圖中，我們要尋找的是點的分佈相對均勻，沒有明顯的聚集或圖案。觀察這些圖，沒有什麼特別令人擔憂的，因為點在整個圖中分佈得相當均勻。在圖 (b) 中可能存在一點非均勻性，但偏差不大，可能不值得擔憎。</p>
+<p>無論如何,為了獲得更詳細的圖景,查看預測值與殘差本身之間的關係通常更有意義。同樣,在jamovi中,您可以將殘差保存到數據集,然後繪製預測值與殘差值的散點圖,如 <a href="#fig-fig12-18">圖&nbsp;<span>12.18</span></a> 所示。正如您所見,它不僅繪製了顯示預測值與殘差的散點圖,還可以在數據中繪製一條線,顯示兩者之間的關係。理想情況下,這應該是一條筆直的、完全水平的線。在實踐中,我們尋求一條合理筆直或平坦的線。這是一個判斷的問題。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-22" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-18" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-22.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.22: 由 jamovi 生成的殘差圖</figcaption>
+<p><img src="images/fig12-18.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.18: jamovi 繪製的預測值與殘差的對照圖,其中一條線顯示了兩者之間的關係。如果這條線是水平且(近似)筆直的,那麼我們可以合理地確信,所有”預測值”的”平均殘差”或多或少是相同的。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>如果我們擔憂的話，那麼在很多情況下解決這個問題（以及其他許多問題）的方法是對一個或多個變項進行轉換。我們在 <a href="06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable"><span>小單元&nbsp;6.3</span></a> 中討論了變項轉換的基本知識，但我想特別提一下我之前沒有完全解釋的一個額外可能性：Box-Cox 轉換。Box-Cox 函數相當簡單，並且被廣泛使用。<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></p>
+<p>通過在jamovi的迴歸分析”假設檢驗”選項中勾選”殘差圖”,可以生成同一圖的更高級版本。這些不僅可用於檢查線性,還可用於檢查常態性和方差相等性假設,我們在 <a href="#sec-Checking-the-normality-of-the-residuals"><span>小單元&nbsp;12.10.3</span></a> 中更詳細地討論了這些。此選項不僅繪製了比較預測值與殘差的圖,還對每個單獨的預測變項都做了相同的繪圖。</p>
+<!---
+### Checking the linearity of the relationship
+
+We should check for the linearity of the relationships between the predictors and the outcomes. There's a few different things that you might want to do in order to check this. Firstly, it never hurts to just plot the relationship between the predicted values $\hat{Y}_i$ and the observed values $Y_i$ for the outcome variable, as illustrated in @fig-fig12-17. To draw this in jamovi we saved the predicted values to the dataset, and then drew a scatterplot of the observed against the predicted (fitted) values. This gives you a kind of "big picture view" - if this plot looks approximately linear, then we're probably not doing too badly (though that's not to say that there aren't problems). However, if you can see big departures from linearity here, then it strongly suggests that you need to make some changes.
+
+
+::: {.cell layout-align="left"}
+::: {.cell-output-display}
+![jamovi plot of the predicted values against the observed values of the outcome variable. A straight(-ish) line is what we're hoping to see here. This looks pretty good, suggesting that there's nothing grossly wrong](images/fig12-17.png){#fig-fig12-17eng2 fig-align='left' width=80%}
+:::
+:::
+
+
+In any case, in order to get a more detailed picture it's often more informative to look at the relationship between the predicted values and the residuals themselves. Again, in jamovi you can save the residuals to the dataset and then draw a scatterplot of the predicted values against the residual values, as in @fig-fig12-18. As you can see, not only does it draw the scatterplot showing the predicted value against the residuals, you can also plot a line through the data that shows the relationship between the two. Ideally, this should be a straight, perfectly horizontal line. In practice, we're looking for a reasonably straight or flat line. This is a matter of judgement.
+
+
+::: {.cell layout-align="left"}
+::: {.cell-output-display}
+![jamovi plot of the predicted values against the residuals, with a line showing the relationship between the two. If this is horizontal and straight(-ish), then we can feel reasonably confident that the "average residual" for all "predicted values" is more or less the same.](images/fig12-18.png){#fig-fig12-18eng2 fig-align='left' width=80%}
+:::
+:::
+
+
+Somewhat more advanced versions of the same plot is produced by checking 'Residuals plots' in the regression analysis 'Assumption checks' options in jamovi. These are useful not only for checking linearity, but also for checking normality and equality of variance assumptions, and we look at these in more detail in @sec-Checking-the-normality-of-the-residuals. This option not only draws plots comparing the predicted values to the residuals, it does so for each individual predictor.--->
+</section>
+<section id="sec-Checking-the-normality-of-the-residuals" class="level3" data-number="12.10.3">
+<h3 data-number="12.10.3" class="anchored" data-anchor-id="sec-Checking-the-normality-of-the-residuals"><span class="header-section-number">12.10.3</span> 檢測殘差常態性</h3>
+<p>像我們在本書中討論過的許多統計工具一樣，迴歸模型依賴於常態性假設。在這種情況下，我們假設殘差呈常態分布。首先，我們可以通過 ‘Assumption Checks’ - ‘Assumption Checks’ - ‘Q-Q plot of residuals’ 選項繪製一個 QQ 圖。輸出顯示在 <a href="#fig-fig12-19">圖&nbsp;<span>12.19</span></a> ，顯示了標準化殘差作為其根據迴歸模型的理論分位數的函數的圖。</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig12-19" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="images/fig12-19.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.19: 模型理論分位數與標準化殘差的分位數之間的圖，由 jamovi 生成</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>我們還應該檢查擬合值和殘差本身之間的關係。我們可以使用 ‘Residuals Plots’ 選項讓 jamovi 做到這一點，該選項為每個預測變項、結果變項以及擬合值與殘差提供了散點圖，見 <a href="#fig-fig12-20">圖&nbsp;<span>12.20</span></a> 。在這些圖中，我們要尋找的是點的分佈相對均勻，沒有明顯的聚集或圖案。觀察這些圖，沒有什麼特別令人擔憂的，因為點在整個圖中分佈得相當均勻。在圖 (b) 中可能存在一點非均勻性，但偏差不大，可能不值得擔憎。</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig12-20" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="images/fig12-20.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.20: 由 jamovi 生成的殘差圖</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>如果我們擔憂的話，那麼在很多情況下解決這個問題（以及其他許多問題）的方法是對一個或多個變項進行轉換。我們在 <a href="06-Pragmatic-matters.html#sec-Transforming-and-recoding-a-variable"><span>小單元&nbsp;6.3</span></a> 中討論了變項轉換的基本知識，但我想特別提一下我之前沒有完全解釋的一個額外可能性：Box-Cox 轉換。Box-Cox 函數相當簡單，並且被廣泛使用。<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></p>
 <p>您可以在 jamovi 的 ‘Compute’ 變數屏幕中使用 BOXCOX 函數進行計算。</p>
 </section>
-<section id="sec-check-regression-collinearity" class="level3" data-number="12.10.4">
-<h3 data-number="12.10.4" class="anchored" data-anchor-id="sec-check-regression-collinearity"><span class="header-section-number">12.10.4</span> 檢測共線性</h3>
-<p>在本章中，我將討論的最後一種迴歸診斷方法是使用<strong>方差膨脹因子</strong>（VIF），這對於確定迴歸模型中的預測變項是否彼此相關性過高很有用。模型中每個預測變項 <span class="math inline">\(X_k\)</span> 都有一個相應的方差膨脹因子。<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a></p>
-<p>VIF 的平方根具有很好的解釋性。它告訴您相應的係數 bk 的信賴區間相對於預測變項彼此完全不相關時所期望的值要寬多少。如果您只有兩個預測變項，VIF 值將始終相同，正如我們在 jamovi 的 ‘Regression’ - ‘Assumptions’ 選項中選中 ‘Collinearity’ 後可以看到的那樣。對於 dani.sleep 和 baby.sleep，VIF 均為 1.65。而由於 1.65 的平方根為 1.28，我們可以看到我們兩個預測變項之間的相關性並未造成太大問題。</p>
-<p>為了給出我們可能會遇到具有更大共線性問題的模型的感覺，假設我要運行一個更無趣的迴歸模型，在該模型中，我試圖預測資訊收集的日期，作為資訊集中所有其他變項的函數。要理解這為什麼會有問題，讓我們看一下所有四個變項的相關矩陣（<a href="#fig-fig10-24">圖&nbsp;<span>12.23</span></a>）。</p>
+<section id="sec-check-equality-of-variance" class="level3" data-number="12.10.4">
+<h3 data-number="12.10.4" class="anchored" data-anchor-id="sec-check-equality-of-variance"><span class="header-section-number">12.10.4</span> 檢測變異數同質性</h3>
+<p>我們所討論的迴歸模型都做了一個方差相等性(即同質性)的假設:殘差的方差被假定為常數。要在jamovi中繪製這一點,首先我們需要計算殘差大小的平方根<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>,然後將其對預測值繪圖,如 <a href="#fig-fig12-21">圖&nbsp;<span>12.21</span></a> 所示。請注意,這個圖實際上使用的是標準化殘差,而不是原始殘差,但從我們的角度來看,這並不重要。我們希望在這裡看到的是一條穿過圖中心的筆直水平線。<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-24" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-21" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-25.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.23: 四個資料變項之間的相關係數矩陣</figcaption>
+<p><img src="images/fig12-21.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.21: jamovi繪製的預測值(模型預測)與絕對標準化殘差的平方根的對照圖。此圖用於診斷違反方差同質性的情況。如果方差真的是常數,那麼中間的線應該是水平且平坦(或接近平坦)的。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>我們的預測變項之間有一些相當大的相關性！當我們運行迴歸模型並查看 VIF 值時，我們可以看到共線性對係數的不確定性造成了很大影響。首先，運行迴歸，如 <a href="#fig-fig10-23">圖&nbsp;<span>12.24</span></a> 所示，從 VIF 值可以看出，是的，這是一些非常好的共線性。</p>
+<!---
+
+
+
+::: {.cell layout-align="left"}
+::: {.cell-output-display}
+![jamovi plot of the predicted values (model predictions) against the square root of the absolute standardised residuals. This plot is used to diagnose violations of homogeneity of variance. If the variance is really constant, then the line through the middle should be horizontal and flat(-ish).](images/fig12-21.png){#fig-fig12-21eng fig-align='left' width=80%}
+:::
+:::
+
+
+[^Correlation-and-regression-22]: In jamovi, you can compute this new variable using the formula 'SQRT(ABS(Residuals))'
+
+[^Correlation-and-linear-regression-23]: It's a bit beyond the scope of this chapter to talk about how to deal with violations of homogeneity of variance, but I'll give you a quick sense of what you need to consider. The **main** thing to worry about, if homogeneity of variance is violated, is that the standard error estimates associated with the regression coefficients are no longer entirely reliable, and so your $t$ tests for the coefficients aren't quite right either. A simple fix to the problem is to make use of a "heteroscedasticity corrected covariance matrix" when estimating the standard errors. These are often called **_sandwich estimators_**, and these can be estimated in R (but not directly in jamovi).
+
+--->
+</section>
+<section id="sec-check-regression-collinearity" class="level3" data-number="12.10.5">
+<h3 data-number="12.10.5" class="anchored" data-anchor-id="sec-check-regression-collinearity"><span class="header-section-number">12.10.5</span> 檢測共線性</h3>
+<p>在本章中，我將討論的最後一種迴歸診斷方法是使用<strong>方差膨脹因子</strong>（VIF），這對於確定迴歸模型中的預測變項是否彼此相關性過高很有用。模型中每個預測變項 <span class="math inline">\(X_k\)</span> 都有一個相應的方差膨脹因子。<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></p>
+<p>VIF 的平方根具有很好的解釋性。它告訴您相應的係數 bk 的信賴區間相對於預測變項彼此完全不相關時所期望的值要寬多少。如果您只有兩個預測變項，VIF 值將始終相同，正如我們在 jamovi 的 ‘Regression’ - ‘Assumptions’ 選項中選中 ‘Collinearity’ 後可以看到的那樣。對於 dani.sleep 和 baby.sleep，VIF 均為 1.65。而由於 1.65 的平方根為 1.28，我們可以看到我們兩個預測變項之間的相關性並未造成太大問題。</p>
+<p>為了給出我們可能會遇到具有更大共線性問題的模型的感覺，假設我要運行一個更無趣的迴歸模型，在該模型中，我試圖預測資訊收集的日期，作為資訊集中所有其他變項的函數。要理解這為什麼會有問題，讓我們看一下所有四個變項的相關矩陣（ <a href="#fig-fig12-22">圖&nbsp;<span>12.22</span></a> ）。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-23" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-22" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="images/fig12-22.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.22: 四個資料變項之間的相關係數矩陣</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>我們的預測變項之間有一些相當大的相關性！當我們運行迴歸模型並查看 VIF 值時，我們可以看到共線性對係數的不確定性造成了很大影響。首先，運行迴歸，如 <a href="#fig-fig12-23">圖&nbsp;<span>12.23</span></a> 所示，從 VIF 值可以看出，是的，這是一些非常好的共線性。</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig12-23" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig12-23.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.24: jamovi 生成的多元迴歸共線性統計</figcaption>
+<figcaption class="figure-caption">圖&nbsp;12.23: jamovi 生成的多元迴歸共線性統計</figcaption>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="sec-outliers-and-anomalous-data" class="level3" data-number="12.10.6">
+<h3 data-number="12.10.6" class="anchored" data-anchor-id="sec-outliers-and-anomalous-data"><span class="header-section-number">12.10.6</span> 極端值與異常資料</h3>
+<p>使用線性迴歸模型時，您可能會遇到一個危險，那就是您的分析可能會對一小部分”不尋常”或”異常”的觀測值過於敏感。我之前在 <a href="05-Drawing-graphs.html#sec-Using-box-plots-to-detect-outliers"><span>小單元&nbsp;5.2.3</span></a> 的上下文中討論過這個想法，當時是在討論用 ‘探索’ - ‘描述統計’ 下的 boxplot 選項自動識別的異常值，但這次我們需要更精確。在線性迴歸的背景下，有三個概念上不同的方式可以將觀測值稱為”異常”。這三者都很有趣，但對你的分析有很不同的影響。</p>
+<p>第一種不尋常的觀測值是<strong>異常值</strong>。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。 <a href="#fig-fig12-24">圖&nbsp;<span>12.24</span></a> 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，<span class="math inline">\(\epsilon_i^*\)</span>，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig12-24" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="12-Correlation-and-linear-regression_files/figure-html/fig-fig12-24-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.24: 異常值的示例。虛線繪製了不包括異常觀測值的迴歸線，以及相應的殘差（即Studentised殘差）。實線顯示了包含異常觀測值的迴歸線。異常值在結果值（y軸位置）上具有不尋常的值，但在預測變項（x軸位置）上並不不尋常，並且距離迴歸線很遠</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>觀測值不尋常的第二種方式是具有高<strong>槓桿作用(leverage)</strong>，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如 <a href="#fig-fig12-25">圖&nbsp;<span>12.25</span></a> 所示。觀測值的槓桿作用通常用帽子值表示，通常寫作<span class="math inline">\(h_i\)</span>。帽子值的公式相當複雜<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a>，但它的解釋並不複雜：<span class="math inline">\(h_i\)</span>是衡量第i個觀測值“控制”迴歸線走向的程度。</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig12-25" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="12-Correlation-and-linear-regression_files/figure-html/fig-fig12-25-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.25: 高槓桿點的示例。在這種情況下，異常觀測值在預測變項（x軸）和結果變項（y軸）方面都不尋常，但這種不尋常性與其他觀測值之間存在的相關性模式高度一致。觀測值非常接近迴歸線並且不會使其變形</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>一般來說，如果觀測值在預測變項方面遠離其他觀測值，它將具有較大的帽子值（作為粗略指南，高槓桿是指帽子值大於平均值的2-3倍；注意帽子值的總和被限制為等於<span class="math inline">\(K + 1\)</span>）。高槓桿點也值得更詳細地查看，但除非它們也是異常值，否則它們不太可能引起擔憂。</p>
+<p>這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的<strong>影響力(influence)</strong>。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在 <a href="#fig-fig12-26">圖&nbsp;<span>12.26</span></a> 中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為<strong>Cook’s distance</strong>的衡量指標來度量影響力。<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a></p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig12-26" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="12-Correlation-and-linear-regression_files/figure-html/fig-fig12-26-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.26: 高影響力點的示例。在這種情況下，異常觀測值在預測變項（x軸）上非常不尋常，並且距離迴歸線很遠。因此，即使在這種情況下，異常觀測值在結果變項（y軸）上完全正常，迴歸線也會受到很大影響</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>要具有較大的Cook’s距離，觀測值必須是相當大的異常值並具有高槓桿。作為粗略指南，大於1的Cook’s距離通常被認為很大（這是我通常用作快速而簡單的規則）。</p>
+<p>在jamovi中，可以通過單擊’Assumption Checks’ - ’Data Summary’選項下的’Cook’s Distance’複選框來計算有關Cook’s距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如 <a href="#fig-fig12-27">圖&nbsp;<span>12.27</span></a> 所示的結果。</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig12-27" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="images/fig12-27.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.27: jamovi輸出顯示Cook’s距離統計表格</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>您可以看到，在這個例子中，平均Cook’s距離值為<span class="math inline">\(0.01\)</span>，範圍從<span class="math inline">\(0.00\)</span>到<span class="math inline">\(0.11\)</span>，因此這與前面提到的指標相去甚遠，即大於1的Cook’s距離被認為很大。</p>
+<p>接下來明顯要問的問題是，如果您確實擁有很大的Cook’s距離值，您應該怎麼辦？一如既往，沒有固定不變的規則。可能首先要做的是嘗試運行迴歸，排除具有最大Cook’s距離的異常值<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a>，看看模型性能和迴歸係數會發生什麼變化。如果它們確實有很大不同，那就該開始深入研究您的資訊集和您在運行研究時無疑在抄寫的筆記。嘗試找出該點為何如此不同。如果您開始確信這個資訊點嚴重扭曲了您的結果，那麼您可能會考慮將其排除在外，但除非您對於這個特定案例與其他案例有本質上的不同並因此應該單獨處理，否則這種做法是不理想的。</p>
 
 <!---
-### 檢測殘差常態性
 
-Like many of the statistical tools we've discussed in this book, regression models rely on a normality assumption. In this case, we assume that the residuals are normally distributed. The first thing we can do is draw a QQ-plot via the 'Assumption Checks' - 'Assumption Checks' - 'Q-Q plot of residuals' option. The output is shown in @fig-fig10-21, showing the standardised residuals plotted as a function of their theoretical quantiles according to the regression model.
+One danger that you can run into with linear regression models is that your analysis might be disproportionately sensitive to a smallish number of "unusual" or "anomalous" observations. I discussed this idea previously in @sec-Using-box-plots-to-detect-outliers in the context of discussing the outliers that get automatically identified by the boxplot option under 'Exploration' - 'Descriptives', but this time we need to be much more precise. In the context of linear regression, there are three conceptually distinct ways in which an observation might be called "anomalous". All three are interesting, but they have rather different implications for your analysis.
 
-
-::: {.cell layout-align="left"}
-::: {.cell-output-display}
-![Plot of the theoretical quantiles according to the model, against the quantiles of the standardised residuals, produced in jamovi](images/fig12-21.png){#fig-fig10-21eng fig-align='left' width=80%}
-:::
-:::
-
-
-Another thing we should check is the relationship between the fitted values and the residuals themselves. We can get jamovi to do this using the 'Residuals Plots' option, which provides a scatterplot for each predictor variable, the outcome variable, and the fitted values against residuals, see @fig-fig10-22. In these plots we are looking for a fairly uniform distribution of 'dots', with no clear bunching or patterning of the 'dots'. Looking at these plots, there is nothing particularly worrying as the dots are fairly evenly spread across the whole plot. There may be a little bit of non-uniformity in plot (b), but it is not a strong deviation and probably not worth worrying about.
+The first kind of unusual observation is an **outlier**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in @fig-fig12-24. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large residual, $\epsilon_i^*$. Outliers are interesting: a big outlier might correspond to junk data, e.g., the variables might have been recorded incorrectly in the data set, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case and try to find out why it's so different.
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![Residuals plots produced in jamovi](images/fig12-22.png){#fig-fig10-22eng fig-align='left' width=80%}
+![An illustration of outliers. The solid line shows the regression line with the anomalous outlier observation included. The dashed line plots the regression line estimated without the anomalous outlier observation included. The vertical line from the outlier point to the dashed regression line illustrates the large residual error for the outlier. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line](12-Correlation-and-linear-regression_files/figure-html/fig-fig12-24eng-1.png){#fig-fig12-24eng fig-align='left' width=80%}
 :::
 :::
 
 
-If we were worried, then in a lot of cases the solution to this problem (and many others) is to transform one or more of the variables. We discussed the basics of variable transformation in @sec-Transforming-and-recoding-a-variable, but I do want to make special note of one additional possibility that I didn't explain fully earlier: the Box-Cox transform. The Box-Cox function is a fairly simple one and it's very widely used. [^correlation-and-linear-regression-21]
+The second way in which an observation can be unusual is if it has high **leverage**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig12-24. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^12-correlation-and-linear-regression-25] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
 
-[^correlation-and-linear-regression-21]: $f(x,\lambda)=\frac{x^{\lambda}-1}{\lambda}$ for all values of $\lambda$ except $\lambda = 0$. When $\lambda = 0$ we just take the natural logarithm (i.e., ln($x$).
-
-You can calculate it using the BOXCOX function in the 'Compute' variables screen in jamovi.
-
-### 檢測共線性 {#sec-check-regression-collinearity}
-
-The last kind of regression diagnostic that I'm going to discuss in this chapter is the use of **variance inflation factors** (VIFs), which are useful for determining whether or not the predictors in your regression model are too highly correlated with each other. There is a variance inflation factor associated with each predictor $X_k$ in the model. [^correlation-and-linear-regression-22]
-
-[^correlation-and-linear-regression-22]: The formula for the k-th VIF is: $VIF_k=\frac{1}{1-R_{-k}^2}$ where $R^2_(-k)$ refers to R-squared value you would get if you ran a regression using $X_k$ as the outcome variable, and all the other X variables as the predictors. The idea here is that $R^2_(-k)$ is a very good measure of the extent to which $X_k$ is correlated with all the other variables in the model.
-
-The square root of the VIF is pretty interpretable. It tells you how much wider the confidence interval for the corresponding coefficient bk is, relative to what you would have expected if the predictors are all nice and uncorrelated with one another. If you've only got two predictors, the VIF values are always going to be the same, as we can see if we click on the 'Collinearity' checkbox in the 'Regression' - 'Assumptions' options in jamovi. For both dani.sleep and baby.sleep the VIF is $1.65$. And since the square root of $1.65$ is $1.28$, we see that the correlation between our two predictors isn't causing much of a problem.
-
-To give a sense of how we could end up with a model that has bigger collinearity problems, suppose I were to run a much less interesting regression model, in which I tried to predict the day on which the data were collected, as a function of all the other variables in the data set. To see why this would be a bit of a problem, let's have a look at the correlation matrix for all four variables (@fig-fig10-24).
+[^12-correlation-and-linear-regression-25]: Again, for the linear algebra fanatics: the "hat matrix" is defined to be that matrix $H$ that converts the vector of observed values $y$ into a vector of predicted values $\hat{y}$, such that $\hat{y} = Hy$. The name comes from the fact that this is the matrix that "puts a hat on y". The hat value of the i-th observation is the i-th diagonal element of this matrix (so technically I should be writing it as $h_{ii}$ rather than $h_i$). And here's how it's calculated: $H = X(X^{'}X)^{1}X^{'}$.
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![四個資料變項之間的相關係數矩陣](images/fig12-25.png){#fig-fig10-24eng fig-align='left' width=80%}
+![An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations. The observation falls very close to the regression line and does not distort it by very much](12-Correlation-and-linear-regression_files/figure-html/fig-fig12-25eng-1.png){#fig-fig12-25eng fig-align='left' width=80%}
 :::
 :::
 
 
-We have some fairly large correlations between some of our predictor variables! When we run the regression model and look at the VIF values, we see that the collinearity is causing a lot of uncertainty about the coefficients. First, run the regression, as in @fig-fig10-23 and you can see from the VIF values that, yep, that's some mighty fine collinearity there.
+In general, if an observation lies far away from the other ones in terms of the predictor variables, it will have a large hat value (as a rough guide, high leverage is when the hat value is more than 2-3 times the average; and note that the sum of the hat values is constrained to be equal to $K + 1$). High leverage points are also worth looking at in more detail, but they're much less likely to be a cause for concern unless they are also outliers.
+
+This brings us to our third measure of unusualness, the **influence** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig12-26. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^12-correlation-and-linear-regression-26]
+
+[^12-correlation-and-linear-regression-26]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ Notice that this is a multiplication of something that measures the outlier-ness of the observation (the bit on the left), and something that measures the leverage of the observation (the bit on the right).
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![Collinearity statistics for multiple regression, produced in jamovi](images/fig12-23.png){#fig-fig10-23eng fig-align='left' width=80%}
+![An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)](12-Correlation-and-linear-regression_files/figure-html/fig-fig12-26eng-1.png){#fig-fig12-26eng fig-align='left' width=80%}
 :::
 :::
+
+
+In order to have a large Cook's distance an observation must be a fairly substantial outlier and have high leverage. As a rough guide, Cook's distance greater than 1 is often considered large (that's what I typically use as a quick and dirty rule).
+
+In jamovi, information about Cook's distance can be calculated by clicking on the 'Cook's Distance' checkbox in the 'Assumption Checks' - 'Data Summary' options. When you do this, for the multiple regression model we have been using as an example in this chapter, you get the results as shown in @fig-fig12-27.
+
+
+::: {.cell layout-align="left"}
+::: {.cell-output-display}
+![jamovi output showing the table for the Cook's distance statistics](images/fig12-27.png){#fig-fig12-27eng fig-align='left' width=80%}
+:::
+:::
+
+
+You can see that, in this example, the mean Cook's distance value is $0.01$, and the range is from $0.00$ to $0.11$, so this is some way off the rule of thumb figure mentioned above that a Cook's distance greater than 1 is considered large.
+
+An obvious question to ask next is, if you do have large values of Cook's distance what should you do? As always, there's no hard and fast rule. Probably the first thing to do is to try running the regression with the outlier with the greatest Cook's distance[^12-correlation-and-linear-regression-27] excluded and see what happens to the model performance and to the regression coefficients. If they really are substantially different, it's time to start digging into your data set and your notes that you no doubt were scribbling as your ran your study. Try to figure out why the point is so different. If you start to become convinced that this one data point is badly distorting your results then you might consider excluding it, but that's less than ideal unless you have a solid explanation for why this particular case is qualitatively different from the others and therefore deserves to be handled separately.
+
+[^12-correlation-and-linear-regression-27]: In jamovi you can save the Cook's distance values to the dataset, then draw a boxplot of the Cook's distance values to identify the specific outliers. Or you could use a more powerful regression program such as the 'car' package in R which has more options for advanced regression diagnostic analysis
 
 
 --->
@@ -1515,7 +1600,7 @@ We have some fairly large correlations between some of our predictor variables! 
 <li><p>在您的選擇依賴統計推斷的程度上，簡單性和適合度之間存在權衡。當您向模型添加更多預測變項時，模型變得更複雜。每個預測因子都添加了一個新的自由參數（即，一個新的回歸係數），每個新參數都會增加模型對於隨機變異的吸收能力。因此，適合度（例如，<span class="math inline">\(R^2\)</span>）隨著您添加更多預測因子而持續上升，無論如何都是如此。如果您希望模型能夠很好地概括新的觀察結果，則需要避免加入過多的變項。</p></li>
 </ul>
 <p>後者原則通常被稱為<strong>奧卡姆剃刀</strong>，並通常用以下簡潔的說法來概括：不要在必要之外繁殖實體。在這個情境下，這意味著不要僅僅為了提高你的 R2 而將一堆大致無關的預測因子扔進去。嗯，原來的說法更好。</p>
-<p>無論如何，我們需要一個實際的數學標準，以便在選擇回歸模型時實現奧卡姆剃刀背後的定性原則。事實證明，有幾種可能性。我將談論的一個是<strong>赤池資訊量準則</strong>（Akaike information criterion）<span class="citation" data-cites="Akaike1974">(<a href="References.html#ref-Akaike1974" role="doc-biblioref">Akaike, 1974</a>)</span>，僅僅是因為它可以作為一個選項在 jamovi 中使用。<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a></p>
+<p>無論如何，我們需要一個實際的數學標準，以便在選擇回歸模型時實現奧卡姆剃刀背後的定性原則。事實證明，有幾種可能性。我將談論的一個是<strong>赤池資訊量準則</strong>（Akaike information criterion）<span class="citation" data-cites="Akaike1974">(<a href="References.html#ref-Akaike1974" role="doc-biblioref">Akaike, 1974</a>)</span>，僅僅是因為它可以作為一個選項在 jamovi 中使用。<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></p>
 <p>AIC 值越小，模型性能越好。如果我們忽略低水平的細節，AIC 的作用就非常明顯了。左邊的項隨著模型預測變差而增加；右邊的項隨著模型複雜度的增加而增加。最佳模型是用盡量少的預測變項（低 K，右側）來擬合資料（低殘差，左側）。簡而言之，這是奧卡姆剃刀的簡單實現。</p>
 <p>當選中 “AIC” 複選框時，AIC 可以添加到 “Model Fit Measures” 輸出表中，評估不同模型的一種笨拙方式是查看如果從回歸模型中移除一個或多個預測因子，“AIC” 值是否更低。這是 jamovi 目前實現的唯一方法，但在其他更強大的程序中，如 R，有替代方法。這些替代方法可以自動化有選擇地移除（或添加）預測變項以找到最佳 AIC 的過程。儘管這些方法在 jamovi 中尚未實現，但我將在下面簡要介紹它們，以便您了解它們。</p>
 <section id="逐步排除法" class="level3" data-number="12.11.1">
@@ -1535,16 +1620,16 @@ We have some fairly large correlations between some of our predictor variables! 
 </section>
 <section id="比較迴歸模型" class="level3" data-number="12.11.4">
 <h3 data-number="12.11.4" class="anchored" data-anchor-id="比較迴歸模型"><span class="header-section-number">12.11.4</span> 比較迴歸模型</h3>
-<p>與使用自動模型選擇程序的方法相反，研究人員可以明確地選擇兩個或多個迴歸模型以相互比較。您可以用幾種不同的方法做到這一點，具體取決於您要回答的研究問題。假設我們想知道我兒子睡眠的多少是否與我煩躁的程度有關，超出了我自己睡眠的影響。我們還希望確保測量的那一天對這種關係沒有影響。也就是說，我們對baby.sleep和dani.grump之間的關係感興趣，從這個角度看，dani.sleep和day是我們想控制的<strong>協變項</strong>。在這種情況下，我們想知道dani.grump ~ dani.sleep + day + baby.sleep（我將其稱為Model 2，或M2）是否比dani.grump ~ dani.sleep + day（我將其稱為Model 1，或M1）更適合這些資訊。我們可以用兩種不同的方式來比較這兩個模型，一種基於像AIC這樣的模型選擇標準，另一種基於顯式假設檢定。我首先向您展示基於AIC的方法，因為它更簡單，並且自然地延續了上一節的討論。首先，我需要實際運行兩個迴歸，注意每個迴歸的AIC，然後選擇AIC值較小的模型，因為它被認為是這些資訊的更好模型。實際上，不要立即這樣做。繼續閱讀，因為jamovi中有一種簡單的方法可以在一個表格中獲取不同模型的AIC值。<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></p>
-<p>基於假設檢定框架的某種不同方法來解決這個問題。假設您有兩個迴歸模型，其中一個（Model 1）包含另一個（Model 2）的一部分預測變項。也就是說，Model 2包含Model 1中包含的所有預測變項，再加上一個或多個其他預測變項。當這種情況發生時，我們說Model 1嵌套在Model 2中，或者可能說Model 1是Model 2的子模型。無論使用哪種術語，這意味著我們可以將Model 1視為虛無假設，將Model 2視為替代假設。事實上，我們可以用相當簡單的方式構建一個F檢驗。<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></p>
-<p>那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 <a href="#fig-fig10-25">圖&nbsp;<span>12.25</span></a> 所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，<span class="math inline">\(F(1,96) = 0.00\)</span>，<span class="math inline">\(p = 0.954\)</span>。由於我們的p &gt; .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為<strong>分層迴歸</strong>。</p>
-<p>我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如@fig-fig10-25所示。</p>
+<p>與使用自動模型選擇程序的方法相反，研究人員可以明確地選擇兩個或多個迴歸模型以相互比較。您可以用幾種不同的方法做到這一點，具體取決於您要回答的研究問題。假設我們想知道我兒子睡眠的多少是否與我煩躁的程度有關，超出了我自己睡眠的影響。我們還希望確保測量的那一天對這種關係沒有影響。也就是說，我們對baby.sleep和dani.grump之間的關係感興趣，從這個角度看，dani.sleep和day是我們想控制的<strong>協變項</strong>。在這種情況下，我們想知道dani.grump ~ dani.sleep + day + baby.sleep（我將其稱為Model 2，或M2）是否比dani.grump ~ dani.sleep + day（我將其稱為Model 1，或M1）更適合這些資訊。我們可以用兩種不同的方式來比較這兩個模型，一種基於像AIC這樣的模型選擇標準，另一種基於顯式假設檢定。我首先向您展示基於AIC的方法，因為它更簡單，並且自然地延續了上一節的討論。首先，我需要實際運行兩個迴歸，注意每個迴歸的AIC，然後選擇AIC值較小的模型，因為它被認為是這些資訊的更好模型。實際上，不要立即這樣做。繼續閱讀，因為jamovi中有一種簡單的方法可以在一個表格中獲取不同模型的AIC值。<a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a></p>
+<p>基於假設檢定框架的某種不同方法來解決這個問題。假設您有兩個迴歸模型，其中一個（Model 1）包含另一個（Model 2）的一部分預測變項。也就是說，Model 2包含Model 1中包含的所有預測變項，再加上一個或多個其他預測變項。當這種情況發生時，我們說Model 1嵌套在Model 2中，或者可能說Model 1是Model 2的子模型。無論使用哪種術語，這意味著我們可以將Model 1視為虛無假設，將Model 2視為替代假設。事實上，我們可以用相當簡單的方式構建一個F檢驗。<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a></p>
+<p>那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 <a href="#fig-fig12-25">圖&nbsp;<span>12.25</span></a> 所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，<span class="math inline">\(F(1,96) = 0.00\)</span>，<span class="math inline">\(p = 0.954\)</span>。由於我們的p &gt; .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為<strong>分層迴歸</strong>。</p>
+<p>我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如 <a href="#fig-fig12-28">圖&nbsp;<span>12.28</span></a> 所示。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-fig10-25" class="quarto-figure quarto-figure-left anchored">
+<div id="fig-fig12-28" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
-<p><img src="images/fig12-24.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;12.25: 使用jamovi的“Model Builder”選項進行模型比較</figcaption>
+<p><img src="images/fig12-28.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;12.28: 使用jamovi的“Model Builder”選項進行模型比較</figcaption>
 </figure>
 </div>
 </div>
@@ -1597,14 +1682,14 @@ A somewhat different approach to the problem comes out of the hypothesis testing
 
 [^correlation-and-linear-regression-25]: We can fit both models to the data and obtain a residual sum of squares for both models. I'll denote these as $SS_{res}^{(1)}$ and $SS_{res}^{(2)}$ respectively. The superscripting here just indicates which model we're talking about. Then our F statistic is $$F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }$$ where $N$ is the number of observations, $p$ is the number of predictors in the full model (not including the intercept), and $k$ is the difference in the number of parameters between the two models. $^d$ The degrees of freedom here are $k$ and $N -p-1$. Note that it's often more convenient to think about the difference between those two SS values as a sum of squares in its own right. That is $$SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}$$ The reason why this is helpful is that we can express $SS_\Delta$ as a measure of the extent to which the two models make different predictions about the the outcome variable. Specifically, $$SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}$$ where $\hat{y}_{i^{(1)}}$ is the fitted value for $y_i$ according to model $M_1$ and $\hat{y}_{i^{(2)}}$ is the fitted value for $y_i$ according to model $M_2$. <br /> --- <br /> $^d$ It's worth noting in passing that this same F statistic can be used to test a much broader range of hypotheses than those that I'm mentioning here. Very briefly, notice that the nested model M1 corresponds to the full model M2 when we constrain some of the regression coefficients to zero. It is sometimes useful to construct sub-models by placing other kinds of constraints on the regression coefficients. For instance, maybe two different coefficients might have to sum to zero, or something like that. You can construct hypothesis tests for those kind of constraints too, but it is somewhat more complicated and the sampling distribution for F can end up being something known as the non-central F distribution, which is waaaaay beyond the scope of this book! All I want to do is alert you to this possibility.
 
-Okay, so that's the hypothesis test that we use to compare two regression models to one another. Now, how do we do it in jamovi? The answer is to use the 'Model Builder' option and specify the Model 1 predictors dani.sleep and day in 'Block 1' and then add the additional predictor from Model 2 (baby.sleep) in 'Block 2', as in @fig-fig10-25. This shows, in the 'Model Comparisons' Table, that for the comparisons between Model 1 and Model 2, $F(1,96) = 0.00$, $p = 0.954$. Since we have p > .05 we retain the null hypothesis (M1). This approach to regression, in which we add all of our covariates into a null model, then add the variables of interest into an alternative model, and then compare the two models in a hypothesis testing framework, is often referred to as **hierarchical regression**.
+Okay, so that's the hypothesis test that we use to compare two regression models to one another. Now, how do we do it in jamovi? The answer is to use the 'Model Builder' option and specify the Model 1 predictors dani.sleep and day in 'Block 1' and then add the additional predictor from Model 2 (baby.sleep) in 'Block 2', as in @fig-fig12-25. This shows, in the 'Model Comparisons' Table, that for the comparisons between Model 1 and Model 2, $F(1,96) = 0.00$, $p = 0.954$. Since we have p > .05 we retain the null hypothesis (M1). This approach to regression, in which we add all of our covariates into a null model, then add the variables of interest into an alternative model, and then compare the two models in a hypothesis testing framework, is often referred to as **hierarchical regression**.
 
-We can also use this 'Model Comparison' option to display a table that shows the AIC and BIC for each model, making it easy to compare and identify which model has the lowest value, as in @fig-fig10-25.
+We can also use this 'Model Comparison' option to display a table that shows the AIC and BIC for each model, making it easy to compare and identify which model has the lowest value, as in @fig-fig12-25.
 
 
 ::: {.cell layout-align="left"}
 ::: {.cell-output-display}
-![Model comparison in jamovi using the 'Model Builder' option](images/fig12-24.png){#fig-fig10-25eng fig-align='left' width=80%}
+![Model comparison in jamovi using the 'Model Builder' option](images/fig12-24.png){#fig-fig12-28eng fig-align='left' width=80%}
 :::
 :::
 
@@ -1655,7 +1740,7 @@ Fox, J., &amp; Weisberg, S. (2011). <em>An <span>R</span> companion to applied r
 <ol>
 <li id="fn1"><p>jamovi 2.0版之後的版本，使用者可以指定 “ID” 的專屬變項類型，但是對於分析資料的目的來說，指定 ID 的變項性質並不重要，因為通常不會將其包含在任何分析中。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>即使表格中的資訊對某些人來說已經足夠了，但是大多數人只需要知道一個集中量數和一個變異量數就可以了。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>皮爾森相關係數的公式可以用幾種不同的方式來表示。最簡單的方式是將公式分為兩個部分。第一個部分是<strong>共變異數（covariance）</strong>(譯註：許多台灣中文教科書稱<strong>共變數</strong>)的概念。兩個變項<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>的共變異數的數學公式是變異數公式的一般化，就是簡單描述兩個變項之間的關係，但是計算結果無法提供什麼有意義的訊息: <span class="math display">\[Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})\]</span> 由於我們要將<span class="math inline">\(X\)</span>的數值乘以<span class="math inline">\(Y\)</span>的數值，再取乘積的平均值<span class="math inline">\(^a\)</span>，因此共變異數的公式可以視為<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>之間的“平均外積”。共變異數的特性之一是，如果<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>之間完全沒有關係，那麼共變異數就是零。如果變項之間是正相關（見 <a href="#fig-fig10-4">圖&nbsp;<span>12.4</span></a> ），則共變異數的數值為正，如果是負相關，共變異數的數值為負。換句話說，共變異數能捕捉相關性的基本定性概念。不幸的是，共變異數的原始數值並不容易解讀，因為大小取決於<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>所的計量單位，而且更糟糕的是，共變異數數值的單位非常奇怪。例如，如果<span class="math inline">\(X\)</span>是dani.sleep變項（單位：小時）而<span class="math inline">\(Y\)</span>是<code>dani.grump</code>變項（單位：沮喪程度），那麼共變異數的單位會是<span class="math inline">\(hours \times grumps\)</span>，我們無法解讀這是什麼意思。皮爾森相關係數則解決了這個問題，與z分數標準化原始分數的方法非常相似，將差異值除以標準差轉換為標準化分數。但是，由於共變異數來自兩個變項的數值，必須除以兩個變項的標準差才能做標準化轉換。<span class="math inline">\(^b\)</span>換句話說，兩個變項<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>的相關係數可以寫成這個公式：<span class="math display">\[r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}\]</span><br>—<br><span class="math inline">\(^a\)</span> 和變異數、標準差一樣，實際上我們在計算時除以的是 <span class="math inline">\(N-1\)</span> 而不是 <span class="math inline">\(N\)</span>。<br> <span class="math inline">\(^b\)</span> 這是一個過於簡化的說法，但對於我們的目的而言已足夠。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>皮爾森相關係數的公式可以用幾種不同的方式來表示。最簡單的方式是將公式分為兩個部分。第一個部分是<strong>共變異數（covariance）</strong>(譯註：許多台灣中文教科書稱<strong>共變數</strong>)的概念。兩個變項<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>的共變異數的數學公式是變異數公式的一般化，就是簡單描述兩個變項之間的關係，但是計算結果無法提供什麼有意義的訊息: <span class="math display">\[Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})\]</span> 由於我們要將<span class="math inline">\(X\)</span>的數值乘以<span class="math inline">\(Y\)</span>的數值，再取乘積的平均值<span class="math inline">\(^a\)</span>，因此共變異數的公式可以視為<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>之間的“平均外積”。共變異數的特性之一是，如果<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>之間完全沒有關係，那麼共變異數就是零。如果變項之間是正相關（見 <a href="13-Comparing-several-means-one-way-ANOVA.html#fig-fig12-4">圖&nbsp;<span>13.4</span></a> ），則共變異數的數值為正，如果是負相關，共變異數的數值為負。換句話說，共變異數能捕捉相關性的基本定性概念。不幸的是，共變異數的原始數值並不容易解讀，因為大小取決於<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>所的計量單位，而且更糟糕的是，共變異數數值的單位非常奇怪。例如，如果<span class="math inline">\(X\)</span>是dani.sleep變項（單位：小時）而<span class="math inline">\(Y\)</span>是<code>dani.grump</code>變項（單位：沮喪程度），那麼共變異數的單位會是<span class="math inline">\(hours \times grumps\)</span>，我們無法解讀這是什麼意思。皮爾森相關係數則解決了這個問題，與z分數標準化原始分數的方法非常相似，將差異值除以標準差轉換為標準化分數。但是，由於共變異數來自兩個變項的數值，必須除以兩個變項的標準差才能做標準化轉換。<span class="math inline">\(^b\)</span>換句話說，兩個變項<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>的相關係數可以寫成這個公式：<span class="math display">\[r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}\]</span><br>—<br><span class="math inline">\(^a\)</span> 和變異數、標準差一樣，實際上我們在計算時除以的是 <span class="math inline">\(N-1\)</span> 而不是 <span class="math inline">\(N\)</span>。<br> <span class="math inline">\(^b\)</span> 這是一個過於簡化的說法，但對於我們的目的而言已足夠。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>譯註~這一句原文略談測驗信效度，但是原文說法太模糊，中文翻譯做適度改寫。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>譯註~原版電子書並未提供 <a href="#tbl-tab10-3">表&nbsp;<span>12.3</span></a> 的資料<!---，中文版配合線性模型教程，採用另一套線上教程提供的範例檔案，請見[相關與線性迴歸](Prelude-Part-V.html#%E7%9B%B8%E9%97%9C%E8%88%87%E7%B7%9A%E6%80%A7%E8%BF%B4%E6%AD%B8)這一節的補充--->。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>也可以寫成 <span class="math inline">\(y = mx + c\)</span>，其中 <span class="math inline">\(m\)</span> 是斜率，<span class="math inline">\(c\)</span> 是截距（常數）。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1665,7 +1750,7 @@ Fox, J., &amp; Weisberg, S. (2011). <em>An <span>R</span> companion to applied r
 <li id="fn10"><p>“有些”指的是“非常少”(譯註：其實很多中文教科書都這樣稱呼)。在真實的統計工作，多數分析人員都直接叫“R-squared”。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>調整後的 <span class="math inline">\(R^2\)</span> 計算公式包括一個小小的校正公式。對於有 <span class="math inline">\(k\)</span> 個預測變項的迴歸模型，適用於包含 <span class="math inline">\(N\)</span> 個觀察值的資料集，調整後的 <span class="math inline">\(R^2\)</span> 為：<span class="math display">\[\text{adj.}R^2=1-(\frac{SS_{res}}{SS_{tot}} \times \frac{N-1}{N-K-1})\]</span><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>正式地，我們的「零模型」對應於相當簡單的「迴歸」模型，其中我們包括 0 預測變項並且僅包括截距項 <span class="math inline">\(b_0\)</span>：<span class="math inline">\(H_0:Y_0=b_0+\epsilon_i\)</span> 如果我們的迴歸模型具有 <span class="math inline">\(K\)</span> 預測變項，那麼「對立模型」使用多元迴歸模型的標準公式描述：<span class="math display">\[H_1:Y_i=b_0+(\sum_{k=1}^K b_k X_{ik})+\epsilon_i\]</span> 我們如何在這兩個假設之間進行檢驗呢？訣竅在於理解將總變異 <span class="math inline">\(SStot\)</span> 劃分為殘差變異 SSres 和迴歸模型變異 SSmod 的可能性。我將跳過技術細節，因為我們稍後在 <a href="13-Comparing-several-means-one-way-ANOVA.html"><span>單元&nbsp;13</span></a> 中研究 ANOVA 時會研究這個問題。但是只需注意 <span class="math inline">\(SS_{mod}=SS_{tot}-SS_{res}\)</span> 我們可以通過將平方和除以自由度將其轉換為平均平方。 <span class="math display">\[MS_{mod}=\frac{SS_{mod}}{df_{mod}}\]</span> <span class="math display">\[MS_{res}=\frac{SS_{res}}{df_{res}}\]</span> 那麼，我們有多少自由度呢？您可能會預料到，與模型相關的 df 與我們所包含的預測變項數量密切相關。實際上，<span class="math inline">\(df_mod = K\)</span>。對於殘差，總自由度為 <span class="math inline">\(df_res = N - K - 1\)</span>。現在我們已經有了平均平方值，我們可以像這樣計算 F 統計量 <span class="math display">\[F=\frac{MS_{mod}}{MS_{res}}\]</span> 並且與此相關的自由度為 <span class="math inline">\(K\)</span> 和 <span class="math inline">\(N - K - 1\)</span>。<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>譯註~這些適用條件在所有基礎統計方法幾乎都是必要的，這也是本書中文版將<strong>相關與線性迴歸</strong>調整為第一個學習的統計方法原因之一。<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>配合變更章節順序，這一節不按照原書內容翻譯。課程教學可建議學生先著重了解jamovi操作及報表解讀，學過t檢定再來深入了解這個小單元的示範。<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn14"><p>給認真的高手讀者做個補充。殘差向量是<span class="math inline">\(\epsilon=y - X\hat{b}\)</span>。對於K個預測變項加截距，估計的殘差平方差是<span class="math inline">\(\hat{\sigma}^2 = \frac{\epsilon^{'}\epsilon}{(N - K - 1)}\)</span>。係數估計值的共變異數矩陣是<span class="math inline">\(\hat{\sigma}^{2}(X^{'}X)^{-1}\)</span>，矩 陣的主對角線是<span class="math inline">\(se(\hat{b})\)</span>，就是標準誤估計值。<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn15"><p>注意，儘管jamovi會自動執行多次檢定，但是沒有執行Bonferroni校正或其他類似操作（參考 <a href="13-Comparing-several-means-one-way-ANOVA.html"><span>單元&nbsp;13</span></a> ）。這些是預設對立假設為雙側的標準單一樣本t檢定。如果想要校正多次檢定的結果，使用者需要自行操作。<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn16"><p>譯注~必須要勾選“Model Fit”選單裡的”F test”才能顯示自由度等資訊。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1675,14 +1760,16 @@ Fox, J., &amp; Weisberg, S. (2011). <em>An <span>R</span> companion to applied r
 <li id="fn20"><p>譯註~這些適用條件在所有基礎統計方法幾乎都是必要的，這也是本書中文版將<strong>相關與線性迴歸</strong>調整為第一個學習的統計方法原因之一。<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn21"><p>我們計算這些值的方法是將普通殘差除以這些殘差的（群體）標準差的估計值。由於技術原因，嘟囔囔，公式為 <span class="math display">\[\epsilon_i^{'}=\frac{\epsilon_i}{\hat{\sigma}\sqrt{1-h_i}}\]</span> 其中，<span class="math inline">\(\hat{\sigma}\)</span> 在此上下文中是普通殘差的估計群體標準差，<span class="math inline">\(h_i\)</span> 是第 i 個觀察值的“帽值”。我還沒有向你解釋帽值（但不用害怕<span class="math inline">\(^c\)</span>，它很快就會到來），所以這個公式現在可能看起來不太合理。目前，只需將標準化殘差理解為如果我們將普通殘差轉換為 z 分數。實際上，這幾乎就是事實，只不過我們的表達稍微高級一些。+++<span class="math inline">\(^c\)</span> 或者沒有希望，也可能是這樣。<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn22"><p>這次進行計算的公式略有不同 <span class="math inline">\(\epsilon _i^*=\frac{\epsilon_i}{\hat{\sigma}_{(-i)}\sqrt{1-h_i}}\)</span> 注意，我們這裡的標準差估計值寫作 <span class="math inline">\(\hat{\sigma}_{(-i)}\)</span>。這對應的是，如果你從資訊集中刪除第 i 個觀察值，則將獲得的殘差標準差估計。這聽起來好像是一個很難計算的東西，因為它似乎在說你必須運行 N 個新的迴歸模型（即使是現代計算機也可能對此有些怨言，特別是如果你有一個大資訊集）。幸運的是，一些非常聰明的人已經證明了這個標準差估計實際上是由以下公式給出的：<span class="math inline">\(\hat{\sigma}_{(-i)}= \hat{\sigma}\sqrt{\frac{N-K-1-{\epsilon_i^{'}}^2}{N-K-2}}\)</span> 難道這不是一個妙計嗎？<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn23"><p>再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量<span class="math inline">\(y\)</span>轉換為擬合值向量<span class="math inline">\(\hat{y}\)</span>的矩陣<span class="math inline">\(H\)</span>，使得<span class="math inline">\(\hat{y} = Hy\)</span>。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為<span class="math inline">\(h_{ii}\)</span>而不是<span class="math inline">\(h_i\)</span>）。哦，如果你在意，這是它的計算方法：<span class="math inline">\(H = X(X^{'}X)^{1}X^{'}\)</span>。漂亮，不是嗎？<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn24"><p><span class="math inline">\(D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}\)</span> 請注意，這是衡量觀測值的異常程度（左邊的部分）和衡量觀測值的槓桿（右邊的部分）的乘積。<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn25"><p>雖然目前在jamovi中進行此操作的方法不太容易，因此更強大的迴歸程序（例如R中的’car’套件）將更適合進行此更高級的分析。<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn26"><p>對於所有的 λ 值，除了 λ = 0，有 <span class="math inline">\(f(x,\lambda)=\frac{x^{\lambda}-1}{\lambda}\)</span>。當 λ = 0 時，我們只取自然對數（即，ln（x））。<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn27"><p>第 k 個 VIF 的公式為：<span class="math inline">\(VIF_k=\frac{1}{1-R_{-k}^2}\)</span>，其中 <span class="math inline">\(R^2_(-k)\)</span> 指的是如果您將 <span class="math inline">\(X_k\)</span> 作為結果變項，並將所有其他 X 變項作為預測變項來運行迴歸，則可以得到的 R 平方值。這裡的想法是 <span class="math inline">\(R^2_(-k)\)</span> 是 <span class="math inline">\(X_k\)</span> 與模型中所有其他變項相關程度的非常好的衡量指標。<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn28"><p>在線性回歸模型的上下文中（忽略與模型無關的項！），具有 K 個預測變項和截距的模型的 AIC 為 <span class="math inline">\(AIC=\frac{SS_{res}}{\hat{\sigma}^2}+2K\)</span><a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn29"><p>在此主題上，我應該指出，經驗證據表明，BIC比AIC更好。在我看到的大多數模擬研究中，BIC在選擇正確模型方面做得更好。<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn30"><p>我們可以將兩個模型都應用於資訊並獲得兩個模型的殘差平方和。我將它們分別表示為<span class="math inline">\(SS_{res}^{(1)}\)</span>和<span class="math inline">\(SS_{res}^{(2)}\)</span>。上標表示我們正在談論哪個模型。然後我們的F統計量是 <span class="math display">\[F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }\]</span>，其中<span class="math inline">\(N\)</span>是觀察次數，<span class="math inline">\(p\)</span>是完整模型中的預測變項數量（不包括截距），<span class="math inline">\(k\)</span>是兩個模型之間參數的差異。這裡的自由度是<span class="math inline">\(k\)</span>和<span class="math inline">\(N -p-1\)</span>。值得注意的是，將這兩個SS值之間的差異表示為它自己的平方和經常更方便。也就是說 <span class="math display">\[SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}\]</span>。這樣有幫助的原因是我們可以將<span class="math inline">\(SS_\Delta\)</span>表示為兩個模型對結果變項的預測有所不同的程度。具體來說，<span class="math display">\[SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}\]</span>，其中<span class="math inline">\(\hat{y}_{i^{(1)}}\)</span>是根據模型<span class="math inline">\(M_1\)</span>對<span class="math inline">\(y_i\)</span>的預測值，<span class="math inline">\(\hat{y}_{i^{(2)}}\)</span>是根據模型<span class="math inline">\(M_2\)</span>對<span class="math inline">\(y_i\)</span>的預測值。 <br> — <br> <span class="math inline">\(^d\)</span>順便提一下，這個相同的F統計量可以用來檢驗比我在這裡提到的更廣泛的範圍的假設。非常簡要地說，注意嵌套模型M1對應於當我們將某些迴歸係數限制為零時的完整模型M2。在某些情況下，通過對迴歸係數施加其他類型的約束來構建子模型是有用的。例如，也許兩個不同的係數可能必須相加為零，或類似的情況。您可以為這些類型的約束構建假設檢定，但這有點更複雜，而且F的抽樣分布可能會是所謂的非中心F分布，這已經超出了本書的範疇！我想做的只是提醒您這種可能性。<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>對於所有的 λ 值，除了 λ = 0，有 <span class="math inline">\(f(x,\lambda)=\frac{x^{\lambda}-1}{\lambda}\)</span>。當 λ = 0 時，我們只取自然對數（即，ln（x））。<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>在jamovi中,您可以使用公式’SQRT(ABS(Residuals))’計算這個新變項。<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>談論如何處理違反方差同質性的問題有點超出了本章的範圍,但我會快速給您一個需要考慮的內容。如果違反了方差同質性,主要需要擔心的是與迴歸係數相關的標準誤估計不再完全可靠,因此您對係數的<span class="math inline">\(t\)</span>檢驗也不太正確。解決這個問題的一個簡單方法是在估計標準誤時使用”異方差校正的協方差矩陣”。這些通常被稱為三明治估計量,可以在R中估計(但不能直接在jamovi中估計)。<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p>第 k 個 VIF 的公式為：<span class="math inline">\(VIF_k=\frac{1}{1-R_{-k}^2}\)</span>，其中 <span class="math inline">\(R^2_(-k)\)</span> 指的是如果您將 <span class="math inline">\(X_k\)</span> 作為結果變項，並將所有其他 X 變項作為預測變項來運行迴歸，則可以得到的 R 平方值。這裡的想法是 <span class="math inline">\(R^2_(-k)\)</span> 是 <span class="math inline">\(X_k\)</span> 與模型中所有其他變項相關程度的非常好的衡量指標。<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p>再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量<span class="math inline">\(y\)</span>轉換為擬合值向量<span class="math inline">\(\hat{y}\)</span>的矩陣<span class="math inline">\(H\)</span>，使得<span class="math inline">\(\hat{y} = Hy\)</span>。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為<span class="math inline">\(h_{ii}\)</span>而不是<span class="math inline">\(h_i\)</span>）。哦，如果你在意，這是它的計算方法：<span class="math inline">\(H = X(X^{'}X)^{1}X^{'}\)</span>。漂亮，不是嗎？<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p><span class="math inline">\(D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}\)</span> 請注意，這是衡量觀測值的異常程度（左邊的部分）和衡量觀測值的槓桿（右邊的部分）的乘積。<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p>雖然目前在jamovi中進行此操作的方法不太容易，因此更強大的迴歸程序（例如R中的’car’套件）將更適合進行此更高級的分析。<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p>在線性回歸模型的上下文中（忽略與模型無關的項！），具有 K 個預測變項和截距的模型的 AIC 為 <span class="math inline">\(AIC=\frac{SS_{res}}{\hat{\sigma}^2}+2K\)</span><a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p>在此主題上，我應該指出，經驗證據表明，BIC比AIC更好。在我看到的大多數模擬研究中，BIC在選擇正確模型方面做得更好。<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p>我們可以將兩個模型都應用於資訊並獲得兩個模型的殘差平方和。我將它們分別表示為<span class="math inline">\(SS_{res}^{(1)}\)</span>和<span class="math inline">\(SS_{res}^{(2)}\)</span>。上標表示我們正在談論哪個模型。然後我們的F統計量是 <span class="math display">\[F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }\]</span>，其中<span class="math inline">\(N\)</span>是觀察次數，<span class="math inline">\(p\)</span>是完整模型中的預測變項數量（不包括截距），<span class="math inline">\(k\)</span>是兩個模型之間參數的差異。這裡的自由度是<span class="math inline">\(k\)</span>和<span class="math inline">\(N -p-1\)</span>。值得注意的是，將這兩個SS值之間的差異表示為它自己的平方和經常更方便。也就是說 <span class="math display">\[SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}\]</span>。這樣有幫助的原因是我們可以將<span class="math inline">\(SS_\Delta\)</span>表示為兩個模型對結果變項的預測有所不同的程度。具體來說，<span class="math display">\[SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}\]</span>，其中<span class="math inline">\(\hat{y}_{i^{(1)}}\)</span>是根據模型<span class="math inline">\(M_1\)</span>對<span class="math inline">\(y_i\)</span>的預測值，<span class="math inline">\(\hat{y}_{i^{(2)}}\)</span>是根據模型<span class="math inline">\(M_2\)</span>對<span class="math inline">\(y_i\)</span>的預測值。 <br> — <br> <span class="math inline">\(^d\)</span>順便提一下，這個相同的F統計量可以用來檢驗比我在這裡提到的更廣泛的範圍的假設。非常簡要地說，注意嵌套模型M1對應於當我們將某些迴歸係數限制為零時的完整模型M2。在某些情況下，通過對迴歸係數施加其他類型的約束來構建子模型是有用的。例如，也許兩個不同的係數可能必須相加為零，或類似的情況。您可以為這些類型的約束構建假設檢定，但這有點更複雜，而且F的抽樣分布可能會是所謂的非中心F分布，這已經超出了本書的範疇！我想做的只是提醒您這種可能性。<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

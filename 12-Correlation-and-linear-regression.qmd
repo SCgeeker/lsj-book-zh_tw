@@ -44,7 +44,7 @@ data.frame(
 
 [^correlation-and-linear-regression-1]: jamovi 2.0版之後的版本，使用者可以指定 "ID" 的專屬變項類型，但是對於分析資料的目的來說，指定 ID 的變項性質並不重要，因為通常不會將其包含在任何分析中。
 
-接著我會先看一些基本的描述統計報表，包括三個我有興趣的變項統計圖，也就是 @fig-fig10-1 展示的直方圖。需要注意的是，不要因為jamovi可以一次計算幾十種不同的統計資訊，你就要在報表顯示所有資訊。如果我要以此結果撰寫報告，我會挑出那些我自己以及讀者最感興趣的統計資訊，然後將它們放入像 @tbl-tab10-1 這樣的簡潔的表格裡。[^correlation-and-linear-regression-2] 需要注意的是，當我將資訊放入表格時，我給了每個變項一個“高可讀性”的名稱。這是很好的做法。另外，請注意這一百天我都沒有睡飽，這不是好的習慣，不過其他帶過小孩的父母告訴我，這是很正常的事情。
+接著我會先看一些基本的描述統計報表，包括三個我有興趣的變項統計圖，也就是 @fig-fig12-1 展示的直方圖。需要注意的是，不要因為jamovi可以一次計算幾十種不同的統計資訊，你就要在報表顯示所有資訊。如果我要以此結果撰寫報告，我會挑出那些我自己以及讀者最感興趣的統計資訊，然後將它們放入像 @tbl-tab10-1 這樣的簡潔的表格裡。[^correlation-and-linear-regression-2] 需要注意的是，當我將資訊放入表格時，我給了每個變項一個“高可讀性”的名稱。這是很好的做法。另外，請注意這一百天我都沒有睡飽，這不是好的習慣，不過其他帶過小孩的父母告訴我，這是很正常的事情。
 
 [^correlation-and-linear-regression-2]: 即使表格中的資訊對某些人來說已經足夠了，但是大多數人只需要知道一個集中量數和一個變異量數就可以了。
 
@@ -52,12 +52,12 @@ data.frame(
 
 [^correlation-and-linear-regression-1]: I've noticed that in jamovi you can also specify an 'ID' variable type, but for our purposes it does not matter how we specify the ID variable as we won't be including it in any analyses.
 
-Next, I'll take a look at some basic descriptive statistics and, to give a graphical depiction of what each of the three interesting variables looks like, @fig-fig10-1 plots histograms. One thing to note: just because jamovi can calculate dozens of different statistics doesn't mean you should report all of them. If I were writing this up for a report, I'd probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table 12.1.[^correlation-and-linear-regression-2] Notice that when I put it into a table, I gave everything "human readable" names. This is always good practice. Notice also that I'm not getting enough sleep. This isn't good practice, but other parents tell me that it's pretty standard.
+Next, I'll take a look at some basic descriptive statistics and, to give a graphical depiction of what each of the three interesting variables looks like, @fig-fig12-1 plots histograms. One thing to note: just because jamovi can calculate dozens of different statistics doesn't mean you should report all of them. If I were writing this up for a report, I'd probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table 12.1.[^correlation-and-linear-regression-2] Notice that when I put it into a table, I gave everything "human readable" names. This is always good practice. Notice also that I'm not getting enough sleep. This isn't good practice, but other parents tell me that it's pretty standard.
 
 [^correlation-and-linear-regression-2]: Actually, even that table is more than I'd bother with. In practice most people pick one measure of central tendency, and one measure of variability only.--->
 
 ```{r}
-#| label: fig-fig10-1
+#| label: fig-fig12-1
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 原作者照顧新生兒百日紀錄的三個變項直方圖。
@@ -67,12 +67,12 @@ knitr::include_graphics("images/fig12-1.png")
 
 ### 相關的強度與方向
 
-我們還可以繪製散佈圖，來俯瞰兩個變項之間的相關性。雖然在理想情況下，我們希望能多看到一些資訊。例如，讓我們比較`dani.sleep`和`dani.grump`之間的關係（ @fig-fig10-2 ，左）與`baby.sleep`和`dani.grump`之間的關係（ @fig-fig10-2 ，右）。當我們並排比較這兩份散佈圖，這兩種情況的關係很明顯是同質的：我本人或我兒子的睡眠時間越長，我的情緒就越好！不過很明顯的是，`dani.sleep`和`dani.grump`之間的關係比`baby.sleep`和`dani.grump`之間的關係更強：左圖比右圖更加*整齊*。直覺來看，如果你想預測我的情緒，知道我兒子睡了多少個小時會有點幫助，但是知道我睡了多少個小時會更有幫助。
+我們還可以繪製散佈圖，來俯瞰兩個變項之間的相關性。雖然在理想情況下，我們希望能多看到一些資訊。例如，讓我們比較`dani.sleep`和`dani.grump`之間的關係（ @fig-fig12-2 ，左）與`baby.sleep`和`dani.grump`之間的關係（ @fig-fig12-2 ，右）。當我們並排比較這兩份散佈圖，這兩種情況的關係很明顯是同質的：我本人或我兒子的睡眠時間越長，我的情緒就越好！不過很明顯的是，`dani.sleep`和`dani.grump`之間的關係比`baby.sleep`和`dani.grump`之間的關係更強：左圖比右圖更加*整齊*。直覺來看，如果你想預測我的情緒，知道我兒子睡了多少個小時會有點幫助，但是知道我睡了多少個小時會更有幫助。
 
-<!---We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig10-1), left) with that between baby.sleep and dani.grump (@fig-fig10-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept. --->
+<!---We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let's compare the relationship between dani.sleep and dani.grump (@fig-fig12-1), left) with that between baby.sleep and dani.grump (@fig-fig12-2), right). When looking at these two plots side by side, it's clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it's also pretty obvious that the relationship between dani.sleep and dani.grump is stronger than the relationship between baby.sleep and dani.grump. The plot on the left is "neater" than the one on the right. What it feels like is that if you want to predict what my mood is, it'd help you a little bit to know how many hours my son slept, but it'd be more helpful to know how many hours I slept. --->
 
 ```{r}
-#| label: fig-fig10-2
+#| label: fig-fig12-2
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 左圖是`dani.sleep`(老爸睡眠小時數)與`dani.grump`(老爸的沮喪程度)的散佈圖,右圖是`baby.sleep`(小嬰兒睡眠小時數)與`dani.grump`(老爸的沮喪程度)的散佈圖。
@@ -80,12 +80,12 @@ knitr::include_graphics("images/fig12-1.png")
 knitr::include_graphics("images/fig12-2.png")
 ```
 
-相反地， @fig-fig10-3 的兩個散佈圖告訴我們另一個角度的故事。比較`baby.sleep` 與 `dani.grump`的散佈圖（左）和`baby.sleep` 與 `dani.sleep`的散佈圖（右），變項之間的整體關係強度相同，但是方向不同。也就是說，如果我的兒子睡得較長，我也會睡得更多（正相關，右圖），但是他如果睡得更多，我就不會那麼沮喪（負相關，左圖）。 
+相反地， @fig-fig12-3 的兩個散佈圖告訴我們另一個角度的故事。比較`baby.sleep` 與 `dani.grump`的散佈圖（左）和`baby.sleep` 與 `dani.sleep`的散佈圖（右），變項之間的整體關係強度相同，但是方向不同。也就是說，如果我的兒子睡得較長，我也會睡得更多（正相關，右圖），但是他如果睡得更多，我就不會那麼沮喪（負相關，左圖）。 
 
-<!---In contrast, let's consider the two scatterplots shown in @fig-fig10-3. If we compare the scatterplot of "baby.sleep v dani.grump" (left) to the scatterplot of "'baby.sleep v dani.sleep" (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side). --->
+<!---In contrast, let's consider the two scatterplots shown in @fig-fig12-3. If we compare the scatterplot of "baby.sleep v dani.grump" (left) to the scatterplot of "'baby.sleep v dani.sleep" (right), the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get more sleep (positive relationship, right hand side), but if he sleeps more then I get less grumpy (negative relationship, left hand side). --->
 
 ```{r}
-#| label: fig-fig10-3
+#| label: fig-fig12-3
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 左圖是`baby.sleep`(小嬰兒睡眠小時數)與`dani.grump`(老爸的沮喪程度)的散佈圖,右圖是`baby.sleep`(小嬰兒睡眠小時數)與`dani.sleep`(老爸睡眠小時數)的散佈圖。
@@ -95,21 +95,21 @@ knitr::include_graphics("images/fig12-3.png")
 
 ### 相關係數
 
-現在我們要進一步延伸上述的概念，也就是正式認識 **相關係數(correlation coefficient)**。本節主要介紹皮爾森相關係數（Pearson's correlation），樣本資料的書寫符號是 $r$。在下一節，我們會用更精確符號 $r_{XY}$ ，表示兩個變項 $X$ 和 $Y$ 之間的相關係數，值域涵蓋-1到1。當$r = -1$時，表示變項之間是完全的負相關；當$r = 1$時，表示變項之間是完全的正相關；當$r = 0$時，表示變項之間是完全沒有關係。 @fig-fig10-4 展示幾種不同相關性的散佈圖。
+現在我們要進一步延伸上述的概念，也就是正式認識 **相關係數(correlation coefficient)**。本節主要介紹皮爾森相關係數（Pearson's correlation），樣本資料的書寫符號是 $r$。在下一節，我們會用更精確符號 $r_{XY}$ ，表示兩個變項 $X$ 和 $Y$ 之間的相關係數，值域涵蓋-1到1。當$r = -1$時，表示變項之間是完全的負相關；當$r = 1$時，表示變項之間是完全的正相關；當$r = 0$時，表示變項之間是完全沒有關係。 @fig-fig12-4 展示幾種不同相關性的散佈圖。
 
 [其他技術細節 [^correlation-and-linear-regression-3]]
 
-[^correlation-and-linear-regression-3]: 皮爾森相關係數的公式可以用幾種不同的方式來表示。最簡單的方式是將公式分為兩個部分。第一個部分是**共變異數（covariance）**(譯註：許多台灣中文教科書稱**共變數**)的概念。兩個變項$X$和$Y$的共變異數的數學公式是變異數公式的一般化，就是簡單描述兩個變項之間的關係，但是計算結果無法提供什麼有意義的訊息: $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ 由於我們要將$X$的數值乘以$Y$的數值，再取乘積的平均值$^a$，因此共變異數的公式可以視為$X$和$Y$之間的“平均外積”。共變異數的特性之一是，如果$X$和$Y$之間完全沒有關係，那麼共變異數就是零。如果變項之間是正相關（見 @fig-fig10-4 ），則共變異數的數值為正，如果是負相關，共變異數的數值為負。換句話說，共變異數能捕捉相關性的基本定性概念。不幸的是，共變異數的原始數值並不容易解讀，因為大小取決於$X$和$Y$所的計量單位，而且更糟糕的是，共變異數數值的單位非常奇怪。例如，如果$X$是dani.sleep變項（單位：小時）而$Y$是`dani.grump`變項（單位：沮喪程度），那麼共變異數的單位會是$hours \times grumps$，我們無法解讀這是什麼意思。皮爾森相關係數則解決了這個問題，與z分數標準化原始分數的方法非常相似，將差異值除以標準差轉換為標準化分數。但是，由於共變異數來自兩個變項的數值，必須除以兩個變項的標準差才能做標準化轉換。$^b$換句話說，兩個變項$X$和$Y$的相關係數可以寫成這個公式：$$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ 和變異數、標準差一樣，實際上我們在計算時除以的是 $N-1$ 而不是 $N$。<br /> $^b$ 這是一個過於簡化的說法，但對於我們的目的而言已足夠。
+[^correlation-and-linear-regression-3]: 皮爾森相關係數的公式可以用幾種不同的方式來表示。最簡單的方式是將公式分為兩個部分。第一個部分是**共變異數（covariance）**(譯註：許多台灣中文教科書稱**共變數**)的概念。兩個變項$X$和$Y$的共變異數的數學公式是變異數公式的一般化，就是簡單描述兩個變項之間的關係，但是計算結果無法提供什麼有意義的訊息: $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ 由於我們要將$X$的數值乘以$Y$的數值，再取乘積的平均值$^a$，因此共變異數的公式可以視為$X$和$Y$之間的“平均外積”。共變異數的特性之一是，如果$X$和$Y$之間完全沒有關係，那麼共變異數就是零。如果變項之間是正相關（見 @fig-fig12-4 ），則共變異數的數值為正，如果是負相關，共變異數的數值為負。換句話說，共變異數能捕捉相關性的基本定性概念。不幸的是，共變異數的原始數值並不容易解讀，因為大小取決於$X$和$Y$所的計量單位，而且更糟糕的是，共變異數數值的單位非常奇怪。例如，如果$X$是dani.sleep變項（單位：小時）而$Y$是`dani.grump`變項（單位：沮喪程度），那麼共變異數的單位會是$hours \times grumps$，我們無法解讀這是什麼意思。皮爾森相關係數則解決了這個問題，與z分數標準化原始分數的方法非常相似，將差異值除以標準差轉換為標準化分數。但是，由於共變異數來自兩個變項的數值，必須除以兩個變項的標準差才能做標準化轉換。$^b$換句話說，兩個變項$X$和$Y$的相關係數可以寫成這個公式：$$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ 和變異數、標準差一樣，實際上我們在計算時除以的是 $N-1$ 而不是 $N$。<br /> $^b$ 這是一個過於簡化的說法，但對於我們的目的而言已足夠。
 
-<!--- We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig10-4, you can see several plots showing what different correlations look like.
+<!--- We can make these ideas a bit more explicit by introducing the idea of a **相關係數(correlation coefficient)** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted as r. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$ ), which we'll define more precisely in the next section, is a measure that varies from -1 to 1. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at @fig-fig12-4, you can see several plots showing what different correlations look like.
 
 [Additional technical detail [^correlation-and-linear-regression-3]]
 
-[^correlation-and-linear-regression-3]: The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ Because we're multiplying (i.e., taking the "product" of) a quantity that depends on X by a quantity that depends on Y and then averaging$^a$, you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in @fig-fig10-4 then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret as it depends on the units in which $X$ and $Y$ are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the dani.sleep variable (units: hours) and $Y$ refers to the dani.grump variable (units: grumps), then the units for their covariance are $hours \times grumps$. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.$^b$ In other words, the correlation between $X$ and $Y$ can be written as follows: $$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ Just like we saw with the variance and the standard deviation, in practice we divide by $N - 1$ rather than $N$. <br /> $^b$ This is an oversimplification, but it'll do for our purposes.  --->
+[^correlation-and-linear-regression-3]: The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance and is a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans $$Cov(X,Y)=\frac{1}{N-1}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y})$$ Because we're multiplying (i.e., taking the "product" of) a quantity that depends on X by a quantity that depends on Y and then averaging$^a$, you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in @fig-fig12-4 then the covariance is also positive, and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret as it depends on the units in which $X$ and $Y$ are expressed and, worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the dani.sleep variable (units: hours) and $Y$ refers to the dani.grump variable (units: grumps), then the units for their covariance are $hours \times grumps$. And I have no freaking idea what that would even mean. The Pearson correlation coefficient r fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the z-score standardises a raw score, by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.$^b$ In other words, the correlation between $X$ and $Y$ can be written as follows: $$r_{XY}=\frac{Cov(X,Y)}{\hat{\sigma}_X\hat{\sigma}_Y}$$<br />---<br />$^a$ Just like we saw with the variance and the standard deviation, in practice we divide by $N - 1$ rather than $N$. <br /> $^b$ This is an oversimplification, but it'll do for our purposes.  --->
   
   
 ```{r}
-#| label: fig-fig10-4
+#| label: fig-fig12-4
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 圖解相關係數的強度及方向。左欄的相關係數由上而下為$0, .33, .66, 1$。右欄的相關係數由上而下為$0, -.33, -.66, -1$。
@@ -123,12 +123,12 @@ knitr::include_graphics("images/fig12-4.png")
 
 ### 相關係數計算實務
 
-只要在jamovi'迴歸'模組選單，選點要計算的相關係數，就能計算所有納入變項對話框的任何兩個變項之間相關係數，如同 @fig-fig10-5 的示範，沒有出錯的話，報表會輸出'相關係數矩陣'(Correlation Matrix)。
+只要在jamovi'迴歸'模組選單，選點要計算的相關係數，就能計算所有納入變項對話框的任何兩個變項之間相關係數，如同 @fig-fig12-5 的示範，沒有出錯的話，報表會輸出'相關係數矩陣'(Correlation Matrix)。
 
-<!---Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig10-5. --->
+<!---Calculating correlations in jamovi can be done by clicking on the 'Regression' - 'Correlation Matrix' button. Transfer all four continuous variables across into the box on the right to get the output in @fig-fig12-5. --->
 
 ```{r}
-#| label: fig-fig10-5
+#| label: fig-fig12-5
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 使用jamovi相關分析模組計算parenthood.csv資料變項的示範畫面。
@@ -162,16 +162,16 @@ data.frame(
 
 然而，有一件點任何一位統計學教師都會不厭其煩地提醒學生，就是解讀資料變項相關係之前，一定要看散佈圖，一個相關係數可能無法充分表達你要說的意思。統計學中有個經典案例「安斯庫姆四重奏」(Anscombe's Quartet)[@Anscombe1973]，其中有四個資料集。每個資料集都有兩個變項， $X$ 與 $Y$。四個資料集的 $X$ 平均值都是 $9$， $Y$ 的平均值都是 $7.5$。所有 $X$ 變項的標準差幾乎相同，$Y$ 變項的標準差也是一致。每種資料集的$X$ 和 $Y$ 相關係數均為 $r = 0.816$。同學可以打開本書示範資料庫裡的Anscombe資料檔親自驗證。
 
-也許你認為這四個資料集看起來很相似，其實上並非如此。從 @fig-fig10-6 的散佈圖可以發現，所有四個資料集的$X$ 和 $Y$ 變項之間的關係各有千秋。這個案例給我們的教訓是，實務中很多人經常會忘記：「視覺化你的原始資訊」（見 @sec-Drawing-graphs ）。
+也許你認為這四個資料集看起來很相似，其實上並非如此。從 @fig-fig12-6 的散佈圖可以發現，所有四個資料集的$X$ 和 $Y$ 變項之間的關係各有千秋。這個案例給我們的教訓是，實務中很多人經常會忘記：「視覺化你的原始資訊」（見 @sec-Drawing-graphs ）。
 
 <!---However, something that can never be stressed enough is that you should always look at the scatterplot before attaching any interpretation to the data. A correlation might not mean what you think it means. The classic illustration of this is "Anscombe's Quartet" [@Anscombe1973], a collection of four data sets. Each data set has two variables, an $X$ and a $Y$. For all four data sets the mean value for $X$ is $9$ and the mean for $Y$ is $7.5$. The standard deviations for all $X$ variables are almost identical, as are those for the Y variables. And in each case the correlation between $X$ and $Y$ is $r = 0.816$. You can verify this yourself, since I happen to have saved it in a file called anscombe.csv.
 
  http://localhost:7972/10-Correlation-and-linear-regression.html#%E7%9B%B8%E9%97%9C%E4%BF%82%E6%95%B8
 
-You'd think that these four data sets would look pretty similar to one another. They do not. If we draw scatterplots of $X$ against $Y$ for all four variables, as shown in @fig-fig10-6, we see that all four of these are spectacularly different to each other. The lesson here, which so very many people seem to forget in real life, is "always graph your raw data" (see @sec-Drawing-graphs). --->
+You'd think that these four data sets would look pretty similar to one another. They do not. If we draw scatterplots of $X$ against $Y$ for all four variables, as shown in @fig-fig12-6, we see that all four of these are spectacularly different to each other. The lesson here, which so very many people seem to forget in real life, is "always graph your raw data" (see @sec-Drawing-graphs). --->
 
 ```{r}
-#| label: fig-fig10-6
+#| label: fig-fig12-6
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 安斯庫姆四重奏。四份資料的相關係數都是.816，但是資料數值都不一樣。
@@ -185,16 +185,16 @@ knitr::include_graphics("images/fig12-6.png")
 
 線性關係是當一個變項$X$的數值增加，也能反映另一個變項$Y$的增加。但是兩者關係不是線性的話，皮爾森相關係數就不太合適。例如，準備考試所花的時間和考試成績之間的關係，可能就是這樣的情況。如果一位同學沒有花時間（$X$）準備一個科目，那麼他排名的成績應該只有0％（$Y$）。然而，只要一點點努力就會帶來巨大的改善，像是認真上幾堂課並且做筆記就可以學到很多東西，成績排名有可能會提高到35％，而且這是假設沒有做課後復習的情況。然而，想要獲得排名90％的成績，就要比排名55％的成績付出更多努力。也就是說，當我們要分析學習時間和成績的相關係，皮爾森相關係數可能導致錯誤的解讀。
 
-我們用 @fig-fig10-7 的資料舉例說明，這張散佈圖顯示10名學生在某個課程的讀書時間和考試成績之間的關係。這份虛構的資料怪異之處在於，增加讀書時間總是會提高成績。可能大幅提高，也可能略有提高，但是增加讀書時間絕不會讓成績降低。若是計算這兩個資料變項的皮爾森相關係數，得到的數值為0.91，顯示讀書時間和成績之間有強烈的關係。然而，實際這個分析結果並未充分呈現增加工作時間總是提高成績的關係。儘管我們想要主張兩者的相關性是完全的正相關，但是需要用稍微不同的“關係”來強調，也就是需要另一種方法，能夠呈現這份資料裡完全的**次序關係(ordinal relationship)**。也就是說，如果第一名學生的讀書時間比二名學生長，那麼我們可以預測第一名學生的成績會更好，而這不是相關係數$r=0.91$能表達的。
+我們用 @fig-fig12-7 的資料舉例說明，這張散佈圖顯示10名學生在某個課程的讀書時間和考試成績之間的關係。這份虛構的資料怪異之處在於，增加讀書時間總是會提高成績。可能大幅提高，也可能略有提高，但是增加讀書時間絕不會讓成績降低。若是計算這兩個資料變項的皮爾森相關係數，得到的數值為0.91，顯示讀書時間和成績之間有強烈的關係。然而，實際這個分析結果並未充分呈現增加工作時間總是提高成績的關係。儘管我們想要主張兩者的相關性是完全的正相關，但是需要用稍微不同的“關係”來強調，也就是需要另一種方法，能夠呈現這份資料裡完全的**次序關係(ordinal relationship)**。也就是說，如果第一名學生的讀書時間比二名學生長，那麼我們可以預測第一名學生的成績會更好，而這不是相關係數$r=0.91$能表達的。
 
 <!--- The Pearson correlation coefficient is useful for a lot of things, but it does have shortcomings. One issue in particular stands out: what it actually measures is the strength of the linear relationship between two variables. In other words, what it gives you is a measure of the extent to which the data all tend to fall on a single, perfectly straight line. Often, this is a pretty good approximation to what we mean when we say "relationship", and so the Pearson correlation is a good thing to calculate. Sometimes though, it isn't.
 
 One very common situation where the Pearson correlation isn't quite the right thing to use arises when an increase in one variable $X$ really is reflected in an increase in another variable Y , but the nature of the relationship isn't necessarily linear. An example of this might be the relationship between effort and reward when studying for an exam. If you put zero effort ($X$) into learning a subject then you should expect a grade of $0\%$ ($Y$). However, a little bit of effort will cause a massive improvement. Just turning up to lectures means that you learn a fair bit, and if you just turn up to classes and scribble a few things down your grade might rise to 35%, all without a lot of effort. However, you just don't get the same effect at the other end of the scale. As everyone knows, it takes a lot more effort to get a grade of $90\%$ than it takes to get a grade of $55\%$. What this means is that, if I've got data looking at study effort and grades, there's a pretty good chance that Pearson correlations will be misleading. 
 
-To illustrate, consider the data plotted in @fig-fig10-7, showing the relationship between hours worked and grade received for 10 students taking some class. The curious thing about this (highly fictitious) data set is that increasing your effort always increases your grade. It might be by a lot or it might be by a little, but increasing effort will never decrease your grade. If we run a standard Pearson correlation, it shows a strong relationship between hours worked and grade received, with a correlation coefficient of $0.91$. However, this doesn't actually capture the observation that increasing hours worked always increases the grade. There's a sense here in which we want to be able to say that the correlation is perfect but for a somewhat different notion of what a "relationship" is. What we're looking for is something that captures the fact that there is a perfect **ordinal relationship** here. That is, if student 1 works more hours than student 2, then we can guarantee that student 1 will get the better grade. That's not what a correlation of $r = .91$ says at all.--->
+To illustrate, consider the data plotted in @fig-fig12-7, showing the relationship between hours worked and grade received for 10 students taking some class. The curious thing about this (highly fictitious) data set is that increasing your effort always increases your grade. It might be by a lot or it might be by a little, but increasing effort will never decrease your grade. If we run a standard Pearson correlation, it shows a strong relationship between hours worked and grade received, with a correlation coefficient of $0.91$. However, this doesn't actually capture the observation that increasing hours worked always increases the grade. There's a sense here in which we want to be able to say that the correlation is perfect but for a somewhat different notion of what a "relationship" is. What we're looking for is something that captures the fact that there is a perfect **ordinal relationship** here. That is, if student 1 works more hours than student 2, then we can guarantee that student 1 will get the better grade. That's not what a correlation of $r = .91$ says at all.--->
 
 ```{r}
-#| label: fig-fig10-7
+#| label: fig-fig12-7
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 此散佈圖展示虛擬資料集的兩個變項"讀書時間"和"成績"之間的關係，這個資料集只有10位學生（每個點代表一個學生）。圖中的直線顯示兩個變項之間的線性關係，兩者之間有很強的皮爾森相關係數$r = .91$。不過有趣的是，兩個變項之間存在一個完美的單調函數關係。這條直線顯示，根據這份虛擬資料，增加工作時間總是會增加得分，這反映在斯皮爾曼等級相關係數$\rho = 1$。然而，由於這個資料集很小，因此仍然存在一個問題：那一種係數是真正描述兩個變項的關係。
@@ -242,14 +242,14 @@ What we've just re-invented is **斯皮爾曼等級相關(Spearman's rank order 
 
 散佈圖是一種簡單但有效的視覺化工具，用於具現兩個變項之間的關係，就像[相關]這一節所展示的圖表。通常提到“散佈圖”這個術語時，指的是兩個變項的具體視覺化。在散佈圖中，每個觀察值都是對應一個資料點。一個點的水平位置表示一個變項的觀察值，垂直位置表示觀察值在另一個變項的數值。在許多使用情境，我們對於變項間的因果關係並沒有清晰的看法（例如，A是否引起B，還是B引起A，還是其他變項C控制A和B）。若是這樣，x軸和y軸上代表那個變項並不重要。然而在許多情境，研究者對於那個變項最有可能是原因或結果，會有一個相當明確的想法，或者對於何者為因至少有一些懷疑。若是這樣，用x軸代表原因的自變項，用y軸代表效應的應變項是一種傳統的繪圖規範。了解這樣的規範，讓我們來看一下如何合理運用jamovi繪製散佈圖，同樣使用在[相關]這一節做為示範的資料集（parenthood.csv）。
 
-假定我的目標是繪製一個顯示本人睡眠時間`dani.sleep`與隔天沮喪程度`dani.grump`兩個變項關係的散佈圖，我們有兩種不同的方法使用jamovi得到我們想要的圖。第一種方法是設定'Regression' - 'Correlation Matrix'選單下方的'Plot'選項，這樣可以得到如圖 @fig-fig10-8 的結果。請注意，jamovi會繪製一條通過資料點的直線，稍後在[認識線性迴歸模型]這一節進一步說明。以這種方法繪製散佈圖也能繪製'變項密度'，這個選項會添加一條密度曲線，顯示每個變項的資料分佈狀況。
+假定我的目標是繪製一個顯示本人睡眠時間`dani.sleep`與隔天沮喪程度`dani.grump`兩個變項關係的散佈圖，我們有兩種不同的方法使用jamovi得到我們想要的圖。第一種方法是設定'Regression' - 'Correlation Matrix'選單下方的'Plot'選項，這樣可以得到如圖 @fig-fig12-8 的結果。請注意，jamovi會繪製一條通過資料點的直線，稍後在[認識線性迴歸模型]這一節進一步說明。以這種方法繪製散佈圖也能繪製'變項密度'，這個選項會添加一條密度曲線，顯示每個變項的資料分佈狀況。
 
 <!--- **Scatterplots** are a simple but effective tool for visualising the relationship between two variables, like we saw with the figures in the section on [Correlations](10-Correlation-and-linear-regression.html#sec-what-is-correlation). It's this latter application that we usually have in mind when we use the term "scatterplot". In this kind of plot each observation corresponds to one dot. The horizontal location of the dot plots the value of the observation on one variable, and the vertical location displays its value on the other variable. In many situations you don't really have a clear opinions about what the causal relationship is (e.g., does A cause B, or does B cause A, or does some other variable C control both A and B). If that's the case, it doesn't really matter which variable you plot on the x-axis and which one you plot on the y-axis. However, in many situations you do have a pretty strong idea which variable you think is most likely to be causal, or at least you have some suspicions in that direction. If so, then it's conventional to plot the cause variable on the x-axis, and the effect variable on the y-axis. With that in mind, let's look at how to draw scatterplots in jamovi, using the same parenthood data set (i.e. parenthood.csv) that I used when introducing correlations.
 
-Suppose my goal is to draw a scatterplot displaying the relationship between the amount of sleep that I get (dani.sleep) and how grumpy I am the next day (dani.grump). There are two different ways in which we can use jamovi to get the plot that we're after. The first way is to use the 'Plot' option under the 'Regression' - 'Correlation Matrix' button, giving us the output shown in @fig-fig10-8.  Note that jamovi draws a line through the points, we'll come onto this a bit later in the section on [What is a linear regression model?]. Plotting a scatterplot in this way also allow you to specify 'Densities for variables' and this option adds a density curve showing how the data in each variable is distributed. --->
+Suppose my goal is to draw a scatterplot displaying the relationship between the amount of sleep that I get (dani.sleep) and how grumpy I am the next day (dani.grump). There are two different ways in which we can use jamovi to get the plot that we're after. The first way is to use the 'Plot' option under the 'Regression' - 'Correlation Matrix' button, giving us the output shown in @fig-fig12-8.  Note that jamovi draws a line through the points, we'll come onto this a bit later in the section on [What is a linear regression model?]. Plotting a scatterplot in this way also allow you to specify 'Densities for variables' and this option adds a density curve showing how the data in each variable is distributed. --->
 
 ```{r}
-#| label: fig-fig10-8 
+#| label: fig-fig12-8 
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 使用jamovi相關分析模組的'Correlation Matrix'所繪製的散佈圖。
@@ -257,12 +257,12 @@ Suppose my goal is to draw a scatterplot displaying the relationship between the
 knitr::include_graphics("images/fig12-8.png")  
 ```
 
-第二種方法是使用jamovi的附加模組之一`scatr`，只要點擊jamovi介面右上角的那個大「$+$」，在jamovi模組庫裡找到`scatr`，然後點擊「install」進行安裝。安裝成功後，在「Exploration」的選單下方會多出新的「Scatterplot」選項。這種方法繪製的散佈圖和第一種方法不大一樣，如同 @fig-fig10-9 所顯示，但是透露的訊息是一樣的。
+第二種方法是使用jamovi的附加模組之一`scatr`，只要點擊jamovi介面右上角的那個大「$+$」，在jamovi模組庫裡找到`scatr`，然後點擊「install」進行安裝。安裝成功後，在「Exploration」的選單下方會多出新的「Scatterplot」選項。這種方法繪製的散佈圖和第一種方法不大一樣，如同 @fig-fig12-9 所顯示，但是透露的訊息是一樣的。
 
-<!--- The second way do to it is to use one of the jamovi add-on modules. This module is called 'scatr' and you can install it by clicking on the large '$+$' icon in the top right of the jamovi screen, opening the jamovi library, scrolling down until you find 'scatr' and clicking 'install'. When you have done this, you will find a new 'Scatterplot' command available under the 'Exploration' button. This plot is a bit different than the first way, see @fig-fig10-9, but the important information is the same. --->
+<!--- The second way do to it is to use one of the jamovi add-on modules. This module is called 'scatr' and you can install it by clicking on the large '$+$' icon in the top right of the jamovi screen, opening the jamovi library, scrolling down until you find 'scatr' and clicking 'install'. When you have done this, you will find a new 'Scatterplot' command available under the 'Exploration' button. This plot is a bit different than the first way, see @fig-fig12-9, but the important information is the same. --->
 
 ```{r}
-#| label: fig-fig10-9
+#| label: fig-fig12-9
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 使用jamovi擴充模組'scatr'繪製的散佈圖
@@ -272,12 +272,12 @@ knitr::include_graphics("images/fig12-9.png")
 
 ### 更多解讀散佈圖的方法
 
-通常我們會需要查看多個變項之間的關係，可以在 jamovi 的 'Correlation Matrix'選單下方的'Plot' 選項，勾選繪制**散佈圖矩陣**。只要加入另一個變項到要變項列表，例如 `baby.sleep`，jamovi 就會生成一個散佈圖矩陣，如同 @fig-fig10-10 的示範。
+通常我們會需要查看多個變項之間的關係，可以在 jamovi 的 'Correlation Matrix'選單下方的'Plot' 選項，勾選繪制**散佈圖矩陣**。只要加入另一個變項到要變項列表，例如 `baby.sleep`，jamovi 就會生成一個散佈圖矩陣，如同 @fig-fig12-10 的示範。
 
-<!--- Often you will want to look at the relationships between several variables at once, using a **scatterplot matrix** (in jamovi via the 'Correlation Matrix' - 'Plot' command). Just add another variable, for example baby.sleep to the list of variables to be correlated, and jamovi will create a scatterplot matrix for you, just like the one in @fig-fig10-10. --->
+<!--- Often you will want to look at the relationships between several variables at once, using a **scatterplot matrix** (in jamovi via the 'Correlation Matrix' - 'Plot' command). Just add another variable, for example baby.sleep to the list of variables to be correlated, and jamovi will create a scatterplot matrix for you, just like the one in @fig-fig12-10. --->
 
 ```{r}
-#| label: fig-fig10-10
+#| label: fig-fig12-10
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: jamovi繪製的散佈圖矩陣
@@ -292,24 +292,24 @@ knitr::include_graphics("images/fig12-10.png")
 
 我們可以將線性迴歸模型理解為稍微複雜一點的皮爾森相關係數分析程序（請見[相關]這一節），稍後我們會看到，迴歸模型是用途更廣泛的統計方法。
 
-由於迴歸模型的基本觀念與相關係數緊密相關，以下同樣使用parenthood.csv資料集進行介紹及示範。回想一下，我們分析這個資料集的目的是，找出我(原作者Dani)為什麼總是非常沮喪的原因，而我的研究假設是我沒有得到足夠的睡眠。所以畫了一些散佈圖，檢示實際睡眠時間與隔天沮喪程度之間的關係，就像 @fig-fig10-9 展示的散佈圖，兩者之間的相關係數達到$r=-0.90$。但是，我想描述的變項間關係更像 @fig-fig10-11 (a) ，也就是有一條直線穿過資料點的中間。這條直線的統計學術語是**迴歸線**。請注意，由於我不是統計新手，因此畫出的迴歸線一定會穿過資料散佈區域的中間地帶，絕不會認為是像 @fig-fig10-11 (b) 的樣子。
+由於迴歸模型的基本觀念與相關係數緊密相關，以下同樣使用parenthood.csv資料集進行介紹及示範。回想一下，我們分析這個資料集的目的是，找出我(原作者Dani)為什麼總是非常沮喪的原因，而我的研究假設是我沒有得到足夠的睡眠。所以畫了一些散佈圖，檢示實際睡眠時間與隔天沮喪程度之間的關係，就像 @fig-fig12-9 展示的散佈圖，兩者之間的相關係數達到$r=-0.90$。但是，我想描述的變項間關係更像 @fig-fig12-11 (a) ，也就是有一條直線穿過資料點的中間。這條直線的統計學術語是**迴歸線**。請注意，由於我不是統計新手，因此畫出的迴歸線一定會穿過資料散佈區域的中間地帶，絕不會認為是像 @fig-fig12-11 (b) 的樣子。
 
 <!---Stripped to its bare essentials, linear regression models are basically a slightly fancier version of the Pearson correlation (see [Correlations]), though as we'll see regression models are much more powerful tools.
 
-Since the basic ideas in regression are closely tied to correlation, we'll return to the parenthood.csv file that we were using to illustrate how correlations work. Recall that, in this data set we were trying to find out why Dani is so very grumpy all the time and our working hypothesis was that I'm not getting enough sleep. We drew some scatterplots to help us examine the relationship between the amount of sleep I get and my grumpiness the following day, as in @fig-fig10-9, and as we saw previously this corresponds to a correlation of $r = -.90$, but what we find ourselves secretly imagining is something that looks closer to @fig-fig10-11 (a). That is, we mentally draw a straight line through the middle of the data. In statistics, this line that we're drawing is called a **regression line**. Notice that, since we're not idiots, the regression line goes through the middle of the data. We don't find ourselves imagining anything like the rather silly plot shown in @fig-fig10-11 (b). --->
+Since the basic ideas in regression are closely tied to correlation, we'll return to the parenthood.csv file that we were using to illustrate how correlations work. Recall that, in this data set we were trying to find out why Dani is so very grumpy all the time and our working hypothesis was that I'm not getting enough sleep. We drew some scatterplots to help us examine the relationship between the amount of sleep I get and my grumpiness the following day, as in @fig-fig12-9, and as we saw previously this corresponds to a correlation of $r = -.90$, but what we find ourselves secretly imagining is something that looks closer to @fig-fig12-11 (a). That is, we mentally draw a straight line through the middle of the data. In statistics, this line that we're drawing is called a **regression line**. Notice that, since we're not idiots, the regression line goes through the middle of the data. We don't find ourselves imagining anything like the rather silly plot shown in @fig-fig12-11 (b). --->
 
 ```{r}
-#| label: fig-fig10-11
+#| label: fig-fig12-11
 #| fig-align: left
 #| fig-width: 0.9
-#| fig-cap: 圖a展示同 @fig-fig10-9 的資料散佈圖，並加上穿過資料中心地帶的迴歸線。圖b的散佈圖來自同一份資料，但是迴歸線並不擬合這份資料。
-#Panel (a) shows the sleep-grumpiness scatterplot from @fig-fig10-9 with the best fitting regression line drawn over the top. Not surprisingly, the line goes through the middle of the data. In contrast, panel (b) shows the same data, but with a very poor choice of regression line drawn over the top
+#| fig-cap: 圖a展示同 @fig-fig12-9 的資料散佈圖，並加上穿過資料中心地帶的迴歸線。圖b的散佈圖來自同一份資料，但是迴歸線並不擬合這份資料。
+#Panel (a) shows the sleep-grumpiness scatterplot from @fig-fig12-9 with the best fitting regression line drawn over the top. Not surprisingly, the line goes through the middle of the data. In contrast, panel (b) shows the same data, but with a very poor choice of regression line drawn over the top
 knitr::include_graphics("images/fig12-11.png")
 ```
 
-解讀變項間關係的迴歸線，並不需要什麼厲害的技巧。 @fig-fig10-11 （b）的那條線與資料的適合度(fittedness)並不高，用來解讀資料沒有太大的意義，對吧？迴歸線能很直覺地呈現變項間的關係，若是再應用迴歸線的數學理論解讀資料，會變成非常強大的分析工具。我們複習一下高中數學，至少幾十年前澳洲的高中數學課是這樣教的，一條直線的公式可以寫成這樣的線性迴歸式：
+解讀變項間關係的迴歸線，並不需要什麼厲害的技巧。 @fig-fig12-11 （b）的那條線與資料的適合度(fittedness)並不高，用來解讀資料沒有太大的意義，對吧？迴歸線能很直覺地呈現變項間的關係，若是再應用迴歸線的數學理論解讀資料，會變成非常強大的分析工具。我們複習一下高中數學，至少幾十年前澳洲的高中數學課是這樣教的，一條直線的公式可以寫成這樣的線性迴歸式：
 
-<!--- This is not highly surprising. The line that I've drawn in @fig-fig10-11 (b) doesn't "fit" the data very well, so it doesn't make a lot of sense to propose it as a way of summarising the data, right? This is a very simple observation to make, but it turns out to be very powerful when we start trying to wrap just a little bit of maths around it. To do so, let's start with a refresher of some high school maths. The formula for a straight line is usually written like this --->
+<!--- This is not highly surprising. The line that I've drawn in @fig-fig12-11 (b) doesn't "fit" the data very well, so it doesn't make a lot of sense to propose it as a way of summarising the data, right? This is a very simple observation to make, but it turns out to be very powerful when we start trying to wrap just a little bit of maths around it. To do so, let's start with a refresher of some high school maths. The formula for a straight line is usually written like this --->
 
 $$y=a+bx$$
 
@@ -348,16 +348,16 @@ $$Y_i=b_0+b_1X_i+\epsilon_i$$
 <!---
 > **譯者註** 20230415初步以ChatGPT-4完成翻譯，以下內容待編修。 --->
 
-好的，現在讓我們重新繪製散佈圖，這次會添加一些線條顯示所有觀察值的殘差。當迴歸線的適合度(fittedness)最佳時，每個殘差數值（實心黑線的長度）看起來都非常小且接近，如同 @fig-fig10-12 (a) ，但是當迴歸線的適合度不夠好，每個殘差之間的差異就會非常大，可以從 @fig-fig10-12 (b)看到這樣的差別。嗯，也許在尋找一條最好的迴歸模型時，我們會希望得到*儘可能小*的殘差。是的，這確實有道理。在統計實務，我們可以說「最適合」的迴歸線是具有所有殘差最小的線。或者更好的說法是，因為統計學家似乎喜歡將所有數值都用*平方(sqaured)*處理，也就是說：
+好的，現在讓我們重新繪製散佈圖，這次會添加一些線條顯示所有觀察值的殘差。當迴歸線的適合度(fittedness)最佳時，每個殘差數值（實心黑線的長度）看起來都非常小且接近，如同 @fig-fig12-12 (a) ，但是當迴歸線的適合度不夠好，每個殘差之間的差異就會非常大，可以從 @fig-fig12-12 (b)看到這樣的差別。嗯，也許在尋找一條最好的迴歸模型時，我們會希望得到*儘可能小*的殘差。是的，這確實有道理。在統計實務，我們可以說「最適合」的迴歸線是具有所有殘差最小的線。或者更好的說法是，因為統計學家似乎喜歡將所有數值都用*平方(sqaured)*處理，也就是說：
 
 > 以資料估計的迴歸係數 $\hat{b}_0$ 和 $\hat{b}_1$ 是殘差平方和最小得到時得到的估計值，我們可以兩者的公式展開寫成 $\sum_i (Y_i - \hat{Y}_i)^2$ 與 $\sum_i \epsilon_i^2$ 。
 
-<!--- Okay, now let's redraw our pictures but this time I'll add some lines to show the size of the residual for all observations. When the regression line is good, our residuals (the lengths of the solid black lines) all look pretty small, as shown in @fig-fig10-12 (a), but when the regression line is a bad one the residuals are a lot larger, as you can see from looking at @fig-fig10-12 (b). Hmm. Maybe what we "want" in a regression model is *small* residuals. Yes, that does seem to make sense. In fact, I think I'll go so far as to say that the "best fitting" regression line is the one that has the smallest residuals. Or, better yet, since statisticians seem to like to take squares of everything why not say that:
+<!--- Okay, now let's redraw our pictures but this time I'll add some lines to show the size of the residual for all observations. When the regression line is good, our residuals (the lengths of the solid black lines) all look pretty small, as shown in @fig-fig12-12 (a), but when the regression line is a bad one the residuals are a lot larger, as you can see from looking at @fig-fig12-12 (b). Hmm. Maybe what we "want" in a regression model is *small* residuals. Yes, that does seem to make sense. In fact, I think I'll go so far as to say that the "best fitting" regression line is the one that has the smallest residuals. Or, better yet, since statisticians seem to like to take squares of everything why not say that:
 
 > The estimated regression coefficients, $\hat{b}_0$ and $\hat{b}_1$, are those that minimise the sum of the squared residuals, which we could either write as $\sum_i (Y_i - \hat{Y}_i)^2$ or as $\sum_i \epsilon_i^2$. --->
 
 ```{r}
-#| label: fig-fig10-12
+#| label: fig-fig12-12
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 圖(a)展示各觀察值資料點與穿越資料點中心地帶的最佳迴歸線之殘差，圖(b)展示觀察值資料點與最差迴歸線的殘差。前者的殘差總和明顯小於後者。
@@ -379,15 +379,15 @@ At this point, we now have a concrete definition for what counts as our "best" c
 
 ### 實作線性迴歸模型
 
-以下是用parenthood.csv 資料檔案執行線性迴歸分析的步驟，請打開 jamovi 的 'Regression' - 'Linear Regression' 選單 。接著，將 dani.grump 指定為 'Dependent Variable'，dani.sleep 輸入到 'Covariates' 對話框。報表介面將出現如 @fig-fig10-13 的結果，結果顯示截距 $\hat{b}_0 = 125.96$ 和斜率 $\hat{b}_1 = -8.94$。換言之， @fig-fig10-11 的最適合迴歸線的公式為：
+以下是用parenthood.csv 資料檔案執行線性迴歸分析的步驟，請打開 jamovi 的 'Regression' - 'Linear Regression' 選單 。接著，將 dani.grump 指定為 'Dependent Variable'，dani.sleep 輸入到 'Covariates' 對話框。報表介面將出現如 @fig-fig12-13 的結果，結果顯示截距 $\hat{b}_0 = 125.96$ 和斜率 $\hat{b}_1 = -8.94$。換言之， @fig-fig12-11 的最適合迴歸線的公式為：
 
 
-<!--- To run my linear regression, open up the 'Regression' - 'Linear Regression' analysis in jamovi, using the parenthood.csv data file. Then specify dani.grump as the 'Dependent Variable' and dani.sleep as the variable entered in the 'Covariates' box. This gives the results shown in @fig-fig10-13, showing an intercept $\hat{b}_0 = 125.96$ and the slope $\hat{b}_1 = -8.94$. In other words, the best fitting regression line that I plotted in @fig-fig10-11 has this formula: --->
+<!--- To run my linear regression, open up the 'Regression' - 'Linear Regression' analysis in jamovi, using the parenthood.csv data file. Then specify dani.grump as the 'Dependent Variable' and dani.sleep as the variable entered in the 'Covariates' box. This gives the results shown in @fig-fig12-13, showing an intercept $\hat{b}_0 = 125.96$ and the slope $\hat{b}_1 = -8.94$. In other words, the best fitting regression line that I plotted in @fig-fig12-11 has this formula: --->
 
 $$\hat{Y}_i=125.96+(-8.94 X_i)$$
 
 ```{r}
-#| label: fig-fig10-13
+#| label: fig-fig12-13
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: jamovi的線性迴歸分析示範畫面。
@@ -446,12 +446,12 @@ data.frame(
   kable_paper(full_width = T)
 ```
 
-`dani.sleep`的係數值非常大，表示每少睡一個小時，我會變得更沮喪。然而，`baby.sleep`的係數值非常小，表示我的兒子睡多少其實無關緊要。就我的煩躁程度而言，重要的是我睡多少。為了讓您對這個多元迴歸模型有所了解， @fig-fig10-14 是一幅三維圖，包括所有三個變項以及迴歸模型本身。
+`dani.sleep`的係數值非常大，表示每少睡一個小時，我會變得更沮喪。然而，`baby.sleep`的係數值非常小，表示我的兒子睡多少其實無關緊要。就我的煩躁程度而言，重要的是我睡多少。為了讓您對這個多元迴歸模型有所了解， @fig-fig12-14 是一幅三維圖，包括所有三個變項以及迴歸模型本身。
 
-<!--- The coefficient associated with dani.sleep is quite large, suggesting that every hour of sleep I lose makes me a lot grumpier. However, the coefficient for baby.sleep is very small, suggesting that it doesn't really matter how much sleep my son gets. What matters as far as my grumpiness goes is how much sleep I get. To get a sense of what this multiple regression model looks like, @fig-fig10-14 shows a 3D plot that plots all three variables, along with the regression model itself. --->
+<!--- The coefficient associated with dani.sleep is quite large, suggesting that every hour of sleep I lose makes me a lot grumpier. However, the coefficient for baby.sleep is very small, suggesting that it doesn't really matter how much sleep my son gets. What matters as far as my grumpiness goes is how much sleep I get. To get a sense of what this multiple regression model looks like, @fig-fig12-14 shows a 3D plot that plots all three variables, along with the regression model itself. --->
 
 ```{r}
-#| label: fig-fig10-14
+#| label: fig-fig12-14
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 這張立體視覺圖以三個維度展示多元迴歸模型。此模型有兩個預測變項， `dani.sleep` 和 `baby.sleep`，結果變項是 `dani.grump`，這三個變項構成三維空間。每筆資料都是這個空間中的一個點。就像簡單線性迴歸模型在二維散佈圖形成一條線一樣，多元迴歸模型在三維空間構成一個平面。估計迴歸係數，就是找到一個盡可能靠近所有資料點的平面。
@@ -593,10 +593,10 @@ $$t=\frac{\hat{b}}{SE(\hat{b})}$$
 
 ### 用 jamovi 執行假設檢定 {#sec-jamovi-regression-hypothesis-testing}
 
-要計算以上介紹的統計量數，只需要在jamovi迴歸模組選單勾選對應的選項。要選擇的選項如同 @fig-fig10-15 的示範，會得到一系列有用的報表輸出。
+要計算以上介紹的統計量數，只需要在jamovi迴歸模組選單勾選對應的選項。要選擇的選項如同 @fig-fig12-15 的示範，會得到一系列有用的報表輸出。
 
 ```{r}
-#| label: fig-fig10-15
+#| label: fig-fig12-15
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: jamovi示範畫面，顯示一個多元線性迴歸分析，請留意其中勾選的選項
@@ -643,17 +643,17 @@ In any case, this t-statistic can be interpreted in the same way as the t-statis
 
 ### Running the hypothesis tests in jamovi
 
-To compute all of the statistics that we have talked about so far, all you need to do is make sure the relevant options are checked in jamovi and then run the regression. If we do that, as in @fig-fig10-15, we get a whole bunch of useful output.
+To compute all of the statistics that we have talked about so far, all you need to do is make sure the relevant options are checked in jamovi and then run the regression. If we do that, as in @fig-fig12-15, we get a whole bunch of useful output.
 
 ```{r}
-#| label: fig-fig10-15eng
+#| label: fig-fig12-15eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: A jamovi screenshot showing a multiple linear regression analysis, with some useful options checked
 knitr::include_graphics("images/fig12-15.png")  
 ```
 
-The 'Model Coefficients' at the bottom of the jamovi analysis results shown in @fig-fig10-15 provides the coefficients of the regression model. Each row in this table refers to one of the coefficients in the regression model. The first row is the intercept term, and the later ones look at each of the predictors. The columns give you all of the relevant information. The first column is the actual estimate of $b$ (e.g., $125.97$ for the intercept, and -8.95 for the dani.sleep predictor). The second column is the standard error estimate $\hat{\sigma}_b$. The third and fourth columns provide the lower and upper values for the 95% confidence interval around the b estimate (more on this later). The fifth column gives you the t-statistic, and it's worth noticing that in this table $t=\frac{\hat{b}} {se({\hat{b}})}$ every time. Finally, the last column gives you the actual p-value for each of these tests.[^correlation-and-linear-regression-12]
+The 'Model Coefficients' at the bottom of the jamovi analysis results shown in @fig-fig12-15 provides the coefficients of the regression model. Each row in this table refers to one of the coefficients in the regression model. The first row is the intercept term, and the later ones look at each of the predictors. The columns give you all of the relevant information. The first column is the actual estimate of $b$ (e.g., $125.97$ for the intercept, and -8.95 for the dani.sleep predictor). The second column is the standard error estimate $\hat{\sigma}_b$. The third and fourth columns provide the lower and upper values for the 95% confidence interval around the b estimate (more on this later). The fifth column gives you the t-statistic, and it's worth noticing that in this table $t=\frac{\hat{b}} {se({\hat{b}})}$ every time. Finally, the last column gives you the actual p-value for each of these tests.[^correlation-and-linear-regression-12]
 
 [^correlation-and-linear-regression-12]: Note that, although jamovi has done multiple tests here, it hasn't done a Bonferroni correction or anything (see @sec-Comparing-several-means-one-way-ANOVA). These are standard one-sample t-tests with a two-sided alternative. If you want to make corrections for multiple tests, you need to do that yourself.
 
@@ -671,7 +671,7 @@ The only thing that the coefficients table itself doesn't list is the degrees of
 
 [^correlation-and-linear-regression-13]: 幸運的是，迴歸權重的信賴區間可以通用的方法計算出來$CI(b)=\hat{b} \pm (t_{crit} \times SE(\hat{b}))$，其中$se(\hat{b})$是迴歸係數的標準誤，$t_{crit}$是t分佈的對應臨界值。例如，如果我們要計算的是95％的信賴區間，則臨界值是具有$N - K -1$自由度的t分佈中$97.5$的百分位數。換句話說，這與其他統計方法使用的信賴區間的計算方法相同。
 
-在jamovi的操作界面，我們可以指定“95％信賴區間”，如 @fig-fig10-15 的示範，如果想要更嚴謹的話，我們可以輕鬆選擇另一種區間，例如“99％信賴區間”。
+在jamovi的操作界面，我們可以指定“95％信賴區間”，如 @fig-fig12-15 的示範，如果想要更嚴謹的話，我們可以輕鬆選擇另一種區間，例如“99％信賴區間”。
 
 ### 標準化迴歸係數的計算方法
 
@@ -685,10 +685,10 @@ The only thing that the coefficients table itself doesn't list is the degrees of
 
 [^correlation-and-linear-regression-15]: 撇開這個小單元的解釋，我們可以嘗試看看實際的計算步驟。同學們可以先將所有變項資料標準化，然後再執行迴歸分析。而且其實有一種更簡單的方法可以做到這一點，預測變項$X$和依變項$Y$的$\beta$係數有個非常簡單的公式：$\beta_X=b_X \times \frac{\sigma_X}{\sigma_Y}$，其中$\sigma_X$是預測變項的標準差，$\sigma_Y$是依變項Y的標準差。
 
-為了讓簡化分析程序，只要在jamovi模組選單裡，從"Model Coefficients"的選項中勾選"Standardized estimate"，就能計算$\beta$，如同 @fig-fig10-16 的示範。
+為了讓簡化分析程序，只要在jamovi模組選單裡，從"Model Coefficients"的選項中勾選"Standardized estimate"，就能計算$\beta$，如同 @fig-fig12-16 的示範。
 
 ```{r}
-#| label: fig-fig10-16
+#| label: fig-fig12-16
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 多元線性迴歸的標準化係數及其95％信賴區間
@@ -707,7 +707,7 @@ Like any population parameter, the regression coefficients b cannot be estimated
 
 [^correlation-and-linear-regression-13]: Fortunately, confidence intervals for the regression weights can be constructed in the usual fashion $CI(b)=\hat{b} \pm (t_{crit} \times SE(\hat{b}))$ where $se(\hat{b})$ is the standard error of the regression coefficient, and t_crit is the relevant critical value of the appropriate t distribution. For instance, if it's a 95% confidence interval that we want, then the critical value is the $97.5$th quantile of a t distribution with $N -K -1$ degrees of freedom. In other words, this is basically the same approach to calculating confidence intervals that we've used throughout.
 
-In jamovi we had already specified the '95% Confidence interval' as shown in @fig-fig10-15, although we could easily have chosen another value, say a '99% Confidence interval' if that is what we decided on.
+In jamovi we had already specified the '95% Confidence interval' as shown in @fig-fig12-15, although we could easily have chosen another value, say a '99% Confidence interval' if that is what we decided on.
 
 ### 標準化迴歸係數的計算方法
 
@@ -721,10 +721,10 @@ The basic idea is quite simple; the standardised coefficients are the coefficien
 
 [^correlation-and-linear-regression-15]: Leaving aside the interpretation issues, let's look at how it's calculated. What you could do is standardise all the variables yourself and then run a regression, but there's a much simpler way to do it. As it turns out, the $\beta$ coefficient for a predictor $X$ and outcome $Y$ has a very simple formula, namely $\beta_X=b_X \times \frac{\sigma_X}{\sigma_Y}$ where $\sigma_X$ is the standard deviation of the predictor, and σY is the standard deviation of the outcome variable Y. This makes matters a lot simpler.
 
-To make things even simpler, jamovi has an option that computes the $\beta$ coefficients for you using the 'Standardized estimate' checkbox in the 'Model Coefficients' options, see results in @fig-fig10-16.
+To make things even simpler, jamovi has an option that computes the $\beta$ coefficients for you using the 'Standardized estimate' checkbox in the 'Model Coefficients' options, see results in @fig-fig12-16.
 
 ```{r}
-#| label: fig-fig10-16eng
+#| label: fig-fig12-16eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: Standardised coefficients, with 95% confidence intervals, for multiple linear regression
@@ -735,9 +735,9 @@ These results clearly show that the dani.sleep variable has a much stronger effe
 
 ## 迴歸模型的適用條件 {#sec-regression-assumptions}
 
-線性迴歸模型必須符合幾個適用條件(assumptions)，才能解讀分析結果。在 @sec-regression-Model-diagnosis *診斷迴歸模型的適用條件*這個單元，我們將會學習如何檢查這些假設是否得到滿足，首先簡單說明每個假設的涵意。[^10-translation-5]
+線性迴歸模型必須符合幾個適用條件(assumptions)，才能解讀分析結果。在 @sec-regression-Model-diagnosis *診斷迴歸模型的適用條件*這個單元，我們將會學習如何檢查這些假設是否得到滿足，首先簡單說明每個假設的涵意。[^10-translation-6]
 
-[^10-translation-5]: 譯註~這些適用條件在所有基礎統計方法幾乎都是必要的，這也是本書中文版將**相關與線性迴歸**調整為第一個學習的統計方法原因之一。
+[^10-translation-6]: 譯註~這些適用條件在所有基礎統計方法幾乎都是必要的，這也是本書中文版將**相關與線性迴歸**調整為第一個學習的統計方法原因之一。
 
 - **線性**。線性迴歸模型的最基本的適用條件是$X$和$Y$之間的關係必須是線性的！無論是簡單迴歸還是多元迴歸，我們都要假設變項之間的關係是線性的。
 - **獨立性**：這是說變項資料的殘差彼此獨立。實際上這是條“總括一切”的適用條件，更白話地說“在殘差中找不到任何有意思的東西了”。如果還能分析出一些意料之外的資訊（例如，所有殘差都與某些未測量的變項存在明顯相關性），可能會破壞分析後的結論。
@@ -791,65 +791,6 @@ $$\epsilon_i=Y_i-\hat{Y_i}$$
 
 在繼續之前，我應該指出，即使這些殘差是幾乎所有迴歸診斷的核心，你通常也不需要自己獲得這些殘差。大多數時候，提供診斷或假設檢查的各種選項將為您處理這些計算。即使如此，知道如何實際自己獲得這些東西，以防你需要進行一些非標準操作，總是很好的。
 
-### 三種異常資料{#sec-three-kinds-of-anomalous-data}
-
-使用線性迴歸模型時，您可能會遇到一個危險，那就是您的分析可能會對一小部分"不尋常"或"異常"的觀測值過於敏感。我之前在 @sec-Using-box-plots-to-detect-outliers 的上下文中討論過這個想法，當時是在討論用 '探索' - '描述統計' 下的 boxplot 選項自動識別的異常值，但這次我們需要更精確。在線性迴歸的背景下，有三個概念上不同的方式可以將觀測值稱為"異常"。這三者都很有趣，但對你的分析有很不同的影響。
-
-第一種不尋常的觀測值是**異常值**。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。 @fig-fig10-17 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，$\epsilon_i^*$，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。
-
-```{r}
-#| label: fig-fig10-17
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: 異常值的示例。虛線繪製了不包括異常觀測值的迴歸線，以及相應的殘差（即Studentised殘差）。實線顯示了包含異常觀測值的迴歸線。異常值在結果值（y軸位置）上具有不尋常的值，但在預測變項（x軸位置）上並不不尋常，並且距離迴歸線很遠
-knitr::include_graphics("images/fig12-17.png")  
-```
-
-觀測值不尋常的第二種方式是具有高**槓桿作用(leverage)**，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如 @fig-fig10-18 所示。觀測值的槓桿作用通常用帽子值表示，通常寫作$h_i$。帽子值的公式相當複雜[^correlation-and-linear-regression-18]，但它的解釋並不複雜：$h_i$是衡量第i個觀測值“控制”迴歸線走向的程度。
-
-[^correlation-and-linear-regression-18]: 再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量$y$轉換為擬合值向量$\hat{y}$的矩陣$H$，使得$\hat{y} = Hy$。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為$h_{ii}$而不是$h_i$）。哦，如果你在意，這是它的計算方法：$H = X(X^{'}X)^{1}X^{'}$。漂亮，不是嗎？
-
-```{r}
-#| label: fig-fig10-18
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: 高槓桿點的示例。在這種情況下，異常觀測值在預測變項（x軸）和結果變項（y軸）方面都不尋常，但這種不尋常性與其他觀測值之間存在的相關性模式高度一致。觀測值非常接近迴歸線並且不會使其變形
-knitr::include_graphics("images/fig12-18.png")  
-```
-
-一般來說，如果觀測值在預測變項方面遠離其他觀測值，它將具有較大的帽子值（作為粗略指南，高槓桿是指帽子值大於平均值的2-3倍；注意帽子值的總和被限制為等於$K + 1$）。高槓桿點也值得更詳細地查看，但除非它們也是異常值，否則它們不太可能引起擔憂。
-
-這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的**影響力(influence)**。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在 @fig-fig10-19 中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為**Cook's distance**的衡量指標來度量影響力。[^correlation-and-linear-regression-19]
-
-[^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ 請注意，這是衡量觀測值的異常程度（左邊的部分）和衡量觀測值的槓桿（右邊的部分）的乘積。
-
-```{r}
-#| label: fig-fig10-19
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: 高影響力點的示例。在這種情況下，異常觀測值在預測變項（x軸）上非常不尋常，並且距離迴歸線很遠。因此，即使在這種情況下，異常觀測值在結果變項（y軸）上完全正常，迴歸線也會受到很大影響
-knitr::include_graphics("images/fig12-19.png")  
-```
-
-要具有較大的Cook's距離，觀測值必須是相當大的異常值並具有高槓桿。作為粗略指南，大於1的Cook's距離通常被認為很大（這是我通常用作快速而簡單的規則）。
-
-在jamovi中，可以通過單擊'Assumption Checks' - 'Data Summary'選項下的'Cook's Distance'複選框來計算有關Cook's距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如 @fig-fig10-20 所示的結果。
-
-```{r}
-#| label: fig-fig10-20
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: jamovi輸出顯示Cook's距離統計表格
-knitr::include_graphics("images/fig12-20.png")  
-```
-
-您可以看到，在這個例子中，平均Cook's距離值為$0.01$，範圍從$0.00$到$0.11$，因此這與前面提到的指標相去甚遠，即大於1的Cook's距離被認為很大。
-
-接下來明顯要問的問題是，如果您確實擁有很大的Cook's距離值，您應該怎麼辦？一如既往，沒有固定不變的規則。可能首先要做的是嘗試運行迴歸，排除具有最大Cook's距離的異常值[^correlation-and-linear-regression-20]，看看模型性能和迴歸係數會發生什麼變化。如果它們確實有很大不同，那就該開始深入研究您的資訊集和您在運行研究時無疑在抄寫的筆記。嘗試找出該點為何如此不同。如果您開始確信這個資訊點嚴重扭曲了您的結果，那麼您可能會考慮將其排除在外，但除非您對於這個特定案例與其他案例有本質上的不同並因此應該單獨處理，否則這種做法是不理想的。
-
-[^correlation-and-linear-regression-20]: 雖然目前在jamovi中進行此操作的方法不太容易，因此更強大的迴歸程序（例如R中的'car'套件）將更適合進行此更高級的分析。
-
-
 
 <!--- 大多數迴歸診斷都圍繞著**殘差**的概念。在某種程度上，這很有道理：迴歸模型的目標是找到一條能夠最小化殘差的線，因此我們當然會關注殘差的性質。然而，當我們討論殘差時，其實有很多不同類型的殘差可以關注，以下是其中三個最重要的類型：
 
@@ -897,22 +838,22 @@ Before moving on, I should point out that you don't often need to obtain these r
 
 One danger that you can run into with linear regression models is that your analysis might be disproportionately sensitive to a smallish number of "unusual" or "anomalous" observations. I discussed this idea previously in @sec-Using-box-plots-to-detect-outliers in the context of discussing the outliers that get automatically identified by the boxplot option under 'Exploration' - 'Descriptives', but this time we need to be much more precise. In the context of linear regression, there are three conceptually distinct ways in which an observation might be called "anomalous". All three are interesting, but they have rather different implications for your analysis.
 
-The first kind of unusual observation is an **outlier**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in @fig-fig10-17. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, $\epsilon_i^*$. Outliers are interesting: a big outlier might correspond to junk data, e.g., the variables might have been recorded incorrectly in the data set, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case and try to find out why it's so different.
+The first kind of unusual observation is an **outlier**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in @fig-fig12-17. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, $\epsilon_i^*$. Outliers are interesting: a big outlier might correspond to junk data, e.g., the variables might have been recorded incorrectly in the data set, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case and try to find out why it's so different.
 
 ```{r}
-#| label: fig-fig10-17eng
+#| label: fig-fig12-17eng1
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line
 knitr::include_graphics("images/fig12-17.png")  
 ```
 
-The second way in which an observation can be unusual is if it has high **槓桿作用(leverage)**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig10-18. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^correlation-and-linear-regression-18] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
+The second way in which an observation can be unusual is if it has high **槓桿作用(leverage)**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig12-18. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^correlation-and-linear-regression-18] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
 
 [^correlation-and-linear-regression-18]: Again, for the linear algebra fanatics: the "hat matrix" is defined to be that matrix $H$ that converts the vector of observed values $y$ into a vector of fitted values $\hat{y}$, such that $\hat{y} = Hy$. The name comes from the fact that this is the matrix that "puts a hat on y". The hat value of the i-th observation is the i-th diagonal element of this matrix (so technically I should be writing it as $h_{ii}$ rather than $h_i$). Oh, and in case you care, here's how it's calculated: $H = X(X^{'}X)^{1}X^{'}$. Pretty, isn't it?
 
 ```{r}
-#| label: fig-fig10-18eng
+#| label: fig-fig12-18eng1
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations. The observation falls very close to the regression line and does not distort it
@@ -921,12 +862,12 @@ knitr::include_graphics("images/fig12-18.png")
 
 In general, if an observation lies far away from the other ones in terms of the predictor variables, it will have a large hat value (as a rough guide, high leverage is when the hat value is more than 2-3 times the average; and note that the sum of the hat values is constrained to be equal to $K + 1$). High leverage points are also worth looking at in more detail, but they're much less likely to be a cause for concern unless they are also outliers.
 
-This brings us to our third measure of unusualness, the **影響力(influence)** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig10-19. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^correlation-and-linear-regression-19]
+This brings us to our third measure of unusualness, the **影響力(influence)** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig12-19. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^correlation-and-linear-regression-19]
 
 [^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ Notice that this is a multiplication of something that measures the outlier-ness of the observation (the bit on the left), and something that measures the leverage of the observation (the bit on the right).
 
 ```{r}
-#| label: fig-fig10-19eng
+#| label: fig-fig12-19eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)
@@ -935,10 +876,10 @@ knitr::include_graphics("images/fig12-19.png")
 
 In order to have a large Cook's distance an observation must be a fairly substantial outlier and have high leverage. As a rough guide, Cook's distance greater than 1 is often considered large (that's what I typically use as a quick and dirty rule).
 
-In jamovi, information about Cook's distance can be calculated by clicking on the 'Cook's Distance' checkbox in the 'Assumption Checks' - 'Data Summary' options. When you do this, for the multiple regression model we have been using as an example in this chapter, you get the results as shown in @fig-fig10-20.
+In jamovi, information about Cook's distance can be calculated by clicking on the 'Cook's Distance' checkbox in the 'Assumption Checks' - 'Data Summary' options. When you do this, for the multiple regression model we have been using as an example in this chapter, you get the results as shown in @fig-fig12-20.
 
 ```{r}
-#| label: fig-fig10-20eng
+#| label: fig-fig12-20eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: jamovi output showing the table for the Cook's distance statistics
@@ -951,26 +892,67 @@ An obvious question to ask next is, if you do have large values of Cook's distan
 
 [^correlation-and-linear-regression-20]: although currently there isn't a very easy way to do this in jamovi, so a more powerful regression program such as the 'car' package in R would be better for this more advanced analysis --->
 
-### 檢測殘差常態性
+### 檢測變項的線性關係 {#sec-checking-liniearity-relationshp}
 
-像我們在本書中討論過的許多統計工具一樣，迴歸模型依賴於常態性假設。在這種情況下，我們假設殘差呈常態分布。首先，我們可以通過 'Assumption Checks' - 'Assumption Checks' - 'Q-Q plot of residuals' 選項繪製一個 QQ 圖。輸出顯示在 @fig-fig10-21，顯示了標準化殘差作為其根據迴歸模型的理論分位數的函數的圖。
+我們應該檢查預測變項和結果之間關係的線性。有幾種不同的方法可以檢查這一點。首先,繪製結果變項的預測值$\hat{Y}_i$和觀察值$Y_i$之間的關係總是有幫助的,如 @fig-fig12-17 所示。為了在jamovi中繪製這個圖,我們將預測值保存到數據集,然後繪製觀察值與預測值(擬合值)的散點圖。這給您一種"大局觀" - 如果這個圖看起來大致呈線性,那麼我們可能做得不算太差(儘管這並不意味著沒有問題)。然而,如果您能在這裡看到明顯偏離線性的地方,那麼這有力地表明您需要做出一些改變。 
 
 ```{r}
-#| label: fig-fig10-21
+#| label: fig-fig12-17
+#| fig-cap: jamovi 繪製的預測值與結果變項觀察值的對照圖。我們希望在這裡看到一條(近似)直線。這看起來相當不錯,表明沒有任何嚴重的錯誤。
+knitr::include_graphics("images/fig12-17.png")
+```
+
+無論如何,為了獲得更詳細的圖景,查看預測值與殘差本身之間的關係通常更有意義。同樣,在jamovi中,您可以將殘差保存到數據集,然後繪製預測值與殘差值的散點圖,如 @fig-fig12-18 所示。正如您所見,它不僅繪製了顯示預測值與殘差的散點圖,還可以在數據中繪製一條線,顯示兩者之間的關係。理想情況下,這應該是一條筆直的、完全水平的線。在實踐中,我們尋求一條合理筆直或平坦的線。這是一個判斷的問題。  
+
+```{r}
+#| label: fig-fig12-18
+#| fig-cap: jamovi 繪製的預測值與殘差的對照圖,其中一條線顯示了兩者之間的關係。如果這條線是水平且(近似)筆直的,那麼我們可以合理地確信,所有"預測值"的"平均殘差"或多或少是相同的。
+knitr::include_graphics("images/fig12-18.png")
+```
+
+通過在jamovi的迴歸分析"假設檢驗"選項中勾選"殘差圖",可以生成同一圖的更高級版本。這些不僅可用於檢查線性,還可用於檢查常態性和方差相等性假設,我們在 @sec-Checking-the-normality-of-the-residuals 中更詳細地討論了這些。此選項不僅繪製了比較預測值與殘差的圖,還對每個單獨的預測變項都做了相同的繪圖。
+
+<!---
+### Checking the linearity of the relationship
+
+We should check for the linearity of the relationships between the predictors and the outcomes. There's a few different things that you might want to do in order to check this. Firstly, it never hurts to just plot the relationship between the predicted values $\hat{Y}_i$ and the observed values $Y_i$ for the outcome variable, as illustrated in @fig-fig12-17. To draw this in jamovi we saved the predicted values to the dataset, and then drew a scatterplot of the observed against the predicted (fitted) values. This gives you a kind of "big picture view" - if this plot looks approximately linear, then we're probably not doing too badly (though that's not to say that there aren't problems). However, if you can see big departures from linearity here, then it strongly suggests that you need to make some changes.
+
+```{r}
+#| label: fig-fig12-17eng2
+#| fig-cap: jamovi plot of the predicted values against the observed values of the outcome variable. A straight(-ish) line is what we're hoping to see here. This looks pretty good, suggesting that there's nothing grossly wrong
+knitr::include_graphics("images/fig12-17.png")
+```
+
+In any case, in order to get a more detailed picture it's often more informative to look at the relationship between the predicted values and the residuals themselves. Again, in jamovi you can save the residuals to the dataset and then draw a scatterplot of the predicted values against the residual values, as in @fig-fig12-18. As you can see, not only does it draw the scatterplot showing the predicted value against the residuals, you can also plot a line through the data that shows the relationship between the two. Ideally, this should be a straight, perfectly horizontal line. In practice, we're looking for a reasonably straight or flat line. This is a matter of judgement.
+
+```{r}
+#| label: fig-fig12-18eng2
+#| fig-cap: jamovi plot of the predicted values against the residuals, with a line showing the relationship between the two. If this is horizontal and straight(-ish), then we can feel reasonably confident that the "average residual" for all "predicted values" is more or less the same.
+knitr::include_graphics("images/fig12-18.png")
+```
+
+Somewhat more advanced versions of the same plot is produced by checking 'Residuals plots' in the regression analysis 'Assumption checks' options in jamovi. These are useful not only for checking linearity, but also for checking normality and equality of variance assumptions, and we look at these in more detail in @sec-Checking-the-normality-of-the-residuals. This option not only draws plots comparing the predicted values to the residuals, it does so for each individual predictor.--->
+
+### 檢測殘差常態性 {#sec-Checking-the-normality-of-the-residuals}
+
+像我們在本書中討論過的許多統計工具一樣，迴歸模型依賴於常態性假設。在這種情況下，我們假設殘差呈常態分布。首先，我們可以通過 'Assumption Checks' - 'Assumption Checks' - 'Q-Q plot of residuals' 選項繪製一個 QQ 圖。輸出顯示在 @fig-fig12-19 ，顯示了標準化殘差作為其根據迴歸模型的理論分位數的函數的圖。
+
+```{r}
+#| label: fig-fig12-19
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 模型理論分位數與標準化殘差的分位數之間的圖，由 jamovi 生成
-knitr::include_graphics("images/fig12-21.png")  
+knitr::include_graphics("images/fig12-19.png")  
 ```
 
-我們還應該檢查擬合值和殘差本身之間的關係。我們可以使用 'Residuals Plots' 選項讓 jamovi 做到這一點，該選項為每個預測變項、結果變項以及擬合值與殘差提供了散點圖，見 @fig-fig10-22。在這些圖中，我們要尋找的是點的分佈相對均勻，沒有明顯的聚集或圖案。觀察這些圖，沒有什麼特別令人擔憂的，因為點在整個圖中分佈得相當均勻。在圖 (b) 中可能存在一點非均勻性，但偏差不大，可能不值得擔憎。
+我們還應該檢查擬合值和殘差本身之間的關係。我們可以使用 'Residuals Plots' 選項讓 jamovi 做到這一點，該選項為每個預測變項、結果變項以及擬合值與殘差提供了散點圖，見 @fig-fig12-20 。在這些圖中，我們要尋找的是點的分佈相對均勻，沒有明顯的聚集或圖案。觀察這些圖，沒有什麼特別令人擔憂的，因為點在整個圖中分佈得相當均勻。在圖 (b) 中可能存在一點非均勻性，但偏差不大，可能不值得擔憎。
 
 ```{r}
-#| label: fig-fig10-22
+#| label: fig-fig12-20
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 由 jamovi 生成的殘差圖
-knitr::include_graphics("images/fig12-22.png")  
+knitr::include_graphics("images/fig12-20.png")  
 ```
 
 如果我們擔憂的話，那麼在很多情況下解決這個問題（以及其他許多問題）的方法是對一個或多個變項進行轉換。我們在 @sec-Transforming-and-recoding-a-variable 中討論了變項轉換的基本知識，但我想特別提一下我之前沒有完全解釋的一個額外可能性：Box-Cox 轉換。Box-Cox 函數相當簡單，並且被廣泛使用。[^correlation-and-linear-regression-21]
@@ -978,6 +960,36 @@ knitr::include_graphics("images/fig12-22.png")
 [^correlation-and-linear-regression-21]: 對於所有的 λ 值，除了 λ = 0，有 $f(x,\lambda)=\frac{x^{\lambda}-1}{\lambda}$。當 λ = 0 時，我們只取自然對數（即，ln（x））。
 
 您可以在 jamovi 的 'Compute' 變數屏幕中使用 BOXCOX 函數進行計算。
+
+
+### 檢測變異數同質性 {#sec-check-equality-of-variance}
+
+我們所討論的迴歸模型都做了一個方差相等性(即同質性)的假設:殘差的方差被假定為常數。要在jamovi中繪製這一點,首先我們需要計算殘差大小的平方根[^Correlation-and-regression-22],然後將其對預測值繪圖,如 @fig-fig12-21 所示。請注意,這個圖實際上使用的是標準化殘差,而不是原始殘差,但從我們的角度來看,這並不重要。我們希望在這裡看到的是一條穿過圖中心的筆直水平線。[^Correlation-and-linear-regression-23]
+
+```{r}
+#| label: fig-fig12-21
+#| fig-cap: jamovi繪製的預測值(模型預測)與絕對標準化殘差的平方根的對照圖。此圖用於診斷違反方差同質性的情況。如果方差真的是常數,那麼中間的線應該是水平且平坦(或接近平坦)的。
+knitr::include_graphics("images/fig12-21.png")
+```
+
+[^Correlation-and-regression-22]: 在jamovi中,您可以使用公式'SQRT(ABS(Residuals))'計算這個新變項。
+
+[^Correlation-and-linear-regression-23]: 談論如何處理違反方差同質性的問題有點超出了本章的範圍,但我會快速給您一個需要考慮的內容。如果違反了方差同質性,主要需要擔心的是與迴歸係數相關的標準誤估計不再完全可靠,因此您對係數的$t$檢驗也不太正確。解決這個問題的一個簡單方法是在估計標準誤時使用"異方差校正的協方差矩陣"。這些通常被稱為三明治估計量,可以在R中估計(但不能直接在jamovi中估計)。
+
+<!---
+
+
+```{r}
+#| label: fig-fig12-21eng
+#| fig-cap: jamovi plot of the predicted values (model predictions) against the square root of the absolute standardised residuals. This plot is used to diagnose violations of homogeneity of variance. If the variance is really constant, then the line through the middle should be horizontal and flat(-ish).
+knitr::include_graphics("images/fig12-21.png")
+```
+
+[^Correlation-and-regression-22]: In jamovi, you can compute this new variable using the formula 'SQRT(ABS(Residuals))'
+
+[^Correlation-and-linear-regression-23]: It's a bit beyond the scope of this chapter to talk about how to deal with violations of homogeneity of variance, but I'll give you a quick sense of what you need to consider. The **main** thing to worry about, if homogeneity of variance is violated, is that the standard error estimates associated with the regression coefficients are no longer entirely reliable, and so your $t$ tests for the coefficients aren't quite right either. A simple fix to the problem is to make use of a "heteroscedasticity corrected covariance matrix" when estimating the standard errors. These are often called **_sandwich estimators_**, and these can be estimated in R (but not directly in jamovi).
+
+--->
 
 ### 檢測共線性 {#sec-check-regression-collinearity}
 
@@ -987,82 +999,268 @@ knitr::include_graphics("images/fig12-22.png")
 
 VIF 的平方根具有很好的解釋性。它告訴您相應的係數 bk 的信賴區間相對於預測變項彼此完全不相關時所期望的值要寬多少。如果您只有兩個預測變項，VIF 值將始終相同，正如我們在 jamovi 的 'Regression' - 'Assumptions' 選項中選中 'Collinearity' 後可以看到的那樣。對於 dani.sleep 和 baby.sleep，VIF 均為 1.65。而由於 1.65 的平方根為 1.28，我們可以看到我們兩個預測變項之間的相關性並未造成太大問題。
 
-為了給出我們可能會遇到具有更大共線性問題的模型的感覺，假設我要運行一個更無趣的迴歸模型，在該模型中，我試圖預測資訊收集的日期，作為資訊集中所有其他變項的函數。要理解這為什麼會有問題，讓我們看一下所有四個變項的相關矩陣（@fig-fig10-24）。
+為了給出我們可能會遇到具有更大共線性問題的模型的感覺，假設我要運行一個更無趣的迴歸模型，在該模型中，我試圖預測資訊收集的日期，作為資訊集中所有其他變項的函數。要理解這為什麼會有問題，讓我們看一下所有四個變項的相關矩陣（ @fig-fig12-22 ）。
 
 ```{r}
-#| label: fig-fig10-24
+#| label: fig-fig12-22
 #| fig-cap: 四個資料變項之間的相關係數矩陣
 #Correlation matrix for all four variables
 #huxtabs[[12]][[5]]
-knitr::include_graphics("images/fig12-25.png")
+knitr::include_graphics("images/fig12-22.png")
 ```
 
-我們的預測變項之間有一些相當大的相關性！當我們運行迴歸模型並查看 VIF 值時，我們可以看到共線性對係數的不確定性造成了很大影響。首先，運行迴歸，如 @fig-fig10-23 所示，從 VIF 值可以看出，是的，這是一些非常好的共線性。
+我們的預測變項之間有一些相當大的相關性！當我們運行迴歸模型並查看 VIF 值時，我們可以看到共線性對係數的不確定性造成了很大影響。首先，運行迴歸，如 @fig-fig12-23 所示，從 VIF 值可以看出，是的，這是一些非常好的共線性。
 
 ```{r}
-#| label: fig-fig10-23
+#| label: fig-fig12-23
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: jamovi 生成的多元迴歸共線性統計
 knitr::include_graphics("images/fig12-23.png")  
 ```
 
+
+### 極端值與異常資料{#sec-outliers-and-anomalous-data}
+
+使用線性迴歸模型時，您可能會遇到一個危險，那就是您的分析可能會對一小部分"不尋常"或"異常"的觀測值過於敏感。我之前在 @sec-Using-box-plots-to-detect-outliers 的上下文中討論過這個想法，當時是在討論用 '探索' - '描述統計' 下的 boxplot 選項自動識別的異常值，但這次我們需要更精確。在線性迴歸的背景下，有三個概念上不同的方式可以將觀測值稱為"異常"。這三者都很有趣，但對你的分析有很不同的影響。
+
+第一種不尋常的觀測值是**異常值**。在這種情況下，異常值的定義是與迴歸模型預測的結果相差很大的觀測值。 @fig-fig12-24 中有一個例子。在實踐中，我們通過說一個異常值是具有非常大的Studentised殘差的觀測值，$\epsilon_i^*$，來實現這個概念。異常值很有趣：一個很大的異常值可能對應垃圾資訊，例如，變項在資訊集中可能被錯誤地記錄，或者可能檢測到其他缺陷。請注意，僅僅因為它是一個異常值，你不應該丟掉這個觀測值。但是，它是一個異常值，這經常是一個線索，讓你更仔細地查看該案例，並嘗試找出它為什麼如此不同。
+
+```{r}
+#| label: fig-fig12-24
+#| fig-cap: 異常值的示例。虛線繪製了不包括異常觀測值的迴歸線，以及相應的殘差（即Studentised殘差）。實線顯示了包含異常觀測值的迴歸線。異常值在結果值（y軸位置）上具有不尋常的值，但在預測變項（x軸位置）上並不不尋常，並且距離迴歸線很遠
+
+dat <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.3, 4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                  y=c(2.2, 1.7, 3.9, 3.8, 3.95, 11,  3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,  6.4))
+
+dat2 <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                   y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4))
+fit <- lm(data=dat2, y ~ x)
+yendpoint <- predict(fit, newdata = data.frame(x=c(4.3)))
+
+ggplot(dat, aes(x=x, y=y)) +
+  geom_point(col=blueshade, size=3) +
+  geom_smooth(method=lm, se=F, fullrange=T, col="black", linewidth=0.8) +
+  geom_smooth(data=dat2, method=lm, se=F, fullrange=T, linetype = 'dashed', col="black", linewidth=0.4) +
+  geom_segment(x=4.3, y=10.85, xend=4.3, yend=yendpoint, col="darkgrey", linewidth = 0.4) +
+  annotate(geom="text", label="極端值", x=3.7, y=11) +
+  xlim(1,12) +
+  ylim(1,12) +
+  xlab("\n預測變項") +
+  ylab("結果變項\n") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank())
+
+```
+
+觀測值不尋常的第二種方式是具有高**槓桿作用(leverage)**，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如 @fig-fig12-25 所示。觀測值的槓桿作用通常用帽子值表示，通常寫作$h_i$。帽子值的公式相當複雜[^correlation-and-linear-regression-18]，但它的解釋並不複雜：$h_i$是衡量第i個觀測值“控制”迴歸線走向的程度。
+
+[^correlation-and-linear-regression-18]: 再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量$y$轉換為擬合值向量$\hat{y}$的矩陣$H$，使得$\hat{y} = Hy$。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為$h_{ii}$而不是$h_i$）。哦，如果你在意，這是它的計算方法：$H = X(X^{'}X)^{1}X^{'}$。漂亮，不是嗎？
+
+```{r}
+#| label: fig-fig12-25
+#| fig-cap: 高槓桿點的示例。在這種情況下，異常觀測值在預測變項（x軸）和結果變項（y軸）方面都不尋常，但這種不尋常性與其他觀測值之間存在的相關性模式高度一致。觀測值非常接近迴歸線並且不會使其變形
+
+
+dat <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6, 10),
+                  y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4, 9.8))
+dat2 <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                   y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4))
+fit <- lm(data=dat2, y ~ x)
+yendpoint <- predict(fit, newdata = data.frame(x=c(10)))
+
+ggplot(dat, aes(x=x, y=y)) +
+  geom_point(col=blueshade, size=3) +
+  geom_smooth(method=lm, se=F, fullrange=T, col="black", linewidth=0.8) +
+  geom_smooth(data=dat2, fullrange=T, method=lm, se=F, linetype = 'dashed', col="black", linewidth=0.4) +
+  geom_segment(x=10, y=9.65, xend=10, yend=yendpoint, col="darkgrey", linewidth = 0.4) +
+  annotate(geom="text", label="高槓桿點", x=9.3, y=10.6) +
+  xlim(1,12) +
+  ylim(1,12) +
+  xlab("\n預測變項") +
+  ylab("結果變項\n") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank())
+
+
+```
+
+一般來說，如果觀測值在預測變項方面遠離其他觀測值，它將具有較大的帽子值（作為粗略指南，高槓桿是指帽子值大於平均值的2-3倍；注意帽子值的總和被限制為等於$K + 1$）。高槓桿點也值得更詳細地查看，但除非它們也是異常值，否則它們不太可能引起擔憂。
+
+這讓我們來到了不尋常程度的第三個衡量指標，即觀測值的**影響力(influence)**。高影響力的觀測值是具有高槓桿的異常值。也就是說，它在某些方面與所有其他觀測值非常不同，並且距離迴歸線很遠。這在 @fig-fig12-26 中有所體現。注意與前兩個圖形的對比。異常值並未使迴歸線發生很大變化，高槓桿點也是如此。但既是異常值又具有高槓桿的情況，會對迴歸線產生很大影響。這就是為什麼我們稱這些點具有高影響力，而且它們是最令人擔憂的。我們用稱為**Cook's distance**的衡量指標來度量影響力。[^correlation-and-linear-regression-19]
+
+[^correlation-and-linear-regression-19]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ 請注意，這是衡量觀測值的異常程度（左邊的部分）和衡量觀測值的槓桿（右邊的部分）的乘積。
+
+```{r}
+#| label: fig-fig12-26
+#| fig-cap: 高影響力點的示例。在這種情況下，異常觀測值在預測變項（x軸）上非常不尋常，並且距離迴歸線很遠。因此，即使在這種情況下，異常觀測值在結果變項（y軸）上完全正常，迴歸線也會受到很大影響
+
+dat <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6, 10),
+                  y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4, 4))
+dat2 <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                   y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4))
+fit <- lm(data=dat2, y ~ x)
+yendpoint <- predict(fit, newdata = data.frame(x=c(10)))
+
+ggplot(dat, aes(x=x, y=y)) +
+  geom_point(col=blueshade, size=3) +
+  geom_smooth(method=lm, se=F, fullrange=T, col="black", linewidth=0.8) +
+  geom_smooth(data=dat2, fullrange=T, method=lm, se=F, linetype = 'dashed', col="black", linewidth=0.4) +
+  geom_segment(x=10, y=4.1, xend=10, yend=yendpoint, col="darkgrey", linewidth = 0.4) +
+  annotate(geom="text", label="高影響力點", x=10.3, y=3.4) +
+  xlim(1,12) +
+  ylim(1,12) +
+  xlab("\n預測變項") +
+  ylab("結果變項\n") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank())
+
+```
+
+要具有較大的Cook's距離，觀測值必須是相當大的異常值並具有高槓桿。作為粗略指南，大於1的Cook's距離通常被認為很大（這是我通常用作快速而簡單的規則）。
+
+在jamovi中，可以通過單擊'Assumption Checks' - 'Data Summary'選項下的'Cook's Distance'複選框來計算有關Cook's距離的信息。當你這樣做時，對於我們在本章中作為示例使用的多元迴歸模型，你將得到如 @fig-fig12-27 所示的結果。
+
+```{r}
+#| label: fig-fig12-27
+#| fig-align: left
+#| fig-width: 0.9
+#| fig-cap: jamovi輸出顯示Cook's距離統計表格
+knitr::include_graphics("images/fig12-27.png")  
+```
+
+您可以看到，在這個例子中，平均Cook's距離值為$0.01$，範圍從$0.00$到$0.11$，因此這與前面提到的指標相去甚遠，即大於1的Cook's距離被認為很大。
+
+接下來明顯要問的問題是，如果您確實擁有很大的Cook's距離值，您應該怎麼辦？一如既往，沒有固定不變的規則。可能首先要做的是嘗試運行迴歸，排除具有最大Cook's距離的異常值[^correlation-and-linear-regression-20]，看看模型性能和迴歸係數會發生什麼變化。如果它們確實有很大不同，那就該開始深入研究您的資訊集和您在運行研究時無疑在抄寫的筆記。嘗試找出該點為何如此不同。如果您開始確信這個資訊點嚴重扭曲了您的結果，那麼您可能會考慮將其排除在外，但除非您對於這個特定案例與其他案例有本質上的不同並因此應該單獨處理，否則這種做法是不理想的。
+
+[^correlation-and-linear-regression-20]: 雖然目前在jamovi中進行此操作的方法不太容易，因此更強大的迴歸程序（例如R中的'car'套件）將更適合進行此更高級的分析。
+
+
 <!---
-### 檢測殘差常態性
 
-Like many of the statistical tools we've discussed in this book, regression models rely on a normality assumption. In this case, we assume that the residuals are normally distributed. The first thing we can do is draw a QQ-plot via the 'Assumption Checks' - 'Assumption Checks' - 'Q-Q plot of residuals' option. The output is shown in @fig-fig10-21, showing the standardised residuals plotted as a function of their theoretical quantiles according to the regression model.
+One danger that you can run into with linear regression models is that your analysis might be disproportionately sensitive to a smallish number of "unusual" or "anomalous" observations. I discussed this idea previously in @sec-Using-box-plots-to-detect-outliers in the context of discussing the outliers that get automatically identified by the boxplot option under 'Exploration' - 'Descriptives', but this time we need to be much more precise. In the context of linear regression, there are three conceptually distinct ways in which an observation might be called "anomalous". All three are interesting, but they have rather different implications for your analysis.
 
-```{r}
-#| label: fig-fig10-21eng
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: Plot of the theoretical quantiles according to the model, against the quantiles of the standardised residuals, produced in jamovi
-knitr::include_graphics("images/fig12-21.png")  
-```
-
-Another thing we should check is the relationship between the fitted values and the residuals themselves. We can get jamovi to do this using the 'Residuals Plots' option, which provides a scatterplot for each predictor variable, the outcome variable, and the fitted values against residuals, see @fig-fig10-22. In these plots we are looking for a fairly uniform distribution of 'dots', with no clear bunching or patterning of the 'dots'. Looking at these plots, there is nothing particularly worrying as the dots are fairly evenly spread across the whole plot. There may be a little bit of non-uniformity in plot (b), but it is not a strong deviation and probably not worth worrying about.
+The first kind of unusual observation is an **outlier**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in @fig-fig12-24. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large residual, $\epsilon_i^*$. Outliers are interesting: a big outlier might correspond to junk data, e.g., the variables might have been recorded incorrectly in the data set, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case and try to find out why it's so different.
 
 ```{r}
-#| label: fig-fig10-22eng
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: Residuals plots produced in jamovi
-knitr::include_graphics("images/fig12-22.png")  
+#| label: fig-fig12-24eng
+#| fig-cap: An illustration of outliers. The solid line shows the regression line with the anomalous outlier observation included. The dashed line plots the regression line estimated without the anomalous outlier observation included. The vertical line from the outlier point to the dashed regression line illustrates the large residual error for the outlier. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line
+
+dat <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.3, 4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                  y=c(2.2, 1.7, 3.9, 3.8, 3.95, 11,  3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,  6.4))
+
+dat2 <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                   y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4))
+fit <- lm(data=dat2, y ~ x)
+yendpoint <- predict(fit, newdata = data.frame(x=c(4.3)))
+
+ggplot(dat, aes(x=x, y=y)) +
+  geom_point(col=blueshade, size=3) +
+  geom_smooth(method=lm, se=F, fullrange=T, col="black", linewidth=0.8) +
+  geom_smooth(data=dat2, method=lm, se=F, fullrange=T, linetype = 'dashed', col="black", linewidth=0.4) +
+  geom_segment(x=4.3, y=10.85, xend=4.3, yend=yendpoint, col="darkgrey", linewidth = 0.4) +
+  annotate(geom="text", label="Outlier", x=3.7, y=11) +
+  xlim(1,12) +
+  ylim(1,12) +
+  xlab("\nPredictor") +
+  ylab("Outcome\n") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank())
+
 ```
 
-If we were worried, then in a lot of cases the solution to this problem (and many others) is to transform one or more of the variables. We discussed the basics of variable transformation in @sec-Transforming-and-recoding-a-variable, but I do want to make special note of one additional possibility that I didn't explain fully earlier: the Box-Cox transform. The Box-Cox function is a fairly simple one and it's very widely used. [^correlation-and-linear-regression-21]
+The second way in which an observation can be unusual is if it has high **leverage**, which happens when the observation is very different from all the other observations. This doesn't necessarily have to correspond to a large residual. If the observation happens to be unusual on all variables in precisely the same way, it can actually lie very close to the regression line. An example of this is shown in @fig-fig12-24. The leverage of an observation is operationalised in terms of its hat value, usually written $h_i$ . The formula for the hat value is rather complicated[^12-correlation-and-linear-regression-25] but its interpretation is not: $h_i$ is a measure of the extent to which the i-th observation is "in control" of where the regression line ends up going.
 
-[^correlation-and-linear-regression-21]: $f(x,\lambda)=\frac{x^{\lambda}-1}{\lambda}$ for all values of $\lambda$ except $\lambda = 0$. When $\lambda = 0$ we just take the natural logarithm (i.e., ln($x$).
-
-You can calculate it using the BOXCOX function in the 'Compute' variables screen in jamovi.
-
-### 檢測共線性 {#sec-check-regression-collinearity}
-
-The last kind of regression diagnostic that I'm going to discuss in this chapter is the use of **variance inflation factors** (VIFs), which are useful for determining whether or not the predictors in your regression model are too highly correlated with each other. There is a variance inflation factor associated with each predictor $X_k$ in the model. [^correlation-and-linear-regression-22]
-
-[^correlation-and-linear-regression-22]: The formula for the k-th VIF is: $VIF_k=\frac{1}{1-R_{-k}^2}$ where $R^2_(-k)$ refers to R-squared value you would get if you ran a regression using $X_k$ as the outcome variable, and all the other X variables as the predictors. The idea here is that $R^2_(-k)$ is a very good measure of the extent to which $X_k$ is correlated with all the other variables in the model.
-
-The square root of the VIF is pretty interpretable. It tells you how much wider the confidence interval for the corresponding coefficient bk is, relative to what you would have expected if the predictors are all nice and uncorrelated with one another. If you've only got two predictors, the VIF values are always going to be the same, as we can see if we click on the 'Collinearity' checkbox in the 'Regression' - 'Assumptions' options in jamovi. For both dani.sleep and baby.sleep the VIF is $1.65$. And since the square root of $1.65$ is $1.28$, we see that the correlation between our two predictors isn't causing much of a problem.
-
-To give a sense of how we could end up with a model that has bigger collinearity problems, suppose I were to run a much less interesting regression model, in which I tried to predict the day on which the data were collected, as a function of all the other variables in the data set. To see why this would be a bit of a problem, let's have a look at the correlation matrix for all four variables (@fig-fig10-24).
+[^12-correlation-and-linear-regression-25]: Again, for the linear algebra fanatics: the "hat matrix" is defined to be that matrix $H$ that converts the vector of observed values $y$ into a vector of predicted values $\hat{y}$, such that $\hat{y} = Hy$. The name comes from the fact that this is the matrix that "puts a hat on y". The hat value of the i-th observation is the i-th diagonal element of this matrix (so technically I should be writing it as $h_{ii}$ rather than $h_i$). And here's how it's calculated: $H = X(X^{'}X)^{1}X^{'}$.
 
 ```{r}
-#| label: fig-fig10-24eng
-#| fig-cap: 四個資料變項之間的相關係數矩陣
-#Correlation matrix for all four variables
-#huxtabs[[12]][[5]]
-knitr::include_graphics("images/fig12-25.png")
+#| label: fig-fig12-25eng
+#| fig-cap: An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations. The observation falls very close to the regression line and does not distort it by very much
+
+
+dat <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6, 10),
+                  y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4, 9.8))
+dat2 <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                   y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4))
+fit <- lm(data=dat2, y ~ x)
+yendpoint <- predict(fit, newdata = data.frame(x=c(10)))
+
+ggplot(dat, aes(x=x, y=y)) +
+  geom_point(col=blueshade, size=3) +
+  geom_smooth(method=lm, se=F, fullrange=T, col="black", linewidth=0.8) +
+  geom_smooth(data=dat2, fullrange=T, method=lm, se=F, linetype = 'dashed', col="black", linewidth=0.4) +
+  geom_segment(x=10, y=9.65, xend=10, yend=yendpoint, col="darkgrey", linewidth = 0.4) +
+  annotate(geom="text", label="High leverage", x=9.3, y=10.6) +
+  xlim(1,12) +
+  ylim(1,12) +
+  xlab("\nPredictor") +
+  ylab("Outcome\n") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank())
+
 ```
 
-We have some fairly large correlations between some of our predictor variables! When we run the regression model and look at the VIF values, we see that the collinearity is causing a lot of uncertainty about the coefficients. First, run the regression, as in @fig-fig10-23 and you can see from the VIF values that, yep, that's some mighty fine collinearity there.
+In general, if an observation lies far away from the other ones in terms of the predictor variables, it will have a large hat value (as a rough guide, high leverage is when the hat value is more than 2-3 times the average; and note that the sum of the hat values is constrained to be equal to $K + 1$). High leverage points are also worth looking at in more detail, but they're much less likely to be a cause for concern unless they are also outliers.
+
+This brings us to our third measure of unusualness, the **influence** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in @fig-fig12-26. Notice the contrast to the previous two figures. Outliers don't move the regression line much and neither do high leverage points. But something that is both an outlier and has high leverage, well that has a big effect on the regression line. That's why we call these points high influence, and it's why they're the biggest worry. We operationalise influence in terms of a measure known as **Cook's distance**. [^12-correlation-and-linear-regression-26]
+
+[^12-correlation-and-linear-regression-26]: $D_i=\frac{{\epsilon_i^*}^2}{K+1} \times \frac{h_i}{1-h_i}$ Notice that this is a multiplication of something that measures the outlier-ness of the observation (the bit on the left), and something that measures the leverage of the observation (the bit on the right).
 
 ```{r}
-#| label: fig-fig10-23eng
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: Collinearity statistics for multiple regression, produced in jamovi
-knitr::include_graphics("images/fig12-23.png")  
+#| label: fig-fig12-26eng
+#| fig-cap: An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)
+
+
+dat <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6, 10),
+                  y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4, 4))
+dat2 <- data.frame(x=c(2,   2.1, 3.3, 3.7, 4.2,  4.5, 4.7, 4.9, 5.1, 5.2, 5.4, 5.8, 6.6),
+                   y=c(2.2, 1.7, 3.9, 3.8, 3.95, 3.5, 3.7, 5.1, 5.2, 3.9, 4,   6,   6.4))
+fit <- lm(data=dat2, y ~ x)
+yendpoint <- predict(fit, newdata = data.frame(x=c(10)))
+
+ggplot(dat, aes(x=x, y=y)) +
+  geom_point(col=blueshade, size=3) +
+  geom_smooth(method=lm, se=F, fullrange=T, col="black", linewidth=0.8) +
+  geom_smooth(data=dat2, fullrange=T, method=lm, se=F, linetype = 'dashed', col="black", linewidth=0.4) +
+  geom_segment(x=10, y=4.1, xend=10, yend=yendpoint, col="darkgrey", linewidth = 0.4) +
+  annotate(geom="text", label="High influence", x=10.3, y=3.4) +
+  xlim(1,12) +
+  ylim(1,12) +
+  xlab("\nPredictor") +
+  ylab("Outcome\n") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank())
+
 ```
+
+In order to have a large Cook's distance an observation must be a fairly substantial outlier and have high leverage. As a rough guide, Cook's distance greater than 1 is often considered large (that's what I typically use as a quick and dirty rule).
+
+In jamovi, information about Cook's distance can be calculated by clicking on the 'Cook's Distance' checkbox in the 'Assumption Checks' - 'Data Summary' options. When you do this, for the multiple regression model we have been using as an example in this chapter, you get the results as shown in @fig-fig12-27.
+
+```{r}
+#| label: fig-fig12-27eng
+#| fig-cap: jamovi output showing the table for the Cook's distance statistics
+knitr::include_graphics("images/fig12-27.png")
+```
+
+You can see that, in this example, the mean Cook's distance value is $0.01$, and the range is from $0.00$ to $0.11$, so this is some way off the rule of thumb figure mentioned above that a Cook's distance greater than 1 is considered large.
+
+An obvious question to ask next is, if you do have large values of Cook's distance what should you do? As always, there's no hard and fast rule. Probably the first thing to do is to try running the regression with the outlier with the greatest Cook's distance[^12-correlation-and-linear-regression-27] excluded and see what happens to the model performance and to the regression coefficients. If they really are substantially different, it's time to start digging into your data set and your notes that you no doubt were scribbling as your ran your study. Try to figure out why the point is so different. If you start to become convinced that this one data point is badly distorting your results then you might consider excluding it, but that's less than ideal unless you have a solid explanation for why this particular case is qualitatively different from the others and therefore deserves to be handled separately.
+
+[^12-correlation-and-linear-regression-27]: In jamovi you can save the Cook's distance values to the dataset, then draw a boxplot of the Cook's distance values to identify the specific outliers. Or you could use a more powerful regression program such as the 'car' package in R which has more options for advanced regression diagnostic analysis
+
 
 --->
 
@@ -1115,16 +1313,16 @@ AIC 值越小，模型性能越好。如果我們忽略低水平的細節，AIC 
 
 [^correlation-and-linear-regression-25]: 我們可以將兩個模型都應用於資訊並獲得兩個模型的殘差平方和。我將它們分別表示為$SS_{res}^{(1)}$和$SS_{res}^{(2)}$。上標表示我們正在談論哪個模型。然後我們的F統計量是 $$F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }$$，其中$N$是觀察次數，$p$是完整模型中的預測變項數量（不包括截距），$k$是兩個模型之間參數的差異。這裡的自由度是$k$和$N -p-1$。值得注意的是，將這兩個SS值之間的差異表示為它自己的平方和經常更方便。也就是說 $$SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}$$。這樣有幫助的原因是我們可以將$SS_\Delta$表示為兩個模型對結果變項的預測有所不同的程度。具體來說，$$SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}$$，其中$\hat{y}_{i^{(1)}}$是根據模型$M_1$對$y_i$的預測值，$\hat{y}_{i^{(2)}}$是根據模型$M_2$對$y_i$的預測值。 <br /> --- <br /> $^d$順便提一下，這個相同的F統計量可以用來檢驗比我在這裡提到的更廣泛的範圍的假設。非常簡要地說，注意嵌套模型M1對應於當我們將某些迴歸係數限制為零時的完整模型M2。在某些情況下，通過對迴歸係數施加其他類型的約束來構建子模型是有用的。例如，也許兩個不同的係數可能必須相加為零，或類似的情況。您可以為這些類型的約束構建假設檢定，但這有點更複雜，而且F的抽樣分布可能會是所謂的非中心F分布，這已經超出了本書的範疇！我想做的只是提醒您這種可能性。
 
-那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 @fig-fig10-25 所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，$F(1,96) = 0.00$，$p = 0.954$。由於我們的p > .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為**分層迴歸**。
+那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 @fig-fig12-25 所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，$F(1,96) = 0.00$，$p = 0.954$。由於我們的p > .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為**分層迴歸**。
 
-我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如@fig-fig10-25所示。
+我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如 @fig-fig12-28 所示。
 
 ```{r}
-#| label: fig-fig10-25
+#| label: fig-fig12-28
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: 使用jamovi的“Model Builder”選項進行模型比較
-knitr::include_graphics("images/fig12-24.png")  
+knitr::include_graphics("images/fig12-28.png")  
 ```
 
 <!--- 
@@ -1174,12 +1372,12 @@ A somewhat different approach to the problem comes out of the hypothesis testing
 
 [^correlation-and-linear-regression-25]: We can fit both models to the data and obtain a residual sum of squares for both models. I'll denote these as $SS_{res}^{(1)}$ and $SS_{res}^{(2)}$ respectively. The superscripting here just indicates which model we're talking about. Then our F statistic is $$F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }$$ where $N$ is the number of observations, $p$ is the number of predictors in the full model (not including the intercept), and $k$ is the difference in the number of parameters between the two models. $^d$ The degrees of freedom here are $k$ and $N -p-1$. Note that it's often more convenient to think about the difference between those two SS values as a sum of squares in its own right. That is $$SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}$$ The reason why this is helpful is that we can express $SS_\Delta$ as a measure of the extent to which the two models make different predictions about the the outcome variable. Specifically, $$SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}$$ where $\hat{y}_{i^{(1)}}$ is the fitted value for $y_i$ according to model $M_1$ and $\hat{y}_{i^{(2)}}$ is the fitted value for $y_i$ according to model $M_2$. <br /> --- <br /> $^d$ It's worth noting in passing that this same F statistic can be used to test a much broader range of hypotheses than those that I'm mentioning here. Very briefly, notice that the nested model M1 corresponds to the full model M2 when we constrain some of the regression coefficients to zero. It is sometimes useful to construct sub-models by placing other kinds of constraints on the regression coefficients. For instance, maybe two different coefficients might have to sum to zero, or something like that. You can construct hypothesis tests for those kind of constraints too, but it is somewhat more complicated and the sampling distribution for F can end up being something known as the non-central F distribution, which is waaaaay beyond the scope of this book! All I want to do is alert you to this possibility.
 
-Okay, so that's the hypothesis test that we use to compare two regression models to one another. Now, how do we do it in jamovi? The answer is to use the 'Model Builder' option and specify the Model 1 predictors dani.sleep and day in 'Block 1' and then add the additional predictor from Model 2 (baby.sleep) in 'Block 2', as in @fig-fig10-25. This shows, in the 'Model Comparisons' Table, that for the comparisons between Model 1 and Model 2, $F(1,96) = 0.00$, $p = 0.954$. Since we have p > .05 we retain the null hypothesis (M1). This approach to regression, in which we add all of our covariates into a null model, then add the variables of interest into an alternative model, and then compare the two models in a hypothesis testing framework, is often referred to as **hierarchical regression**.
+Okay, so that's the hypothesis test that we use to compare two regression models to one another. Now, how do we do it in jamovi? The answer is to use the 'Model Builder' option and specify the Model 1 predictors dani.sleep and day in 'Block 1' and then add the additional predictor from Model 2 (baby.sleep) in 'Block 2', as in @fig-fig12-25. This shows, in the 'Model Comparisons' Table, that for the comparisons between Model 1 and Model 2, $F(1,96) = 0.00$, $p = 0.954$. Since we have p > .05 we retain the null hypothesis (M1). This approach to regression, in which we add all of our covariates into a null model, then add the variables of interest into an alternative model, and then compare the two models in a hypothesis testing framework, is often referred to as **hierarchical regression**.
 
-We can also use this 'Model Comparison' option to display a table that shows the AIC and BIC for each model, making it easy to compare and identify which model has the lowest value, as in @fig-fig10-25.
+We can also use this 'Model Comparison' option to display a table that shows the AIC and BIC for each model, making it easy to compare and identify which model has the lowest value, as in @fig-fig12-25.
 
 ```{r}
-#| label: fig-fig10-25eng
+#| label: fig-fig12-28eng
 #| fig-align: left
 #| fig-width: 0.9
 #| fig-cap: Model comparison in jamovi using the 'Model Builder' option
