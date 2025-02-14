@@ -26,12 +26,12 @@ This chapter comes in two parts. In the first three sections I talk about what B
 [^bayesian-statistics-1]: <a href="http://en.wikiquote.org/wiki/David%20Hume."
     target="_blank"><http://en.wikiquote.org/wiki/David_Hume>.</a>
 
-我在這本書中向您介紹的想法描述了次數主義的推論統計學。在這一點上,我並不孤單。事實上,幾乎每一本提供給本科心理學生的教科書都將次數統計學家的意見呈現為推論統計學的*理論*,唯一正確的方法。出於實際原因,我以這種方式進行了教學。在20世紀的大部分時間裡,次數主義的統計學觀點主導了統計學這一學術領域,而在應用科學家中這種主導地位甚至更加極端。過去和現在,心理學家使用次數方法是常規做法。由於次數方法在科學論文中無處不在,每一個統計學學習者都需要理解這些方法,否則他們將無法理解這些論文在說什麼!不幸的是,至少在我看來,心理學中的當前做法通常是誤導的,而過度依賴次數方法也應承擔部分責任。在本章中,我解釋了我的這些看法,並概述了貝氏統計學,我認為這種方法總體上優於正統方法。  
+這本書完整地介紹次數主義(Frequentism)為中心的推論統計方法，而本書不是唯一一本以此為編排重點的教科書。其實市面上每一本以心理學系學生為目標讀者的教科書，都是設定次數主義統計學為推論統計的唯一正確*理論*。現實中作者的授課內容也是以次數主義統計學為唯一的教學方針。20世紀是次數主義的統計學觀點主宰統計學學術地位的時代，應用領域的研究人員更是奉次數主義為統計學的唯一準則。直到現在，次數主義統計學依然是心理學家的標準統方法。由於次數主義為統計學充斥科學文獻，所有學者都需要理解這派統計方法，否則無法理解論文的內容！不幸的是，至少以本書作者的立場來說，心理學使用次數主義統計學的方式存在許多錯誤，而且對於許多新興研究領域過度依賴次數主義統計學也要承擔部分責任。這一章將說明作者為何認為心理學誤用次數主義統計方法，還有介紹貝氏統計學(Bayesian Statistics)，以及推崇貝氏統計學的理由。
 
-本章分為兩個部分。在前三節中,我談論了貝氏統計學的全部內容,涵蓋了它的基本數學規則以及我認為貝氏方法如此有用的解釋。之後,我概述了如何進行[貝氏t檢定]。  
+這一章前三節介紹貝氏統計的基本數學規則(16.1,16.2)，以及比次數主義統計學更好的理由(16.3)。最後一節(16.4)簡要介紹貝氏t檢定。
 
 
-## 理性者的機率推論
+## 真正理性的機率推論
 
 <!---From a Bayesian perspective statistical inference is all about *belief revision*. I start out with a set of candidate hypotheses h about the world. I don't know which of these hypotheses is true, but do I have some beliefs about which hypotheses are plausible and which are not. When I observe the data, d, I have to revise those beliefs. If the data are consistent with a hypothesis, my belief in that hypothesis is strengthened. If the data are inconsistent with the hypothesis, my belief in that hypothesis is weakened. That's it! At the end of this section I'll give a precise description of how Bayesian reasoning works, but first I want to work through a simple example in order to introduce the key ideas. Consider the following reasoning problem.
 
@@ -39,11 +39,11 @@ This chapter comes in two parts. In the first three sections I talk about what B
 
 In this problem I have presented you with a single piece of data (d = I'm carrying the umbrella), and I'm asking you to tell me your belief or hypothesis about whether it's raining. You have two alternatives, h: either it will rain today or it will not. How should you solve this problem? --->
 
-從貝氏的角度來看,統計推論都是關於*信念修正*. 我從一組有關世界的候選假設 h 出發。我不知道這些假設中哪一個是真的,但我確實對哪些假設是合理的和哪些不是有一些信念。當我觀察到數據 d 時,我必須修正那些信念。如果數據與某個假設一致,那麼我對該假設的信心就會增強。如果數據與假設不一致,那麼我對該假設的信心就會減弱。就這樣! 在本節的末尾,我將給出貝葉斯推理如何運作的精確描述,但首先我想通過一個簡單的示例來介紹關鍵思想。考慮以下推理問題。
+貝氏觀點的統計學所談的統計推論，都是關於如何*更新信念*。設想你我對於這個世界的認識，是根據好幾個候選假設，每個假設簡記為*h*，只是我們不知道那一個假設是真的，只有關於那些假設比較合理，以及那些假設比較不合理的信念。根據觀察到的資料，簡記為*d*，我們必須修正某些信念。假如資料與某個假設一致，我們對於這個假設的信心就會提高。如果資料與某個假設不一致,那麼我們對於這個假設的信心就會降低。這就是貝氏觀點的核心！這一節最後將展示貝氏推理如何運作的精確描述，首先我們用一個簡單的範例說明關鍵想法。請看以下推論問題的描述。
 
-> *我帶著雨傘。你認為會下雨嗎?*
+> *我手裡拿著一把雨傘。你認為等一下會下雨嗎?*
 
-在這個問題中,我向您提供了一個數據(d = 我帶著雨傘),並要求您告訴我您對是否下雨的信念或假設。您有兩個選擇,h:今天要麼下雨,要麼不下雨。你應該如何解決這個問題?
+這句描述有資料(d = 我拿著一把雨傘)，詢問讀者等一下會不會下雨的信念。這句描述提供兩種假設$h_1:$今天會下雨，以及$h_2:$今天不會下雨。請問讀者如何回答這個問題?
 
 ### 事前機率：你一開始的信念
 
