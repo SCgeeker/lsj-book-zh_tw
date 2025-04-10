@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,7 +78,8 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出"
+    "search-submit-button-title": "送出",
+    "search-label": "搜尋"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -119,7 +120,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prelude-Part-IV.html">統計理論</a></li><li class="breadcrumb-item"><a href="./09-Hypothesis-testing.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">假設檢定</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -133,7 +134,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -162,7 +163,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜尋"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -538,29 +539,17 @@ At this point, we need to be a bit more precise about what we mean by "errors". 
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab9-2" class="anchored">
-<table id="tab:tbl-tab9-2" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;9.2: 圖解虛無假設檢定(NHST)的四種結果</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">retain \( H_0 \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">reject \( H_0 \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is true</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">correct decision</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">error (type I)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is false</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">error (type II)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">correct decision</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab9-2"><caption>表&nbsp;9.2:  <p>圖解虛無假設檢定(NHST)的四種結果</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">retain \( H_0 \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">reject  \( H_0 \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is true</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">correct decision</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">error (type I)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is false</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">error (type II)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">correct decision</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>我們看到實際上有兩種不同的錯誤類型。如果我們拒絕了實際為真的虛無假設，那麼我們就是犯了<strong>型一錯誤</strong>。另一方面，當虛無假設實際上是錯的，我們仍然保留它，那麼我們就犯了<strong>型二錯誤</strong>。</p>
@@ -575,29 +564,17 @@ So, what about the type II error rate? Well, we'd also like to keep those under 
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab9-3" class="anchored">
-<table id="tab:tbl-tab9-3" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;9.3: 進一步解析虛無假設檢定(NHST)的四種結果</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">retain \( H_0 \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">reject \( H_0 \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is true</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1-\( \alpha \) (probability of correct retention)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(\alpha\) (type I error rate)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is false</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\beta\) (type II error rate)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(1 - \beta\) (power of the test)</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab9-3"><caption>表&nbsp;9.3:  <p>進一步解析虛無假設檢定(NHST)的四種結果</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">retain \( H_0 \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">reject  \( H_0 \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is true</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1-\( \alpha \) (probability of correct retention)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(\alpha\)  (type I error rate)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">\( H_0 \) is false</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(\beta\) (type II error rate)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(1 - \beta\) (power of the test)</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>一個「有力」的假設檢定是指保持最小 <span class="math inline">\(\beta\)</span> 值，同時保持 <span class="math inline">\(\alpha\)</span> 在預期的水準。依照領域慣例，科學家通常會使用三種 <span class="math inline">\(\alpha\)</span> 水準：<span class="math inline">\(0.05\)</span>、<span class="math inline">\(0.01\)</span> 和 <span class="math inline">\(0.001\)</span>。值得注意的是，兩者的控制強度有一種不對稱性：檢定的目的是確保 <span class="math inline">\(\alpha\)</span> 值如同預期的小，但是對於 <span class="math inline">\(\beta\)</span> 則不預其能控制到相應的水準。當然，我們也希望型二錯誤率能夠保持最小，並設計一些測試來實現，但這方面的控制需求通常不如型一錯誤率的迫切。倘若把布萊克斯通 的話換成統計學家的說法，那就是說“保留十個結論錯誤的虛無假設，總比拒絕一個真實的假設要好”。老實說，我不完全同意這種哲學觀點。在某些情況下，我認為這種觀點是有道理的，其他情況則不然。但是這不是重點，重點是這就是假設檢定的設計原則。</p>
@@ -737,11 +714,11 @@ This is where the p value comes in handy. To understand how it works, let's supp
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">α值</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.05.</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.04.</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.03.</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.02.</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">X.0.01.</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X0.05</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X0.04</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X0.03</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X0.02</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">X0.01</th>
 </tr>
 </thead>
 <tbody>
@@ -804,44 +781,21 @@ In other words, the worry here is that I might have the best of intentions, and 
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab9-5" class="anchored">
-<table id="tab:tbl-tab9-5" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;9.5: p值水準的一般報告方法</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">Usual notation</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Signif. stars</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">English translation</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">The null is...</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &gt; .05</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test wasn't significant</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Retained</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &lt; .05</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">*</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test was significant at \( \alpha \) = .05 but not at \( \alpha \) = .01 or \( \alpha \) = .001.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Rejected</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &lt; .01</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">**</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test was significant at \( \alpha \) = .05 and \( \alpha \) = .01 but not at \( \alpha \) = .001.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Rejected</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &lt; .001</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">***</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test was significant at all levels</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Rejected</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab9-5"><caption>表&nbsp;9.5:  <p>p值水準的一般報告方法</p> </caption>
+<colgroup><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">Usual notation</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Signif. stars</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">English translation</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">The null is...</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &gt; .05</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test wasn't significant</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Retained</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &lt; .05</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">*</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test was significant at \( \alpha \) = .05 but not at \( \alpha \) = .01 or \( \alpha \) = .001.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Rejected</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &lt; .01</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">**</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test was significant at \( \alpha \) = .05  and \( \alpha \) = .01 but not at \( \alpha \) = .001.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Rejected</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p &lt; .001</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">***</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">The test was significant at all levels</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">Rejected</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 </section>

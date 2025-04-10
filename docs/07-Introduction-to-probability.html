@@ -469,10 +469,10 @@ H H H H H H H H H H H
 and what I'm trying to do is work out which "model of the world" I should put my trust in. If the coin is fair then the model I should adopt is one that says that the probability of heads is 0.5, that is P(heads) = 0.5. If the coin is not fair then I should conclude that the probability of heads is not 0.5, which we would write as $P(heads)\ne{0.5}$. In other words, the statistical inference problem is to figure out which of these probability models is right. Clearly, the statistical question isn't the same as the probability question, but they're deeply connected to one another. Because of this, a good introduction to statistical theory will start with a discussion of what probability is and how it works. --->
 <p>開始談論機率論之前,先花點時間思考機率與統計學之間的關係是很有幫助的。這兩門學科關係密切,但是兩者是不一樣的。機率論是“隨機事件的理論”，是數學的一個分支,用來探討不同種類的事件發生的次數/頻率。例如,使用機率論可以回答以下這些問題:</p>
 <ul>
-<li><p>一枚公平的硬幣連續擲出正面10次的機率是多少?</p></li>
-<li><p>如果我擲兩次6面骰子,擲出兩次都是6點的可能性有多大?</p></li>
-<li><p>從完美洗牌的撲克牌組中抽出5張全部都是紅心的牌可能性有多大?</p></li>
-<li><p>這一期我買的彩劵中獎的機率是多少?</p></li>
+<li><p>連續投擲一枚公平的硬幣，投出10次正面的機率是多少?</p></li>
+<li><p>如果投擲6面骰子兩次,兩次都是6點的可能性有多大?</p></li>
+<li><p>從經過完整洗牌的一組撲克牌，抽出5張紅心的牌可能性有多大?</p></li>
+<li><p>我買的這一期彩劵中獎的機率是多少?</p></li>
 </ul>
 <p>這些問題都有一些共同點。在所有可預料會發生的結果,“事實宇宙”是可知的,問題的答案與“什麼樣的事件”會發生有關。 第一個問題,我知道硬幣是公平的,所以每次硬幣正面朝上都有50%的機率。第二個問題,我知道一枚骰子擲到6的機率為1/6。第三個問題,我知道洗牌後的撲克牌，抽到那一張的機率都是1/52。第四個問題,我知道彩劵中獎遵循發行商訂下的規則。共同關鍵是每個機率問題都是來自已知的世界<strong>模型</strong>,使用模型做點計算，我們就可以知道答案。</p>
 <p>機率模型可以非常簡單。以擲硬幣的問題來說,模型可以寫成這樣:</p>
@@ -480,10 +480,10 @@ and what I'm trying to do is work out which "model of the world" I should put my
 <p>我們可以用白話講“擲出正面的機率是0.5”。 正如稍後會看到的,就像表達百分比只有用0%到100%之間的任何一個數字,機率只用從0到1之間的任何數字。 使用這個機率模型回答第一個問題時,其實我並不知道會發生什麼事。也許會像問題所問的,我真的會擲出10次正面，但也許我會擲出3次正面。這就是關鍵所在：在機率論的世界,模型是已知的,但是資料是未知的。</p>
 <p>那麼統計學呢?統計學解決問題的原則剛好相反。在統計學世界裡,我們並不知道世界的真實樣貌。唯一能掌握的只有資料,我們想要從資料中獲得世界的真實樣貌。用統計學問同樣的四道問題，會像是這樣:</p>
 <ul>
-<li><p>如果我的朋友在我的面前擲了10次硬幣全是正面,這是在耍我嗎?</p></li>
-<li><p>如果莊家今天用的6面骰子，連續兩次都是6點，這顆骰子有機關的可能性有多大?</p></li>
-<li><p>如果撲克牌組最前面的五張牌都是紅心,洗牌不夠徹底的可能性有多大?</p></li>
-<li><p>如果彩劵行的老闆娘中了頭獎，這期開獎有人作假的可能性有多大?</p></li>
+<li><p>如果我朋友當面擲了10次硬幣全是正面,他是不是在耍老千?</p></li>
+<li><p>如果賭場莊家用一顆6面骰子，連續丟兩次都是6點，這顆骰子有機關的可能性有多大?</p></li>
+<li><p>如果一組撲克牌最前面的五張牌都是紅心,這副牌洗牌不夠徹底的可能性有多大?</p></li>
+<li><p>如果是彩劵行的老闆娘中了頭獎，這期開獎有人作假的可能性有多大?</p></li>
 </ul>
 <p>在這裡我們唯一擁有的就只有資料。我能知道的是,我看到我的朋友擲硬幣10次,每次都是正面。我能做推論的是我應不應該相信眼前看到的是使用公平硬幣而出現的結果，還是應該懷疑我的朋友在耍我。這個場景我得到的資料如下:</p>
 <p>正面 正面 正面 正面 正面 正面 正面 正面 正面 正面</p>
@@ -527,119 +527,53 @@ In this case 11 of these 20 coin flips (55%) came up heads. Now suppose that I'd
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab7-1" class="anchored">
-<table id="tab:tbl-tab7-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;7.1: 擲硬幣和正面的比例</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">投擲硬幣次數</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">硬幣正面朝上次數</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">正面朝上的次數比例</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 0pt 0pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 0pt 12pt; font-weight: normal;">0</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 0pt 12pt; font-weight: normal;">0.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.50</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.75</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.80</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.57</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.63</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">9</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.70</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">11</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">12</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">13</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">9</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.69</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">14</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.71</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">15</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">16</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.63</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">17</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.59</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">18</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.56</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 0pt; font-weight: normal;">19</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.53</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 0pt 12pt 2pt 0pt; font-weight: normal;">20</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 0pt 12pt 2pt 12pt; font-weight: normal;">11</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 0pt 0pt 2pt 12pt; font-weight: normal;">0.55</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab7-1"><caption>表&nbsp;7.1:  <p>擲硬幣和正面的比例</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">投擲硬幣次數</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">硬幣正面朝上次數</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">正面朝上的次數比例</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 0pt 0pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 0pt 12pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 0pt 12pt; font-weight: normal;">0.00</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.50</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.75</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.80</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.57</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.63</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">9</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.70</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">11</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.73</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">12</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">13</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">9</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.69</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">14</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.71</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">15</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.67</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">16</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.63</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">17</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.59</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">18</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.56</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 0pt; font-weight: normal;">19</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 12pt 0pt 12pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 0pt 0pt 0pt 12pt; font-weight: normal;">0.53</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 0pt 12pt 2pt 0pt; font-weight: normal;">20</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 0pt 12pt 2pt 12pt; font-weight: normal;">11</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 0pt 0pt 2pt 12pt; font-weight: normal;">0.55</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 
@@ -783,34 +717,19 @@ https://seeing-theory.brown.edu/compound-probability/index.html#section1
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab7-3" class="anchored">
-<table id="tab:tbl-tab7-3" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;7.3: 滿足總機率律的一些運算規則</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">English</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Notation</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">Formula</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">not A</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(P (\neg A) \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(1-P(A) \)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">A or B</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(P(A \cup B) \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(P(A) + P(B) - P(A \cap B) \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">A and B</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(P(A \cap B) \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(P(A|B) P(B) \)</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab7-3"><caption>表&nbsp;7.3:  <p>滿足總機率律的一些運算規則</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">English</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Notation</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">Formula</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">not A</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(P (\neg A) \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(1-P(A) \)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">A or B</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(P(A \cup B) \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(P(A) + P(B) - P(A \cap B) \)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">A and B</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(P(A \cap B) \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(P(A|B) P(B) \)</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 </section>

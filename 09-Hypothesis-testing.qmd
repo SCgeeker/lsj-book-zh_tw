@@ -320,11 +320,11 @@ This is where the p value comes in handy. To understand how it works, let's supp
 #huxtabs[[9]][[4]] 
 data.frame(
     "α值" = "是否拒絕虛無假設",
-    "`0.05`" = c("是"),
-    "`0.04`" = c("是"),
-    "`0.03`" = c("是"),
-    "`0.02`" = c("否"),
-    "`0.01`" = c("否")
+    "0.05" = c("是"),
+    "0.04" = c("是"),
+    "0.03" = c("是"),
+    "0.02" = c("否"),
+    "0.01" = c("否")
 ) %>%
   kbl(booktabs=TRUE,escape = T, align = "c") %>%
   kable_paper(full_width = T)
