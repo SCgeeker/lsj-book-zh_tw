@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.427">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,7 +78,8 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出"
+    "search-submit-button-title": "送出",
+    "search-label": "搜尋"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -116,7 +117,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-Categorical-data-analysis.html">統計方法</a></li><li class="breadcrumb-item"><a href="./11-Comparing-two-means.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">比較單一與兩組平均值</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -130,7 +131,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -159,7 +160,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="搜尋"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -554,43 +555,23 @@ $$z_{\bar{X}} \sim Normal(0,1) $$ --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab11-1" class="anchored">
-<table id="tab:tbl-tab11-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;11.1: 各種顯著水準的臨界值</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td colspan="2" data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">critical z value</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">desired \(\alpha\) level</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">two-sided test</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">one-sided test</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.644854</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1.281552</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.05</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.959964</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1.644854</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.01</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2.575829</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">2.326348</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.001</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3.290527</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">3.090232</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab11-1"><caption>表&nbsp;11.1:  <p>各種顯著水準的臨界值</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th colspan="2" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">critical z value</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">desired \(\alpha\) level</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">two-sided test</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">one-sided test</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.644854</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1.281552</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.05</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.959964</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1.644854</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.01</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2.575829</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">2.326348</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.001</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3.290527</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">3.090232</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 </section>
@@ -705,10 +686,7 @@ t=\frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{N}}}
 </section>
 <section id="實作單一樣本t檢定" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="實作單一樣本t檢定"><span class="header-section-number">11.2.2</span> 實作單一樣本t檢定</h3>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>正如你所預期的，t檢定的機制幾乎與z檢定的機制完全相同。因此，沒有必要繁瑣地展示如何使用低級命令進行計算。它與我們之前所做的計算幾乎相同，只是使用了估計的標準差，然後使用t分佈而不是常態分佈來測試假設。因此，我將直接跳到顯示如何實際進行t檢定。jamovi配備了一個專門用於t檢定的分析，非常靈活（它可以運行許多不同類型的t檢定）。它非常簡單易用；您需要做的只是指定“分析”-“T檢定”-“單樣本T檢定”，將您感興趣的變項（X）移動到“變項”框中，並在“假設”-“測試值”框中輸入虛無假設的平均值（‘67.5’）。很容易。見 <a href="#fig-fig11-6">圖&nbsp;<span>11.6</span></a> ，除了我們稍後會提到的其他事項之外，它還提供了t檢定統計量=2.25，自由度為19，相關的p值為<span class="math inline">\(0.036\)</span>。</p>
+<p>認真的讀者一定能想通，t檢定的做法和z檢定完全相同。因此，我們沒有必要鑽研繁瑣的計算步驟。兩者要做的計算幾乎一模一樣，只是t檢定是用樣本資料估計的標準差，還有表現統計假設的t分佈而並不是常態分佈。因此，這裡直接展示如何實際進行t檢定。jamovi就有用於執行t檢定的基本分析模組，包含本單元介紹的三種的t檢定。使用方法非常簡單，讀者要做的是從分析模組選單選擇<code>T-Tests</code> -&gt; <code>One-Sample T-Test</code>開啟設定選單，將要分析的資料變項移到到<code>Dependent Variable</code>對話框，接著在<code>Hypothesis</code>-<code>Test Value</code>的對話框裡輸入代表虛無假設的平均值（‘67.5’）。如同 <a href="#fig-fig11-6">圖&nbsp;<span>11.6</span></a> 的展示，除了稍後會提到的統計資訊，置頂表格呈現t檢定統計量=2.25，自由度為19，p值為<span class="math inline">\(0.036\)</span>。</p>
 <!---As you might expect, the mechanics of the t檢定 are almost identical to the mechanics of the z-test. So there's not much point in going through the tedious exercise of showing you how to do the calculations using low level commands. It's pretty much identical to the calculations that we did earlier, except that we use the estimated standard deviation and then we test our hypothesis using the t distribution rather than the normal distribution. And so instead of going through the calculations in tedious detail for a second time, I'll jump straight to showing you how t檢定s are actually done. jamovi comes with a dedicated analysis for t檢定s that is very flexible (it can run lots of different kinds of t檢定s). It's pretty straightforward to use; all you need to do is specify 'Analyses' - 't檢定s' - 'One Sample t檢定', move the variable you are interested in (X) across into the 'Variables' box, and type in the mean value for the null hypothesis ('67.5') in the 'Hypothesis' - 'Test value' box. Easy enough. See @fig-fig11-6, which, amongst other things that we will get to in a moment, gives you a t檢定 statistic = 2.25, with 19 degrees of freedom and an associated p-value of $0.036$. --->
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
@@ -720,13 +698,13 @@ t=\frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{N}}}
 </div>
 </div>
 </div>
-<p>此外，報告了其他兩個可能會引起關注的指標：95％信賴區間和效應大小的測量值（我們稍後會談論效應大小）。看起來相當簡單。現在我們該如何處理這個輸出呢？既然我們假裝真的在乎我們的例子，我們很高興地發現結果在統計上是顯著的（即p值低於0.05）。我們可以通過這樣的報告方式來表達結果：</p>
+<p>置頂表格包括另外兩個讀者會關係的指標：95％信賴區間和效果量的估計值。那要使用這份表格呢？既然我們是要了解這班心理系學生的學習表現，報告上就能說明他們的成果是真的不錯，因為p值低於0.05，統計檢定顯著的。報告可以這樣撰寫：</p>
 <blockquote class="blockquote">
-<p><em>心理學生的平均成績為</em> <span class="math inline">\(72.3\)</span>，略高於平均成績<span class="math inline">\(67.5\)</span> (<span class="math inline">\(t(19) = 2.25\)</span>，<span class="math inline">\(p = .036\)</span>)。平均分差為<span class="math inline">\(4.80\)</span>，<span class="math inline">\(95\%\)</span>信賴區間為<span class="math inline">\(0.34\)</span>至<span class="math inline">\(9.26\)</span>。</p>
+<p>心理系學生的平均成績是 <span class="math inline">\(72.3\)</span>，略高於平均成績<span class="math inline">\(67.5\)</span> (<span class="math inline">\(t(19) = 2.25\)</span>，<span class="math inline">\(p = .036\)</span>)。比平均成績高<span class="math inline">\(4.80\)</span>，<span class="math inline">\(95\%\)</span>信賴區間為<span class="math inline">\(0.34\)</span>至<span class="math inline">\(9.26\)</span>。</p>
 </blockquote>
-<p>…其中 <span class="math inline">\(t(19)\)</span> 是一個簡寫符號，代表具有 <span class="math inline">\(19\)</span> 自由度的 t 統計值。話雖如此，人們通常不會報告信賴區間，或者使用比我在此展示的更簡短的形式進行報告。例如，看到信賴區間被包含在報告均值差之後的統計資訊中也不是很少見，就像這樣：</p>
+<p>以上 <span class="math inline">\(t(19)\)</span> 是標準的簡寫，代表具有 <span class="math inline">\(19\)</span> 自由度的 t 統計值。話雖如此，多數報告不會報導信賴區間，或者使用比以上展示的更簡短的形式。像是平均值差異之後信賴區間，通常中括號包圍起來：</p>
 <p><span class="math display">\[t(19)=2.25, p = .036, CI_{95} = [0.34, 9.26]\]</span></p>
-<p>在這半行內塞這麼多專業術語，你就知道這必定是非常聰明的。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>在短短幾行裡塞這麼多專業術語，就會讓讀者感到這份報告看起來很厲害。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 <!--- Also reported are two other things you might care about: the 95% confidence interval and a measure of effect size (we'll talk more about effect sizes later). So that seems straightforward enough. Now what do we do with this output? Well, since we're pretending that we actually care about my toy example, we're overjoyed to discover that the result is statistically significant (i.e. p value below .05). We could report the result by saying something like this:
 
 > *With a mean grade of* $72.3$, the psychology students scored slightly higher than the average grade of $67.5$ ($t(19) = 2.25$, $p = .036$); the mean difference was $4.80$ and the $95\%$ confidence interval was from $0.34$ to $9.26$. 
@@ -741,7 +719,7 @@ $$t(19)=2.25, p = .036, CI_{95} = [0.34, 9.26]$$ With that much jargon crammed i
 <h3 data-number="11.2.3" class="anchored" data-anchor-id="sec-one-sample-t-assumptions"><span class="header-section-number">11.2.3</span> 單一樣本t檢定的適用條件</h3>
 <p>那麼單一樣本 t 檢定有什麼適用條件呢？因為 t 檢定基本上就是一個移除了已知標準差假設的 z 檢定，你應該不會意外t檢定具有和z檢定一樣的適用條件，只是少了已知母群標準差這一條：</p>
 <ul>
-<li><p><em>常態性</em>。我們仍然要假定母群分佈是常態的 <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>，如同<a href="#z檢定的適用條件">z檢定的適用條件</a>的描述，我們有標準方法可以檢查這種假設是否符合，如果這種假設被違反，還有其他的測試方法可以替代（[檢驗非常態資料]）。</p></li>
+<li><p><em>常態性</em>。我們仍然要假定母群分佈是常態的 <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>，如同<a href="#z檢定的適用條件">z檢定的適用條件</a>的描述，我們有標準方法可以檢查這種假設是否符合，如果這種假設被違反，還有其他的測試方法可以替代（請參考 <a href="#sec-Checking-the-normality-of-a-sample"><span>小單元&nbsp;11.9</span></a>）。</p></li>
 <li><p><em>獨立性</em>。同樣地，樣本的觀察值必須是來自彼此獨立的測量條件。詳細說明請參考<a href="#z檢定的適用條件">z檢定的適用條件</a>。</p></li>
 </ul>
 <p>總而言之，這兩個條件並非難以達成，因此單一樣本 t 檢定在實務中常被用於比較樣本平均數與假定的母群平均數有沒有差異。</p>
@@ -773,32 +751,17 @@ We can calculate means and standard deviations, using the 'Exploration' - 'descr
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab11-2" class="anchored">
-<table id="tab:tbl-tab11-2" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;11.2: 兩位統計助教帶的學生成績描述統計</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">mean</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">std dev</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">N</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Anastasia's students</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">74.53</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">9.00</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Bernadette's students</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">69.06</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5.77</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">18</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab11-2"><caption>表&nbsp;11.2:  <p>兩位統計助教帶的學生成績描述統計</p> </caption>
+<colgroup><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">mean</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">std dev</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">N</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Anastasia's students</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">74.53</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">9.00</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">15</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Bernadette's students</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">69.06</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5.77</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">18</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>為了讓讀者更清楚知道接下來要做的事， jamovi範例檔案還有箱形圖與小提琴圖，圖中還有代表平均分數的小實心方塊。讓我們更能了解兩位助教的學生成績分佈 (<a href="#fig-fig11-7">圖&nbsp;<span>11.7</span></a>)。</p>
@@ -867,10 +830,7 @@ We just need to figure out what this standard error estimate actually is. This i
 Just as we saw with our one-sample test, the sampling distribution of this t-statistic is a t-distribution (shocking, isn't it?) as long as the null hypothesis is true and all of the assumptions of the test are met. The degrees of freedom, however, is slightly different. As usual, we can think of the degrees of freedom to be equal to the number of data points minus the number of constraints. In this case, we have N observations ($N_1$ in sample 1, and $N_2$ in sample 2), and 2 constraints (the sample means). So the total degrees of freedom for this test are $N - 2$. --->
 <section id="jamovi實作" class="level3" data-number="11.4.1">
 <h3 data-number="11.4.1" class="anchored" data-anchor-id="jamovi實作"><span class="header-section-number">11.4.1</span> jamovi實作</h3>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>不出所料，您可以很容易地在 jamovi 中進行獨立樣本 t 檢定。我們測試的結果變項是學生成績，而組是根據每個課程的導師定義的。因此，您可能不會對 jamovi 中的相應分析（“分析”-“T 檢定”-“獨立樣本 T 檢定”）感到意外，只需將成績變項移動到“依變變項”框中，將導師變項移動到“分組變項”框中，如 <a href="#fig-fig11-9">圖&nbsp;<span>11.9</span></a> 所示。</p>
+<p>讀者應該很容易猜到，jamovi一定可以處理獨立樣本 t 檢定。這裡的依變項是學生成績，各組助教是由主課老師指派的。所以，讀者應該知道要怎麼從模組選單呼叫獨立樣本 t 檢定(<code>T-Tests</code> -&gt; <code>Independent Samples Tests</code>)，如 <a href="#fig-fig11-9">圖&nbsp;<span>11.9</span></a> 的展示，將資料變項<code>grade</code>移動到<code>Dependent Variables</code>對話框，將資料變項<code>tutor</code>移動到<code>Grouping Variable</code>對話框。</p>
 <!---Not surprisingly, you can run an independent samples t檢定 easily in jamovi. The outcome variable for our test is the student grade, and the groups are defined in terms of the tutor for each class. So you probably won't be too surprised that all you have to do in jamovi is go to the relevant analysis ('Analyses' - 't檢定s' - 'Independent Samples t檢定') and move the grade variable across to the 'Dependent Variables' box, and the tutor variable across into the 'Grouping Variable' box, as shown in @fig-fig11-9. --->
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
@@ -882,13 +842,13 @@ Just as we saw with our one-sample test, the sampling distribution of this t-sta
 </div>
 </div>
 </div>
-<p>這裡的輸出形式非常熟悉。首先，它告訴您運行的是什麼測試，以及使用的依變項的名稱。然後報告測試結果。與上次一樣，測試結果包括 t 統計值、自由度和 p 值。最後一部分報告了兩件事：它給出了信賴區間和效應大小。我會稍後談論效應大小。然而，現在我應該談論信賴區間。</p>
-<p>很重要要清楚這個信賴區間到底是什麼意思，它是兩組平均數之間的差異的信賴區間。在這個例子中，Anastasia的學生平均分為74.53，而Bernadette的學生平均分為69.06，因此兩組平均數之間的差異是5.48。但是，兩個母群的平均數差異可能比這個還大或者還小。在@fig-fig11-10中報告的信賴區間告訴你，如果我們重複進行這個研究，那麼在95％的時間裡，真正的平均數差異會在0.20到10.76之間。回顧一下@sec-Estimating-a-confidence-interval了解信賴區間的意思。</p>
-<p>在任何情況下，兩組之間的差異是顯著的（僅僅）。因此，我們可以使用以下文本編寫結果:</p>
+<p>各位應該熟悉報表的輸出格式了。標題提示檢定方法，置頂表格印出依變項名稱，以及分組依變項差異的檢定結果。檢定結果包括 t 統計值、自由度和 p 值。還有效果量(Effect Size)及其信賴區間。我們先討論信賴區間，稍後再談一談效果量。</p>
+<p>讀者可以先回顧一下 <a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-Estimating-a-confidence-interval"><span>小單元&nbsp;8.5</span></a> ，重溫信賴區間的意思，這裡的信賴區間則是指兩組平均數差異的信賴區間。這個範例的Anastasia組的平均成績為74.53，Bernadette組平均成績為69.06，因此兩組平均數差異值是5.48。但是，兩個母群的平均數差異可能比這個差異值更大或者更小。 <a href="#fig-fig11-9">圖&nbsp;<span>11.9</span></a> <a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>呈現的信賴區間告訴我們，如果重複進行這個研究，那麼有95％的結果，會落在0.20和10.76之間。</p>
+<p>就報表資訊來看，兩組之間的差異是剛剛好顯著。因此，我們可以在報告裡這樣撰寫:</p>
 <blockquote class="blockquote">
-<p>Anastasia 課程的平均成績為 <span class="math inline">\(74.5\%\)</span>（標準差為 <span class="math inline">\(9.0\)</span>），而 Bernadette 課程的平均成績為 <span class="math inline">\(69.1\%\)</span>（標準差為 <span class="math inline">\(5.8\)</span>）。 學生的獨立樣本 t 檢定顯示此 <span class="math inline">\(5.4\%\)</span> 差異是顯著的 <span class="math inline">\((t(31) = 2.1, p&lt;.05, CI_{95} = [0.2, 10.8], d = .74)\)</span>，表明學習成果存在真正的差異。</p>
+<p>Anastasia 組的學生平均成績為 <span class="math inline">\(74.5\)</span>（標準差為 <span class="math inline">\(9.0\)</span>），而 Bernadette 組的學生平均成績為 <span class="math inline">\(69.1\)</span>（標準差為 <span class="math inline">\(5.8\)</span>）。 獨立樣本 t 檢定顯示兩組成績的差異 <span class="math inline">\(5.4\)</span> 是顯著的 <span class="math inline">\((t(31) = 2.1, p&lt;.05, CI_{95} = [0.2, 10.8], d = .74)\)</span>，顯示分組的學習成效有明顯差異。</p>
 </blockquote>
-<p>注意到我在統計區塊中包含了信心區間和效應大小。人們並不總是這樣做。至少，您應該期望看到t統計值、自由度和p值。所以您應該至少包含像這樣的內容：<span class="math inline">\(t(31) = 2.1, p&lt; .05\)</span>。如果統計學家得到了他們想要的結果，那麼每個人都會報告信心區間，可能還有效應大小測量，因為它們是有用的知識。但現實並不總是按照統計學家的期望運作，所以您應該根據您認為會幫助讀者的情況進行判斷，如果您正在撰寫科學論文，那麼應根據期刊的編輯標準進行決策。有些期刊希望您報告效應大小，而有些則不是。在某些科學社區中，報告信心區間是標準做法，在其他社區中則不是。您需要找出您的觀眾期望什麼。但是，僅僅為了清晰起見，如果您正在上我的課，我的默認立場是通常值得包括效應大小和信心區間。</p>
+<p>請留意以上報告範例有信賴區間和效果量，不過很少有報告這樣寫。最多會看到t統計值、自由度和p值。所以讀者自已的報告至少要這樣寫：<span class="math inline">\(t(31) = 2.1, p&lt; .05\)</span>。統計學專家會期待每份統計結果報告，都會有信賴區間，還有效果量的測量，因為這些都是有用的資訊。但是現實世界並不會完全按照統計學家的期望運作，正在寫論文的同學應該根據能夠幫助讀者的原則來決定報告要什麼，要投稿期刊的話，就應該遵照期刊編輯公告的標準。有些期刊會希望作者報告效果量，有些則不用。某些科學社群的標準格式是要報告信賴區間，有些則不是，這需要由作者自已找出目標讀者的需要。如果為了幫助讀者清楚理解，以原作者在課堂上常給的建議，信賴區間和效果量是值得寫出來的。</p>
 <!---The output has a very familiar form. First, it tells you what test was run, and it tells you the name of the dependent variable that you used. It then reports the test results. Just like last time the test results consist of a t-statistic, the degrees of freedom, and the *p-value*. The final section reports two things: it gives you a confidence interval and an effect size. I'll talk about effect sizes later. The confidence interval, however, I should talk about now.
 
 It's pretty important to be clear on what this confidence interval actually refers to. It is a confidence interval for the *difference* between the group means. In our example, Anastasia's students had an average grade of $74.53$, and Bernadette's students had an average grade of $69.06$, so the difference between the two sample means is $5.48$. But of course the difference between population means might be bigger or smaller than this. The confidence interval reported in @fig-fig11-10 tells you that there's a if we replicated this study again and again, then $95\%$ of the time the true difference in means would lie between $0.20$ and $10.76$. Look back at @sec-Estimating-a-confidence-interval for a reminder about what confidence intervals mean.
@@ -928,7 +888,7 @@ One last thing: please note that you can't do this for other types of test stati
 <h3 data-number="11.4.3" class="anchored" data-anchor-id="sec-independent-t-assumptions"><span class="header-section-number">11.4.3</span> 獨立樣本t檢定的適用條件</h3>
 <p>和<a href="#sec-The-one-sample-t檢定">單一樣本t檢定</a>一樣，學生t檢定也有三項適用條件 ，其中一些在<a href="#sec-one-sample-t-assumptions">單一樣本t檢定的適用條件</a>已經提到：</p>
 <ul>
-<li><em>常態性</em>。和單一樣本t檢定一樣，樣本資料的取樣分佈必須是符合常態分佈。具體來說，兩組樣本資料都需要符合常態分佈。<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>在[檢查樣本常態性]一節，我們將討論如何檢查常態性；在[檢驗非常態資料]一節，我們將討論可能的解決方案。</li>
+<li><em>常態性</em>。和單一樣本t檢定一樣，樣本資料的取樣分佈必須是符合常態分佈。具體來說，兩組樣本資料都需要符合常態分佈。<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>在[檢查樣本常態性]一節，我們將討論如何檢查常態性；在@sec-Checking-the-normality-of-a-sample一節，我們將討論可能的解決方案。</li>
 <li><em>獨立性</em>。其次是要確保每個資料觀測值的取樣是獨立的。以能運算學生t檢定的條件來說，有兩個性質需要考慮。首先，和單一樣本t檢定一樣，需要設定每個樣本包含的觀測值是相互獨立的。此外，我們還需要設定兩個樣本之間沒有相互依賴關係。例如，如果實驗中同一個人被不小心分派參與兩種條件組，像是同一個人不小心被允許報名參加不同條件的兩項獨立實驗，這麼一來就會造成一些跨樣本的依賴關係。</li>
 <li><em>變異數的同質性</em>（又稱“等變異性”）。第三個條件 是指兩組的母群標準差必須是相等的，我們可以使用Levene檢定來測試這個假設，稍後在[檢查同質變異性的假設]示範。然而，如果您擔心違反這個條件，有一個非常簡單的解決方法，我們將在下一節中討論。</li>
 </ul>
@@ -957,8 +917,8 @@ One last thing: please note that you can't do this for other types of test stati
 </div>
 <p>Welch’s t 檢定與 Student t 檢定的公式非常相似。計算 t 統計值的大同小異，都是取樣本平均數之間的差異，然後除以其標準誤的估計：</p>
 <p><span class="math display">\[t=\frac{\bar{X}_1-\bar{X}_2}{SE(\bar{X}_1-\bar{X}_2)}\]</span></p>
-<p>兩者的差異是標準誤的計算方式。若是兩組取樣的標準差並不相等，計算合併的標準差估計值是沒有意義的，這麼做就像是要把蘋果和橘子攪在一起。<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
-<p>[其他技術細節 <a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>]</p>
+<p>兩者的差異是標準誤的計算方式。若是兩組取樣的標準差並不相等，計算合併的標準差估計值是沒有意義的，這麼做就像是要把蘋果和橘子攪在一起。<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
+<p>[其他技術細節 <a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>]</p>
 <p>Welch’s t 與 Student t 的第二個差異是自由度的計算方式。 Welch’s t的自由度不必是一個整數，並且不太符合「資料點數量減去約束數量」的解釋方式，雖然這是原作者(還有世界上多數教統計的老師)到目前為止一直採納的解釋。</p>
 <!--- The Welch test is very similar to the Student test. For example, the t-statistic that we use in the Welch test is calculated in much the same way as it is for the Student test. That is, we take the difference between the sample means and then divide it by some estimate of the standard error of that difference
 
@@ -975,42 +935,40 @@ The main difference is that the standard error calculations are different. If th
 The second difference between Welch and Student is that the degrees of freedom are calculated in a very different way. In the Welch test, the "degrees of freedom" doesn't have to be a whole number any more, and it doesn't correspond all that closely to the "number of data points minus the number of constraints" heuristic that I've been using up to this point. --->
 <section id="jamovi實作-1" class="level3" data-number="11.5.1">
 <h3 data-number="11.5.1" class="anchored" data-anchor-id="jamovi實作-1"><span class="header-section-number">11.5.1</span> jamovi實作</h3>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>如果你在上面的分析中勾選了 Welch test 的核取方塊，則會得到以下結果（見@fig-fig11-11）。</p>
+<p>只要在 <a href="#fig-fig11-9">圖&nbsp;<span>11.9</span></a> 的設定選單裡勾選 Welch’s ，就會得到 <a href="#fig-fig11-11">圖&nbsp;<span>11.11</span></a> 。</p>
 <!--- If you tick the check box for the Welch test in the analysis we did above, then this is what it gives you (@fig-fig11-11). --->
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig11-11" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig11-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;11.11: jamovi並列學生t檢定與Welch t檢定結果。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;11.11: 並列學生t檢定與Welch t檢定結果。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>這個輸出結果的解釋應該很明顯。您可以像讀取學生t檢定的結果一樣讀取Welch檢驗的輸出。你有你的描述統計資料，測試結果和其他信息。所以這一切都相當容易。</p>
-<p>除了，除了… 我們的結果不再顯著。 當我們執行Student t檢定時，我們得到了一個顯著的效應，但在相同的資料集上進行的Welch測試並不顯著 <span class="math inline">\((t(23.02) = 2.03, p = .054)\)</span>。 這是什麼意思？ 我們應該恐慌嗎？ 天空是否燃燒？ 可能不是。 一個測試顯著，而另一個測試不顯著本身並沒有什麼意義，特別是因為我有點編造了這些資料。 通常，不要試圖解釋或解釋<span class="math inline">\(.049\)</span>和<span class="math inline">\(.051\)</span>之間的p值差異。 如果這種情況在現實生活中發生，這些p值之間的差異幾乎肯定是由於偶然性引起的。 重要的是，您在選擇使用哪種測試時要仔細思考。 Student測試和Welch測試各有優勢和劣勢。 如果兩個母群確實具有相等的變異數，則Student測試比Welch測試略具備更高的功效（較低的II型錯誤率）。 但是，如果它們的變異數不同，則Student測試的假設就會被違反，您可能無法信任它。 您可能會得到更高的I型錯誤率。 因此，這是一個權衡。 但是，在現實生活中，我通常更喜歡使用Welch測試，因為幾乎沒有人認為母群變異數是相同的。</p>
+<p>輸出結果應該不用多做解釋，讀者可以像解讀學生t檢定的結果一樣，解讀Welch’s t 檢定的結果。加上描述統計資料，測試結果和其他訊息，就能做出有模有樣的報告。</p>
+<p>只是我們要注意，就是這裡的Welch’s t檢定結果是不顯著的。報表顯示學生t檢定分析這個組間差異是顯著的，但是Welch’s t檢定顯示未達顯著 <span class="math inline">\((t(23.02) = 2.03, p = .054)\)</span>。 這是什麼意思？我們要放棄嗎？可能不用。</p>
+<p>一個檢定顯著，但是另一個檢定不顯著其實並沒有什麼意義，特別是這些資料是是編造出來的。通常不必去解釋<span class="math inline">\(.049\)</span>和<span class="math inline">\(.051\)</span>這兩個p值有何不同，如果有現實的資料分析發現這樣的事，可以肯定完全是偶然性的結果。做分析的人要思考的是：我選擇使用那一種檢定方法的理由是什麼？學生t和Welch’s t各有優缺點。當兩組樣本的變異相等，學生t檢定的統計考驗力比Welch’s t檢定更高，或者說型II錯誤率較低。當兩組樣本的變異不相等，學生t檢定就會違反適用條件，導致型I錯誤率增加。所以要選那一種，需要使用者權衡。現實的心理學研究，有越來越多研究者喜歡使用Welch’s t檢定，因為幾乎沒有研究問題的分組樣本變異數是相等的。</p>
 <!--- The interpretation of this output should be fairly obvious. You read the output for the Welch's test in the same way that you would for the Student's test. You've got your descriptive statistics, the test results and some other information. So that's all pretty easy.
 
 Except, except...our result isn't significant anymore. When we ran the Student test we did get a significant effect, but the Welch test on the same data set is not $(t(23.02) = 2.03, p = .054)$. What does this mean? Should we panic? Is the sky burning? Probably not. The fact that one test is significant and the other isn't doesn't itself mean very much, especially since I kind of rigged the data so that this would happen. As a general rule, it's not a good idea to go out of your way to try to interpret or explain the difference between a p-value of $.049$ and a p-value of $.051$. If this sort of thing happens in real life, the *difference* in these p-values is almost certainly due to chance. What does matter is that you take a little bit of care in thinking about what test you use. The Student test and the Welch test have different strengths and weaknesses. If the two populations really do have equal variances, then the Student test is slightly more powerful (lower Type II error rate) than the Welch test. However, if they *don't* have the same variances, then the assumptions of the Student test are violated and you may not be able to trust it; you might end up with a higher Type I error rate. So it's a trade off. However, in real life I tend to prefer the Welch test, because almost no-one actually believes that the population variances are identical. --->
 </section>
 <section id="welchs-t檢定的適用條件" class="level3" data-number="11.5.2">
 <h3 data-number="11.5.2" class="anchored" data-anchor-id="welchs-t檢定的適用條件"><span class="header-section-number">11.5.2</span> Welch’s t檢定的適用條件</h3>
-<p>Welch’s t檢定的假設與學生t檢定的假設幾乎一樣，只有Welch’s t檢定不需要符合變異數同質性。只要符合常態性和獨立性，這些條件的細節請參閱<a href="#sec-one-sample-t-assumptions">單一樣本t檢定的適用條件</a>。</p>
+<p>Welch’s t檢定的適用條件與學生t檢定幾乎一樣，只是Welch’s t檢定不需要符合變異數同質性。只要符合常態性和獨立性，細節請參考<a href="#sec-one-sample-t-assumptions">單一樣本t檢定的適用條件</a>。</p>
 <!--- The assumptions of the Welch test are very similar to those made by the Student t檢定 (see [Assumptions of the test], except that the Welch test does not assume homogeneity of variance. This leaves only the assumption of normality and the assumption of independence. The specifics of these assumptions are the same for the Welch test as for the Student test. --->
 </section>
 </section>
 <section id="sec-the-paired-t檢定" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="sec-the-paired-t檢定"><span class="header-section-number">11.6</span> 相依樣本t檢定</h2>
-<p>不論是學生 t 檢定或Welch’s t 檢定，獨立樣本 t 檢定只能處理兩組獨立樣本的研究資料。當參與者被隨機分派到其中一個實驗條件時，自然會符合獨立樣本的條件，但是很難處理其他類型的研究設計。特別是重覆測量的研究設計，並不適合使用獨立樣本 t 檢定進行分析。例如，有研究者想探討聽音樂是否降低人們的工作記憶容量，讓每位參與者分別在有音樂和無音樂的情況，測量他們的工作記憶容量。這樣的設計讓每位參與者接受<em>兩種</em>實驗條件<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>，因此我們需要認識<strong>相依樣本t檢定</strong>。</p>
+<p>不論是學生 t 檢定或Welch’s t 檢定，獨立樣本 t 檢定只能處理兩組獨立樣本的研究資料。當參與者被隨機分派到其中一個實驗條件時，自然會符合獨立樣本的條件，但是很難處理其他類型的研究設計。特別是重覆測量的研究設計，並不適合使用獨立樣本 t 檢定進行分析。例如，有研究者想探討聽音樂是否降低人們的工作記憶容量，讓每位參與者分別在有音樂和無音樂的情況，測量他們的工作記憶容量。這樣的設計讓每位參與者接受<em>兩種</em>實驗條件<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>，因此我們需要認識<strong>相依樣本t檢定</strong>。</p>
 <!--- Regardless of whether we're talking about the Student test or the Welch test, an independent samples t檢定 is intended to be used in a situation where you have two samples that are, well, independent of one another. This situation arises naturally when participants are assigned randomly to one of two experimental conditions, but it provides a very poor approximation to other sorts of research designs. In particular, a repeated measures design, in which each participant is measured (with respect to the same outcome variable) in both experimental conditions, is not suited for analysis using independent samples t檢定s. For example, we might be interested in whether listening to music reduces people's working memory capacity. To that end, we could measure each person's working memory capacity in two conditions: with music, and without music. In an experimental design such as this one, [^11-comparing-two-means-16] each participant appears in *both* groups. This requires us to approach the problem in a different way, by using the **paired samples t檢定**.
 
 [^11-comparing-two-means-16]: This design is very similar to the one that motivated the McNemar test (@sec-The-McNemar-test). This should be no surprise. Both are standard repeated measures designs involving two measurements. The only difference is that this time our outcome variable is interval scale (working memory capacity) rather than a binary, nominal scale variable (a yes-or-no question). --->
 <section id="示範資料" class="level3" data-number="11.6.1">
 <h3 data-number="11.6.1" class="anchored" data-anchor-id="示範資料"><span class="header-section-number">11.6.1</span> 示範資料</h3>
-<p>這次要分析的是修Chico老師課程的學生成績。<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>她的學生都要參加學期初和學期末兩次大考，而且考試內容很難，大多數學生都覺得很有挑戰性。Chico老師的想法是，增加考試難度能激勵學生的學習動機。她的理論是，第一次考試對學生來說是一個“提醒”，當他們意識到課程的難度，會為了第二次考試取得更好的成績，而更加努力。Chico老師的觀點正確嗎？請讀者開啟jamovi資料集裡的範例檔<em>chico</em>。這次資料匯入jamovi後，每個變項的測量尺度都是正確的。<em>chico</em>資料集有三個變項：<code>id</code> ~ 每位學生的識別代號，<code>grade_test1</code> ~ 第一次考試的學生成績，<code>grade_test2</code> ~ 第二次考試的成績。</p>
+<p>這次要分析的是修Chico老師課程的學生成績。<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>她的學生都要參加學期初和學期末兩次大考，而且考試內容很難，大多數學生都覺得很有挑戰性。Chico老師的想法是，增加考試難度能激勵學生的學習動機。她的理論是，第一次考試對學生來說是一個“提醒”，當他們意識到課程的難度，會為了第二次考試取得更好的成績，而更加努力。Chico老師的觀點正確嗎？請讀者開啟jamovi資料集裡的範例檔<em>chico</em>。這次資料匯入jamovi後，每個變項的測量尺度都是正確的。<em>chico</em>資料集有三個變項：<code>id</code> ~ 每位學生的識別代號，<code>grade_test1</code> ~ 第一次考試的學生成績，<code>grade_test2</code> ~ 第二次考試的成績。</p>
 <p>瞄一下展示在 <a href="#fig-fig11-12">圖&nbsp;<span>11.12</span></a> 的 jamovi 資料試算表，這門課程似乎滿有難度，多數學生的成績都在50分到60分之間，不過第一次測驗到第二次測驗看起來有進步的趨勢。</p>
 <p>再來瞄一下描述統計表，前一段提到的印象似乎有些道理。全班20位學生的第一次測驗平均成績是57分，第二次測驗的平均成績是58分。因為兩次測驗的標準差分別為6.6和6.4，這種進步感覺起來只是表面的，可能只是隨機出現的結果。繼續看到 <a href="#fig-fig11-13a">圖&nbsp;<span>11.13 (a)</span></a> 展示的平均值和信賴區間後，很多讀者會更相信這班學生沒有步。因為只看信賴區間的寬度，我們會認為學生學習成果的改善只是偶然的。</p>
 <!--- The data set that we'll use this time comes from Dr Chico's class.[^11-comparing-two-means-17] In her class students take two major tests, one early in the semester and one later in the semester. To hear her tell it, she runs a very hard class, one that most students find very challenging. But she argues that by setting hard assessments students are encouraged to work harder. Her theory is that the first test is a bit of a "wake up call" for students. When they realise how hard her class really is, they'll work harder for the second test and get a better mark. Is she right? To test this, let's import the *chico.csv* file into jamovi. This time jamovi does a good job during the import of attributing measurement levels correctly. The *chico* data set contains three variables: an id variable that identifies each student in the class, the grade_test1 variable that records the student grade for the first test, and the grade_test2 variable that has the grades for the second test.
@@ -1095,23 +1053,20 @@ where $\hat{\sigma}_D$ is the standard deviation of the difference scores. Since
 </section>
 <section id="jamovi實作-2" class="level3" data-number="11.6.3">
 <h3 data-number="11.6.3" class="anchored" data-anchor-id="jamovi實作-2"><span class="header-section-number">11.6.3</span> jamovi實作</h3>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>如何在jamovi中執行相依樣本t檢定？一種可能的方法是按照我上面概述的過程進行。即，創建一個“差異”變項，然後對其進行單樣本t檢定。因為我們已經創建了一個名為improvement的變項，讓我們這麼做並看看我們得到什麼，如@fig-fig11-15所示。</p>
+<p>如何使用jamovi執行相依樣本t檢定？其中一種方法是按照上面示範說明，執行單一樣本t檢定。實作方法是創建一個新的資料變項，以此執行單一樣本t檢定。因為按照上面的說明，讀者應該已經創建<code>improvement</code>計算變項，我們就順著步驟做下去，看看能不能得到 <a href="#fig-fig11-15">圖&nbsp;<span>11.15</span></a> 的檢定結果。</p>
 <!--- How do you do a paired samples t檢定 in jamovi? One possibility is to follow the process I outlined above. That is, create a "difference" variable and then run a one sample t檢定 on that. Since we've already created a variable called improvement, let's do that and see what we get, @fig-fig11-15. --->
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig11-15" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig11-15.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;11.15: 配對差異分數的單一樣本t檢定結果表。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;11.15: 配對差異分數的單一樣本t檢定結果。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>在 <a href="#fig-fig11-15">圖&nbsp;<span>11.15</span></a> 中顯示的輸出與上一次使用單樣本t檢定分析時（<a href="#sec-The-one-sample-t檢定"><span>小單元&nbsp;11.2</span></a>）完全相同的格式，並確認了我們的直覺。從第一次測試到第二次測試，平均改善了1.4％，並且這與0顯著不同<span class="math inline">\((t(19)=6.48,p&lt;.001)\)</span>。</p>
-<p>然而，假設您很懶，不想花費大量精力創建新變項。或者也許您只想保持單樣本和相依樣本測試之間的差異清晰。如果是這樣，您可以使用jamovi的“相依樣本t檢定”分析，獲得 <a href="#fig-fig11-16">圖&nbsp;<span>11.16</span></a> 中顯示的結果。</p>
+<p><a href="#fig-fig11-15">圖&nbsp;<span>11.15</span></a> 的報表與 <a href="#sec-The-one-sample-t檢定"><span>小單元&nbsp;11.2</span></a> 示範的單一樣本t檢定報表格式完全相同，確認我們對這筆資料的觀察無誤。第二次測驗比第一次測驗相比，平均增加了1.4分，並且與沒有改進的0顯著不同<span class="math inline">\((t(19)=6.48,p&lt;.001)\)</span>。</p>
+<p>假如讀者想偷懶，不想再造一個新資料變項，或是清楚區別單一樣本t檢定和相依樣本t檢定的差異。那麼，我們可以使用jamovi的<code>Paried Samples T-Test</code>，獲得 <a href="#fig-fig11-16">圖&nbsp;<span>11.16</span></a> 顯示的結果。</p>
 <!--- The output shown in @fig-fig11-15 is (obviously) formatted exactly the same was as it was the last time we used the one-sample t檢定 analysis (@sec-The-one-sample-t檢定), and it confirms our intuition. There's an average improvement of $1.4\%$ from test 1 to test 2, and this is significantly different from $0$ $(t(19) = 6.48, p< .001)$.
 
 However, suppose you're lazy and you don't want to go to all the effort of creating a new variable. Or perhaps you just want to keep the difference between one-sample and paired samples tests clear in your head. If so, you can use the jamovi 'Paired Samples t檢定' analysis, getting the results shown in @fig-fig11-16. --->
@@ -1120,34 +1075,31 @@ However, suppose you're lazy and you don't want to go to all the effort of creat
 <div id="fig-fig11-16" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig11-16.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;11.16: 相依樣本t檢定結果表。請與 <a href="#fig-fig11-15">圖&nbsp;<span>11.15</span></a> 比較看看。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;11.16: 相依樣本t檢定結果。請比較 <a href="#fig-fig11-15">圖&nbsp;<span>11.15</span></a> 。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>結果跟進行單樣本t檢定時的結果相同，這當然是因為成對樣本t檢定在實質上就是對差異變項執行單樣本t檢定。</p>
+<p>兩種檢定結果完全相同，這是因為成對樣本t檢定的本質，就是對差異變項執行單一樣本t檢定。</p>
 <!--- The numbers are identical to those that come from the one sample test, which of course they have to be given that the paired samples t檢定 is just a one sample test under the hood. --->
 </section>
 </section>
 <section id="sec-the-one-tail-t檢定" class="level2" data-number="11.7">
 <h2 data-number="11.7" class="anchored" data-anchor-id="sec-the-one-tail-t檢定"><span class="header-section-number">11.7</span> 單側檢定</h2>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>當介紹虛無假設檢定理論時，我提到有一些情況適合指定單邊檢定（請參閱 <a href="09-Hypothesis-testing.html#sec-The-difference-between-one-sided-and-two-sided-tests"><span>小單元&nbsp;9.4.3</span></a> ）。到目前為止，所有的t檢定都是雙邊檢定。例如，當我們為Zeppo博士課堂上的成績指定單一樣本t檢定時，虛無假設是真實均值為<span class="math inline">\(67.5\%\)</span>。對立假設是真實均值高於或低於<span class="math inline">\(67.5\%\)</span>。假設我們只想知道真實均值是否高於<span class="math inline">\(67.5\%\)</span>，並且完全沒有興趣測試真實均值是否低於<span class="math inline">\(67.5\%\)</span>。如果是這樣，我們的虛無假設將是真實均值為<span class="math inline">\(67.5\%\)</span>或更低，對立假設將是真實均值高於<span class="math inline">\(67.5\%\)</span>。在jamovi中，對於“單一樣本t檢定”分析，您可以在“假設”下點擊“&gt; Test Value”選項進行指定。這樣做後，您將得到 <a href="#fig-fig11-17">圖&nbsp;<span>11.17</span></a> 顯示的結果。</p>
+<p><a href="09-Hypothesis-testing.html#sec-The-difference-between-one-sided-and-two-sided-tests"><span>小單元&nbsp;9.4.3</span></a> 首次介紹虛無假設檢定理論時，曾提到有一些情況適合執行單側檢定。至此介紹的t檢定，所有示範都是雙側檢定。例如，用單一樣本t檢定分析Zeppo老師的學生成績，虛無假設平均值是<span class="math inline">\(67.5\)</span>；對立假設是理論平均值高於或低於<span class="math inline">\(67.5\)</span>。如果我們只想知道理論平均值是否高於<span class="math inline">\(67.5\)</span>，並不想測試理論平均值是不是低於<span class="math inline">\(67.5\%\)</span>。如此一來，虛無假設就要改成理論平均值為<span class="math inline">\(67.5\%\)</span>或更低，對立假設要改成理論平均值高於<span class="math inline">\(67.5\%\)</span>。用jamovi執行這樣的檢定，只要在設定選單的<code>Hypothesis</code>，勾選<code>&gt; Test value</code>，就能得到 <a href="#fig-fig11-17">圖&nbsp;<span>11.17</span></a> 的結果輸出。</p>
 <!--- When introducing the theory of null hypothesis tests, I mentioned that there are some situations when it's appropriate to specify a one-sided test (see @sec-The-difference-between-one-sided-and-two-sided-tests). So far all of the t檢定s have been two-sided tests. For instance, when we specified a one sample t檢定 for the grades in Dr Zeppo's class the null hypothesis was that the true mean was $67.5\%$. The alternative hypothesis was that the true mean was greater than or less than $67.5\%$. Suppose we were only interested in finding out if the true mean is greater than $67.5\%$, and have no interest whatsoever in testing to find out if the true mean is lower than $67.5\%$. If so, our null hypothesis would be that the true mean is $67.5\%$ or less, and the alternative hypothesis would be that the true mean is greater than $67.5\%$. In jamovi, for the 'One Sample t檢定' analysis, you can specify this by clicking on the '$>$ Test Value' option, under 'Hypothesis'. When you have done this, you will get the results as shown in @fig-fig11-17.--->
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig11-17" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig11-17.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;11.17: jamovi生成的「單一樣本t檢定」結果，其中實際假設是單側的，即真實平均數大於 <span class="math inline">\(67.5%\)</span></figcaption>
+<figcaption class="figure-caption">圖&nbsp;11.17: 「單一樣本t檢定」單側檢定結果，假設理論平均值大於 <span class="math inline">\(67.5\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>注意到輸出與上次看到的輸出有一些變化。最重要的是實際假設已更改，以反映不同的測試。第二件要注意的事情是儘管t統計值和自由度沒有改變，但p值已經改變。這是因為單側測試具有與雙側測試不同的拒絕區域。如果您忘記了這是為什麼以及它意味著什麼，您可以回顧一下 <a href="09-Hypothesis-testing.html"><span>單元&nbsp;9</span></a> ，特別是 <a href="09-Hypothesis-testing.html#sec-The-difference-between-one-sided-and-two-sided-tests"><span>小單元&nbsp;9.4.3</span></a> 。第三件要注意的是信賴區間也不同：現在報告了一個“單側”的信賴區間，而不是一個雙側的信賴區間。在雙側信賴區間中，我們試圖找到數字a和b，使得如果我們重複進行該研究多次，那麼有<span class="math inline">\(95\%\)</span>的機會均值會落在a和b之間。在單側信賴區間中，我們試圖找到一個數字a，使得我們有信心有<span class="math inline">\(95\%\)</span>的機會真實均值會大於a（如果您在“假設”部分中選擇了測量1 &lt; 測量2則為小於a）。</p>
-<p>所有版本的t檢定都可以是單側的。對於獨立樣本t檢定，如果您只想測試A組的得分是否比B組高，但對於是否要找出B組的得分是否高於A組沒有興趣，那麼您可以進行單側檢定。假設對於Harpo博士的課程，您想知道Anastasia的學生是否比Bernadette的學生成績更好。對於此分析，在“假設”選項中指定“Group 1 &gt; Group2”。您應該可以得到如 <a href="#fig-fig11-18">圖&nbsp;<span>11.18</span></a> 所示的結果。</p>
+<p>各位可以看到表格內容和 <a href="#fig-fig11-6">圖&nbsp;<span>11.6</span></a> 不同一樣，最重要的是表格附註有關對立假設的描述，表示我們想測試的假設。其次要注意的是儘管t統計值和自由度沒有改變，但是p值已經不一樣了。這是因為單側檢定的拒絕區域不同於雙側檢定。如果讀者忘了拒絕區域是什麼意思，請重溫 <a href="09-Hypothesis-testing.html"><span>單元&nbsp;9</span></a> ，特別是 <a href="09-Hypothesis-testing.html#sec-The-difference-between-one-sided-and-two-sided-tests"><span>小單元&nbsp;9.4.3</span></a> 。還有要注意的是信賴區間也不一樣：新報表輸出的是“單側”的信賴區間，而不是雙側的信賴區間。雙側信賴區間會有兩個數字a和b，代表重複進行這項研究多次，會有<span class="math inline">\(95\%\)</span>的機會，平均值會落在a和b之間。單側信賴區間只會有一個數字a，代表重複進行這項研究多次，會有<span class="math inline">\(95\%\)</span>的機會，平均值會大於a。反之，如果<code>Hypothesis</code>選了<code>Test 1 &lt; Test 2</code>，就會得到小於a的信賴區間。</p>
+<p>各種t檢定都能進行單側檢定。以獨立樣本t檢定來說，如果只想測試A組的得分有沒有比B組高，但對於沒有興趣知道B組的得分是不是高於A組，就適合進行單側檢定。以Harpo老師的案例來說，我們想了解Anastasia組的學生是否比Bernadette組的學生成績好。只要在設定選單的<code>Hypothesis</code>勾選<code>Group 1 &gt; Group2</code>，就能得到如 <a href="#fig-fig11-18">圖&nbsp;<span>11.18</span></a> 的結果。</p>
 <!--- Notice that there are a few changes from the output that we saw last time. Most important is the fact that the actual hypothesis has changed, to reflect the different test. The second thing to note is that although the t-statistic and degrees of freedom have not changed, the p-value has. This is because the one-sided test has a different rejection region from the two-sided test. If you've forgotten why this is and what it means, you may find it helpful to read back over @sec-Hypothesis-testing, and @sec-The-difference-between-one-sided-and-two-sided-tests in particular. The third thing to note is that the confidence interval is different too: it now reports a "one-sided" confidence interval rather than a two-sided one. In a two-sided confidence interval we're trying to find numbers a and b such that we're confident that, if we were to repeat the study many times, then $95\%$ of the time the mean would lie between a and b. In a one-sided confidence interval, we're trying to find a single number a such that we're confident that $95\%$ of the time the true mean would be greater than a (or less than a if you selected Measure 1 < Measure 2 in the 'Hypothesis' section).
 
 So that's how to do a one-sided one sample t檢定. However, all versions of the t檢定 can be one-sided. For an independent samples t test, you could have a one-sided test if you're only interested in testing to see if group A has higher scores than group B, but have no interest in finding out if group B has higher scores than group A. Let's suppose that, for Dr Harpo's class, you wanted to see if Anastasia's students had higher grades than Bernadette's. For this analysis, in the 'Hypothesis' options, specify that 'Group 1 \> Group2'. You should get the results shown in @fig-fig11-18. --->
@@ -1156,13 +1108,13 @@ So that's how to do a one-sided one sample t檢定. However, all versions of the
 <div id="fig-fig11-18" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig11-18.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;11.18: jamovi生成的’獨立樣本t檢定’分析，實際假設為單尾檢定，即 Anastasia 的學生的成績高於 Bernadette 的學生</figcaption>
+<figcaption class="figure-caption">圖&nbsp;11.18: 「獨立樣本t檢定」單側檢定結果報表，假設Anastasia組的成績高於Bernadette組</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>再次強調，輸出結果有可預測的變化。對立假設的定義已改變，p值已變化，現在報告的是單邊信賴區間，而不是雙邊信賴區間。</p>
-<p>那麼，相依樣本t檢定呢？假設我們想要測試 Dr Zeppo 課堂上考試成績是否從第一次測試到第二次測試有所提高，並且不考慮成績下降的可能性。在 jamovi 中，您可以通過在「假設」選項下指定 grade_test2 （在 jamovi 中為「測量1」，因為我們首先將其複製到了配對變項框中）&gt; grade_test1 （在 jamovi 中為「測量2」）來實現這一點。您應該可以看到 <a href="#fig-fig11-19">圖&nbsp;<span>11.19</span></a> 中的結果。</p>
+<p>這裡再次提醒，報表輸出內容和雙側檢定不一樣的地方。對立假設的定義、p值都不一樣，信賴區間只有一個數字了。</p>
+<p>那相依樣本t檢定會怎麼樣呢？也就是想知道Zeppo老師學生的第二次考試有沒有比第一次考試高，不考慮分數下滑的機會。只要在jamovi的設定選單，指定”grade_test2”為<code>Measure 1</code>，並勾選<code>Hypothesis</code>的<code>Measure 1 &gt; Measure 2</code>，就能看到 <a href="#fig-fig11-19">圖&nbsp;<span>11.19</span></a> 的結果。</p>
 
 <!--- Again, the output changes in a predictable way. The definition of the alternative hypothesis has changed, the p-value has changed, and it now reports a one-sided confidence interval rather than a two-sided one.
 
@@ -1172,20 +1124,20 @@ What about the paired samples t檢定? Suppose we wanted to test the hypothesis 
 <div id="fig-fig11-19" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig11-19.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;11.19: jamovi生成的’相依樣本t檢定’分析，實際假設為單尾檢定，即測驗1成績 &gt; 測驗2成績。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;11.19: 「相依樣本t檢定」單側檢定分析結果，假設第二次考試成績 &gt; 第一次考試成績。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>這次的輸出和之前一樣，以可預測的方式改變。假設已經改變，p值也改變，並且信賴區間現在是單邊的。</p>
+<p>這次的輸出改變的部分和前面一樣，附註的假設，p值都會改變，並且信賴區間只有單側的數值。</p>
 
 <!--- Yet again, the output changes in a predictable way. The hypothesis has changed, the p-value has changed, and the confidence interval is now one-sided. --->
 </section>
 <section id="sec-t檢定-effect-size" class="level2" data-number="11.8">
 <h2 data-number="11.8" class="anchored" data-anchor-id="sec-t檢定-effect-size"><span class="header-section-number">11.8</span> t檢定的效果量</h2>
-<p>搭配t檢定最常使用的效果量度量是<strong>Cohen’s d</strong> <span class="citation" data-cites="Cohen1988">(<a href="References.html#ref-Cohen1988" role="doc-biblioref">Cohen, 1988</a>)</span>。Cohen’s d的原理看似簡單，不過仔細研究的話，會找到相當多樣的版本。發明者科恩提出的版本是為了定義符合完整適用條件的獨立樣本t檢定的效果量，也就是學生t。這個版本定義的效果量測量方法，自然是估計兩組平均值差異除以標準差。正如以下公式表明的內涵：</p>
+<p>最常搭配t檢定的效果量指標是<strong>Cohen’s d</strong> <span class="citation" data-cites="Cohen1988">(<a href="References.html#ref-Cohen1988" role="doc-biblioref">Cohen, 1988</a>)</span>。Cohen’s d的原理看似簡單，不過仔細研究的話，會看到各式各樣的版本。原始發明者提出的版本是為了定義充分符合適用條件的獨立樣本t檢定的效果量，也就是學生t。這個版本定義的效果量測量方法，自然是估計兩組平均值差異除以標準差。正如以下公式的簡明版描述：</p>
 <p><span class="math display">\[d=\frac{(\text{平均值1})-(\text{平均值2})}{\text{標準差}}\]</span></p>
-<p><a href="#tbl-tab11-3">表&nbsp;<span>11.3</span></a> 列出科恩建議的Cohen’s d簡易使用指南。</p>
+<p>原始發明者建議的Cohen’s d簡易使用指南列在 <a href="#tbl-tab11-3">表&nbsp;<span>11.3</span></a> 。</p>
 <!--- The most commonly used measure of effect size for a t檢定 is **Cohen's d** [@Cohen1988]. It's a very simple measure in principle, with quite a few wrinkles when you start digging into the details. Cohen himself defined it primarily in the context of an independent samples t檢定, specifically the Student test. In that context, a natural way of defining the effect size is to divide the difference between the means by an estimate of the standard deviation. In other words, we're looking to calculate something along the lines of this:
 
 $$d=\frac{(\text{mean 1})-(\text{mean 2})}{\text{std dev}}$$
@@ -1194,34 +1146,24 @@ and he suggested a rough guide for interpreting $d$ in @tbl-tab11-3. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab11-3" class="anchored">
-<table id="tab:tbl-tab11-3" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;11.3: Cohen’s d 超簡易參考指南，誠心建議不要盲目地使用這份指南，d統計值的公式已經是直白的解釋，公式就是以標準差為單位，計算平均值之間的差異是幾個標準差。最實用的建議是，想一下在實際的測量條件，平均值和標準差代表什麼。某些情境的「小」效應可能表示重要的實用效益，有些情況的「大」效應反而可能並沒有什麼意義。</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">d-value</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">rough interpretation</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">about 0.2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">"small" effect</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">about 0.5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">"moderate" effect</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">about 0.8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">"large" effect</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab11-3"><caption>表&nbsp;11.3:  <p>Cohen’s d
+超簡易參考指南，誠心建議讀者不要盲目使用這份指南，d效果量的公式已經是直白的解釋，公式就是以標準差為單位，計算平均值之間的差異是幾個標準差。最實用的建議是，先搞清楚以實際的測量單位來說，平均值和標準差代表什麼。某些情境的「小」效果可能表示重要的實用效益，有些情況的「大」效果反而並沒有什麼意義。</p> </caption>
+<colgroup><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">d-value</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">rough interpretation</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">about 0.2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">"small" effect</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">about 0.5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">"moderate" effect</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">about 0.8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">"large" effect</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>也許有讀者覺得指南是很明確的參考，實際上並非如此。因為科恩並未提供太多以標準差做為測量單位的實用建議，他的著作是更想要是闡述一個更廣泛的觀點。就像 <span class="citation" data-cites="McGrath2006">McGrath &amp; Meyer (<a href="References.html#ref-McGrath2006" role="doc-biblioref">2006</a>)</span> 提到的幾種版本，不同學者有偏好的參考指南。本書採用不大精確的簡化參考，這裡開始所提到的<span class="math inline">\(d\)</span>代表由樣本資料計算出的任何效果量統計值，<span class="math inline">\(\delta\)</span>表示理論的效果量。因此讀者要學習如何區辨d的使用脈絡。</p>
-<p>在本書提到的所有統計方法都有要運算的效果量，至於要計算Cohen’s d只有t檢定，jamovi的每個t檢定模組都有一個選項，讓使用者決定要不要在報表輸出Cohen’s d。</p>
+</div>
+<p>也許有讀者覺得這份指南很有幫助，實際上並非如此。因為科恩並未提供太多以標準差做為測量單位的實用建議，他的著作其實是想要是闡述一個更廣泛的觀點。就像 <span class="citation" data-cites="McGrath2006">McGrath &amp; Meyer (<a href="References.html#ref-McGrath2006" role="doc-biblioref">2006</a>)</span> 提到的幾種版本，每個學者各有偏好的參考指南。本書採用不大精確的簡化符號，從這裡開始所提到的<span class="math inline">\(d\)</span>代表由樣本資料計算的效果量估計值，<span class="math inline">\(\delta\)</span>表示理論的效果量。讀者要學習如何分辨符號的使用脈絡。</p>
+<p>本書提到的所有統計方法都有可以運算的效果量，需要計算Cohen’s d只有t檢定，jamovi的每個t檢定模組都有一個選項，讓使用者決定要不要在報表輸出Cohen’s d。</p>
 <!--- You'd think that this would be pretty unambiguous, but it's not. This is largely because Cohen wasn't too specific on what he thought should be used as the measure of the standard deviation (in his defence he was trying to make a broader point in his book, not nitpick about tiny details). As discussed by @McGrath2006, there are several different versions in common usage, and each author tends to adopt slightly different notation. For the sake of simplicity (as opposed to accuracy), I'll use d to refer to any statistic that you calculate from the sample, and use $\delta$ to refer to a theoretical population effect. Obviously, that does mean that there are several different things all called d.
 
 My suspicion is that the only time that you would want Cohen's d is when you're running a t檢定, and jamovi has an option to calculate the effect size for all the different flavours of t檢定 it provides. --->
@@ -1243,7 +1185,7 @@ When we look back at the results in @fig-fig11-6, the effect size value is Cohen
 <p>如同 <a href="08-Estimating-unknown-quantities-from-a-sample.html"><span>單元&nbsp;8</span></a> 提到的符號說明，<span class="math inline">\(\mu_1\)</span>和<span class="math inline">\(\mu_2\)</span>分別是指第1組與第2組的母群平均值，<span class="math inline">\(\sigma\)</span>代表母群標準差，如果兩組都是來自同一個母群的話。所以<span class="math inline">\(\delta\)</span>的估計值與t統計數的公式幾乎一致，也就是分子是樣本平均值，分母是合併的標準差估計值</p>
 <p><span class="math display">\[d=\frac{\bar{X}_1-\bar{X}_2}{\hat{\sigma}_p}\]</span></p>
 <p><span class="math inline">\(\hat{\sigma}_p\)</span>的估計值就是獨立樣本t檢定的<a href="#標準差的合併估計值">標準差的合併估計值</a>這一節所介紹的公式，這是搭配Student t檢定所使用的Cohen’s d，也是jamovi報表的輸出結果。有時也被稱為Hedges’ g <span class="citation" data-cites="Hedges1981">(<a href="References.html#ref-Hedges1981" role="doc-biblioref">Hedges, 1981</a>)</span>。</p>
-<p>除此之外還有其他計算方法，這裡簡單介紹一下。若是只想用其中一組的樣本標準差做為計算基礎，也就是研究者有充分理由認定其中一組比另一組能更純粹地反映「自然變異」，就可以使用Glass’ <span class="math inline">\(\triangle\)</span>。像是其中一組是對照組時，有統計學者使用Glass’ <span class="math inline">\(\triangle\)</span>才是<span class="math inline">\(\delta\)</span>的合理估計值。再者 ，獨立樣本的合併標準差計算公式裡，分母通常是<span class="math inline">\(n - 2\)</span>以校正估計值。另一個Cohen’s d的版本則沒有這樣的校正，分母就是<span class="math inline">\(n\)</span>。這個版本適用於研究者只想計算以樣本為主的效果量，而非估計<span class="math inline">\(\delta\)</span>。最後，還有 <span class="citation" data-cites="Hedges1985">Hedges &amp; Olkin (<a href="References.html#ref-Hedges1985" role="doc-biblioref">1985</a>)</span> 提出的Hedges’ g也是不少研究者會採用的計算方法，這個方法是對Cohen’s d的合併標準差做更進一步的校正。<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
+<p>除此之外還有其他計算方法，這裡簡單介紹一下。若是只想用其中一組的樣本標準差做為計算基礎，也就是研究者有充分理由認定其中一組比另一組能更純粹地反映「自然變異」，就可以使用Glass’ <span class="math inline">\(\triangle\)</span>。像是其中一組是對照組時，有統計學者使用Glass’ <span class="math inline">\(\triangle\)</span>才是<span class="math inline">\(\delta\)</span>的合理估計值。再者 ，獨立樣本的合併標準差計算公式裡，分母通常是<span class="math inline">\(n - 2\)</span>以校正估計值。另一個Cohen’s d的版本則沒有這樣的校正，分母就是<span class="math inline">\(n\)</span>。這個版本適用於研究者只想計算以樣本為主的效果量，而非估計<span class="math inline">\(\delta\)</span>。最後，還有 <span class="citation" data-cites="Hedges1985">Hedges &amp; Olkin (<a href="References.html#ref-Hedges1985" role="doc-biblioref">1985</a>)</span> 提出的Hedges’ g也是不少研究者會採用的計算方法，這個方法是對Cohen’s d的合併標準差做更進一步的校正。<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></p>
 <!--- The majority of discussions of Cohen's $d$ focus on a situation that is analogous to Student's independent samples t test, and it's in this context that the story becomes messier, since there are several different versions of $d$ that you might want to use in this situation. To understand why there are multiple versions of $d$, it helps to take the time to write down a formula that corresponds to the true population effect size $\delta$. It's pretty straightforward,
 
 $$\delta=\frac{\mu_1-\mu_2}{\sigma}$$
@@ -1265,7 +1207,7 @@ In any case, ignoring all those variations that you could make use of if you wan
 <p>最後是相依樣本t檢定，要怎麼計算呢？這要取決於研究者的目標。jamovi的預設是根據差異分數的分佈來衡量效果量，計算公式是：</p>
 <p><span class="math display">\[d=\frac{\bar{D}}{\hat{\sigma}_D}\]</span></p>
 <p>分母的<span class="math inline">\(\hat{\sigma}_D\)</span>是差異的標準差估計。 <a href="#fig-fig11-16">圖&nbsp;<span>11.16</span></a> 報表裡的Cohen’s <span class="math inline">\(d = 1.45\)</span>，表示第2次測驗的分數平均比第1次測驗的分數高<span class="math inline">\(1.45\)</span>個標準差。</p>
-<p>這就是jamovi「相依樣本t檢定」分析報告的Cohen’s d的計算方法，寫正式報告前唯一的麻煩是要搞清楚這是不是真正的估計值。這要看研究者是想用<em>原始分數</em>，還是用<em>差異分數</em>衡量效果量，像是以Chico老師教的學生成績變異值來看，兩次測驗只有改進1%看起來不大明顯。這個狀況很像要選擇用Student’s t 檢定還是Welch’s t檢定 評估兩組之間的差異。想要以<em>原始分數</em>計算Cohen’s d，就要從資料試算表更改資料結構，雖 在這裡不方便說明及示範<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>，我們可以算出<span class="math inline">\(0.22\)</span>，以原始分數來說是偏小的效果量。</p>
+<p>這就是jamovi「相依樣本t檢定」分析報告的Cohen’s d的計算方法，寫正式報告前唯一的麻煩是要搞清楚這是不是真正的估計值。這要看研究者是想用<em>原始分數</em>，還是用<em>差異分數</em>衡量效果量，像是以Chico老師教的學生成績變異值來看，兩次測驗只有改進1%看起來不大明顯。這個狀況很像要選擇用Student’s t 檢定還是Welch’s t檢定 評估兩組之間的差異。想要以<em>原始分數</em>計算Cohen’s d，就要從資料試算表更改資料結構，雖 在這裡不方便說明及示範<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>，我們可以算出<span class="math inline">\(0.22\)</span>，以原始分數來說是偏小的效果量。</p>
 <!--- Finally, what should we do for a paired samples t檢定? In this case, the answer depends on what it is you're trying to do. jamovi assumes that you want to measure your effect sizes relative to the distribution of difference scores, and the measure of d that you calculate is:
 
 $$d=\frac{\bar{D}}{\hat{\sigma}_D}$$
@@ -1279,7 +1221,7 @@ This is the version of Cohen's $d$ that gets reported by the jamovi 'Paired Samp
 </section>
 <section id="sec-Checking-the-normality-of-a-sample" class="level2" data-number="11.9">
 <h2 data-number="11.9" class="anchored" data-anchor-id="sec-Checking-the-normality-of-a-sample"><span class="header-section-number">11.9</span> 檢測樣本常態性</h2>
-<p>這個單元介紹所有檢定方法都需要的適用條件～樣本資料要符合常態性，根據中心極限定理（見 <a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-The-central-limit-theorem"><span>小單元&nbsp;8.3.3</span></a> ），來自隨機取樣的樣本只要數量夠大，樣本分佈都會符合常態分佈，所以這個條件通常是合理的。研究者通常關心的變項<em>實際上</em>是由多項觀察的平均值構成樣本，累積的樣本很可能符合常態分佈，或者至少接近常態分佈，讓研究者能安心使用t檢定。但是現實世界不會給研究者保證，有許多偏差的研究方法會造成變項的樣本形成非常態的分佈。像是樣本資料都是研究變項尺度的最小值，可能造成偏斜的分佈。許多心理學實驗會測量的反應時間就是一個很好的例子。如果研究者認為許多條件都會觸發人類參與者的反應，最真實的反應只會出現在研究者感興趣的觸發事件第一次發生之後。<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>如此，將導致反應時間資料分佈不符合常態性。那麼，如果常態性是所有檢定方法必須符合的條件，現實世界的多數樣本資料也能符合，那麼要如何檢查樣本的常態性呢？以下介紹兩種方法：分位數對分位數圖(Q-Q plot)和Shapiro-Wilk檢驗。</p>
+<p>這個單元介紹所有檢定方法都需要的適用條件～樣本資料要符合常態性，根據中心極限定理（見 <a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-The-central-limit-theorem"><span>小單元&nbsp;8.3.3</span></a> ），來自隨機取樣的樣本只要數量夠大，樣本分佈都會符合常態分佈，所以這個條件通常是合理的。研究者通常關心的變項<em>實際上</em>是由多項觀察的平均值構成樣本，累積的樣本很可能符合常態分佈，或者至少接近常態分佈，讓研究者能安心使用t檢定。但是現實世界不會給研究者保證，有許多偏差的研究方法會造成變項的樣本形成非常態的分佈。像是樣本資料都是研究變項尺度的最小值，可能造成偏斜的分佈。許多心理學實驗會測量的反應時間就是一個很好的例子。如果研究者認為許多條件都會觸發人類參與者的反應，最真實的反應只會出現在研究者感興趣的觸發事件第一次發生之後。<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>如此，將導致反應時間資料分佈不符合常態性。那麼，如果常態性是所有檢定方法必須符合的條件，現實世界的多數樣本資料也能符合，那麼要如何檢查樣本的常態性呢？以下介紹兩種方法：分位數對分位數圖(Q-Q plot)和Shapiro-Wilk檢驗。</p>
 <!--- All of the tests that we have discussed so far in this chapter have assumed that the data are normally distributed. This assumption is often quite reasonable, because the Central Limit Theorem (see @sec-The-central-limit-theorem) does tend to ensure that many real world quantities are normally distributed. Any time that you suspect that your variable is *actually* an average of lots of different things, there's a pretty good chance that it will be normally distributed, or at least close enough to normal that you can get away with using t檢定s. However, life doesn't come with guarantees, and besides there are lots of ways in which you can end up with variables that are highly non-normal. For example, any time you think that your variable is actually the minimum of lots of different things, there's a very good chance it will end up quite skewed. In psychology, response time (RT) data is a good example of this. If you suppose that there are lots of things that could trigger a response from a human participant, then the actual response will occur the first time one of these trigger events occurs.[^11-comparing-two-means-20] This means that RT data are systematically non-normal. Okay, so if normality is assumed by all the tests, and is mostly but not always satisfied (at least approximately) by real world data, how can we check the normality of a sample? In this section I discuss two methods: QQ plots and the Shapiro-Wilk test.
 
 [^11-comparing-two-means-20]: This is a massive oversimplification.--->
@@ -1339,8 +1281,8 @@ This is the version of Cohen's $d$ that gets reported by the jamovi 'Paired Samp
 </section>
 <section id="shapiro-wilk檢定" class="level3" data-number="11.9.3">
 <h3 data-number="11.9.3" class="anchored" data-anchor-id="shapiro-wilk檢定"><span class="header-section-number">11.9.3</span> Shapiro-Wilk檢定</h3>
-<p>Q-Q圖是一種非正式檢查資料常態性的好方法，若是需要做更正式的檢驗，<strong>Shapiro-Wilk檢定</strong><span class="citation" data-cites="Shapiro1965">(<a href="References.html#ref-Shapiro1965" role="doc-biblioref">Shapiro &amp; Wilk, 1965</a>)</span>是較正式的檢驗工具。<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>讀者如果已經了解假設檢定的思維，這裡的虛無假設設定一組<span class="math inline">\(n\)</span>個觀測值分佈符合常態分佈。</p>
-<p>[其他技術細節 <a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>]</p>
+<p>Q-Q圖是一種非正式檢查資料常態性的好方法，若是需要做更正式的檢驗，<strong>Shapiro-Wilk檢定</strong><span class="citation" data-cites="Shapiro1965">(<a href="References.html#ref-Shapiro1965" role="doc-biblioref">Shapiro &amp; Wilk, 1965</a>)</span>是較正式的檢驗工具。<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>讀者如果已經了解假設檢定的思維，這裡的虛無假設設定一組<span class="math inline">\(n\)</span>個觀測值分佈符合常態分佈。</p>
+<p>[其他技術細節 <a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>]</p>
 <!--- QQ plots provide a nice way to informally check the normality of your data, but sometimes you'll want to do something a bit more formal and the **Shapiro-Wilk檢定(Shapiro-Wilk test)** [@Shapiro1965] is probably what you're looking for.[^11-comparing-two-means-21] As you'd expect, the null hypothesis being tested is that a set of $N$ observations is normally distributed.
 
 [^11-comparing-two-means-21]: Either that, or the Kolmogorov-Smirnov test, which is probably more traditional than the Shapiro-Wilk. Although most things I've read seem to suggest Shapiro-Wilk is the better test of normality, the Kolomogorov Smirnov is a general purpose test of distributional equivalence that can be adapted to handle other kinds of distribution tests. In jamovi the Shapiro-Wilk test is preferred. 
@@ -1363,29 +1305,26 @@ This is the version of Cohen's $d$ that gets reported by the jamovi 'Paired Samp
 </section>
 <section id="檢測樣本常態性的範例" class="level3" data-number="11.9.4">
 <h3 data-number="11.9.4" class="anchored" data-anchor-id="檢測樣本常態性的範例"><span class="header-section-number">11.9.4</span> 檢測樣本常態性的範例</h3>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>與此同時，當資料變得非常態時，展示一下 QQ 圖和 Shapiro-Wilk 檢定的變化可能是值得的。為此，讓我們看一下我們的澳式足球聯賽（AFL）勝利幅度資料的分佈，如果您還記得 <a href="04-Descriptive-statistics.html"><span>單元&nbsp;4</span></a> ，它看起來根本不是來自常態分佈。以下是 QQ 圖發生的情況（<a href="#fig-fig11-25">圖&nbsp;<span>11.25</span></a>）。</p>
+<p>若是認為樣本資料不符合常態的適用條件時，可以使用Q-Q圖和 Shapiro-Wilk 檢定確認看看。這裡用澳式足球聯賽（AFL）勝隊分數資料做示範，回憶一下 <a href="04-Descriptive-statistics.html"><span>單元&nbsp;4</span></a> 的範例，這筆資料看起來不像符合常態分佈。畫成Q-Q圖會像 <a href="#fig-fig11-25">圖&nbsp;<span>11.25</span></a> 。</p>
 <!---In the meantime, it's probably worth showing you an example of what happens to the QQ plot and the Shapiro-Wilk test when the data turn out to be non-normal. For that, let's look at the distribution of our AFL winning margins data, which if you remember back to @sec-Descriptive-statistics it didn't look like they came from a normal distribution at all. Here's what happens to the QQ plot (@fig-fig11-25). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig11-25" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig11-25.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;11.25: AFL 例行賽勝隊分數的 QQ 圖，很明顯不符合常態性。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;11.25: AFL 例行賽勝隊分數的 Q-Q 圖，很明顯不符合常態。</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>而當我們對 <em>AFL margins</em> 資料執行 Shapiro-Wilk 檢定時，我們得到了 Shapiro-Wilk 常態檢定統計量的值 <span class="math inline">\(W = 0.94\)</span>，p值 = <span class="math inline">\(9.481\)</span>x<span class="math inline">\(10^{-07}\)</span>。顯然是一個顯著的效應！</p>
+<p>以 <em>AFL margins</em> 資料執行 Shapiro-Wilk 檢定，會得到檢定統計量<span class="math inline">\(W = 0.94\)</span>，p值 = <span class="math inline">\(9.481\)</span>x<span class="math inline">\(10^{-07}\)</span>。顯然是顯著地違反常態分佈！</p>
 <!--- And when we run the Shapiro-Wilk test on the *AFL margins* data, we get a value for the Shapiro-Wilk normality test statistic of $W = 0.94$, and p-value = $9.481$x$10^{-07}$. Clearly a significant effect! --->
 </section>
 </section>
 <section id="sec-nonparameter-rank-test" class="level2" data-number="11.10">
 <h2 data-number="11.10" class="anchored" data-anchor-id="sec-nonparameter-rank-test"><span class="header-section-number">11.10</span> 平均值的無母數統計檢定</h2>
 <!--- [^11-translation-01]: 這一節標題及小節順序，配合**線性模型的學習取向**稍做更改。--->
-<p>如果資料不符合常態性，運用Q-Q 圖和 Shapiro-Wilk 檢定做確認是建議的標準作業。這裡用澳洲足球聯賽（AFL）例行賽勝隊分數資料做示範，如果讀者還記得 <a href="04-Descriptive-statistics.html"><span>單元&nbsp;4</span></a> 的示範，這份資料看起來根本不像是自常態分佈， <a href="#fig-fig11-25">圖&nbsp;<span>11.25</span></a> 是這份資料的 Q-Q 圖。</p>
+<p>如果資料真的不符合常態性，我們還能使用t檢定嗎？現實的資料分析很可能遇到這種狀況。以澳洲足球聯賽（AFL）例行賽勝隊分數資料來說，Shapiro-Wilk 檢定明顯呈現這份資料已不符合常態性。這個案例就需要Wilcoxon檢定了。</p>
 <p>如同t檢定，Wilcoxon檢定有單一樣本及獨立樣本兩種形式，都是用在無法精確地使用t檢定分析對應的兩種研究設計。另一方面，Wilcoxon檢定不像t檢定一定需要是符合常態性的資料分佈，才能進行分析。其實，Wilcoxon檢定完全沒有任何資料分佈的適用條件。這種特性，讓這類檢定方法在統計學界得到<strong>無母數統計檢定</strong>的通稱。雖然不必在意常態性很方便，使用這方法的研究者也要付出代價：就是Wilcoxon檢定的結果檢定力通常比t檢定低，也就是型二錯誤率會變高。以下不會介紹太多Wilcoxon檢定的細節，但會給讀者一些簡單說明。</p>
 <!--- Okay, suppose your data turn out to be pretty substantially non-normal, but you still want to run something like a t檢定? This situation occurs a lot in real life. For the AFL winning margins data, for instance, the Shapiro-Wilk test made it very clear that the normality assumption is violated. This is the situation where you want to use Wilcoxon tests.
 
@@ -1398,72 +1337,21 @@ Like the t檢定, the Wilcoxon test comes in two forms, one-sample and two-sampl
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab11-5" class="anchored">
-<table id="tab:tbl-tab11-5" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;11.4: 觀察值比較差異的單一樣本 Wilcoxon 檢定</caption>
-<tbody>
-<tr class="odd">
-<td colspan="2" rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;"></td>
-<td colspan="10" data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">all differences</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-24\)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-14\)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-10\)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-6\)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-38\)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-35\)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-30\)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">5</td>
-</tr>
-<tr class="odd">
-<td colspan="2" rowspan="3" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0.4pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">æ­£å·®ç•°å€¼</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab11-5"><caption>表&nbsp;11.4:  <p>觀察值比較差異的單一樣本 Wilcoxon 檢定</p> </caption>
+<colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup><tbody><tr>
+<th rowspan="2" colspan="2" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;"></th><th colspan="10" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">all differences</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-24\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-14\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-10\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-6\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-38\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-35\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(-30\)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">5</td></tr>
+<tr>
+<td rowspan="3" colspan="2" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0.4pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">æ­£å·®ç°å¼</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <blockquote class="blockquote">
@@ -1493,69 +1381,28 @@ As long as there are no ties (i.e., people with the exact same awesomeness score
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab11-4" class="anchored">
-<table id="tab:tbl-tab11-4" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;11.5: 對於雙樣本曼－惠特尼U檢定，比較各組觀測值</caption>
-<tbody>
-<tr class="odd">
-<td colspan="2" rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td colspan="5" data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group B</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">14.5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">10.4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">12.4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">11.7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">13.0</td>
-</tr>
-<tr class="odd">
-<td rowspan="5" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0.4pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group A</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6.4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">10.7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">11.9</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7.3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0.4pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">10</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab11-4"><caption>表&nbsp;11.5:  <p>對於雙樣本曼－惠特尼U檢定，比較各組觀測值</p> </caption>
+<colgroup><col><col><col><col><col><col><col></colgroup><tbody><tr>
+<th rowspan="2" colspan="2" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th colspan="5" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group B</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">14.5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">10.4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">12.4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">11.7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">13.0</td></tr>
+<tr>
+<td rowspan="5" style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0.4pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group A</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6.4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">10.7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">11.9</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7.3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0.4pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">10</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>然後計算出勾的數量，這得到檢定統計量 U<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>。U的取樣分佈解釋起來有些複雜，在此略過不提。就這個範例的目的而言，關鍵是U的判讀方式與t檢定或z檢定完全一樣。換句話說，如果採用雙側檢定，當U值非常大或非常小時，就會拒絕虛無假設；如果採用單側檢定，只看U值是過大或過小。</p>
+</div>
+<p>然後計算出勾的數量，這得到檢定統計量 U<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>。U的取樣分佈解釋起來有些複雜，在此略過不提。就這個範例的目的而言，關鍵是U的判讀方式與t檢定或z檢定完全一樣。換句話說，如果採用雙側檢定，當U值非常大或非常小時，就會拒絕虛無假設；如果採用單側檢定，只看U值是過大或過小。</p>
 <blockquote class="blockquote">
 <p><strong>譯者註</strong> 以下段落為AI初翻，請謹慎使用。</p>
 </blockquote>
@@ -1632,23 +1479,24 @@ Welch, B. L. (1947). The generalization of <span>“<span>S</span>tudent’s”<
 <li id="fn5"><p>如果讀者忘記了其中的原理，可以再參考 <a href="04-Descriptive-statistics.html#sec-Standard-scores"><span>小單元&nbsp;4.5</span></a>。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>實際上，這種說法可能太過武斷。嚴格來說，z檢定僅要求樣本平均值的分佈符合常態分佈。如果母群分佈是常態的，那麼樣本平均值的分佈自然也會是常態的。然而，正如中心極限定理這一節( <a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-The-central-limit-theorem"><span>小單元&nbsp;8.3.3</span></a> )學到的，即便母群分佈本身不是常態的，樣本平均數的分佈還是能符合常態分佈（這種情況還相當常見）。不過，考慮到假定已知母群標準差是不合理的條件，詳細探討這個條件並無太大必要！<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>其實這道難題的解法不完全是一個人的功勞。就原作者所知，最早由數學家高斯提出一部分解法，最終版本的解法是由羅納德·費雪爵士完成。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>我覺得更嚴重的是，報告中只有數字而沒有任何解釋和詮釋。我對這樣的技術報告感到非常懷疑。這可能只是因為我自視甚高，但我經常覺得，如果一個作者沒有努力向讀者解釋和詮釋他們的分析，那麼他們自己可能不理解，或者有些懶惰。你的讀者是聰明的，但不是無限耐心的。如果你能幫助他們，就不要讓他們感到煩惱。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>更常見的報告問題是，只有數字而沒有任何解釋和詮釋，這樣的報告品質不見得有比較好。原作者認為，如果報告作者沒有努力向讀者解釋和詮釋他們的分析，那麼作者自己可能不夠理解，或者只想偷懶。想知道能看懂統計報告的讀者眼睛是雪亮的，但並非有耐心。只要能幫助讀者理解報告重要，請不要增加閱讀報告的難度。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>技術性的註解：與 z 檢定的適用條件一樣的方式，我們可以削弱 t 檢定的適用條件，只專注取樣分佈。但是，對於 t 檢定，這樣做比較困難。如同z檢定，我們可以將母群常態性的條件替換為樣本平均數的取樣分佈符合常態分佈。然而，我們還要靠樣本標準差做為母群標準差的估計值，因此我們還需要 <span class="math inline">\(\hat{\sigma}\)</span> 的取樣分佈符合卡方分佈的條件 。這使得判斷是否適用變得更麻煩，因此這個方案很少用在分析實務。幸運的是，如果母群分佈是常態的，這兩個條件都可以滿足。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>正是因為單一樣本t檢定很容易學，原作者才會用這套方法帶各位入門。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>這種研究問題總是會出現一個有趣的問題：在這種情況下，究竟是指哪個母群？是真正修 Harpo 老師課程的所有33位學生？所有可能會修這門課的潛在學生？還是有其他考慮？我們所選擇對象，會影響分析條件嗎？在許多行為統計學的課堂，這個問題幾乎總是被含混帶過，因為每年我的學生都會問我這個問題，所以我會給一個簡單的回覆。就技術來說，母群條件會有影響的。只要“真實世界”母群的定義改變了，就會改變樣本平均值 <span class="math inline">\(\bar{X}\)</span> 的取樣分佈。能使用t 檢定的必要條件之一觀察值是從一個無限大的母群隨機取樣，然而真實的研究很少符合這個條件，造成t 檢定的結果可能導致錯誤的結論。不過在實際運用時，這個問題並不嚴重。即使無法完全滿足這個條件，多數檢定結果也不至於錯得離譜，所以通常不會太在意這個問題。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>加權值的數學公式通常是：<span class="math display">\[w_1=N_1-1\]</span> <span class="math display">\[w_2=N_2-1\]</span> 對每個樣本分配加權值之後，就能用兩個變異數估計值的加權，<span class="math inline">\(\hat{sigma}_{1}^{2}\)</span> 和 <span class="math inline">\(\hat{sigma}_{2}^{2}\)</span>，計算變異數的加權估計值。<span class="math display">\[\hat{\sigma}_p^2=\frac{w_1\hat{\sigma}_1^2+w_2\hat{\sigma}_2^2}{w_1+w_2}\]</span> 最後再取估計值的平方根，將加權變異數估計值轉換為加權標準差估計。<span class="math display">\[\hat{\sigma}_p=\sqrt{\frac{w_1\hat{\sigma}_1^2+w_2\hat{\sigma}_2^2}{w_1+w_2}}\]</span> 在這個方程式中代入 <span class="math inline">\((w_1 = N_1 - 1)\)</span> 和 <span class="math inline">\(w_2 = N_2 - 1\)</span>，會得到一個非常醜陋的公式。這個公式似乎是描述加權標準差估計值的“標準”公式，但這不是我偏好思考加權標準差的方法。<br>我喜歡的思考方式是，這份資料集來自 N 個觀測值，再被分成兩組。所以，可以用 <span class="math inline">\(X_{ik}\)</span> 代表第 k 位助教帶的第 i 位學生的成績。也就是說，<span class="math inline">\((X_{11}\)</span> 是 Anastasia 帶的第一位學生成績，<span class="math inline">\(X_{21}\)</span> 是她帶的第二位學生，以此類推。如此會有兩個不同的組平均值 <span class="math inline">\(\bar{X}_1\)</span> 和 <span class="math inline">\(\bar{X}_2\)</span>，使用 <span class="math inline">\(\bar{X}_k\)</span> 就能指稱這兩組，也就是第 k 輔導班的平均成績。<br>還能跟上的話，我們繼續談離均差：由於每位學生必參加其中一班，就可以將每位學生成績與平均的差異寫成<span class="math display">\[X_{ik}-\bar{X}_k\]</span> 那為什麼不使用這套符號代表每位學生的成績與所在輔導班的平均成績之差異？請記住，離均差平方只是一群離均差平方後的平均值，所以可以用這個數學式子表達：<span class="math display">\[\frac{\sum_{ik}(X_{ik}-\bar{X}_k)^2}{N}\]</span><br>其中符號<span class="math inline">\(\sum_{ik}\)</span>是一種偷懶的記號方式，意思是“加總每個班的所有學生成績”，因為每個”<span class="math inline">\(_{ik}\)</span>“對應一位學生。<span class="math inline">\(^a\)</span> 但是，正如 <a href="08-Estimating-unknown-quantities-from-a-sample.html"><span>單元&nbsp;8</span></a> 學到的，除以 <span class="math inline">\(n\)</span> 算出的變異數是一個有偏誤的樣本變異數估計值。因此，我們需要除以 <span class="math inline">\(n - 1\)</span> 以修正偏誤。同時也提到，這種偏誤的來源是變異數估計依賴於樣本平均值，並且如果樣本平均值不等於母群平均值，極可能造成變異數估計值的系統性偏誤。但是在獨立組設計，一共有兩個樣本平均值！這是否表示會有更大的偏誤？是的，沒錯。所以這裡需要除以 <span class="math inline">\((n-2)\)</span> 而不是 <span class="math inline">\((n-1)\)</span>，才是計算變異數估計值的正確方法。所以公式要改成：<span class="math display">\[\hat{\sigma}_p^2=\frac{\sum_{ik}(X_{ik}-\bar{X}_k)^2}{N-2}\]</span> 最後再取平方根，就會得到加權標準差的估計值 <span class="math inline">\(\hat{\sigma}_p\)</span>。所以說，加權標準差的計算方法並不特別，與計算單一樣本標準差的方式沒有太大不同。 <br> — <br><span class="math inline">\(^b\)</span> 更正式的符號將在 <a href="13-Comparing-several-means-one-way-ANOVA.html"><span>單元&nbsp;13</span></a> 介紹。<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13"><p>只要這兩組樣本的標準差確實相等，標準誤的估計值公式就是 <span class="math display">\[SE(\bar{X}_1-\bar{X}_2)=\hat{\sigma}\sqrt{\frac{1}{N_1}+\frac{1}{N_2}}\]</span> 所以 t 統計值的公式是 <span class="math display">\[t=\frac{\bar{X}_1-\bar{X}_2}{SE(\bar{X}_1-\bar{X}_2)}\]</span><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p>嚴格來說，應該是指「平均數的差異樣本」呈現常態分佈，但是如果兩個組別的資料都呈現常態分佈，那麼平均值的差異也會呈現常態分佈。實際上，<strong>中央極限定理</strong>告訴我們，兩個樣本平均值的分佈，會隨著樣本量的增加，將會趨近常態分佈，而不論底層資料的實際分佈是什麼。<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>嗯，我猜有讀者有辦法將蘋果和橙子攪在一起，做出一杯美味的綜合果汁。但是，沒有人真正會認為能從綜合果汁能嚐出攪拌前的原味，對吧？<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>使用者依然有可以樣本平均值差異，計算估計標準誤的公式，只是和Student t檢定的版本很不一樣： <span class="math display">\[SE(\bar{X}_1-\bar{X}_2)=\sqrt{\frac{\hat{\sigma}_1^2}{N_1}+\frac{\hat{\sigma}_2^2}{N_2}}\]</span> 解釋為什麼要這樣算就超出了本書的範圍。對以本書學習統計的讀者來說，必須要知道的是 Welch’s t檢定的 t 統計值與 Student t檢定的 t 統計值略有不同。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17"><p>重覆測量非常類似 <a href="10-Categorical-data-analysis.html#sec-The-McNemar-test"><span>小單元&nbsp;10.7</span></a> 介紹的麥內瑪檢定所適用的研究問題。這並不奇怪，兩者都是標準的重覆測量設計，每個樣本都有兩次測量。唯一的區別是這裡的結果變項是等距尺度(工作記憶容量)，而不是名義尺度(是非題)。<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p>至此已經登場的老師有 Harpo、Chico和 Zeppo。雖然沒有贈品，讀者可以猜猜看 Groucho 會在那裡登場。<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn19"><p>將Cohen’s <span class="math inline">\(d\)</span>乘以<span class="math inline">\(\frac{(N - 3)}{(N - 2.25)}\)</span>，就是Hedges’ g。<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn20"><p>有興趣的讀者可以自行查看<em>chico2.omv</em>的成果。(譯者註)現在有新模組<code>jReshape</code>及<code>jTransform</code>可讓使用者轉換資料結構。<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn21"><p>這裡的描述其實過度簡化。<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn22"><p>另一種可用的方法是Kolmogorov-Smirnov檢驗，這種方法的判定水準應該比Shapiro-Wilk更嚴格。雖然大部分文獻似乎都主張Shapiro-Wilk是更好的常態性檢核工具，但是Kolomogorov Smirnov是一種通用的分佈性質檢核方法，可以應對其他類型的分佈性質檢驗。在jamovi所提供的選項，Shapiro-Wilk檢驗是首要選項。<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn23"><p>*Shapiro-Wilk檢定的統計量通常寫做<span class="math inline">\(W\)</span>，計算步驟是。(1)按照數值大小的遞增順序，排序觀測值，使得<span class="math inline">\(\bar{X_1}\)</span>成為樣本中最小的值，<span class="math inline">\(X_2\)</span>成為第二小的值，依此類推。(2)用以下公式計算<span class="math inline">\(W\)</span><br><span class="math display">\[W=\frac{(\sum_{i=1}^N a_iX_i)^2}{\sum_{i=1}^N(X_i-\bar{X})^2}\]</span><br><span class="math inline">\(\bar{X}\)</span>是所有觀測值的平均值，<span class="math inline">\(a_i\)</span>值是…由於超出了入門級教材的範圍，以下略。<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn24"><p>實際上，有兩種不同的檢定統計量公式，它們之間相差一個常數。這裡所說的是jamovi演算的版本。<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>譯註~此圖以jamovi 2.6.23.0重製，常態性檢定與變異同質性檢定在此版已簡化為只呈現Shapiro-Wilk與Lavene’s的結果。<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>嚴格來說，應該是指「平均數的差異樣本」呈現常態分佈，但是如果兩個組別的資料都呈現常態分佈，那麼平均值的差異也會呈現常態分佈。實際上，<strong>中央極限定理</strong>告訴我們，兩個樣本平均值的分佈，會隨著樣本量的增加，將會趨近常態分佈，而不論底層資料的實際分佈是什麼。<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>嗯，我猜有讀者有辦法將蘋果和橙子攪在一起，做出一杯美味的綜合果汁。但是，沒有人真正會認為能從綜合果汁能嚐出攪拌前的原味，對吧？<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>使用者依然有可以樣本平均值差異，計算估計標準誤的公式，只是和Student t檢定的版本很不一樣： <span class="math display">\[SE(\bar{X}_1-\bar{X}_2)=\sqrt{\frac{\hat{\sigma}_1^2}{N_1}+\frac{\hat{\sigma}_2^2}{N_2}}\]</span> 解釋為什麼要這樣算就超出了本書的範圍。對以本書學習統計的讀者來說，必須要知道的是 Welch’s t檢定的 t 統計值與 Student t檢定的 t 統計值略有不同。<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>重覆測量非常類似 <a href="10-Categorical-data-analysis.html#sec-The-McNemar-test"><span>小單元&nbsp;10.7</span></a> 介紹的麥內瑪檢定所適用的研究問題。這並不奇怪，兩者都是標準的重覆測量設計，每個樣本都有兩次測量。唯一的區別是這裡的結果變項是等距尺度(工作記憶容量)，而不是名義尺度(是非題)。<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>至此已經登場的老師有 Harpo、Chico和 Zeppo。雖然沒有贈品，讀者可以猜猜看 Groucho 會在那裡登場。<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>將Cohen’s <span class="math inline">\(d\)</span>乘以<span class="math inline">\(\frac{(N - 3)}{(N - 2.25)}\)</span>，就是Hedges’ g。<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>有興趣的讀者可以自行查看<em>chico2.omv</em>的成果。(註)現在有模組<code>jReshape</code>及<code>jTransform</code>可讓使用者轉換資料結構。<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>這裡的描述其實過度簡化。<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>另一種可用的方法是Kolmogorov-Smirnov檢驗，這種方法的判定水準應該比Shapiro-Wilk更嚴格。雖然大部分文獻似乎都主張Shapiro-Wilk是更好的常態性檢核工具，但是Kolomogorov Smirnov是一種通用的分佈性質檢核方法，可以應對其他類型的分佈性質檢驗。在jamovi所提供的選項，Shapiro-Wilk檢驗是首要選項。<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>*Shapiro-Wilk檢定的統計量通常寫做<span class="math inline">\(W\)</span>，計算步驟是。(1)按照數值大小的遞增順序，排序觀測值，使得<span class="math inline">\(\bar{X_1}\)</span>成為樣本中最小的值，<span class="math inline">\(X_2\)</span>成為第二小的值，依此類推。(2)用以下公式計算<span class="math inline">\(W\)</span><br><span class="math display">\[W=\frac{(\sum_{i=1}^N a_iX_i)^2}{\sum_{i=1}^N(X_i-\bar{X})^2}\]</span><br><span class="math inline">\(\bar{X}\)</span>是所有觀測值的平均值，<span class="math inline">\(a_i\)</span>值是…由於超出了入門級教材的範圍，以下略。<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>實際上，有兩種不同的檢定統計量公式，它們之間相差一個常數。這裡所說的是jamovi演算的版本。<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

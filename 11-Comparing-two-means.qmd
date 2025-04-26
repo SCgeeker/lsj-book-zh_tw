@@ -464,9 +464,8 @@ gridExtra::grid.arrange(p1,p2, ncol=2)
 
 ### 實作單一樣本t檢定
 
-> **譯者註** 本單元內容為AI初翻，請謹慎使用。
+認真的讀者一定能想通，t檢定的做法和z檢定完全相同。因此，我們沒有必要鑽研繁瑣的計算步驟。兩者要做的計算幾乎一模一樣，只是t檢定是用樣本資料估計的標準差，還有表現統計假設的t分佈而並不是常態分佈。因此，這裡直接展示如何實際進行t檢定。jamovi就有用於執行t檢定的基本分析模組，包含本單元介紹的三種的t檢定。使用方法非常簡單，讀者要做的是從分析模組選單選擇`T-Tests` -> `One-Sample T-Test`開啟設定選單，將要分析的資料變項移到到`Dependent Variable`對話框，接著在`Hypothesis`-`Test Value`的對話框裡輸入代表虛無假設的平均值（'67.5'）。如同 @fig-fig11-6 的展示，除了稍後會提到的統計資訊，置頂表格呈現t檢定統計量=2.25，自由度為19，p值為$0.036$。
 
-正如你所預期的，t檢定的機制幾乎與z檢定的機制完全相同。因此，沒有必要繁瑣地展示如何使用低級命令進行計算。它與我們之前所做的計算幾乎相同，只是使用了估計的標準差，然後使用t分佈而不是常態分佈來測試假設。因此，我將直接跳到顯示如何實際進行t檢定。jamovi配備了一個專門用於t檢定的分析，非常靈活（它可以運行許多不同類型的t檢定）。它非常簡單易用；您需要做的只是指定“分析”-“T檢定”-“單樣本T檢定”，將您感興趣的變項（X）移動到“變項”框中，並在“假設”-“測試值”框中輸入虛無假設的平均值（'67.5'）。很容易。見 @fig-fig11-6 ，除了我們稍後會提到的其他事項之外，它還提供了t檢定統計量=2.25，自由度為19，相關的p值為$0.036$。
 
 <!---As you might expect, the mechanics of the t檢定 are almost identical to the mechanics of the z-test. So there's not much point in going through the tedious exercise of showing you how to do the calculations using low level commands. It's pretty much identical to the calculations that we did earlier, except that we use the estimated standard deviation and then we test our hypothesis using the t distribution rather than the normal distribution. And so instead of going through the calculations in tedious detail for a second time, I'll jump straight to showing you how t檢定s are actually done. jamovi comes with a dedicated analysis for t檢定s that is very flexible (it can run lots of different kinds of t檢定s). It's pretty straightforward to use; all you need to do is specify 'Analyses' - 't檢定s' - 'One Sample t檢定', move the variable you are interested in (X) across into the 'Variables' box, and type in the mean value for the null hypothesis ('67.5') in the 'Hypothesis' - 'Test value' box. Easy enough. See @fig-fig11-6, which, amongst other things that we will get to in a moment, gives you a t檢定 statistic = 2.25, with 19 degrees of freedom and an associated p-value of $0.036$. --->
 
@@ -478,17 +477,17 @@ gridExtra::grid.arrange(p1,p2, ncol=2)
 knitr::include_graphics("images/fig11-6.png")
 ```
 
-此外，報告了其他兩個可能會引起關注的指標：95％信賴區間和效應大小的測量值（我們稍後會談論效應大小）。看起來相當簡單。現在我們該如何處理這個輸出呢？既然我們假裝真的在乎我們的例子，我們很高興地發現結果在統計上是顯著的（即p值低於0.05）。我們可以通過這樣的報告方式來表達結果：
+置頂表格包括另外兩個讀者會關係的指標：95％信賴區間和效果量的估計值。那要使用這份表格呢？既然我們是要了解這班心理系學生的學習表現，報告上就能說明他們的成果是真的不錯，因為p值低於0.05，統計檢定顯著的。報告可以這樣撰寫：
 
-> *心理學生的平均成績為* $72.3$，略高於平均成績$67.5$ ($t(19) = 2.25$，$p = .036$)。平均分差為$4.80$，$95\%$信賴區間為$0.34$至$9.26$。
+> 心理系學生的平均成績是 $72.3$，略高於平均成績$67.5$ ($t(19) = 2.25$，$p = .036$)。比平均成績高$4.80$，$95\%$信賴區間為$0.34$至$9.26$。
 
-...其中 $t(19)$ 是一個簡寫符號，代表具有 $19$ 自由度的 t 統計值。話雖如此，人們通常不會報告信賴區間，或者使用比我在此展示的更簡短的形式進行報告。例如，看到信賴區間被包含在報告均值差之後的統計資訊中也不是很少見，就像這樣：
+以上 $t(19)$ 是標準的簡寫，代表具有 $19$ 自由度的 t 統計值。話雖如此，多數報告不會報導信賴區間，或者使用比以上展示的更簡短的形式。像是平均值差異之後信賴區間，通常中括號包圍起來：
 
 $$t(19)=2.25, p = .036, CI_{95} = [0.34, 9.26]$$
 
-在這半行內塞這麼多專業術語，你就知道這必定是非常聰明的。[^11-comparing-two-means-8]
+在短短幾行裡塞這麼多專業術語，就會讓讀者感到這份報告看起來很厲害。[^11-comparing-two-means-8]
 
-[^11-comparing-two-means-8]: 我覺得更嚴重的是，報告中只有數字而沒有任何解釋和詮釋。我對這樣的技術報告感到非常懷疑。這可能只是因為我自視甚高，但我經常覺得，如果一個作者沒有努力向讀者解釋和詮釋他們的分析，那麼他們自己可能不理解，或者有些懶惰。你的讀者是聰明的，但不是無限耐心的。如果你能幫助他們，就不要讓他們感到煩惱。
+[^11-comparing-two-means-8]: 更常見的報告問題是，只有數字而沒有任何解釋和詮釋，這樣的報告品質不見得有比較好。原作者認為，如果報告作者沒有努力向讀者解釋和詮釋他們的分析，那麼作者自己可能不夠理解，或者只想偷懶。想知道能看懂統計報告的讀者眼睛是雪亮的，但並非有耐心。只要能幫助讀者理解報告重要，請不要增加閱讀報告的難度。
 
 
 
@@ -506,7 +505,7 @@ $$t(19)=2.25, p = .036, CI_{95} = [0.34, 9.26]$$ With that much jargon crammed i
 
 那麼單一樣本 t 檢定有什麼適用條件呢？因為 t 檢定基本上就是一個移除了已知標準差假設的 z 檢定，你應該不會意外t檢定具有和z檢定一樣的適用條件，只是少了已知母群標準差這一條：
 
-- *常態性*。我們仍然要假定母群分佈是常態的 [^11-comparing-two-means-9]，如同[z檢定的適用條件]的描述，我們有標準方法可以檢查這種假設是否符合，如果這種假設被違反，還有其他的測試方法可以替代（[檢驗非常態資料]）。
+- *常態性*。我們仍然要假定母群分佈是常態的 [^11-comparing-two-means-9]，如同[z檢定的適用條件]的描述，我們有標準方法可以檢查這種假設是否符合，如果這種假設被違反，還有其他的測試方法可以替代（請參考 @sec-Checking-the-normality-of-a-sample）。
 
 - *獨立性*。同樣地，樣本的觀察值必須是來自彼此獨立的測量條件。詳細說明請參考[z檢定的適用條件]。
 
@@ -671,9 +670,7 @@ Just as we saw with our one-sample test, the sampling distribution of this t-sta
 
 ### jamovi實作
 
-> **譯者註** 本單元內容為AI初翻，請謹慎使用。
-
-不出所料，您可以很容易地在 jamovi 中進行獨立樣本 t 檢定。我們測試的結果變項是學生成績，而組是根據每個課程的導師定義的。因此，您可能不會對 jamovi 中的相應分析（“分析”-“T 檢定”-“獨立樣本 T 檢定”）感到意外，只需將成績變項移動到“依變變項”框中，將導師變項移動到“分組變項”框中，如 @fig-fig11-9 所示。
+讀者應該很容易猜到，jamovi一定可以處理獨立樣本 t 檢定。這裡的依變項是學生成績，各組助教是由主課老師指派的。所以，讀者應該知道要怎麼從模組選單呼叫獨立樣本 t 檢定(`T-Tests` -> `Independent Samples Tests`)，如 @fig-fig11-9 的展示，將資料變項`grade`移動到`Dependent Variables`對話框，將資料變項`tutor`移動到`Grouping Variable`對話框。
 
 <!---Not surprisingly, you can run an independent samples t檢定 easily in jamovi. The outcome variable for our test is the student grade, and the groups are defined in terms of the tutor for each class. So you probably won't be too surprised that all you have to do in jamovi is go to the relevant analysis ('Analyses' - 't檢定s' - 'Independent Samples t檢定') and move the grade variable across to the 'Dependent Variables' box, and the tutor variable across into the 'Grouping Variable' box, as shown in @fig-fig11-9. --->
 
@@ -685,15 +682,18 @@ Just as we saw with our one-sample test, the sampling distribution of this t-sta
 knitr::include_graphics("images/fig11-9.png")
 ```
 
-這裡的輸出形式非常熟悉。首先，它告訴您運行的是什麼測試，以及使用的依變項的名稱。然後報告測試結果。與上次一樣，測試結果包括 t 統計值、自由度和 p 值。最後一部分報告了兩件事：它給出了信賴區間和效應大小。我會稍後談論效應大小。然而，現在我應該談論信賴區間。
+各位應該熟悉報表的輸出格式了。標題提示檢定方法，置頂表格印出依變項名稱，以及分組依變項差異的檢定結果。檢定結果包括 t 統計值、自由度和 p 值。還有效果量(Effect Size)及其信賴區間。我們先討論信賴區間，稍後再談一談效果量。
 
-很重要要清楚這個信賴區間到底是什麼意思，它是兩組平均數之間的差異的信賴區間。在這個例子中，Anastasia的學生平均分為74.53，而Bernadette的學生平均分為69.06，因此兩組平均數之間的差異是5.48。但是，兩個母群的平均數差異可能比這個還大或者還小。在@fig-fig11-10中報告的信賴區間告訴你，如果我們重複進行這個研究，那麼在95％的時間裡，真正的平均數差異會在0.20到10.76之間。回顧一下@sec-Estimating-a-confidence-interval了解信賴區間的意思。
 
-在任何情況下，兩組之間的差異是顯著的（僅僅）。因此，我們可以使用以下文本編寫結果:
+讀者可以先回顧一下 @sec-Estimating-a-confidence-interval ，重溫信賴區間的意思，這裡的信賴區間則是指兩組平均數差異的信賴區間。這個範例的Anastasia組的平均成績為74.53，Bernadette組平均成績為69.06，因此兩組平均數差異值是5.48。但是，兩個母群的平均數差異可能比這個差異值更大或者更小。 @fig-fig11-9 [^11-translation01]呈現的信賴區間告訴我們，如果重複進行這個研究，那麼有95％的結果，會落在0.20和10.76之間。
 
-> Anastasia 課程的平均成績為 $74.5\%$（標準差為 $9.0$），而 Bernadette 課程的平均成績為 $69.1\%$（標準差為 $5.8$）。 學生的獨立樣本 t 檢定顯示此 $5.4\%$ 差異是顯著的 $(t(31) = 2.1, p<.05, CI_{95} = [0.2, 10.8], d = .74)$，表明學習成果存在真正的差異。
+[^11-translation01]: 譯註~此圖以jamovi 2.6.23.0重製，常態性檢定與變異同質性檢定在此版已簡化為只呈現Shapiro-Wilk與Lavene's的結果。
 
-注意到我在統計區塊中包含了信心區間和效應大小。人們並不總是這樣做。至少，您應該期望看到t統計值、自由度和p值。所以您應該至少包含像這樣的內容：$t(31) = 2.1, p< .05$。如果統計學家得到了他們想要的結果，那麼每個人都會報告信心區間，可能還有效應大小測量，因為它們是有用的知識。但現實並不總是按照統計學家的期望運作，所以您應該根據您認為會幫助讀者的情況進行判斷，如果您正在撰寫科學論文，那麼應根據期刊的編輯標準進行決策。有些期刊希望您報告效應大小，而有些則不是。在某些科學社區中，報告信心區間是標準做法，在其他社區中則不是。您需要找出您的觀眾期望什麼。但是，僅僅為了清晰起見，如果您正在上我的課，我的默認立場是通常值得包括效應大小和信心區間。
+就報表資訊來看，兩組之間的差異是剛剛好顯著。因此，我們可以在報告裡這樣撰寫:
+
+> Anastasia 組的學生平均成績為 $74.5$（標準差為 $9.0$），而 Bernadette 組的學生平均成績為 $69.1$（標準差為 $5.8$）。 獨立樣本 t 檢定顯示兩組成績的差異 $5.4$ 是顯著的 $(t(31) = 2.1, p<.05, CI_{95} = [0.2, 10.8], d = .74)$，顯示分組的學習成效有明顯差異。
+
+請留意以上報告範例有信賴區間和效果量，不過很少有報告這樣寫。最多會看到t統計值、自由度和p值。所以讀者自已的報告至少要這樣寫：$t(31) = 2.1, p< .05$。統計學專家會期待每份統計結果報告，都會有信賴區間，還有效果量的測量，因為這些都是有用的資訊。但是現實世界並不會完全按照統計學家的期望運作，正在寫論文的同學應該根據能夠幫助讀者的原則來決定報告要什麼，要投稿期刊的話，就應該遵照期刊編輯公告的標準。有些期刊會希望作者報告效果量，有些則不用。某些科學社群的標準格式是要報告信賴區間，有些則不是，這需要由作者自已找出目標讀者的需要。如果為了幫助讀者清楚理解，以原作者在課堂上常給的建議，信賴區間和效果量是值得寫出來的。
 
 <!---The output has a very familiar form. First, it tells you what test was run, and it tells you the name of the dependent variable that you used. It then reports the test results. Just like last time the test results consist of a t-statistic, the degrees of freedom, and the *p-value*. The final section reports two things: it gives you a confidence interval and an effect size. I'll talk about effect sizes later. The confidence interval, however, I should talk about now.
 
@@ -741,7 +741,7 @@ One last thing: please note that you can't do this for other types of test stati
 
 和[單一樣本t檢定]一樣，學生t檢定也有三項適用條件 ，其中一些在[單一樣本t檢定的適用條件]已經提到：
 
-- *常態性*。和單一樣本t檢定一樣，樣本資料的取樣分佈必須是符合常態分佈。具體來說，兩組樣本資料都需要符合常態分佈。[^11-comparing-two-means-14a]在[檢查樣本常態性]一節，我們將討論如何檢查常態性；在[檢驗非常態資料]一節，我們將討論可能的解決方案。
+- *常態性*。和單一樣本t檢定一樣，樣本資料的取樣分佈必須是符合常態分佈。具體來說，兩組樣本資料都需要符合常態分佈。[^11-comparing-two-means-14a]在[檢查樣本常態性]一節，我們將討論如何檢查常態性；在@sec-Checking-the-normality-of-a-sample一節，我們將討論可能的解決方案。
 - *獨立性*。其次是要確保每個資料觀測值的取樣是獨立的。以能運算學生t檢定的條件來說，有兩個性質需要考慮。首先，和單一樣本t檢定一樣，需要設定每個樣本包含的觀測值是相互獨立的。此外，我們還需要設定兩個樣本之間沒有相互依賴關係。例如，如果實驗中同一個人被不小心分派參與兩種條件組，像是同一個人不小心被允許報名參加不同條件的兩項獨立實驗，這麼一來就會造成一些跨樣本的依賴關係。
 - *變異數的同質性*（又稱“等變異性”）。第三個條件 是指兩組的母群標準差必須是相等的，我們可以使用Levene檢定來測試這個假設，稍後在[檢查同質變異性的假設]示範。然而，如果您擔心違反這個條件，有一個非常簡單的解決方法，我們將在下一節中討論。
 
@@ -837,23 +837,23 @@ The second difference between Welch and Student is that the degrees of freedom a
 
 ### jamovi實作
 
-> **譯者註** 本單元內容為AI初翻，請謹慎使用。
-
-如果你在上面的分析中勾選了 Welch test 的核取方塊，則會得到以下結果（見@fig-fig11-11）。
+只要在 @fig-fig11-9 的設定選單裡勾選 Welch's ，就會得到 @fig-fig11-11 。
 
 <!--- If you tick the check box for the Welch test in the analysis we did above, then this is what it gives you (@fig-fig11-11). --->
 
 ```{r}
 #| label: fig-fig11-11
 #| classes: .enlarge-image
-#| fig-cap: jamovi並列學生t檢定與Welch t檢定結果。
+#| fig-cap: 並列學生t檢定與Welch t檢定結果。
 #Results showing the Welch test alongside the default Student's t檢定 in jamovi
 knitr::include_graphics("images/fig11-11.png")
 ```
 
-這個輸出結果的解釋應該很明顯。您可以像讀取學生t檢定的結果一樣讀取Welch檢驗的輸出。你有你的描述統計資料，測試結果和其他信息。所以這一切都相當容易。
+輸出結果應該不用多做解釋，讀者可以像解讀學生t檢定的結果一樣，解讀Welch's t 檢定的結果。加上描述統計資料，測試結果和其他訊息，就能做出有模有樣的報告。
 
-除了，除了... 我們的結果不再顯著。 當我們執行Student t檢定時，我們得到了一個顯著的效應，但在相同的資料集上進行的Welch測試並不顯著 $(t(23.02) = 2.03, p = .054)$。 這是什麼意思？ 我們應該恐慌嗎？ 天空是否燃燒？ 可能不是。 一個測試顯著，而另一個測試不顯著本身並沒有什麼意義，特別是因為我有點編造了這些資料。 通常，不要試圖解釋或解釋$.049$和$.051$之間的p值差異。 如果這種情況在現實生活中發生，這些p值之間的差異幾乎肯定是由於偶然性引起的。 重要的是，您在選擇使用哪種測試時要仔細思考。 Student測試和Welch測試各有優勢和劣勢。 如果兩個母群確實具有相等的變異數，則Student測試比Welch測試略具備更高的功效（較低的II型錯誤率）。 但是，如果它們的變異數不同，則Student測試的假設就會被違反，您可能無法信任它。 您可能會得到更高的I型錯誤率。 因此，這是一個權衡。 但是，在現實生活中，我通常更喜歡使用Welch測試，因為幾乎沒有人認為母群變異數是相同的。
+只是我們要注意，就是這裡的Welch's t檢定結果是不顯著的。報表顯示學生t檢定分析這個組間差異是顯著的，但是Welch's t檢定顯示未達顯著 $(t(23.02) = 2.03, p = .054)$。 這是什麼意思？我們要放棄嗎？可能不用。
+
+一個檢定顯著，但是另一個檢定不顯著其實並沒有什麼意義，特別是這些資料是是編造出來的。通常不必去解釋$.049$和$.051$這兩個p值有何不同，如果有現實的資料分析發現這樣的事，可以肯定完全是偶然性的結果。做分析的人要思考的是：我選擇使用那一種檢定方法的理由是什麼？學生t和Welch's t各有優缺點。當兩組樣本的變異相等，學生t檢定的統計考驗力比Welch's t檢定更高，或者說型II錯誤率較低。當兩組樣本的變異不相等，學生t檢定就會違反適用條件，導致型I錯誤率增加。所以要選那一種，需要使用者權衡。現實的心理學研究，有越來越多研究者喜歡使用Welch's t檢定，因為幾乎沒有研究問題的分組樣本變異數是相等的。
 
 
 <!--- The interpretation of this output should be fairly obvious. You read the output for the Welch's test in the same way that you would for the Student's test. You've got your descriptive statistics, the test results and some other information. So that's all pretty easy.
@@ -862,7 +862,7 @@ Except, except...our result isn't significant anymore. When we ran the Student t
 
 ### Welch's t檢定的適用條件
 
-Welch's t檢定的假設與學生t檢定的假設幾乎一樣，只有Welch's t檢定不需要符合變異數同質性。只要符合常態性和獨立性，這些條件的細節請參閱[單一樣本t檢定的適用條件]。
+Welch's t檢定的適用條件與學生t檢定幾乎一樣，只是Welch's t檢定不需要符合變異數同質性。只要符合常態性和獨立性，細節請參考[單一樣本t檢定的適用條件]。
 
 <!--- The assumptions of the Welch test are very similar to those made by the Student t檢定 (see [Assumptions of the test], except that the Welch test does not assume homogeneity of variance. This leaves only the assumption of normality and the assumption of independence. The specifics of these assumptions are the same for the Welch test as for the Student test. --->
 
@@ -967,23 +967,21 @@ where $\hat{\sigma}_D$ is the standard deviation of the difference scores. Since
 
 ### jamovi實作
 
-> **譯者註** 本單元內容為AI初翻，請謹慎使用。
-
-如何在jamovi中執行相依樣本t檢定？一種可能的方法是按照我上面概述的過程進行。即，創建一個“差異”變項，然後對其進行單樣本t檢定。因為我們已經創建了一個名為improvement的變項，讓我們這麼做並看看我們得到什麼，如@fig-fig11-15所示。
+如何使用jamovi執行相依樣本t檢定？其中一種方法是按照上面示範說明，執行單一樣本t檢定。實作方法是創建一個新的資料變項，以此執行單一樣本t檢定。因為按照上面的說明，讀者應該已經創建`improvement`計算變項，我們就順著步驟做下去，看看能不能得到 @fig-fig11-15 的檢定結果。
 
 <!--- How do you do a paired samples t檢定 in jamovi? One possibility is to follow the process I outlined above. That is, create a "difference" variable and then run a one sample t檢定 on that. Since we've already created a variable called improvement, let's do that and see what we get, @fig-fig11-15. --->
 
 ```{r}
 #| label: fig-fig11-15
 #| classes: .enlarge-image
-#| fig-cap: 配對差異分數的單一樣本t檢定結果表。
+#| fig-cap: 配對差異分數的單一樣本t檢定結果。
 #Results showing a one sample t檢定 on paired difference scores
 knitr::include_graphics("images/fig11-15.png")
 ```
 
-在 @fig-fig11-15 中顯示的輸出與上一次使用單樣本t檢定分析時（@sec-The-one-sample-t檢定）完全相同的格式，並確認了我們的直覺。從第一次測試到第二次測試，平均改善了1.4％，並且這與0顯著不同$(t(19)=6.48,p<.001)$。
+@fig-fig11-15 的報表與 @sec-The-one-sample-t檢定 示範的單一樣本t檢定報表格式完全相同，確認我們對這筆資料的觀察無誤。第二次測驗比第一次測驗相比，平均增加了1.4分，並且與沒有改進的0顯著不同$(t(19)=6.48,p<.001)$。
 
-然而，假設您很懶，不想花費大量精力創建新變項。或者也許您只想保持單樣本和相依樣本測試之間的差異清晰。如果是這樣，您可以使用jamovi的“相依樣本t檢定”分析，獲得 @fig-fig11-16 中顯示的結果。
+假如讀者想偷懶，不想再造一個新資料變項，或是清楚區別單一樣本t檢定和相依樣本t檢定的差異。那麼，我們可以使用jamovi的`Paried Samples T-Test`，獲得 @fig-fig11-16 顯示的結果。
 
 <!--- The output shown in @fig-fig11-15 is (obviously) formatted exactly the same was as it was the last time we used the one-sample t檢定 analysis (@sec-The-one-sample-t檢定), and it confirms our intuition. There's an average improvement of $1.4\%$ from test 1 to test 2, and this is significantly different from $0$ $(t(19) = 6.48, p< .001)$.
 
@@ -992,34 +990,33 @@ However, suppose you're lazy and you don't want to go to all the effort of creat
 ```{r}
 #| label: fig-fig11-16
 #| classes: .enlarge-image
-#| fig-cap: 相依樣本t檢定結果表。請與 @fig-fig11-15 比較看看。
+#| fig-cap: 相依樣本t檢定結果。請比較 @fig-fig11-15 。
 #Results showing a paired sample t檢定. Compare with @fig-fig11-15
 knitr::include_graphics("images/fig11-16.png")
 ```
 
-結果跟進行單樣本t檢定時的結果相同，這當然是因為成對樣本t檢定在實質上就是對差異變項執行單樣本t檢定。
+兩種檢定結果完全相同，這是因為成對樣本t檢定的本質，就是對差異變項執行單一樣本t檢定。
 
 <!--- The numbers are identical to those that come from the one sample test, which of course they have to be given that the paired samples t檢定 is just a one sample test under the hood. --->
 
 ## 單側檢定 {#sec-the-one-tail-t檢定}
 
-> **譯者註** 本單元內容為AI初翻，請謹慎使用。
+@sec-The-difference-between-one-sided-and-two-sided-tests 首次介紹虛無假設檢定理論時，曾提到有一些情況適合執行單側檢定。至此介紹的t檢定，所有示範都是雙側檢定。例如，用單一樣本t檢定分析Zeppo老師的學生成績，虛無假設平均值是$67.5$；對立假設是理論平均值高於或低於$67.5$。如果我們只想知道理論平均值是否高於$67.5$，並不想測試理論平均值是不是低於$67.5\%$。如此一來，虛無假設就要改成理論平均值為$67.5\%$或更低，對立假設要改成理論平均值高於$67.5\%$。用jamovi執行這樣的檢定，只要在設定選單的`Hypothesis`，勾選`> Test value`，就能得到 @fig-fig11-17 的結果輸出。
 
-當介紹虛無假設檢定理論時，我提到有一些情況適合指定單邊檢定（請參閱 @sec-The-difference-between-one-sided-and-two-sided-tests ）。到目前為止，所有的t檢定都是雙邊檢定。例如，當我們為Zeppo博士課堂上的成績指定單一樣本t檢定時，虛無假設是真實均值為$67.5\%$。對立假設是真實均值高於或低於$67.5\%$。假設我們只想知道真實均值是否高於$67.5\%$，並且完全沒有興趣測試真實均值是否低於$67.5\%$。如果是這樣，我們的虛無假設將是真實均值為$67.5\%$或更低，對立假設將是真實均值高於$67.5\%$。在jamovi中，對於“單一樣本t檢定”分析，您可以在“假設”下點擊“> Test Value”選項進行指定。這樣做後，您將得到 @fig-fig11-17 顯示的結果。
 
 <!--- When introducing the theory of null hypothesis tests, I mentioned that there are some situations when it's appropriate to specify a one-sided test (see @sec-The-difference-between-one-sided-and-two-sided-tests). So far all of the t檢定s have been two-sided tests. For instance, when we specified a one sample t檢定 for the grades in Dr Zeppo's class the null hypothesis was that the true mean was $67.5\%$. The alternative hypothesis was that the true mean was greater than or less than $67.5\%$. Suppose we were only interested in finding out if the true mean is greater than $67.5\%$, and have no interest whatsoever in testing to find out if the true mean is lower than $67.5\%$. If so, our null hypothesis would be that the true mean is $67.5\%$ or less, and the alternative hypothesis would be that the true mean is greater than $67.5\%$. In jamovi, for the 'One Sample t檢定' analysis, you can specify this by clicking on the '$>$ Test Value' option, under 'Hypothesis'. When you have done this, you will get the results as shown in @fig-fig11-17.--->
 
 ```{r}
 #| label: fig-fig11-17
 #| classes: .enlarge-image
-#| fig-cap: jamovi生成的「單一樣本t檢定」結果，其中實際假設是單側的，即真實平均數大於 $67.5%$
-#jamovi results showing a 'One Sample t檢定' where the actual hypothesis is one sided, i.e. that the true mean is greater than $67.5\%$
+#| fig-cap: 「單一樣本t檢定」單側檢定結果，假設理論平均值大於 $67.5$
+#jamovi results showing a 'One Sample t檢定' where the actual hypothesis is one sided, i.e. that the true mean is greater than $67.5$
 knitr::include_graphics("images/fig11-17.png")
 ```
 
-注意到輸出與上次看到的輸出有一些變化。最重要的是實際假設已更改，以反映不同的測試。第二件要注意的事情是儘管t統計值和自由度沒有改變，但p值已經改變。這是因為單側測試具有與雙側測試不同的拒絕區域。如果您忘記了這是為什麼以及它意味著什麼，您可以回顧一下 @sec-Hypothesis-testing ，特別是 @sec-The-difference-between-one-sided-and-two-sided-tests 。第三件要注意的是信賴區間也不同：現在報告了一個“單側”的信賴區間，而不是一個雙側的信賴區間。在雙側信賴區間中，我們試圖找到數字a和b，使得如果我們重複進行該研究多次，那麼有$95\%$的機會均值會落在a和b之間。在單側信賴區間中，我們試圖找到一個數字a，使得我們有信心有$95\%$的機會真實均值會大於a（如果您在“假設”部分中選擇了測量1 < 測量2則為小於a）。
+各位可以看到表格內容和 @fig-fig11-6 不同一樣，最重要的是表格附註有關對立假設的描述，表示我們想測試的假設。其次要注意的是儘管t統計值和自由度沒有改變，但是p值已經不一樣了。這是因為單側檢定的拒絕區域不同於雙側檢定。如果讀者忘了拒絕區域是什麼意思，請重溫 @sec-Hypothesis-testing ，特別是 @sec-The-difference-between-one-sided-and-two-sided-tests 。還有要注意的是信賴區間也不一樣：新報表輸出的是“單側”的信賴區間，而不是雙側的信賴區間。雙側信賴區間會有兩個數字a和b，代表重複進行這項研究多次，會有$95\%$的機會，平均值會落在a和b之間。單側信賴區間只會有一個數字a，代表重複進行這項研究多次，會有$95\%$的機會，平均值會大於a。反之，如果`Hypothesis`選了`Test 1 < Test 2`，就會得到小於a的信賴區間。
 
-所有版本的t檢定都可以是單側的。對於獨立樣本t檢定，如果您只想測試A組的得分是否比B組高，但對於是否要找出B組的得分是否高於A組沒有興趣，那麼您可以進行單側檢定。假設對於Harpo博士的課程，您想知道Anastasia的學生是否比Bernadette的學生成績更好。對於此分析，在“假設”選項中指定“Group 1 \> Group2”。您應該可以得到如 @fig-fig11-18 所示的結果。
+各種t檢定都能進行單側檢定。以獨立樣本t檢定來說，如果只想測試A組的得分有沒有比B組高，但對於沒有興趣知道B組的得分是不是高於A組，就適合進行單側檢定。以Harpo老師的案例來說，我們想了解Anastasia組的學生是否比Bernadette組的學生成績好。只要在設定選單的`Hypothesis`勾選`Group 1 > Group2`，就能得到如 @fig-fig11-18 的結果。
 
 <!--- Notice that there are a few changes from the output that we saw last time. Most important is the fact that the actual hypothesis has changed, to reflect the different test. The second thing to note is that although the t-statistic and degrees of freedom have not changed, the p-value has. This is because the one-sided test has a different rejection region from the two-sided test. If you've forgotten why this is and what it means, you may find it helpful to read back over @sec-Hypothesis-testing, and @sec-The-difference-between-one-sided-and-two-sided-tests in particular. The third thing to note is that the confidence interval is different too: it now reports a "one-sided" confidence interval rather than a two-sided one. In a two-sided confidence interval we're trying to find numbers a and b such that we're confident that, if we were to repeat the study many times, then $95\%$ of the time the mean would lie between a and b. In a one-sided confidence interval, we're trying to find a single number a such that we're confident that $95\%$ of the time the true mean would be greater than a (or less than a if you selected Measure 1 < Measure 2 in the 'Hypothesis' section).
 
@@ -1028,14 +1025,16 @@ So that's how to do a one-sided one sample t檢定. However, all versions of the
 ```{r}
 #| label: fig-fig11-18
 #| classes: .enlarge-image
-#| fig-cap: jamovi生成的'獨立樣本t檢定'分析，實際假設為單尾檢定，即 Anastasia 的學生的成績高於 Bernadette 的學生
-#jamovi results showing an 'Independent Samples t檢定' where the actual hypothesis is one sided, i.e. that Anastasia's students had higher grades than Bernadette's
+#| fig-cap: 「獨立樣本t檢定」單側檢定結果報表，假設Anastasia組的成績高於Bernadette組
+#jamovi results showing an 'Independent Samples t' where the actual hypothesis is one sided, i.e. that Anastasia's students had higher grades than Bernadette's
 knitr::include_graphics("images/fig11-18.png")
 ```
 
-再次強調，輸出結果有可預測的變化。對立假設的定義已改變，p值已變化，現在報告的是單邊信賴區間，而不是雙邊信賴區間。
+這裡再次提醒，報表輸出內容和雙側檢定不一樣的地方。對立假設的定義、p值都不一樣，信賴區間只有一個數字了。
 
-那麼，相依樣本t檢定呢？假設我們想要測試 Dr Zeppo 課堂上考試成績是否從第一次測試到第二次測試有所提高，並且不考慮成績下降的可能性。在 jamovi 中，您可以通過在「假設」選項下指定 grade_test2 （在 jamovi 中為「測量1」，因為我們首先將其複製到了配對變項框中）\> grade_test1 （在 jamovi 中為「測量2」）來實現這一點。您應該可以看到 @fig-fig11-19 中的結果。
+那相依樣本t檢定會怎麼樣呢？也就是想知道Zeppo老師學生的第二次考試有沒有比第一次考試高，不考慮分數下滑的機會。只要在jamovi的設定選單，指定"grade_test2"為`Measure 1`，並勾選`Hypothesis`的`Measure 1 > Measure 2`，就能看到 @fig-fig11-19 的結果。
+
+
 
 <!--- Again, the output changes in a predictable way. The definition of the alternative hypothesis has changed, the p-value has changed, and it now reports a one-sided confidence interval rather than a two-sided one.
 
@@ -1044,12 +1043,12 @@ What about the paired samples t檢定? Suppose we wanted to test the hypothesis 
 ```{r}
 #| label: fig-fig11-19
 #| classes: .enlarge-image
-#| fig-cap: jamovi生成的'相依樣本t檢定'分析，實際假設為單尾檢定，即測驗1成績 \> 測驗2成績。
+#| fig-cap: 「相依樣本t檢定」單側檢定分析結果，假設第二次考試成績 > 第一次考試成績。
 #jamovi results showing a 'Paired Samples t檢定' where the actual hypothesis is one sided, i.e. that grade test2 ('Measure 1') $>$ grade test1 ('Measure 2')
 knitr::include_graphics("images/fig11-19.png")
 ```
 
-這次的輸出和之前一樣，以可預測的方式改變。假設已經改變，p值也改變，並且信賴區間現在是單邊的。
+這次的輸出改變的部分和前面一樣，附註的假設，p值都會改變，並且信賴區間只有單側的數值。
 
 <!--- Yet again, the output changes in a predictable way. The hypothesis has changed, the p-value has changed, and the confidence interval is now one-sided. --->
 
@@ -1057,11 +1056,11 @@ knitr::include_graphics("images/fig11-19.png")
 
 ## t檢定的效果量 {#sec-t檢定-effect-size}
 
-搭配t檢定最常使用的效果量度量是**Cohen's d** [@Cohen1988]。Cohen's d的原理看似簡單，不過仔細研究的話，會找到相當多樣的版本。發明者科恩提出的版本是為了定義符合完整適用條件的獨立樣本t檢定的效果量，也就是學生t。這個版本定義的效果量測量方法，自然是估計兩組平均值差異除以標準差。正如以下公式表明的內涵：
+最常搭配t檢定的效果量指標是**Cohen's d** [@Cohen1988]。Cohen's d的原理看似簡單，不過仔細研究的話，會看到各式各樣的版本。原始發明者提出的版本是為了定義充分符合適用條件的獨立樣本t檢定的效果量，也就是學生t。這個版本定義的效果量測量方法，自然是估計兩組平均值差異除以標準差。正如以下公式的簡明版描述：
 
 $$d=\frac{(\text{平均值1})-(\text{平均值2})}{\text{標準差}}$$
 
-@tbl-tab11-3 列出科恩建議的Cohen's d簡易使用指南。
+原始發明者建議的Cohen's d簡易使用指南列在 @tbl-tab11-3 。
 
 <!--- The most commonly used measure of effect size for a t檢定 is **Cohen's d** [@Cohen1988]. It's a very simple measure in principle, with quite a few wrinkles when you start digging into the details. Cohen himself defined it primarily in the context of an independent samples t檢定, specifically the Student test. In that context, a natural way of defining the effect size is to divide the difference between the means by an estimate of the standard deviation. In other words, we're looking to calculate something along the lines of this:
 
@@ -1071,7 +1070,7 @@ and he suggested a rough guide for interpreting $d$ in @tbl-tab11-3. --->
 
 ```{r}
 #| label: tbl-tab11-3
-#| tbl-cap: Cohen's d 超簡易參考指南，誠心建議不要盲目地使用這份指南，d統計值的公式已經是直白的解釋，公式就是以標準差為單位，計算平均值之間的差異是幾個標準差。最實用的建議是，想一下在實際的測量條件，平均值和標準差代表什麼。某些情境的「小」效應可能表示重要的實用效益，有些情況的「大」效應反而可能並沒有什麼意義。
+#| tbl-cap: Cohen's d 超簡易參考指南，誠心建議讀者不要盲目使用這份指南，d效果量的公式已經是直白的解釋，公式就是以標準差為單位，計算平均值之間的差異是幾個標準差。最實用的建議是，先搞清楚以實際的測量單位來說，平均值和標準差代表什麼。某些情境的「小」效果可能表示重要的實用效益，有些情況的「大」效果反而並沒有什麼意義。
 #A (very) rough guide to interpreting Cohen's d. My personal recommendation is to not use these blindly. The d statistic has a natural interpretation in and of itself. It re-describes the difference in means as the number of standard deviations that separates those means. So it's generally a good idea to think about what that means in practical terms. In some contexts a 'small' effect could be of big practical importance. In other situations a 'large' effect may not be all that interesting
 huxtabs[[11]][[3]] |>
   set_width(0.8) |>
@@ -1080,9 +1079,9 @@ huxtabs[[11]][[3]] |>
 ```
 
 
-也許有讀者覺得指南是很明確的參考，實際上並非如此。因為科恩並未提供太多以標準差做為測量單位的實用建議，他的著作是更想要是闡述一個更廣泛的觀點。就像 @McGrath2006 提到的幾種版本，不同學者有偏好的參考指南。本書採用不大精確的簡化參考，這裡開始所提到的$d$代表由樣本資料計算出的任何效果量統計值，$\delta$表示理論的效果量。因此讀者要學習如何區辨d的使用脈絡。
+也許有讀者覺得這份指南很有幫助，實際上並非如此。因為科恩並未提供太多以標準差做為測量單位的實用建議，他的著作其實是想要是闡述一個更廣泛的觀點。就像 @McGrath2006 提到的幾種版本，每個學者各有偏好的參考指南。本書採用不大精確的簡化符號，從這裡開始所提到的$d$代表由樣本資料計算的效果量估計值，$\delta$表示理論的效果量。讀者要學習如何分辨符號的使用脈絡。
 
-在本書提到的所有統計方法都有要運算的效果量，至於要計算Cohen's d只有t檢定，jamovi的每個t檢定模組都有一個選項，讓使用者決定要不要在報表輸出Cohen's d。
+本書提到的所有統計方法都有可以運算的效果量，需要計算Cohen's d只有t檢定，jamovi的每個t檢定模組都有一個選項，讓使用者決定要不要在報表輸出Cohen's d。
 
 <!--- You'd think that this would be pretty unambiguous, but it's not. This is largely because Cohen wasn't too specific on what he thought should be used as the measure of the standard deviation (in his defence he was trying to make a broader point in his book, not nitpick about tiny details). As discussed by @McGrath2006, there are several different versions in common usage, and each author tends to adopt slightly different notation. For the sake of simplicity (as opposed to accuracy), I'll use d to refer to any statistic that you calculate from the sample, and use $\delta$ to refer to a theoretical population effect. Obviously, that does mean that there are several different things all called d.
 
@@ -1150,7 +1149,7 @@ $$d=\frac{\bar{D}}{\hat{\sigma}_D}$$
 這就是jamovi「相依樣本t檢定」分析報告的Cohen's d的計算方法，寫正式報告前唯一的麻煩是要搞清楚這是不是真正的估計值。這要看研究者是想用*原始分數*，還是用*差異分數*衡量效果量，像是以Chico老師教的學生成績變異值來看，兩次測驗只有改進1%看起來不大明顯。這個狀況很像要選擇用Student's t 檢定還是Welch's t檢定 評估兩組之間的差異。想要以*原始分數*計算Cohen's d，就要從資料試算表更改資料結構，雖 在這裡不方便說明及示範[^11-comparing-two-means-19]，我們可以算出$0.22$，以原始分數來說是偏小的效果量。
 
 
-[^11-comparing-two-means-19]: 有興趣的讀者可以自行查看*chico2.omv*的成果。(譯者註)現在有新模組`jReshape`及`jTransform`可讓使用者轉換資料結構。
+[^11-comparing-two-means-19]: 有興趣的讀者可以自行查看*chico2.omv*的成果。(註)現在有模組`jReshape`及`jTransform`可讓使用者轉換資料結構。
 
 <!--- Finally, what should we do for a paired samples t檢定? In this case, the answer depends on what it is you're trying to do. jamovi assumes that you want to measure your effect sizes relative to the distribution of difference scores, and the measure of d that you calculate is:
 
@@ -1377,23 +1376,19 @@ ggplot(W_sampdist) +
 
 ### 檢測樣本常態性的範例
 
-
-> **譯者註** 本單元內容為AI初翻，請謹慎使用。
-
-
-與此同時，當資料變得非常態時，展示一下 QQ 圖和 Shapiro-Wilk 檢定的變化可能是值得的。為此，讓我們看一下我們的澳式足球聯賽（AFL）勝利幅度資料的分佈，如果您還記得 @sec-Descriptive-statistics ，它看起來根本不是來自常態分佈。以下是 QQ 圖發生的情況（@fig-fig11-25）。
+若是認為樣本資料不符合常態的適用條件時，可以使用Q-Q圖和 Shapiro-Wilk 檢定確認看看。這裡用澳式足球聯賽（AFL）勝隊分數資料做示範，回憶一下 @sec-Descriptive-statistics 的範例，這筆資料看起來不像符合常態分佈。畫成Q-Q圖會像 @fig-fig11-25 。
 
 
 <!---In the meantime, it's probably worth showing you an example of what happens to the QQ plot and the Shapiro-Wilk test when the data turn out to be non-normal. For that, let's look at the distribution of our AFL winning margins data, which if you remember back to @sec-Descriptive-statistics it didn't look like they came from a normal distribution at all. Here's what happens to the QQ plot (@fig-fig11-25). --->
 
 ```{r}
 #| label: fig-fig11-25
-#| fig-cap: AFL 例行賽勝隊分數的 QQ 圖，很明顯不符合常態性。
+#| fig-cap: AFL 例行賽勝隊分數的 Q-Q 圖，很明顯不符合常態。
 #QQ plot showing non-normality from the AFL winning margins data
 knitr::include_graphics("images/fig11-25.png")
 ```
 
-而當我們對 *AFL margins* 資料執行 Shapiro-Wilk 檢定時，我們得到了 Shapiro-Wilk 常態檢定統計量的值 $W = 0.94$，p值 = $9.481$x$10^{-07}$。顯然是一個顯著的效應！
+以 *AFL margins* 資料執行 Shapiro-Wilk 檢定，會得到檢定統計量$W = 0.94$，p值 = $9.481$x$10^{-07}$。顯然是顯著地違反常態分佈！
 
 
 <!--- And when we run the Shapiro-Wilk test on the *AFL margins* data, we get a value for the Shapiro-Wilk normality test statistic of $W = 0.94$, and p-value = $9.481$x$10^{-07}$. Clearly a significant effect! --->
@@ -1402,7 +1397,7 @@ knitr::include_graphics("images/fig11-25.png")
 
 <!--- [^11-translation-01]: 這一節標題及小節順序，配合**線性模型的學習取向**稍做更改。--->
 
-如果資料不符合常態性，運用Q-Q 圖和 Shapiro-Wilk 檢定做確認是建議的標準作業。這裡用澳洲足球聯賽（AFL）例行賽勝隊分數資料做示範，如果讀者還記得 @sec-Descriptive-statistics 的示範，這份資料看起來根本不像是自常態分佈， @fig-fig11-25 是這份資料的 Q-Q 圖。
+如果資料真的不符合常態性，我們還能使用t檢定嗎？現實的資料分析很可能遇到這種狀況。以澳洲足球聯賽（AFL）例行賽勝隊分數資料來說，Shapiro-Wilk 檢定明顯呈現這份資料已不符合常態性。這個案例就需要Wilcoxon檢定了。
 
 如同t檢定，Wilcoxon檢定有單一樣本及獨立樣本兩種形式，都是用在無法精確地使用t檢定分析對應的兩種研究設計。另一方面，Wilcoxon檢定不像t檢定一定需要是符合常態性的資料分佈，才能進行分析。其實，Wilcoxon檢定完全沒有任何資料分佈的適用條件。這種特性，讓這類檢定方法在統計學界得到**無母數統計檢定**的通稱。雖然不必在意常態性很方便，使用這方法的研究者也要付出代價：就是Wilcoxon檢定的結果檢定力通常比t檢定低，也就是型二錯誤率會變高。以下不會介紹太多Wilcoxon檢定的細節，但會給讀者一些簡單說明。
 
