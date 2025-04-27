@@ -336,6 +336,8 @@ knitr::include_graphics("images/fig10-3.png")
 
 ### jamovi實作
 
+使用jamovi 的基本分析模組`Frequencies`，就能完成以上的演算，以下示範使用資料集的*Randomness.omv*。
+
 jamovi 的預設分析套件`Frequencies`提供完成以上計算的工具，以下使用 *Randomness.omv* 示範。首先從主選單“Analysis"列出的套件按鈕，點選“Frequencies” - “One Sample Proportion Tests”- “$N$ Outcomes”。在分析工具設定視窗選擇要分析的變項（`choice_1`），到Variable對話框。接著勾選"Expected counts"，完成報表設定，如同 @fig-fig14-4 的畫面右方報表呈現的分析結果。讀者可以看到報表呈現與前述的手動計算相同的預期計數和統計資料，$\chi^2 =  8.44$，自由度為 $3$，$p=0.038$。更重要的是，我們不需要查表找臨界值判斷 p 值，因為 jamovi 也輸出$\chi^2$的自由度是$3$所對應的 p 值。
 
 
