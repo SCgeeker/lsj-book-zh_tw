@@ -373,7 +373,7 @@ div.csl-indent {
   <li><a href="#計算依變項變異數的兩套公式" id="toc-計算依變項變異數的兩套公式" class="nav-link" data-scroll-target="#計算依變項變異數的兩套公式"><span class="header-section-number">13.2.1</span> 計算依變項變異數的兩套公式</a></li>
   <li><a href="#變異數與離均差平方和" id="toc-變異數與離均差平方和" class="nav-link" data-scroll-target="#變異數與離均差平方和"><span class="header-section-number">13.2.2</span> 變異數與離均差平方和</a></li>
   <li><a href="#離均差平方和與f檢定" id="toc-離均差平方和與f檢定" class="nav-link" data-scroll-target="#離均差平方和與f檢定"><span class="header-section-number">13.2.3</span> 離均差平方和與F檢定</a></li>
-  <li><a href="#實例演練" id="toc-實例演練" class="nav-link" data-scroll-target="#實例演練"><span class="header-section-number">13.2.4</span> 實例演練</a></li>
+  <li><a href="#sec-How-ANOVA-works-example" id="toc-sec-How-ANOVA-works-example" class="nav-link" data-scroll-target="#sec-How-ANOVA-works-example"><span class="header-section-number">13.2.4</span> 實例演練</a></li>
   </ul></li>
   <li><a href="#running-an-anova-in-jamovi" id="toc-running-an-anova-in-jamovi" class="nav-link" data-scroll-target="#running-an-anova-in-jamovi"><span class="header-section-number">13.3</span> jamovi的變異數分析模組</a>
   <ul class="collapse">
@@ -453,7 +453,7 @@ For the purposes of this chapter, what we're really interested in is the effect 
 </section>
 <section id="sec-How-ANOVA-works" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="sec-How-ANOVA-works"><span class="header-section-number">13.2</span> 單因子變異數分析的運算原理</h2>
-<p>為了運用臨床試驗資料回答以上的問題，我們要學習使用單因素變異數分析（one-way ANOVA）。如果讀者不知如何操作jamovi的ANOVA模組選單裡眼花撩亂的選項，先仔細閱讀這一節說明的基本原理，了解ANOVA程序每個步驟的運算概念，跟著<a href="#實例演練">實例演練</a>操作一兩次，掌握概念後，後續與ANOVA有關的統計方法就不必如此學習了。</p>
+<p>為了運用臨床試驗資料回答以上的問題，我們要學習使用單因素變異數分析（one-way ANOVA）。如果讀者不知如何操作jamovi的ANOVA模組選單裡眼花撩亂的選項，先仔細閱讀這一節說明的基本原理，了解ANOVA程序每個步驟的運算概念，跟著<a href="#sec-How-ANOVA-works-example">實例演練</a>操作一兩次，掌握概念後，後續與ANOVA有關的統計方法就不必如此學習了。</p>
 <p><a href="#獨立樣本變異數分析示範資料">獨立樣本變異數分析示範資料</a>的說明提到，研究人員有興趣的是三種藥物改善參與者憂鬱情緒的效果，這個研究設計的分析問題類似 <a href="11-Comparing-two-means.html"><span>單元&nbsp;11</span></a> 介紹的t檢定範例，不過要比較的不只兩組。在此先定義<span class="math inline">\(\mu_P\)</span>代表安慰劑的情緒變化母群平均值，<span class="math inline">\(\mu_A\)</span>和<span class="math inline">\(\mu_J\)</span>分別對對應Anxifree和Joyzepam兩種藥物效果的平均值，所以要檢定的虛無假設就是：三組的母群平均值是相等的。也就是有點悲觀的預測，兩種藥物的效果都沒有比安慰劑好。這樣的虛無假設可以寫成：</p>
 <p><span class="math display">\[H_0: \text{結果顯示 } \mu_P=\mu_A=\mu_J\]</span></p>
 <p>因此對立假設就是：三種藥物之中，至少有一種的效果不同於其他兩種。用數學式表示的話，可能會讓有些同學困惑，由於有很多方式能表達虛無假設是錯誤的，我們先將對立假設寫成：</p>
@@ -496,62 +496,23 @@ A concrete example might be useful here. Let's consider @tbl-tab12-1, in which w
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-1" class="anchored">
-<table id="tab:tbl-tab12-1" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.1: 「酷」組和「不酷」組的個別沮喪指數資料。</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">name</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">person P</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group num. k</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">index in group</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">grumpiness \( Y_{ik} \) or \( Y_p \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Ann</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">cool</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Ben</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">cool</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">55</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Cat</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">cool</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">21</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Tim</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">uncool</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">91</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Egg</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">uncool</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">22</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-1"><caption>表&nbsp;13.1:  <p>「酷」組和「不酷」組的個別沮喪指數資料。</p> </caption>
+<colgroup><col><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">name</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">person P</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group num. k</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">index in group</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">grumpiness \( Y_{ik} \) or \( Y_p \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Ann</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">cool</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">20</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Ben</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">cool</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">55</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Cat</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">cool</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">21</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Tim</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">uncool</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">91</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">Egg</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">uncool</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">22</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>這個表格結合兩種標記方式。變項 p代表個人，所以用<span class="math inline">\(Y_p\)</span>代表第 p 人的沮喪指數。像是第四位是Tim，就用 <span class="math inline">\(p = 4\)</span> 代表他。我們若要用數字討論「Tim」這個人的沮喪程度，可以用<span class="math inline">\(Y_4 = 91\)</span>來溝通。而這不是唯一可以描述Tim的方式，另一種方式是根據Tim的分組。因為Tim 是「不酷」組（<span class="math inline">\(k = 2\)</span>）的第一人（<span class="math inline">\(i = 1\)</span>），也可以用<span class="math inline">\(Y_{12} = 91\)</span>代表Tim的沮喪程度。</p>
@@ -608,7 +569,7 @@ How does that help me find out whether the groups have different population mean
 <p>最後，將組間 MS 除以組內 MS 就能算出 F 值：</p>
 <p><span class="math display">\[F=\frac{MS_b}{MS_w}\]</span></p>
 <p>表面上來看，F統計值的運算相當直覺又好懂。F 值越大，就表示組間變異與組內變異之間的差異越大。所以F值起大，能反駁虛無假設的證據力就越強。但是 <span class="math inline">\(F\)</span> 要有多大才能確實拒絕 <span class="math inline">\(H_0\)</span>？為了清楚理解，我們要更深入了解 ANOVA 是什麼，以及什麼是離均差平方和的平均？</p>
-<p>這些問題在<a href="#實例演練">實例演練</a>將有詳細討論，不過如果讀者對於詳細的回答不感興趣，這裡提供一個簡短的說明。為了完成假設檢定，分析人員需要知道虛無假設符合推測時的F值取樣分佈。這一點都不奇怪，因為由虛無假設生成的F統計值取樣分佈，必定是一個F分佈。回想 <a href="07-Introduction-to-probability.html"><span>單元&nbsp;7</span></a> 有關F 分佈的說明，<span class="math inline">\(F\)</span> 分佈的兩個參數各對應兩個自由度。第一個 <span class="math inline">\(df_1\)</span> 對應組間自由度 <span class="math inline">\(df_b\)</span>，第二個 <span class="math inline">\(df_2\)</span> 對應組內自由度 <span class="math inline">\(df_w\)</span>。</p>
+<p>這些問題在<a href="#sec-How-ANOVA-works-example">實例演練</a>將有詳細討論，不過如果讀者對於詳細的回答不感興趣，這裡提供一個簡短的說明。為了完成假設檢定，分析人員需要知道虛無假設符合推測時的F值取樣分佈。這一點都不奇怪，因為由虛無假設生成的F統計值取樣分佈，必定是一個F分佈。回想 <a href="07-Introduction-to-probability.html"><span>單元&nbsp;7</span></a> 有關F 分佈的說明，<span class="math inline">\(F\)</span> 分佈的兩個參數各對應兩個自由度。第一個 <span class="math inline">\(df_1\)</span> 對應組間自由度 <span class="math inline">\(df_b\)</span>，第二個 <span class="math inline">\(df_2\)</span> 對應組內自由度 <span class="math inline">\(df_w\)</span>。</p>
 <!---
 As we saw in the last section, the qualitative idea behind ANOVA is to compare the two sums of squares values $SS_b$ and $SS_w$ to each other. If the between-group variation $SS_b$ is large relative to the within-group variation $SS_w$ then we have reason to suspect that the population means for the different groups aren't identical to each other. In order to convert this into a workable hypothesis test, there's a little bit of "fiddling around" needed. What I'll do is first show you what we do to calculate our test statistic, the **F ratio**, and then try to give you a feel for why we do it this way.
 
@@ -630,46 +591,27 @@ The next section discusses that in a bit of detail, but for readers that aren't 
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-2" class="anchored">
-<table id="tab:tbl-tab12-2" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.2: 組織所有變異數分析計算過程所產生的關鍵計數，構成的“標準化” 變異數分析報表。此表展示所有關鍵計數的公式，除了 p 值，因為公式非常複雜，沒有計算機的話，算起來會非常困難。</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">between<br>
-groups</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">within<br>
-groups</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">df</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( df_b=G-1 \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( df_w=N-G \)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">sum of squares</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( SS_b=\sum_{k=1}^{G} N_k (\bar{Y}_k-\bar{Y})^2 \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( SS_w=\sum_{k=1}^{G} \sum_{i=1}^{N_k} (Y_{ik}-\bar{Y}_k)^2 \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">mean squares</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( MS_b=\frac{SS_b}{df_b} \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\( MS_w=\frac{SS_w}{df_w} \)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">F-statistic</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( F=\frac{MS_b}{df_b} \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">-</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p-value</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">[complicated]</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">-</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-2"><caption>表&nbsp;13.2:  <p>組織所有變異數分析計算過程所產生的關鍵計數，構成的“標準化”
+變異數分析報表。此表展示所有關鍵計數的公式，除了 p
+值，因為公式非常複雜，沒有計算機的話，算起來會非常困難。</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">between
+<br>groups</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">within
+<br>groups</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">df</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(  df_b=G-1  \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(  df_w=N-G  \)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">sum of squares</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(  SS_b=\sum_{k=1}^{G} N_k  (\bar{Y}_k-\bar{Y})^2  \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(  SS_w=\sum_{k=1}^{G} \sum_{i=1}^{N_k}   (Y_{ik}-\bar{Y}_k)^2  \)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">mean squares</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(  MS_b=\frac{SS_b}{df_b}  \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">\(  MS_w=\frac{SS_w}{df_w}  \)</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">F-statistic</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\(  F=\frac{MS_b}{MS_w}  \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">-</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">p-value</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">[complicated]</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">-</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p><a href="#tbl-tab12-2">表&nbsp;<span>13.2</span></a> 摘要所有單因子變異數計算過程所產生的關鍵計數，包括各項計數的計算公式。</p>
@@ -683,9 +625,9 @@ A summary of all the key quantities involved in a one-way ANOVA, including the f
 
 --->
 </section>
-<section id="實例演練" class="level3" data-number="13.2.4">
-<h3 data-number="13.2.4" class="anchored" data-anchor-id="實例演練"><span class="header-section-number">13.2.4</span> 實例演練</h3>
-<p>前一節的說明相當抽象且有點技術性，因此這裡採用範例的計算做個完整的說明。我們再回到一開始介紹的<a href="#獨立樣本變異數分析示範資料">獨立樣本變異數分析示範資料</a>，這份臨床試驗資料已經有描述統計表，我們知道各組平均值：安慰劑的情緒改善平均分數是 <span class="math inline">\(0.45\)</span>，Anxifree 是 <span class="math inline">\(0.72\)</span>，Joyzepam 是 <span class="math inline">\(1.48\)</span>。有了這些資訊和計算公式，我們可以辦個1899年的統計趴<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>，純粹用鉛筆和紙做計算。不過這裡只做前5筆資料的計算，因為現在不是沒有計算機的1899年，而且原作者本人相當懶惰。首先從計算組內離均差平方和<span class="math inline">\(SS_w\)</span> 開始，我們要畫一張像 <a href="#tbl-tab12-3">表&nbsp;<span>13.3</span></a> 的表格來協助計算。</p>
+<section id="sec-How-ANOVA-works-example" class="level3" data-number="13.2.4">
+<h3 data-number="13.2.4" class="anchored" data-anchor-id="sec-How-ANOVA-works-example"><span class="header-section-number">13.2.4</span> 實例演練</h3>
+<p>前面的步驟說明牽涉很多抽象符號，而且只讀字面不能充分理解，在此我們做個總結。回到一開始的<a href="#獨立樣本變異數分析示範資料">獨立樣本變異數分析示範資料</a>，根據這份資料的描述統計表，我們知道各種藥劑的情緒改善平均分數：安慰劑是 <span class="math inline">\(0.45\)</span>，Anxifree 是 <span class="math inline">\(0.72\)</span>，Joyzepam 是 <span class="math inline">\(1.48\)</span>。有了這些資訊和計算公式，回到1899年就能用鉛筆和紙辦個統計桌遊<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>。不過因為現在不是1899年，人人手上都有計算機，讓我們偷個懶，只要做前5筆資料計算就好。我們先從計算組內離均差平方和<span class="math inline">\(SS_w\)</span> 開始，要畫張像 <a href="#tbl-tab12-3">表&nbsp;<span>13.3</span></a> 的表格來輔助計算。</p>
 
 <!--- The previous discussion was fairly abstract and a little on the technical side, so I think that at this point it might be useful to see a worked example. For that, let's go back to the clinical trial data that I introduced at the start of the chapter. The descriptive statistics that we calculated at the beginning tell us our group means: an average mood gain of $0.45$ for the placebo, $0.72$ for Anxifree, and $1.48$ for Joyzepam. With that in mind, let's party like it's 1899 [^13-comparing-several-means-one-way-anova-7] and start doing some pencil and paper calculations. I'll only do this for the first $5$ observations because it's not bloody $1899$ and I'm very lazy. Let's start by calculating $SS_w$, the within-group sums of squares. First, let's draw up a nice table to help us with our calculations (@tbl-tab12-3)
 
@@ -693,152 +635,83 @@ A summary of all the key quantities involved in a one-way ANOVA, including the f
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-3" class="anchored">
-<table id="tab:tbl-tab12-3" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.3: 實例演練第一步</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">outcome \( Y_{ik} \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.4</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-3"><caption>表&nbsp;13.3:  <p>實例演練第一步</p> </caption>
+<colgroup><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">outcome \( Y_{ik} \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.5</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.3</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.1</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.6</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.4</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>第一步的表格只有原始資料，也就是每位參與者服用藥物的分組變項，以及情緒改善狀況的結果變項。請注意，這個結果變項對應前面提到的<span class="math inline">\(\bar{Y}_{ik}\)</span>。接下來是計算每位參與者所屬分組的分平均值，<span class="math inline">\(\bar{Y}_k\)</span>。這個步驟並不困難，因為描述統計表裡都有了，加上去後就變成 <a href="#tbl-tab12-4">表&nbsp;<span>13.4</span></a> 。</p>
+</div>
+<p>第一步只有列出原始資料，也就是每位參與者服用的藥物(分組變項)，以及情緒改善狀況(結果變項)。請注意，結果變項列出的數值，對應前面提到的<span class="math inline">\(\bar{Y}_{ik}\)</span>。接下來就是計算每位參與者所屬分組平均值，<span class="math inline">\(\bar{Y}_k\)</span>。這個步驟並不困難，因為描述統計表裡都有了，加上後就變成 <a href="#tbl-tab12-4">表&nbsp;<span>13.4</span></a> 。</p>
 
 <!--- At this stage, the only thing I've included in the table is the raw data itself. That is, the grouping variable (i.e., drug) and outcome variable (i.e. mood.gain) for each person. Note that the outcome variable here corresponds to the $\bar{Y}_{ik}$ value in our equation previously. The next step in the calculation is to write down, for each person in the study, the corresponding group mean, $\bar{Y}_k$. This is slightly repetitive but not particularly difficult since we already calculated those group means when doing our descriptive statistics, see @tbl-tab12-4. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-4" class="anchored">
-<table id="tab:tbl-tab12-4" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.4: 實例演練第二步</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">outcome \( Y_{ik} \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">group mean \( \bar{Y}_k \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.45</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.72</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.72</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-4"><caption>表&nbsp;13.4:  <p>實例演練第二步</p> </caption>
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">outcome \( Y_{ik} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">group mean \( \bar{Y}_k \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.45</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.45</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.45</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.72</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.72</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>都算到這裡了，接著就能計算每位參與者的離均差，也就是<span class="math inline">\(Y_{ik} - \bar{Y}_k\)</span>，也能順手把每個離均差平方，最後就得到 <a href="#tbl-tab12-5">表&nbsp;<span>13.5</span></a></p>
+</div>
+<p>算到這一步，接著就能計算每位參與者的離均差，也就是<span class="math inline">\(Y_{ik} - \bar{Y}_k\)</span>，順便計算每個離均差的平方值<span class="math inline">\((Y_{ik} - \bar{Y}_k)^2\)</span>，就得到 <a href="#tbl-tab12-5">表&nbsp;<span>13.5</span></a></p>
 <!---Now that we've written those down, we need to calculate, again for every person, the deviation from the corresponding group mean. That is, we want to subtract $Y_{ik} - \bar{Y}_k$. After we've done that, we need to square everything. When we do that, here's what we get (@tbl-tab12-5) --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-5" class="anchored">
-<table id="tab:tbl-tab12-5" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.5: 實例演練第三步</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">outcome \( Y_{ik} \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group mean \( \bar{Y}_k \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">dev. from group mean \( Y_{ik} - \bar{Y}_k \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">squared deviation \( (Y_{ik}-\bar{Y}_k)^2 \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.05</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.0025</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.15</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.0225</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.35</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.1225</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.72</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.12</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.0136</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.72</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.32</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.1003</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-5"><caption>表&nbsp;13.5:  <p>實例演練第三步</p> </caption>
+<colgroup><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">outcome \( Y_{ik} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group mean  \( \bar{Y}_k \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">dev. from group mean  \( Y_{ik} - \bar{Y}_k \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">squared deviation \(  (Y_{ik}-\bar{Y}_k)^2 \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.05</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.0025</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.15</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.0225</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.35</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.1225</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.72</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.12</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.0136</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.72</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.32</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.1003</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>計算組內離均差平方和就簡單啦，就是將所有離均差平方加起來：</p>
+</div>
+<p>計算組內離均差平方和就簡單多了，將所有離均差平方加起來就好：</p>
 <p><span class="math display">\[
 \begin{split}
 SS_w &amp; = 0.0025 + 0.0225 + 0.1225 + 0.0136 + 0.1003 \\
 &amp; = 0.2614
 \end{split}
 \]</span></p>
-<p>當然，真正完整的計算是要將全部18筆觀察值進行以上四個計算步驟，而不是只算演練的五筆。讀者有心的話，可以繼續筆算，不過這麼做相當繁瑣。其實也可以用LibreOffice或Excel試算表軟體演練，試試看並不困難。讀者們可以自已在Excel開一個檔案，命名為clinicaltrial_anova.xls。完成這裡示範的四個步驟，就能得到組內離均差平方和的值是<span class="math inline">\(1.39\)</span>。</p>
-<p>到這裡已經算出組內離均差平方和<span class="math inline">\(SS_w\)</span>的值，接下來就是處理組間離均差平方和<span class="math inline">\(SS_b\)</span> 。其實計算步驟相當類似，差異是要改成計算各分組平均值 <span class="math inline">\(\bar{Y}_k\)</span> 與總平均值 <span class="math inline">\(\bar{Y}\)</span>的差異，計算表格就變成 <a href="#tbl-tab12-6">表&nbsp;<span>13.6</span></a> ，得到的值是 <span class="math inline">\(0.88\)</span>。</p>
+<p>當然，真正完整的計算是要將全部18筆觀察值進行以上四個計算步驟，而不是只算五筆資料。有心的讀者可以繼續用筆計算，只是這麼做會相當繁瑣。其實讀者也可以用LibreOffice或Excel試算表軟體演練，計算難度會大幅減低。讀者可以用自已的Excel開一個檔案，命名為clinicaltrial_anova.xls。完成這裡示範的四個步驟，就能得到組內離均差平方和的值是<span class="math inline">\(1.39\)</span>。</p>
+<p>到這裡已經算出組內離均差平方和<span class="math inline">\(SS_w\)</span>的值，接下來就是處理組間離均差平方和<span class="math inline">\(SS_b\)</span> 。計算步驟相當類似，不同的地方是要改成計算每個分組的平均值 <span class="math inline">\(\bar{Y}_k\)</span> 與總平均值 <span class="math inline">\(\bar{Y}\)</span>的差異，計算表格就變成 <a href="#tbl-tab12-6">表&nbsp;<span>13.6</span></a> ，得到 <span class="math inline">\(0.88\)</span>。</p>
 <!---
 
 The last step is equally straightforward. In order to calculate the within-group sum of squares we just add up the squared deviations across all observations:
@@ -858,114 +731,68 @@ Okay. Now that we've calculated the within groups variation, $SS_w$, it's time t
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-6" class="anchored">
-<table id="tab:tbl-tab12-6" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.6: 實例演練第4步</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group mean \( \bar{Y}_k \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">grand mean \( \bar{Y} \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">deviation \( \bar{Y}_k - \bar{Y} \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">squared deviation \( ( \bar{Y}_k-\bar{Y})^2 \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.88</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.43</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.19</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.72</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.88</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.16</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.03</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">joyzepam</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.48</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.88</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.60</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.36</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-6"><caption>表&nbsp;13.6:  <p>實例演練第4步</p> </caption>
+<colgroup><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">group mean \( \bar{Y}_k \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">grand mean  \( \bar{Y} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">deviation  \( \bar{Y}_k - \bar{Y} \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">squared deviation \(  ( \bar{Y}_k-\bar{Y})^2 \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.45</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.88</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.43</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.19</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.72</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.88</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-0.16</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.03</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">joyzepam</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.48</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.88</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.60</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.36</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>不過因為是計算組間的平方和，還要將每個離均差平方先乘以 <span class="math inline">\(N_k\)</span>，也就是各組的觀察值數量。這樣做是因為同組的<span class="math inline">\(N_k\)</span>個觀察值，都與組間差異有關。安慰劑組有六筆資料，而安慰劑組的平均值與總平均值相差 <span class="math inline">\(0.19\)</span>，因此六位參與者的組間離均差平方加權總和是<span class="math inline">\(6 \times 0.19 = 1.14\)</span>。所以計算表格還要擴展成 <a href="#tbl-tab12-7">表&nbsp;<span>13.7</span></a> 。</p>
+</div>
+<p>不過因為是計算組間的平方和，還要將每個離均差平方先乘以 <span class="math inline">\(N_k\)</span>，也就是各組的觀察值數量。理由是因為同組都有<span class="math inline">\(N_k\)</span>個觀察值，計算組間差異需要加權。安慰劑組有六筆資料，而安慰劑組的平均值與總平均值相差 <span class="math inline">\(0.19\)</span>，因此六位參與者的組間離均差平方加權總和是<span class="math inline">\(6 \times 0.19 = 1.14\)</span>。所以計算表格會變成 <a href="#tbl-tab12-7">表&nbsp;<span>13.7</span></a> 。</p>
 
 <!---
 However, for the between group calculations we need to multiply each of these squared deviations by $N_k$, the number of observations in the group. We do this because every observation in the group (all $N_k$ of them) is associated with a between group difference. So if there are six people in the placebo group and the placebo group mean differs from the grand mean by $0.19$, then the total between group variation associated with these six people is $6 \times 0.19 = 1.14$. So we have to extend our little table of calculations (@tbl-tab12-7). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-7" class="anchored">
-<table id="tab:tbl-tab12-7" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.7: 實例演練第5步</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">...</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">squared deviations \( (\bar{Y}_k-\bar{Y})^2 \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">sample size \( N_k \)</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">weighted squared dev \( N_k (\bar{Y}_k-\bar{Y})^2 \)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">...</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.19</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1.14</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">...</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.03</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.18</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">joyzepam</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">...</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.36</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">2.16</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-7"><caption>表&nbsp;13.7:  <p>實例演練第5步</p> </caption>
+<colgroup><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">group k</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">...</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">squared deviations  \( (\bar{Y}_k-\bar{Y})^2 \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">sample size  \( N_k \)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">weighted squared dev   \(  N_k (\bar{Y}_k-\bar{Y})^2 \)</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">placebo</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">...</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.19</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1.14</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">anxifree</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">...</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.03</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.18</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">joyzepam</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">...</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.36</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">2.16</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>接著就可以將所有“加權的離均差平方”加起來，得到組間離均差平方和：</p>
+</div>
+<p>接著就可以將各分組的“加權的離均差平方”加起來，得到組間離均差平方和：</p>
 <p><span class="math display">\[\begin{aligned} SS_b &amp; = 1.14 + 0.18 + 2.16 \\ &amp;= 3.48 \end{aligned}\]</span></p>
-<p>正如讀者看到的，這次計算離均差平方和的步驟比較少 <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。即然己經算出<span class="math inline">\(SS_b\)</span> 和 <span class="math inline">\(SS_w\)</span>的值，ANOVA剩下的工作就就相當簡單了。接下來是計算自由度。由於知道 <span class="math inline">\(G = 3\)</span> 個分組以及 <span class="math inline">\(N = 18\)</span> 個觀察值，自由度用簡單的減法就可以計算：</p>
+<p>讀者肯定會發現，計算分組離均差平方和的步驟比較少 <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。即然己經算好<span class="math inline">\(SS_b\)</span> 和 <span class="math inline">\(SS_w\)</span>的值，剩下的工作就相當簡單了。接下來是計算自由度。由於知道 <span class="math inline">\(G = 3\)</span> 個分組以及 <span class="math inline">\(N = 18\)</span> 個觀察值，自由度用簡單的減法就可以計算：</p>
 <p><span class="math display">\[
 \begin{split}
 df_b &amp; = G-1 = 2 \\
 df_w &amp; = N-G = 15
 \end{split}
 \]</span></p>
-<p>有了離均差平方和和自由度的值，只要以前者除以後者，就能算出組內與組間變異數，也就是離均差平方和的平均：</p>
+<p>有了離均差平方和和自由度，用前者除以後者，就能算出組內與組間變異數，也就是離均差平方和的平均：</p>
 <p><span class="math display">\[
 \begin{split}
 MS_b &amp; = \frac{SS_b}{df_b} = \frac{3.48}{2} = 1.74 \\
 MS_w &amp; = \frac{SS_w}{df_w} = \frac{1.39}{15} = 0.09
 \end{split}
 \]</span></p>
-<p>快要完成了。有了兩個平均值，就能計算最想知道的F值。只要將<span class="math inline">\(MS_b\)</span>除以<span class="math inline">\(MS_w\)</span>就能得到。</p>
+<p>快要完成ANOVA的計算了。有了兩個平均值，就能計算最想知道的F值。就是將<span class="math inline">\(MS_b\)</span>除以<span class="math inline">\(MS_w\)</span>。</p>
 <p><span class="math display">\[
 \begin{split}
 F &amp; = \frac{MS_b}{MS_w}  = \frac{1.74}{0.09} \\
 &amp; = 19.3
 \end{split}
 \]</span></p>
-<p>我們真的完成了，很令人高興對吧！有了檢定統計值，最後就是判斷這個統計值是否代表結果是顯著的。如同在 <a href="09-Hypothesis-testing.html"><span>單元&nbsp;9</span></a> 討論過的手作方法，有心的讀者可以翻開任何一本統計教科書的附錄，查找其中有關F檢定的表，只要找到指定 <span class="math inline">\(\alpha\)</span>值所對應的閾值，例如 <span class="math inline">\(0.05\)</span>，<span class="math inline">\(0.01\)</span> 或 <span class="math inline">\(0.001\)</span>，搭配 自由度2 和15。設定<span class="math inline">\(\alpha\)</span>為 <span class="math inline">\(0.001\)</span> 的話，會查到F的閾值是<span class="math inline">\(11.34\)</span>。因為小於最後算出的F值，可以宣稱<span class="math inline">\(p &lt; 0.001\)</span>。但這是時代的眼淚，今天各式各樣的統計軟體能為我們算出精確的p值。這個範例的p值是 <span class="math inline">\(0.000071\)</span>。除非我們對型一錯誤率採取非常謹慎的立場，我們幾乎 可以結論這樣的研究結果能拒絕虛無假設。</p>
-<p>至此己經完成了ANOVA的基本計算，將以上步驟算出的數值，整理成如同 <a href="#tbl-tab12-1">表&nbsp;<span>13.1</span></a> 的報表，是傳統的變異數分析報告規範。完整的ANOVA報表請見 <a href="#tbl-tab12-8">表&nbsp;<span>13.8</span></a> 。</p>
+<p>我們終於完成了，值得慶祝對吧！有了檢定統計值，最後就是判斷這個統計值是否代表結果是顯著的。如同在 <a href="09-Hypothesis-testing.html"><span>單元&nbsp;9</span></a> 討論過的手作方法，有心的讀者可以翻開任何一本統計教科書最後的附錄，查找其中有關F檢定的表，只要找到指定 <span class="math inline">\(\alpha\)</span>值所對應的閾值，例如 <span class="math inline">\(0.05\)</span>，<span class="math inline">\(0.01\)</span> 或 <span class="math inline">\(0.001\)</span>，搭配 自由度2 和15。設定<span class="math inline">\(\alpha\)</span>為 <span class="math inline">\(0.001\)</span> 的話，會查到F的閾值是<span class="math inline">\(11.34\)</span>。因為小於最後算出的F值，可以宣稱<span class="math inline">\(p &lt; 0.001\)</span>。但這是時代的眼淚，今天各式各樣統計軟體都能為我們算出精確的p值。這個範例的p值是 <span class="math inline">\(0.000071\)</span>。除非我們對型一錯誤率採取非常謹慎的立場，我們幾乎 可以結論這樣的研究結果能拒絕虛無假設。</p>
+<p>至此己經完成了ANOVA的基本計算，將以上步驟算出的數值，整理成 <a href="#tbl-tab12-1">表&nbsp;<span>13.1</span></a> 的報表，這是傳統的變異數分析報告規範。完整的ANOVA報表請見 <a href="#tbl-tab12-8">表&nbsp;<span>13.8</span></a> 。</p>
 
 <!---
 And so now our between group sum of squares is obtained by summing these "weighted squared deviations" over all three groups in the study:
@@ -1007,45 +834,24 @@ At this point, we're basically done. Having completed our calculations, it's tra
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-8" class="anchored">
-<table id="tab:tbl-tab12-8" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.8: 完整的變異數分析報表</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">df</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">sum of squares</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">mean squares</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">F-statistic</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">p-value</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">between groups</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3.48</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.74</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">19.3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.000071</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">within groups</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">15</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.39</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.09</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">-</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-8"><caption>表&nbsp;13.8:  <p>完整的變異數分析報表</p> </caption>
+<colgroup><col><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">df</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">sum of squares</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">mean squares</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">F-statistic</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">p-value</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">between groups</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3.48</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.74</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">19.3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">0.000071</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">within groups</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">15</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1.39</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">0.09</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">-</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">-</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>到這裡，讀者應該不大想靠純手工計算整理出這樣的報表，幾乎所有專業統計軟體，包括 jamovi，都能將ANOVA 的結果統整成像 <a href="#tbl-tab12-8">表&nbsp;<span>13.8</span></a> 的表格，所以最好習慣一下。儘管軟體能輸出完整的 ANOVA 報表，我們從未有需要在報告裡置放整份表格，現代學術寫作規範所建議的標準格式是類似以下的句子：</p>
+</div>
+<p>演練到這裡，讀者應該不大想純靠手工整理這樣的報表，幾乎所有專業統計軟體，包括 jamovi，都能將ANOVA 的結果統整成像 <a href="#tbl-tab12-8">表&nbsp;<span>13.8</span></a> 的表格，所以大家最好習慣一下。儘管軟體能輸出完整的 ANOVA 報表，真正的報告並不需要置入整份表格，現代學術寫作規範所建議的報告格式是類似以下的句型：</p>
 <blockquote class="blockquote">
 <p><em>單因子變異數分析顯示，測試的藥物對情緒改善有顯著影響，F(2,15) = 19.3，p &lt; .001。</em></p>
 </blockquote>
-<p>我的老天！做了這麼多事，只為了寫這一行短句。</p>
+<p>天哪！我們做了這麼多事，只為了寫出這短短一行。</p>
 
 <!--- These days, you'll probably never have much reason to want to construct one of these tables yourself, but you will find that almost all statistical software (jamovi included) tends to organise the output of an ANOVA into a table like this, so it's a good idea to get used to reading them. However, although the software will output a full ANOVA table, there's almost never a good reason to include the whole table in your write up. A pretty standard way of reporting the stats block for this result would be to write something like this:
 
@@ -1056,14 +862,11 @@ Sigh. So much work for one short sentence. --->
 </section>
 <section id="running-an-anova-in-jamovi" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="running-an-anova-in-jamovi"><span class="header-section-number">13.3</span> jamovi的變異數分析模組</h2>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>我相當確定在讀完上一節之後，您在想什麼，特別是如果您按照我的建議，用鉛筆和紙（即在試算表中）自己完成所有這些工作。自己做 ANOVA 計算很糟糕。沿途我們需要做相當多的計算，如果每次想做 ANOVA 都要一次又一次地做這些計算，會讓人厭煩。</p>
+<p>若是讀者認真地一邊閱讀前一節的示範步驟，一邊在計算紙上演算，肯定能了解變異數分析程序有多麼複雜，而且一不小心就會出錯。接下來還有許多計算，如果還是用紙筆演練，各位會覺得幹麼要浪費時間做這些事？</p>
 <!-- I'm pretty sure I know what you're thinking after reading the last section, especially if you followed my advice and did all of that by pencil and paper (i.e., in a spreadsheet) yourself. Doing the ANOVA calculations yourself sucks. There's quite a lot of calculations that we needed to do along the way, and it would be tedious to have to do this over and over again every time you wanted to do an ANOVA. --->
 <section id="使用jamovi進行變異數分析" class="level3" data-number="13.3.1">
 <h3 data-number="13.3.1" class="anchored" data-anchor-id="使用jamovi進行變異數分析"><span class="header-section-number">13.3.1</span> 使用jamovi進行變異數分析</h3>
-<p>為了讓您的生活更輕鬆，jamovi 可以做 ANOVA… 哈拉！ 轉到「ANOVA」-「ANOVA」分析，將 mood.gain 變項移到「依賴變項」框中，然後將 drug 變項移到「固定因子」框中。這樣應該會得到 <a href="#fig-fig12-3">圖&nbsp;<span>13.3</span></a> 中所示的結果。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> 注意我還勾選了 ’Effect Size’選項下的 <span class="math inline">\(\eta^2\)</span> 复选框，念作“ eta 平方”，這也顯示在結果表格上。稍後我們將回到效應大小。</p>
+<p>為了讓大家從複雜的變異數分析計算中解脫，就要靠jamovi了！請開啟<code>ANOVA</code>模組的ANOVA設定選單，將<code>mood.gain</code>搬到”Dependent Variable”對話框，再將<code>drug</code>搬到”Fixed Factors”對話框，就能在報表區看到如同 <a href="#fig-fig12-3">圖&nbsp;<span>13.3</span></a> 的結果。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> 請留意設定視窗列出的選項，還要勾選 <span class="math inline">\(\eta^2\)</span> ，報表也有顯示這項計算結果，稍後討論效果量會進一步說明。</p>
 
 <!--- To make life easier for you, jamovi can do ANOVA...hurrah! Go to the 'ANOVA' - 'ANOVA' analysis, and move the mood.gain variable across so it is in the 'Dependent Variable' box, and then move the drug variable across so it is in the 'Fixed Factors' box. This should give the results as shown in @fig-fig12-3. [^13-comparing-several-means-one-way-anova-9] Note I have also checked the $\eta^2$ checkbox, pronounced "eta" squared, under the 'Effect Size' option and this is also shown on the results table. We will come back to effect sizes a bit later. --->
 <div class="cell enlarge-image" data-layout-align="left">
@@ -1076,7 +879,7 @@ Sigh. So much work for one short sentence. --->
 </div>
 </div>
 </div>
-<p>jamovi 的結果表格顯示了平方和值、自由度以及我們現在並不真正感興趣的其他一些數量。然而，請注意，jamovi 不使用「組間」和「組內」這兩個名稱。 相反，它嘗試分配更有意義的名稱。 在我們的特定示例中，組間方差對應於藥物對結果變項的影響，組內方差對應於“剩餘”的可變性，因此它將其稱為殘差。 如果我們將這些數字與 [A worked example] 中我手工計算的數字進行比較，可以看到它們或多或少是相同的，除了四捨五入誤差。組間平方和為 <span class="math inline">\(SS_b = 3.45\)</span>，組內平方和為 <span class="math inline">\(SS_w = 1.39\)</span>，各自的自由度為 <span class="math inline">\(2\)</span> 和 <span class="math inline">\(15\)</span>。我們還得到了 F 值和 p 值，同樣，這些數字與我們在手工計算時的數字差不多相同，只是四捨五入誤差。</p>
+<p>jamovi 的結果表格包含平方和、自由度以及目前還沒有真正談到的其他指標。不過，請各位留意，jamovi的報表給的標籤名稱並不是「組間」和「組內」，反而使用符合內容的名詞做為標籤。在這一節的範例裡，組間離均差平方和是對應藥物對結果變項的影響，組內離均差平方和是對應“殘餘”的變異，因此大家習慣稱“殘差”(Residual)。比較jamovi計算的數值與 <a href="#sec-How-ANOVA-works-example"><span>小單元&nbsp;13.2.4</span></a> 手動計算的數值，會看到兩者或多或少是相同的，除了四捨五入的差異。組間平方和為 <span class="math inline">\(SS_b = 3.45\)</span>，組內平方和為 <span class="math inline">\(SS_w = 1.39\)</span>，各自的自由度為 <span class="math inline">\(2\)</span> 和 <span class="math inline">\(15\)</span>。還有報告 F 值和 p 值，也是和手動計算的數字差不多，只是四捨五入的差異。</p>
 
 <!--- 
 [^13-comparing-several-means-one-way-anova-9]: The jamovi results are more accurate than the ones in the text above, due to rounding errors.
@@ -1088,9 +891,9 @@ The jamovi results table shows you the sums of squares values, the degrees of fr
 <h2 data-number="13.4" class="anchored" data-anchor-id="效果量"><span class="header-section-number">13.4</span> 效果量</h2>
 <p>衡量 ANOVA結果效果量有好幾種方法，其中最常用的指標是 <span class="math inline">\(\eta^2\)</span>( eta sqaured )和淨 <span class="math inline">\(\eta^2\)</span>( partial eta sqaured )。在單因子變異數分析的狀況，這兩種指標是一樣的，因此這裡只解釋 <span class="math inline">\(\eta^2\)</span>。<span class="math inline">\(\eta^2\)</span> 定義相當簡單明瞭：</p>
 <p><span class="math display">\[\eta^2=\frac{SS_b}{SS_{tot}}\]</span></p>
-<p>前面有認真演練的話一看就懂。 <a href="#fig-fig12-3">圖&nbsp;<span>13.3</span></a> 展示的ANOVA 報表有呈現<span class="math inline">\(\eta^2\)</span>，簡單驗算一下，因為<span class="math inline">\(SS_b = 3.45\)</span> 還有 <span class="math inline">\(SS_tot = 3.45 + 1.39 = 4.84\)</span>，所以可以算出：</p>
+<p>前面有認真演練計算過程的同學一看就懂。 <a href="#fig-fig12-3">圖&nbsp;<span>13.3</span></a> 展示的ANOVA 報表有呈現<span class="math inline">\(\eta^2\)</span>，簡單驗算一下，因為<span class="math inline">\(SS_b = 3.45\)</span> 還有 <span class="math inline">\(SS_tot = 3.45 + 1.39 = 4.84\)</span>，所以可以算出：</p>
 <p><span class="math display">\[\eta^2=\frac{3.45}{4.84}=0.71\]</span></p>
-<p>解讀<span class="math inline">\(\eta^2\)</span>同樣直接了當，它的效果量公式就是指根據預測變項，結果變項的變異可以被解釋的比例。<span class="math inline">\(\eta^2=0\)</span> 代表兩種變項之間完全無關，<span class="math inline">\(\eta^2=1\)</span>則表示兩者關係密切。值得一提的是，<span class="math inline">\(\eta^2\)</span>與 <a href="12-Correlation-and-linear-regression.html#sec-The-R2-value"><span>小單元&nbsp;12.6.1</span></a> 提過的是同一種效果量家族成員，有效力相等的解釋力。許多統計教科書建議使用 <span class="math inline">\(\eta^2\)</span> 作為 ANOVA的預設效果量指標，不過荷蘭心理學者Daniel Lakens在一篇有趣的<a href="https://daniellakens.blogspot.com/2015/06/why-you-should-use-omega-squared.html" target="_blank">blog文章</a>提到，以統計實務處理的真實資料來看，<span class="math inline">\(\eta^2\)</span>可能不是最好的效果量指標，因為這是一個有偏誤的估計值。還好jamovi還可以選擇使用另一個估計偏誤較少的指標 <span class="math inline">\(\omega^2\)</span> (omega squared) 。</p>
+<p>解讀<span class="math inline">\(\eta^2\)</span>同樣直接了當，這項效果量公式就是指結果變項的變異，可以被預測變項解釋的比例。<span class="math inline">\(\eta^2=0\)</span> 代表兩種變項之間完全無關，<span class="math inline">\(\eta^2=1\)</span>則表示兩者關係密切。值得一提的是，<span class="math inline">\(\eta^2\)</span>與 <a href="12-Correlation-and-linear-regression.html#sec-The-R2-value"><span>小單元&nbsp;12.6.1</span></a> 提過的是同一種效果量家族成員，有效力相等的解釋力。許多統計教科書建議使用 <span class="math inline">\(\eta^2\)</span> 作為 ANOVA的預設效果量指標，不過荷蘭心理學者Daniel Lakens在一篇有趣的<a href="https://daniellakens.blogspot.com/2015/06/why-you-should-use-omega-squared.html" target="_blank">blog文章</a>提到，以統計實務處理的真實資料來看，<span class="math inline">\(\eta^2\)</span>可能不是最好的效果量指標，因為這是一個有偏誤的估計值。還好jamovi還可以選擇使用另一個估計偏誤較少的指標 <span class="math inline">\(\omega^2\)</span> (omega squared) 。</p>
 
 <!--- There's a few different ways you could measure the effect size in an ANOVA, but the most commonly used measures are $\eta^2$ (eta squared) and partial $\eta^2$. For a one way analysis of variance they're identical to each other, so for the moment I'll just explain $\eta^2$ . The definition of $\eta^2$ is actually really simple
 
@@ -1111,7 +914,7 @@ The interpretation of $\eta^2$ is equally straightforward. It refers to the prop
 <li>Anxifree 和 Joyzepam 兩款藥的效果沒什麼差別： <span class="math inline">\(\mu_A = \mu_J\)</span></li>
 </ul>
 <p>如果以上三項宣告有一項不成立，整個虛無假設也是不成立。因為ANOVA的分析結果已經確認可以拒絕虛無假設，所以至少有一個宣告是不成立的。儘管任何一個宣告被拒絕都是一個有趣的結論，但是是那幾個宣告呢？即然關注的是新藥 Joyzepam的效果有沒有確實地比安慰劑好，新藥與舊藥Anxifree的比較就非常重要。想清楚關注的目標，真正有意義的對比更有可能是Anxifree與安慰劑的效果差異。雖然更早有其他研究人員比較過Anxifree與安慰劑的效果好幾次，這次分析能再次確認早期的研究成果可以重現</p>
-<p>將虛無假設分解為三個宣告後，就能將八種可能的分析結果表列出來，也就是 <a href="#tbl-tab12-9">表&nbsp;<span>13.9</span></a> 。</p>
+<p>將虛無假設分解為三個宣告後，就能將八種可能的分析結果表列，如同 <a href="#tbl-tab12-9">表&nbsp;<span>13.9</span></a> 的內容。</p>
 <!---
 Any time you run an ANOVA with more than two groups and you end up with a significant effect, the first thing you'll probably want to ask is which groups are actually different from one another. In our drugs example, our null hypothesis was that all three drugs (placebo, Anxifree and Joyzepam) have the exact same effect on mood. But if you think about it, the null hypothesis is actually claiming three different things all at once here. Specifically, it claims that:
 
@@ -1125,87 +928,39 @@ When we characterise the null hypothesis in terms of these three distinct propos
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-9" class="anchored">
-<table id="tab:tbl-tab12-9" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.9: 虛無假設與八種可能的”分析結果”</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">possibility:</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">is \( \mu_P = \mu_A \)?</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">is \( \mu_P = \mu_J \)?</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">is \( \mu_A = \mu_J \)?</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">which hypothesis?</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">null</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-9"><caption>表&nbsp;13.9:  <p>虛無假設與八種可能的”分析結果”</p> </caption>
+<colgroup><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">possibility:</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">is \( \mu_P = \mu_A \)?</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">is \( \mu_P = \mu_J \)?</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">is \( \mu_A = \mu_J \)?</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">which hypothesis?</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">null</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">\( \checkmark \)</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;"></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">alternative</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>既然已經拒絕虛無假設，第一種分析結果已經出局。接著就要問，其餘七種可能的分析結果，才是<em>正確的</em>結論？面對這樣的局面，最後再看一次描述統計報告，像是 <a href="#fig-fig12-1">圖&nbsp;<span>13.1</span></a> 的統計圖，我們可以看到 Joyzepam 比安慰劑和 Anxifree好，但是Anxifree 和安慰劑的效果沒有差別是最有可能的結論。不過，若是要提出精確的報告，就需要做進一步的檢定。</p>
+</div>
+<p>既然已經拒絕虛無假設，第一種分析結果已經出局。接著就要問，其餘七種可能的分析結果，那一個才是<em>正確的</em>結論？面對這樣的局面，最後再看一次描述統計報告，像是 <a href="#fig-fig12-1">圖&nbsp;<span>13.1</span></a> 的統計圖，我們可以看到 Joyzepam 比安慰劑和 Anxifree好，但是Anxifree 和安慰劑的效果沒有差別是最有可能的結論。不過，若是要提出精確的報告，就需要做進一步的檢定。</p>
 <!--- By rejecting the null hypothesis, we've decided that we don't believe that #1 is the true state of the world. The next question to ask is, which of the other seven possibilities *do* we think is right? When faced with this situation, its usually helps to look at the data. For instance, if we look at the plots in @fig-fig12-1, it's tempting to conclude that Joyzepam is better than the placebo and better than Anxifree, but there's no real difference between Anxifree and the placebo. However, if we want to get a clearer answer about this, it might help to run some tests. --->
 <blockquote class="blockquote">
 <p><strong>譯者註</strong> 本節其餘內容有部分為AI初翻，請謹慎使用。</p>
 </blockquote>
 <section id="成對t檢定" class="level3" data-number="13.5.1">
 <h3 data-number="13.5.1" class="anchored" data-anchor-id="成對t檢定"><span class="header-section-number">13.5.1</span> 成對t檢定</h3>
-<p>能要怎麼檢定？由於要比較三對分組平均值：安慰劑對 Anxifree，安慰劑對 Joyzepam，和 Anxifree 對 Joyzepam，最單純的方法是執行三個獨立t檢定，一一確認檢定結果。在 jamovi 中這很容易做到。轉到 ANOVA 的 ‘Post Hoc Tests’（事後檢驗）選項，將 ‘drug’（藥物）變項移到右側的活動框中，然後單擊 ‘No correction’（無校正）複選框。這將產生一個整齊的表格，顯示藥物變項的三個水平之間的所有成對 t 檢驗比較，如 <a href="#fig-fig12-4">圖&nbsp;<span>13.4</span></a> 中所示。</p>
+<p>我們要如何進行多重檢定？這裡要比較三對分組平均值：安慰劑 vs.&nbsp;Anxifree，安慰劑 vs.&nbsp;Joyzepam，和 Anxifree vs.&nbsp;Joyzepam，最簡單的方法是執行三次獨立樣本t檢定，逐一確認檢定結果。用 jamovi 很容易做到。打開 ANOVA 設定視窗的 ‘Post Hoc Tests’(事後檢驗)選項，將 ‘drug’(藥物)變項移到右側的活動框中，然後勾選 ‘No correction’(無校正)核取方塊。就會產生一張整齊的表格，顯示藥物變項的三對比較 t 檢定結果，如同 <a href="#fig-fig12-4">圖&nbsp;<span>13.4</span></a> 的展示。</p>
 
 <!--- 
 How might we go about solving our problem? Given that we've got three separate pairs of means (placebo versus Anxifree, placebo versus Joyzepam, and Anxifree versus Joyzepam) to compare, what we could do is run three separate t-tests and see what happens. This is easy to do in jamovi. Go to the ANOVA 'Post Hoc Tests' options, move the 'drug' variable across into the active box on the right, and then click on the 'No correction' checkbox. This will produce a neat table showing all the pairwise t-test comparisons amongst the three levels of the drug variable, as in @fig-fig12-4 --->
@@ -1214,7 +969,7 @@ How might we go about solving our problem? Given that we've got three separate p
 <div id="fig-fig12-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig13-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;13.4: 未經校正的成對 t 檢驗作為 jamovi 中的事後比較。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;13.4: 成對 t 檢定的事後比較~並列未經校正及Holm校正的p值。</figcaption>
 </figure>
 </div>
 </div>
@@ -1222,9 +977,9 @@ How might we go about solving our problem? Given that we've got three separate p
 </section>
 <section id="多重檢定的校正" class="level3" data-number="13.5.2">
 <h3 data-number="13.5.2" class="anchored" data-anchor-id="多重檢定的校正"><span class="header-section-number">13.5.2</span> 多重檢定的校正</h3>
-<p>前面提過一次做大批t檢定可能會有問題，最大的問題是同時執行多組t檢定，在沒有太多理論指引的時候，就只是單純期待有那幾組會出現顯著結果，很容易把科學分析搞成一場「魷魚遊戲」。這種對多組差異進行無理論基礎的比較，稱為<strong>事後分析</strong>（“post hoc” 是拉丁語，意為 “在正事之後”）。<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
-<p>事後分析不是不可以做，但需要非常小心。像是前一節介紹的成對t檢定應該儘量避免，因為每組t檢定的型一錯誤率都設定為.05的話，在此條件執行了三組t檢定，會導致型一錯誤率膨脹。想像有件ANOVA程序要分析10組平均值，然後挑出其中45筆組間差異進行「事後」t檢定，想知道有那些組別之間有顯著差異，如同 <a href="09-Hypothesis-testing.html"><span>單元&nbsp;9</span></a> 已經討論過的，這種狀況僅憑偶然性，就會看到2或3個顯著結果。虛無假設檢定有效的基本原則是，分析者嚴格控制型一錯誤率，現在為了確定造成ANOVA顯著結果的原因，不受控制地執行多組t檢定，己經導致全族45組的型一錯誤率膨脹到天邊了。</p>
-<p>解決方法通常是校正p值，控制全族的總型一錯誤率<span class="citation" data-cites="Shaffer1995">(參考 <a href="References.html#ref-Shaffer1995" role="doc-biblioref">Shaffer, 1995</a>)</span>。這種要於事後分析的校正，通常稱為<strong>多重比較校正</strong>，有時也叫「即時推論」(simultaneous inference)。其實統計學已經開發出許多校正方法，在這一節還有下一個單元的 <a href="14-Factorial-ANOVA.html#sec-Post-hoc-tests"><span>小單元&nbsp;14.8</span></a> 會討論其中幾種，本書介紹的只是最常見的而己<span class="citation" data-cites="Hsu1996">(有與趣的讀者請參考 <a href="References.html#ref-Hsu1996" role="doc-biblioref">Hsu, 1996</a> )</span>。</p>
+<p>前面提到一次做多組t檢定可能會有問題，最大的問題是沒有明確的理論指引時，同時執行多組t檢定，就只是看一看有那幾組會出現顯著結果，這樣一來科學分析很容易就會變成一場「魷魚遊戲」。這種對多組差異進行缺乏理論基礎的比較，稱為<strong>事後分析</strong>（“post hoc” 是拉丁語，意為 “在真正要緊的事務之後”）。<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>事後分析不是不可以做，而是要非常小心。例如前面介紹的<a href="#成對t檢定">成對t檢定</a>應該儘量不要做，因為每組t檢定的型一錯誤率都設定為.05的話，執行了三組t檢定，會導致型一錯誤率膨脹。想像有件資料要用ANOVA分析10組平均值，然後挑出其中45筆組間差異進行「事後」t檢定，找出那些組別之間有顯著差異。如同 <a href="09-Hypothesis-testing.html"><span>單元&nbsp;9</span></a> 討論過的，那幾組會有顯著差異純粹是偶然的。虛無假設檢定有效的基本原則是，分析者嚴格控制型一錯誤率，為了確定造成ANOVA顯著結果的原因，不管三七二十一執行多組t檢定，己經導致全體45組的型一錯誤率膨脹到天邊了。</p>
+<p>通常的解決方法是校正p值，控制總體型一錯誤率<span class="citation" data-cites="Shaffer1995">(<a href="References.html#ref-Shaffer1995" role="doc-biblioref">Shaffer, 1995</a>)</span>。這種事後分析進行的校正，通常稱為<strong>多重比較校正</strong>，有時也叫「即時推論」(simultaneous inference)。其實統計學界已經開發出許多校正方法，在這一節還有下一個單元 <a href="14-Factorial-ANOVA.html#sec-Post-hoc-tests"><span>小單元&nbsp;14.8</span></a> 將討論其中幾種，本書介紹的只是最常見的校正方法<span class="citation" data-cites="Hsu1996">(有與趣的讀者請參考 <a href="References.html#ref-Hsu1996" role="doc-biblioref">Hsu, 1996</a> )</span>。</p>
 <!---
 In the previous section I hinted that there's a problem with just running lots and lots of t-tests. The concern is that, when running these analyses, what we're doing is going on a "fishing expedition". We're running lots and lots of tests without much theoretical guidance in the hope that some of them come up significant. This kind of theory-free search for group differences is referred to as **post hoc analysis** ("post hoc" being Latin for "after this").[^13-comparing-several-means-one-way-anova-10]
 
@@ -1236,13 +991,13 @@ The usual solution to this problem is to introduce an adjustment to the p-value,
 </section>
 <section id="bonferroni校正" class="level3" data-number="13.5.3">
 <h3 data-number="13.5.3" class="anchored" data-anchor-id="bonferroni校正"><span class="header-section-number">13.5.3</span> Bonferroni校正</h3>
-<p>Bonferroni校正是其中最簡單的一種方法<span class="citation" data-cites="Dunn1961">(<a href="References.html#ref-Dunn1961" role="doc-biblioref">Dunn, 1961</a>)</span>。如果現在要處理m個單獨的檢定，這個方法能確保出現<em>任何</em>型一錯誤的總機率上限是<span class="math inline">\(\alpha\)</span>。<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> 照字面說的話，Bonferroni校正只是「將所有原始 p 值乘以 m」。真正的做法是指定校正前的p值為<span class="math inline">\(p\)</span>，校正後的p值為<span class="math inline">\(p_j^{'}\)</span>，根據Bonferroni校正，校正前後的p值關係是：</p>
+<p>Bonferroni校正是其中最簡單的一種方法<span class="citation" data-cites="Dunn1961">(<a href="References.html#ref-Dunn1961" role="doc-biblioref">Dunn, 1961</a>)</span>。如果現在要處理m個獨立的計檢定，這個方法能確保即使出現<em>任何</em>顯著結果，維持總型一錯誤機率上限在<span class="math inline">\(\alpha\)</span>。<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> 如同字面的定義，Bonferroni校正只是「將所有原始 p 值乘以 m」。做法是設定校正前的p值為<span class="math inline">\(p\)</span>，校正後的p值為<span class="math inline">\(p_j^{'}\)</span>，根據Bonferroni校正，校正前後的p值關係是：</p>
 <p><span class="math display">\[p_j^{'}=m \times p\]</span></p>
-<p>採用Bonferroni校正的話，只要得到<span class="math inline">\(p_j^{'} &lt; \alpha\)</span>就能拒絕虛無假設。這種方法的邏輯非常簡單：現在要進行m組單獨的檢定，如果設定每個檢定的型一錯誤率上限是<span class="math inline">\(\frac{\alpha}{m}\)</span>，所有檢定的<em>總</em>型一錯誤率就不會大於 <span class="math inline">\(\alpha\)</span>。這種方法簡單到Bonferroni在描寫這種方法的論文裡說道：</p>
+<p>採用Bonferroni校正，只要確認<span class="math inline">\(p_j^{'} &lt; \alpha\)</span>，就能正確拒絕虛無假設。這種方法的邏輯非常簡單：現在要進行m組獨立的統計檢定，如果設定每個檢定的型一錯誤率上限是<span class="math inline">\(\frac{\alpha}{m}\)</span>，所有檢定的<em>總</em>型一錯誤率就不會大於 <span class="math inline">\(\alpha\)</span>。這種方法簡單到Bonferroni在他的論文裡寫道：</p>
 <blockquote class="blockquote">
-<p>因為這個方法如此簡單，又易於使用，我肯定以前一定有人用過。但是，翻遍任何文獻我都找不到，只能推想：正是因為這種方法簡單到讓諸位聰明的統計學家，意識不到在某些情況是一個絕妙方法<span class="citation" data-cites="Dunn1961">(<a href="References.html#ref-Dunn1961" role="doc-biblioref">Dunn, 1961</a>，第52-53頁)</span>。</p>
+<p>因為這個方法如此簡單，又容易使用，我肯定以前一定有人用過。但是我翻遍任何文獻都找不到，只能推測：正是因為這種方法簡單到讓每個自認聰明絕頂的統計學家，不覺得這種方法在一些研究狀況的好處<span class="citation" data-cites="Dunn1961">(<a href="References.html#ref-Dunn1961" role="doc-biblioref">Dunn, 1961</a>，第52-53頁)</span>。</p>
 </blockquote>
-<p>要在 jamovi 中使用邦弗隆尼校正，只需單擊「校正」選項中的「邦弗隆尼」復選框，您將在 ANOVA 結果表中看到另一列，顯示邦弗隆尼校正的調整後 p 值（ <a href="#tbl-tab12-8">表&nbsp;<span>13.8</span></a> ）。如果我們將這三個 p 值與未校正的成對 t 檢驗的 p 值進行比較，很明顯 jamovi 所做的唯一事情就是將它們乘以 <span class="math inline">\(3\)</span>。</p>
+<p>要讓 jamovi 執行Bonferroni校正，只需要點選「校正」選項中的「Bonferroni」核選項目， ANOVA 結果報表將會出現另一列以Bonferroni校正調整的 p 值（ <a href="#tbl-tab12-8">表&nbsp;<span>13.8</span></a> ）。如果我們比較一下這三個 p 值與未校正的成對 t 檢驗的 p 值，很明顯 jamovi 只是將它們乘以 <span class="math inline">\(3\)</span>而已。</p>
 
 <!---
 
@@ -1262,11 +1017,11 @@ To use the Bonferroni correction in jamovi, just click on the 'Bonferroni' check
 </section>
 <section id="holm校正" class="level3" data-number="13.5.4">
 <h3 data-number="13.5.4" class="anchored" data-anchor-id="holm校正"><span class="header-section-number">13.5.4</span> Holm校正</h3>
-<p>雖然Bonferroni校正非常簡單，但是不是最好的校正方法。另一種常用的方法是<strong>Holm校正</strong><span class="citation" data-cites="Holm1979">(<a href="References.html#ref-Holm1979" role="doc-biblioref">Holm, 1979</a>)</span>。這種方法背後的思路是假設按照p 值的大小，從最小的比較開始，調整到第j個比較的p值為止，以下列公式校正p值</p>
+<p>雖然Bonferroni校正非常簡單，但並不是最好的校正方法。另一種常用的方法是<strong>Holm校正</strong><span class="citation" data-cites="Holm1979">(<a href="References.html#ref-Holm1979" role="doc-biblioref">Holm, 1979</a>)</span>。這種方法背後的思路是假設按照p 值的大小，從最小的比較開始，調整到第j個比較的p值為止，以下列公式校正p值</p>
 <p><span class="math display">\[p_j^{'}=j \times p_j\]</span></p>
-<p>也就是最大的 p 值保持不變，第二大的 p 值翻倍，第三大的 p 值翻三倍，依此類推。或者用以下等式挑出較<em>大</em>者。</p>
+<p>也就是最大的 p 值保持不變，第二大的 p 值增倍，第三大的 p 值增加三倍，依此類推。或者用以下等式挑出較<em>大</em>者。</p>
 <p><span class="math display">\[p_j^{'}=p_{j+1}^{'}\]</span></p>
-<p>這可能不大好懂，讓我們慢慢了解Holm校正的原理。首先將<span class="math inline">\(m\)</span>組檢定的p值按照數值大小排序，從最小的排到最大的。最小的 p 值只要乘以 <span class="math inline">\(m\)</span>，其他p值則要兩個步驟校正。像是第二小的 p 值首先要乘以 <span class="math inline">\(m - 1\)</span>，若是這個校正後的p值大於前一次校正的p值，就是完成校正；若是小於前一次校正的p值，改換為前一次的校正後p值為此次的校正結果。 <a href="#tbl-tab12-10">表&nbsp;<span>13.10</span></a> 展示五次多重比較檢定的p值，如何用Holm校正來調整每個檢定的p值。</p>
+<p>這樣解釋不大好懂，讓我慢慢說明Holm校正的原理。首先將<span class="math inline">\(m\)</span>組檢定的p值按照數值大小排序，從最小的排到最大的。校正最小的 p 值只要乘以 <span class="math inline">\(m\)</span>，其他組的p值校正則需要兩個步驟。像是第二小的 p 值首先要乘以 <span class="math inline">\(m - 1\)</span>，若是這個校正後的p值大於前一次校正的p值( <span class="math inline">\((m-1)\times p_{m-1} &gt; m \times p_m\)</span> )，那就可以停止校正；若是小於前一次校正的p值，就要將原來的p值，改換為前一次校正後的p值。 <a href="#tbl-tab12-10">表&nbsp;<span>13.10</span></a> 展示五組多重比較檢定的p值，如何用Holm校正來調整每組檢定的p值。</p>
 <!---
 Although the Bonferroni correction is the simplest adjustment out there, it's not usually the best one to use. One method that is often used instead is the **Holm correction** [@Holm1979]. The idea behind the Holm correction is to pretend that you're doing the tests sequentially, starting with the smallest (raw) p-value and moving onto the largest one. For the j-th largest of the p-values, the adjustment is *either*
 
@@ -1280,54 +1035,27 @@ whichever one is <u>larger</u>. This might sound a little confusing, so let's go
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-10" class="anchored">
-<table id="tab:tbl-tab12-10" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.10: 經過霍爾姆校正計算的p值</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">raw p</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">rank j</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">p \( \times \) j</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">Holm p</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.001</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.005</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.005</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.005</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.020</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.020</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.019</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.057</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.057</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.022</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.044</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.057</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.103</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.103</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.103</td>
-</tr>
-</tbody>
-</table>
-</div>
 
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-10"><caption>表&nbsp;13.10:  <p>經過霍爾姆校正計算的p值</p> </caption>
+<colgroup><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">raw p</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">rank j</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">p \( \times \) j</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">Holm p</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.001</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.005</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.005</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.005</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.020</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.020</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.019</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.057</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.057</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.022</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.044</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.057</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">.103</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">.103</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">.103</td></tr>
+</tbody></table>
 
 </div>
 </div>
-<p>希望以下說明能讓讀者們了解。</p>
-<p>雖然計算稍微麻煩，Holm校正有一些優點，像是比Bonferroni校正保證更低的型二錯誤率，因此可提高統計考驗力。此外，Holm校正保障每個檢定有相同的型一錯誤率，雖然這套方法執行下來看起來不大像。多數真正要跑統計的研究者，搞清楚兩種校正方法的原理好，一致支持Holm校正。所以對於還在起步的讀者，Holm校正應該是<em>首選</em>的校正方法。 <a href="#fig-fig12-4">圖&nbsp;<span>13.4</span></a> 展示Holm校正的 p 值，如同以上說明，最大的 p 值（ Anxifree 和安慰劑的比較）沒有改變。它的值為 .15，和一開始未做校正的值完全相同。相比之下，最小的 p 值（Joyzepam 與安慰劑）是原來的三倍。</p>
+</div>
+<p>希望以上說明能讓讀者們了解。</p>
+<p>雖然校正步驟稍微麻煩，Holm校正有一些優點，像是保證比Bonferroni校正有更低的型二錯誤率，可以提高統計考驗力。此外，Holm校正保障每組檢定的型一錯誤率一致，雖然這套方法執行下來看起來不大像。要跑統計的研究者，搞清楚兩種校正方法的原理後，多數人會支持Holm校正。所以對於還在起步的讀者，Holm校正應該是<em>首選</em>的校正方法。 <a href="#fig-fig12-4">圖&nbsp;<span>13.4</span></a> 展示Holm校正的 p 值，最大的 p 值（ Anxifree vs.&nbsp;安慰劑）和未校正的p值一樣，都是.15。最小的 p 值（Joyzepam vs.&nbsp;安慰劑）則校正為原來的三倍。</p>
 <!---
 Hopefully that makes things clear.
 
@@ -1483,46 +1211,15 @@ But wait, there's more! Dear lord, why is there always more? The story I've told
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-11" class="anchored">
-<table id="tab:tbl-tab12-11" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.11: clinicaltrials資料集情緒改善分數的出現次數表</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">0.1</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.2</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.3</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.4</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.5</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.6</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.8</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.9</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.1</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.2</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.3</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.4</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.7</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">1.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-11"><caption>表&nbsp;13.11:  <p>clinicaltrials資料集情緒改善分數的出現次數表</p> </caption>
+<colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">0.1</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.2</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.3</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.4</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.5</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.6</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.8</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">0.9</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.1</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.2</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.3</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.4</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">1.7</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">1.8</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">1</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>次數表排序第三的情緒改善分數是0.3，出現次數是2，表示所有參與者裡有兩位的情緒改善是0.3分。<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
@@ -1539,14 +1236,14 @@ And so jamovi uses a tie-correction factor to calculate the tie-corrected Kruska
 <blockquote class="blockquote">
 <p><strong>譯者註</strong> 本單元內容為AI初翻，請謹慎使用。</p>
 </blockquote>
-<p>儘管我們在努力理解Kruskal Wallis檢驗實際上做了什麼方面經歷了恐懼，但事實證明，進行該檢驗相當無痛，因為jamovi在ANOVA分析集中有一個名為「非參數」-「單因子ANOVA（Kruskall-Wallis）」的分析。大多數時候，你將擁有像<em>clinicaltrial.csv</em>這樣的數據集，其中包含你的結果變項mood.gain和一個分組變項drug。如果是這樣，你可以直接在jamovi中運行分析。這給我們提供了一個Kruskal-Wallis <span class="math inline">\(\chi^2 =12.076, df = 2, p = 0.00239\)</span>，如 <a href="#fig-fig12-8">圖&nbsp;<span>13.8</span></a> 所示。</p>
+<p>儘管理解Kruskal Wallis檢定法是讓許多人望而生畏的任務，實際操作卻相當輕鬆因為jamovi的ANOVA模組有包括名為“Non-parametic”(無母數)-“One-way ANOVA(Kruskall-Wallis)”的分析選單。大多資料是像<em>clinicaltrial.csv</em>一樣，其中有結果變項<code>mood.gain</code>和分組變項<code>drug</code>。如此就能直接用jamovi執行Kruskall-Wallis檢定，結果如同 <a href="#fig-fig12-8">圖&nbsp;<span>13.8</span></a> 展示，寫成報告格式<span class="math inline">\(\chi^2 =12.076, df = 2, p = 0.00239\)</span>。</p>
 <!--- Despite the horror that we've gone through in trying to understand what the Kruskal Wallis test actually does, it turns out that running the test is pretty painless, since jamovi has an analysis as part of the ANOVA analysis set called 'Non-Parametric' - 'One Way ANOVA (Kruskall-Wallis)' Most of the time you'll have data like the *clinicaltrial.csv*  data set, in which you have your outcome variable mood.gain and a grouping variable drug. If so, you can just go ahead and run the analysis in jamovi. What this gives us is a Kruskal-Wallis $\chi^2 =12.076, df = 2, p = 0.00239$, as in @fig-fig12-8 --->
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig12-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig13-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;13.8: jamovi中的Kruskall-Wallis單因子非參數ANOVA</figcaption>
+<figcaption class="figure-caption">圖&nbsp;13.8: 無母數單因子ANOVA/Kruskall-Wallis分析結果</figcaption>
 </figure>
 </div>
 </div>
@@ -1583,56 +1280,25 @@ This change in $SS_{error}$ term often leads to a more powerful statistical test
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab12-12" class="anchored">
-<table id="tab:tbl-tab12-12" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>表&nbsp;13.12: 中風患者的三種單詞識別作業分數</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: bold;">Participant</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Speech</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Conceptual</td>
-<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: bold;">Syntax</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">2</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">3</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">9</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">5</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 0pt; font-weight: normal;">6</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">8</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td>
-<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt; padding: 2pt 0pt 2pt 12pt; font-weight: normal;">4</td>
-</tr>
-</tbody>
-</table>
+
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab12-12"><caption>表&nbsp;13.12:  <p>中風患者的三種單詞識別作業分數</p> </caption>
+<colgroup><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;">Participant</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Speech</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Conceptual</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">Syntax</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">6</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">6</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">9</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">3</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">5</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">2</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: normal;">7</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: normal;">4</td></tr>
+</tbody></table>
+
 </div>
-
-
 </div>
 </div>
 <p>患者需要完成三個單詞識別任務。在第一個（言語生成）任務中，患者需要重複研究者大聲朗讀的單詞。在第二個（概念性）任務中，旨在測試單詞理解能力，患者需要將一系列圖片與其正確名稱匹配。在第三個（語法）任務中，旨在測試正確單詞順序的知識，要求患者對語法不正確的句子進行重新排序。每位患者都完成了所有三個任務。患者嘗試任務的順序在參與者之間進行了平衡。每個任務包括一系列10次嘗試。每位患者成功完成的嘗試次數如 <a href="#tbl-tab12-11">表&nbsp;<span>13.11</span></a> 所示。將這些數據輸入jamovi以進行分析（或者使用捷徑加載<em>broca.csv</em>文件）。</p>
@@ -1836,11 +1502,11 @@ Welch, B. L. (1951). On the comparison of several mean values: An alternative ap
 <li id="fn4"><p>這一步要知道的是如何計算組間離均差平方和 <span class="math display">\[ \begin{aligned} SS_{b} &amp;= \sum_{k=1}^{G} \sum_{i=1}^{N_k} ( \bar{Y}_{k} - \bar{Y} )^2 \\ &amp;= \sum_{k=1}^{G} N_k ( \bar{Y}_{k} - \bar{Y} )^2 \end{aligned} \]</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>在獨立樣本變異數分的報告裡， <span class="math inline">\(SS_w\)</span> 也被稱為誤差總和 <span class="math inline">\(SS_{error}\)</span>。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>追根究底來說，ANOVA 就是兩種不同的統計模型，<span class="math inline">\(H_0\)</span>和<span class="math inline">\(H_1\)</span>，的對決過程。這個單元一開始提到虛無假設和對立假設所用描述方式，其實不夠精確。在此要做點補救，儘管這樣會讓一些讀者感到厭煩。回憶一下，這個單元設定的虛無假設是各分組平均值彼此相等。若是如此，拆解結果變項 <span class="math inline">\(Y_{ik}\)</span> 的方式應該是將個別數值當成唯一的母群平均值<span class="math inline">\(\mu\)</span>，加上因為測量方式，實際數值與母群平均值之間的偏差，通常會用<span class="math inline">\(\epsilon_{ik}\)</span>表示，學術界習慣稱為誤差或殘差。不過請小心用詞，如同“顯著”這個詞義的歷史演變，“誤差”的詞義在統計學的場域不完全等於日常生活的模糊含義。日常用語的“誤差”暗示某種錯誤，但是統計學所指的不完全是任何一種錯誤。因此在統計學場域用“殘差”，會比“誤差”不易讓人誤會。這兩個詞都表示“剩餘變異”，也就是模型無法解釋的“部分”。不論是那種稱呼，將虛無假設寫成統計模型的話，看起來就是 <span class="math display">\[Y_{ik}=\mu+\epsilon_{ik}\]</span> 本書稍後會討論到，通常會設定各分組的殘差值 <span class="math inline">\(\epsilon_{ik}\)</span>皆符合平均值為 <span class="math inline">\(0\)</span>，標準差為 <span class="math inline">\(\sigma\)</span>的常態分佈。運用從<a href="@sec-Introduction-to-probability">機率入門</a>學到的符號，殘差的數學模型可以寫成 <span class="math display">\[\epsilon_{ik} \sim Normal(0,\sigma^2)\]</span> 那要如何設定對立假設 <span class="math inline">\(H_1\)</span> 呢？虛無假設和對立假設的唯一區別是，研究者認為各組的母群平均值並不相等。所以只要設定<span class="math inline">\(\mu_k\)</span> 表示第 k 組的母群平均值，<span class="math inline">\(H_1\)</span> 的統計模型就是 <span class="math display">\[Y_{ik}=\mu_k+\epsilon_{ik}\]</span> 同樣地，其中的分組殘差也都是平均值為 <span class="math inline">\(0\)</span>，標準差為 <span class="math inline">\(\sigma\)</span>的常態分佈。也就是說，對立假設還帶上 <span class="math inline">\(\epsilon_{ik} \sim Normal(0,\sigma^2)\)</span> 這個條件。<br> 現在<span class="math inline">\(H_0\)</span> 和 <span class="math inline">\(H_1\)</span>的統計模型都正式登場，可以清楚說明如何評估離均差平方和平均，以及如何解釋<span class="math inline">\(F\)</span>的意思。這裡不需要做任何數學證明，我們只要知道，組內離均差平方和平均 <span class="math inline">\(MS_w\)</span> 可以當成各組殘差的變異數估計值。組間離均差平方和平均<span class="math inline">\(MS_b\)</span>也是一組估計值，除了各組殘差的變異數估計值，還有各組平均值之間的差異值。以<span class="math inline">\(Q\)</span>代表這項差異值，就能將F統計數的公式改寫為 <span class="math inline">\(^a\)</span> <span class="math display">\[F=\frac{\hat{Q}+\hat{\sigma}^2}{\hat{\sigma}^2}\]</span> 若是虛無假設的推測成立，<span class="math inline">\(Q = 0\)</span>；若是對立假設的推測成立，<span class="math inline">\(Q &lt; 0\)</span>(請參考 <span class="citation" data-cites="Hays1994">Hays (<a href="References.html#ref-Hays1994" role="doc-biblioref">1994</a>)</span> ，ch.&nbsp;10)<br>這就是為什麼在變異數分析的狀況，<span class="math inline">\(F\)</span> <em>值必須大於</em> 1，是拒絕虛無假設的基本條件。讀者要注意的是，這不是說F 值不可能小於 1。嚴格地說，如果虛無假設的推測成立，估計值的取樣分佈會逼近期望值是1的F分佈 <span class="math inline">\(^b\)</span>，所以F 值必須要大於 1，才能安全地拒絕虛無假設。<br> 從上一段的F值公式可知，<span class="math inline">\(MS_b\)</span>和<span class="math inline">\(MS_w\)</span>，都有殘差 <span class="math inline">\(\epsilon_{ik}\)</span> 變異數的估計值，如果虛無假設的推測成立，兩者就只有殘差變異數的估計值。若殘差符合常態分佈，根據 <a href="07-Introduction-to-probability.html#sec-Other-useful-distributions"><span>小單元&nbsp;7.6</span></a> 學過的卡方分佈，讀者會想到<span class="math inline">\(\epsilon_{ik}\)</span>的變異數估計值其實應該符合卡方分佈。這就是卡方分佈的真正面貌：無數個符合常態分佈的隨機變數平方後，累加形成的機率分佈。F分佈則是兩件符合卡方分佈的隨機變數之比值，集合形成的機率分佈。當然，以上說明省略許多細節，不過這是至此介紹過的各種統計檢定方法，所依據的取樣分佈來源。<br> — <br> <span class="math inline">\(^a\)</span> 如果讀者已經讀過 <a href="14-Factorial-ANOVA.html"><span>單元&nbsp;14</span></a> ，學到如何用 <span class="math inline">\(\alpha_k\)</span> 定義因子內水準 k 的「處理效應」（參考 <a href="14-Factorial-ANOVA.html#sec-Factorial-ANOVA-balanced-n-interaction"><span>小單元&nbsp;14.1</span></a> 及 <a href="14-Factorial-ANOVA.html#sec-Factorial-ANOVA-balanced-w-interaction"><span>小單元&nbsp;14.2</span></a> ），會知道 <span class="math inline">\(Q\)</span> 是處理效應平方的加權平均值，<span class="math inline">\(Q = \frac{(\sum_{k=1}^{G}N_k \alpha_k^2)}{(G-1)}\)</span> <br> <span class="math inline">\(^b\)</span> 或者是更精確的F分佈期望值 <span class="math inline">\(1+\frac{2}{df_2-2}\)</span>。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>或者更確切描述是像 “1899年的統計專家那樣熱衷計算，當時我們沒有朋友，也沒有比算術更有趣的事情可做，因為直到 1920 年左右，ANOVA 並不存在於世上。”<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>使用 Excel 計算完整的<span class="math inline">\(SS_b\)</span>，會因為四捨五入得到不大一樣的值，可能是 <span class="math inline">\(3.45\)</span>。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>與上文中的數字相比，jamovi 的結果更為準確，這是由於四捨五入誤差。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>若是研究前已經有些理論，預期某幾組比較<em>確實</em>是有意義的，那就是另一回事了。這種情況執行多重檢定其實不是「事後分析」，而是「預先計劃的比較」。下一個單元的 <a href="14-Factorial-ANOVA.html#sec-The-method-of-planned-comparisons"><span>小單元&nbsp;14.9</span></a> 會更進一步介紹。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>順便一提，並不是所有校正方法都是這樣搞，因為Bonferroni校正是著眼於控制「家族式型一錯誤率」。有些校正方法則是從控制「偽發現率」(False Discovery Rate)下手。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>更真實的描述應該是 “1899年的統計學家著迷於計算的主要原因，是因為沒有什麼朋友，也沒有比算術更有趣的事情可做。因為直到 1920 年，ANOVA 並未來到人類世界。”<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>使用 Excel 計算完整的<span class="math inline">\(SS_b\)</span>，會因為四捨五入得到不大一樣的數值，有可能是 <span class="math inline">\(3.45\)</span>。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>與用手計算的數值相比，jamovi 的結果更為準確，這是因為四捨五入的差異。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>若是研究開始前已經有些理論，預期某幾組比較是<em>確實</em>有意義的，那就是另一回事了。這種情況所執行多重檢定，其實不是「事後分析」，而是「預先計劃的比較」。下一個單元 <a href="14-Factorial-ANOVA.html#sec-The-method-of-planned-comparisons"><span>小單元&nbsp;14.9</span></a> 有更進一步介紹。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>順帶一提，並不是所有校正方法都是這樣搞，因為Bonferroni校正是著眼於控制「全族型一錯誤率」(family wise Type I error rate)。有些校正方法則是從控制「偽發現率」(False Discovery Rate)下手。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>若是讀者沒有真正親手演練<a href="#sec-How-ANOVA-works">單因子變異數分析的運算原理</a>的範例，最好至少要讀過一遍。這一節裡提到了撐起ANOVA運算流程的統計模型：<span class="math display">\[H_0:Y_{ik}=\mu + \epsilon_{ik}\]</span> <span class="math display">\[H_1:Y_{ik}=\mu_k + \epsilon_{ik}\]</span>其中<span class="math inline">\(\mu\)</span>是指處於所有分組平均值中心的總平均之母群期望值，<span class="math inline">\(\mu_k\)</span>是指第k組平均值的母群期望值。至此一直反覆討論的問題是，研究資料是最適配虛無假設代表的單一總平均，還是對應假設代表的分組平均值。這些討論是有必要的，因為統計模型的設定就是研究問題的形式化！但是在檢定過程的有效性其實是建立在殘差 <span class="math inline">\(\epsilon_{ik}\)</span> 符合常態分佈的條件，也就是<span class="math display">\[\epsilon_{ik} \sim Normal(0,\sigma^2)\]</span>如果沒有這個條件，所有ANOVA的數學運算都無法執行。也可以說，即使依然能進行所有計算，最後得到一個F統計值，但是違反條件造成這個F統計值並不能代表研究結果支持任何一個模型的指標，無法提出有科學意義的結論。<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13"><p>Levene檢定法非常簡單，先設定結果變項<span class="math inline">\(Y_{ik}\)</span>。第一步是定義一個新變項<span class="math inline">\(Z_{ik}\)</span>，表示各組觀察值與該組平均值的偏誤 <span class="math display">\[Z_{ik}=Y_{ik}-\bar{Y}_{k}\]</span> 製造新變項有什麼好處？讓我們花一點時間來思考一下<span class="math inline">\(Z_{ik}\)</span>到底是什麼，以及我們要檢檢什麼。<span class="math inline">\(Z_{ik}\)</span>代表量測第<span class="math inline">\(k\)</span>組的第<span class="math inline">\(i\)</span>次觀察得到的數值，與其組平均值的誤差。變異數分析的虛無假設設定各分組的平均值相等，因此各組平均值的總變異應該也是相等！所以Levene檢定法的虛無假設是設定各組的<span class="math inline">\(Z\)</span>之母群平均值相等。嗯，那麼有什麼統計方法能用來檢核這個變項？沒錯，就是ANOVA，所以Levene檢定法的流程就是以<span class="math inline">\(Z_{ik}\)</span>為依變項做分析的ANOVA。那Brown-Forsythe檢定法是怎麼做？有什麼特別之處嗎？其實與Levene檢定法的唯一不同是建立新變項<span class="math inline">\(Z\)</span>的方式，是用分組中位數計算所有觀察值的誤差分數而不是用分組平均值。所以說，Brown-Forsythe檢定法建立新變項的公式是 <span class="math display">\[Z_{ik}=Y_{ik}-median_k(Y)\]</span> <span class="math inline">\(median_k(Y)\)</span>代表第k組的中位數。<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn14"><p>首先創建新的結果變項<span class="math inline">\(R_{ik}\)</span>，表示第k組的第i位成員排序。接著計算第k組觀察值的平均排序 <span class="math inline">\(\bar{R}_k\)</span>: <span class="math display">\[\bar{R}_k=\frac{1}{N_k}\sum_i R_{ik}\]</span>，以及總平均排序<span class="math inline">\(\bar{R}\)</span>: <span class="math display">\[\bar{R}=\frac{1}{N}\sum_i\sum_k R_{ik}\]</span> 完成後，就可以計算與總平均排名<span class="math inline">\(\bar{R}\)</span>的離均差平方。<span class="math inline">\((R_{ik} - \bar{R})^2\)</span>代表第ik個觀察值排序與總平均排序的離均差，是一種無母數的計量；還有<span class="math inline">\((R_{ik} - \bar{R_k})^2\)</span>代表第k組平均排序與總平均排序的離均差，也是一種無母數的計量。因此，離均差平方<span class="math inline">\((R_{ik} - \bar{R})^2\)</span>就是總體誤差的無母數計量。如此一來，就能按照ANOVA的運算原理，定義排序變異的估計值。首先是“總排序平方和”<span class="math display">\[RSS_{tot}=\sum_k\sum_i (R_{ik}-\bar{R})^2\]</span>，以及“組間排序平方和” <span class="math display">\[\begin{aligned} RSS_{b}&amp; =\sum{k}\sum_{i}(\bar{R}_{k}-\bar{R})^2 \\ &amp;= \sum_{k} N_k (\bar{R}_{k}-\bar{R})^2 \end{aligned}\]</span> 若是虛無假設成立，且根本沒有真正的組差異，組間排序和<span class="math inline">\(RSS_b\)</span>應該非常微小，遠小於總排序和<span class="math inline">\(RSS_{tot}\)</span>。就計算公式來看，這和計算ANOVA 的F統計值非常像，不過因為背後的取樣分佈不同，Kruskal-Wallis檢定統計值記號是K，而K的計算方法是<span class="math display">\[K=(N-1) \times \frac{RSS_b}{RSS_{tot}}\]</span> 若是虛無假設成立，K的取樣分佈會逼近自由度為<span class="math inline">\(G-1\)</span>的卡方分佈。 K的值越大，資料就越不適配虛無假設，因此這是一個單側檢定。當K值足夠大時，就有機會拒絕<span class="math inline">\(H_0\)</span>。<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
