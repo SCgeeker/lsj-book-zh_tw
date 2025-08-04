@@ -390,7 +390,7 @@ div.csl-indent {
   <li><a href="#sec-The-McNemar-test" id="toc-sec-The-McNemar-test" class="nav-link" data-scroll-target="#sec-The-McNemar-test"><span class="header-section-number">10.7</span> 麥內瑪檢定</a>
   <ul class="collapse">
   <li><a href="#sec-doing-The-McNemar-test" id="toc-sec-doing-The-McNemar-test" class="nav-link" data-scroll-target="#sec-doing-The-McNemar-test"><span class="header-section-number">10.7.1</span> 實作麥內瑪檢定</a></li>
-  <li><a href="#sec-difference-McNemar-independence" id="toc-sec-difference-McNemar-independence" class="nav-link" data-scroll-target="#sec-difference-McNemar-independence"><span class="header-section-number">10.7.2</span> 與獨立性檢定有可分別?</a></li>
+  <li><a href="#sec-difference-McNemar-independence" id="toc-sec-difference-McNemar-independence" class="nav-link" data-scroll-target="#sec-difference-McNemar-independence"><span class="header-section-number">10.7.2</span> 與獨立性檢定的區別</a></li>
   </ul></li>
   <li><a href="#本章小結" id="toc-本章小結" class="nav-link" data-scroll-target="#本章小結"><span class="header-section-number">10.8</span> 本章小結</a></li>
   </ul>
@@ -407,13 +407,11 @@ div.csl-indent {
 <!---
 
 > **譯者註** 20230417初步以ChatGPT-4完成翻譯，內容待編修。
+> **譯者註** 20240210完成除了jamvoi實作，本單元各種檢定方法的原理及公式說明第一次校對。
+
+> [導讀簡報](slides10.html){target="_blank"}
+
 --->
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 20240210完成除了jamvoi實作，本單元各種檢定方法的原理及公式說明第一次校對。</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><a href="slides10.html" target="_blank">導讀簡報</a></p>
-</blockquote>
 <p>至此已經了解假設檢定的基本理論，是時候開始學習心理學研究常用的統計檢定方法。那麼應該從那種方法開始學習呢？並非所有教材作者都有共識，我(原作者)建議從“卡方檢定”（英文發音為“chi-square”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>）和“t 檢定”（<a href="11-Comparing-two-means.html"><span>單元&nbsp;11</span></a>）開始。這兩種方法在科學研究實務經常被使用，雖然解析資料的威力不如後面單元介紹“迴歸分析”和“變異數分析”強大，對初學者來說相對容易理解。</p>
 <p>“類別資料”（Categorical data）只是“名義尺度資料”（nominal scale data）的另一種稱呼。這不是本書尚未介紹的東西，只是在資料分析的場合，我不明白為何許多研究者習慣稱呼“類別資料”，而不是“名義尺度資料”。無論如何，<strong>類別資料分析</strong>是指處理名義尺度資料時，可以使用的一套統計方法。不過，專用於分析類別資料的方法非常多種，本單元僅介紹幾種較常用的方法。</p>
 <!--- Now that we've covered the basic theory behind hypothesis testing it's time to start looking at specific tests that are commonly used in psychology. So where should we start? Not every textbook agrees on where to start, but I'm going to start with "$\chi^2$ tests" (this chapter, pronounced "chi-square"[^10-categorical-data-analysis-1] and "t-tests" in @sec-Comparing-two-means). Both of these tools are very frequently used in scientific practice, and whilst they're not as powerful as "regression" and "analysis of variance" which we cover in later chapters, they're much easier to understand.
@@ -669,8 +667,7 @@ how many people chose hearts, how many chose diamonds and how many chose clubs, 
 </section>
 <section id="jamovi實作" class="level3" data-number="10.1.7">
 <h3 data-number="10.1.7" class="anchored" data-anchor-id="jamovi實作"><span class="header-section-number">10.1.7</span> jamovi實作</h3>
-<p>使用jamovi 的基本分析模組<code>Frequencies</code>，就能完成以上的演算，以下示範使用資料集的<em>Randomness.omv</em>。</p>
-<p>jamovi 的預設分析套件<code>Frequencies</code>提供完成以上計算的工具，以下使用 <em>Randomness.omv</em> 示範。首先從主選單“Analysis”列出的套件按鈕，點選“Frequencies” - “One Sample Proportion Tests”- “<span class="math inline">\(N\)</span> Outcomes”。在分析工具設定視窗選擇要分析的變項（<code>choice_1</code>），到Variable對話框。接著勾選”Expected counts”，完成報表設定，如同 <a href="#fig-fig14-4">圖&nbsp;<span>10.4</span></a> 的畫面右方報表呈現的分析結果。讀者可以看到報表呈現與前述的手動計算相同的預期計數和統計資料，<span class="math inline">\(\chi^2 = 8.44\)</span>，自由度為 <span class="math inline">\(3\)</span>，<span class="math inline">\(p=0.038\)</span>。更重要的是，我們不需要查表找臨界值判斷 p 值，因為 jamovi 也輸出<span class="math inline">\(\chi^2\)</span>的自由度是<span class="math inline">\(3\)</span>所對應的 p 值。</p>
+<p>使用jamovi 的基本分析模組<code>Frequencies</code>，就能完成以上的演算程序，以下使用資料集<em>Randomness.omv</em>示範。首先從“Analysis”主選單的點選“Frequencies”套件，接著選擇“One Sample Proportion Tests”的“<span class="math inline">\(N\)</span> Outcomes”，開啟分析工具設定視窗。接著選擇要分析的依變項（<code>choice_1</code>），移動到Variable對話框，再來勾選”Expected counts”，完成報表設定，如同 <a href="#fig-fig14-4">圖&nbsp;<span>10.4</span></a> 的畫面右方報表呈現的分析結果。接著會看到報表呈現與前述的手動計算相同的預期計數和統計資料，<span class="math inline">\(\chi^2 = 8.44\)</span>，自由度為 <span class="math inline">\(3\)</span>，<span class="math inline">\(p=0.038\)</span>。更重要的是，我們不需要查表找臨界值才能判斷 p 值，因為 jamovi 輸出的p 值是來自<span class="math inline">\(\chi^2\)</span>自由度是<span class="math inline">\(3\)</span>的機率分佈。</p>
 
 <!--- Not surprisingly, jamovi provides an analysis that will do these calculations for you. Let's use the *Randomness.omv* file. From the main 'Analyses' toolbar select 'Frequencies' - 'One Sample Proportion Tests' - '$N$ Outcomes'. Then in the analysis window that appears move the variable you want to analyse (choice 1 across into the 'Variable' box. Also, click on the 'Expected counts' check box so that these are shown on the results table. When you have done all this, you should see the analysis results in jamovi as in @fig-fig14-4. No surprise then that jamovi provides the same expected counts and statistics that we calculated by hand above, with a $\chi^2$ value of $(8.44$ with $3$ d.f. and $p=0.038$. Note that we don't need to look up a critical p-value threshold value any more, as jamovi gives us the actual p-value of the calculated $\chi^2$ for $3$ d.f. --->
 <div class="cell enlarge-image" data-layout-align="left">
@@ -678,7 +675,7 @@ how many people chose hearts, how many chose diamonds and how many chose clubs, 
 <div id="fig-fig14-4" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig10-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;10.4: jamovi 中的 <span class="math inline">\(\chi^2\)</span> 單樣本比例檢定(One Sample Proportion Tests)，報表表格顯示觀察到的頻率和比例(Observed)以及期望的頻率和比例(Expected)</figcaption>
+<figcaption class="figure-caption">圖&nbsp;10.4: jamovi 的 <span class="math inline">\(\chi^2\)</span> 單樣本比例檢定(One Sample Proportion Tests)示範，報表表格顯示觀察到的次數和比例(Observed)以及期望的次數和比例(Expected)</figcaption>
 </figure>
 </div>
 </div>
@@ -686,14 +683,14 @@ how many people chose hearts, how many chose diamonds and how many chose clubs, 
 </section>
 <section id="另一種虛無假設" class="level3" data-number="10.1.8">
 <h3 data-number="10.1.8" class="anchored" data-anchor-id="另一種虛無假設"><span class="header-section-number">10.1.8</span> 另一種虛無假設</h3>
-<p>也許讀者會遇到適合度檢定要檢驗的虛無假設涵蓋的所有類別，並不是機率都相等，應該怎麼辦？例如，假設有套理論預測多數人選擇花色是紅色的撲克牌機率是<span class="math inline">\(60\%\)</span>，選擇花色是黑色的撲克牌機率是<span class="math inline">\(40\%\)</span>，所以設定虛無假設的期望比例是紅心為 <span class="math inline">\(30\%\)</span>，方塊為 <span class="math inline">\(30\%\)</span>，黑桃為 <span class="math inline">\(20\%\)</span>，梅花為 <span class="math inline">\(20\%\)</span>。也就是說，紅心和方塊的期望次數是黑桃和梅花的 1.5 倍（<span class="math inline">\(30\%\)</span> : <span class="math inline">\(20\%\)</span> 等同於 1.5 : 1 ）。儘管這套理論聽起來有些無厘頭，還是能用jamovi檢定這套虛無假設。從設定視窗左方( <a href="#fig-fig14-4">圖&nbsp;<span>10.4</span></a> )，點選”Expected Proportion”就能展開Ratio(預期比率)的選項。如此就能在待輸入的空格中，為變項所設定的類別輸入不同的比例值。這個案例的變項是<code>choice_1</code>。jamovi能自動將比率轉換為虛無假設的比率數值，如同 <a href="#fig-fig14-5">圖&nbsp;<span>10.5</span></a> 。</p>
+<p>也許讀者會遇到適合度檢定要檢驗的虛無假設涵蓋的所有類別，每一類別的機率並不是彼此相等的狀況，這樣應該要怎麼辦？例如，有套理論預測多數人心中會選擇紅色撲克牌的機率是<span class="math inline">\(60\%\)</span>，選擇黑色撲克牌的機率是<span class="math inline">\(40\%\)</span>，所以設定虛無假設的期望比例是紅心為 <span class="math inline">\(30\%\)</span>，方塊為 <span class="math inline">\(30\%\)</span>，黑桃為 <span class="math inline">\(20\%\)</span>，梅花為 <span class="math inline">\(20\%\)</span>。也就是說，理論預測紅心和方塊的期望次數是黑桃和梅花的 1.5 倍（<span class="math inline">\(30\%\)</span> : <span class="math inline">\(20\%\)</span> 等於 1.5 : 1 ）。儘管這套理論聽起來沒根沒據，還是能用jamovi檢定這套虛無假設。在設定視窗的左邊( <a href="#fig-fig14-4">圖&nbsp;<span>10.4</span></a> )，點選”Expected Proportion”就能展開Ratio(預期比率)的選項。如此就能在待輸入的空格中，為變項所設定的類別輸入不同的。這個案例的變項是<code>choice_1</code>。jamovi能自動將各類別相對倍數，轉換為虛無假設的各類別比例數值，如同 <a href="#fig-fig14-5">圖&nbsp;<span>10.5</span></a> 的示範。</p>
 <!--- At this point you might be wondering what to do if you want to run a goodness-of-fit test but your null hypothesis is not that all categories are equally likely. For instance, let's suppose that someone had made the theoretical prediction that people should choose red cards $60\%$ of the time, and black cards $40\%$ of the time (I've no idea why you'd predict that), but had no other preferences. If that were the case, the null hypothesis would be to expect $30\%$ of the choices to be hearts, $30\%$ to be diamonds, $20\%$ to be spades and $20\%$ to be clubs. In other words we would expect hearts and diamonds to appear 1.5 times more often than spades and clubs (the ratio $30\%$ : $20\%$ is the same as 1.5 : 1). This seems like a silly theory to me, and it's pretty easy to test this explicitly specified null hypothesis with the data in our jamovi analysis. In the analysis window (labelled 'Proportion Test (N Outcomes)' in @fig-fig14-4 you can expand the options for 'Expected Proportions'. When you do this, there are options for entering different ratio values for the variable you have selected, in our case this is choice 1. Change the ratio to reflect the new null hypothesis, as in @fig-fig14-5, and see how the results change. --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig14-5" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig10-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;10.5: 在單樣本比例檢定設定視窗，填寫 <span class="math inline">\(\\chi^2\)</span> 的預期比率。</figcaption>
+<figcaption class="figure-caption">圖&nbsp;10.5: 根據虛無假設設定，更改單樣本比例檢定設定視窗的 <span class="math inline">\(\chi^2\)</span> 預期比率。</figcaption>
 </figure>
 </div>
 </div>
@@ -714,23 +711,23 @@ how many people chose hearts, how many chose diamonds and how many chose clubs, 
 </div>
 </div>
 </div>
-<p>重新計算的假設和預期次數與前一次的結果不一樣了，因此，我們的 <span class="math inline">\(\chi^2\)</span> 檢定統計數和 p 值也有所不同，<span class="math inline">\(\chi^2\)</span> 統計量為 4.74，自由度為 3，<span class="math inline">\(p = 0.182\)</span>。更新的p值是最令人不高興的，這麼一來就不能拒絕虛無假設（請讀者回顧 <a href="09-Hypothesis-testing.html#sec-The-p-value-of-a-test"><span>小單元&nbsp;9.5</span></a> ）。最無奈的是，就算虛無假設代表一種沒什麼道理的理論，現在的資料並無法提供足夠的證據來反駁。</p>
+<p>這次計算的假設和預期次數，與假設各類別機率相等的結果不一樣了，因此， <span class="math inline">\(\chi^2\)</span> 檢定統計數和 p 值也有變化：<span class="math inline">\(\chi^2\)</span> 統計量為 4.74，自由度為 3，<span class="math inline">\(p = 0.182\)</span>。新的p值是最令人沮喪的，和 <a href="09-Hypothesis-testing.html#sec-The-p-value-of-a-test"><span>小單元&nbsp;9.5</span></a> 的示範相比，這次分析結果無法拒絕虛無假設。最無奈的是，就算虛無假設是一種沒什麼道理的理論，現實的資料無法形成足夠的反駁證據。</p>
 <!--- and the $\chi^2$ statistic is 4.74, 3 d.f., $p = 0.182$. Now, the results of our updated hypotheses and the expected frequencies are different from what they were last time. As a consequence our $\chi^2$ test statistic is different, and our p-value is different too. Annoyingly, the p-value is $.182$, so we can't reject the null hypothesis (look back at @sec-The-p-value-of-a-test to remind yourself why). Sadly, despite the fact that the null hypothesis corresponds to a very silly theory, these data don't provide enough evidence against it. --->
 </section>
 <section id="sec-How-to-report-the-results-of-a-test" class="level3" data-number="10.1.9">
 <h3 data-number="10.1.9" class="anchored" data-anchor-id="sec-How-to-report-the-results-of-a-test"><span class="header-section-number">10.1.9</span> 適合度檢定的報告寫作</h3>
-<p>現在知道了適合度檢定的執行方法，也知道如何使用jamovi來完成。接下來讀者需要知道的是如何撰寫結果。畢竟，花心思設計和執行實驗，然後分析資料，如果不告訴別人結果是沒有意義的！所以接著來談談準備分析報告需要注意的事情。我們繼續以撲克牌花色的案例說明。如果想將這些結果寫成一篇論文，那麼符合慣例的報告如同下一段：</p>
+<p>知道了適合度檢定的執行程序，也要知道如何使用jamovi來完成報告的撰寫。畢竟，花心思設計和執行實驗，然後分析資料，不告訴別人的話是沒有意義的！所以接著要說明準備分析報告需要注意的事情。繼續以撲克牌花色的案例說明，如果想將這些結果寫成一篇論文，符合規範的報告寫作示範如同下一段：</p>
 <blockquote class="blockquote">
-<p>這項實驗200位參與者有64人首選紅心，51人選擇方塊，50人選擇黑桃，35人選擇梅花。以卡方適合度檢定，分析四種花色被選擇機率是否相同，顯著表明人們在選擇花色時並非完全隨機（<span class="math inline">\(\chi^2(3) = 8.44, p&lt; .05\)</span>）。</p>
+<p>這項實驗的200位參與者有64人的首選是紅心，51人選擇方塊，50人選擇黑桃，35人選擇梅花。以卡方適合度檢定，分析四種花色首次被選擇機率是否相同，顯著結果表示人們有意識選擇花色時並非完全隨機（<span class="math inline">\(\chi^2(3) = 8.44, p&lt; .05\)</span>）。</p>
 </blockquote>
-<p>執告敘述很直接，讀起來中規中矩。儘管如此，讀者應該留意報告中的幾個的重點：</p>
+<p>報告的敘述很直接，讀起來中規中矩。儘管如此，讀者應該留意報告中的幾個的重點：</p>
 <ul>
-<li><p><em>描述統計要擺在統計檢定之前</em>。在呈現檢定之前，讀者需要知道目標資料的重要信息，這通常是一個很好的寫作方法。寫報告時一定要記得，讀者對於資料的了解遠不如寫作者。所以，除非向讀者妥善地描述，否則統計檢定對讀者來說毫無意義，只會覺得作者看不起人。</p></li>
-<li><p><em>告訴讀者這裡要測試的虛無假設</em>。老實說，多數作者並不會這樣做，但是當文字表達存在歧義，或者讀者不見得熟悉這裡使用的統計工具時，通常是一個好的寫作策略。很多時候讀者可能不知道或不記得報告使用的檢定方法細節，所以給一些提示是一種禮貌！以適合度檢定來說，寫作者通常可以假定受過科學教育的讀者大都了解執行細節（因為大多數入門統計課程都會介紹）。然而，簡要且明確地陳述虛無假設仍然是一個好策略，因為虛無假設可能因為檢驗目的而有所不同。就像撲克牌範例的第一種虛無假設是四個花色的機率相同（即，<span class="math inline">\(P1 = P2 = P3 = P4 = 0.25\)</span>），但是這個假設並沒有什麼特別的。另一方面，我們也可以使用適合度檢定分析另一種虛無假設：<span class="math inline">\(P_1 = 0.7\)</span>和<span class="math inline">\(P2 = P3 = P4 = 0.1\)</span>。所以，向讀者解釋虛無假設還是有幫助的。另外，注意以上報告示範是用文字而不是數學符號描述虛無假設，這是完全可以接受的。當然也可以用數學符號描述，但是考慮大多數讀者閱讀文字比符號更容易，所以大多數作者傾向儘可能用文字描述虛無假設。</p></li>
-<li><p><em>構築”統計區塊”</em>。在報告檢定結果的那句話裡，不僅僅說結果顯著，還加入了用括號集合數學符號的“統計區塊”，其中包括所有“關鍵”統計訊息。卡方適合度檢定要報告的訊息包括檢定統計量（8.44）、用於檢定的分布信息（具有3個自由度的<span class="math inline">\(\chi^2\)</span>分佈，通常簡寫為<span class="math inline">\(\chi^2\)</span>(3)），以及結果是否顯著的標記（<span class="math inline">\(p&lt; .05\)</span>）。每個檢定報告的統計區塊要呈現的特定訊息各不相同，因此後續介紹一個檢定方法時，都會向讀者展示統計區塊應該如何組織。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> 不過，一般原則是寫作者應該提供足夠的訊息，讓讀者在有必要時檢核檢定結果。</p></li>
-<li><p><em>解釋分析結果</em>。除了指出結果有沒有顯著之外，示範還提供結果的解釋。這對也是一種友善讀者的寫作方式，告訴他們從資料中發現了什麼事情。如果沒有這樣的部分，讀者很難理解有什麼發現。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
+<li><p><em>描述統計要擺在統計檢定之前</em>。在呈現檢定之前，讀者需要知道目標資料的重要訊息，呈現描述統計是一種很好的寫作方法。寫報告時一定要記得，讀者對於資料的了解遠不如寫作者。所以，除非先向讀者妥善地描述資料特徵，否則統計檢定對讀者來說毫無意義，只會覺得作者眼高於頂。</p></li>
+<li><p><em>告訴讀者這次分析要測試的虛無假設</em>。老實說，多數作者並不會這樣做，但是當文字表達存在歧義，或者讀者不見得熟悉作者使用的統計方法時，反而是一種好的寫作策略。很多時候讀者可能不知道或不記得作者使用的檢定方法細節，所以給一些提示是一種體貼！拿適合度檢定來說，寫作者通常假定受過科學訓練的讀者大都了解執行細節，因為許多入門統計課程都會介紹這套方法。不過，簡要明確地陳述虛無假設仍然是好策略，因為虛無假設的設定會因為檢驗的目標而有所不同。就像撲克牌範例的第一種虛無假設是四種花色的機率相同（即，<span class="math inline">\(P1 = P2 = P3 = P4 = 0.25\)</span>），雖然這套假設並沒有什麼特別的。另一方面，適合度檢定也可以分析另一種虛無假設：<span class="math inline">\(P_1 = 0.7\)</span>和<span class="math inline">\(P2 = P3 = P4 = 0.1\)</span>。所以，向讀者解釋虛無假設還是有幫助的。另外，注意以上報告示範是用文字而不是數學符號描述虛無假設，這是完全可以接受的。當然寫作者也可以用數學符號描述，但是考慮大多數讀者閱讀文字比符號更容易，所以大多數寫作者傾向儘可能用文字描述虛無假設。</p></li>
+<li><p><em>構築”統計區塊”</em>。報告檢定結果的那句話，不僅提到結果顯著，還有用括號集合數學符號的“統計區塊”，其中包括所有“關鍵”統計訊息。卡方適合度檢定要報告的訊息包括檢定統計量（8.44）、用於檢定的分佈信息：自由度為3的<span class="math inline">\(\chi^2\)</span>分佈，通常簡寫為<span class="math inline">\(\chi^2 (3)\)</span>，以及結果是否顯著的p值標記（<span class="math inline">\(p&lt; .05\)</span>）。每個檢定報告的統計區塊要呈現的特定訊息各不相同，因此後介紹的每一種檢定方法，都會示範統計區塊應該如何組織。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> 總之，一般原則是寫作者應該提供足夠的訊息，讓讀者認為有必要時，能自行檢核檢定結果。</p></li>
+<li><p><em>解釋分析結果</em>。除了指出結果有沒有顯著之外，示範還有結果的解釋。這也是一種友善讀者的寫作方式，告訴他們從資料中發現了什麼事情。如果沒有給出解釋，讀者很難理解其中有什麼發現。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
 </ul>
-<p>如同各式各樣出版品，寫作者應該關注的是為讀者解釋事物。寫作的第一目的是與另一個人溝通，同樣是撰寫結果報告的目的。身為教師的人通常會看過無數份報告、論文甚至科學文章的結果部分都是胡言亂語，因為作者只關注呈現數字，卻忘記與人類讀者的交流責任。</p>
+<p>如同各式各樣出版品，寫作者應該關注的是幫助讀者明白事物原理。寫作的首要目的是與他人溝通，撰寫結果報告的目的也是如此。身為教師的人通常會看過無數份報告、論文甚至科學文章的結果充斥胡言亂語，因為多數寫作者只關注呈現數字，卻忘記與人類讀者的交流責任。</p>
 <blockquote class="blockquote">
 <p><em>統計數字和宗教經文都有隱藏撒旦的微笑</em><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> – H.G. 威爾斯</p>
 </blockquote>
@@ -1044,17 +1041,7 @@ The Fisher exact test works somewhat differently to the chi-square test (or in f
 </div>
 <p>為了設定檢定程序，費雪將各行及各列的總次數（<span class="math inline">\(R_1, R_2, C_1\)</span> 和 <span class="math inline">\(C_2\)</span>）都視為已知的固定值，然後根據這些總次數不變的前提，計算研究人員會得到實際觀察次數（<span class="math inline">\(O_{11}, O_{12}, O_{21}\)</span> 和 <span class="math inline">\(O_{22}\)</span>）的機率。運用我們在 <a href="07-Introduction-to-probability.html"><span>單元&nbsp;7</span></a> 學到的機率符號表達規則，寫成的公式就是：</p>
 <p><span class="math display">\[P(O_{11}, O_{12}, O_{21}, O_{22} \text{ | } R_1, R_2, C_1, C_2)\]</span></p>
-<p>大部分讀者要搞清楚這是什麼樣的機率分佈是有點困難的任務，實際地說，這個機率函數符合所謂的超幾何分佈(hypergeometric distribution)。要計算 p 值，首先要計算觀察到這個表格內的數值，或者一個數值更“極端”的表格之機率。<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>在 20 世紀 20 年代，即使是狀況最單純的研究問題，要做到這樣的計算是相當令人害怕的工作，不過現在只要表格不是太大，樣本數不是太龐大，一般計算設備都能輕易處理。真正棘手的問題是，要弄清楚一個列聯表比另一個列聯表更“極端”，是怎樣的概念？最簡單的解決方案是，出現機率最低的表格是最極端的，我們只要知道這個表格的 p 值。</p>
-<p>從 jamovi <code>Analysis</code>界面開啟<code>Frequencies</code>-<code>Independent Samples</code>開啟<code>Contingency Tables</code>設定視窗，其中<code>Statistics</code>子選項裡有<code>Fisher's excat test</code>。若是已經載入<code>Salem</code>資料並設定好變項，就能在報表看到費雪精確檢定的統計結果。因為這種檢定方法只有輸出p值，由於這個範例的p 值足夠小（p = .036），足以拒絕那些正在被處刑的人和還沒有被處刑的人一樣快樂的虛無假設。輸出結果請參考 <a href="#fig-fig14-7">圖&nbsp;<span>10.7</span></a>。</p>
-<!---在這個例子中，我們使用了費雪精確檢定，該檢定使我們能夠在樣本量較小的情況下仍然對資料進行檢驗。通過這種方法，我們發現了正在燃燒的人和沒有燃燒的人之間的快樂程度存在顯著差異。--->
-
-<!--- In order to construct the test Fisher treats both the row and column totals $(R_1, R_2, C_1 \text{ and } C_2)$ as known, fixed quantities and then calculates the probability that we would have obtained the observed frequencies that we did $(O_{11}, O_{12}, O_{21} \text{ and } O_{22})$ given those totals. In the notation that we developed in @sec-Introduction-to-probability this is written:
-
-$$P(O_{11}, O_{12}, O_{21}, O_{22}  \text{ | } R_1, R_2, C_1, C_2)$$ and as you might imagine, it's a slightly tricky exercise to figure out what this probability is. But it turns out that this probability is described by a distribution known as the hypergeometric distribution. What we have to do to calculate our p-value is calculate the probability of observing this particular table or a table that is *"more extreme"*. [^10-categorical-data-analysis-17] Back in the 1920s, computing this sum was daunting even in the simplest of situations, but these days it's pretty easy as long as the tables aren't too big and the sample size isn't too large. The conceptually tricky issue is to figure out what it means to say that one contingency table is more "extreme" than another. The easiest solution is to say that the table with the lowest probability is the most extreme. This then gives us the p-value.
-
-[^10-categorical-data-analysis-17]: Not surprisingly, the Fisher exact test is motivated by Fisher's interpretation of a p-value, not Neyman's! See @sec-The-p-value-of-a-test.
-
-You can specify this test in jamovi from a check box in the 'Statistics' options of the 'Contingency Tables' analysis. When you do this with the data from the *salem.csv* file, the Fisher exact test statistic is shown in the results. The main thing we're interested in here is the p-value, which in this case is small enough (p = .036) to justify rejecting the null hypothesis that people on fire are just as happy as people not on fire. See @fig-fig14-7. --->
+<p>對於大部分讀者來說，搞清楚這個函數代表的機率分佈是長什麼樣子，是有些困難的。用專業術語來表示的話，這個機率函數符合所謂的超幾何分佈(hypergeometric distribution)。要計算 p 值，首先要計算 <a href="#tbl-tab14-10">表&nbsp;<span>10.10</span></a> 的數值，或者計算這份表格內的數值有多“極端”的機率。<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>在 20 世紀 20 年代，即使是狀況最單純的研究問題，要處理這樣的計算是相當令人害怕的工作。還好到了今日，只要表格不是太大，樣本數不是太龐大，一般計算設備都能輕鬆處理。真正棘手的問題是，要弄清楚一個列聯表比另一個列聯表更“極端”，要怎麼呈現出來？最簡單的方法是，出現機率最低的表格是最極端的，我們只要知道這個表格的 p 值。</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig14-7" class="quarto-figure quarto-figure-left anchored">
@@ -1065,6 +1052,16 @@ You can specify this test in jamovi from a check box in the 'Statistics' options
 </div>
 </div>
 </div>
+<p>要使用jamovi執行費雪精確檢定，只要從<code>Analysis</code>選單選擇<code>Frequencies</code>-<code>Independent Samples</code>開啟<code>Contingency Tables</code>設定視窗，其中<code>Statistics</code>的子選項有<code>Fisher's excat test</code>。已經載入<code>Salem</code>資料集的話，只要設定好變項，就能在報表看到費雪精確檢定的統計結果。因為這種檢定方法只有輸出p值，由於這個範例的p 值足夠小（p = .036），足以拒絕那些正在被火燒的c人，和還沒有被火燒的犯人一樣快樂的虛無假設。輸出結果如同 <a href="#fig-fig14-7">圖&nbsp;<span>10.7</span></a>。</p>
+<!---在這個例子中，我們使用了費雪精確檢定，該檢定使我們能夠在樣本量較小的情況下仍然對資料進行檢驗。通過這種方法，我們發現了正在燃燒的人和沒有燃燒的人之間的快樂程度存在顯著差異。--->
+
+<!--- In order to construct the test Fisher treats both the row and column totals $(R_1, R_2, C_1 \text{ and } C_2)$ as known, fixed quantities and then calculates the probability that we would have obtained the observed frequencies that we did $(O_{11}, O_{12}, O_{21} \text{ and } O_{22})$ given those totals. In the notation that we developed in @sec-Introduction-to-probability this is written:
+
+$$P(O_{11}, O_{12}, O_{21}, O_{22}  \text{ | } R_1, R_2, C_1, C_2)$$ and as you might imagine, it's a slightly tricky exercise to figure out what this probability is. But it turns out that this probability is described by a distribution known as the hypergeometric distribution. What we have to do to calculate our p-value is calculate the probability of observing this particular table or a table that is *"more extreme"*. [^10-categorical-data-analysis-17] Back in the 1920s, computing this sum was daunting even in the simplest of situations, but these days it's pretty easy as long as the tables aren't too big and the sample size isn't too large. The conceptually tricky issue is to figure out what it means to say that one contingency table is more "extreme" than another. The easiest solution is to say that the table with the lowest probability is the most extreme. This then gives us the p-value.
+
+[^10-categorical-data-analysis-17]: Not surprisingly, the Fisher exact test is motivated by Fisher's interpretation of a p-value, not Neyman's! See @sec-The-p-value-of-a-test.
+
+You can specify this test in jamovi from a check box in the 'Statistics' options of the 'Contingency Tables' analysis. When you do this with the data from the *salem.csv* file, the Fisher exact test statistic is shown in the results. The main thing we're interested in here is the p-value, which in this case is small enough (p = .036) to justify rejecting the null hypothesis that people on fire are just as happy as people not on fire. See @fig-fig14-7. --->
 </section>
 <section id="sec-The-McNemar-test" class="level2" data-number="10.7">
 <h2 data-number="10.7" class="anchored" data-anchor-id="sec-The-McNemar-test"><span class="header-section-number">10.7</span> 麥內瑪檢定</h2>
@@ -1125,7 +1122,7 @@ $$\chi^2=\frac{(|b-c|-0.5)^2}{b+c}$$ or, to revert to the notation that we used 
 $$\chi^2=\frac{(|O_{12}-O_{21}|-0.5)^2}{O_{12}+O_{21}}$$ and this statistic has a $\chi^2$ distribution (approximately) with df = 1. However, remember that just like the other $\chi^2$ tests it's only an approximation, so you need to have reasonably large expected cell counts for it to work. --->
 <section id="sec-doing-The-McNemar-test" class="level3" data-number="10.7.1">
 <h3 data-number="10.7.1" class="anchored" data-anchor-id="sec-doing-The-McNemar-test"><span class="header-section-number">10.7.1</span> 實作麥內瑪檢定</h3>
-<p>現在您已經了解麥內瑪檢驗的所有內容，讓我們實際運行一個。<em>agpp.csv</em> 文件包含了我之前討論過的原始資料。<em>agpp</em> 資料集包含三個變項，一個id變項標記資料集中的每個參與者（我們將在片刻之後看到這有什麼用），一個<strong>response_before</strong> 變項記錄了當他們第一次被問到這個問題時的答案，以及一個response_after變項顯示他們在第二次被問到同樣問題時給出的答案。注意每個參與者在這個資料集中只出現一次。在jamovi中，轉到 ‘Analyses’ - ‘Frequencies’ - ‘Contingency Tables’ - ‘Paired Samples’ 分析，並將<strong>response_before</strong> 放入 ‘Rows’ 框，將<strong>response_after</strong> 放入 ‘Columns’ 框。然後，您將在結果窗口中獲得一個列聯表，麥內瑪檢驗的統計資料就在它下面，參見 <a href="#fig-fig14-8">圖&nbsp;<span>10.8</span></a> 。</p>
+<p>了解麥內瑪檢定的計算原理，接著了解如何用jamovi實作。以上解說用的原始資料，都存在<em>agpp.csv</em>資料集，其中包含三個變項：<code>id</code>變項標記每位參與者，<code>response_before</code>記錄每位參與者第一次被問到問題的回答，另一個<code>response_after</code>記錄每位參與者第二次被問到同樣問題的回答。留意一下每位參與者在這項調查是被重覆測量的。 為了執行檢定，從jamovi模組選單選擇 ‘Analyses’ - ‘Frequencies’ - ‘Contingency Tables’ - ‘Paired Samples’，將<code>response_before</code>放入 ‘Rows’ 對話框，<code>response_after</code>放入 ‘Columns’ 對話框。結果視窗會出現如同 <a href="#fig-fig14-8">圖&nbsp;<span>10.8</span></a> 的列聯表，以及麥內瑪檢定統計結果。</p>
 
 <!--- Now that you know what the McNemar test is all about, lets actually run one. The *agpp.csv* file contains the raw data that I discussed previously. The *agpp* data set contains three variables, an id variable that labels each participant in the data set (we'll see why that's useful in a moment), a **response_before** variable that records the person's answer when they were asked the question the first time, and a response_after variable that shows the answer that they gave when asked the same question a second time. Notice that each participant appears only once in this data set. Go to the 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' analysis in jamovi, and move **response_before** into the 'Rows' box, and **response_after** into the 'Columns' box. You will then get a contingency table in the results window, with the statistic for the McNemar test just below it, see @fig-fig14-8. --->
 <div class="cell enlarge-image" data-layout-align="left">
@@ -1133,24 +1130,24 @@ $$\chi^2=\frac{(|O_{12}-O_{21}|-0.5)^2}{O_{12}+O_{21}}$$ and this statistic has 
 <div id="fig-fig14-8" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig10-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;10.8: jamovi中的麥內瑪檢驗輸出</figcaption>
+<figcaption class="figure-caption">圖&nbsp;10.8: jamovi中的麥內瑪檢定輸出結果</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>我們完成了。我們剛剛運行了一個麥內瑪檢驗，以確定人們在廣告後是否和廣告前一樣有可能投票支持AGPP。檢驗是顯著的（<span class="math inline">\(\chi^2(1)= 12.03, p&lt; .001\)</span>），表明他們並非如此。事實上，看起來廣告產生了負面影響：人們在看過廣告後，投票支持AGPP的可能性更低。考慮到典型政治廣告的質量，這是很合理的。</p>
+<p>我們剛剛完成了一個麥內瑪檢定，可以確定受訪者在看過廣告後，會不會如同未看廣告前一樣支持AGPP。檢定結果是顯著的（<span class="math inline">\(\chi^2(1)= 12.03, p&lt; .001\)</span>），表示受訪者的態度並非如調查者的預期。事實上，廣告宣傳似乎 產生了負面影響：看過廣告後，人們投票支持AGPP的意願可能更低。考慮一下典型政治宣傳廣告的製作水準，這種結果是很合理的。</p>
 <!--- And we're done. We've just run a McNemar's test to determine if people were just as likely to vote AGPP after the ads as they were before hand. The test was significant ($\chi^2(1)= 12.03, p< .001)$, suggesting that they were not. And, in fact it looks like the ads had a negative effect: people were less likely to vote AGPP after seeing the ads. Which makes a lot of sense when you consider the quality of a typical political advertisement. --->
 </section>
 <section id="sec-difference-McNemar-independence" class="level3" data-number="10.7.2">
-<h3 data-number="10.7.2" class="anchored" data-anchor-id="sec-difference-McNemar-independence"><span class="header-section-number">10.7.2</span> 與獨立性檢定有可分別?</h3>
-<p>讓我們回到本章的開頭，再次查看卡片資料集。如果您回憶一下，我描述的實際實驗設計涉及人們進行兩次選擇。因為我們有關於每個人第一次選擇和第二次選擇的信息，我們可以構建以下列聯表，用於將第一次選擇與第二次選擇交叉列聯（<a href="#tbl-tab14-13">表&nbsp;<span>10.13</span></a>）。</p>
+<h3 data-number="10.7.2" class="anchored" data-anchor-id="sec-difference-McNemar-independence"><span class="header-section-number">10.7.2</span> 與獨立性檢定的區別</h3>
+<p>最後，讓我們回顧本章一開始的撲克牌示範資料集。這個實驗的實驗設計是請參與者選擇兩次。因為有每位參與者第一次和第二次選擇的資料，可以拿來建立如同 <a href="#tbl-tab14-13">表&nbsp;<span>10.13</span></a> 的列聯表，呈現第一次選擇與第二次選擇交叉列聯次數。</p>
 
 <!--- Let's go all the way back to the beginning of the chapter and look at the cards data set again. If you recall, the actual experimental design that I described involved people making two choices. Because we have information about the first choice and the second choice that everyone made, we can construct the following contingency table that cross-tabulates the first choice against the second choice (@tbl-tab14-13). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="tbl-tab14-13" class="anchored">
 
-<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab14-13"><caption>表&nbsp;10.13:  <p>用<em>Randomness.omv</em>（卡片）資料交叉列聯第一次與第二次選擇</p> </caption>
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 90%; margin-left: auto; margin-right: auto;  " id="tab:tbl-tab14-13"><caption>表&nbsp;10.13:  <p>Randomness資料集交叉列聯第一次與第二次選擇次數</p> </caption>
 <colgroup><col><col><col><col></colgroup><tbody><tr>
 <th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 0pt; font-weight: bold;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Before: Yes</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 12pt 2pt 12pt; font-weight: bold;">Before: No</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 2pt 0pt 2pt 12pt; font-weight: bold;">Total</th></tr>
 <tr>
@@ -1164,9 +1161,9 @@ $$\chi^2=\frac{(|O_{12}-O_{21}|-0.5)^2}{O_{12}+O_{21}}$$ and this statistic has 
 </div>
 </div>
 </div>
-<p>假設我想知道第二次選擇是否取決於第一次選擇。這是獨立性檢驗有用的地方，我們試圖做的是看看這個表格的行和列之間是否存在某種關係。</p>
-<p>另外，假設我想知道平均而言，第二次選擇的花色頻率是否與第一次選擇不同。在這種情況下，我真正想做的是看看行總數是否不同於列總數。這就是您使用麥內瑪檢驗的時候。</p>
-<p>這些不同分析產生的不同統計資料顯示在 <a href="#fig-fig14-9">圖&nbsp;<span>10.9</span></a> 中。注意結果是不同的！這些檢驗並不相同。</p>
+<p>假如我們懷疑第二次選擇是否取決於第一次選擇，就能用獨立性檢定來分析，這裡的檢定目標是確認這份表格的行與列之間，是否存在某種關聯性。</p>
+<p>另外，假如想知道以平均來看，第二次選擇花色的次數是否與第一次的選擇不同？這裡的檢定目標是確認行的總次數是否不同於列的總次數。這裡就是麥內瑪檢定派上用場的時候。</p>
+<p>以上兩種問題的分析會產生不一樣的統計結果，兩種檢定結果匯整在 <a href="#fig-fig14-9">圖&nbsp;<span>10.9</span></a> 。請注意因為檢定的目標不一樣，分析結果是不同的！</p>
 
 <!--- Suppose I wanted to know whether the choice you make the second time is dependent on the choice you made the first time. This is where a test of independence is useful, and what we're trying to do is see if there's some relationship between the rows and columns of this table.
 
@@ -1250,8 +1247,8 @@ Tversky, A., &amp; Kahneman, D. (1974). Judgment under uncertainty: Heuristics a
 <li id="fn5"><p>如果將適合度統計值的方程式重寫為 k - 1 個獨立觀察值之和，就會得到“正確的”樣本分佈，也就是自由度為 k - 1 的卡方分佈。要談這麼多數學細節就超出了這本入門書的範圍，這裡只給初學的讀者一個適合度統計值與卡方分佈關聯密切的直觀。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>我必須強調，這是一種過度簡化的解釋。雖然這種解釋適用多數情況，但是偶爾會遇到自由度並非整數的狀況。為了不要讓讀者過於困擾，遇到這樣的狀況時，只要告訴自己“自由度”其實是一種有點混亂的數學概念，初學的讀者通常只會知道簡單的解釋而非完整的解釋。以入門課程來說，簡單的解釋通常是最好的學習材料，但讀者需要知道總有一天這樣的解釋無法幫助你更進一步的學習，如果沒有先做好心理準備，有天看到了 <span class="math inline">\(df = 3.4\)</span> 或類似的狀況就會感到困惑，以為你在這裡學到的是錯誤的觀念，其實是先不交待有些複雜的細節。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>其實樣本量並不是永遠固定的數值。例如，實驗可能是在固定時段裡執行，參與人數取決於實際會有多少人參加。這些因素對於目前的學習目標並不重要。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>如何報告統計結果的慣例因學科性質而異。因為這本書以心理學系學生為主要讀者，會採用心理學的寫作慣例。但是，向讀者提供足夠的訊息，讓他們可以檢核結果，是普遍的的一般原則。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>對某些人來說，這個建議可能聽起來有點奇怪，或者至少與編寫技術報告的常見建議互相衝突。許多學生們通常會被告知報告的“結果”部分，是用來描述資料並報告統計分析，“討論”部分才是提供解釋。在某種程度上這樣的建議並沒有錯，但是教學者經常會只照字面的意思教授。原作者的通常做法是在結果部分提供快速且簡單的解釋，以便讀者理解這份資料告訴我們什麼。然後，在討論部分再從更大的視野，講述這次研究的結果，如何調整現存科學文獻所構築的知識體系。簡單來說，不要讓“解釋屬於討論”這個建議，增加結果部分的閱讀難度，更重要是讓讀者明白作者要表達的意思。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>如何報告統計結果的規範因學科性質而異。因為這本書以心理學系學生為主要讀者，會採用心理學的寫作規範。但是，向讀者提供足夠的訊息，讓讀者能夠檢核結果，是不分學科的普遍原則。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>對某些人來說，這樣的建議可能聽起來有點奇怪，或者至少與研究報告的編寫建議有些衝突。許多學生通常會被告知報告的“結果”部分，是用來描述資料並報告統計分析，“討論”部分才是提供解釋。某種程度上這樣的建議並沒有錯，但是教學者經常會只照字面的意思教授。專業寫作者的通常做法是在結果部分提供快速簡單的解釋說明，以便讀者理解這份資料告訴我們什麼。然後，討論部分再從更大的視野，講述這次研究的結果，如何調整現存科學文獻所構築的知識體系。簡單來說，不要讓“解釋屬於討論”這個建議，增加結果部分的閱讀難度，更重要是讓讀者明白作者要表達的意思。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>如果讀者讀得很仔細，也是對數學表達要求嚴格的人，那麼這一節卡方檢定結果的寫作可能會讓你們有點困擾。讀者可能會覺得 “<span class="math inline">\(\chi^2(3) = 8.44\)</span>”這樣的寫法似乎有點不對勁。畢竟是說適合度檢定統計數等於8.44，所以是不是應該寫成 <span class="math inline">\(\chi^2 = 8.44\)</span> 或者 <span class="math inline">\(GOF = 8.44\)</span> 比較好？有的讀者可能認為這會讓人認為是錯字，因為<span class="math inline">\(\chi\)</span>和X長得非常像，有人會混淆表示取樣分佈（<span class="math inline">\(\chi^2\)</span>與df=3）與檢定統計量（<span class="math inline">\(\chi^2\)</span>）的符號。奇怪的是，多數專業讀者不這應認為。<span class="math inline">\(\chi^2\)</span>(3)= 8.44 其實是一種極度縮略的寫法，意思是“檢定統計數的取樣分佈為<span class="math inline">\(\chi^2\)</span>(3)，檢定統計數的值為8.44”。從某種意義來看，這種寫法有點愚蠢，許多統計檢定的統計值都會適配卡方取樣分佈。儘管適合度檢定很常見，最後得到的<span class="math inline">\(\chi^2\)</span>統計數只是眾多統計數的一種。在一個講究規則，依賴組織運作的世界，總會有為檢驗統計定和取樣分佈各取一個專有名詞的呼聲。有了專有名詞，報告裡的統計區塊就可以告訴讀者究竟算了什麼。雖然有部分統計數是可行的，像是Pearson適合度檢定使用的檢定統計值寫作<span class="math inline">\(\chi^2\)</span>，但是有一種與G-test<span class="math inline">\(^a\)</span> <span class="citation" data-cites="Sokal1994">(<a href="References.html#ref-Sokal1994" role="doc-biblioref">Sokal &amp; Rohlf, 1994</a>)</span>關係密切的檢定稱為G-test，其中檢定統計數寫作<span class="math inline">\(G\)</span>。事實上，Pearson適合度檢定和G-test都能檢定相同的虛無假設，取樣分佈也是自由為<span class="math inline">\(k-1\)</span>的卡方分佈。如果我對撲克牌資料進行G-test而不是適合度檢定，得到一個檢定統計數就是<span class="math inline">\(G = 8.65\)</span>，比起之前算出的<span class="math inline">\(\chi^2 = 8.44\)</span>稍微大一點，並且p值稍微小一點<span class="math inline">\(p = .034\)</span>。假設報告慣例是先寫檢定統計數，然後是取樣分佈，然後是p值。如此一來兩種檢定會寫成完全不同的統計區塊：卡方檢定的結果是<span class="math inline">\(\chi^2 = 8.44\)</span>，<span class="math inline">\(\chi^2(3)\)</span>，<span class="math inline">\(p = .038\)</span>，而G-test的版本是<span class="math inline">\(G = 8.65\)</span>，<span class="math inline">\(\chi^2(3)\)</span>，<span class="math inline">\(p = .034\)</span>。然而，根據縮略報告標準，卡方檢定的結果寫作<span class="math inline">\(\chi^2(3) = 8.44, p =.038\)</span>，G-test的結果寫作<span class="math inline">\(\chi^2(3) = 8.65, p = .034\)</span>，所以會搞不清楚研究者是執行了那種檢定方法。<br>那麼為何無法讓統計區塊清楚表示是執行那種檢定方法嗎？根本原因是宇宙的本質就是混沌。身為統計工具的我們當然希望有整齊有序的寫作規範，讓統計報告像工廠產品一樣被設計，但這不是宇宙的運作方式。統計是一門與其他學科一樣集合眾人智慧的領域，持續由許多學者以分散、協作又競爭的模式更新知識，所以沒有人能真正完全掌握統計的寫作規則。你我正在用的資料分析工具並不是來自一位統計之神的創造，而是很多學者的發明累積作。要經過發表在學術期刊，經過其他學者實做、糾正和修改，然後其他學者寫到教科書，才能向學生解釋。因此，有很多檢定統計數甚至沒有名字，只是被賦予與對應的取樣分佈相同的名字。稍後將看到許多這類例子，任何遵循<span class="math inline">\(\chi^2\)</span>分布的檢定統計數，通常被稱為“卡方統計數”，遵循<span class="math inline">\(t\)</span>分布的任何統計量被稱為“t統計數”。但是，如同<span class="math inline">\(\chi^2\)</span>與<span class="math inline">\(G\)</span>，即使統計數來自相同的取樣分佈，兩者仍然是不一樣的東西。所以有時候寫清楚實際執行的檢定方法是很好的主意，特別是使用一些不常見的統計方法。如果報告只寫“卡方檢定”，讀者會不清楚這是在談那種檢定。儘管如此，由於最常見的兩種卡方檢定是適合度檢定和獨立性檢定，大多數有學過統計的讀者可能都會猜到。儘管如此，這仍然是需要注意的事情。—<span class="math inline">\(^a\)</span> 讓統計報告寫作變得複雜的是，G-test是一種被稱為似然比檢定特別方法。由於這本書中沒有介紹LRT，無法深入介紹，但這是值得讀者好好了解的統計方法。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>技術說明。這個範例資料所設定的各列總次數是固定的（研究者手上只有87個機器人和93個人類的資料），各行總次數則是隨機的（碰巧有28個受測者選擇了小狗）。根據原作者主要引用的統計教科書所使用的專有名詞<span class="citation" data-cites="Hogg2005">(<a href="References.html#ref-Hogg2005" role="doc-biblioref">Hogg et al., 2005</a>)</span>，應該將適用這類問題的假設檢定方法稱為「卡方同質性檢定」(a chi-square test of homogeneity)，「卡方獨立性檢定」應該是指每行及每列的總次數都是隨機結果的研究問題。這本書之前的版本裡，都是區分這兩種檢定這樣做的。然而事實上，這兩種檢定的程序是相同的，所以這裡將兩種檢定方法視為一種。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>就嚴格的統計操作來說，<span class="math inline">\(E_{ij}\)</span> 是估計值，所以應該寫成 <span class="math inline">\(\hat{E_{ij}}\)</span>。但很少有統計教科書這樣寫，這裡也採用相同的寫法。 <span class="math display">\[\hat{E}_{ij}= \frac{R_i \times C_j}{N}\]</span><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1262,7 +1259,7 @@ Tversky, A., &amp; Kahneman, D. (1974). Judgment under uncertainty: Heuristics a
 <li id="fn15"><p><a href="https://www.jstor.org/stable/2983604">Yates (1934)</a> 提出了一個簡單的校正公式，將適合度統計值重新定義為：<span class="math display">\[\chi^{2}=\sum_{i}\frac{(|E_i-O_i|-0.5)^2}{E_i}\]</span> 基本上，他將所有公式裡的數值都減了 0.5。<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn16"><p><span class="math inline">\(\phi\)</span> 與 Cramér’s V的數學公式非常簡潔。要計算 <span class="math inline">\(\phi\)</span>，只需將的 <span class="math inline">\(\chi^2\)</span>統計值除以樣本大小，然後取平方根：<span class="math display">\[\phi=\sqrt{\frac{\chi^2}{N}}\]</span> <span class="math inline">\(\phi\)</span>的值域只在0（完全無關聯）和 1（完全關聯）之間，但是當列聯表規模大於 <span class="math inline">\(2 \times 2\)</span> ，就不適合用這個指標計算了。因為規模更大的列聯表，有可能會獲得大於1的數值，這是令人感到相當麻煩的。所以更多人喜歡使用 <span class="citation" data-cites="Cramer1946">Cramer (<a href="References.html#ref-Cramer1946" role="doc-biblioref">1946</a>)</span> 提出的<span class="math inline">\(V\)</span>來測量列聯表統計檢定的效量。調整方法非常簡單，如果有一個 r 行和 c 列的列聯表，那麼定義 <span class="math inline">\(k = min(r, c)\)</span> 取兩個值中較小的那個，放到計算 <span class="math inline">\(\phi\)</span>的公式裡就變成計算Cramér’s V的公式<span class="math display">\[V=\sqrt{\frac{\chi^2}{N(k-1)}}\]</span>讀者很容易就能算出兩種效果量測量值。這兩種效果量指標相當受歡迎，可能是因為容易計算，又不會讓人覺得有虛應故事的感覺。用了Cramér’s ，還能確認變項之間的相關程度確實在 0（完全無關聯）和 1（完全關聯）。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn17"><p>這個例子來自發表在<em>Journal of Irreproducible Results</em>的一則笑話。<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p>不必懷疑，費雪精確檢定是根據費雪對 p 值的解釋，而不是尼曼的！請參考 <a href="09-Hypothesis-testing.html#sec-The-p-value-of-a-test"><span>小單元&nbsp;9.5</span></a> 。<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>不必懷疑，費雪精確檢定是根據費雪一派對 p 值的解釋，不是尼曼派的！請參考 <a href="09-Hypothesis-testing.html#sec-The-p-value-of-a-test"><span>小單元&nbsp;9.5</span></a> 。<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn19"><p>譯註~這是原作者虛構的政黨，現實中無此政黨或團體。詳見<a href="https://en.wikipedia.org/w/index.php?title=List_of_political_parties_in_Australia&amp;oldid=1149812960">維基百科條目</a>。<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>

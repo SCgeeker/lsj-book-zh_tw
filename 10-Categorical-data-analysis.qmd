@@ -8,11 +8,11 @@ source("header.R")
 <!---
 
 > **譯者註** 20230417初步以ChatGPT-4完成翻譯，內容待編修。
---->
-
 > **譯者註** 20240210完成除了jamvoi實作，本單元各種檢定方法的原理及公式說明第一次校對。
 
 > [導讀簡報](slides10.html){target="_blank"}
+
+--->
 
 
 至此已經了解假設檢定的基本理論，是時候開始學習心理學研究常用的統計檢定方法。那麼應該從那種方法開始學習呢？並非所有教材作者都有共識，我(原作者)建議從“卡方檢定”（英文發音為“chi-square”[^10-categorical-data-analysis-1]）和“t 檢定”（@sec-Comparing-two-means）開始。這兩種方法在科學研究實務經常被使用，雖然解析資料的威力不如後面單元介紹“迴歸分析”和“變異數分析”強大，對初學者來說相對容易理解。
@@ -336,7 +336,7 @@ knitr::include_graphics("images/fig10-3.png")
 
 ### jamovi實作
 
-使用jamovi 的基本分析模組`Frequencies`，就能完成以上的演算，以下使用資料集*Randomness.omv*示範。首先從點選“Analysis"主選單的點選“Frequencies”套件，接著選擇“One Sample Proportion Tests”的“$N$ Outcomes”，開啟分析工具設定視窗。接著選擇要分析的依變項（`choice_1`），移動到Variable對話框，再來勾選"Expected counts"，完成報表設定，如同 @fig-fig14-4 的畫面右方報表呈現的分析結果。接著會看到報表呈現與前述的手動計算相同的預期計數和統計資料，$\chi^2 =  8.44$，自由度為 $3$，$p=0.038$。更重要的是，我們不需要查表找臨界值判斷 p 值，因為 jamovi 輸出的p 值是來自$\chi^2$自由度是$3$的機率分佈。
+使用jamovi 的基本分析模組`Frequencies`，就能完成以上的演算程序，以下使用資料集*Randomness.omv*示範。首先從“Analysis"主選單的點選“Frequencies”套件，接著選擇“One Sample Proportion Tests”的“$N$ Outcomes”，開啟分析工具設定視窗。接著選擇要分析的依變項（`choice_1`），移動到Variable對話框，再來勾選"Expected counts"，完成報表設定，如同 @fig-fig14-4 的畫面右方報表呈現的分析結果。接著會看到報表呈現與前述的手動計算相同的預期計數和統計資料，$\chi^2 =  8.44$，自由度為 $3$，$p=0.038$。更重要的是，我們不需要查表找臨界值才能判斷 p 值，因為 jamovi 輸出的p 值是來自$\chi^2$自由度是$3$的機率分佈。
 
 
 <!--- Not surprisingly, jamovi provides an analysis that will do these calculations for you. Let's use the *Randomness.omv* file. From the main 'Analyses' toolbar select 'Frequencies' - 'One Sample Proportion Tests' - '$N$ Outcomes'. Then in the analysis window that appears move the variable you want to analyse (choice 1 across into the 'Variable' box. Also, click on the 'Expected counts' check box so that these are shown on the results table. When you have done all this, you should see the analysis results in jamovi as in @fig-fig14-4. No surprise then that jamovi provides the same expected counts and statistics that we calculated by hand above, with a $\chi^2$ value of $(8.44$ with $3$ d.f. and $p=0.038$. Note that we don't need to look up a critical p-value threshold value any more, as jamovi gives us the actual p-value of the calculated $\chi^2$ for $3$ d.f. --->
@@ -357,7 +357,7 @@ knitr::include_graphics("images/fig10-4.png")
 
 ```{r}
 #| label: fig-fig14-5
-#| fig-cap: 根據虛無假設設定，更改單樣本比例檢定設定視窗的 $\\chi^2$ 預期比率。
+#| fig-cap: 根據虛無假設設定，更改單樣本比例檢定設定視窗的 $\chi^2$ 預期比率。
 #Changing the expected proportions in the $\\chi^2$ One Sample Proportion Test in jamovi
 knitr::include_graphics("images/fig10-5.png")
 ```
@@ -736,11 +736,20 @@ huxtabs[[10]][[10]]
 
 $$P(O_{11}, O_{12}, O_{21}, O_{22} \text{ | } R_1, R_2, C_1, C_2)$$
 
-大部分讀者要搞清楚這是什麼樣的機率分佈是有點困難的任務，實際地說，這個機率函數符合所謂的超幾何分佈(hypergeometric distribution)。要計算 p 值，首先要計算觀察到這個表格內的數值，或者一個數值更“極端”的表格之機率。[^10-categorical-data-analysis-17]在 20 世紀 20 年代，即使是狀況最單純的研究問題，要做到這樣的計算是相當令人害怕的工作，不過現在只要表格不是太大，樣本數不是太龐大，一般計算設備都能輕易處理。真正棘手的問題是，要弄清楚一個列聯表比另一個列聯表更“極端”，是怎樣的概念？最簡單的解決方案是，出現機率最低的表格是最極端的，我們只要知道這個表格的 p 值。
+對於大部分讀者來說，搞清楚這個函數代表的機率分佈是長什麼樣子，是有些困難的。用專業術語來表示的話，這個機率函數符合所謂的超幾何分佈(hypergeometric distribution)。要計算 p 值，首先要計算 @tbl-tab14-10 的數值，或者計算這份表格內的數值有多“極端”的機率。[^10-categorical-data-analysis-17]在 20 世紀 20 年代，即使是狀況最單純的研究問題，要處理這樣的計算是相當令人害怕的工作。還好到了今日，只要表格不是太大，樣本數不是太龐大，一般計算設備都能輕鬆處理。真正棘手的問題是，要弄清楚一個列聯表比另一個列聯表更“極端”，要怎麼呈現出來？最簡單的方法是，出現機率最低的表格是最極端的，我們只要知道這個表格的 p 值。
 
-[^10-categorical-data-analysis-17]: 不必懷疑，費雪精確檢定是根據費雪對 p 值的解釋，而不是尼曼的！請參考 @sec-The-p-value-of-a-test 。
+[^10-categorical-data-analysis-17]: 不必懷疑，費雪精確檢定是根據費雪一派對 p 值的解釋，不是尼曼派的！請參考 @sec-The-p-value-of-a-test 。
 
-從 jamovi `Analysis`界面開啟`Frequencies`-`Independent Samples`開啟`Contingency Tables`設定視窗，其中`Statistics`子選項裡有`Fisher's excat test`。若是已經載入`Salem`資料並設定好變項，就能在報表看到費雪精確檢定的統計結果。因為這種檢定方法只有輸出p值，由於這個範例的p 值足夠小（p = .036），足以拒絕那些正在被處刑的人和還沒有被處刑的人一樣快樂的虛無假設。輸出結果請參考 @fig-fig14-7。
+
+```{r}
+#| label: fig-fig14-7
+#| out.width: 60%
+#| fig-cap: jamovi 費雪精確檢定分析結果
+#Fisher exact test analysis in jamovi
+knitr::include_graphics("images/fig10-7.png")
+```
+
+要使用jamovi執行費雪精確檢定，只要從`Analysis`選單選擇`Frequencies`-`Independent Samples`開啟`Contingency Tables`設定視窗，其中`Statistics`的子選項有`Fisher's excat test`。已經載入`Salem`資料集的話，只要設定好變項，就能在報表看到費雪精確檢定的統計結果。因為這種檢定方法只有輸出p值，由於這個範例的p 值足夠小（p = .036），足以拒絕那些正在被火燒的c人，和還沒有被火燒的犯人一樣快樂的虛無假設。輸出結果如同 @fig-fig14-7。
 
 <!---在這個例子中，我們使用了費雪精確檢定，該檢定使我們能夠在樣本量較小的情況下仍然對資料進行檢驗。通過這種方法，我們發現了正在燃燒的人和沒有燃燒的人之間的快樂程度存在顯著差異。--->
 
@@ -751,14 +760,6 @@ $$P(O_{11}, O_{12}, O_{21}, O_{22}  \text{ | } R_1, R_2, C_1, C_2)$$ and as you 
 [^10-categorical-data-analysis-17]: Not surprisingly, the Fisher exact test is motivated by Fisher's interpretation of a p-value, not Neyman's! See @sec-The-p-value-of-a-test.
 
 You can specify this test in jamovi from a check box in the 'Statistics' options of the 'Contingency Tables' analysis. When you do this with the data from the *salem.csv* file, the Fisher exact test statistic is shown in the results. The main thing we're interested in here is the p-value, which in this case is small enough (p = .036) to justify rejecting the null hypothesis that people on fire are just as happy as people not on fire. See @fig-fig14-7. --->
-
-```{r}
-#| label: fig-fig14-7
-#| out.width: 60%
-#| fig-cap: jamovi 費雪精確檢定分析結果
-#Fisher exact test analysis in jamovi
-knitr::include_graphics("images/fig10-7.png")
-```
 
 ## 麥內瑪檢定 {#sec-The-McNemar-test}
 
@@ -809,27 +810,29 @@ $$\chi^2=\frac{(|b-c|-0.5)^2}{b+c}$$ or, to revert to the notation that we used 
 
 $$\chi^2=\frac{(|O_{12}-O_{21}|-0.5)^2}{O_{12}+O_{21}}$$ and this statistic has a $\chi^2$ distribution (approximately) with df = 1. However, remember that just like the other $\chi^2$ tests it's only an approximation, so you need to have reasonably large expected cell counts for it to work. --->
 
+
 ### 實作麥內瑪檢定 {#sec-doing-The-McNemar-test}
 
-現在您已經了解麥內瑪檢驗的所有內容，讓我們實際運行一個。*agpp.csv* 文件包含了我之前討論過的原始資料。*agpp* 資料集包含三個變項，一個id變項標記資料集中的每個參與者（我們將在片刻之後看到這有什麼用），一個**response_before** 變項記錄了當他們第一次被問到這個問題時的答案，以及一個response_after變項顯示他們在第二次被問到同樣問題時給出的答案。注意每個參與者在這個資料集中只出現一次。在jamovi中，轉到 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' 分析，並將**response_before** 放入 'Rows' 框，將**response_after** 放入 'Columns' 框。然後，您將在結果窗口中獲得一個列聯表，麥內瑪檢驗的統計資料就在它下面，參見 @fig-fig14-8 。
+了解麥內瑪檢定的計算原理，接著了解如何用jamovi實作。以上解說用的原始資料，都存在*agpp.csv*資料集，其中包含三個變項：`id`變項標記每位參與者，`response_before`記錄每位參與者第一次被問到問題的回答，另一個`response_after`記錄每位參與者第二次被問到同樣問題的回答。留意一下每位參與者在這項調查是被重覆測量的。
+為了執行檢定，從jamovi模組選單選擇 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples'，將`response_before`放入 'Rows' 對話框，`response_after`放入 'Columns' 對話框。結果視窗會出現如同 @fig-fig14-8 的列聯表，以及麥內瑪檢定統計結果。
 
 <!--- Now that you know what the McNemar test is all about, lets actually run one. The *agpp.csv* file contains the raw data that I discussed previously. The *agpp* data set contains three variables, an id variable that labels each participant in the data set (we'll see why that's useful in a moment), a **response_before** variable that records the person's answer when they were asked the question the first time, and a response_after variable that shows the answer that they gave when asked the same question a second time. Notice that each participant appears only once in this data set. Go to the 'Analyses' - 'Frequencies' - 'Contingency Tables' - 'Paired Samples' analysis in jamovi, and move **response_before** into the 'Rows' box, and **response_after** into the 'Columns' box. You will then get a contingency table in the results window, with the statistic for the McNemar test just below it, see @fig-fig14-8. --->
 
 ```{r}
 #| label: fig-fig14-8
 #| classes: .enlarge-image
-#| fig-cap: jamovi中的麥內瑪檢驗輸出
+#| fig-cap: jamovi中的麥內瑪檢定輸出結果
 #McNemar test output in jamovi
 knitr::include_graphics("images/fig10-8.png")
 ```
 
-我們完成了。我們剛剛運行了一個麥內瑪檢驗，以確定人們在廣告後是否和廣告前一樣有可能投票支持AGPP。檢驗是顯著的（$\chi^2(1)= 12.03, p< .001$），表明他們並非如此。事實上，看起來廣告產生了負面影響：人們在看過廣告後，投票支持AGPP的可能性更低。考慮到典型政治廣告的質量，這是很合理的。
+我們剛剛完成了一個麥內瑪檢定，可以確定受訪者在看過廣告後，會不會如同未看廣告前一樣支持AGPP。檢定結果是顯著的（$\chi^2(1)= 12.03, p< .001$），表示受訪者的態度並非如調查者的預期。事實上，廣告宣傳似乎 產生了負面影響：看過廣告後，人們投票支持AGPP的意願可能更低。考慮一下典型政治宣傳廣告的製作水準，這種結果是很合理的。
 
 <!--- And we're done. We've just run a McNemar's test to determine if people were just as likely to vote AGPP after the ads as they were before hand. The test was significant ($\chi^2(1)= 12.03, p< .001)$, suggesting that they were not. And, in fact it looks like the ads had a negative effect: people were less likely to vote AGPP after seeing the ads. Which makes a lot of sense when you consider the quality of a typical political advertisement. --->
 
 ### 與獨立性檢定的區別 {#sec-difference-McNemar-independence}
 
-我們再回到本章的開頭，再看一次撲克牌示範資料集。回憶一下細節，這個實驗的實驗設計是請參與者選擇兩次。因為有每位參與者第一次和第二次選擇的資料，可以拿來建立 @tbl-tab14-13 的列聯表，呈現第一次選擇與第二次選擇交叉列聯次數。
+最後，讓我們回顧本章一開始的撲克牌示範資料集。這個實驗的實驗設計是請參與者選擇兩次。因為有每位參與者第一次和第二次選擇的資料，可以拿來建立如同 @tbl-tab14-13 的列聯表，呈現第一次選擇與第二次選擇交叉列聯次數。
 
 
 <!--- Let's go all the way back to the beginning of the chapter and look at the cards data set again. If you recall, the actual experimental design that I described involved people making two choices. Because we have information about the first choice and the second choice that everyone made, we can construct the following contingency table that cross-tabulates the first choice against the second choice (@tbl-tab14-13). --->
@@ -841,11 +844,11 @@ knitr::include_graphics("images/fig10-8.png")
 huxtabs[[10]][[13]]
 ```
 
-假如想知道第二次選擇是否取決於第一次選擇，我們能用獨立性檢定來分析，這裡要做的是看看這個表格的行和列之間是否存在某種關聯性。
+假如我們懷疑第二次選擇是否取決於第一次選擇，就能用獨立性檢定來分析，這裡的檢定目標是確認這份表格的行與列之間，是否存在某種關聯性。
 
-另外，假如想知道平均而言，第二次選擇花色的次數是否與第一次的不同。這裡要做的是看看行總數是否不同於列總數。這就是麥內瑪檢定派上用場的時候。
+另外，假如想知道以平均來看，第二次選擇花色的次數是否與第一次的選擇不同？這裡的檢定目標是確認行的總次數是否不同於列的總次數。這裡就是麥內瑪檢定派上用場的時候。
 
-以上問題的分析會產生不同的統計結果，結果總結在 @fig-fig14-9 。請注意因為檢定的目標不一樣，分析結果是不同的！
+以上兩種問題的分析會產生不一樣的統計結果，兩種檢定結果匯整在 @fig-fig14-9 。請注意因為檢定的目標不一樣，分析結果是不同的！
 
 <!--- Suppose I wanted to know whether the choice you make the second time is dependent on the choice you made the first time. This is where a test of independence is useful, and what we're trying to do is see if there's some relationship between the rows and columns of this table.
 

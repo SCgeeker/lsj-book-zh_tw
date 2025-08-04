@@ -401,7 +401,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#sec-oneway-repeated-measure" id="toc-sec-oneway-repeated-measure" class="nav-link" data-scroll-target="#sec-oneway-repeated-measure"><span class="header-section-number">13.7</span> 單因子重覆量數變異數分析</a>
   <ul class="collapse">
-  <li><a href="#jamovi的重覆量數變異數分析" id="toc-jamovi的重覆量數變異數分析" class="nav-link" data-scroll-target="#jamovi的重覆量數變異數分析"><span class="header-section-number">13.7.1</span> jamovi的重覆量數變異數分析</a></li>
+  <li><a href="#重覆量數變異數分析的jamovi實作" id="toc-重覆量數變異數分析的jamovi實作" class="nav-link" data-scroll-target="#重覆量數變異數分析的jamovi實作"><span class="header-section-number">13.7.1</span> 重覆量數變異數分析的jamovi實作</a></li>
   </ul></li>
   <li><a href="#friedman無母數重覆量數變異數分析" id="toc-friedman無母數重覆量數變異數分析" class="nav-link" data-scroll-target="#friedman無母數重覆量數變異數分析"><span class="header-section-number">13.8</span> Friedman無母數重覆量數變異數分析</a></li>
   <li><a href="#sec-On-the-relationship-between-ANOVA-and-the-Student-t-test" id="toc-sec-On-the-relationship-between-ANOVA-and-the-Student-t-test" class="nav-link" data-scroll-target="#sec-On-the-relationship-between-ANOVA-and-the-Student-t-test"><span class="header-section-number">13.9</span> 變異數分析與t檢定的關係</a></li>
@@ -954,10 +954,9 @@ When we characterise the null hypothesis in terms of these three distinct propos
 </div>
 </div>
 <p>既然已經拒絕虛無假設，第一種分析結果已經出局。接著就要問，其餘七種可能的分析結果，那一個才是<em>正確的</em>結論？面對這樣的局面，最後再看一次描述統計報告，像是 <a href="#fig-fig12-1">圖&nbsp;<span>13.1</span></a> 的統計圖，我們可以看到 Joyzepam 比安慰劑和 Anxifree好，但是Anxifree 和安慰劑的效果沒有差別是最有可能的結論。不過，若是要提出精確的報告，就需要做進一步的檢定。</p>
-<!--- By rejecting the null hypothesis, we've decided that we don't believe that #1 is the true state of the world. The next question to ask is, which of the other seven possibilities *do* we think is right? When faced with this situation, its usually helps to look at the data. For instance, if we look at the plots in @fig-fig12-1, it's tempting to conclude that Joyzepam is better than the placebo and better than Anxifree, but there's no real difference between Anxifree and the placebo. However, if we want to get a clearer answer about this, it might help to run some tests. --->
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本節其餘內容有部分為AI初翻，請謹慎使用。</p>
-</blockquote>
+<!--- By rejecting the null hypothesis, we've decided that we don't believe that #1 is the true state of the world. The next question to ask is, which of the other seven possibilities *do* we think is right? When faced with this situation, its usually helps to look at the data. For instance, if we look at the plots in @fig-fig12-1, it's tempting to conclude that Joyzepam is better than the placebo and better than Anxifree, but there's no real difference between Anxifree and the placebo. However, if we want to get a clearer answer about this, it might help to run some tests. 
+> **譯者註** 本節其餘內容有部分為AI初翻，請謹慎使用。
+--->
 <section id="成對t檢定" class="level3" data-number="13.5.1">
 <h3 data-number="13.5.1" class="anchored" data-anchor-id="成對t檢定"><span class="header-section-number">13.5.1</span> 成對t檢定</h3>
 <p>我們要如何進行多重檢定？這裡要比較三對分組平均值：安慰劑 vs.&nbsp;Anxifree，安慰劑 vs.&nbsp;Joyzepam，和 Anxifree vs.&nbsp;Joyzepam，最簡單的方法是執行三次獨立樣本t檢定，逐一確認檢定結果。用 jamovi 很容易做到。打開 ANOVA 設定視窗的 ‘Post Hoc Tests’(事後檢驗)選項，將 ‘drug’(藥物)變項移到右側的活動框中，然後勾選 ‘No correction’(無校正)核取方塊。就會產生一張整齊的表格，顯示藥物變項的三對比較 t 檢定結果，如同 <a href="#fig-fig12-4">圖&nbsp;<span>13.4</span></a> 的展示。</p>
@@ -1065,11 +1064,11 @@ Although it's a little harder to calculate, the Holm correction has some very ni
 </section>
 <section id="事後檢定的報告格式" class="level3" data-number="13.5.5">
 <h3 data-number="13.5.5" class="anchored" data-anchor-id="事後檢定的報告格式"><span class="header-section-number">13.5.5</span> 事後檢定的報告格式</h3>
-<p>完成事後比較，確定是那幾組有真正的顯著差異之後，我們可以寫正式報告：</p>
+<p>根據事後比較，確定是那幾組有真正的顯著差異，我們可以來寫正式報告：</p>
 <blockquote class="blockquote">
 <p><em>以Holm校正調整後 p 值的事後檢定顯示，與 Anxifree（p = .001）和安慰劑（<span class="math inline">\(（p = 9.0 \times{10^{-5}}\)</span>）相比，Joyzepam 有更顯著的情緒改善效果。此次研究沒有發現 Anxifree 的效果比安慰劑好的證據（<span class="math inline">\(p = .15\)</span>）。</em></p>
 </blockquote>
-<p>若是不想報告精確的 p 值，可以將其中的數值改為 <span class="math inline">\(p &lt; .01\)</span>、<span class="math inline">\(p &lt; .001\)</span> 和 <span class="math inline">\(p &gt; .05\)</span>。無論哪種表達方式，關鍵是要說明p 值有用Holm校正調整 。當然，這段報告之外的其他部分，應該要包括組平均值和標準差的描述統計資訊，因為這些 p 值並不是什麼充分的資訊。</p>
+<p>若是不想報告精確的 p 值，可以將數值改為 <span class="math inline">\(p &lt; .01\)</span>、<span class="math inline">\(p &lt; .001\)</span> 和 <span class="math inline">\(p &gt; .05\)</span>。無論哪種表達方式，關鍵是要說明p 值是用Holm校正調整 。當然，這段報告之外的其他部分，應該要包括組平均值和標準差的描述統計資訊，因為 p 值並不是什麼充分的資訊。</p>
 <!---
 Finally, having run the post hoc analysis to determine which groups are significantly different to one another, you might write up the result like this:
 
@@ -1252,7 +1251,7 @@ And so jamovi uses a tie-correction factor to calculate the tie-corrected Kruska
 </section>
 <section id="sec-oneway-repeated-measure" class="level2" data-number="13.7">
 <h2 data-number="13.7" class="anchored" data-anchor-id="sec-oneway-repeated-measure"><span class="header-section-number">13.7</span> 單因子重覆量數變異數分析</h2>
-<p>單因子重覆量數變數分析檢驗是一種用於每位參與者有參與三種以上實驗條件，或者各組的參與者有密切匹配條件，也有三個以上組平均差異要比較的狀況。所以各實驗條件應該有數量相等的觀察值。搭配這種研究設計的分析也可叫做「相依樣本變異數分析」或「參與者內變異數分析」。</p>
+<p>單因子重覆量數變數分析是一種用於每位參與者有參與三種以上實驗條件，或者各組參與者有密切相依的測量條件，有三個以上組平均差異要比較的狀況。所以各實驗條件應該有數量相等的觀察值。搭配這種研究設計的分析也可叫做「相依樣本變異數分析」或「參與者內變異數分析」。</p>
 <p>重覆量數變數分析的運算原理與獨立樣本ANOVA非常像，後者有時也叫做「參與者間變異數分析」。之前討論參與者間變異數分析時提到組間離均差平方和（<span class="math inline">\(SS_b\)</span>），以及組內離均差平方和（<span class="math inline">\(SS_w\)</span>），各自除以對應的自由度就會得到<span class="math inline">\(MS_b\)</span>和<span class="math inline">\(MS_w\)</span>，如同 <a href="#tbl-tab12-1">表&nbsp;<span>13.1</span></a> 。F統計值的計算公式是：</p>
 <p><span class="math display">\[F=\frac{MS_b}{MS_w}\]</span></p>
 <p>重覆量數變異數分析的F統計值的計算方法也是差不多，只是<span class="math inline">\(SS_w\)</span>要再分成兩部分，不像獨立樣本ANOVA直接用<span class="math inline">\(SS_w\)</span>做為<span class="math inline">\(MS_w\)</span>的分母。因為每一組的參與者都是同樣的人，可以從組內離均差平方和移出參與者間個別差異<span class="math inline">\(SS_{subjects}\)</span>。在此不深談如何移出的細節，只要想像每位參與者都是名為「參與者」這個變項的其中一個變項水準。只要將<span class="math inline">\(SS_w\)</span>減掉<span class="math inline">\(SS_{subjects}\)</span>，就能得到一個較小的<span class="math inline">\(SS_{error}\)</span>：</p>
@@ -1270,12 +1269,9 @@ $$\text{Independent ANOVA: } SS_{error} = SS_w$$ $$\text{Repeated Measures ANOVA
 This change in $SS_{error}$ term often leads to a more powerful statistical test, but this does depend on whether the reduction in the $SS_{error}$ more than compensates for the reduction in degrees of freedom for the error term (as degrees of freedom go from $(n - k)$ [^13-comparing-several-means-one-way-anova-17] to $(n - 1)(k - 1)$ (remembering that there are more subjects in the independent ANOVA design).
 
 [^13-comparing-several-means-one-way-anova-17]: (n - k) : (number of subjects - number of groups) --->
-<section id="jamovi的重覆量數變異數分析" class="level3" data-number="13.7.1">
-<h3 data-number="13.7.1" class="anchored" data-anchor-id="jamovi的重覆量數變異數分析"><span class="header-section-number">13.7.1</span> jamovi的重覆量數變異數分析</h3>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元部份內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>此處以來自 <span class="citation" data-cites="Geschwind1972">Geschwind (<a href="References.html#ref-Geschwind1972" role="doc-biblioref">1972</a>)</span> 的研究資料做示範。這個研究的對象是中風後出現語言缺陷的患者，研究者想了解導致語言缺陷的大腦損傷區域，找來六位確診Broca失語者的患者，研究資料如 <a href="#tbl-tab12-12">表&nbsp;<span>13.12</span></a> 。</p>
+<section id="重覆量數變異數分析的jamovi實作" class="level3" data-number="13.7.1">
+<h3 data-number="13.7.1" class="anchored" data-anchor-id="重覆量數變異數分析的jamovi實作"><span class="header-section-number">13.7.1</span> 重覆量數變異數分析的jamovi實作</h3>
+<p>這裡用 <span class="citation" data-cites="Geschwind1972">Geschwind (<a href="References.html#ref-Geschwind1972" role="doc-biblioref">1972</a>)</span> 的研究資料做示範。這個研究的對象是中風後出現語言缺陷的患者，研究者想了解導致語言缺陷的大腦損傷區域，找來六位確診Broca失語者的患者，研究資料列在 <a href="#tbl-tab12-12">表&nbsp;<span>13.12</span></a> 。</p>
 <!--- First, we need some data. @Geschwind1972 has suggested that the exact nature of a patient's language deficit following a stroke can be used to diagnose the specific region of the brain that has been damaged. A researcher is concerned with identifying the specific communication difficulties experienced by six patients suffering from Broca's Aphasia (a language deficit commonly experienced following a stroke) (@tbl-tab12-12). --->
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
@@ -1301,8 +1297,8 @@ This change in $SS_{error}$ term often leads to a more powerful statistical test
 </div>
 </div>
 </div>
-<p>患者需要完成三個單詞識別任務。在第一個（言語生成）任務中，患者需要重複研究者大聲朗讀的單詞。在第二個（概念性）任務中，旨在測試單詞理解能力，患者需要將一系列圖片與其正確名稱匹配。在第三個（語法）任務中，旨在測試正確單詞順序的知識，要求患者對語法不正確的句子進行重新排序。每位患者都完成了所有三個任務。患者嘗試任務的順序在參與者之間進行了平衡。每個任務包括一系列10次嘗試。每位患者成功完成的嘗試次數如 <a href="#tbl-tab12-11">表&nbsp;<span>13.11</span></a> 所示。將這些數據輸入jamovi以進行分析（或者使用捷徑加載<em>broca.csv</em>文件）。</p>
-<p>要在jamovi中執行一個單因素相關ANOVA，打開一個單因素重覆量數變數分析對話框，如 <a href="#fig-fig12-9">圖&nbsp;<span>13.9</span></a> 中所示，通過ANOVA - Repeated Measures ANOVA進行。</p>
+<p>患者需要完成三項語言能力檢核任務。在第一項言語生成任務，患者需要重複朗讀研究者給他的單詞。第二項概念理解任務要測試理解意義的能力，患者需要將一系列圖片與正確名稱配對。第三項句子修正任務測試文法知識，患者要對語法不正確的句子重新排列字詞順序。每位患者都完成了所有任務，各項任務的順序在參與者之間進行平衡隨機。每個任務有10次嘗試。每位患者成功完成的嘗試次數列在 <a href="#tbl-tab12-11">表&nbsp;<span>13.11</span></a> 。我們將這些資料輸入jamovi進行分析（或者載入<em>Broca.csv</em>資料檔）。</p>
+<p>要用jamovi執行單因子重覆量數ANOVA，只要點選ANOVA - Repeated Measures ANOVA，就能打開如 <a href="#fig-fig12-9">圖&nbsp;<span>13.9</span></a> 的分析設定視窗。</p>
 <!--- The patients were required to complete three word recognition tasks. On the first (speech production) task, patients were required to repeat single words read out aloud by the researcher. On the second (conceptual) task, designed to test word comprehension, patients were required to match a series of pictures with their correct name. On the third (syntax) task, designed to test knowledge of correct word order, patients were asked to reorder syntactically incorrect sentences. Each patient completed all three tasks. The order in which patients attempted the tasks was counterbalanced between participants. Each task consisted of a series of 10 attempts. The number of attempts successfully completed by each patient are shown in @tbl-tab12-11. Enter these data into jamovi ready for analysis (or take a short-cut and load up the *broca.csv* file).
 
 To perform a one-way related ANOVA in jamovi, open the one-way repeated measures ANOVA dialogue box, as in @fig-fig12-9, via ANOVA - Repeated Measures ANOVA. --->
@@ -1311,19 +1307,19 @@ To perform a one-way related ANOVA in jamovi, open the one-way repeated measures
 <div id="fig-fig12-9" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig13-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;13.9: jamovi中的重覆量數變數分析對話框</figcaption>
+<figcaption class="figure-caption">圖&nbsp;13.9: jamovi的重覆量數變數分析設定視窗</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>然後：</p>
+<p>然後進行以下設定：</p>
 <ul>
-<li>輸入一個重複測量因子名稱。這應該是您選擇的標籤，用於描述所有參與者重複的條件。例如，要描述所有參與者完成的語音、概念和語法任務，一個合適的標籤是“任務”。請注意，這個新的因子名稱代表了分析中的自變項。</li>
-<li>在重複測量因子文本框中添加第三個級別，因為有三個級別代表三個任務：語音、概念和語法。相應地更改級別的標籤。</li>
-<li>然後將每個級別變項移動到重複測量單元文本框中。</li>
-<li>最後，在“假設檢查”選項下，選中“球形性檢查”文本框。</li>
+<li>更改重複測量的獨變項名稱(RM Factor 1)。獨變項是涵括您所選擇的資料變項標籤，用於描述所有參與者被重複測量的條件。例如，要描述所有參與者完成的言語、概念和語法任務，一個合適的名稱是“任務”(Task)。請注意，這個新的名稱代表變異數分析的獨變項。</li>
+<li>在重複測量因子對話框(Repeated Measures Factors)裡填入三個級別名稱，因為三個級別分別代表三個任務：言語、概念和語法。有需要的話可再更改級別的名稱。</li>
+<li>然後將代表每個級別的資料變項，移動到重複測量因子欄位框(Repated Measures Cells)。</li>
+<li>最後，在“適用條件檢核”(Assumptions Check)選項裡，勾選“球形性檢查”(Sphericity Test)。</li>
 </ul>
-<p>jamovi輸出一個單因素重覆量數變數分析，如 <a href="#fig-fig12-10">圖&nbsp;<span>13.10</span></a> 至 <a href="#fig-fig12-13">圖&nbsp;<span>13.13</span></a> 所示。我們應該首先查看的是Mauchly球形性檢驗，該檢驗測試各條件之間的差異方差是否相等（意味著研究條件之間的差異得分的分佈大致相同）。在 <a href="#fig-fig12-10">圖&nbsp;<span>13.10</span></a> 中，Mauchly檢驗的顯著性水平為<span class="math inline">\(p = .720\)</span>。如果Mauchly檢驗的結果不顯著（即p &gt; .05，正如此分析中的情況），那麼我們有理由得出差異的方差並無顯著差異（即它們大致相等，可以假定球形性。）。</p>
+<p>jamovi報表區接著輸出如 <a href="#fig-fig12-10">圖&nbsp;<span>13.10</span></a> 至 <a href="#fig-fig12-13">圖&nbsp;<span>13.13</span></a> 的單因子重覆量數變數分析報表。建議各位先查看有沒有符合Mauchly球形檢定( <a href="#fig-fig12-10">圖&nbsp;<span>13.10</span></a> )，這是檢核各條件之間的變異是否相等(也就是研究條件之間的得分差異值分佈大致相同)。 <a href="#fig-fig12-10">圖&nbsp;<span>13.10</span></a> 顯示Mauchly檢定的<span class="math inline">\(p = .720\)</span>，根據一般的顯著水準（p &gt; .05），我們有理由相信各測量條件之間的差異值分佈無顯著差異，符合球性分佈的適用條件。</p>
 
 <!--- Then:
 
@@ -1343,12 +1339,12 @@ jamovi output for a one-way repeated measures ANOVA is produced as shown in @fig
 </div>
 </div>
 </div>
-<p>如果另一方面，Mauchly檢驗顯著（p &lt; .05），那麼我們將得出差異方差之間存在顯著差異，並且未滿足球形性要求。在這種情況下，我們應該對單因素相關ANOVA分析中獲得的F值進行修正：</p>
+<p>另一方面，如果Mauchly檢定結果是顯著的話（p &lt; .05），表示各測量條件之間的差異值分佈有顯著差異，不符合球性分佈的適用條件。這麼一來，我們必須校正單因子重覆量數變異數分析的F值：</p>
 <ul>
-<li>如果”球形性檢驗”表中的Greenhouse-Geisser值&gt; .75，那麼您應該使用Huynh-Feldt修正</li>
-<li>但如果Greenhouse-Geisser值&lt; .75，那麼您應該使用Greenhouse-Geisser修正。</li>
+<li>如果”球形檢定”輸出的Greenhouse-Geisser值大於 .75，應該使用Huynh-Feldt法校正。</li>
+<li>如果輸出的Greenhouse-Geisser值小於.75，應該使用Greenhouse-Geisser法校正。</li>
 </ul>
-<p>這兩個修正過的F值都可以在“假設檢查”選項下的球形性修正復選框中指定，修正過的F值將顯示在結果表中，如 <a href="#fig-fig12-11">圖&nbsp;<span>13.11</span></a> 所示。</p>
+<p>這兩個校正的F值都可以透過“適用條件檢核”選單的球形修正選項指定，修正過的F值將顯示在變異數分析結果表，如同 <a href="#fig-fig12-11">圖&nbsp;<span>13.11</span></a> 顯示。</p>
 
 <!--- If, on the other hand, Mauchly's test had been significant (p < .05) then we would conclude that there are significant differences between the variance of the differences, and the requirement of sphericity has not been met. In this case, we should apply a correction to the F-value obtained in the one-way related ANOVA analysis:
 
@@ -1361,13 +1357,13 @@ Both these corrected F-values can be specified in the Sphericity Corrections che
 <div id="fig-fig12-11" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig13-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;13.11: 單因素重覆量數變數分析輸出 - 內部受試者效應檢驗</figcaption>
+<figcaption class="figure-caption">圖&nbsp;13.11: 單因子重覆量數變數分析報表 - 檢定參與者內主要效果</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>在我們的分析中，我們發現Mauchly的球形性檢驗的顯著性為p = .720（即p &gt; 0.05）。因此，這意味著我們可以假設已滿足球形性要求，因此無需對F值進行修正。因此，我們可以使用’無’球形性修正輸出值用於重複測量”任務”：<span class="math inline">\(F = 6.93\)</span>，<span class="math inline">\(df = 2\)</span>，<span class="math inline">\(p = .013\)</span>，我們可以得出結論，語言任務中成功完成的測試次數確實會根據任務是語音、理解還是語法為基礎而顯著不同（<span class="math inline">\(F(2, 10) = 6.93\)</span>，<span class="math inline">\(p = .013\)</span>）。</p>
-<p>在jamovi中，與獨立ANOVA相同，也可以為重覆量數變數分析指定事後檢驗。結果顯示在 <a href="#fig-fig12-12">圖&nbsp;<span>13.12</span></a> 。這些表明語音和語法之間存在顯著差異，但其他級別之間沒有差異。</p>
+<p>從這次範例資料的分析，我們發現Mauchly的球形檢定並不顯著(p = .720，即p &gt; 0.05)。因此，這表示我們可以接受已滿足資料差異的分佈符合球形假設，不需要校正F值進行。報告可以用原始F值說明”任務”的主要效果之統計資訊：<span class="math inline">\(F = 6.93\)</span>，<span class="math inline">\(df = 2\)</span>，<span class="math inline">\(p = .013\)</span>，所以三種任務正確率的差異，確實是因為各種任務的測試目標所造成的（<span class="math inline">\(F(2, 10) = 6.93\)</span>，<span class="math inline">\(p = .013\)</span>）。</p>
+<p>與獨立樣本變異數分析一樣，jamovi也可以執行重覆量數變數分析的事後檢定。示範結果如同 <a href="#fig-fig12-12">圖&nbsp;<span>13.12</span></a> 。這顯示言語任務與語任務的正確率有顯著差異，但是其他各項任務之間的正確率沒有顯著差異。</p>
 <!--- In our analysis, we saw that the significance of Mauchly's Test of Sphericity was p = .720 (i.e. p > 0.05). So, this means we can assume that the requirement of sphericity has been met so no correction to the F-value is needed. Therefore, we can use the 'None' Sphericity Correction output values for the repeated measure 'Task': $F = 6.93$, $df = 2$, $p = .013$, and we can conclude that the number of tests successfully completed on each language task did vary significantly depending on whether the task was speech, comprehension or syntax based ($F(2, 10) = 6.93$, $p = .013$).
 
 Post-hoc tests can also be specified in jamovi for repeated measures ANOVA in the same way as for independent ANOVA. The results are shown in @fig-fig12-12. These indicate that there is a significant difference between Speech and Syntax, but not between other levels. --->
@@ -1376,12 +1372,12 @@ Post-hoc tests can also be specified in jamovi for repeated measures ANOVA in th
 <div id="fig-fig12-12" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig13-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;13.12: 重覆量數變數分析中jamovi的事後檢驗</figcaption>
+<figcaption class="figure-caption">圖&nbsp;13.12: 重覆量數變數分析的事後檢定</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>描述性統計（邊際均值）可以用於幫助解釋結果，在jamovi輸出中生成，如 <a href="#fig-fig12-13">圖&nbsp;<span>13.13</span></a> 。通過比較參與者成功完成試驗的平均次數，可以看出布洛卡失語症患者在語音產生（平均= 7.17）和語言理解（平均= 6.17）任務上表現相對較好。然而，他們在語法任務上的表現明顯較差（平均= 4.33），事後檢驗中語音和語法任務表現之間存在顯著差異。</p>
+<p>運用描述統計可以幫助解釋結果，只要設定邊際均值選項，生成如 <a href="#fig-fig12-13">圖&nbsp;<span>13.13</span></a> 的表格。比較不同任務的平均正確次數，可以看出布洛卡失語症患者的言語生成任務（平均= 7.17）和概念理解任務（平均= 6.17）表現相對較好。不過，句子修正任務的表現明顯較差（平均= 4.33），事後檢定顯示言語生成和句子修正的正確率有明顯差異。</p>
 <!--- Descriptive statistics (marginal means) can be reviewed to help interpret the results, produced in the jamovi output as in @fig-fig12-13. Comparison of the mean number of trials successfully completed by participants shows that Broca's Aphasics perform reasonably well on speech production (mean = 7.17) and language comprehension (mean = 6.17) tasks. However, their performance was considerably worse on the syntax task (mean = 4.33), with a significant difference in post-hoc tests between Speech and Syntax task performance. --->
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
@@ -1397,11 +1393,8 @@ Post-hoc tests can also be specified in jamovi for repeated measures ANOVA in th
 </section>
 <section id="friedman無母數重覆量數變異數分析" class="level2" data-number="13.8">
 <h2 data-number="13.8" class="anchored" data-anchor-id="friedman無母數重覆量數變異數分析"><span class="header-section-number">13.8</span> Friedman無母數重覆量數變異數分析</h2>
-<blockquote class="blockquote">
-<p><strong>譯者註</strong> 本單元部份內容為AI初翻，請謹慎使用。</p>
-</blockquote>
-<p>Friedman檢定是單因子重覆量數變異數分析的無母數版本，用來分析三個或更多組排序資料的差異，每組的參與者相同，或者各條件的參與者彼此有密切的匹配條件。如果依變項是序列數值，或者資料未滿足常態性條件，就可以使用這種方法進行假設檢定。</p>
-<p>和Kruskall-Wallis檢定相同，徹底解釋需要先知道複雜的數學知識，這裡不會介紹。對於本書的目標讀者們，只要了解jamovi輸出的Friedman檢定報表是已校正的結果， <a href="#fig-fig12-14">圖&nbsp;<span>13.14</span></a> 是用前面的失語症患者資料做Friedman檢定的報表範例。</p>
+<p>Friedman檢定是單因子重覆量數變異數分析的無母數版本，用來分析三組或更多組排序資料之間的差異，只要每組參與者相同，或者各條件的參與者彼此有密切相依的測量條件。如果依變項是序列數值，或者資料未滿足常態性條件，就可以使用這種方法進行假設檢定。</p>
+<p>和Kruskall-Wallis檢定相同，徹底解釋的話需要先知道複雜的數學知識，所以這裡不會詳細介紹。對於本書的目標讀者來說，只要了解jamovi輸出的Friedman檢定報表是已經校正的結果， <a href="#fig-fig12-14">圖&nbsp;<span>13.14</span></a> 展示的報表是用前一節的失語症患者資料做Friedman檢定的範例。</p>
 <!--- The Friedman test is a non-parametric version of a repeated measures ANOVA and can be used instead of the Kruskall-Wallis test when testing for differences between three or more groups where the same participants are in each group, or each participant is closely matched with participants in other conditions. If the dependent variable is ordinal, or if the assumption of normality is not met, then the Friedman test can be used.
 
 As with the Kruskall-Wallis test, the underlying mathematics is complicated, and won't be presented here. For the purpose of this book, it is sufficient to note that jamovi calculates the tie-corrected version of the Friedman test, and in @fig-fig12-14 there is an example using the Broca's Aphasia data we have already looked at. --->
@@ -1410,20 +1403,20 @@ As with the Kruskall-Wallis test, the underlying mathematics is complicated, and
 <div id="fig-fig12-14" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig13-14.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;13.14: jamovi中的“無母數重覆量數變數分析”對話框和結果</figcaption>
+<figcaption class="figure-caption">圖&nbsp;13.14: “無母數重覆量數變數分析”設定視窗與結果報表</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>在jamovi中運行Friedman檢驗非常簡單。只需選擇分析 - ANOVA - 重覆量數變數分析（非參數），如 <a href="#fig-fig12-14">圖&nbsp;<span>13.14</span></a> 所示。然後將要比較的重複測量變項的名稱（語言、概念、語法）突顯並轉移到“測量：”文本框中。要為三個重複測量變項生成描述性統計（平均值和中位數），請單擊描述性按鈕。</p>
-<p>jamovi結果顯示描述性統計、卡方值、自由度和p值（ <a href="#fig-fig12-14">圖&nbsp;<span>13.14</span></a> ）。由於p值小於通常用於確定顯著性的水平（p &lt; .05），我們可以得出結論，布洛卡失語症患者在語言生產（中位數= 7.5）和語言理解（中位數= 6.5）任務上表現相當好。然而，他們在語法任務上的表現明顯較差（中位數= 4.5），在事後檢驗中語言和語法任務表現之間存在顯著差異。</p>
+<p>要用jamovi執行Friedman檢定非常簡單。只要從功能模組選單，選擇”ANOVA” - Repeated Measures ANOVA (Non-parametric)，就能開啟如 <a href="#fig-fig12-14">圖&nbsp;<span>13.14</span></a> 的選單。然後將要比較的重複測量資料變項名稱（言語、概念、語法）放到“測量”(Measures)對話框。想要生成描述統計表格，只要勾選描述(Descriptives)。</p>
+<p>jamovi報表區顯示描述統計、卡方統計值、自由度和p值。由於p值小於通常用於一般的顯著水準（p &lt; .05），我們可以下結論：布洛卡失語症患者在言語生成（中位數= 7.5）和概念理解（中位數= 6.5）的表現較好。然而，他們的句子修正任務表現明顯較差（中位數= 4.5），事後檢定顯示言語生成和句子修正任務的表現有顯著差異。</p>
 <!--- It's pretty straightforward to run a Friedman test in jamovi. Just select Analyses - ANOVA - Repeated Measures ANOVA (Non-parametric), as in @fig-fig12-14. Then highlight and transfer the names of the repeated measures variables you wish to compare (Speech, Conceptual, Syntax) into the 'Measures:' text box. To produce descriptive statistics (means and medians) for the three repeated measures variables, click on the Descriptives button
 
 The jamovi results show descriptive statistics, chi-square value, degrees of freedom, and the p-value (@fig-fig12-14). Since the p-value is less than the level conventionally used to determine significance (p < .05), we can conclude that Broca's Aphasics perform reasonably well on speech production (median = 7.5) and language comprehension (median = 6.5) tasks. However, their performance was considerably worse on the syntax task (median = 4.5), with a significant difference in post-hoc tests between Speech and Syntax task performance. --->
 </section>
 <section id="sec-On-the-relationship-between-ANOVA-and-the-Student-t-test" class="level2" data-number="13.9">
 <h2 data-number="13.9" class="anchored" data-anchor-id="sec-On-the-relationship-between-ANOVA-and-the-Student-t-test"><span class="header-section-number">13.9</span> 變異數分析與t檢定的關係</h2>
-<p>這個單元結束之前，還要一件事要讓讀者知道，初學者通常會感到訝異，不過了解這件事是值得的：以ANOVA和學生t檢定分析兩組差異的資料，結果是一樣的。的確，不只輸出的結果相似，各種資訊的統計意義是等價的。這裡用實際的示範取代公式推導讓讀者明白。拿<em>clinicaltrials</em>資料集來看，這次不用<code>drug</code>，改用<code>therapy</code>這個變項做為獨變項。完成ANOVA後，會得到一個F統計值 <span class="math inline">\(F(1,16) = 1.71\)</span>，和p值 = <span class="math inline">\(0.21\)</span>。又因為只有兩組，實際上做學生t檢驗就行。t檢定的結果得到t統計值 <span class="math inline">\(t(16) = -1.3068\)</span> 和 <span class="math inline">\(p = 0.21\)</span>。讀者也許發現，p值是相同的，都是<span class="math inline">\(p = .21\)</span>。那麼檢定統計值？因為t統計值是負的，顯然和ANOVA的F值不一樣。其實這裡有個相當直接的轉換關係。只要將t統計值平方，就會得到F統計值：<span class="math inline">\(-1.3068^{2} = 1.7077\)</span>。</p>
+<p>這個單元結束之前，讀者還有一件事需要知道。初學者通常會對此事實感到訝異，不過了解這事實是值得的：以ANOVA和學生t檢定分析兩組組間差異的資料，結果是一樣的。不只輸出的結果相似，各種資訊的統計意義也是等價的。這裡用實際的示範取代公式推導讓各位明白。以<em>clinical trials</em>資料集來當例子，這次不納入<code>drug</code>，只用<code>therapy</code>做唯一獨變項。執行ANOVA會得到一個F統計值 <span class="math inline">\(F(1,16) = 1.71\)</span>，和p值 = <span class="math inline">\(0.21\)</span>。因為只有兩組，也可以做學生t檢定。t檢定的結果得到t統計值 <span class="math inline">\(t(16) = -1.3068\)</span> 和 <span class="math inline">\(p = 0.21\)</span>。你應該發現，p值是相同的，都是<span class="math inline">\(p = .21\)</span>。那麼統計值有什麼關係？因為t統計值是負的，顯然和ANOVA的F值不一樣。其實其中有相當直接的轉換關係。只要將t統計值平方，就會得到F統計值：<span class="math inline">\(-1.3068^{2} = 1.7077\)</span>。</p>
 <!--- There's one last thing I want to point out before finishing. It's something that a lot of people find kind of surprising, but it's worth knowing about. An ANOVA with two groups is identical to the Student t-test. No, really. It's not just that they are similar, but they are actually equivalent in every meaningful way. I won't try to prove that this is always true, but I will show you a single concrete demonstration. Suppose that, instead of running an ANOVA on our mood.gain \~ drug model, let's instead do it using therapy as the predictor. If we run this ANOVA we get an F-statistic of $F(1,16) = 1.71$, and a p-value = $0.21$. Since we only have two groups, I didn't actually need to resort to an ANOVA, I could have just decided to run a Student t-test. So let's see what happens when I do that: I get a t-statistic of $t(16) = -1.3068$ and a $p-value = 0.21$. Curiously, the p-values are identical. Once again we obtain a value of $p = .21$. But what about the test statistic? Having run a t-test instead of an ANOVA, we get a somewhat different answer, namely $t(16) = -1.3068$. However, there is a fairly straightforward relationship here. If we square the t-statistic then we get the F-statistic from before: $-1.3068^{2} = 1.7077$ --->
 </section>
 <section id="單元小結" class="level2" data-number="13.10">
