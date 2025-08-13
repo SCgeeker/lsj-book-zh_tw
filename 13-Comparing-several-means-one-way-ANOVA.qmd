@@ -278,10 +278,10 @@ A summary of all the key quantities involved in a one-way ANOVA, including the f
 
 ### 實例演練 {#sec-How-ANOVA-works-example}
 
-前面的步驟說明牽涉很多抽象符號，而且只讀字面不能充分理解，在此我們做個總結。回到一開始的[獨立樣本變異數分析示範資料]，根據這份資料的描述統計表，我們知道各種藥劑的情緒改善平均分數：安慰劑是 $0.45$，Anxifree 是 $0.72$，Joyzepam 是 $1.48$。有了這些資訊和計算公式，回到1899年就能用鉛筆和紙辦個統計桌遊[^13-comparing-several-means-one-way-anova-7]。不過因為現在不是1899年，人人手上都有計算機，讓我們偷個懶，只要做前5筆資料計算就好。我們先從計算組內離均差平方和$SS_w$ 開始，要畫張像 @tbl-tab12-3 的表格來輔助計算。
+前面的步驟說明包括很多抽象符號，而且只讀字面不能充分理解，在此我們先做個小結。回到一開始的[獨立樣本變異數分析示範資料]，根據這份資料的描述統計表，我們知道各種藥劑的情緒改善平均分數：安慰劑是 $0.45$，Anxifree 是 $0.72$，Joyzepam 是 $1.48$。有了這些資訊和計算公式，回到1899年就能用鉛筆和紙辦個一人玩的統計桌遊[^13-comparing-several-means-one-way-anova-7]。不過今天不是1899年，人人手上都有計算機，就讓我們偷個懶，只要做前5筆資料計算就好。我們先從計算組內離均差平方和$SS_w$ 開始，要畫張像 @tbl-tab12-3 的表格來輔助計算。
 
 
-[^13-comparing-several-means-one-way-anova-7]: 更真實的描述應該是 "1899年的統計學家著迷於計算的主要原因，是因為沒有什麼朋友，也沒有比算術更有趣的事情可做。因為直到 1920 年，ANOVA 並未來到人類世界。"
+[^13-comparing-several-means-one-way-anova-7]: 更真實的描述應該是 "1899年的統計學家著迷於計算的主要原因，是因為現實生活沒有什麼朋友，也沒有比算術更有趣的事情可做。而且直到 1920 年，ANOVA 才正式降臨人類世界。"
 
 <!--- The previous discussion was fairly abstract and a little on the technical side, so I think that at this point it might be useful to see a worked example. For that, let's go back to the clinical trial data that I introduced at the start of the chapter. The descriptive statistics that we calculated at the beginning tell us our group means: an average mood gain of $0.45$ for the placebo, $0.72$ for Anxifree, and $1.48$ for Joyzepam. With that in mind, let's party like it's 1899 [^13-comparing-several-means-one-way-anova-7] and start doing some pencil and paper calculations. I'll only do this for the first $5$ observations because it's not bloody $1899$ and I'm very lazy. Let's start by calculating $SS_w$, the within-group sums of squares. First, let's draw up a nice table to help us with our calculations (@tbl-tab12-3)
 
@@ -398,7 +398,7 @@ F & = \frac{MS_b}{MS_w}  = \frac{1.74}{0.09} \\
 \end{split}
 $$
 
-我們終於完成了，值得慶祝對吧！有了檢定統計值，最後就是判斷這個統計值是否代表結果是顯著的。如同在 @sec-Hypothesis-testing 討論過的手作方法，有心的讀者可以翻開任何一本統計教科書最後的附錄，查找其中有關F檢定的表，只要找到指定 $\alpha$值所對應的閾值，例如 $0.05$，$0.01$ 或 $0.001$，搭配 自由度2 和15。設定$\alpha$為 $0.001$ 的話，會查到F的閾值是$11.34$。因為小於最後算出的F值，可以宣稱$p < 0.001$。但這是時代的眼淚，今天各式各樣統計軟體都能為我們算出精確的p值。這個範例的p值是 $0.000071$。除非我們對型一錯誤率採取非常謹慎的立場，我們幾乎 可以結論這樣的研究結果能拒絕虛無假設。
+我們終於算完了，值得慶祝！有了統計值，最後就是檢定這個統計值是否代表結果是顯著的。如同在 @sec-Hypothesis-testing 討論過的手作方法，有心的讀者可以翻開任何一本統計教科書最後的附錄，查找其中有關F檢定的表，只要找到指定 $\alpha$值所對應的閾值，例如 $0.05$，$0.01$ 或 $0.001$，搭配 自由度2 和15。設定$\alpha$為 $0.001$ 的話，會查到F的閾值是$11.34$。因為小於最後算出的F值，可以宣稱$p < 0.001$。但這是時代的眼淚，今天各式各樣統計軟體都能為我們算出精確的p值。這個範例的p值是 $0.000071$。除非我們對型一錯誤率採取非常謹慎的立場，我們幾乎 可以結論這樣的研究結果能拒絕虛無假設。
 
 至此己經完成了ANOVA的基本計算，將以上步驟算出的數值，整理成 @tbl-tab12-1  的報表，這是傳統的變異數分析報告規範。完整的ANOVA報表請見 @tbl-tab12-8 。
 
@@ -448,11 +448,11 @@ At this point, we're basically done. Having completed our calculations, it's tra
 huxtabs[[13]][[8]]
 ```
 
-演練到這裡，讀者應該不大想純靠手工整理這樣的報表，幾乎所有專業統計軟體，包括 jamovi，都能將ANOVA 的結果統整成像 @tbl-tab12-8 的表格，所以大家最好習慣一下。儘管軟體能輸出完整的 ANOVA 報表，真正的報告並不需要置入整份表格，現代學術寫作規範所建議的報告格式是類似以下的句型：
+演練到這裡，讀者應該不大想純靠手工整理這樣的報表，幾乎所有專業統計軟體，包括 jamovi，都能將ANOVA 的結果統整成像 @tbl-tab12-8 的表格，所以大家最好習慣一下。儘管軟體能輸出完整的 ANOVA 報表，真正的報告並不需要置入整份表格，現代學術寫作規範所建議的報告格式是像以下的句型：
 
 > *單因子變異數分析顯示，測試的藥物對情緒改善有顯著影響，F(2,15) = 19.3，p < .001。*
 
-天哪！我們做了這麼多事，只為了寫出這短短一行。
+天哪！我們做得要死要活，只為了寫出這短短的句子。
 
 <!--- These days, you'll probably never have much reason to want to construct one of these tables yourself, but you will find that almost all statistical software (jamovi included) tends to organise the output of an ANOVA into a table like this, so it's a good idea to get used to reading them. However, although the software will output a full ANOVA table, there's almost never a good reason to include the whole table in your write up. A pretty standard way of reporting the stats block for this result would be to write something like this:
 
@@ -463,13 +463,13 @@ Sigh. So much work for one short sentence. --->
 ## jamovi的變異數分析模組 {#running-an-anova-in-jamovi}
 
 
-若是讀者認真地一邊閱讀前一節的示範步驟，一邊在計算紙上演算，肯定能了解變異數分析程序有多麼複雜，而且一不小心就會出錯。接下來還有許多計算，如果還是用紙筆演練，各位會覺得幹麼要浪費時間做這些事？
+若是讀者認真地跟著前一節的示範步驟，在計算紙上演算，肯定能了解變異數分析程序有多麼複雜，而且一不小心就會出錯。接下來還有更多計算，如果還是用紙筆演練，各位會覺得幹麼要浪費時間做這些計算？其他要學的事都會被ANOVA的計算耽擱了！
 
 <!-- I'm pretty sure I know what you're thinking after reading the last section, especially if you followed my advice and did all of that by pencil and paper (i.e., in a spreadsheet) yourself. Doing the ANOVA calculations yourself sucks. There's quite a lot of calculations that we needed to do along the way, and it would be tedious to have to do this over and over again every time you wanted to do an ANOVA. --->
 
 ### 使用jamovi進行變異數分析
 
-為了讓大家從複雜的變異數分析計算中解脫，就要靠jamovi了！請開啟`ANOVA`模組的ANOVA設定選單，將`mood.gain`搬到"Dependent Variable"對話框，再將`drug`搬到"Fixed Factors"對話框，就能在報表區看到如同 @fig-fig12-3 的結果。[^13-comparing-several-means-one-way-anova-9] 請留意設定視窗列出的選項，還要勾選 $\eta^2$ ，報表也有顯示這項計算結果，稍後討論效果量會進一步說明。
+為了讓大家從複雜的變異數分析計算中解脫，就要靠jamovi了！請開啟`ANOVA`模組的ANOVA設定選單，將`mood.gain`搬到"Dependent Variable"對話框，再將`drug`搬到"Fixed Factors"對話框，就能在報表區看到如同 @fig-fig12-3 的結果。[^13-comparing-several-means-one-way-anova-9] 請留意設定選單列出的選項，要勾選 $\eta^2$ ，讓報表顯示效果量的計算結果，稍後會進一步說明這項效果量的意義。
 
 
 
@@ -478,14 +478,14 @@ Sigh. So much work for one short sentence. --->
 ```{r}
 #| label: fig-fig12-3
 #| classes: .enlarge-image
-#| fig-cap: jamovi的結果表格，用於根據施用的藥物進行情緒增益的 ANOVA。
+#| fig-cap: jamovi的 ANOVA 分析結果表，各種藥物的情緒改善效果。
 #jamovi results table for ANOVA of mood gain by drug administered
 knitr::include_graphics("images/fig13-3.png")
 ```
 
-[^13-comparing-several-means-one-way-anova-9]: 與用手計算的數值相比，jamovi 的結果更為準確，這是因為四捨五入的差異。
+[^13-comparing-several-means-one-way-anova-9]: 與手動計算的數值相比，jamovi 的計算結果更為準確，這是因為四捨五入的差異。
 
-jamovi 的結果表格包含平方和、自由度以及目前還沒有真正談到的其他指標。不過，請各位留意，jamovi的報表給的標籤名稱並不是「組間」和「組內」，反而使用符合內容的名詞做為標籤。在這一節的範例裡，組間離均差平方和是對應藥物對結果變項的影響，組內離均差平方和是對應“殘餘”的變異，因此大家習慣稱“殘差”(Residual)。比較jamovi計算的數值與 @sec-How-ANOVA-works-example 手動計算的數值，會看到兩者或多或少是相同的，除了四捨五入的差異。組間平方和為 $SS_b = 3.45$，組內平方和為 $SS_w = 1.39$，各自的自由度為 $2$ 和 $15$。還有報告 F 值和 p 值，也是和手動計算的數字差不多，只是四捨五入的差異。
+jamovi 的ANOVA結果表包括離均差平方和、自由度以及目前還沒有真正談到的其他指標。不過，請各位留意，印在jamovi報表標籤並不是「組間」(Between)或「組內」(Within)，反而是資料檔的變項名詞(`drug`)和計算過程的產物(`Residual`)。因為這個範例的組間離均差平方和，對應藥物對結果變項的影響，組內離均差平方和對應的是“殘餘”變異，所以習慣用“殘差”(Residual)稱呼。比較jamovi計算的數值與 @sec-How-ANOVA-works-example 的手算結果，會看到彼此或多或少是相同的。除了四捨五入的差異，組間平方和為 $SS_b = 3.45$，組內平方和為 $SS_w = 1.39$，自由度分別是 $2$ 和 $15$。還有報告 F 值和 p 值，也是和手動計算的數字差不多，只是四捨五入的差異。
 
 <!--- 
 [^13-comparing-several-means-one-way-anova-9]: The jamovi results are more accurate than the ones in the text above, due to rounding errors.
@@ -494,15 +494,15 @@ The jamovi results table shows you the sums of squares values, the degrees of fr
 
 ## 效果量
 
-衡量 ANOVA結果效果量有好幾種方法，其中最常用的指標是 $\eta^2$( eta sqaured )和淨 $\eta^2$( partial eta sqaured )。在單因子變異數分析的狀況，這兩種指標是一樣的，因此這裡只解釋 $\eta^2$。$\eta^2$ 定義相當簡單明瞭：
+衡量 ANOVA結果的效果量有好幾種指標，最常用的是 $\eta^2$( eta sqaured )和淨 $\eta^2$( partial eta sqaured )。就單因子變異數分析來說，這兩種指標的解讀方式是相同的，因此這裡只解釋 $\eta^2$。$\eta^2$ 定義相當簡單明瞭：
 
 $$\eta^2=\frac{SS_b}{SS_{tot}}$$
 
-前面有認真演練計算過程的同學一看就懂。 @fig-fig12-3 展示的ANOVA 報表有呈現$\eta^2$，簡單驗算一下，因為$SS_b = 3.45$ 還有 $SS_tot = 3.45 + 1.39 = 4.84$，所以可以算出：
+前面有認真演練計算過程的同學一看就會懂。拿 @fig-fig12-3 的ANOVA 報表裡的 $\eta^2$ 驗算一下，會發現$SS_b = 3.45$ 還有 $SS_tot = 3.45 + 1.39 = 4.84$，所以可以算出：
 
 $$\eta^2=\frac{3.45}{4.84}=0.71$$
 
-解讀$\eta^2$同樣直接了當，這項效果量公式就是指結果變項的變異，可以被預測變項解釋的比例。$\eta^2=0$ 代表兩種變項之間完全無關，$\eta^2=1$則表示兩者關係密切。值得一提的是，$\eta^2$與 @sec-The-R2-value 提過的是同一種效果量家族成員，有效力相等的解釋力。許多統計教科書建議使用 $\eta^2$ 作為 ANOVA的預設效果量指標，不過荷蘭心理學者Daniel Lakens在一篇有趣的<a href="https://daniellakens.blogspot.com/2015/06/why-you-should-use-omega-squared.html" target="_blank">blog文章</a>提到，以統計實務處理的真實資料來看，$\eta^2$可能不是最好的效果量指標，因為這是一個有偏誤的估計值。還好jamovi還可以選擇使用另一個估計偏誤較少的指標 $\omega^2$ (omega squared) 。
+$\eta^2$的解讀同樣直接了當，這項效果量公式就是直指結果變項的變異，可以被預測變項解釋的比例。$\eta^2=0$ 代表兩種變項之間完全無關，$\eta^2=1$則表示兩者關係密切。值得一提的是，$\eta^2$與 @sec-The-R2-value 提過的 $R^2$ 是屬於同一種效果量家族的成員，有效力相等的解釋力。許多統計教科書建議使用 $\eta^2$ 作為ANOVA的預設效果量指標，不過荷蘭心理學者Daniel Lakens在一篇有趣的<a href="https://daniellakens.blogspot.com/2015/06/why-you-should-use-omega-squared.html" target="_blank">blog文章</a>提到，以統計實務處理的真實資料來看，$\eta^2$可能不是最好的效果量指標，因為這是一個有偏誤的估計值。還好jamovi可以選擇另一個估計偏誤較少的指標 $\omega^2$ (omega squared) 。
 
 
 <!--- There's a few different ways you could measure the effect size in an ANOVA, but the most commonly used measures are $\eta^2$ (eta squared) and partial $\eta^2$. For a one way analysis of variance they're identical to each other, so for the moment I'll just explain $\eta^2$ . The definition of $\eta^2$ is actually really simple
@@ -517,15 +517,15 @@ The interpretation of $\eta^2$ is equally straightforward. It refers to the prop
 
 ## 多重比較與事後檢定
 
-ANOVA報表顯示至少三組樣本之間存在顯著差異時，研究者會想知道是那幾組之間存在差異。以藥物臨床試驗的範例來說，由於虛無假設是三種藥物的情緒改善狀況完全一樣。不過仔細一想的話，這個範例的虛無假設宣告了三件不一樣的預測：
+ANOVA報表顯示至少三組樣本之間存在顯著差異時，研究者會想知道是那幾組之間存在差異。以藥物臨床試驗的範例來說，由於虛無假設是三種藥物的情緒改善狀況完全一樣。不過仔細一想的話，這個範例的虛無假設包括三項不一樣的預測：
 
 - Anxifree這款舊藥的效果沒有比安慰劑更好： $\mu_A = \mu_P$
 - 新藥Joyzepam的效果沒有比安慰劑更好： $\mu_J = \mu_P$
-- Anxifree 和 Joyzepam 兩款藥的效果沒什麼差別：  $\mu_A = \mu_J$
+- Anxifree 和 Joyzepam 兩款新藥的效果沒什麼差別：  $\mu_A = \mu_J$
 
-如果以上三項宣告有一項不成立，整個虛無假設也是不成立。因為ANOVA的分析結果已經確認可以拒絕虛無假設，所以至少有一個宣告是不成立的。儘管任何一個宣告被拒絕都是一個有趣的結論，但是是那幾個宣告呢？即然關注的是新藥 Joyzepam的效果有沒有確實地比安慰劑好，新藥與舊藥Anxifree的比較就非常重要。想清楚關注的目標，真正有意義的對比更有可能是Anxifree與安慰劑的效果差異。雖然更早有其他研究人員比較過Anxifree與安慰劑的效果好幾次，這次分析能再次確認早期的研究成果可以重現
+如果以上三項預測有一項不成立，整個虛無假設也是不成立。因為ANOVA的分析結果已經確認可以拒絕虛無假設，所以至少有一項預測是不成立的。儘管任何一項預測被拒絕都是一個有趣的結論，但是是那個預測被拒絕呢？即然關注的是新藥 Joyzepam的效果有沒有比安慰劑好，新藥與舊藥Anxifree的比較就非常重要。想清楚真正關注的目標，真正有意義的對比更有可能是Anxifree與安慰劑的效果差異。雖然已經有許多研究人員比較過Anxifree與安慰劑的效果，這次分析能再次確認早期的研究成果可以重現
 
-將虛無假設分解為三個宣告後，就能將八種可能的分析結果表列，如同 @tbl-tab12-9  的內容。
+將虛無假設分解為三項預測後，就能將八種可能的分析結果，表列如 @tbl-tab12-9 。
 
 
 
@@ -542,12 +542,12 @@ When we characterise the null hypothesis in terms of these three distinct propos
 
 ```{r}
 #| label: tbl-tab12-9
-#| tbl-cap: 虛無假設與八種可能的"分析結果"
+#| tbl-cap: 虛無假設及七種對立假設的"分析結果"
 #The null hypothesis and eight possible 'states of the world'
 huxtabs[[13]][[9]]
 ```
 
-既然已經拒絕虛無假設，第一種分析結果已經出局。接著就要問，其餘七種可能的分析結果，那一個才是*正確的*結論？面對這樣的局面，最後再看一次描述統計報告，像是 @fig-fig12-1 的統計圖，我們可以看到 Joyzepam 比安慰劑和 Anxifree好，但是Anxifree 和安慰劑的效果沒有差別是最有可能的結論。不過，若是要提出精確的報告，就需要做進一步的檢定。
+既然已經拒絕虛無假設，第一種分析結果已經出局。接著就要問，其餘七種可能的分析結果，那一個才是*正確的*結論？面對這樣的局面，要再看一眼描述統計報告，像是 @fig-fig12-1 的統計圖，我們會發現 Joyzepam 比安慰劑和 Anxifree好，但是Anxifree 和安慰劑的效果沒有差別是最有可能的結論。不過，若是要提出精確的報告，就需要做進一步的檢定。
 
 <!--- By rejecting the null hypothesis, we've decided that we don't believe that #1 is the true state of the world. The next question to ask is, which of the other seven possibilities *do* we think is right? When faced with this situation, its usually helps to look at the data. For instance, if we look at the plots in @fig-fig12-1, it's tempting to conclude that Joyzepam is better than the placebo and better than Anxifree, but there's no real difference between Anxifree and the placebo. However, if we want to get a clearer answer about this, it might help to run some tests. 
 > **譯者註** 本節其餘內容有部分為AI初翻，請謹慎使用。
@@ -556,8 +556,7 @@ huxtabs[[13]][[9]]
 
 ### 成對t檢定
 
-我們要如何進行多重檢定？這裡要比較三對分組平均值：安慰劑 vs. Anxifree，安慰劑 vs. Joyzepam，和 Anxifree vs. Joyzepam，最簡單的方法是執行三次獨立樣本t檢定，逐一確認檢定結果。用 jamovi 很容易做到。打開 ANOVA 設定視窗的 'Post Hoc Tests'(事後檢驗)選項，將 'drug'(藥物)變項移到右側的活動框中，然後勾選 'No correction'(無校正)核取方塊。就會產生一張整齊的表格，顯示藥物變項的三對比較 t 檢定結果，如同 @fig-fig12-4 的展示。
-
+要如何進行多重檢定？這裡要比較三對分組平均值：安慰劑 vs. Anxifree，安慰劑 vs. Joyzepam，和 Anxifree vs. Joyzepam，最簡單的方法是執行三次獨立樣本t檢定，逐一確認檢定結果。用 jamovi 很容易做到。打開 ANOVA 模組設定選單的 'Post Hoc Tests'(事後檢驗)選項，將 'drug'(藥物)變項移到右側的活動框中，然後勾選 'No correction'(無校正)核取方塊。就會產生一張整齊的表格，顯示藥物變項的三對比較 t 檢定結果，如同 @fig-fig12-4 的展示。
 
 <!--- 
 How might we go about solving our problem? Given that we've got three separate pairs of means (placebo versus Anxifree, placebo versus Joyzepam, and Anxifree versus Joyzepam) to compare, what we could do is run three separate t-tests and see what happens. This is easy to do in jamovi. Go to the ANOVA 'Post Hoc Tests' options, move the 'drug' variable across into the active box on the right, and then click on the 'No correction' checkbox. This will produce a neat table showing all the pairwise t-test comparisons amongst the three levels of the drug variable, as in @fig-fig12-4 --->
@@ -565,20 +564,20 @@ How might we go about solving our problem? Given that we've got three separate p
 ```{r}
 #| label: fig-fig12-4
 #| classes: .enlarge-image
-#| fig-cap: 成對 t 檢定的事後比較~並列未經校正及Holm校正的p值。
+#| fig-cap: 成對 t 檢定的事後比較結果表，最後兩欄是未經校正及經過Holm校正的p值。
 #Uncorrected pairwise t-tests as post hoc comparisons in jamovi
 knitr::include_graphics("images/fig13-4.png")
 ```
 
 ### 多重檢定的校正
 
-前面提到一次做多組t檢定可能會有問題，最大的問題是沒有明確的理論指引時，同時執行多組t檢定，就只是看一看有那幾組會出現顯著結果，這樣一來科學分析很容易就會變成一場「魷魚遊戲」。這種對多組差異進行缺乏理論基礎的比較，稱為**事後分析**（"post hoc" 是拉丁語，意為 "在真正要緊的事務之後"）。[^13-comparing-several-means-one-way-anova-10]
+前面提到一次做多組t檢定可能會有問題，最大的問題是沒有明確的理論指引時，同時執行多組t檢定，就只是看有那幾組會出現顯著結果來做判斷。這樣一來，科學分析很容易就會變成一場競爭「誰是最後贏家」的遊戲。這種缺乏理論基礎的前提，直接比較多組差異的分析，稱為**事後分析**（"post hoc" 是拉丁語，意思是 "在真正要緊的事務之後"）。[^13-comparing-several-means-one-way-anova-10]
 
-[^13-comparing-several-means-one-way-anova-10]:若是研究開始前已經有些理論，預期某幾組比較是*確實*有意義的，那就是另一回事了。這種情況所執行多重檢定，其實不是「事後分析」，而是「預先計劃的比較」。下一個單元 @sec-The-method-of-planned-comparisons 有更進一步介紹。
+[^13-comparing-several-means-one-way-anova-10]:若是研究開始前已經有些理論，預期某幾組比較是*確實*有意義的，那就是另一回事了。這種情況所執行多重檢定，其實不是「事後分析」，而是「預先計劃的比較」。 @sec-The-method-of-planned-comparisons 有更進一步介紹。
 
-事後分析不是不可以做，而是要非常小心。例如前面介紹的[成對t檢定]應該儘量不要做，因為每組t檢定的型一錯誤率都設定為.05的話，執行了三組t檢定，會導致型一錯誤率膨脹。想像有件資料要用ANOVA分析10組平均值，然後挑出其中45筆組間差異進行「事後」t檢定，找出那些組別之間有顯著差異。如同 @sec-Hypothesis-testing 討論過的，那幾組會有顯著差異純粹是偶然的。虛無假設檢定有效的基本原則是，分析者嚴格控制型一錯誤率，為了確定造成ANOVA顯著結果的原因，不管三七二十一執行多組t檢定，己經導致全體45組的型一錯誤率膨脹到天邊了。
+事後分析不是不可以做，而是要非常小心。例如[成對t檢定]介紹的方法應該儘量不要做，因為每組t檢定的型一錯誤率都設定為.05的話，執行了三組t檢定，會導致型一錯誤率過度膨脹。想像有筆資料要用ANOVA分析10組平均值，然後挑出其中45筆組間差異進行「事後」t檢定，找出那些組別之間有顯著差異。如同 @sec-Hypothesis-testing 討論的例子，會那幾組出現顯著差異純粹是偶然的。虛無假設檢定有效的基本原則是，分析者要嚴格控制型一錯誤率，為了確定造成ANOVA顯著結果的原因，不管三七二十一執行多組t檢定，會導致全部45組差異的型一錯誤率膨脹到天邊了。
 
-通常的解決方法是校正p值，控制總體型一錯誤率[@Shaffer1995]。這種事後分析進行的校正，通常稱為**多重比較校正**，有時也叫「即時推論」(simultaneous inference)。其實統計學界已經開發出許多校正方法，在這一節還有下一個單元 @sec-Post-hoc-tests 將討論其中幾種，本書介紹的只是最常見的校正方法[有與趣的讀者請參考 @Hsu1996 ]。
+常用的解決方法是校正p值，控制總體型一錯誤率[@Shaffer1995]。這種用於事後分析的校正方法，通常稱為**多重比較校正**，有時也叫「即時推論」(simultaneous inference)。其實統計學界已經開發出許多校正方法，這個單元還有 @sec-Post-hoc-tests 會介紹其中幾種，本書介紹的只是最常見的校正方法[有與趣的讀者請參考 @Hsu1996 ]。
 
 <!---
 In the previous section I hinted that there's a problem with just running lots and lots of t-tests. The concern is that, when running these analyses, what we're doing is going on a "fishing expedition". We're running lots and lots of tests without much theoretical guidance in the hope that some of them come up significant. This kind of theory-free search for group differences is referred to as **post hoc analysis** ("post hoc" being Latin for "after this").[^13-comparing-several-means-one-way-anova-10]
@@ -591,18 +590,18 @@ The usual solution to this problem is to introduce an adjustment to the p-value,
 
 ### Bonferroni校正
 
-Bonferroni校正是其中最簡單的一種方法[@Dunn1961]。如果現在要處理m個獨立的計檢定，這個方法能確保即使出現*任何*顯著結果，維持總型一錯誤機率上限在$\alpha$。[^13-comparing-several-means-one-way-anova-11] 如同字面的定義，Bonferroni校正只是「將所有原始 p 值乘以 m」。做法是設定校正前的p值為$p$，校正後的p值為$p_j^{'}$，根據Bonferroni校正，校正前後的p值關係是：
+Bonferroni校正是其中最簡單的一種方法[@Dunn1961]。如果現在要處理m個獨立的計檢定，這個方法能確保即使出現*任何*顯著結果，維持總體型一錯誤機率上限在$\alpha$。[^13-comparing-several-means-one-way-anova-11] 如同字面的定義，Bonferroni校正只是「將所有原始 p 值乘以 m」。做法是設定校正前的p值為$p$，校正後的p值為$p_j^{'}$，根據Bonferroni校正，校正前後的p值關係是：
 
-[^13-comparing-several-means-one-way-anova-11]: 順帶一提，並不是所有校正方法都是這樣搞，因為Bonferroni校正是著眼於控制「全族型一錯誤率」(family wise Type I error rate)。有些校正方法則是從控制「偽發現率」(False Discovery Rate)下手。
+[^13-comparing-several-means-one-way-anova-11]: 順帶一提，並不是所有校正方法都是這樣搞，因為Bonferroni校正是著眼於控制「整體的型一錯誤率」(family wise Type I error rate)。有些校正方法則是控制「偽發現率」(False Discovery Rate)。
 
 
 $$p_j^{'}=m \times p$$
 
-採用Bonferroni校正，只要確認$p_j^{'} < \alpha$，就能正確拒絕虛無假設。這種方法的邏輯非常簡單：現在要進行m組獨立的統計檢定，如果設定每個檢定的型一錯誤率上限是$\frac{\alpha}{m}$，所有檢定的*總*型一錯誤率就不會大於 $\alpha$。這種方法簡單到Bonferroni在他的論文裡寫道：
+只要確認$p_j^{'} < \alpha$，就能正確拒絕虛無假設。Bonferroni校正的邏輯非常簡單：現在要進行m組獨立的統計檢定，如果設定每個檢定的型一錯誤率上限是$\frac{\alpha}{m}$，所有檢定的*總*型一錯誤率就不會大於 $\alpha$。這種方法簡單到Bonferroni在他的論文裡寫道：
 
->因為這個方法如此簡單，又容易使用，我肯定以前一定有人用過。但是我翻遍任何文獻都找不到，只能推測：正是因為這種方法簡單到讓每個自認聰明絕頂的統計學家，不覺得這種方法在一些研究狀況的好處[@Dunn1961，第52-53頁]。
+>因為這個方法如此簡單，又容易使用，我肯定以前一定有人用過。但是我翻遍任何文獻都找不到，只能推測：正是因為這種方法簡單到讓每個自認聰明絕頂的統計學家，不值得寫論文聲張這種方法的一點點好處[@Dunn1961，第52-53頁]。
 
-要讓 jamovi 執行Bonferroni校正，只需要點選「校正」選項中的「Bonferroni」核選項目， ANOVA 結果報表將會出現另一列以Bonferroni校正調整的 p 值（ @tbl-tab12-8 ）。如果我們比較一下這三個 p 值與未校正的成對 t 檢驗的 p 值，很明顯 jamovi 只是將它們乘以 $3$而已。
+要用 jamovi 執行Bonferroni校正，只需要點選「校正」選項中的「Bonferroni」核選項目， ANOVA 結果報表將會出現另一列以Bonferroni校正調整的 p 值（ @tbl-tab12-8 ）。比較一下這三個 p 值與未校正的成對 t 檢驗的 p 值，會發現 jamovi 只是將這些數值乘以 $3$而已。
 
 <!---
 
@@ -622,15 +621,15 @@ To use the Bonferroni correction in jamovi, just click on the 'Bonferroni' check
 
 ### Holm校正
 
-雖然Bonferroni校正非常簡單，但並不是最好的校正方法。另一種常用的方法是**Holm校正**[@Holm1979]。這種方法背後的思路是假設按照p 值的大小，從最小的比較開始，調整到第j個比較的p值為止，以下列公式校正p值
+雖然Bonferroni校正非常簡單，但並不是最好的校正方法。另一種常用的方法是**Holm校正**[@Holm1979]。這種方法背後的思路是假設按照p 值的大小，從最小的比較開始，調整到第j個比較的p值為止。校正p值的公式是:
 
 $$p_j^{'}=j \times p_j$$
 
-也就是最大的 p 值保持不變，第二大的 p 值增倍，第三大的 p 值增加三倍，依此類推。或者用以下等式挑出較*大*者。
+這就是說最大的 p 值保持不變，第二大的 p 值增加兩倍，第三大的 p 值增加三倍，依此類推。或者用以下等式挑出較*大*者。
 
 $$p_j^{'}=p_{j+1}^{'}$$
 
-這樣解釋不大好懂，讓我慢慢說明Holm校正的原理。首先將$m$組檢定的p值按照數值大小排序，從最小的排到最大的。校正最小的 p 值只要乘以 $m$，其他組的p值校正則需要兩個步驟。像是第二小的 p 值首先要乘以 $m - 1$，若是這個校正後的p值大於前一次校正的p值( $(m-1)\times p_{m-1} > m \times p_m$ )，那就可以停止校正；若是小於前一次校正的p值，就要將原來的p值，改換為前一次校正後的p值。 @tbl-tab12-10 展示五組多重比較檢定的p值，如何用Holm校正來調整每組檢定的p值。
+這樣解釋不大好懂，讓我慢慢說明Holm校正的原理。首先將$m$組檢定的p值按照數值大小排序，從最小的排到最大的。最小的 p 值校正程序只有乘以 $m$，其他組p值的校正程序則有兩個步驟。像是第二小的 p 值首先要乘以 $m - 1$，若是這個校正後的p值大於前一次校正後的p值( $(m-1)\times p_{m-1} > m \times p_m$ )，就可以停止校正；若是小於前一次校正後的p值，就要將原來的p值，改換為前一次校正後的p值。 @tbl-tab12-10 展示五組多重比較檢定的p值，如何用Holm校正來調整每組檢定的p值。
 
 <!---
 Although the Bonferroni correction is the simplest adjustment out there, it's not usually the best one to use. One method that is often used instead is the **Holm correction** [@Holm1979]. The idea behind the Holm correction is to pretend that you're doing the tests sequentially, starting with the smallest (raw) p-value and moving onto the largest one. For the j-th largest of the p-values, the adjustment is *either*
@@ -645,14 +644,13 @@ whichever one is <u>larger</u>. This might sound a little confusing, so let's go
 
 ```{r}
 #| label: tbl-tab12-10
-#| tbl-cap: 經過霍爾姆校正計算的p值
+#| tbl-cap: Holm校正後的p值
 #Holm corrected p values
 huxtabs[[13]][[10]]
 ```
 
-希望以上說明能讓讀者們了解。
 
-雖然校正步驟稍微麻煩，Holm校正有一些優點，像是保證比Bonferroni校正有更低的型二錯誤率，可以提高統計考驗力。此外，Holm校正保障每組檢定的型一錯誤率一致，雖然這套方法執行下來看起來不大像。要跑統計的研究者，搞清楚兩種校正方法的原理後，多數人會支持Holm校正。所以對於還在起步的讀者，Holm校正應該是*首選*的校正方法。 @fig-fig12-4 展示Holm校正的 p 值，最大的 p 值（ Anxifree vs. 安慰劑）和未校正的p值一樣，都是.15。最小的 p 值（Joyzepam vs. 安慰劑）則校正為原來的三倍。
+雖然校正程序稍微麻煩，Holm校正有一些優點，像是保證比Bonferroni校正有更低的型二錯誤率，進而提高統計考驗力。此外，Holm校正保障每組檢定的型一錯誤率一致，雖然這套方法執行下來看起來不大像。要跑統計的研究者，搞清楚兩種校正方法的原理後，多數人會支持Holm校正。所以對於初學統計的讀者來說，Holm校正應該是*首選*的校正方法。 @fig-fig12-4 展示Holm校正的 p 值，最大的 p 值（ Anxifree vs. 安慰劑）和未校正的p值一樣，都是.15。最小的 p 值（Joyzepam vs. 安慰劑）則校正為原來的三倍。
 
 <!---
 Hopefully that makes things clear.
@@ -678,17 +676,17 @@ Or, if you don't like the idea of reporting exact p-values, then you'd change th
 
 ## 單因子變異數分析的適用條件
 
-變異數分析也和其他統計方法一樣，需要確認資料性質符合幾個適用條件，尤其是殘差。這裡特別談三個關鍵條件：常態性、變異同質性和獨立性。
+變異數分析也和其他統計方法一樣，需要確認資料性質符合幾個適用條件，尤其是殘差。這裡特別談三個關鍵條件：常態性、變異同質性和獨立性。那要如何檢查殘差的適用條件呢？以下分別討論這三個條件的檢測方法。
+
 
 [額外的技術細節 [^13-comparing-several-means-one-way-anova-12]]
 
-[^13-comparing-several-means-one-way-anova-12]: 若是讀者沒有真正親手演練[單因子變異數分析的運算原理]的範例，最好至少要讀過一遍。這一節裡提到了撐起ANOVA運算流程的統計模型：$$H_0:Y_{ik}=\mu + \epsilon_{ik}$$ $$H_1:Y_{ik}=\mu_k + \epsilon_{ik}$$其中$\mu$是指處於所有分組平均值中心的總平均之母群期望值，$\mu_k$是指第k組平均值的母群期望值。至此一直反覆討論的問題是，研究資料是最適配虛無假設代表的單一總平均，還是對應假設代表的分組平均值。這些討論是有必要的，因為統計模型的設定就是研究問題的形式化！但是在檢定過程的有效性其實是建立在殘差 $\epsilon_{ik}$ 符合常態分佈的條件，也就是$$\epsilon_{ik} \sim Normal(0,\sigma^2)$$如果沒有這個條件，所有ANOVA的數學運算都無法執行。也可以說，即使依然能進行所有計算，最後得到一個F統計值，但是違反條件造成這個F統計值並不能代表研究結果支持任何一個模型的指標，無法提出有科學意義的結論。 
+[^13-comparing-several-means-one-way-anova-12]: 若是讀者沒有真正親手演練[單因子變異數分析的運算原理]的範例，最好至少要讀過一遍。這個範例裡提到支撐ANOVA運算流程的統計模型：$$H_0:Y_{ik}=\mu + \epsilon_{ik}$$ $$H_1:Y_{ik}=\mu_k + \epsilon_{ik}$$其中$\mu$是指處於所有分組平均值中心的總平均之母群期望值，$\mu_k$是指第k組平均值的母群期望值。至此一直反覆討論的問題是，研究資料是最適配虛無假設代表的單一總平均，還是對應假設代表的分組平均值。這些討論是有必要的，因為統計模型的設定就是研究問題的符號化！但是在檢定過程的有效性其實是建立在殘差 $\epsilon_{ik}$ 符合常態分佈的程度，也就是$$\epsilon_{ik} \sim Normal(0,\sigma^2)$$。如果沒有符合這個條件，所有ANOVA的計算步驟都無法執行。也可以說，就算進行所有計算過程，最後得到了F統計值，但是違反適用條件造成這個F統計值並不能代表研究結果支持任何一個模型的指標，最後無法提出有科學意義的結論。 
 
-那要如何檢查殘差的適用條件呢？就以上提到的三個條件，以下分別討論。
 
-- **變異同質性**。因為會用單因子變異數分析的狀況只會有一個母群標準差$\sigma$，各分組資料不會有各自的母群標準差$\sigma_k$。這就是變異同質性的真義，設定各分組的標準差都與總標準差相等，因此又被稱為*等變異性*。[檢核變異同質性]將會詳細說明如何檢測。
-- **常態性**。殘差必定符合常態分佈。如同 @sec-Checking-the-normality-of-a-sample 介紹過的，可以察看Q-Q圖，或執行Shapiro-Wilk檢定來做評估。[檢核常態性]將有進一步說明。
-- **獨立性**。解釋這個條件有點棘手。基本意思是，任何一筆觀察值的殘差與其他觀察值的殘差彼此之間毫無關聯。符合獨立性的一組資料裡，所有 $\epsilon_{ik}$ 的來源不存在任何交集。這個條件沒有現成或簡易的檢核方法，只能從研究設計(參考 @sec-A-brief-introduction-to-research-design )發覺有無違反獨立性的狀況。不存在獨立性的最經典狀況是重複測量設計，每個研究參與者會在多個條件中被測量，如此一來就違反獨立性的條件，不可能以單因子變異數分析處理資料。如果一項研究具備這樣的設計，就需要使用[單因子重覆量數變異數分析]。
+- **變異同質性**。因為會用單因子變異數分析只會有一個母群標準差$\sigma$，各分組資料不會有各自的母群標準差$\sigma_k$。設定各分組的標準差都與總標準差相等，就是變異同質性的真義，因此又被稱為*等變異性*。[檢核變異同質性]會詳細說明如何檢測。
+- **常態性**。殘差必定符合常態分佈。如同 @sec-Checking-the-normality-of-a-sample 介紹過的，可以察看Q-Q圖，或執行Shapiro-Wilk檢定來做評估。進一步說明可見[檢核常態性]。
+- **獨立性**。解釋這個條件有點棘手。基本意思是，任何一筆觀察值的殘差與其他觀察值的殘差彼此之間毫無關聯。符合獨立性的同一組資料，所有資料點的 $\epsilon_{ik}$ 來源不存在任何交集。這個條件沒有現成或簡易的檢核方法，只能從研究設計檢視有無違反獨立性的狀況(參考 @sec-A-brief-introduction-to-research-design )。不存在獨立性的最經典狀況是重複測量設計，每個研究參與者會在多個條件中被測量，如此一來就違反獨立性的條件，不可能以單因子變異數分析處理資料。如果一項研究具備這樣的設計，就需要使用[單因子重覆量數變異數分析]。
 
 
 <!---
@@ -711,9 +709,9 @@ So, how do we check whether the assumption about the residuals is accurate? Well
 > *檢核變異數分析的第一步，就像坐大型遊輪出海，要仔細觀察海面是不是平靜無波，能讓遊輪安全離港！* \
 > -- 喬治·博克斯 [@Box1953]
 
-據說殺貓有千百種方法，檢核變異同質性也有千百種方法。當然在動物保護意識極高的現代，這句話不能亂說。依照原作者曾閱讀文獻，最常見到的檢核方法是Levene檢定法[@Levene1960]，以及Brown-Forsythe檢定法[@BrownForsythe1974]。
+據說殺貓有千百種方法，檢核變異同質性也有千百種方法。當然在動物保護意識極高的現代社會，這種話不能亂說。依照原作者曾閱讀的文獻，最常見到的檢核方法是Levene檢定法[@Levene1960]，以及Brown-Forsythe檢定法[@BrownForsythe1974]。
 
-無論是採用Levene還是Brown-Forsythe，檢定統計值$F$或$W$的計算程序都和ANOVA的F統計值一樣，只是結果變項的符號是用$Z_{ik}$代表而不是$Y_{ik}$。知道了這些，我們就可以看看如何使用jamovi進行檢檢。
+無論是Levene還是Brown-Forsythe，檢定統計值$F$或$W$的計算程序都和ANOVA的F統計值一樣，只是結果變項的符號是用$Z_{ik}$代表而不是$Y_{ik}$。知道了這些，我們就可以了解如何使用jamovi做檢定。
 
 [額外的技術細節[^13-comparing-several-means-one-way-anova-13]]
 
@@ -735,11 +733,11 @@ Regardless of whether you're doing the standard Levene test or the Brown-Forsyth
 
 ### jamovi的Levene檢定
 
+<!---
 > **譯者註** 本單元內容為AI初翻，請謹慎使用。
+--->
 
-
-好的，那麼我們該如何進行Levene檢驗呢？其實很簡單 - 在ANOVA的"假設檢查"選項下，只需點擊"變異數同質性檢驗"複選框。如果我們查看 @fig-fig12-5 中的輸出，我們可以看到檢驗結果並無顯著差異（$F_{2,15} = 1.45, p = .266$），所以變異數同質性假設看起來沒有問題。然而，外表可能會讓人受騙！如果您的樣本量相當大，那麼即使變異數同質性假設沒有被違反到影響ANOVA的穩健性，Levene檢驗也可能顯示出顯著效應（即p < .05）。這正是George Box在上面引述中所指出的觀點。同樣地，如果您的樣本量相當小，那麼變異數同質性假設可能不被滿足，而Levene檢驗可能不顯著（即p > .05）。這意味著，在對假設是否被滿足進行任何統計檢驗的同時，您應該總是繪製每個分組/類別的均值周圍的標準差......只是為了看看它們是否看起來相當相似（即變異數同質性）或不相似。
-
+如何進行Levene檢驗呢？其實程序很簡單 - 在ANOVA模組設定選單的"條件檢定"(Assumptions Check)選項裡，點選"變異數同質性檢定"。接著查看報表區的輸出，可以看到檢定結果，如同 @fig-fig12-5 ，顯示無顯著差異（$F_{2,15} = 1.45, p = .266$），所以看起來符合變異數同質性沒有問題。然而，只看外表可能會讓人上當！如果資料樣本量相當大，即使違反變異數同質性的程度沒有到影響ANOVA的穩健性，Levene檢定也可能顯示顯著結果（p < .05）。這正是George Box的論文中所指出的重點。若是資料的樣本量相當小，那麼可能無法滿足變異數同質性，使得Levene檢定結果不顯著（p > .05）。也就是說，使用任何統計方法檢定適合條件是否滿足時，也要檢查分組統計圖的標準差視覺化範圖，親自判斷各組變異範圍是否是相等或不相等。範圍相等才算是符合變異數同質性。
 
 
 <!---
@@ -754,9 +752,12 @@ knitr::include_graphics("images/fig13-5.png")
 
 ### 校正異質性的分析結果
 
+<!---
 > **譯者註** 本單元內容為AI初翻，請謹慎使用。
 
-在我們的示例中，變異數同質性假設被證明是相當可靠的：Levene檢驗結果並無顯著差異（儘管我們還應該查看標準差的圖形），因此我們可能不需要擔心。然而，在現實生活中，我們並非總是如此幸運。當變異數同質性假設被違反時，我們該如何拯救我們的ANOVA呢？如果您回想一下我們對t檢驗的討論，我們之前遇到過這個問題。Student t檢驗假設等方差，所以解決方法是使用不需要等方差假設的Welch t檢驗。實際上， @Welch1951 還展示了我們如何解決ANOVA的這個問題（**Welch單因素檢驗**）。它在jamovi中使用One-Way ANOVA分析實現。這是一種專為單因素ANOVA設計的分析方法，要在我們的示例中執行Welch單因素ANOVA，我們將按照之前的方式重新運行分析，但這次使用jamovi的ANOVA - One Way ANOVA分析命令，並選擇Welch檢驗的選項（參見 @fig-fig12-6 ）。為了理解這裡發生了什麼，讓我們將這些數字與我們最初在[使用jamovi進行變異數分析]時得到的數字進行比較。為了省去您回顧的麻煩，上次我們得到的是：$F(2, 15) = 18.611, p = .00009$，這也顯示為 @fig-fig12-6 中One-Way ANOVA的Fisher檢驗。
+--->
+
+以這個單元的範例分析來說，符合變異數同質性是沒有問題的：Levene檢定顯示無顯著結果，雖然更謹慎的做法是還要看看分組統計圖的變異分佈。不過現實的統計實務不會總是如此幸運，若是分組殘差的變異違反變異數同質性，要如何拯救ANOVA呢？回想一下 @sec-independent-t-assumptions ，t檢定也會遇到同樣的問題。Student t檢定要預設分組變異相等，解決方法是使用不需要依賴這項條件的Welch t檢定。其實， @Welch1951 也提到如何單因子變異數分析的版本：**Welch單因素檢定**。jamovi的ANOVA模組包括的One-Way ANOVA有執行此方法的功能，開啟設定選單後，勾選Welch檢定，如同  @fig-fig12-6 的展示。@fig-fig12-6 的ANOVA報表標示Fisher的檢定結果，與[使用jamovi進行變異數分析]這一節展示的結果相同：$F(2, 15) = 18.611, p = .00009$ 。
 
 <!---
 
@@ -767,20 +768,20 @@ In our example, the homogeneity of variance assumption turned out to be a pretty
 ```{r}
 #| label: fig-fig12-6
 #| classes: .enlarge-image
-#| fig-cap: Welch檢驗作為jamovi中One Way ANOVA分析的一部分
+#| fig-cap: One Way ANOVA分析模組的Welch檢定結果
 #Welch's test as part of the One Way ANOVA analysis in jamovi
 knitr::include_graphics("images/fig13-6.png")
 ```
 
 
 
-好的，最初我們的ANOVA結果是$F(2, 15) = 18.6$，而Welch單因素檢驗給出的是$F(2, 9.49) = 26.32$。換句話說，Welch檢驗將組內自由度從15降低到了9.49，而F值從18.6上升到了26.32。
+之前的ANOVA分析結果是$F(2, 15) = 18.6$，Welch單因素檢定的計算結果是$F(2, 9.49) = 26.32$。換句話說，Welch檢定將組內自由度從15降低到9.49，F值從18.6上升到26.32。
 
 <!---Okay, so originally our ANOVA gave us the result $F(2, 15) = 18.6$, whereas the Welch one way test gave us $F(2, 9.49) = 26.32$. In other words, the Welch test has reduced the within-groups degrees of freedom from 15 to 9.49, and the F-value has increased from 18.6 to 26.32. --->
 
 ### 檢核常態性 {#sec-Checking-the-normality-assumption}
 
-檢驗常態性條件相對簡單， @sec-Checking-the-normality-of-a-sample 已經介紹所需要的工。要做的只是畫Q-Q圖，可以的話也跑個Shapiro-Wilk檢定法。以 @fig-fig12-7 的Q-Q圖看來，這份資料相當符合常態性。若是Shapiro-Wilk檢定結果也是不顯著，$p > .05$，就能確認這筆資料符合常態性條件。不過要注意的是，若是樣本量很大，那麼顯著的Shapiro-Wilk檢定結果實際上可能是偽陽的，也就是說，違反常態性並不會對分析結果造成任何問題。同樣地，非常小的樣本量可能會造成偽陰的檢定結果。這就是為什麼需要Q-Q圖輔助檢核。
+常態性的檢核方法相對簡單， @sec-Checking-the-normality-of-a-sample 已經介紹需要執行的工作。最簡單的做法是畫張Q-Q圖，可以的話就跑個Shapiro-Wilk檢定。以 @fig-fig12-7 的Q-Q圖來看，這份資料相當符合常態性。若是Shapiro-Wilk檢定結果也是不顯著($p > .05$)，就能確認這筆資料符合常態性。不過要注意的是，若是樣本量很大，那麼顯著的Shapiro-Wilk檢定結果很可能是偽陽性，也就是說這筆資料即使違反常態性，並不會對分析結果造成任何問題。同樣地，樣本量太小可能會造成偽陰的檢定結果。這就是為什麼需要Q-Q圖輔助檢核。
 
 
 
@@ -789,27 +790,27 @@ knitr::include_graphics("images/fig13-6.png")
 
 ```{r}
 #| label: fig-fig12-7
-#| fig-cap: jamovi的One Way ANOVA模組繪製的Q-Q圖
+#| fig-cap: 使用One Way ANOVA模組繪製的Q-Q圖
 #QQ plot in the One Way ANOVA analysis in jamovi
 knitr::include_graphics("images/fig13-7.png")
 ```
 
-除了看Q-Q圖檢查有沒有偏離常態的狀況，Shapiro-Wilk檢定結果並未顯示顯著，p = 0.6053，報表詳見 @fig-fig12-6 。因此，兩種檢核都沒有發現違反常態性的證據。
+這份範例資料殘差用Q-Q圖來看，並沒有明顯偏離常態的資料，Shapiro-Wilk檢定結果並未顯示顯著，p = 0.6053，報表詳見 @fig-fig12-6 。因此，兩種檢核方法都沒有發現明顯違反常態性的證據。
 
 <!--- Alongside inspecting the QQ plot for any deviations from normality, the Shapiro-Wilk test for our data does show a non-significant effect, with p = 0.6053 (see @fig-fig12-6. This therefore supports the QQ plot assessment; both checks find no indication that normality is violated. --->
 
 ### 排除非常態性的分析結果
 
-了解如何檢核常態性，另一方面也要學會如何分析違反常態性的資料。以單因子ANOVA的狀況來說，最簡單的解法是改用不必在意任何適用條件的無母數統計方法。 @sec-Comparing-two-means 已經介紹過分析兩組平均值的無母數統計方法：Mann-Whitney以及Wilcoxon檢定，若要分析三組以上的平均值，可以使用**Kruskal-Wallis秩和檢定法**[@KruskalWallis1952]。
+除了檢核常態性，也要學會如何處理違反常態性的資料。以單因子ANOVA的來說，最簡單的解決方法是改用不必在意任何適用條件的無母數統計方法。 @sec-Comparing-two-means 已經介紹分析兩組平均值的無母數統計方法：Mann-Whitney以及Wilcoxon檢定，若要分析三組以上的平均值，可以使用**Kruskal-Wallis秩和檢定法**[@KruskalWallis1952]。
 
 
 <!--- Now that we've seen how to check for normality, we are led naturally to ask what we can do to address violations of normality. In the context of a one-way ANOVA, the easiest solution is probably to switch to a non-parametric test (i.e., one that doesn't rely on any particular assumption about the kind of distribution involved). We've seen non-parametric tests before, in @sec-Comparing-two-means. When you only have two groups, the Mann-Whitney or the Wilcoxon test provides the non-parametric alternative that you need. When you've got three or more groups, you can use the **Kruskal-Wallis rank sum test** [@KruskalWallis1952]. So that's the test we'll talk about next. --->
 
 ###  Kruskal-Wallis檢定的運算原理
 
-Kruskal-Wallis檢定與單因子ANOVA有許多相似之處。ANOVA的計算是從定義第k個組的第i個觀察對象，標定在結果變項的數值$Y_{ik}$開始。Kruskal-Wallis檢定的第一步是排序所有$Y_{ik}$，以資料的序位進行分析。[^13-comparing-several-means-one-way-anova-14]
+Kruskal-Wallis檢定與單因子ANOVA有許多相似之處。ANOVA的計算是從第k組的第i個觀察對象，標定在結果變項的數值$Y_{ik}$開始。Kruskal-Wallis檢定的第一步是排序所有$Y_{ik}$，以資料的序位進行分析。[^13-comparing-several-means-one-way-anova-14]
 
-[^13-comparing-several-means-one-way-anova-14]: 首先創建新的結果變項$R_{ik}$，表示第k組的第i位成員排序。接著計算第k組觀察值的平均排序 $\bar{R}_k$: $$\bar{R}_k=\frac{1}{N_k}\sum_i R_{ik}$$，以及總平均排序$\bar{R}$: $$\bar{R}=\frac{1}{N}\sum_i\sum_k R_{ik}$$ 完成後，就可以計算與總平均排名$\bar{R}$的離均差平方。$(R_{ik} - \bar{R})^2$代表第ik個觀察值排序與總平均排序的離均差，是一種無母數的計量；還有$(R_{ik} - \bar{R_k})^2$代表第k組平均排序與總平均排序的離均差，也是一種無母數的計量。因此，離均差平方$(R_{ik} - \bar{R})^2$就是總體誤差的無母數計量。如此一來，就能按照ANOVA的運算原理，定義排序變異的估計值。首先是“總排序平方和”$$RSS_{tot}=\sum_k\sum_i (R_{ik}-\bar{R})^2$$，以及“組間排序平方和” $$\begin{aligned} RSS_{b}& =\sum{k}\sum_{i}(\bar{R}_{k}-\bar{R})^2 \\ &= \sum_{k} N_k (\bar{R}_{k}-\bar{R})^2 \end{aligned}$$ 若是虛無假設成立，且根本沒有真正的組差異，組間排序和$RSS_b$應該非常微小，遠小於總排序和$RSS_{tot}$。就計算公式來看，這和計算ANOVA 的F統計值非常像，不過因為背後的取樣分佈不同，Kruskal-Wallis檢定統計值記號是K，而K的計算方法是$$K=(N-1) \times \frac{RSS_b}{RSS_{tot}}$$ 若是虛無假設成立，K的取樣分佈會逼近自由度為$G-1$的卡方分佈。 K的值越大，資料就越不適配虛無假設，因此這是一個單側檢定。當K值足夠大時，就有機會拒絕$H_0$。
+[^13-comparing-several-means-one-way-anova-14]: 實作方法是先創建新的結果變項$R_{ik}$，表示第k組的第i位成員排序。接著計算第k組觀察值的平均排序 $\bar{R}_k$: $$\bar{R}_k=\frac{1}{N_k}\sum_i R_{ik}$$，以及總平均排序$\bar{R}$: $$\bar{R}=\frac{1}{N}\sum_i\sum_k R_{ik}$$ 完成後，就可以計算與總平均排名$\bar{R}$的離均差平方。$(R_{ik} - \bar{R})^2$代表第ik個觀察值排序與總平均排序的離均差，是一種無母數的計量；還有$(R_{ik} - \bar{R_k})^2$代表第k組平均排序與總平均排序的離均差，也是一種無母數的計量。因此，離均差平方$(R_{ik} - \bar{R})^2$就是總體誤差的無母數計量。如此一來，就能按照ANOVA的運算原理，定義排序變異的估計值。首先是“總排序平方和”$$RSS_{tot}=\sum_k\sum_i (R_{ik}-\bar{R})^2$$，以及“組間排序平方和” $$\begin{aligned} RSS_{b}& =\sum{k}\sum_{i}(\bar{R}_{k}-\bar{R})^2 \\ &= \sum_{k} N_k (\bar{R}_{k}-\bar{R})^2 \end{aligned}$$ 若是虛無假設成立，且根本沒有真正的組間差異，組間排序和$RSS_b$應該非常微小，遠小於總排序和$RSS_{tot}$。就計算公式來看，這和計算ANOVA 的F統計值非常像，不過因為背後的取樣分佈不同，Kruskal-Wallis檢定統計值記號是K，而K的計算方法是$$K=(N-1) \times \frac{RSS_b}{RSS_{tot}}$$ 若是虛無假設成立，K的取樣分佈會逼近自由度為$G-1$的卡方分佈。 K的值越大，資料就越不適配虛無假設，因此這是一個單側檢定。K值夠大的話，就有機會拒絕$H_0$。
 
 <!---
 The Kruskal-Wallis test is surprisingly similar to ANOVA, in some ways. In ANOVA we started with $Y_{ik}$, the value of the outcome variable for the ith person in the kth group. For the Kruskal Wallis test what we'll do is rank order all of these $Y_{ik}$ values and conduct our analysis on the ranked data. [^13-comparing-several-means-one-way-anova-14]
@@ -818,11 +819,11 @@ The Kruskal-Wallis test is surprisingly similar to ANOVA, in some ways. In ANOVA
 
 ### 更多分析細節
 
-前一節說明Kruskal-Wallis檢定的運算原理，我認為這是思考一種統計檢定如何運作的正確方法。[^13-comparing-several-means-one-way-anova-15]
+前一節說明Kruskal-Wallis檢定的運算原理，我認為這是一種思考統計檢定如何運作的正確方法。[^13-comparing-several-means-one-way-anova-15]
 
-[^13-comparing-several-means-one-way-anova-15]: 不過，從純數學的觀點來看，這樣的複雜解說是不必要的。雖然這裡不會推導公式，讀者可以使用一些線性代數$^b$來推想K的公式，為什麼可以轉換為K統計值$$K=\frac{12}{N(N-1)}\sum_k N_k \bar{R}_k^2 -3(N+1)$$ K的運算比在前面描述的F要容易得多，但是對於實際操作統計方法的分析人員來說完全沒有意義，將K類比為分析排序資料的ANOVA可能是最好的解讀方法。但是請記住，檢定統計值K與前面的ANOVA統計值F有很大的不同。<br>---<br> $b$就只是數學運算術語。
+[^13-comparing-several-means-one-way-anova-15]: 不過，從純數學的觀點來看，這樣的複雜解說是不必要的。雖然這本書不會談如何推導公式，讀者可以使用一些線性代數$^b$來推想K的公式，為什麼可以轉換為K統計值$$K=\frac{12}{N(N-1)}\sum_k N_k \bar{R}_k^2 -3(N+1)$$ K的運算比在前面描述的F要容易得多，但是對於實際操作統計方法的分析人員來說完全沒有意義，將K類比為分析排序資料的ANOVA統計值可能是最好的解讀方法。但是請記住，檢定統計值K與前面的ANOVA統計值F是很不一樣的公式。<br>---<br> $b$就只是數學運算符號。
 
-但是要跟讀者抱歉一下，還有一個使用限制要交待！什麼限制？因為前面的範例是原始資料沒有任何兩個觀察值數值是相等的，才能使用Kruskal-Wallis檢定。也就是說，如果存在相同的數值，就必須引進一個校正因子才能計算。因為再有耐心的讀者看到這裡，也不再想讀下去了，或者覺得遇到問題再查什麼是tie-correction factor(TFC)就好了。這裡只用範例資料做個簡單的說明，以及解釋為何可以暫視無視這個限制。以下根據*clinicaltrails*的原始資料變項*mood.gain*建立一個對應觀察值出現次數的資料表單，以$f_j$表示每個觀察值數值在資料裡的出現次數，下標$j$代表資料數值的排序。全部例出後就如 @tbl-tab12-11 的第二列。
+不過，這裡要跟讀者抱歉一下，還要交待一個使用限制！什麼限制？因為前面的範例是原始資料沒有任何兩個觀察值的數值相等，如此才能使用Kruskal-Wallis檢定。也就是說，如果資料內存在相同的數值，就必須引進校正因子才能計算。由於非常有耐心的讀者看到這裡，也許再也不想讀下去了，若是真的遇到問題，再去查什麼是tie-correction factor(TFC)就好了。這裡只用範例資料做個簡單的說明，以及解釋為何可以暫視無視這個限制。以下根據*clinicaltrails*的原始資料變項*mood.gain*建立一個對應觀察值出現次數的資料表單，以$f_j$表示每個觀察值數值在資料裡的出現次數，下標$j$代表資料數值的排序。全部例出後就如 @tbl-tab12-11 的第二列。
 
 
 
@@ -843,7 +844,7 @@ huxtabs[[13]][[11]]
 
 [^13-comparing-several-means-one-way-anova-16]: 根據上一段介紹的數學方法，我們可以知道$f_3 = 2$。想通這一點，就可以了解TCF的公式是用來算什麼了：$$TCF=1-\frac{\sum_j f_j^3 - f_j}{N^3 - N}$$jamovi計算出來的K值，正是除以TCF之後，輸出在Kruskal-Wallis檢定報表。
 
-所以，我們不用太擔心使用限制，jamovi輸出的Kruskall-Wallis統計值是校正處理後的。我們終於走完Kruskal-Wallis檢定的學習之路了，讀者也了解為什麼不需要在意手上的資料有沒有使用限制的理由了吧？
+所以，我們不用太擔心使用限制，jamovi輸出的Kruskall-Wallis統計值是校正處理後的。我們終於走完Kruskal-Wallis檢定的學習之路了，各位也了解為什麼不需要在意手上的資料有沒有使用限制的理由了吧？
 
 
 <!--- Looking at this table, notice that the third entry in the frequency table has a value of 2. Since this corresponds to a mood.gain of 0.3, this table is telling us that two people's mood increased by 0.3. [^13-comparing-several-means-one-way-anova-16]
@@ -854,9 +855,13 @@ And so jamovi uses a tie-correction factor to calculate the tie-corrected Kruska
 
 ### 使用jamovi完成Kruskal-Wallis檢定
 
+<!---
+
 > **譯者註** 本單元內容為AI初翻，請謹慎使用。
 
-儘管理解Kruskal Wallis檢定法是讓許多人望而生畏的任務，實際操作卻相當輕鬆因為jamovi的ANOVA模組有包括名為“Non-parametic”(無母數)-"One-way ANOVA(Kruskall-Wallis)"的分析選單。大多資料是像*clinicaltrial.csv*一樣，其中有結果變項`mood.gain`和分組變項`drug`。如此就能直接用jamovi執行Kruskall-Wallis檢定，結果如同 @fig-fig12-8 展示，寫成報告格式$\chi^2 =12.076, df = 2, p = 0.00239$。
+--->
+
+儘管學會Kruskal Wallis檢定法是讓許多學生望而生畏的任務，實際操作卻相當輕鬆，因為jamovi的ANOVA模組提供“Non-parametic”(無母數)-"One-way ANOVA(Kruskall-Wallis)"的分析功能。類似*clinicaltrial.csv*的大多數資料，會有結果變項`mood.gain`和分組變項`drug`。只要符合這樣的結構，就能用jamovi執行Kruskall-Wallis檢定，得到 @fig-fig12-8 展示的結果，寫成符合學術格式的報告$\chi^2 =12.076, df = 2, p = 0.00239$。
 
 
 <!--- Despite the horror that we've gone through in trying to understand what the Kruskal Wallis test actually does, it turns out that running the test is pretty painless, since jamovi has an analysis as part of the ANOVA analysis set called 'Non-Parametric' - 'One Way ANOVA (Kruskall-Wallis)' Most of the time you'll have data like the *clinicaltrial.csv*  data set, in which you have your outcome variable mood.gain and a grouping variable drug. If so, you can just go ahead and run the analysis in jamovi. What this gives us is a Kruskal-Wallis $\chi^2 =12.076, df = 2, p = 0.00239$, as in @fig-fig12-8 --->
@@ -864,7 +869,7 @@ And so jamovi uses a tie-correction factor to calculate the tie-corrected Kruska
 ```{r}
 #| label: fig-fig12-8
 #| classes: .enlarge-image
-#| fig-cap: 無母數單因子ANOVA/Kruskall-Wallis分析結果
+#| fig-cap: 無母數單因子ANOVA/Kruskall-Wallis檢定分析結果
 #Kruskall-Wallis one-way non-parametric ANOVA in jamovi
 knitr::include_graphics("images/fig13-8.png")
 ```
@@ -884,7 +889,7 @@ $$\text{獨立樣本變異數分析: } SS_{error} = SS_w$$ $$\text{重覆量數�
 減少的$SS_{error}$可以增加統計檢定的考驗力，不過還要看減少的$SS_{error}$有沒有比減少的自由度更多，因為獨立組的參與者較多，重覆量數的自由度從$(n - k)$[^13-comparing-several-means-one-way-anova-17]變為$(n - 1)(k - 1)$
 
 
-[^13-comparing-several-means-one-way-anova-17]:（n-k）：（參與者數量-組別數量）
+[^13-comparing-several-means-one-way-anova-17]:（n-k）=（參與者數量-組別數量）
 
 <!--- The one-way repeated measures ANOVA test is a statistical method of testing for significant differences between three or more groups where the same participants are used in each group (or each participant is closely matched with participants in other experimental groups). For this reason, there should always be an equal number of scores (data points) in each experimental group. This type of design and analysis can also be called a 'related ANOVA' or a 'within subjects ANOVA'.
 
@@ -917,7 +922,7 @@ huxtabs[[13]][[12]]
 
 患者需要完成三項語言能力檢核任務。在第一項言語生成任務，患者需要重複朗讀研究者給他的單詞。第二項概念理解任務要測試理解意義的能力，患者需要將一系列圖片與正確名稱配對。第三項句子修正任務測試文法知識，患者要對語法不正確的句子重新排列字詞順序。每位患者都完成了所有任務，各項任務的順序在參與者之間進行平衡隨機。每個任務有10次嘗試。每位患者成功完成的嘗試次數列在 @tbl-tab12-11 。我們將這些資料輸入jamovi進行分析（或者載入*Broca.csv*資料檔）。
 
-要用jamovi執行單因子重覆量數ANOVA，只要點選ANOVA - Repeated Measures ANOVA，就能打開如 @fig-fig12-9 的分析設定視窗。
+使用jamovi執行單因子重覆量數ANOVA，只要點選ANOVA - Repeated Measures ANOVA，就能開啟如 @fig-fig12-9 的分析設定選單。
 
 
 <!--- The patients were required to complete three word recognition tasks. On the first (speech production) task, patients were required to repeat single words read out aloud by the researcher. On the second (conceptual) task, designed to test word comprehension, patients were required to match a series of pictures with their correct name. On the third (syntax) task, designed to test knowledge of correct word order, patients were asked to reorder syntactically incorrect sentences. Each patient completed all three tasks. The order in which patients attempted the tasks was counterbalanced between participants. Each task consisted of a series of 10 attempts. The number of attempts successfully completed by each patient are shown in @tbl-tab12-11. Enter these data into jamovi ready for analysis (or take a short-cut and load up the *broca.csv* file).
@@ -926,19 +931,19 @@ To perform a one-way related ANOVA in jamovi, open the one-way repeated measures
 
 ```{r}
 #| label: fig-fig12-9
-#| fig-cap: jamovi的重覆量數變數分析設定視窗
+#| fig-cap: jamovi的重覆量數變變數分析設定選單
 #Repeated measures ANOVA dialogue box in jamovi
 knitr::include_graphics("images/fig13-9.png")
 ```
 
-然後進行以下設定：
+依序進行以下設定：
 
 - 更改重複測量的獨變項名稱(RM Factor 1)。獨變項是涵括您所選擇的資料變項標籤，用於描述所有參與者被重複測量的條件。例如，要描述所有參與者完成的言語、概念和語法任務，一個合適的名稱是“任務”(Task)。請注意，這個新的名稱代表變異數分析的獨變項。
 - 在重複測量因子對話框(Repeated Measures Factors)裡填入三個級別名稱，因為三個級別分別代表三個任務：言語、概念和語法。有需要的話可再更改級別的名稱。
 - 然後將代表每個級別的資料變項，移動到重複測量因子欄位框(Repated Measures Cells)。
 - 最後，在“適用條件檢核”(Assumptions Check)選項裡，勾選“球形性檢查”(Sphericity Test)。
 
-jamovi報表區接著輸出如 @fig-fig12-10 至 @fig-fig12-13 的單因子重覆量數變數分析報表。建議各位先查看有沒有符合Mauchly球形檢定( @fig-fig12-10 )，這是檢核各條件之間的變異是否相等(也就是研究條件之間的得分差異值分佈大致相同)。 @fig-fig12-10 顯示Mauchly檢定的$p = .720$，根據一般的顯著水準（p > .05），我們有理由相信各測量條件之間的差異值分佈無顯著差異，符合球性分佈的適用條件。
+報表區會輸出如 @fig-fig12-10 到 @fig-fig12-13 的單因子重覆量數變數分析報表。建議各位先查看有沒有符合Mauchly球形檢定( @fig-fig12-10 )，這是檢核各測量條件之間的變異是否相等(也就是研究條件之間的得分差異值分佈大致相同)。 @fig-fig12-10 顯示Mauchly檢定的$p = .720$，未低於一般的顯著水準（p > .05），我們有理由相信各測量條件之間的差異值分佈無顯著差異，符合球性分佈的適用條件。
 
 
 
@@ -954,7 +959,7 @@ jamovi output for a one-way repeated measures ANOVA is produced as shown in @fig
 ```{r}
 #| label: fig-fig12-10
 #| classes: .enlarge-image
-#| fig-cap: 單因子重覆量數變數分析輸出 - Mauchly球形性檢驗
+#| fig-cap: 單因子重覆量數變數分析輸出 - Mauchly球形性檢定結果
 #One-way repeated measures ANOVA output - Mauchly's Test of Sphericity
 knitr::include_graphics("images/fig13-10.png")
 ```
@@ -964,7 +969,7 @@ knitr::include_graphics("images/fig13-10.png")
 - 如果"球形檢定"輸出的Greenhouse-Geisser值大於 .75，應該使用Huynh-Feldt法校正。
 - 如果輸出的Greenhouse-Geisser值小於.75，應該使用Greenhouse-Geisser法校正。
 
-這兩個校正的F值都可以透過“適用條件檢核”選單的球形修正選項指定，修正過的F值將顯示在變異數分析結果表，如同 @fig-fig12-11 顯示。
+這兩個校正的F值都可以用勾選“適用條件檢核”(Assumptions Check)選單裡的球形修正選項來指定，修正的F值將顯示在變異數分析結果表，如同 @fig-fig12-11 。
 
 
 
@@ -983,9 +988,9 @@ Both these corrected F-values can be specified in the Sphericity Corrections che
 knitr::include_graphics("images/fig13-11.png")
 ```
 
-從這次範例資料的分析，我們發現Mauchly的球形檢定並不顯著(p = .720，即p > 0.05)。因此，這表示我們可以接受已滿足資料差異的分佈符合球形假設，不需要校正F值進行。報告可以用原始F值說明"任務"的主要效果之統計資訊：$F = 6.93$，$df = 2$，$p = .013$，所以三種任務正確率的差異，確實是因為各種任務的測試目標所造成的（$F(2, 10) = 6.93$，$p = .013$）。
+根據這個範例資料的分析報表，可以看到Mauchly的球形檢定並不顯著(p = .720，即p > 0.05)。因此，這表示我們可以接受已滿足資料差異的分佈符合球形假設，不需要校正F值。報告可以用原始分析的結果說明"任務"的主要效果：$F = 6.93$，$df = 2$，$p = .013$，所以三種任務正確率的差異，確實是因為各種任務的測試內容所造成的（$F(2, 10) = 6.93$，$p = .013$）。
 
-與獨立樣本變異數分析一樣，jamovi也可以執行重覆量數變數分析的事後檢定。示範結果如同 @fig-fig12-12 。這顯示言語任務與語任務的正確率有顯著差異，但是其他各項任務之間的正確率沒有顯著差異。
+與獨立樣本變異數分析一樣，jamovi也可以執行重覆量數變數分析的事後檢定。示範結果如同 @fig-fig12-12 。這顯示言語生成任務與句子修正任務的正確率有顯著差異，但是其他各項任務之間的正確率沒有顯著差異。
 
 <!--- In our analysis, we saw that the significance of Mauchly's Test of Sphericity was p = .720 (i.e. p > 0.05). So, this means we can assume that the requirement of sphericity has been met so no correction to the F-value is needed. Therefore, we can use the 'None' Sphericity Correction output values for the repeated measure 'Task': $F = 6.93$, $df = 2$, $p = .013$, and we can conclude that the number of tests successfully completed on each language task did vary significantly depending on whether the task was speech, comprehension or syntax based ($F(2, 10) = 6.93$, $p = .013$).
 
@@ -999,7 +1004,7 @@ Post-hoc tests can also be specified in jamovi for repeated measures ANOVA in th
 knitr::include_graphics("images/fig13-12.png")
 ```
 
-運用描述統計可以幫助解釋結果，只要設定邊際均值選項，生成如 @fig-fig12-13 的表格。比較不同任務的平均正確次數，可以看出布洛卡失語症患者的言語生成任務（平均= 7.17）和概念理解任務（平均= 6.17）表現相對較好。不過，句子修正任務的表現明顯較差（平均= 4.33），事後檢定顯示言語生成和句子修正的正確率有明顯差異。
+運用描述統計可以幫助解釋結果，只要勾選邊際平均值選項，生成如同 @fig-fig12-13 的表格。比較不同任務的平均正確次數，可以看出布洛卡失語症患者的言語生成任務（平均= 7.17）和概念理解任務（平均= 6.17）表現相對較好。不過，句子修正任務的表現明顯較差（平均= 4.33），事後檢定顯示言語生成和句子修正的正確率有明顯差異。
 
 
 <!--- Descriptive statistics (marginal means) can be reviewed to help interpret the results, produced in the jamovi output as in @fig-fig12-13. Comparison of the mean number of trials successfully completed by participants shows that Broca's Aphasics perform reasonably well on speech production (mean = 7.17) and language comprehension (mean = 6.17) tasks. However, their performance was considerably worse on the syntax task (mean = 4.33), with a significant difference in post-hoc tests between Speech and Syntax task performance. --->
@@ -1016,7 +1021,7 @@ knitr::include_graphics("images/fig13-13.png")
 
 Friedman檢定是單因子重覆量數變異數分析的無母數版本，用來分析三組或更多組排序資料之間的差異，只要每組參與者相同，或者各條件的參與者彼此有密切相依的測量條件。如果依變項是序列數值，或者資料未滿足常態性條件，就可以使用這種方法進行假設檢定。
 
-和Kruskall-Wallis檢定相同，徹底解釋的話需要先知道複雜的數學知識，所以這裡不會詳細介紹。對於本書的目標讀者來說，只要了解jamovi輸出的Friedman檢定報表是已經校正的結果，  @fig-fig12-14 展示的報表是用前一節的失語症患者資料做Friedman檢定的範例。
+和Kruskall-Wallis檢定相同，徹底解釋的話需要先知道複雜的數學知識，所以這裡不會詳細介紹。對於本書的目標讀者來說，只要了解jamovi輸出的Friedman檢定報表是已經校正的結果， @fig-fig12-14 展示的報表是用失語症患者資料做Friedman檢定的範例。
 
 
 
@@ -1027,14 +1032,14 @@ As with the Kruskall-Wallis test, the underlying mathematics is complicated, and
 ```{r}
 #| label: fig-fig12-14
 #| classes: .enlarge-image
-#| fig-cap: “無母數重覆量數變數分析”設定視窗與結果報表
+#| fig-cap: “無母數重覆量數變數分析”設定選單與結果報表
 #The 'Repeated Measures ANOVA (Non-parametric)' dialogue box and results in jamovi
 knitr::include_graphics("images/fig13-14.png")
 ```
 
-要用jamovi執行Friedman檢定非常簡單。只要從功能模組選單，選擇"ANOVA" - Repeated Measures ANOVA (Non-parametric)，就能開啟如 @fig-fig12-14 的選單。然後將要比較的重複測量資料變項名稱（言語、概念、語法）放到“測量”(Measures)對話框。想要生成描述統計表格，只要勾選描述(Descriptives)。
+使用jamovi執行Friedman檢定，只要從功能模組選單，選擇"ANOVA" - Repeated Measures ANOVA (Non-parametric)，就能開啟如同 @fig-fig12-14 的選單。然後將要比較的重複測量資料變項名稱（言語、概念、語法）放到“測量”(Measures)對話框。想要生成描述統計表格，只要勾選描述(Descriptives)。
 
-jamovi報表區顯示描述統計、卡方統計值、自由度和p值。由於p值小於通常用於一般的顯著水準（p < .05），我們可以下結論：布洛卡失語症患者在言語生成（中位數= 7.5）和概念理解（中位數= 6.5）的表現較好。然而，他們的句子修正任務表現明顯較差（中位數= 4.5），事後檢定顯示言語生成和句子修正任務的表現有顯著差異。
+jamovi報表區顯示描述統計、卡方統計值、自由度和p值。由於p值小於通常用於一般的顯著水準（p < .05），根據報表結果可以結論：布洛卡失語症患者在言語生成（中位數= 7.5）和概念理解（中位數= 6.5）的表現較好。然而，他們的句子修正任務表現明顯較差（中位數= 4.5），事後檢定顯示言語生成和句子修正任務的表現有顯著差異。
 
 <!--- It's pretty straightforward to run a Friedman test in jamovi. Just select Analyses - ANOVA - Repeated Measures ANOVA (Non-parametric), as in @fig-fig12-14. Then highlight and transfer the names of the repeated measures variables you wish to compare (Speech, Conceptual, Syntax) into the 'Measures:' text box. To produce descriptive statistics (means and medians) for the three repeated measures variables, click on the Descriptives button
 
@@ -1042,7 +1047,7 @@ The jamovi results show descriptive statistics, chi-square value, degrees of fre
 
 ## 變異數分析與t檢定的關係 {#sec-On-the-relationship-between-ANOVA-and-the-Student-t-test}
 
-這個單元結束之前，讀者還有一件事需要知道。初學者通常會對此事實感到訝異，不過了解這事實是值得的：以ANOVA和學生t檢定分析兩組組間差異的資料，結果是一樣的。不只輸出的結果相似，各種資訊的統計意義也是等價的。這裡用實際的示範取代公式推導讓各位明白。以*clinical trials*資料集來當例子，這次不納入`drug`，只用`therapy`做唯一獨變項。執行ANOVA會得到一個F統計值 $F(1,16) = 1.71$，和p值 = $0.21$。因為只有兩組，也可以做學生t檢定。t檢定的結果得到t統計值 $t(16) = -1.3068$ 和 $p = 0.21$。你應該發現，p值是相同的，都是$p = .21$。那麼統計值有什麼關係？因為t統計值是負的，顯然和ANOVA的F值不一樣。其實其中有相當直接的轉換關係。只要將t統計值平方，就會得到F統計值：$-1.3068^{2} = 1.7077$。
+這個單元結束之前，還有一件事需要知道。初學者通常會對此感到訝異，不過了解後的收穫是值得的：以ANOVA和學生t檢定分析兩組組間差異的資料，結果是一樣的。不只輸出的結果相似，各種資訊的統計意義也是等價的。這裡用實際的示範取代公式推導讓各位明白。以*clinical trials*資料集來當例子，這次不納入`drug`，只用`therapy`做唯一獨變項。執行ANOVA會得到一個F統計值 $F(1,16) = 1.71$，和p值 = $0.21$。因為只有兩組，也可以做學生t檢定。t檢定的結果得到t統計值 $t(16) = -1.3068$ 和 $p = 0.21$。你應該發現，p值是相同的，都是$p = .21$。那麼統計值有什麼關係？因為t統計值是負的，顯然和ANOVA的F值不一樣。其實其中有相當直接的轉換關係。只要將t統計值平方，就會得到F統計值：$-1.3068^{2} = 1.7077$。
 
 
 

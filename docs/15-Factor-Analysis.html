@@ -485,15 +485,14 @@ A sample of $N=250$ responses is contained in the dataset *bfi_sample.csv* . As 
 
 Twenty-five observed variable items organised by five putative personality factors in the dataset bfi\_sample.csv
 --->
-<p>在此使用取自 <a href="http://ipip.ori.org" target="_blank">國際性格量表題庫</a>的25項人格自我報告題目(請見 <a href="#fig-fig15-2">圖&nbsp;<span>15.2</span></a> )， 組合的網路性格問卷–合成孔徑性格量表(SAPA:<a href="http://sapa-project.org" target="_blank">http://sapa-project.org</a>)其中一部分資料做為範例。25個題目假設受五個因素影響:親和性(Agreeableness)、盡責性(Conscientiousness)、外向性(Extraversion)、神經質(Neuroticism)和開放性(Openness)。</p>
-<p>每個題目都是6點量表紀錄參與者的反應資料:</p>
+<p><a href="#fig-fig15-2">圖&nbsp;<span>15.2</span></a> 是取自 <a href="http://ipip.ori.org" target="_blank">國際性格量表題庫</a>的25項自我報告題目，所組成的網路性格問卷–合成孔徑性格量表(SAPA:<a href="http://sapa-project.org" target="_blank">http://sapa-project.org</a>)，其中一部分資料做為範例。25個題目假設受五個因素影響:親和性(Agreeableness)、盡責性(Conscientiousness)、外向性(Extraversion)、神經質(Neuroticism)和開放性(Openness)。</p>
+<p>每個題目都是讓參與者用6點量表選出分數，代表題目描述與自我認知的適切程度:</p>
 <p>1.非常不準確</p>
 <p>2.中度不準確</p>
 <p>3.輕度不準確</p>
 <p>4.輕度準確</p>
 <p>5.中度準確</p>
 <p>6.非常準確。</p>
-<p>資料檔案<em>bfi_sample.csv</em>包括<span class="math inline">\(N=250\)</span>份參與者樣本(lsj檔案庫Personality Questionnaire)。研究人員有興趣的，是看看檔案中的<span class="math inline">\(25\)</span>個觀察變項，有那些能合理測量的潛在因素。請先開啟這份檔案檢查這<span class="math inline">\(25\)</span>個變項是否以連續變項編碼？(至少要用次序變項編碼，雖然jamovi的EFA模組可以處理。若是要用因素負荷加權計算因素分數，就需要先轉換為連續變項)。接著執行jamovi的EFA模組：</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig15-2" class="quarto-figure quarto-figure-left anchored">
@@ -504,6 +503,8 @@ Twenty-five observed variable items organised by five putative personality facto
 </div>
 </div>
 </div>
+<p>示範資料<em>Personality Questionnaire</em>包括<span class="math inline">\(N=250\)</span>份參與者樣本。研究人員會有興趣的，是檔案裡的<span class="math inline">\(25\)</span>個觀察變項，有那些能合理測量的潛在因素。開啟這份檔案後，研究人員會先檢查這<span class="math inline">\(25\)</span>個變項是否以連續變項編碼？如果不是，至少要用次序變項編碼，雖然jamovi的EFA模組可以處理類別變項。若是要用因素負荷加權計算因素分數，就需要先轉換為連續變項。</p>
+<p>接著執行jamovi的EFA模組：</p>
 <!---
 - Select Factor - Exploratory Factor Analysis from the main jamovi button bar to open the EFA analysis window (@fig-fig15-3).
 
@@ -517,9 +518,9 @@ jamovi EFA assumption checks for the personality questionnaire data
 
 --->
 <ul>
-<li><p>從主要jamovi按鈕欄中選擇“因素”- “探索性因素分析”以打開EFA分析窗口(<a href="#fig-fig15-3">圖&nbsp;<span>15.3</span></a>)。</p></li>
-<li><p>選擇25個人格問題并將其轉移到“變項”框中。</p></li>
-<li><p>檢查適當的選項,包括“預設檢查”,但也選擇旋轉“方法”、要提取的“因子數量”和“其他輸出”選項。有關此示例EFA的建議選項,請參閱@fig-fig15-3,并請注意,如下所述,通常研究人員會在分析過程中調整旋轉“方法”和提取的“因子數量”以找到最佳結果。</p></li>
+<li><p>從主要jamovi模組選單選擇“因素”(factor)- “探索性因素分析”(Exploratory Factor Analysis)，開啟EFA分析視窗(<a href="#fig-fig15-3">圖&nbsp;<span>15.3</span></a>)。</p></li>
+<li><p>選擇25個性格量表題目變項，移到“變項”對話框。</p></li>
+<li><p>勾選適當的選項,包括“適用條件檢查”(Assumption Checks)，建議設定“轉軸”(Rotation)的方法、要提取的“因子數量”(Number of Factors)和“其他輸出”(Additional Output)。執行EFA的建議勾選項目,可參考 <a href="#fig-fig15-3">圖&nbsp;<span>15.3</span></a> 。請注意稍後的說明，研究人員通常會在分析過程調整“轉軸”方法和提取的“因子數量”，以找到最佳結果。</p></li>
 </ul>
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
@@ -527,16 +528,6 @@ jamovi EFA assumption checks for the personality questionnaire data
 <figure class="figure">
 <p><img src="images/fig15-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">圖&nbsp;15.3: jamovi EFA分析窗口</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell enlarge-image" data-layout-align="left">
-<div class="cell-output-display">
-<div id="fig-fig15-4" class="quarto-figure quarto-figure-left anchored">
-<figure class="figure">
-<p><img src="images/fig15-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;15.4: jamovi人格問卷資料的EFA預設檢查</figcaption>
 </figure>
 </div>
 </div>
@@ -552,12 +543,22 @@ The next thing to check is how many factors to use (or "extract" from the data).
 - Using a parallel analysis technique, the obtained Eigen values are compared to those that would be obtained from random data. The number of factors extracted is the number with Eigen values greater than what would be found with random data.
 
 Scree plot of the personality data in jamovi EFA, showing a noticeable inflection and levelling off after point 5 (the 'elbow') --->
-<p>首先,檢查預設條件(<a href="#fig-fig15-4">圖&nbsp;<span>15.4</span></a>)。您可以看到(1)巴特利球形性檢驗顯著,所以滿足這個預設條件;和(2)抽樣適度性測度(MSA)的總體KMO測度為<span class="math inline">\(0.81\)</span>,這表明了很好的抽樣適度性。這裡沒有問題!</p>
-<p>下一件要檢查的事情是使用多少因素(或從資料中“提取”多少因素)。有三種不同的方法:</p>
+<p>我們首先檢查預設條件。從 <a href="#fig-fig15-4">圖&nbsp;<span>15.4</span></a> 可以看到(1)巴特利球形性檢定顯著,所以滿足這個預設條件;和(2)所有題目的取樣適切度性(MSA)指標KMO平均值為<span class="math inline">\(0.81\)</span>(Overall)，代表這份樣本有很好的取樣適切度。這樣的設定沒有要進一步考慮的問題!</p>
+<div class="cell enlarge-image" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-fig15-4" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p><img src="images/fig15-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">圖&nbsp;15.4: SAPA性格問卷資料的jamovi EFA適用條件檢定結果</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>下一步要檢查的是要使用多少因素，或者說，要從資料中“提取”多少因素。有三種可行的方法:</p>
 <ul>
-<li><p>一個公約是選擇所有特徵值大於1的組件2。這會給我們四個因素(嘗試一下)。</p></li>
-<li><p>如@fig-fig15-5所示,檢查斜率圖可以幫助您識別“拐點”。這是斜率曲線明顯趨於平緩的點,在“肘部”以下。这會给我们的数据五个因素。解釋斜率圖有點藝術性:在@fig-fig15-5中,從<span class="math inline">\(5\)</span>個到<span class="math inline">\(6\)</span>個因素有一個明顯的跨度,但是在您查看的其他斜率圖中,情況並不會那么清晰。</p></li>
-<li><p>使用平行分析技術,獲得的特徵值與從隨機資料獲得的特徵值進行比較。 提取的因素數量是特徵值大於隨機資料中找到的值的數量。</p></li>
+<li><p>選擇所有特徵值(Eigenvalue)大於1的組合，這樣會得到四項因素。</p></li>
+<li><p>檢查斜率圖 (Scree plot, <a href="#fig-fig15-5">圖&nbsp;<span>15.5</span></a>) 可以幫助我們識別“屈折點”。這是斜率圖的曲線“彎頭”，明顯趨於平緩的點，如此我們會得到五項因素。解釋斜率圖需要一些美學技巧:從 <a href="#fig-fig15-5">圖&nbsp;<span>15.5</span></a> 可以看到<span class="math inline">\(5\)</span>到<span class="math inline">\(6\)</span>之間有一個明顯的跨度，但是多數案例看到的斜率圖，通常不會那麼清晰。</p></li>
+<li><p>使用平行分析技術，比較從全部資料獲得的特徵值與從部分隨機資料獲得的特徵值。如果前者的特徵值大於後者的特徵值，就以該特徵決定要提取的因素數量。</p></li>
 </ul>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
@@ -576,14 +577,14 @@ At the same time, we should also consider the best way to rotate the final solut
 [^factor-analysis-2]: Oblique rotations provide two factor matrices, one called a structure matrix and one called a pattern matrix. In jamovi just the pattern matrix is shown in the results as this is typically the most useful for interpretation, though some experts suggest that both can be helpful. In a structure matrix coefficients show the relationship between the variable and the factors whilst ignoring the relationship of that factor with all the other factors (i.e. a zero-order correlation). Pattern matrix coefficients show the unique contribution of a factor to a variable whilst controlling for the effects of other factors on that variable (akin to standardized partial regression coefficient). Under orthogonal rotation, structure and pattern coefficients are the same.
 
 Factor summary statistics and correlations for a five factor solution in jamovi EFA--->
-<p>根據 <span class="citation" data-cites="Fabrigar1999">Fabrigar et al. (<a href="References.html#ref-Fabrigar1999" role="doc-biblioref">1999</a>)</span> 的說法,第三種方法很好,儘管在實踐中,研究人員傾向於查看所有三個方法,然后根據最容易或最有幫助解釋的因素數量來進行判斷。這可以理解為“意義標准”,研究人員通常除了檢查上述方法之一的解决方案外,还會檢查具有一個或兩個更多或更少因素的解决方案。 然后他們采用對他們最有意义的解决方案。</p>
-<p>與此同時,我們還應考慮最佳旋轉最終解决方案的最佳方法。旋轉有兩種主要方法:正交(例如“varimax”)旋轉強制所選因素不相關,Whereas斜交(例如“oblimin”)旋轉允許所選因素相關。心理學家和行為科學家感興趣的維度通常並非我們希望正交的維度,因此斜交解決方案可以說更加合理<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>根據 <span class="citation" data-cites="Fabrigar1999">Fabrigar et al. (<a href="References.html#ref-Fabrigar1999" role="doc-biblioref">1999</a>)</span> 的說法，第三種方法最好,儘管執行統計實務的研究人員，都會查看所有三個方法，然後根據最容易或最好解釋的因素數量來做判斷。這種方式可稱為“意義標準”，研究人員通常除了運用一種較合理的方案外,還會嘗試可以提取多一兩個或少一兩個因素的方案，然後再採用對研究結論來說，最有意義的方案。</p>
+<p>同時,我們還要決定最佳的轉軸方法。主要有兩種:正交(varimax)強制設定入選因素無相關，斜交(oblimin)允許入選因素之間有相關。心理學家和行為科學家感興趣的因素通常並非正交，因此斜交是較合理的方法<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig15-6" class="quarto-figure quarto-figure-left anchored">
 <figure class="figure">
 <p><img src="images/fig15-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">圖&nbsp;15.6: jamovi EFA 中五因素解的因素摘要統計量和相關量</figcaption>
+<figcaption class="figure-caption">圖&nbsp;15.6: 提取五項因素的探索性因素分析摘要統計表和因素間相關係數矩陣</figcaption>
 </figure>
 </div>
 </div>
@@ -602,12 +603,9 @@ The other thing to note is that those variables that were denoted as "R: reverse
 
 Factor loadings for a five factor solution in jamovi EFA
 --->
-<p>從實踐的角度來看,如果在斜交旋轉中發現因素之間存在顯著相關(正相關或負相關,並且大於0.3),如@fig-fig15-6所示,其中提取的兩個因素之間的相關為0.31,那麼這將證實我們更喜歡斜交旋轉的直覺。如果這些因素確實相關,那麼斜交旋轉將產生比正交旋轉更好的真實因素估計和更好的簡單結構。而且,如果斜交旋轉表明各因素之間的相關接近零,那麼研究人員可以繼續進行正交旋轉(這時應給出與斜交旋轉大致相同的解決方案)。</p>
-<p>在檢查提取因素之間的相關時,至少有一個相關大於0.3(<a href="#fig-fig15-6">圖&nbsp;<span>15.6</span></a>),因此更喜歡提取的五個因素的斜交(“oblimin”)旋轉。我們還可以在@fig-fig15-6中看到,五個因素解釋的資料總變異數的比例為46%。第一因素解釋了大約10%的變異,第二至第四因素解釋了大約9%的變異,第五因素解釋了略多於7%的變異。這並不是很好;如果整體解釋我們資料中的更多變異那會更好。</p>
-<p>請注意,在每個EFA中,您可以潛在地具有與觀察變項數量相同的因素,但是您包含的每個附加因素都會增加更小量的解釋變異數量。如果前几个因素解释了原始25 个變項中的大量方差,那麼這些因素顯然是25 个變項的一個有用、更简单的替代品。您可以放心刪除其餘部分,而不會失去太多原始變異性。但是如果需要18個因素(例如)來解釋這25個變項中的大部分變異數,那麼您不如直接使用原始的25個變項。</p>
-<p><span class="quarto-unresolved-ref">?fig-fig15-7顯示了因子負荷</span>。也就是說,25個不同的人格項目如何在五個選定的因素上加載。我們隱藏了小於0.3的負荷(設置在@fig-fig15-3中顯示的選項中)。</p>
-<p>對於因素<span class="math inline">\(1、2、3\)</span>和<span class="math inline">\(4\)</span>,因子負荷的模式與@fig-fig15-2中指定的假定因素緊密匹配。太好了!第5個因素也相當接近,五個被認為測量“開放性”的觀察變項中有四個在該因素上載入得相當好。但是,變項<span class="math inline">\(04\)</span>似乎並不太適合,因為@fig-fig15-7中的因子解决方案表明它載入到因素<span class="math inline">\(4\)</span>上(儘管載荷相對較低),但沒有實質上載入到因素<span class="math inline">\(5\)</span>上。</p>
-<p>需要注意的另一件事情是,在@fig-fig15-2中標記為“R:反向編碼”的那些變項是那些具有負因子負荷的變項。查看項目A1(“漠不關心他人的感受”)和A2(“詢問他人的幸福”)。我們可以看到,<span class="math inline">\(A1\)</span>的高分表示親和力較低,Whereas <span class="math inline">\(A2\)</span>(和所有其他“A”變項)的高分表示親和力較高。因此,A1將與其他“A”變項負相關,這就是為什麼它在@fig-fig15-7中具有負因子負荷。</p>
+<p>在一般的統計實務，如果用斜交轉軸發現因素之間存在顯著相關，大約是相關係數絕對值大於0.3，如同 <a href="#fig-fig15-6">圖&nbsp;<span>15.6</span></a> 的因素間相關係數表所示，其中兩個因素之間的相關係數是0.31，這表示採用斜交轉軸直覺沒錯。如果這些因素確實有相關，斜交轉軸得到的因素結構和估計值是比正交轉軸更好也更簡單。而且，如果斜交轉軸顯示各因素之間的相關接近零，研究人員就採用正交轉軸的分析結果，因為兩種轉軸方法給出的結論大致一致。</p>
+<p><a href="#fig-fig15-6">圖&nbsp;<span>15.6</span></a> 顯示提取的五個因素之間，至少有一組的相關係數大於0.3，因此我們傾向採納五個因素的斜交轉軸。 <a href="#fig-fig15-6">圖&nbsp;<span>15.6</span></a> 的總結表格也顯示五個因素能解釋全部資料變異量比例為46%。因素一能解釋大約10%的變異，因素二、三、四各自能解釋大約9%的變異，因素五能解釋略多於7%的變異。這其實並不理想，一般會期待提取因素能解釋的變異比例越高越好。</p>
+<p>請注意執行探索性因素分析的研究人員，可以預期能提取的因素數量等於觀察變項數量，而且增加一個因素，都會小幅增加解釋變異的比例。如果只用少數因素就能解釋25個觀察變項的高比例變異，這些因素顯然是25個觀察變項的可用替代變異。只要能解釋最多比例的原始變異，研究人員可以不必顧慮未能解釋的其餘變異。不過，如果需要提取18個因素，才能解釋25個觀察變項的多數變異，那麼不如直接使用25個變項解釋資料。</p>
 <div class="cell enlarge-image" data-layout-align="left">
 <div class="cell-output-display">
 <div id="fig-fig15-7" class="quarto-figure quarto-figure-left anchored">
@@ -618,6 +616,9 @@ Factor loadings for a five factor solution in jamovi EFA
 </div>
 </div>
 </div>
+<p><a href="#fig-fig15-7">圖&nbsp;<span>15.7</span></a> 是因素負荷量統計表，顯示25道性格量表題目在五個因素的負荷量。在 <a href="#fig-fig15-3">圖&nbsp;<span>15.3</span></a> 的設定視窗，已經設定隱藏小於0.3的負荷量。</p>
+<p>因素1、2、3、4的負荷量分佈模式，基本上與 <a href="#fig-fig15-2">圖&nbsp;<span>15.2</span></a> 的題組設定一致，而且因素5也很接近！假設是測量“開放性”的五個觀察變項，其中四個的因素5負荷量絕對值大於0.3，但是題組的第四題<span class="math inline">\(04\)</span>似乎不符合預期，因為這題在因素4的負荷量高於0.3，雖然沒有高，但是在因素5的負荷量低於0.3。</p>
+<p>另外需要注意的是， <a href="#fig-fig15-2">圖&nbsp;<span>15.2</span></a> 題組摘要有標記“R:反向編碼”的題目，在負荷量統計表中的數值是負的。像是<span class="math inline">\(A1\)</span>(“漠不關心他人的感受”)和<span class="math inline">\(A2\)</span>(“詢問他人的幸福”)，<span class="math inline">\(A1\)</span>的分數越高，代表親和力越低，<span class="math inline">\(A2\)</span>與其他同組題目的分數越高，表示親和力越高。所以<span class="math inline">\(A1\)</span>與其他題目是負相關，導致 <a href="#fig-fig15-7">圖&nbsp;<span>15.7</span></a> 的數值是負的。</p>
 <!--- We can also see in @fig-fig15-7 the "uniqueness" of each variable. Uniqueness is the proportion of variance that is 'unique' to the variable and not explained by the factors[^factor-analysis-3]. For example, 72% of the variance in 'A1' is not explained by the factors in the five factor solution. In contrast, 'N1' has relatively low variance not accounted for by the factor solution (35%). Note that the greater the 'uniqueness', the lower the relevance or contribution of the variable in the factor model.
 
 [^factor-analysis-3]: Sometimes reported in factor analysis is "communality" which is the amount of variance in a variable that is accounted for by the factor solution. Uniqueness is equal to (1 $\sim$ communality)
@@ -1282,7 +1283,7 @@ Peterson, C., &amp; Seligman, M. (1984). Causal explanations as a risk factor fo
 <hr>
 <ol>
 <li id="fn1"><p>因素負荷量的解讀方式如同標準化迴歸係數。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>斜交旋轉提供了兩個因子矩陣,一個稱為結構矩陣,一個稱為模式矩陣。 在jamovi中,結果中只顯示模式矩陣,因為這通常對解釋最有用,儘管一些專家建議两者都很有幫助。 在結構矩陣中,係數顯示變項與因素之間的關係,同時忽略該因素與所有其他因素的關係(即零階相關)。 模式矩陣係數顯示因素對變項的獨特貢獻,同時控制該變項上其他因素的影響(類似於標准化偏迴歸係數)。 在正交旋轉下,結構和模式係數是相同的。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>斜交轉軸會得出兩套因子矩陣,一個是結構矩陣(structure matrix ),另一個是模式矩陣(pattern matrix)。 jamovi的結果報表只會顯示模式矩陣,因為這種矩陣最能用於解釋分析結果,儘管一些專家建議兩套矩陣都有意義。結構矩陣顯示的是變項係數與因素之間的關係,但是設定因素之間的相關為零。模式矩陣除了顯示各因素與所有變項係數的相關性,也有顯示控制其他因素，特定因因素對所有變項的相關性，類似計算標準化迴歸係數。選擇正交轉軸的話,結構和模式矩陣的內容是相同的。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>在因子分析中有時會報告“公因性”,這是變項中能夠被因子解描述的變異量。獨特性等於 (1 <span class="math inline">\(\sim\)</span> 公因性)<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>必要時先進行某些變項的反向計分<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>此外,若是研究人員對最初“假設”的因素結果相當有信心,可以9跳過EFA而直接進行CFA。要先使用EFA然後進行CFA,還是直接進行CFA,這在很大程度上取決於研究人員最初對模型準確性(就因素和變項數量來源)的判斷和信心。在量表開發的早期階段或確定潛在因素結構的時候,多數研究人員傾向使用EFA。接近完成最終版量表，或者想用新樣本檢查已建立的量表,CFA是一個不錯的選擇。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
