@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.427">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,8 +78,7 @@ div.csl-indent {
     "search-more-matches-text": "更多符合結果",
     "search-clear-button-title": "清除",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "送出",
-    "search-label": "搜尋"
+    "search-submit-button-title": "送出"
   }
 }</script>
 <script type="text/x-mathjax-config">
@@ -120,7 +119,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prelude-Part-IV.html">統計理論</a></li><li class="breadcrumb-item"><a href="./08-Estimating-unknown-quantities-from-a-sample.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">運用樣本估計未知量數</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切換側邊欄導航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -134,7 +133,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">用jamovi上手統計學</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/SCgeeker/lsj-book-zh_tw/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -163,7 +162,7 @@ div.csl-indent {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="搜尋"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -1023,7 +1022,7 @@ To finish this section off, here's another couple of tables to help keep things 
 </blockquote>
 <p>這一章到目前為止，已經概述了統計學家常取用的基本取樣理論，用來根樣本資料猜測母群參數。正如己經解說的各節主題，我們需要取樣理論的原因之一是每個資料集都會有一些不確定性，因此估計值永遠不會百分之百準確。這一節我們要學的是量化估計不確定程度的方法，因為只報告像是大學心理學專業學生平均智商為115這要的點估計值並不足夠，我們還要能用數值表達猜測程度。例如：有95％ 的可能性，真實平均值介於109和121之間。這種表達方式被稱做平均值的信賴區間。</p>
 <p>充分理解取樣分佈，計算平均值的信賴區間其實相當簡單。這裡解說計算方法：假設母群平均值為 <span class="math inline">\(\mu\)</span>，標準差為 <span class="math inline">\(\sigma\)</span>。我剛完成了一項有 N 名參與者的研究，這些參與者的智力測驗分數的平均值是 <span class="math inline">\(\bar{X}\)</span>。根據<a href="08-Estimating-unknown-quantities-from-a-sample.html#sec-The-central-limit-theorem">中央極限定理</a>，我們可以知道平均值的取樣分佈接近常態分佈。經由 <a href="07-Introduction-to-probability.html#sec-The-normal-distribution"><span>小單元&nbsp;7.5</span></a> 關於常態分佈的學習，我們也知道一個服從常態分佈的取樣分佈，在平均值周圍相距約兩個標準差之內，有95％左右的量數落在此範圍內。</p>
-<p>更精確的正確答案是：以一個符合常態分佈的取樣分佈估計母群平均值，估計值有95% 的機率落在真正母群平均值的1.96個標準差內。接下來，請記住取樣分配的標準差正式名稱為標準誤(standar error)，因此平均值的標準誤差可簡寫為SEM(Standard Error of Measurement, 測量標準誤)。當我們合成這些數字時，就能得知有95%的可能性確定由樣本資料計算得到的樣本平均值 <span class="math inline">\(\bar{X}\)</span> ，與母群平均值差距在1.96倍的標準誤差之內。</p>
+<p>更精確的正確答案是：以一個符合常態分佈的取樣分佈估計母群平均值，估計值有95% 的機率落在真正母群平均值的1.96個標準差內。接下來，請記住取樣分配的標準差正式名稱為標準誤(standar error)，因此平均值的標準誤差可簡寫為SEM(Standard Error of Mean, 樣本平均值標準誤)。當我們合成這些數字時，就能得知有95%的可能性確定由樣本資料計算得到的樣本平均值 <span class="math inline">\(\bar{X}\)</span> ，與母群平均值差距在1.96倍的標準誤差之內。</p>
 <p>當然，1.96並不是什麼神奇數字。如果你想要計算一個95％的信賴區間，這就是經常需要使用的乘數。若是我想要70％的置信區間，我會使用1.04作為神奇數字而不是1.96。</p>
 <p>[更多技術細節<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>]</p>
 <!---
