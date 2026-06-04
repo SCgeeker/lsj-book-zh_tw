@@ -775,7 +775,7 @@ So, we have four main assumptions for linear regression (that neatly form the ac
 
 大多數迴歸診斷都圍繞著觀察殘差，到目前為止，你可能已經對統計學形成了足夠悲觀的理論，能夠猜到，正因為我們非常關心殘差，我們可能會考慮幾種不同類型的殘差。特別地，在本節中，我們將提到以下三種殘差：“普通殘差”、“標準化殘差”和“學生化殘差”。還有第四種你會在一些圖中看到的，稱為“皮爾森殘差”。然而，對於我們在本章中討論的模型，皮爾森殘差與普通殘差相同。
 
-首先，我們關心的最簡單類型的殘差是**普通殘差**。這些就是我在本章前面一直提到的實際原始殘差。普通殘差僅僅是擬合值 $\hat{Y}_i$ 和觀察值 $Y_i$ 之間的差。我一直用符號 $\epsilon_i$ 表示第 i 個普通殘差，並且我將繼續堅持使用它。考慮到這一點，我們有非常簡單的方程式
+首先，我們關心的最簡單類型的殘差是**普通殘差**。這些就是我在本章前面一直提到的實際原始殘差。普通殘差僅僅是預測值 $\hat{Y}_i$ 和觀察值 $Y_i$ 之間的差。我一直用符號 $\epsilon_i$ 表示第 i 個普通殘差，並且我將繼續堅持使用它。考慮到這一點，我們有非常簡單的方程式
 
 $$\epsilon_i=Y_i-\hat{Y_i}$$
 
@@ -800,15 +800,15 @@ $$\epsilon_i=Y_i-\hat{Y_i}$$
 
 3. 學生化殘差：這些殘差與標準化殘差相似，但它們在計算標準誤時排除了所檢查的觀察值。這意味著學生化殘差是將原始殘差除以觀察值的標準誤後，再除以（1-h_i），其中 h_i 是觀察值的槓桿值。學生化殘差可以幫助我們確定觀察值是否對模型的擬合產生了極大影響。
 
-### 畫圖：殘差圖和擬合值圖
+### 畫圖：殘差圖和預測值圖
 
-要確保迴歸模型的適用性，繪製殘差圖和擬合值圖是一種常用方法。這兩種圖表可以幫助我們檢查殘差是否符合我們對其的期望。例如，我們希望殘差是隨機分布的，並且其變異數是恆定的。通過檢查殘差圖和擬合值圖，我們可以快速確定是否滿足這些條件。
+要確保迴歸模型的適用性，繪製殘差圖和預測值圖是一種常用方法。這兩種圖表可以幫助我們檢查殘差是否符合我們對其的期望。例如，我們希望殘差是隨機分布的，並且其變異數是恆定的。通過檢查殘差圖和預測值圖，我們可以快速確定是否滿足這些條件。
 
-1. **殘差圖**：殘差圖是一個以觀察值的順序為橫軸，以殘差為縱軸的散點圖。通常，我們希望這些點沒有特定的模式，並且它們在橫軸上的分布應該是均勻的。如果我們在殘差圖中看到某種模式，那麼這可能表明迴歸模型未能捕捉到某種趨勢。
+1. **殘差圖**：殘差圖是一個以觀察值的順序為橫軸，以殘差為縱軸的散佈圖。通常，我們希望這些點沒有特定的模式，並且它們在橫軸上的分布應該是均勻的。如果我們在殘差圖中看到某種模式，那麼這可能表明迴歸模型未能捕捉到某種趨勢。
 
-2. **擬合值圖**：擬合值圖也是一個散點圖，但是它將擬合值（模型預測）作為橫軸，而將殘差作為縱軸。這種圖表的目的是確保殘差在擬合值的範圍內隨機分布，並且具有恆定的變異數。如果我們在擬合值圖中看到某種模式或變異數不恆定的現象，那麼這可能表明迴歸模型的某些假設被違反了。
+2. **預測值圖**：預測值圖也是一個散佈圖，但是它將預測值（模型預測）作為橫軸，而將殘差作為縱軸。這種圖表的目的是確保殘差在預測值的範圍內隨機分布，並且具有恆定的變異數。如果我們在預測值圖中看到某種模式或變異數不恆定的現象，那麼這可能表明迴歸模型的某些假設被違反了。
 
-總之，迴歸分析提供了一個強大的方法來找出自變項與應變項之間的關係。通過分析殘差和擬合值，我們可以檢查迴歸模型的適用性和有效性。此外，繪製殘差圖和擬合值圖有助於我們確保模型符合其基本假設。當模型被證明是有效且合適時，我們就可以使用它來預測或解釋因變項的變化。 --->
+總之，迴歸分析提供了一個強大的方法來找出自變項與應變項之間的關係。通過分析殘差和預測值，我們可以檢查迴歸模型的適用性和有效性。此外，繪製殘差圖和預測值圖有助於我們確保模型符合其基本假設。當模型被證明是有效且合適時，我們就可以使用它來預測或解釋因變項的變化。 --->
 
 <!--- The main focus of this section is **regression diagnostics**, a term that refers to the art of checking that the assumptions of your regression model have been met, figuring out how to fix the model if the assumptions are violated, and generally to check that nothing "funny" is going on. I refer to this as the "art" of model checking with good reason. It's not easy, and while there are a lot of fairly standardised tools that you can use to diagnose and maybe even cure the problems that ail your model (if there are any, that is!), you really do need to exercise a certain amount of judgement when doing this. It's easy to get lost in all the details of checking this thing or that thing, and it's quite exhausting to try to remember what all the different things are. This has the very nasty side effect that a lot of people get frustrated when trying to learn all the tools, so instead they decide not to do any model checking. This is a bit of a worry!
 
@@ -894,7 +894,7 @@ An obvious question to ask next is, if you do have large values of Cook's distan
 
 ### 檢測變項的線性關係 {#sec-checking-liniearity-relationshp}
 
-我們應該檢查預測變項和結果之間關係的線性。有幾種不同的方法可以檢查這一點。首先,繪製結果變項的預測值$\hat{Y}_i$和觀察值$Y_i$之間的關係總是有幫助的,如 @fig-fig12-17 所示。為了在jamovi中繪製這個圖,我們將預測值保存到數據集,然後繪製觀察值與預測值(擬合值)的散點圖。這給您一種"大局觀" - 如果這個圖看起來大致呈線性,那麼我們可能做得不算太差(儘管這並不意味著沒有問題)。然而,如果您能在這裡看到明顯偏離線性的地方,那麼這有力地表明您需要做出一些改變。 
+我們應該檢查預測變項和結果之間關係的線性。有幾種不同的方法可以檢查這一點。首先,繪製結果變項的預測值$\hat{Y}_i$和觀察值$Y_i$之間的關係總是有幫助的,如 @fig-fig12-17 所示。為了在jamovi中繪製這個圖,我們將預測值保存到數據集,然後繪製觀察值與預測值(預測值)的散佈圖。這給您一種"大局觀" - 如果這個圖看起來大致呈線性,那麼我們可能做得不算太差(儘管這並不意味著沒有問題)。然而,如果您能在這裡看到明顯偏離線性的地方,那麼這有力地表明您需要做出一些改變。 
 
 ```{r}
 #| label: fig-fig12-17
@@ -902,7 +902,7 @@ An obvious question to ask next is, if you do have large values of Cook's distan
 knitr::include_graphics("images/fig12-17.png")
 ```
 
-無論如何,為了獲得更詳細的圖景,查看預測值與殘差本身之間的關係通常更有意義。同樣,在jamovi中,您可以將殘差保存到數據集,然後繪製預測值與殘差值的散點圖,如 @fig-fig12-18 所示。正如您所見,它不僅繪製了顯示預測值與殘差的散點圖,還可以在數據中繪製一條線,顯示兩者之間的關係。理想情況下,這應該是一條筆直的、完全水平的線。在實踐中,我們尋求一條合理筆直或平坦的線。這是一個判斷的問題。  
+無論如何,為了獲得更詳細的圖景,查看預測值與殘差本身之間的關係通常更有意義。同樣,在jamovi中,您可以將殘差保存到數據集,然後繪製預測值與殘差值的散佈圖,如 @fig-fig12-18 所示。正如您所見,它不僅繪製了顯示預測值與殘差的散佈圖,還可以在數據中繪製一條線,顯示兩者之間的關係。理想情況下,這應該是一條筆直的、完全水平的線。在實踐中,我們尋求一條合理筆直或平坦的線。這是一個判斷的問題。  
 
 ```{r}
 #| label: fig-fig12-18
@@ -945,15 +945,20 @@ Somewhat more advanced versions of the same plot is produced by checking 'Residu
 knitr::include_graphics("images/fig12-19.png")  
 ```
 
-我們還應該檢查擬合值和殘差本身之間的關係。我們可以使用 'Residuals Plots' 選項讓 jamovi 做到這一點，該選項為每個預測變項、結果變項以及擬合值與殘差提供了散點圖，見 @fig-fig12-20 。在這些圖中，我們要尋找的是點的分佈相對均勻，沒有明顯的聚集或圖案。觀察這些圖，沒有什麼特別令人擔憂的，因為點在整個圖中分佈得相當均勻。在圖 (b) 中可能存在一點非均勻性，但偏差不大，可能不值得擔憎。
+我們還要檢查預測值和殘差本身之間的關係。可以使用 'Residuals Plots' 選項讓 jamovi 輸出每個預測變項觀察值、結果變項觀察值、以及預測值與殘差的散佈圖，如同 @fig-fig12-20 。透過這些圖，我們可以判斷資料點的分佈是否相對均勻，沒有明顯的聚集模式。這些圖看起來沒有什麼特別令人擔憂的，因為每張個圖中資料點點分佈得相當均勻。特別右上的圖 (b) ，雖然有些資料點有不能不是均勻分佈，但是偏差不大，不值得特別擔心。
 
-```{r}
-#| label: fig-fig12-20
-#| fig-align: left
-#| fig-width: 0.9
-#| fig-cap: 由 jamovi 生成的殘差圖
-knitr::include_graphics("images/fig12-20.png")  
-```
+::: {#fig-fig12-20 layout-ncol="2" layout-valign="bottom" width="100%"}
+
+![](images/fig12-20a.png){fig-alt="Scatter plot showing residuals versus fitted values. The x-axis is labeled 'Fitted' and the y-axis is labeled 'Residuals'. Data points are scattered across the plot, with residuals ranging from approximately -10 to 10 and fitted values between 50 and 80." }
+
+![](images/fig12-20b.png){fig-alt="A scatter plot titled 'My grumpiness' on the x-axis and 'Residuals' on the y-axis. Data points are dispersed, showing a positive correlation between grumpiness (ranging from 40 to 90) and residuals (ranging from -10 to 10)."}
+
+![](images/fig12-20c.png){fig-alt="A scatter plot shows residuals on the vertical axis ranging from -10 to 10 and baby's sleep (hours) on the horizontal axis ranging from 4 to 12 hours. Numerous data points are dispersed across the plot, displaying no clear pattern or trend." }
+
+![](images/fig12-20d.png){fig-alt="A scatter plot titled 'My sleep (hours) vs Residuals' showing data points representing residual values against the number of hours slept, ranging from 5 to 9 hours. Residuals vary roughly between -10 and 10, with no clear pattern or trend visible."  }
+
+jamovi 線性迴歸模組生成的殘差圖
+:::
 
 如果我們擔憂的話，那麼在很多情況下解決這個問題（以及其他許多問題）的方法是對一個或多個變項進行轉換。我們在 @sec-Transforming-and-recoding-a-variable 中討論了變項轉換的基本知識，但我想特別提一下我之前沒有完全解釋的一個額外可能性：Box-Cox 轉換。Box-Cox 函數相當簡單，並且被廣泛使用。[^correlation-and-linear-regression-21]
 
@@ -1057,7 +1062,7 @@ ggplot(dat, aes(x=x, y=y)) +
 
 觀測值不尋常的第二種方式是具有高**槓桿作用(leverage)**，這發生在觀測值與所有其他觀測值非常不同的情況下。這不一定要對應大的殘差。如果觀測值在所有變項上的不尋常程度恰好相同，則實際上可能非常接近迴歸線。這方面的一個例子如 @fig-fig12-25 所示。觀測值的槓桿作用通常用帽子值表示，通常寫作$h_i$。帽子值的公式相當複雜[^correlation-and-linear-regression-18]，但它的解釋並不複雜：$h_i$是衡量第i個觀測值“控制”迴歸線走向的程度。
 
-[^correlation-and-linear-regression-18]: 再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量$y$轉換為擬合值向量$\hat{y}$的矩陣$H$，使得$\hat{y} = Hy$。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為$h_{ii}$而不是$h_i$）。哦，如果你在意，這是它的計算方法：$H = X(X^{'}X)^{1}X^{'}$。漂亮，不是嗎？
+[^correlation-and-linear-regression-18]: 再次，對於線性代數狂熱分子：定義帽矩陣為將觀測值向量$y$轉換為預測值向量$\hat{y}$的矩陣$H$，使得$\hat{y} = Hy$。這個名字來自這是將帽子放在y上的矩陣。第i個觀測值的帽值是這個矩陣的第i個對角元素（所以從技術上講，我應該將其寫為$h_{ii}$而不是$h_i$）。哦，如果你在意，這是它的計算方法：$H = X(X^{'}X)^{1}X^{'}$。漂亮，不是嗎？
 
 ```{r}
 #| label: fig-fig12-25
@@ -1313,7 +1318,7 @@ AIC 值越小，模型性能越好。如果我們忽略低水平的細節，AIC 
 
 [^correlation-and-linear-regression-25]: 我們可以將兩個模型都應用於資訊並獲得兩個模型的殘差平方和。我將它們分別表示為$SS_{res}^{(1)}$和$SS_{res}^{(2)}$。上標表示我們正在談論哪個模型。然後我們的F統計量是 $$F= \frac {\frac {SS _{res}^{(1)} - SS_{res}^{(2)}} {k}}   {\frac{SS_{res}^2} {N-p-1} }$$，其中$N$是觀察次數，$p$是完整模型中的預測變項數量（不包括截距），$k$是兩個模型之間參數的差異。這裡的自由度是$k$和$N -p-1$。值得注意的是，將這兩個SS值之間的差異表示為它自己的平方和經常更方便。也就是說 $$SS_\Delta=SS_{res}^{(1)}-SS_{res}^{(2)}$$。這樣有幫助的原因是我們可以將$SS_\Delta$表示為兩個模型對結果變項的預測有所不同的程度。具體來說，$$SS_\Delta=\sum_i{(\hat{y}_i^{(2)}-\hat{y}_i^{(1)})^2}$$，其中$\hat{y}_{i^{(1)}}$是根據模型$M_1$對$y_i$的預測值，$\hat{y}_{i^{(2)}}$是根據模型$M_2$對$y_i$的預測值。 <br /> --- <br /> $^d$順便提一下，這個相同的F統計量可以用來檢驗比我在這裡提到的更廣泛的範圍的假設。非常簡要地說，注意嵌套模型M1對應於當我們將某些迴歸係數限制為零時的完整模型M2。在某些情況下，通過對迴歸係數施加其他類型的約束來構建子模型是有用的。例如，也許兩個不同的係數可能必須相加為零，或類似的情況。您可以為這些類型的約束構建假設檢定，但這有點更複雜，而且F的抽樣分布可能會是所謂的非中心F分布，這已經超出了本書的範疇！我想做的只是提醒您這種可能性。
 
-那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 @fig-fig12-25 所示。這在“Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，$F(1,96) = 0.00$，$p = 0.954$。由於我們的p > .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為**分層迴歸**。
+那麼，這就是我們用來比較兩個迴歸模型的假設檢定。現在，我們如何在jamovi中進行呢？答案是使用“Model Builder”選項，在“Block 1”中指定Model 1預測變項dani.sleep和day，然後將Model 2中的其他預測變項（baby.sleep）添加到“Block 2”，如 @fig-fig12-28 所示。這在”Model Comparisons”表格中顯示了比較Model 1和Model 2的結果，$F(1,96) = 0.00$，$p = 0.954$。由於我們的p > .05，我們保留虛無假設（M1）。這種將我們所有協變數添加到零模型中，然後將感興趣的變項添加到替代模型中，然後在假設檢定框架中比較兩個模型的迴歸方法通常被稱為**分層迴歸**。
 
 我們還可以使用此“Model Comparison”選項顯示一個表格，顯示每個模型的AIC和BIC，方便比較並確定哪個模型具有最低的值，如 @fig-fig12-28 所示。
 
